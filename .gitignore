@@ -6,3 +6,4 @@ __pycache__/
 01_notes/source_text.md
 
 # Ignore large planck_lensing parts\ndata/lensing/planck_lensing_4096_r3_part/
+data/lensing/planck_lensing_4096_r3_part/
