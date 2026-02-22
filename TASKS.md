@@ -2,7 +2,7 @@
 
 ## Priority P0 (Do First) - Freeze and Reproducibility
 
-- [ ] Freeze + tag `Gold Pack v1` with fixed scripts, seeds, configs, manifests, and artifact hashes. (Freeze completed; git tag blocked because workspace is not a git repo.)
+- [x] Freeze + tag `Gold Pack v1` with fixed scripts, seeds, configs, manifests, and artifact hashes. (Tag `gold-pack-v1` applied 2026-02-22; lint pass; freeze bundle in `07_exports/gold-pack-v1/`.)
 - [x] Create a locked reproducibility snapshot file for `Gold Pack v1` (inputs, commands, outputs, hashes).
 - [x] Ensure run manifests and results log are fully aligned before tagging.
 
