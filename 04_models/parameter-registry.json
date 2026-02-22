@@ -1,0 +1,126 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-02-16",
+  "source_of_truth": "02_claims/claims-register.md",
+  "parameters": [
+    {
+      "parameter_id": "QNG-P-001",
+      "symbol": "tau",
+      "name": "Relaxation Time",
+      "units": "s",
+      "default_value": null,
+      "range": ">= 0",
+      "status": "open",
+      "related_claims": [
+        "QNG-C-024",
+        "QNG-C-038",
+        "QNG-C-060",
+        "QNG-C-086"
+      ],
+      "notes": "Primary lag parameter used in residual acceleration and memory kernel."
+    },
+    {
+      "parameter_id": "QNG-P-002",
+      "symbol": "chi",
+      "name": "Straton Load",
+      "units": "kg*s/m",
+      "default_value": null,
+      "range": ">= 0",
+      "status": "open",
+      "related_claims": [
+        "QNG-C-012",
+        "QNG-C-014",
+        "QNG-C-073"
+      ],
+      "notes": "Latent informational load, usually chi = m/c."
+    },
+    {
+      "parameter_id": "QNG-P-003",
+      "symbol": "Sigma_min",
+      "name": "Stability Threshold",
+      "units": "dimensionless",
+      "default_value": null,
+      "range": "[0,1]",
+      "status": "open",
+      "related_claims": [
+        "QNG-C-004",
+        "QNG-C-033"
+      ],
+      "notes": "Persistence threshold for node survival."
+    },
+    {
+      "parameter_id": "QNG-P-004",
+      "symbol": "alpha_tau",
+      "name": "Delay Scaling Coefficient",
+      "units": "s^2*m/kg",
+      "default_value": null,
+      "range": "> 0",
+      "status": "open",
+      "related_claims": [
+        "QNG-C-014"
+      ],
+      "notes": "First-order proportionality constant in tau(chi) closure."
+    },
+    {
+      "parameter_id": "QNG-P-005",
+      "symbol": "tau_h",
+      "name": "Halo Relaxation Timescale",
+      "units": "s",
+      "default_value": null,
+      "range": "> 0",
+      "status": "open",
+      "related_claims": [
+        "QNG-C-040"
+      ],
+      "notes": "Effective decay timescale for dark-memory halo dissipation."
+    },
+    {
+      "parameter_id": "QNG-P-006",
+      "symbol": "beta_q",
+      "name": "Threshold Transition Sharpness",
+      "units": "dimensionless",
+      "default_value": null,
+      "range": "> 0",
+      "status": "open",
+      "related_claims": [
+        "QNG-C-048"
+      ],
+      "notes": "Sharpness parameter used in logistic persistence near threshold."
+    },
+    {
+      "parameter_id": "QNG-P-007",
+      "symbol": "mu_s",
+      "name": "Structure Mobility Coefficient",
+      "units": "model-dependent",
+      "default_value": null,
+      "range": ">= 0",
+      "status": "open",
+      "related_claims": [
+        "QNG-C-107"
+      ],
+      "notes": "Mobility factor in structure accretion flux model."
+    },
+    {
+      "parameter_id": "QNG-P-008",
+      "symbol": "k_S",
+      "name": "Entropy Normalization Constant",
+      "units": "dimensionless",
+      "default_value": 1.0,
+      "range": "> 0",
+      "status": "provisional",
+      "related_claims": [
+        "QNG-C-111"
+      ],
+      "notes": "Normalization for S(t) = k_S log(Omega)."
+    }
+  ],
+  "change_log": [
+    {
+      "version": "1.0.0",
+      "date": "2026-02-16",
+      "author": "workspace-automation",
+      "changes": "Initial parameter registry scaffold."
+    }
+  ]
+}
+

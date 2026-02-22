@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-013",
+  "claim_id": "QNG-C-029",
+  "claim_statement": "Universe dynamics follow discrete updates N_i(t+1)=U(...) with explicit node-volume closure.",
+  "priority": "P3",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-029.md",
+  "formula_anchor": "N_i(t+1) = U(N_i(t), {N_j(t)}_{j in Adj(i)}, eta_i(t))",
+  "dataset": "Symbolic math + closure simulation (DS-007 + DS-002)",
+  "method": "Symbolic formal check + executable T-V-01..T-V-04 rule-comparison suite.",
+  "pass_condition": "Closed update rule is executable and one frozen v1 volume rule passes all closure gates.",
+  "fail_condition": "No volume rule passes closure gates or pass requires post-hoc gate edits.",
+  "parameters": {
+    "dataset_symbolic": "DS-007",
+    "dataset_closure": "DS-002",
+    "closure_steps": 180,
+    "closure_runs_per_rule": 12,
+    "closure_seed_base": 920
+  },
+  "inputs": [
+    "01_notes/core-closure-v1.md",
+    "03_math/derivations/qng-c-029.md",
+    "scripts/run_qng_p3_symbolic_validation.py",
+    "scripts/run_qng_t_v_volume_rules.py",
+    "05_validation/dataset-manifest.json"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_p3_symbolic_validation.py --test-id QNG-T-013 --claim-id QNG-C-029 --mode formal_math --dataset-id DS-007 --derivation \"03_math/derivations/qng-c-029.md\" --formula-anchor \"N_i(t+1) = U(N_i(t), {N_j(t)}_{j in Adj(i)}, eta_i(t))\" --seed 3013 --out-dir \"05_validation/evidence/artifacts/qng-t-013\"",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_v_volume_rules.py --dataset-id DS-002 --steps 180 --runs 12 --seed 920 --out-dir \"05_validation/evidence/artifacts/qng-tv-core-closure-v1\""
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-013/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-tv-core-closure-v1/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-tv-core-closure-v1/rule-comparison.csv",
+    "05_validation/evidence/artifacts/qng-tv-core-closure-v1/robustness-runs.csv",
+    "05_validation/evidence/artifacts/qng-tv-core-closure-v1/simulation-timeseries-v-a.csv",
+    "05_validation/evidence/artifacts/qng-tv-core-closure-v1/simulation-timeseries-v-b.csv",
+    "05_validation/evidence/artifacts/qng-tv-core-closure-v1/volume-rules-timeseries.png",
+    "05_validation/evidence/artifacts/qng-tv-core-closure-v1/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "Executable closure audit selects V-B as frozen v1 rule with 12/12 pass rates on T-V-01..T-V-04.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-21"
+  },
+  "reproducibility": {
+    "seed": 920,
+    "code_version": "local-workspace-2026-02-21",
+    "environment": "Python stdlib closure suite + symbolic checker"
+  }
+}
+

@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-METRIC-001",
+  "claim_id": "QNG-CORE-METRIC-V1",
+  "claim_statement": "Coarse-grained graph distance yields an emergent continuous metric compatible with Sigma gradients and GR-limit sanity.",
+  "priority": "P3",
+  "status": "fail",
+  "derivation_path": "03_math/derivations/qng-core-emergent-metric-v1.md",
+  "formula_anchor": "g_ij(p) = [d^2/(d delta^i d delta^j)] (1/2 D_s^2(p,p+delta)) |_{delta=0}",
+  "dataset": "Graph-distance coarse-grain simulation environment",
+  "method": "Run locked metric-hardening pipeline with preregistered gates D1-D4.",
+  "pass_condition": "All prereg gates D1-D4 pass under metric-lock-v1 with reproducible artifacts.",
+  "fail_condition": "Any prereg gate fails or negative control does not collapse under Sigma shuffle.",
+  "parameters": {
+    "dataset_id": "DS-002",
+    "scales": "s0,1.25s0,1.5s0",
+    "samples": 72,
+    "seed": 1401
+  },
+  "inputs": [
+    "01_notes/metric/metric-lock-v1.md",
+    "03_math/derivations/qng-core-emergent-metric-v1.md",
+    "05_validation/pre-registrations/qng-metric-hardening-v1.md",
+    "scripts/run_qng_metric_hardening_v1.py",
+    "05_validation/dataset-manifest.json"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_metric_hardening_v1.py --dataset-id DS-002 --scales \"s0,1.25s0,1.5s0\" --samples 72 --seed 1401 --out-dir \"05_validation/evidence/artifacts/qng-metric-hardening-v1\""
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-metric-hardening-v1/metric_checks.csv",
+    "05_validation/evidence/artifacts/qng-metric-hardening-v1/eigs.csv",
+    "05_validation/evidence/artifacts/qng-metric-hardening-v1/drift.csv",
+    "05_validation/evidence/artifacts/qng-metric-hardening-v1/align_sigma.csv",
+    "05_validation/evidence/artifacts/qng-metric-hardening-v1/config.json",
+    "05_validation/evidence/artifacts/qng-metric-hardening-v1/run-log.txt",
+    "05_validation/evidence/artifacts/qng-metric-hardening-v1/artifact-hashes.json"
+  ],
+  "decision": {
+    "result": "fail",
+    "note": "D1 SPD gate, D2 scale-stability gate, and D4 negative-control collapse gate failed under locked v1 settings.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-21"
+  },
+  "reproducibility": {
+    "seed": 1401,
+    "code_version": "local-workspace-2026-02-21",
+    "environment": "Python stdlib graph metric hardening runner"
+  }
+}
+

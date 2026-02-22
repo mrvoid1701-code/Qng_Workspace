@@ -1,0 +1,7 @@
+line_no,content
+1,- Claim statement: Emergent gravity force follows F_grav = minus gradient of Sigma.
+2,- chi: straton load (chi = m/c).
+3,"g(x,t) = -nablaSigma(x,t)"
+4,F_grav = m_test * g
+5,- Emergent gravity force follows F_grav = minus gradient of Sigma.
+6,- Verify sign convention against g = -nablaSigma definition.

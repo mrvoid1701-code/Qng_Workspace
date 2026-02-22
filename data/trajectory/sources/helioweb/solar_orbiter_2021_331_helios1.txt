@@ -1,0 +1,11 @@
+<HTML>
+<HEAD><TITLE>ModelWeb Results</TITLE></HEAD>
+<BODY>
+<Body><center><font size=5 color=red><b>HelioWeb Browser Results</b> </font><br>
+<font size=4 color=red><b><i>Solar_Orbiter</i> position listing</b> </font></center><br>
+<font size=3 color=black><b>Input parameters</b> </font><br>
+start_year= 2021, start_day= 331, stop_year= 2021, stop_day= 331<br> 
+coordinate= Solar Ecliptic, resolution= 001, equinox= Mean of date<BR>
+<hr><pre>YEAR DAY  RAD_AU  SE_LAT  SE_LON
+2021 331    0.99    -0.0    65.0
+</pre><hr width=70%>

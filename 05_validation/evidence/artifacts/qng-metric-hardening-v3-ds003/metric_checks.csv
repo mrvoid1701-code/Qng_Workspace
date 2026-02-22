@@ -1,0 +1,8 @@
+gate_id,metric,value,threshold,status
+D1,min_eig_global,0.300461,>=1.000000e-08,pass
+D2,median_delta_g,0.048771,<=0.100000,pass
+D2,p90_delta_g,0.149748,<=0.250000,pass
+D3,median_cos_sim,0.994201,>=0.900000,pass
+D3,p10_cos_sim,0.951281,>=0.700000,pass
+D4,median_cos_sim_shuffled,-0.111837,<0.550000,pass
+FINAL,decision,pass,D1&D2&D3&D4,pass

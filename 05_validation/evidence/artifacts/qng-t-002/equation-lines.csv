@@ -1,0 +1,7 @@
+line_no,content
+1,"- Claim statement: The node state is the triple N_i = (V_i, chi_i, phi_i)."
+2,- chi: straton load (chi = m/c).
+3,"N_i = (V_i, chi_i, phi_i)"
+4,"N_i(t+1) = U(N_i(t), neighbors, eta_i(t))"
+5,"- The node state is the triple N_i = (V_i, chi_i, phi_i)."
+6,- Verify sign convention against g = -nablaSigma definition.

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "config_id": "trajectory-real-pilot-v1",
+  "updated_utc": "2026-02-20T16:30:00Z",
+  "target": "trajectory_real_gold_prep",
+  "dataset_id": "DS-005",
+  "selection": {
+    "flyby_pass_ids": [
+      "NEAR_1",
+      "ROSETTA_1"
+    ],
+    "include_pioneer_anchor": true,
+    "pioneer_rows": [
+      "P10_EQ23"
+    ]
+  },
+  "objective": {
+    "directional_signature": "required",
+    "tau_consistency": "required",
+    "gold_promotion_allowed": false
+  },
+  "gates": {
+    "delta_chi2_lt_0": true,
+    "delta_aic_le_minus_10": true,
+    "delta_bic_le_minus_10": true,
+    "negative_controls_required": [
+      "orientation_shuffle",
+      "segment_shuffle",
+      "control_zero"
+    ],
+    "robustness_required": [
+      "leave_10pct_out",
+      "outlier_trim"
+    ]
+  },
+  "reproducibility": {
+    "seed": 20260220,
+    "notes": "Pilot-only preregistration. Use fixed gates and fixed sample list before execution."
+  }
+}
+

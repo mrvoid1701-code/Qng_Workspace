@@ -1,0 +1,22 @@
+{
+  "source": "NASA HELIOWeb",
+  "url": "https://omniweb.gsfc.nasa.gov/cgi/models/helios1.cgi",
+  "http_status": 200,
+  "content_type": "text/html",
+  "payload": {
+    "activity": "retrieve",
+    "object": "39",
+    "coordinate": "1",
+    "start_year": "2013",
+    "start_day": "282",
+    "stop_year": "2013",
+    "stop_day": "282",
+    "resolution": "001",
+    "equinox": "2",
+    "object2": ""
+  },
+  "output_file": "data\\trajectory\\sources\\helioweb\\juno_2013_282_helios1.txt",
+  "output_size_bytes": 517,
+  "output_sha256": "4b81d0454b9cb21ccedb1c805b8c19bdda5eeccb9f49fa7abbd6acc74b9f7a44",
+  "cwd": "C:\\Users\\tigan\\Desktop\\qng workspace"
+}

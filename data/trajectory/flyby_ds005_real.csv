@@ -1,0 +1,20 @@
+pass_id,mission_id,event_date,r_perigee_km,v_inf_km_s,delta_in_deg,delta_out_deg,delta_v_obs_mm_s,delta_v_sigma_mm_s,thermal_corr_mm_s,srp_corr_mm_s,maneuver_corr_mm_s,drag_corr_mm_s,trajectory_class,source_ref,notes,spacecraft_mass_kg
+GALILEO_1,Galileo,1990-12-08,7338.036,8.949,-34.26,22.76,3.92,0.08,0.0,0.0,0.0,0.0,flyby,Anderson2008_PRL_TableI,Published Earth-flyby residual after mission orbit determination.,2223
+GALILEO_2,Galileo,1992-12-08,6681.236,8.877,34.15,-4.87,-4.60,1.00,0.0,0.0,0.0,0.0,flyby,Anderson2008_PRL_TableI,Low-perigee pass; drag/systematic discussion exists in literature.,2223
+NEAR_1,NEAR,1998-01-23,6910.621,6.851,-20.76,71.96,13.46,0.13,0.0,0.0,0.0,0.0,flyby,Anderson2008_PRL_TableI,Largest reported Earth-flyby anomaly in Table I.,805
+CASSINI_1,Cassini,1999-08-18,7551.136,16.010,-12.92,4.99,-2.00,1.00,0.0,0.0,0.0,0.0,flyby,Anderson2008_PRL_TableI,High-velocity pass with near-null to small negative residual.,5600
+ROSETTA_1,Rosetta,2005-03-04,8332.439,3.863,-2.81,34.26,1.80,0.03,0.0,0.0,0.0,0.0,flyby,Anderson2008_PRL_TableI,First Rosetta Earth flyby.,3000
+MESSENGER_1,Messenger,2005-08-02,8725.526,4.056,31.44,31.92,0.02,0.01,0.0,0.0,0.0,0.0,control,Anderson2008_PRL_TableI,Near-symmetric declinations; expected near-zero anomaly.,1107
+ROSETTA_2,Rosetta,2007-11-13,11685.000,9.500,10.50,18.00,0.00,1.00,0.0,0.0,0.0,0.0,control,Meessen2017_Table1,Later flyby reported with null observed anomaly in compiled table.,3000
+EPOXI_1,EPOXI,2007-12-31,21943.000,3.600,4.00,15.70,0.00,1.00,0.0,0.0,0.0,0.0,control,Meessen2017_Table1,High-altitude control pass (null observed anomaly in compiled table).,650
+EPOXI_2,EPOXI,2008-12-29,49828.000,3.600,-21.00,59.00,0.00,1.00,0.0,0.0,0.0,0.0,control,Meessen2017_Table1,Very high-altitude control pass.,650
+ROSETTA_3,Rosetta,2009-11-13,8862.000,9.400,-18.50,24.40,0.00,1.00,0.0,0.0,0.0,0.0,control,Meessen2017_Table1,Third Rosetta Earth flyby reported as null in compiled table.,3000
+EPOXI_3,EPOXI,2009-06-29,1336675.000,1.500,4.00,-49.00,0.00,1.00,0.0,0.0,0.0,0.0,control,Meessen2017_Table1,Far-distance control pass.,650
+EPOXI_4,EPOXI,2009-12-28,1325441.000,1.100,-40.00,4.00,0.00,1.00,0.0,0.0,0.0,0.0,control,Meessen2017_Table1,Far-distance control pass.,650
+EPOXI_5,EPOXI,2010-06-27,36860.000,3.500,60.20,-17.00,0.00,1.00,0.0,0.0,0.0,0.0,control,Meessen2017_Table1,Control pass with reported null observed anomaly in compiled table.,650
+JUNO_1,Juno,2013-10-09,6944.725,10.389,-14.157,39.478,0.00,1.00,0.0,0.0,0.0,0.0,flyby,Horizons_-61+JPL_OpenRepository_2014_45519+JPL_VectorTable_2011-040A+Horizons_V2_Juno_2026-02-13,Geometry from Horizons vectors and JPL vector tables (including 2026-02-13 V2 export). Earth flyby listed at 2013-10-09 19:21:25 UTC with altitude 558.848 km. Residual placeholder 0.0 +/- 1.0 mm/s. Juno reconstruction reports no anomalous velocity change near perigee.,3625
+BEPICOLOMBO_1,BepiColombo,2020-04-10,19064.126,3.984,15.920,6.045,0.00,1.00,0.0,0.0,0.0,0.0,flyby,Horizons_-121+JPL_VectorTable_2018-080A_v2,Geometry from Horizons vectors plus JPL vector-table V2 exports. Earth flyby listed at 2020-04-10 04:24:58 UTC with altitude 19066 km. Residual placeholder 0.0 +/- 1.0 mm/s pending published OD flyby residual summary.,4090
+SOLAR_ORBITER_1,SolarOrbiter,2021-11-27,6836.905,10.606,-28.980,7.604,0.00,1.00,0.0,0.0,0.0,0.0,flyby,Horizons_-144,Geometry from Horizons vectors; residual placeholder 0.0 +/- 1.0 mm/s pending published OD flyby residual summary.,1750
+P10_EQ23,Pioneer10,1973-12-04,0,0,0,0,0.00,1.00,0.0,0.0,0.0,0.0,anchor,Pioneer_DS005_Anchor,Equator crossing segment placeholder; residual handled in anchor file.,258
+P11_EQ24,Pioneer11,1974-02-06,0,0,0,0,0.00,1.00,0.0,0.0,0.0,0.0,anchor,Pioneer_DS005_Anchor,Equator crossing segment placeholder; residual handled in anchor file.,259
+P10P11_FINAL,Pioneer10_11,1977-01-01,0,0,0,0,0.00,1.00,0.0,0.0,0.0,0.0,anchor,Pioneer_DS005_Anchor,Composite far-range anchor placeholder; residual handled in anchor file.,258

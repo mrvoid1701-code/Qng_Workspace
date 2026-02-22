@@ -1,0 +1,7 @@
+{
+  "derived_path": "05_validation/evidence/artifacts/qng-t-028-post-horizons-2026-02-21/flyby-derived.csv",
+  "base_path": "data/trajectory/flyby_ds005_real.csv",
+  "bootstrap_runs": 400,
+  "leaveout_runs": 800,
+  "shuffle_runs": 400
+}

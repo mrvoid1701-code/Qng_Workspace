@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-TRJ-CTRL-001",
+  "claim_id": "QNG-TRJ-CTRL-001",
+  "claim_statement": "Trajectory signal should remain distinct under adversarial anti-shortcut randomizations.",
+  "priority": "P2",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-086.md",
+  "formula_anchor": "a_res ~ -tau(v.nabla)nablaSigma with adversarial control randomizations",
+  "dataset": "DS-005 flyby + Pioneer anchor",
+  "method": "Run orientation and segment permutations, directionality sign-randomization collapse, and control-zero sanity.",
+  "pass_condition": "All locked control gates C1-C4 pass.",
+  "fail_condition": "Any anti-shortcut gate fails.",
+  "parameters": {
+    "n_runs": 1200,
+    "seed": 20260221,
+    "use_pioneer_anchor": true
+  },
+  "inputs": [
+    "data/trajectory/flyby_ds005_real.csv",
+    "data/trajectory/pioneer_ds005_anchor.csv",
+    "scripts/run_qng_t_trj_ctrl_001.py",
+    "05_validation/pre-registrations/qng-t-trj-ctrl-001.md"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_trj_ctrl_001.py --test-id QNG-T-TRJ-CTRL-001 --dataset-id DS-005 --flyby-csv data/trajectory/flyby_ds005_real.csv --use-pioneer-anchor --pioneer-csv data/trajectory/pioneer_ds005_anchor.csv --n-runs 1200 --seed 20260221 --out-dir 05_validation/evidence/artifacts/qng-t-trj-ctrl-001"
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-trj-ctrl-001/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-trj-ctrl-001/anti_shortcut_summary.csv",
+    "05_validation/evidence/artifacts/qng-t-trj-ctrl-001/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "All adversarial anti-shortcut gates passed with locked controls.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-21"
+  },
+  "reproducibility": {
+    "seed": 20260221,
+    "code_version": "local-workspace-2026-02-21",
+    "environment": "Python stdlib runner"
+  }
+}

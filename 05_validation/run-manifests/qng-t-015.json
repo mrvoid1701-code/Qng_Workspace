@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-015",
+  "claim_id": "QNG-C-033",
+  "claim_statement": "Nodes with Sigma_i below Sigma_min are removed from the graph.",
+  "priority": "P3",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-033.md",
+  "formula_anchor": "Node removed if Sigma_i < Sigma_min",
+  "dataset": "Symbolic math + dimensional analysis",
+  "method": "Check algebraic consistency, unit consistency and limit behavior against linked derivation.",
+  "pass_condition": "Equation is internally consistent, dimensionally valid and compatible with stated limit cases.",
+  "fail_condition": "Any dimensional contradiction, algebraic inconsistency or failed limit-case reproduction.",
+  "parameters": {
+    "dataset_id": "DS-007",
+    "mode": "formal_math",
+    "seed": 3015,
+    "derivation": "03_math/derivations/qng-c-033.md",
+    "formula_anchor": "Node removed if Sigma_i < Sigma_min"
+  },
+  "inputs": [
+    "05_validation/dataset-manifest.json",
+    "03_math/derivations/qng-c-033.md",
+    "scripts/run_qng_p3_symbolic_validation.py"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_p3_symbolic_validation.py --test-id QNG-T-015 --claim-id QNG-C-033 --mode formal_math --dataset-id DS-007 --derivation \"03_math/derivations/qng-c-033.md\" --formula-anchor \"Node removed if Sigma_i < Sigma_min\" --seed 3015 --out-dir \"05_validation/evidence/artifacts/qng-t-015\""
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-015/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-015/checks-table.csv",
+    "05_validation/evidence/artifacts/qng-t-015/parameter-stability.md",
+    "05_validation/evidence/artifacts/qng-t-015/equation-lines.csv",
+    "05_validation/evidence/artifacts/qng-t-015/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "Symbolic formal-math checks pass consistency/unit/sign/limit gates on the linked derivation text.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-16"
+  },
+  "reproducibility": {
+    "seed": 3015,
+    "code_version": "local-workspace-2026-02-16",
+    "environment": "Python stdlib symbolic/synthetic mode (formal_math)"
+  }
+}

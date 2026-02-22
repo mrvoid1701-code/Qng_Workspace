@@ -1,0 +1,44 @@
+QNG-T-027 run log
+timestamp_utc: 2026-02-17T16:16:20Z
+python: 3.10.11
+platform: Windows-10-10.0.22631-SP0
+dataset_id: DS-006
+baseline_model: gr_dm
+memory_model: qng_sigma_memory
+seed: 42
+subsamples: 24
+fraction: 0.8
+data_source_mode: provided
+lensing_points: 527
+rotation_points: 3391
+duration_seconds: 96.680
+
+dataset_manifest_entry:
+{
+  "dataset_name": "Lensing + rotation datasets (Hubble, JWST, Euclid, Bullet-like clusters, RC catalogs)",
+  "dataset_type": "astronomy",
+  "tests": [
+    "QNG-T-012",
+    "QNG-T-017",
+    "QNG-T-018",
+    "QNG-T-019",
+    "QNG-T-027",
+    "QNG-T-039"
+  ],
+  "claims": [
+    "QNG-C-027",
+    "QNG-C-037",
+    "QNG-C-038",
+    "QNG-C-040",
+    "QNG-C-058",
+    "QNG-C-082"
+  ],
+  "highest_priority": "P1",
+  "source_url": "TODO",
+  "license": "TODO",
+  "local_path": "TODO",
+  "version_or_release": "TODO",
+  "last_verified": "YYYY-MM-DD",
+  "notes": "TODO",
+  "dataset_id": "DS-006"
+}

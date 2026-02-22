@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-056",
+  "claim_id": "QNG-C-111",
+  "claim_statement": "Time arrow is irreversible update ordering and entropy scales with count of stable reconfigurations.",
+  "priority": "P2",
+  "status": "queued-p2",
+  "derivation_path": "03_math/derivations/qng-c-111.md",
+  "formula_anchor": "S(t) = k_S * log(Omega(t))",
+  "dataset": "Cosmological toy simulation / synthetic catalogs",
+  "method": "Simulate node-growth + memory dynamics and test scaling/signature predictions.",
+  "pass_condition": "Predicted scaling/signatures appear across reasonable parameter bands without ad-hoc tuning.",
+  "fail_condition": "Signatures absent or only appear under nonphysical/extreme parameter tuning.",
+  "parameters": {
+    "tau": null,
+    "chi": null,
+    "sigma_min": null,
+    "kernel_type": null
+  },
+  "inputs": [],
+  "commands": [],
+  "outputs": [],
+  "decision": {
+    "result": "pending",
+    "note": "",
+    "reviewer": "",
+    "date": "YYYY-MM-DD"
+  },
+  "reproducibility": {
+    "seed": null,
+    "code_version": "TODO",
+    "environment": "TODO"
+  }
+}

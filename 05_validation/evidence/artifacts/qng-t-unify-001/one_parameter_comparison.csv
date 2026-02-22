@@ -1,0 +1,4 @@
+model,n_params,chi2_total,aic_total,bic_total
+baseline_lambda0,0,1.037916e+06,1.037916e+06,1.037916e+06
+one_param_global_lambda,1,1.569288e+05,1.569308e+05,1.569370e+05
+two_param_reference_tau_plus_k,2,1.569288e+05,1.569328e+05,1.569452e+05

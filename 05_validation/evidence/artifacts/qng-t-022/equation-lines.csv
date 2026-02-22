@@ -1,0 +1,4 @@
+line_no,content
+1,- chi: straton load (chi = m/c).
+2,P_persist = 1/(1+exp(-beta_q*(Sigma_i-Sigma_min)))
+3,- Verify sign convention against g = -nablaSigma definition.

@@ -1,0 +1,6 @@
+﻿"run_id","artifact_dir","flyby_pass_ids","pioneer_record_ids","n_points","n_science_flyby","n_science_pioneer","delta_chi2","delta_aic","delta_bic","directionality_score","sign_consistency","amp_median","amp_band_min","amp_band_max","amp_in_claim_band","tau_ratio_cross_domain","rule_pass_orientation_shuffle","rule_pass_segment_shuffle","rule_pass_pioneer_domain","rule_pass_amp_band","pass_recommendation"
+"H1","05_validation/evidence/artifacts/qng-t-041-c086b2-holdout-h1","CASSINI_1,MESSENGER_1,EPOXI_1","P10_EQ23,P11_EQ24","3","1","2","-4408.640312","-4406.640312","-4407.541700","1.000000","1.000000","8.550000e-10","1.000000e-06","6.000000e-06","False","111.286706","False","False","False","False","fail"
+"H2","05_validation/evidence/artifacts/qng-t-041-c086b2-holdout-h2","CASSINI_1,MESSENGER_1,EPOXI_2","P10_EQ23,P10P11_FINAL","3","1","2","-2432.777809","-2430.777809","-2431.679197","1.000000","1.000000","7.840000e-10","1.000000e-06","6.000000e-06","False","33.421950","False","False","False","False","fail"
+"H3","05_validation/evidence/artifacts/qng-t-041-c086b2-holdout-h3","CASSINI_1,MESSENGER_1,EPOXI_5","P11_EQ24,P10P11_FINAL","3","1","2","-3268.859687","-3266.859687","-3267.761075","1.000000","1.000000","8.550000e-10","1.000000e-06","6.000000e-06","False","126.142579","False","False","False","False","fail"
+
+

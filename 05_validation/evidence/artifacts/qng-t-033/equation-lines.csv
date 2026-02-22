@@ -1,0 +1,6 @@
+line_no,content
+1,- Claim statement: Example estimate gives chi about 2.33e-7 s kg per m for m = 70 kg.
+2,- chi: straton load (chi = m/c).
+3,chi = 70/(3e8) = 2.33e-7 kg*s/m
+4,- Example estimate gives chi about 2.33e-7 s kg per m for m = 70 kg.
+5,- Verify sign convention against g = -nablaSigma definition.

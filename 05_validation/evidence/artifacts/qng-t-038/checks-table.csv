@@ -1,0 +1,6 @@
+check,value,threshold,status
+tau_limit_mentions,1,>= 1,pass
+conservation_mentions,2,>= 1,pass
+closure_mentions,8,>= 1,pass
+limit_decay_r2,0.998947,>= 0.90 and monotonic,pass
+limit_recovery_score,0.999842,>= 0.65,pass

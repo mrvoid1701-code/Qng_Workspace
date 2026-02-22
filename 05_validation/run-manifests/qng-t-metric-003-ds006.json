@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-METRIC-003",
+  "claim_id": "QNG-CORE-METRIC-V3",
+  "claim_statement": "Dynamic metric from Hessian(Sigma) with conformal gauge normalization and fixed anisotropy shrinkage should satisfy full metric hardening gates.",
+  "priority": "P3",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-core-emergent-metric-v1.md",
+  "formula_anchor": "g_ij ~ shrink(trace-normalized(SPD_projection(-partial_i partial_j Sigma_s)))",
+  "dataset": "Lensing + rotation datasets (Hubble, JWST, Euclid, Bullet-like clusters, RC catalogs)",
+  "method": "Run locked v3 metric-hardening pipeline with preregistered gates D1-D4 (cross-dataset replication).",
+  "pass_condition": "All prereg gates D1-D4 pass under metric-lock-v3 with reproducible artifacts.",
+  "fail_condition": "Any prereg gate fails under locked v3 settings.",
+  "parameters": {
+    "dataset_id": "DS-006",
+    "scales": "s0,1.25s0,1.5s0",
+    "samples": 72,
+    "seed": 3401
+  },
+  "inputs": [
+    "01_notes/metric/metric-lock-v3.md",
+    "03_math/derivations/qng-core-emergent-metric-v1.md",
+    "05_validation/pre-registrations/qng-metric-hardening-v3.md",
+    "05_validation/pre-registrations/qng-metric-hardening-v3-ds006-run-record.md",
+    "scripts/run_qng_metric_hardening_v3.py",
+    "05_validation/dataset-manifest.json"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_metric_hardening_v3.py --dataset-id DS-006 --scales \"s0,1.25s0,1.5s0\" --samples 72 --seed 3401 --out-dir \"05_validation/evidence/artifacts/qng-metric-hardening-v3-ds006\""
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-metric-hardening-v3-ds006/metric_checks.csv",
+    "05_validation/evidence/artifacts/qng-metric-hardening-v3-ds006/eigs.csv",
+    "05_validation/evidence/artifacts/qng-metric-hardening-v3-ds006/drift.csv",
+    "05_validation/evidence/artifacts/qng-metric-hardening-v3-ds006/align_sigma.csv",
+    "05_validation/evidence/artifacts/qng-metric-hardening-v3-ds006/config.json",
+    "05_validation/evidence/artifacts/qng-metric-hardening-v3-ds006/run-log.txt",
+    "05_validation/evidence/artifacts/qng-metric-hardening-v3-ds006/artifact-hashes.json"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "Cross-dataset replication on DS-006 passes all locked prereg gates under unchanged v3 method.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-21"
+  },
+  "reproducibility": {
+    "seed": 3401,
+    "code_version": "local-workspace-2026-02-21",
+    "environment": "Python stdlib graph metric hardening runner (v3)"
+  }
+}

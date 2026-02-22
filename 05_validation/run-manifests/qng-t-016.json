@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-016",
+  "claim_id": "QNG-C-036",
+  "claim_statement": "Emergent gravity force follows F_grav = minus gradient of Sigma.",
+  "priority": "P3",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-036.md",
+  "formula_anchor": "g(x,t) = -nablaSigma(x,t)",
+  "dataset": "Symbolic math + dimensional analysis",
+  "method": "Check algebraic consistency, unit consistency and limit behavior against linked derivation.",
+  "pass_condition": "Equation is internally consistent, dimensionally valid and compatible with stated limit cases.",
+  "fail_condition": "Any dimensional contradiction, algebraic inconsistency or failed limit-case reproduction.",
+  "parameters": {
+    "dataset_id": "DS-007",
+    "mode": "formal_math",
+    "seed": 3016,
+    "derivation": "03_math/derivations/qng-c-036.md",
+    "formula_anchor": "g(x,t) = -nablaSigma(x,t)"
+  },
+  "inputs": [
+    "05_validation/dataset-manifest.json",
+    "03_math/derivations/qng-c-036.md",
+    "scripts/run_qng_p3_symbolic_validation.py"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_p3_symbolic_validation.py --test-id QNG-T-016 --claim-id QNG-C-036 --mode formal_math --dataset-id DS-007 --derivation \"03_math/derivations/qng-c-036.md\" --formula-anchor \"g(x,t) = -nablaSigma(x,t)\" --seed 3016 --out-dir \"05_validation/evidence/artifacts/qng-t-016\""
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-016/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-016/checks-table.csv",
+    "05_validation/evidence/artifacts/qng-t-016/parameter-stability.md",
+    "05_validation/evidence/artifacts/qng-t-016/equation-lines.csv",
+    "05_validation/evidence/artifacts/qng-t-016/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "Symbolic formal-math checks pass consistency/unit/sign/limit gates on the linked derivation text.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-16"
+  },
+  "reproducibility": {
+    "seed": 3016,
+    "code_version": "local-workspace-2026-02-16",
+    "environment": "Python stdlib symbolic/synthetic mode (formal_math)"
+  }
+}

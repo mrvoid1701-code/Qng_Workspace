@@ -1,0 +1,12 @@
+metric,value
+dataset_id,DS-002
+runs,18
+steps,180
+corr_a_vs_n13_mean,0.999429
+corr_complexity_vs_n_mean,0.999997
+slope_complexity_vs_n_mean,0.312673
+corr_expansion_vs_complexity_mean,0.967648
+rule_corr_a,True
+rule_corr_complexity,True
+rule_positive_slope,True
+pass_recommendation,pass

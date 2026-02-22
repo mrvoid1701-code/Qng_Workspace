@@ -1,0 +1,49 @@
+﻿{
+    "schema_version":  "1.0",
+    "test_id":  "QNG-T-051",
+    "claim_id":  "QNG-C-104",
+    "claim_statement":  "Emergent scale factor follows cube-root scaling with node count.",
+    "priority":  "P2",
+    "status":  "pass",
+    "derivation_path":  "03_math/derivations/qng-c-104.md",
+    "formula_anchor":  "a(t) = (|N(t)|/|N(t0)|)^(1/3)",
+    "dataset":  "Cosmological toy simulation / synthetic catalogs",
+    "method":  "Simulate node-growth + memory dynamics and test scaling/signature predictions.",
+    "pass_condition":  "Predicted scaling/signatures appear across reasonable parameter bands without ad-hoc tuning.",
+    "fail_condition":  "Signatures absent or only appear under nonphysical/extreme parameter tuning.",
+    "parameters":  {
+                       "steps":  180,
+                       "runs":  18,
+                       "seed_base":  410,
+                       "sigma_min":  0.34,
+                       "base_growth":  0.0105,
+                       "memory_weight":  0.22,
+                       "noise_scale":  1
+                   },
+    "inputs":  [
+                   "05_validation/dataset-manifest.json",
+                   "scripts/run_qng_p2_cosmo_suite.py"
+               ],
+    "commands":  [
+                     ".\\.venv\\Scripts\\python.exe scripts\\run_qng_p2_cosmo_suite.py --dataset-id DS-002 --steps 180 --runs 18 --seed 410 --sigma-min 0.34 --base-growth 0.0105 --memory-weight 0.22 --noise-scale 1.0 --artifact-root \"05_validation/evidence/artifacts\""
+                 ],
+    "outputs":  [
+                    "05_validation/evidence/artifacts/qng-t-051/fit-summary.csv",
+                    "05_validation/evidence/artifacts/qng-t-051/robustness-runs.csv",
+                    "05_validation/evidence/artifacts/qng-t-051/parameter-stability.md",
+                    "05_validation/evidence/artifacts/qng-t-051/scale-factor-fit.png",
+                    "05_validation/evidence/artifacts/qng-t-051/simulation-timeseries.csv",
+                    "05_validation/evidence/artifacts/qng-t-051/run-log.txt"
+                ],
+    "decision":  {
+                     "result":  "pass",
+                     "note":  "Cube-root scale-factor relation validated across the DS-002 robustness ensemble.",
+                     "reviewer":  "workspace-ui",
+                     "date":  "2026-02-16"
+                 },
+    "reproducibility":  {
+                            "seed":  410,
+                            "code_version":  "local-workspace-2026-02-16",
+                            "environment":  "Python stdlib toy-simulation suite"
+                        }
+}

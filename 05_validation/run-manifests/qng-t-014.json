@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-014",
+  "claim_id": "QNG-C-032",
+  "claim_statement": "Node stability is bounded and multiplicative with executable Sigma-gated persistence.",
+  "priority": "P3",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-032.md",
+  "formula_anchor": "Sigma_i = Sigma_chi * Sigma_struct * Sigma_temp * Sigma_phi",
+  "dataset": "Symbolic math + closure simulation (DS-007 + DS-002)",
+  "method": "Symbolic boundedness check + executable T-V-02/T-V-03/T-V-04 closure gates.",
+  "pass_condition": "Stability closure remains bounded and robust under frozen v1 volume rule.",
+  "fail_condition": "Boundedness or robustness gates fail under frozen closure settings.",
+  "parameters": {
+    "dataset_symbolic": "DS-007",
+    "dataset_closure": "DS-002",
+    "closure_steps": 180,
+    "closure_runs_per_rule": 12,
+    "closure_seed_base": 920
+  },
+  "inputs": [
+    "01_notes/core-closure-v1.md",
+    "03_math/derivations/qng-c-032.md",
+    "scripts/run_qng_p3_symbolic_validation.py",
+    "scripts/run_qng_t_v_volume_rules.py",
+    "05_validation/dataset-manifest.json"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_p3_symbolic_validation.py --test-id QNG-T-014 --claim-id QNG-C-032 --mode formal_math --dataset-id DS-007 --derivation \"03_math/derivations/qng-c-032.md\" --formula-anchor \"Sigma_i = Sigma_chi * Sigma_struct * Sigma_temp * Sigma_phi\" --seed 3014 --out-dir \"05_validation/evidence/artifacts/qng-t-014\"",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_v_volume_rules.py --dataset-id DS-002 --steps 180 --runs 12 --seed 920 --out-dir \"05_validation/evidence/artifacts/qng-tv-core-closure-v1\""
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-014/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-tv-core-closure-v1/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-tv-core-closure-v1/rule-comparison.csv",
+    "05_validation/evidence/artifacts/qng-tv-core-closure-v1/parameter-stability.md",
+    "05_validation/evidence/artifacts/qng-tv-core-closure-v1/stationarity-windows.csv",
+    "05_validation/evidence/artifacts/qng-tv-core-closure-v1/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "Sigma-gated closure remains bounded and robust with V-B selected by full closure gate pass.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-21"
+  },
+  "reproducibility": {
+    "seed": 920,
+    "code_version": "local-workspace-2026-02-21",
+    "environment": "Python stdlib closure suite + symbolic checker"
+  }
+}
+

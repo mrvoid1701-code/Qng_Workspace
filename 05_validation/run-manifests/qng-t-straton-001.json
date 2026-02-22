@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-STRATON-001",
+  "claim_id": "QNG-C-014",
+  "claim_statement": "Tau depends on straton chi; chi = m/c implies tau scales with spacecraft mass.",
+  "priority": "P2",
+  "status": "fail",
+  "derivation_path": "03_math/derivations/qng-c-014.md",
+  "formula_anchor": "tau(chi) = alpha_tau * chi; chi = m/c",
+  "dataset": "DS-005 flyby_real + Pioneer anchors (spacecraft_mass_kg column added)",
+  "method": "Compare tau=const vs tau=alpha*m using weighted least squares on a_obs_whole_m_s2 vs feature_base_m_s3 with sigma_whole weights; include control rows; bootstrap, leaveout, and shuffle controls.",
+  "pass_condition": "All prereg gates true: delta_bic <= -10; CV(alpha)<0.30; shuffle collapse; leaveout pass_fraction>=0.90.",
+  "fail_condition": "Any gate false.",
+  "parameters": {
+    "bootstrap_runs": 400,
+    "leaveout_runs": 800,
+    "shuffle_runs": 400,
+    "seeds": {
+      "bootstrap": 20260222,
+      "leaveout": 20260223,
+      "shuffle": 20260224
+    }
+  },
+  "inputs": [
+    "05_validation/evidence/artifacts/qng-t-028-post-horizons-2026-02-21/flyby-derived.csv",
+    "data/trajectory/flyby_ds005_real.csv",
+    "scripts/run_qng_t_straton_001.py",
+    "05_validation/pre-registrations/qng-t-straton-001.md"
+  ],
+  "commands": [
+    "python scripts/run_qng_t_straton_001.py --leaveout-runs 800"
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-straton-001/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-straton-001/bootstrap-alpha.csv",
+    "05_validation/evidence/artifacts/qng-t-straton-001/straton-report.md",
+    "05_validation/evidence/artifacts/qng-t-straton-001/run-log.txt"
+  ],
+  "decision": {
+    "result": "fail",
+    "note": "Delta BIC strongly favors mass-scaling, but leave-10%-out pass_fraction=0.886 and CV(alpha)=0.775 fail prereg gates.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-22"
+  },
+  "reproducibility": {
+    "seed": 20260222,
+    "code_version": "local-workspace-2026-02-22",
+    "environment": "Python stdlib + pandas"
+  }
+}

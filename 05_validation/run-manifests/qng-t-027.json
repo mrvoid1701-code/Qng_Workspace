@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-027",
+  "claim_id": "QNG-C-058",
+  "claim_statement": "Lensing traces gradient Sigma and can be offset from baryonic mass centers.",
+  "priority": "P1",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-058.md",
+  "formula_anchor": "Phi_lens ~ Sigma",
+  "dataset": "Lensing + rotation datasets (Hubble, JWST, Euclid, Bullet-like clusters, RC catalogs)",
+  "method": "Fit Sigma-memory kernel model and compare against GR+particle-DM baseline.",
+  "pass_condition": "Offsets/profiles reproduced with stable memory parameters and consistent cross-dataset behavior.",
+  "fail_condition": "Model cannot reproduce offsets/profiles or needs unstable/nonphysical parameter tuning.",
+  "parameters": {
+    "dataset_id": "DS-006",
+    "seed": 42,
+    "strict_input": true,
+    "lensing_source_tier": "direct_mcxc_x_psz2_strict5",
+    "subsamples": 24,
+    "fraction": 0.8,
+    "lensing_stride": 8,
+    "ell_min": 2,
+    "ell_max": 2048,
+    "negative_control_runs": 24,
+    "negative_control_seed": 97
+  },
+  "inputs": [
+    "data/lensing/cluster_offsets_real.csv",
+    "data/rotation/rotation_ds006_rotmod.csv",
+    "05_validation/dataset-manifest.json",
+    "scripts/run_qng_t_027_lensing_dark.py",
+    "scripts/run_qng_t_027_negative_controls.py",
+    "scripts/lint_workspace.py"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\lint_workspace.py",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_027_lensing_dark.py --test-id QNG-T-027 --dataset-id DS-006 --model-baseline gr_dm --model-memory qng_sigma_memory --lensing-csv \"data/lensing/cluster_offsets_real.csv\" --rotation-csv \"data/rotation/rotation_ds006_rotmod.csv\" --out-dir \"05_validation/evidence/artifacts/qng-t-027\" --seed 42 --strict-input",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_027_negative_controls.py --lensing-csv \"data/lensing/cluster_offsets_real.csv\" --rotation-csv \"data/rotation/rotation_ds006_rotmod.csv\" --out-dir \"05_validation/evidence/artifacts/qng-t-027\" --n-runs 24 --seed 97"
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-027/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-027/model-comparison.md",
+    "05_validation/evidence/artifacts/qng-t-027/robustness-checks.md",
+    "05_validation/evidence/artifacts/qng-t-027/robustness-checks.csv",
+    "05_validation/evidence/artifacts/qng-t-027/parameter-stability.md",
+    "05_validation/evidence/artifacts/qng-t-027/lensing-offsets.png",
+    "05_validation/evidence/artifacts/qng-t-027/rotation-overlay.png",
+    "05_validation/evidence/artifacts/qng-t-027/negative-controls-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-027/negative-controls-runs.csv",
+    "05_validation/evidence/artifacts/qng-t-027/negative-controls.md",
+    "05_validation/evidence/artifacts/qng-t-027/promotion-gold.md",
+    "05_validation/evidence/artifacts/qng-t-027/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "Direct-catalog run passes with AIC/BIC support, same-sample comparability checks, leave-10%-out pass fraction=1.0, outlier-trim pass, and permutation negative controls. Gold retained.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-17"
+  },
+  "reproducibility": {
+    "seed": 42,
+    "code_version": "local-workspace-2026-02-17",
+    "environment": "Python stdlib + local DS-006 direct catalogs (MCXC x PSZ2) + Rotmod rotation data"
+  }
+}
+

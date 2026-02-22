@@ -1,0 +1,5 @@
+line_no,content
+1,- chi: straton load (chi = m/c).
+2,Sigma_i = Sigma_chi * Sigma_struct * Sigma_temp * Sigma_phi
+3,0 <= Sigma_i <= 1
+4,- Verify sign convention against g = -nablaSigma definition.

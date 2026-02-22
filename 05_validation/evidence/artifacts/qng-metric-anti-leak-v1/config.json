@@ -1,0 +1,9 @@
+{
+  "dataset_id": "DS-002",
+  "seed": 3401,
+  "samples": 72,
+  "rewire_runs": 12,
+  "control_threshold": 0.55,
+  "metric_lock_dependency": "01_notes/metric/metric-lock-v3.md",
+  "base_prereg_dependency": "05_validation/pre-registrations/qng-metric-hardening-v3.md"
+}

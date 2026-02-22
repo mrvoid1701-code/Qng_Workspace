@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-018",
+  "claim_id": "QNG-C-038",
+  "claim_statement": "Residual acceleration from lag is approximately a_res = -tau(v dot grad)grad Sigma.",
+  "priority": "P2",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-038.md",
+  "formula_anchor": "a_res ~ -tau*(v.nabla)nablaSigma",
+  "dataset": "Lensing + rotation datasets (Hubble, JWST, Euclid, Bullet-like clusters, RC catalogs)",
+  "method": "Fit Sigma-memory kernel model and compare against GR+particle-DM baseline.",
+  "pass_condition": "Offsets/profiles reproduced with stable memory parameters and consistent cross-dataset behavior.",
+  "fail_condition": "Model cannot reproduce offsets/profiles or needs unstable/nonphysical parameter tuning.",
+  "parameters": {
+    "dataset_id": "DS-006",
+    "seed": 42,
+    "subsamples": 24,
+    "fraction": 0.8,
+    "lensing_stride": 8,
+    "ell_min": 2,
+    "ell_max": 2048,
+    "lensing_source_tier": "hybrid_proxy_plus_direct_anchors",
+    "negative_control_runs": 24,
+    "negative_control_status": "pass"
+  },
+  "inputs": [
+    "C:\\Users\\tigan\\Downloads\\Rotmod_LTG\\*.dat",
+    "C:\\Users\\tigan\\Downloads\\COM_Lensing_4096_R3.00.tgz",
+    "data\\rotation\\rotation_ds006_rotmod.csv",
+    "data\\lensing\\planck_lensing_4096_r3\\COM_Lensing_4096_R3.00\\MV\\nlkk.dat",
+    "data\\lensing\\planck_lensing_4096_r3\\COM_Lensing_4096_R3.00\\PP\\nlkk.dat",
+    "data\\lensing\\lensing_ds006_hybrid.csv",
+    "scripts\\import_ds006_downloads.py",
+    "data/rotation/rotation_ds006_rotmod.csv",
+    "data/lensing/lensing_ds006_hybrid.csv",
+    "scripts/import_ds006_downloads.py",
+    "scripts/run_qng_t_027_lensing_dark.py",
+    "scripts/run_qng_t_027_negative_controls.py"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\import_ds006_downloads.py",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_027_lensing_dark.py --dataset-id DS-006 --model-baseline gr_dm --model-memory qng_sigma_memory --lensing-csv \"data/lensing/lensing_ds006_hybrid.csv\" --rotation-csv \"data/rotation/rotation_ds006_rotmod.csv\" --out-dir \"05_validation/evidence/artifacts/qng-t-027\" --seed 42 --strict-input",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_027_negative_controls.py --lensing-csv data/lensing/lensing_ds006_hybrid.csv --rotation-csv data/rotation/rotation_ds006_rotmod.csv --out-dir 05_validation/evidence/artifacts/qng-t-027 --n-runs 24 --seed 97",
+    "Artifact synchronization: copied DS-006 strict-input + negative-control artifacts from qng-t-027 to qng-t-018 output folder."
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-018/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-018/parameter-stability.md",
+    "05_validation/evidence/artifacts/qng-t-018/lensing-offsets.png",
+    "05_validation/evidence/artifacts/qng-t-018/rotation-overlay.png",
+    "05_validation/evidence/artifacts/qng-t-018/run-log.txt",
+    "05_validation/evidence/artifacts/qng-t-018/negative-controls-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-018/negative-controls-runs.csv",
+    "05_validation/evidence/artifacts/qng-t-018/negative-controls.md"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "Strict-input DS-006 run on Rotmod data + hybrid lensing set (Planck proxy + 2 Clowe-2006 anchors + eROSITA gradients) passes all registered gates. Permutation negative controls pass (lensing/rotation signal collapses under shuffled pairings). Publication-grade gold remains blocked until a larger direct multi-cluster offset catalog replaces proxy-dominated rows.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-16"
+  },
+  "reproducibility": {
+    "seed": 42,
+    "code_version": "local-workspace-2026-02-16",
+    "environment": "Python stdlib + local downloaded datasets (Rotmod real + DS006 hybrid lensing) with permutation negative controls"
+  }
+}
+

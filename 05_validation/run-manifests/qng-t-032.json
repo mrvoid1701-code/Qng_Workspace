@@ -1,0 +1,52 @@
+{
+    "schema_version": "1.0",
+    "test_id": "QNG-T-032",
+    "claim_id": "QNG-C-069",
+    "claim_statement": "Formal CTM includes fluctuation-coupling term deltaSigma in observed time.",
+    "priority": "P2",
+    "status": "pass",
+    "derivation_path": "03_math/derivations/qng-c-069.md",
+    "formula_anchor": "T_C = t_R + v*tau(chi) + deltaSigma",
+    "dataset": "Timing/waveforms (GPS residuals, binary pulsars, LIGO/Virgo/KAGRA)",
+    "method": "Search tau/chi-linked corrections in TOA, clock and ringdown residuals after systematics control.",
+    "pass_condition": "Residual pattern remains significant and parameter-consistent after robustness checks.",
+    "fail_condition": "No robust tau/chi-linked residual remains once systematics and noise models are applied.",
+    "parameters": {
+        "dataset_id": "DS-008",
+        "seed": 9375,
+        "tau_truth": 40.0,
+        "chi_truth": 4.1e-07,
+        "noise_sigma": 2e-07,
+        "samples": 1200,
+        "dt": 1.0,
+        "tau_grid": "12,18,24,30,36,42,48,56",
+        "channels": "GPS-A,GPS-B,PSR-B1534,PSR-J0737,GW150914,GW170817"
+    },
+    "inputs": [
+        "05_validation/dataset-manifest.json",
+        "scripts/run_qng_t_042_timing_wave.py"
+    ],
+    "commands": [
+        ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_042_timing_wave.py --dataset-id DS-008 --seed 9375 --tau-truth 40 --chi-truth 4.1e-07 --noise-sigma 2.0e-07 --out-dir \"05_validation/evidence/artifacts/qng-t-032\""
+    ],
+    "outputs": [
+        "05_validation/evidence/artifacts/qng-t-032/fit-summary.csv",
+        "05_validation/evidence/artifacts/qng-t-032/timeseries-sample.csv",
+        "05_validation/evidence/artifacts/qng-t-032/channel-fits.csv",
+        "05_validation/evidence/artifacts/qng-t-032/parameter-stability.md",
+        "05_validation/evidence/artifacts/qng-t-032/residual-timeseries.png",
+        "05_validation/evidence/artifacts/qng-t-032/echo-template.png",
+        "05_validation/evidence/artifacts/qng-t-032/run-log.txt"
+    ],
+    "decision": {
+        "result": "pass",
+        "note": "DS-008 synthetic timing/wave diagnostics pass all registered gates; keep synthetic caveat until real timing/wave ingest.",
+        "reviewer": "workspace-ui",
+        "date": "2026-02-16"
+    },
+    "reproducibility": {
+        "seed": 9375,
+        "code_version": "local-workspace-2026-02-16",
+        "environment": "Python stdlib-only synthetic timing/wave pipeline"
+    }
+}

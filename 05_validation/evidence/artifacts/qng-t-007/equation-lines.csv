@@ -1,0 +1,4 @@
+line_no,content
+1,- chi: straton load (chi = m/c).
+2,T_C = t_R + tau(chi) + (nablaSigma)*tau
+3,- Verify sign convention against g = -nablaSigma definition.

@@ -1,0 +1,11 @@
+<HTML>
+<HEAD><TITLE>ModelWeb Results</TITLE></HEAD>
+<BODY>
+<Body><center><font size=5 color=red><b>HelioWeb Browser Results</b> </font><br>
+<font size=4 color=red><b><i>Juno</i> position listing</b> </font></center><br>
+<font size=3 color=black><b>Input parameters</b> </font><br>
+start_year= 2013, start_day= 282, stop_year= 2013, stop_day= 282<br> 
+coordinate= Solar Ecliptic, resolution= 001, equinox= Mean of date<BR>
+<hr><pre>YEAR DAY  RAD_AU  SE_LAT  SE_LON
+2013 282    0.99    -0.0    15.7
+</pre><hr width=70%>

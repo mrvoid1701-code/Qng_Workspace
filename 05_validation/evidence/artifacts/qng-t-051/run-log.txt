@@ -1,0 +1,39 @@
+QNG P2 cosmo suite run log
+timestamp_utc: 2026-02-16T12:29:57Z
+python: 3.10.11
+platform: Windows-10-10.0.22631-SP0
+dataset_id: DS-002
+steps: 180
+runs: 18
+seed_base: 410
+sigma_min: 0.34
+base_growth: 0.0105
+memory_weight: 0.22
+noise_scale: 1.0
+duration_seconds: 0.265
+
+dataset_manifest_entry:
+{
+  "dataset_name": "Cosmological toy simulation / synthetic catalogs",
+  "dataset_type": "simulation",
+  "tests": [
+    "QNG-T-050",
+    "QNG-T-051",
+    "QNG-T-052",
+    "QNG-T-053"
+  ],
+  "claims": [
+    "QNG-C-103",
+    "QNG-C-104",
+    "QNG-C-107",
+    "QNG-C-111"
+  ],
+  "highest_priority": "P2",
+  "source_url": "https://pla.esac.esa.int/",
+  "license": "Planck Legacy Archive terms",
+  "local_path": "data/cmb/planck",
+  "version_or_release": "R3.01",
+  "last_verified": "2026-02-16",
+  "notes": "Planck TT/TE/EE files are used for QNG-T-052 CMB coherence diagnostics.",
+  "dataset_id": "DS-002"
+}

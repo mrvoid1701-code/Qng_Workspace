@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-044",
+  "claim_id": "QNG-C-093",
+  "claim_statement": "GR emerges as a macroscopic limit when tau approaches zero and updates appear continuous.",
+  "priority": "P3",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-093.md",
+  "formula_anchor": "a_total = -nablaSigma - tau*(v.nabla)nablaSigma + O(tau^2)",
+  "dataset": "Analytical + symbolic limit analysis",
+  "method": "Take tau->0 and coarse-grain graph dynamics; verify GR-form recovery and conservation constraints.",
+  "pass_condition": "Recovered equations match intended GR-form closure within defined approximation tolerance.",
+  "fail_condition": "GR limit cannot be recovered or violates core consistency/conservation requirements.",
+  "parameters": {
+    "dataset_id": "DS-001",
+    "mode": "gr_limit",
+    "seed": 3044,
+    "derivation": "03_math/derivations/qng-c-093.md",
+    "formula_anchor": "a_total = -nablaSigma - tau*(v.nabla)nablaSigma + O(tau^2)"
+  },
+  "inputs": [
+    "05_validation/dataset-manifest.json",
+    "03_math/derivations/qng-c-093.md",
+    "scripts/run_qng_p3_symbolic_validation.py"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_p3_symbolic_validation.py --test-id QNG-T-044 --claim-id QNG-C-093 --mode gr_limit --dataset-id DS-001 --derivation \"03_math/derivations/qng-c-093.md\" --formula-anchor \"a_total = -nablaSigma - tau*(v.nabla)nablaSigma + O(tau^2)\" --seed 3044 --out-dir \"05_validation/evidence/artifacts/qng-t-044\""
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-044/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-044/checks-table.csv",
+    "05_validation/evidence/artifacts/qng-t-044/parameter-stability.md",
+    "05_validation/evidence/artifacts/qng-t-044/tau-limit-series.csv",
+    "05_validation/evidence/artifacts/qng-t-044/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "GR-limit symbolic diagnostics pass tau->0 closure, conservation, and decay-stability gates.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-16"
+  },
+  "reproducibility": {
+    "seed": 3044,
+    "code_version": "local-workspace-2026-02-16",
+    "environment": "Python stdlib symbolic/synthetic mode (gr_limit)"
+  }
+}

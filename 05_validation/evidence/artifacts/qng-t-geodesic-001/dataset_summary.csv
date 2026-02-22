@@ -1,0 +1,4 @@
+dataset_id,n_anchors_used,stable_fraction,cos_median,cos_p10,mag_ratio_median,mag_ratio_p90,pass_G1_stability,pass_G2_newton_direction,pass_G3_mag_sanity,pass_dataset
+DS-002,72,1.000000,0.995563,0.960162,1.918975,2.443143,True,True,True,True
+DS-003,72,1.000000,0.993609,0.965849,2.012932,2.646473,True,True,True,True
+DS-006,72,1.000000,0.995936,0.955608,1.989548,2.458627,True,True,True,True

@@ -1,0 +1,5 @@
+pass_id,mission_id,event_date,r_perigee_km,v_inf_km_s,delta_in_deg,delta_out_deg,delta_v_obs_mm_s,delta_v_sigma_mm_s,thermal_corr_mm_s,srp_corr_mm_s,maneuver_corr_mm_s,drag_corr_mm_s,trajectory_class,source_ref,notes
+JUNO_1,Juno,,,,,,,,,,,,flyby,,
+BEPICOLOMBO_1,BepiColombo,,,,,,,,,,,,flyby,,
+SOLAR_ORBITER_1,SolarOrbiter,,,,,,,,,,,,flyby,,
+

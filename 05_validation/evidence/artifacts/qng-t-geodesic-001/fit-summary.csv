@@ -1,0 +1,11 @@
+metric,value
+test_id,QNG-T-GEODESIC-001
+decision,pass
+dataset_ids,"DS-002,DS-003,DS-006"
+samples,72
+seed,3401
+steps,40
+dt,0.050000
+rule_pass_G1_stability,True
+rule_pass_G2_newton_direction,True
+rule_pass_G3_mag_sanity,True

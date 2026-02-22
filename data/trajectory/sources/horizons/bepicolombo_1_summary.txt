@@ -1,0 +1,666 @@
+API VERSION: 1.2
+API SOURCE: NASA/JPL Horizons API
+
+*******************************************************************************
+ Revised: Feb 13, 2026              BepiColombo / (Sun)                    -121
+                            http://sci.esa.int/bepicolombo/ 
+ 
+ LAUNCH DATE:                                            MERCURY ARRIVAL DATE:
+  2018-Oct-20 01:45 UTC                                      2026-Nov         
+
+  Earth flyby: 2020-Apr-10, 04:24:58 UTC @ 19066 km, 352.85 deg E,-19.70 deg S
+
+ LAUNCH VEHICLE:                                         LAUNCH SITE:
+  Ariane 5                                                Kourou, French Guiana
+
+ Note (2024-Sep-02): Due to unexpected electric currents between MTM's solar 
+  arrays and the power extraction and distribution unit, electric propulsion 
+  is reduced, requiring a one-year delay in Mercury arrival, to November 2026. 
+
+ BACKGROUND:
+  ESA's BepiColombo mission to orbit Mercury for one Earth year (four Mercury
+  years) is composed of two spacecraft: the ESA Mercury Planetary Orbiter (MPO)
+  and the ISAS/JAXA Mercury Magnetospheric Orbiter (MMO).
+
+  MMO will be released once the MMO orbit is reached. MPO will be inserted 
+  using chemical propulsion.
+
+   1) MPO will study the surface and internal composition of Mercury 
+   2) MMO will study the region around the planet influenced by its 
+      magnetic field
+
+  For the 8.2 year launch & cruise phases, MPO and MMO will be carried as part 
+  of the Mercury Composite Spacecraft and released on arrival at Mercury. 
+
+  There will be nine gravity assists during the cruise phase: 
+
+   2020-Apr-10: Earth flyby
+   2020-Oct-15: Venus flyby
+   2021-Aug-11: Venus Flyby
+   2021-Oct-01: First Mercury flyby
+   2022-Jun-23: 2nd Mercury flyby
+   2023-Jun-20: 3rd Mercury flyby
+   2024-Sep-04: 4th Mercury flyby
+   2024-Dec-01: 5th Mercury flyby
+   2025-Jan-08: 6th Mercury flyby
+   ....
+   2026-Nov   : Mercury orbit insertion
+   2028-Apr   : End of nominal mission
+   2029-Apr   : End of extended mission
+
+ OBJECTIVES:
+  Study and understand the composition, geophysics, atmosphere, magnetosphere 
+  and history of Mercury with following science objectives:
+
+   * Investigate origin and evolution of a planet close to the parent star
+   * Study Mercury form, interior structure, geology, composition and craters
+   * Examine composition and dynamics of Mercury's vestigial atmosphere
+   * Probe Mercury's magnetized envelope; structure and dynamics
+   * Determine the origin of Mercury's magnetic field
+   * Investigate polar deposits: their composition and origin
+   * Perform a test of Einstein's theory of general relativity
+ 
+ SPACECRAFT PHYSICAL PROPERTIES:
+  Total launch mass  = 4100 kg
+
+                         MPO                 MMO
+  In Mercury orbit     1150 kg             275 kg  
+  Payload mass           80 kg              45 kg
+  Payload power        100-150 W            90 W
+  Data volume          1550 Gbits/year     160 Gbits/year
+  Average data rate    50 kbits/s            5 kbits/s
+  Antenna              1-m X/Ka-band       0.8 m X-band
+  Orientation          Nadir pointing      Spin axis at 90 deg. to Sun
+  Stabilisation        3-axis stabilized   15-rpm spin-stabilised 
+
+ BASIC ORBIT PARAMETERS AT MERCURY:
+                       MPO (polar)        MMO (polar)
+  peri/apo apses      480 x 1500 km      590 x 11640 km
+  period                 2.3 hr            9.3 hr
+
+ SPACECRAFT TRAJECTORY: 
+  Trajectory from ESA. Data fit through 2026-Jan-20, prediction thereafter.
+
+   Name                                    Start (TDB)          Stop (TDB)
+   --------------------------------------  -----------------  -----------------
+   bc_mpo_fcp_00220_20181020_20270407_v01  2018-Oct-20 02:14  2027-Apr-06 23:59
+*******************************************************************************
+
+
+*******************************************************************************
+Ephemeris / API_USER Sat Feb 21 09:11:06 2026 Pasadena, USA      / Horizons    
+*******************************************************************************
+Target body name: BepiColombo (Spacecraft) (-121) {source: BepiColombo_ESA}
+Center body name: Earth (399)                     {source: DE441}
+Center-site name: GEOCENTRIC
+*******************************************************************************
+Start time      : A.D. 2022-Jan-01 10:00:00.0000 UT      
+Stop  time      : A.D. 2022-Jan-02 00:00:00.0000 UT      
+Step-size       : 60 minutes
+*******************************************************************************
+Target pole/equ : undefined
+Target radii    : undefined                                                    
+Center geodetic : 0.0, 0.0, -6378.137             {E-lon(deg),Lat(deg),Alt(km)}
+Center cylindric: 0.0, 0.0, 0.0                   {E-lon(deg),Dxy(km),Dz(km)}
+Center pole/equ : ITRF93                          {East-longitude positive}
+Center radii    : 6378.137, 6378.137, 6356.752 km {Equator_a, b, pole_c}       
+Target primary  : Earth
+Vis. interferer : MOON (R_eq= 1737.400) km        {source: DE441}
+Rel. light bend : Sun                             {source: DE441}
+Rel. lght bnd GM: 1.3271E+11 km^3/s^2                                          
+Atmos refraction: NO (AIRLESS)
+RA format       : HMS
+Time format     : CAL 
+Calendar mode   : Mixed Julian/Gregorian
+EOP file        : eop.260220.p260519                                           
+EOP coverage    : DATA-BASED 1962-JAN-20 TO 2026-FEB-20. PREDICTS-> 2026-MAY-18
+Units conversion: 1 au= 149597870.700 km, c= 299792.458 km/s, 1 day= 86400.0 s 
+Table cut-offs 1: Elevation (-90.0deg=NO ),Airmass (>38.000=NO), Daylight (NO )
+Table cut-offs 2: Solar elongation (  0.0,180.0=NO ),Local Hour Angle( 0.0=NO )
+Table cut-offs 3: RA/DEC angular rate (     0.0=NO )                           
+********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+ Date__(UT)__HR:MN     R.A._____(ICRF)_____DEC  R.A.__(a-apparent)__DEC  dRA*cosD d(DEC)/dt  Azi____(a-app)___Elev  dAZ*cosE d(ELV)/dt  X_(sat-primary)_Y SatPANG  L_Ap_Sid_Time  a-mass mag_ex    APmag   S-brt      Illu%  Def_illu   ang-sep/v  Ang-diam  ObsSub-LON ObsSub-LAT  SunSub-LON SunSub-LAT  SN.ang   SN.dist    NP.ang   NP.dist  hEcl-Lon hEcl-Lat                r        rdot             delta      deldot  1-way_down_LT       VmagSn      VmagOb     S-O-T /r     S-T-O   T-O-M/MN_Illu%     O-P-T    PsAng   PsAMV      PlAng  Cnst        TDB-UT     ObsEcLon    ObsEcLat  N.Pole-RA  N.Pole-DC      GlxLon     GlxLat  L_Ap_SOL_Time  399_ins_LT  RA_3sigma DEC_3sigma  SMAA_3sig SMIA_3sig    Theta Area_3sig  POS_3sigma  RNG_3sigma RNGRT_3sig   DOP_S_3sig  DOP_X_3sig  RT_delay_3sig  Tru_Anom  L_Ap_Hour_Ang       phi  PAB-LON  PAB-LAT  App_Lon_Sun  RA_(ICRF-a-apparnt)_DEC  I_dRA*cosD I_d(DEC)/dt  Sky_motion  Sky_mot_PA  RelVel-ANG  Lun_Sky_Brt  sky_SNR   UT1-UTC
+********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+$$SOE
+ 2022-Jan-01 10:00     17 42 50.58 -23 54 30.1  17 44 08.72 -23 55 04.8  183.2627  -15.3862        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.49948      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.54      0.00      n.a.      n.a.  244.5270  -1.2393   0.673875434362  -5.3136736  1.57837770785813  -1.9213353    13.12696712   29.8009621  58.5118341   14.5862 /L   21.5612   4.785/  2.8123      n.a.  269.667 278.019   -3.12559   Oph     69.183903  266.3770112  -0.5302772       n.a.       n.a.    3.960064   3.163472           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.5668 255.3014  -0.8989         n.a.  17 42 49.11 -23 54 29.4    183.2268    -15.8077   3.0651242   94.799116   -1.887342         n.a.     n.a.  -0.11046
+ 2022-Jan-01 11:00     17 43 03.95 -23 54 45.8  17 44 22.08 -23 55 20.2  183.3164  -15.3145        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.50220      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.51      0.00      n.a.      n.a.  244.5866  -1.2462   0.673747366381  -5.3299788  1.57833131534284  -1.9344161    13.12658128   29.8093578  58.5256556   14.5778 /L   21.5527   4.245/  2.6470      n.a.  269.633 277.992   -3.12784   Oph     69.183904  266.4280287  -0.5331495       n.a.       n.a.    3.983034   3.117817           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.5583 255.3567  -0.9039         n.a.  17 43 02.48 -23 54 45.2    183.2807    -15.7363   3.0659165   94.775474   -1.899711         n.a.     n.a.  -0.11046
+ 2022-Jan-01 12:00     17 43 17.32 -23 55 01.5  17 44 35.46 -23 55 35.4  183.3702  -15.2427        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.50493      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.47      0.00      n.a.      n.a.  244.6463  -1.2531   0.673618906011  -5.3462843  1.57828460810915  -1.9474917    13.12619283   29.8177800  58.5394934   14.5693 /L   21.5442   3.719/  2.4867      n.a.  269.598 277.965   -3.13009   Oph     69.183906  266.4790596  -0.5360211       n.a.       n.a.    4.006008   3.072150           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.5498 255.4121  -0.9088         n.a.  17 43 15.85 -23 55 00.9    183.3346    -15.6647   3.0667102   94.751819   -1.912068         n.a.     n.a.  -0.11045
+ 2022-Jan-01 13:00     17 43 30.69 -23 55 17.1  17 44 48.83 -23 55 50.7  183.4240  -15.1709        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.50766      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.44      0.00      n.a.      n.a.  244.7059  -1.2600   0.673490053243  -5.3625902  1.57823758628375  -1.9605621    13.12580176   29.8262287  58.5533475   14.5609 /L   21.5357   3.211/  2.3314      n.a.  269.564 277.938   -3.13234   Oph     69.183907  266.5301038  -0.5388921       n.a.       n.a.    4.028988   3.026471           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.5413 255.4674  -0.9138         n.a.  17 43 29.22 -23 55 16.5    183.3886    -15.5931   3.0675052   94.728150   -1.924413         n.a.     n.a.  -0.11045
+ 2022-Jan-01 14:00     17 43 44.07 -23 55 32.7  17 45 02.22 -23 56 05.8  183.4779  -15.0990        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.51039      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.40      0.00      n.a.      n.a.  244.7656  -1.2670   0.673360808070  -5.3788965  1.57819024999314  -1.9736272    13.12540808   29.8347041  58.5672179   14.5524 /L   21.5272   2.733/  2.1812      n.a.  269.530 277.911   -3.13459   Sgr     69.183908  266.5811613  -0.5417624       n.a.       n.a.    4.051972   2.980781           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.5328 255.5228  -0.9188         n.a.  17 43 42.59 -23 55 32.1    183.4426    -15.5213   3.0683016   94.704468   -1.936748         n.a.     n.a.  -0.11044
+ 2022-Jan-01 15:00     17 43 57.45 -23 55 48.2  17 45 15.60 -23 56 20.8  183.5318  -15.0271        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.51312      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.37      0.00      n.a.      n.a.  244.8253  -1.2739   0.673231170482  -5.3952031  1.57814259936369  -1.9866870    13.12501178   29.8432060  58.5811047   14.5440 /L   21.5186   2.303/  2.0360      n.a.  269.495 277.884   -3.13684   Sgr     69.183909  266.6322322  -0.5446322       n.a.       n.a.    4.074961   2.935078           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.5242 255.5782  -0.9238         n.a.  17 43 55.98 -23 55 47.6    183.4967    -15.4495   3.0690994   94.680772   -1.949071         n.a.     n.a.  -0.11043
+ 2022-Jan-01 16:00     17 44 10.83 -23 56 03.6  17 45 28.99 -23 56 35.8  183.5858  -14.9550        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.51586      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.33      0.00      n.a.      n.a.  244.8851  -1.2808   0.673101140471  -5.4115100  1.57809463452161  -1.9997416    13.12461287   29.8517345  58.5950077   14.5355 /L   21.5101   1.952/  1.8959      n.a.  269.461 277.857   -3.13909   Sgr     69.183910  266.6833166  -0.5475013       n.a.       n.a.    4.097955   2.889363           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.5157 255.6336  -0.9287         n.a.  17 44 09.36 -23 56 03.0    183.5509    -15.3777   3.0698986   94.657063   -1.961382         n.a.     n.a.  -0.11043
+ 2022-Jan-01 17:00     17 44 24.22 -23 56 18.9  17 45 42.39 -23 56 50.8  183.6399  -14.8829        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.51859      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.30      0.00      n.a.      n.a.  244.9448  -1.2878   0.672970718028  -5.4278173  1.57804635559295  -2.0127910    13.12421134   29.8602896  58.6089270   14.5270 /L   21.5015   1.731/  1.7610      n.a.  269.426 277.830   -3.14134   Sgr     69.183912  266.7344143  -0.5503697       n.a.       n.a.    4.120954   2.843637           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.5071 255.6891  -0.9337         n.a.  17 44 22.75 -23 56 18.3    183.6051    -15.3057   3.0706991   94.633341   -1.973682         n.a.     n.a.  -0.11042
+ 2022-Jan-01 18:00     17 44 37.62 -23 56 34.2  17 45 55.79 -23 57 05.6  183.6940  -14.8107        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.52133      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.26      0.00      n.a.      n.a.  245.0046  -1.2947   0.672839903145  -5.4441250  1.57799776270363  -2.0258351    13.12380721   29.8688713  58.6228628   14.5185 /L   21.4930   1.692/  1.6311      n.a.  269.392 277.803   -3.14359   Sgr     69.183913  266.7855255  -0.5532375       n.a.       n.a.    4.143958   2.797898           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.4986 255.7445  -0.9387         n.a.  17 44 36.15 -23 56 33.6    183.6594    -15.2337   3.0715011   94.609605   -1.985971         n.a.     n.a.  -0.11041
+ 2022-Jan-01 19:00     17 44 51.02 -23 56 49.4  17 46 09.19 -23 57 20.4  183.7481  -14.7384        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.52407      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.23      0.00      n.a.      n.a.  245.0644  -1.3016   0.672708695814  -5.4604330  1.57794885597939  -2.0388741    13.12340046   29.8774797  58.6368148   14.5099 /L   21.4844   1.844/  1.5065      n.a.  269.357 277.776   -3.14583   Sgr     69.183914  266.8366502  -0.5561047       n.a.       n.a.    4.166967   2.752148           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.4900 255.8000  -0.9437         n.a.  17 44 49.55 -23 56 48.8    183.7137    -15.1615   3.0723044   94.585856   -1.998248         n.a.     n.a.  -0.11041
+ 2022-Jan-01 20:00     17 45 04.42 -23 57 04.5  17 46 22.60 -23 57 35.1  183.8024  -14.6660        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.52682      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.19      0.00      n.a.      n.a.  245.1243  -1.3086   0.672577096026  -5.4767413  1.57789963554585  -2.0519077    13.12299111   29.8861147  58.6507832   14.5014 /L   21.4758   2.149/  1.3869      n.a.  269.322 277.749   -3.14808   Sgr     69.183915  266.8877884  -0.5589712       n.a.       n.a.    4.189981   2.706385           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.4814 255.8555  -0.9486         n.a.  17 45 02.95 -23 57 03.9    183.7681    -15.0894   3.0731091   94.562094   -2.010514         n.a.     n.a.  -0.11040
+ 2022-Jan-01 21:00     17 45 17.83 -23 57 19.5  17 46 36.01 -23 57 49.7  183.8566  -14.5936        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.52956      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.16      0.00      n.a.      n.a.  245.1841  -1.3155   0.672445103773  -5.4930500  1.57785010152867  -2.0649362    13.12257915   29.8947763  58.6647680   14.4929 /L   21.4672   2.553/  1.2726      n.a.  269.288 277.722   -3.15032   Sgr     69.183917  266.9389400  -0.5618371       n.a.       n.a.    4.213000   2.660611           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.4728 255.9110  -0.9536         n.a.  17 45 16.36 -23 57 19.0    183.8225    -15.0171   3.0739152   94.538318   -2.022768         n.a.     n.a.  -0.11039
+ 2022-Jan-01 22:00     17 45 31.24 -23 57 34.5  17 46 49.43 -23 58 04.3  183.9110  -14.5210        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.53231      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.13      0.00      n.a.      n.a.  245.2440  -1.3225   0.672312719048  -5.5093590  1.57780025405348  -2.0779595    13.12216458   29.9034646  58.6787693   14.4843 /L   21.4586   3.015/  1.1635      n.a.  269.253 277.695   -3.15256   Sgr     69.183918  266.9901053  -0.5647023       n.a.       n.a.    4.236025   2.614824           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.4642 255.9665  -0.9586         n.a.  17 45 29.77 -23 57 33.9    183.8770    -14.9447   3.0747227   94.514529   -2.035011         n.a.     n.a.  -0.11038
+ 2022-Jan-01 23:00     17 45 44.66 -23 57 49.4  17 47 02.85 -23 58 18.8  183.9654  -14.4484        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.53506      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.09      0.00      n.a.      n.a.  245.3039  -1.3294   0.672179941841  -5.5256684  1.57775009324559  -2.0909775    13.12174740   29.9121796  58.6927869   14.4757 /L   21.4500   3.513/  1.0595      n.a.  269.219 277.668   -3.15481   Sgr     69.183919  267.0412840  -0.5675668       n.a.       n.a.    4.259055   2.569026           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.4556 256.0221  -0.9636         n.a.  17 45 43.19 -23 57 48.9    183.9316    -14.8723   3.0755316   94.490727   -2.047243         n.a.     n.a.  -0.11037
+ 2022-Jan-02 00:00     17 45 58.08 -23 58 04.2  17 47 16.27 -23 58 33.2  184.0198  -14.3758        n.a.       n.a.      n.a.      n.a.      n.a.     n.a.    n.a.           n.a.    n.a.   n.a.     n.a.    n.a.   96.53781      n.a.       0.0/*      n.a.        n.a.       n.a.        n.a.       n.a.   89.06      0.00      n.a.      n.a.  245.3638  -1.3364   0.672046772145  -5.5419781  1.57769961922993  -2.1039904    13.12132762   29.9209212  58.7068210   14.4671 /L   21.4414   4.033/  0.9608      n.a.  269.184 277.640   -3.15705   Sgr     69.183920  267.0924764  -0.5704307       n.a.       n.a.    4.282090   2.523215           n.a.    0.000000       n.a.       n.a.       n.a.      n.a.     n.a.      n.a.        n.a.        n.a.       n.a.         n.a.        n.a.           n.a.      n.a.           n.a.   21.4470 256.0777  -0.9685         n.a.  17 45 56.61 -23 58 03.7    183.9862    -14.7998   3.0763419   94.466912   -2.059463         n.a.     n.a.  -0.11036
+$$EOE
+********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************
+Column meaning:
+ 
+TIME
+
+  Times PRIOR to 1962 are UT1, a mean-solar time closely related to the
+prior but now-deprecated GMT. Times AFTER 1962 are in UTC, the current
+civil or "wall-clock" time-scale. UTC is kept within 0.9 seconds of UT1
+using integer leap-seconds for 1972 and later years.
+
+  Conversion from the internal Barycentric Dynamical Time (TDB) of solar
+system dynamics to the non-uniform civil UT time-scale requested for output
+has not been determined for UTC times after the next July or January 1st.
+Therefore, the last known leap-second is used as a constant over future
+intervals.
+
+  Time tags refer to the UT time-scale conversion from TDB on Earth
+regardless of observer location within the solar system, although clock
+rates may differ due to the local gravity field and no analog to "UT"
+may be defined for that location.
+
+  Any 'b' symbol in the 1st-column denotes a B.C. date. First-column blank
+(" ") denotes an A.D. date.
+ 
+CALENDAR SYSTEM
+
+  Mixed calendar mode was active such that calendar dates after AD 1582-Oct-15
+(if any) are in the modern Gregorian system. Dates prior to 1582-Oct-5 (if any)
+are in the Julian calendar system, which is automatically extended for dates
+prior to its adoption on 45-Jan-1 BC.  The Julian calendar is useful for
+matching historical dates. The Gregorian calendar more accurately corresponds
+to the Earth's orbital motion and seasons. A "Gregorian-only" calendar mode is
+available if such physical events are the primary interest.
+
+  NOTE: "n.a." in output means quantity "not available" at the print-time.
+ 
+ 'R.A._____(ICRF)_____DEC' =
+  Astrometric right ascension and declination of the target center with
+respect to the observing site (coordinate origin) in the reference frame of
+the planetary ephemeris (ICRF). Compensated for down-leg light-time delay
+aberration.
+
+  Units: RA  in hours-minutes-seconds of time,    HH MM SS.ff{ffff}
+         DEC in degrees-minutes-seconds of arc,  sDD MN SC.f{ffff}
+ 
+ 'R.A.__(a-apparent)__DEC' =
+  Airless apparent right ascension and declination of the target center
+with respect to an instantaneous reference frame defined by the Earth equator
+of-date (z-axis) and meridian containing the Earth equinox of-date (x-axis,
+EOP-corrected IAU76/80). Compensated for down-leg light-time delay,
+gravitational deflection of light, stellar aberration, precession & nutation.
+Note: equinox (RA origin) is offset -53 mas from the of-date frame defined
+by the IAU06/00a P & N system.
+
+  Units: RA  in hours-minutes-seconds of time,   HH MM SS.ff{ffff}
+         DEC in degrees-minutes-seconds of arc, sDD MN SC.f{ffff}
+ 
+ 'dRA*cosD d(DEC)/dt' =
+  The angular rate of change in apparent RA and DEC of the target. This is
+with respect to the non-inertial IAU76/80 Earth true equator and equinox
+of-date reference frame.  d(RA)/dt is multiplied by the cosine of declination
+to provide a linear rate in the plane-of-sky. Units: ARCSECONDS PER HOUR
+ 
+ 'Azi____(a-app)___Elev' =
+  Airless apparent azimuth and elevation of target center. Compensated
+for light-time, the gravitational deflection of light, stellar aberration,
+precession and nutation. Azimuth is measured clockwise from north:
+
+  North(0) -> East(90) -> South(180) -> West(270) -> North (360)
+
+Elevation angle is with respect to a plane perpendicular to the reference
+surface local zenith direction. TOPOCENTRIC ONLY.  Units: DEGREES
+ 
+ 'dAZ*cosE d(ELV)/dt' =
+   The rate of change of target center apparent azimuth and elevation
+(airless). d(AZ)/dt is multiplied by the cosine of the elevation angle.
+TOPOCENTRIC ONLY. Units: ARCSECOND PER MINUTE
+ 
+ 'X_(sat-primary)_Y SatPANG' =
+   Satellite apparent differential coordinates in the plane-of-sky with
+respect to the primary body along with the satellite position angle.
+Differential coordinates are defined in RA as:
+
+     X= ((RA_sat - RA_primary) * cosine(DEC_primary))
+
+... and in DEC as:
+
+     Y= (DEC_sat - DEC_primary)
+
+Non-lunar satellites only. "SatPANG" is the counter-clockwise (CCW) position
+angle from the reference-frame of-date north-pole to a line from the primary
+center to the satellite center. Units: ARCSECONDS (X & Y), DEGREES (pos, angle)
+ 
+ 'L_Ap_Sid_Time' =
+   Local Apparent Sidereal Time. The angle measured westward in the body
+true-equator of-date plane from the meridian containing the body-fixed
+observer to the meridian containing the true Earth equinox (defined by
+intersection of the true Earth equator of date with the ecliptic of date).
+TOPOCENTRIC ONLY. Units: HH MM SS.ffff (hours-minutes-seconds of time)
+ 
+ 'a-mass mag_ex' =
+    RELATIVE optical airmass and visual magnitude extinction. Airmass is the
+ratio between the absolute optical airmass for the targets' refracted CENTER
+point to the absolute optical airmass at zenith. Also output is the estimated
+visual magnitude extinction due to the atmosphere, as seen by the observer.
+AVAILABLE ONLY FOR TOPOCENTRIC EARTH SITES WHEN THE TARGET IS ABOVE THE
+HORIZON.  Units: none (airmass) and magnitudes (extinction).
+ 
+ 'APmag   S-brt' =
+  The targets' approximate apparent visual magnitude and surface brightness.
+For planets and natural satellites, output is restricted to solar phase angles
+covered by observational data. Outside the observed phase angle range, "n.a."
+may be output to avoid extrapolation beyond the limit of model validity.
+
+   For Earth-based observers, the estimated dimming due to atmospheric
+absorption (extinction) is available as a separate, requestable quantity.
+
+   Surface brightness is the average airless visual magnitude of a
+square-arcsecond of the illuminated portion of the apparent disk. It is
+computed only if the target radius is known.
+
+   Units: MAGNITUDES & MAGNITUDES PER SQUARE ARCSECOND
+ 
+ 'Illu%' =
+   Fraction of the target objects' assumed circular disk illuminated by Sun
+(phase), as seen by the observer.  Units: PERCENT
+ 
+ 'Def_illu' =
+   Defect of illumination. The maximum angular width of the target body's
+assumed circular disk diameter NOT illuminated by the Sun. Units: ARCSECONDS
+ 
+ 'ang-sep/v' =
+  The angular separation between the center of the target object and the center
+of the (remote) primary body it revolves around, as seen by the observer, with
+target visibility code.
+
+  Visibility codes (refers to limb-to-limb):
+
+    /t = Transiting primary body disk    /O = Occulted by primary body disk
+    /p = Partial umbral eclipse          /P = Occulted partial umbral eclipse
+    /u = Total umbral eclipse            /U = Occulted total umbral eclipse
+    /- = Target is the primary body      /* = None of above ("free and clear")
+
+  The radius of both primary and target body is taken to be the equatorial
+value (maximum, given a triaxial shape). Atmospheric effects and oblateness
+aspect are NOT currently considered.  Light-time is considered.
+
+  Units: ARCSECONDS and visibility code
+ 
+ 'Ang-diam' =
+   The equatorial angular width of the target body full disk, if it were fully
+illuminated and visible to the observer. If the target body diameter is unknown
+"n.a." is output.
+
+   Units: ARCSECONDS
+ 
+ 'ObsSub-LON ObsSub-LAT' =
+   Apparent planetodetic longitude and latitude of the center of the target
+disc seen by the OBSERVER at print-time. This is NOT exactly the same as the
+"nearest" sub-point for a non-spherical target shape (since the center of
+the disc might not be the point closest to the observer), but is generally
+very close if not a very irregular body shape. Down-leg light travel-time
+from target to observer is taken into account. Latitude is the angle between
+the equatorial plane and the line perpendicular to the reference ellipsoid of
+the body, so includes body oblateness. The reference ellipsoid is an oblate
+spheroid with a single flatness coefficient in which the y-axis body radius
+is taken to be the same value as the x-axis radius. Positive longitude is to
+the WEST for this target. Cartographic system is given in the header.
+   Units: DEGREES DEGREES
+ 
+ 'SunSub-LON SunSub-LAT' =
+   Apparent sub-solar longitude and latitude of the Sun on the target. The
+apparent planetodetic longitude and latitude of the center of the target disc
+as seen from the Sun, as seen by the observer at print-time. This is NOT
+exactly the same as the "sub-solar" (nearest) point for a non-spherical target
+shape (since the center of the disc seen from the Sun might not be the closest
+point to the Sun), but is very close if not a highly irregular body shape.
+Light travel-time from Sun to target and from target to observer is taken into
+account.  Latitude is the angle between the equatorial plane and the line
+perpendicular to the reference ellipsoid of the body. The reference ellipsoid
+is an oblate spheroid with a single flatness coefficient in which the y-axis
+body radius is taken to be the same value as the x-axis radius.  Positive
+longitude is to the WEST for this target. Cartographic system is given in the
+header.   Units: DEGREES DEGREES
+ 
+ 'SN.ang   SN.dist' =
+  Targets' apparent sub-solar point position angle (counter-clockwise with
+respect to the direction of the true-of-date reference-frame north-pole) and
+its angular distance from the sub-observer point (center of disk) at print
+time. A negative distance indicates the sub-solar point is on the hidden
+hemisphere.  Units: DEGREES and ARCSECONDS
+ 
+ 'NP.ang   NP.dist' =
+  Targets' apparent north-pole position angle (counter-clockwise with respect
+to the direction of the true-of-date reference-frame north-pole) and its
+angular distance from the sub-observer point (center of disk) at observation
+time.  A negative distance indicates the planets' north-pole is on the hidden
+hemisphere.  Units: DEGREES and ARCSECONDS
+ 
+ 'hEcl-Lon hEcl-Lat' =
+    Geometric heliocentric J2000 ecliptic longitude and latitude of target
+center at the instant light leaves it to be observed at print time (print time
+minus down-leg light-time).  Units: DEGREES
+ 
+ 'r        rdot' =
+   The Sun's apparent range ("r", light-time aberrated) and range-rate ("rdot")
+relative to the target center, as seen by the observer. A positive "rdot" means
+the target center was moving away from the Sun, negative means moving toward
+the Sun.  Units: AU and KM/S
+ 
+ 'delta      deldot' =
+   Apparent range ("delta", light-time aberrated) and range-rate ("delta-dot")
+of the target center relative to the observer. A positive "deldot" means the
+target center is moving away from the observer, negative indicates movement
+toward the observer.  Units: AU and KM/S
+ 
+ '1-way_down_LT' =
+   1-way down-leg light-time from target center to observer. The elapsed time
+since light (observed at print-time) would have left or reflected off a point
+at the center of the target. Units: MINUTES
+ 
+ 'VmagSn      VmagOb' =
+   Magnitude of target centers' velocity with respect to the Sun ("VmagSn")
+and the observer ("VmagOb") at the time light left the target center to be
+observed (print time minus down-leg light-time). These are absolute values
+of the velocity vectors (total speeds) and do NOT indicate direction of motion.
+Units: KM/S
+ 
+ 'S-O-T /r' =
+   Sun-Observer-Target apparent SOLAR ELONGATION ANGLE seen from the observers'
+location at print-time.
+
+   The '/r' column provides a code indicating the targets' apparent position
+relative to the Sun in the observers' sky, as described below:
+
+   Case A: For an observing location on the surface of a rotating body, that
+body rotational sense is considered:
+
+    /T indicates target TRAILS Sun   (evening sky: rises and sets AFTER Sun)
+    /L indicates target LEADS Sun    (morning sky: rises and sets BEFORE Sun)
+
+   Case B: For an observing point that does not have a rotational model (such
+as a spacecraft), the "leading" and "trailing" condition is defined by the
+observers' heliocentric ORBITAL motion:
+
+    * If continuing in the observers' current direction of heliocentric
+       motion would encounter the targets' apparent longitude first, followed
+       by the Sun's, the target LEADS the Sun as seen by the observer.
+
+    * If the Sun's apparent longitude would be encountered first, followed
+       by the targets', the target TRAILS the Sun.
+
+   Two other codes can be output:
+    /* indicates observer is Sun-centered    (undefined)
+    /? Target is aligned with Sun center     (no lead or trail)
+
+   The S-O-T solar elongation angle is numerically the minimum separation
+angle of the Sun and target in the sky in any direction. It does NOT indicate
+the amount of separation in the leading or trailing directions, which would
+be defined along the equator of a spherical coordinate system.
+
+   Units: DEGREES
+ 
+ 'S-T-O' =
+   The Sun-Target-Observer angle; the interior vertex angle at target center
+formed by a vector from the target to the apparent center of the Sun (at
+reflection time on the target) and the apparent vector from target to the
+observer at print-time. Slightly different from true PHASE ANGLE (requestable
+separately) at the few arcsecond level in that it includes stellar aberration
+on the down-leg from target to observer.  Units: DEGREES
+ 
+ 'T-O-M/MN_Illu%' =
+   Target-Observer-Moon LUNAR ELONGATION angle and illuminated percentage.
+The apparent lunar elongation angle between target body center and Moon
+center, seen from the observing site, along with fraction of the lunar disk
+illuminated by the Sun. A negative lunar elongation angle indicates the target
+center is behind the Moon.  Units: DEGREES & PERCENT
+ 
+ 'O-P-T' =
+   Observer-Primary-Target angle; apparent angle between a target satellite,
+its primarys' center and an observer at print time. Interior vertex angle at
+the primary.  Units: DEGREES
+ 
+ 'PsAng   PsAMV' =
+   The position angles of the extended Sun-to-target radius vector ("PsAng")
+and the negative of the targets' heliocentric velocity vector ("PsAMV"), as
+seen in the observers' plane-of-sky, measured counter-clockwise (east) from
+reference-frame north-pole. Primarily intended for ACTIVE COMETS, "PsAng"
+is an indicator of the comets' gas-tail orientation in the sky (being in the
+anti-sunward direction) while "PsAMV" is an indicator of dust-tail orientation.
+Units: DEGREES
+ 
+ 'PlAng' =
+   Angle between observer and target orbital plane, measured from center
+of target at the moment light seen at observation time leaves the target.
+Positive values indicate observer is above the objects' orbital plane, in
+the direction of reference-frame +z axis.  Units: DEGREES
+ 
+ 'Cnst' =
+   Constellation ID; the 3-letter abbreviation for the name of the
+constellation containing the target centers' astrometric position,
+as defined by IAU (1930) boundary delineation.  See documentation
+for list of abbreviations.
+ 
+ 'TDB-UT' =
+   Difference between the uniform Barycentric Dynamical time-scale and the
+Earth-rotation dependent Universal Time. Prior to 1962, the difference is with
+respect to UT1 (TDB-UT1) and the 0.002 second maximum amplitude distinction
+between TT and TDB is not maintained. For 1962 and later, the difference is
+with respect to UTC (TDB-UTC) and periodic terms less than 1.e-6 second are
+ignored. Values beyond the next July or January 1st may change if a leap-second
+is later required by the IERS. Values from the present date forward through
+the next ~78 days are predictions. Beyond that prediction interval, the last
+prediction is taken as a constant for all future dates. Units: SECONDS
+ 
+ 'ObsEcLon    ObsEcLat' =
+   Observer-centered IAU76/80 ecliptic-of-date longitude and latitude of the
+target centers' apparent position, with light-time, gravitational deflection of
+light, and stellar aberrations.  Units: DEGREES
+ 
+ 'N.Pole-RA  N.Pole-DC' =
+    ICRF right ascension and declination of the target body's north-pole
+direction at the time light left the body to be observed at print time.
+Target pole/rotation model is given in the header. Units: DEGREES
+ 
+ 'GlxLon     GlxLat' =
+   Observer-centered Galactic System II (post WW II) longitude and latitude
+of the target centers' apparent position, with light-time, gravitational
+deflection of light, and stellar aberrations. Units: DEGREES
+ 
+ 'L_Ap_SOL_Time' =
+   Local Apparent SOLAR Time for observing site. This is the time indicated by
+a sundial.  TOPOCENTRIC ONLY.  Units: HH MM SS.ffff (sexagesimal angular hours)
+ 
+ '399_ins_LT' =
+   Instantaneous light-time of the station with respect to Earth center at
+print-time. The geometric (or "true") separation of site and Earth center,
+divided by the speed of light.  Units: MINUTES
+ 
+ 'RA_3sigma DEC_3sigma' =
+  Uncertainty in Right-Ascension and Declination. Output values are the formal
++/- 3 standard-deviations (sigmas) around nominal position. Units: ARCSECONDS
+ 
+ 'SMAA_3sig SMIA_3sig    Theta Area_3sig' =
+  Plane-of-sky (POS) error ellipse data. These quantities summarize the
+targets' 3-dimensional 3-standard-deviation formal uncertainty volume projected
+into a reference plane perpendicular to the observers' line-of-sight.
+
+   SMAA_3sig = Angular width of the 3-sigma error ellipse semi-major
+                axis in POS. Units: ARCSECONDS.
+
+   SMIA_3sig = Angular width of the 3-sigma error ellipse semi-minor
+                axis in POS. Units: ARCSECONDS.
+
+   Theta     = Orientation angle of the error ellipse in POS; the
+                clockwise angle from the direction of increasing RA to
+                the semi-major axis of the error ellipse, in the
+                direction of increasing DEC.  Units: DEGREES.
+
+                              +DEC
+                                ^
+                              \ |
+                          theta\|
+                      +RA  <----+-----
+                                |\
+                                | \
+
+   Area_3sig = Area of sky enclosed by the 3-sigma error ellipse.
+                Units: ARCSECONDS ^ 2.
+ 
+ 'POS_3sigma' =
+  The Root-Sum-of-Squares (RSS) of the 3-standard deviation plane-of-sky
+error ellipse major and minor semi-axes. This single pointing uncertainty
+number gives an angular distance (a circular radius) from the targets'
+nominal position in the sky that encompasses the error-ellipse.
+Units: ARCSECONDS.
+ 
+ 'RNG_3sigma RNGRT_3sig' =
+  Range and range rate (radial velocity) formal 3-standard-deviation
+uncertainties.  Units: KM, KM/S
+ 
+ 'DOP_S_3sig  DOP_X_3sig  RT_delay_3sig' =
+  Doppler radar uncertainties at S-band (2380 MHz) and X-band (8560 MHz)
+frequencies, along with the round-trip (total) delay to first-order.
+Units: HERTZ and SECONDS
+ 
+ 'Tru_Anom' =
+   Apparent true anomaly angle of the targets' heliocentric orbit position;
+the angle in the targets' instantaneous orbit plane from the orbital periapse
+direction to the target, measured positively in the direction of motion.
+The position of the target is taken to be at the moment light seen by the
+observer at print-time would have left the center of the object. That is,
+the heliocentric position of the target used to compute the true anomaly is
+one down-leg light-time prior to the print-time. Units: DEGREES
+ 
+ 'L_Ap_Hour_Ang' =
+   Local apparent HOUR ANGLE of target at observing site. The angle between the
+observers' meridian plane, containing Earth's axis of-date and local zenith
+direction, and a great circle passing through Earth's axis-of-date and the
+targets' direction, measured westward from the zenith meridian to target
+meridian along the equator. Negative values are angular times UNTIL transit.
+Positive values are angular times SINCE transit. Exactly 24_hrs/360_degrees.
+EARTH TOPOCENTRIC ONLY.  Units: sHH MM SS.fff (sexagesimal angular hours)
+ 
+ 'phi  PAB-LON  PAB-LAT' =
+   "phi" is the true PHASE ANGLE at the observers' location at print time.
+"PAB-LON" and "PAB-LAT" are the J2000 ecliptic longitude and latitude of the
+phase angle bisector direction; the outward directed angle bisecting the arc
+created by the apparent vector from Sun to target center and the astrometric
+vector from observer to target center. For an otherwise uniform ellipsoid, the
+time when its long-axis is perpendicular to the PAB direction approximately
+corresponds to lightcurve maximum (or maximum brightness) of the body. PAB is
+discussed in Harris et al., Icarus 57, 251-258 (1984).
+
+   Units: DEGREES, DEGREES, DEGREES
+ 
+ 'App_Lon_Sun' =
+  The apparent target-centered longitude of the Sun ("apparent L_s") as seen at
+the target when the light recorded by the observer at print-time reflected off
+the target. It is referred to a coordinate system where the x-axis is the
+equinox direction defined by the targets' instantaneous IAU2015 pole direction
+and heliocentric orbit plane at reflection time, and is measured positively in
+an eastward direction (counter-clockwise around the positive pole of the solar
+system angular momentum vector). On bodies other than the Earth, the quantity
+can indicate boundary dates for the seasons:
+
+             Northern hemisphere           Southern hemisphere
+               0= Spring Equinox             0= Autumn Equinox
+              90= Summer Solstice           90= Winter Solstice
+             180= Autumn Equinox           180= Spring Equinox
+             270= Winter Solstice          270= Summer Solstice
+
+For Earth seasons, instead see quantity #31 ("ObsEcLon") as seen from the
+geocenter, with the Sun as a target.
+
+If the target has no associated spin-pole model (common for asteroids and
+comets), "n.a." will be output. Units: DEGREES
+ 
+ 'RA_(ICRF-a-apparnt)_DEC' =
+   Airless apparent right ascension and declination coordinates of the
+target in the ICRF reference frame, with down-leg light-time, gravitational
+deflection of light, and stellar aberration.
+
+   Units:
+          RA : HH MM SS.ff{ffff} (hours-minutes-seconds of time)
+          DEC: DG MN SC.f{ffff}  (degrees-minutes-seconds of arc)
+ 
+ 'I_dRA*cosD I_d(DEC)/dt' =
+  The angular rate of change in the targets' ICRF inertial reference-frame
+apparent RA and DEC, with light-time, gravitational light deflection, and
+stellar aberrations. d(RA)/dt is multiplied by the cosine of declination to
+provide a linear rate in the plane-of-sky. Units: ARCSECONDS PER HOUR
+ 
+ 'Sky_motion  Sky_mot_PA  RelVel-ANG' =
+  Total apparent angular rate of the target in the plane-of-sky. "Sky_mot_PA"
+is the position angle of the target's direction of motion in the plane-of-sky,
+measured counter-clockwise from the apparent of-date north pole direction.
+"RelVel-ANG" is the flight path angle of the target's relative motion with
+respect to the observer's line-of-sight, in the range [-90,+90], where positive
+values indicate motion away from the observer, negative values are toward the
+observer:
+
+  -90 = target is moving directly toward the observer
+    0 = target is moving at right angles to the observer's line-of-sight
+  +90 = target is moving directly away from the observer
+
+UNITS:  ARCSECONDS/MINUTE, DEGREES, DEGREES
+ 
+ 'Lun_Sky_Brt  sky_SNR' =
+  Sky brightness due to moonlight scattered by Earth's atmosphere at the
+target's position in the sky. "sky_SNR" is the visual signal-to-noise ratio
+(SNR) of the target's surface brightness relative to background sky. Output
+only for topocentric Earth observers when both the Moon and target are above
+the local horizon and the Sun is in astronomical twilight (or further) below
+the horizon, and the target is not the Moon or Sun. If all conditions are
+not met, "n.a." is output. Galactic brightness, local sky light-pollution
+and weather are NOT considered. Lunar opposition surge is considered. The
+value returned is accurate under ideal conditions at the approximately 8-23%
+level, so is a useful but not definitive value.
+
+  If the target-body radius is also known, "sky_SNR" is output. This is the
+approximate visual signal-to-noise ratio of the target's brightness divided
+by lunar sky brightness. When sky_SNR < 1, the target is dimmer than the
+ideal moonlight-scattering background sky, so unlikely to be detectable at
+visual wavelengths. In practice, visibility requires sky_SNR > 1 and a
+detector sensitive enough to reach the target's magnitude, even if it isn't
+washed out by moonlight. When relating magnitudes and brightness values,
+keep in mind their logarithmic relationship m2-m1 = -2.5*log_10(b2/b1).
+
+  UNITS: VISUAL MAGNITUDES / ARCSECOND^2, and unitless ratio
+ 
+ 'UT1-UTC' =
+   Difference between the UT1 and UTC timescales ("DUT1"). UT1 is the
+Earth-rotation dependent mean solar time on the Greenwich meridian sometimes
+referred to as GMT. UTC is a discontinuous timescale derived from the atomic
+TAI timescale, adjusted by leap seconds to provide a civil timescale
+maintained within 0.9 seconds of UT1. Therefore, the difference UT1-UTC will
+have discontinuities where leap-seconds are inserted in UTC. UTC is not
+well-defined prior to 1962, so "n.a." will be returned for earlier dates.
+The UT1 here is a JPL fit to measurements of the Earth rotation which can
+change rapidly and unpredictably at the 10^-4 second level due to tides and
+other factors affecting Earth rotation. Values for the 14 days prior to the
+present date are considered provisional and may change at up to the 0.002
+second level as data accumulates, corresponding to about 1-meter (3-sigma)
+for an Earth equatorial site. Values from the present date forward through
+the next ~78 days are predictions. Beyond that prediction interval, the last
+prediction is taken as a constant for all future dates.  Units: SECONDS
+
+Computations by ...
+
+    Solar System Dynamics Group, Horizons On-Line Ephemeris System
+    4800 Oak Grove Drive, Jet Propulsion Laboratory
+    Pasadena, CA  91109   USA
+
+    General site: https://ssd.jpl.nasa.gov/
+    Mailing list: https://ssd.jpl.nasa.gov/email_list.html
+    System news : https://ssd.jpl.nasa.gov/horizons/news.html
+    User Guide  : https://ssd.jpl.nasa.gov/horizons/manual.html
+    Connect     : browser        https://ssd.jpl.nasa.gov/horizons/app.html#/x
+                  API            https://ssd-api.jpl.nasa.gov/doc/horizons.html
+                  command-line   telnet ssd.jpl.nasa.gov 6775
+                  e-mail/batch   https://ssd.jpl.nasa.gov/ftp/ssd/horizons_batch.txt
+                  scripts        https://ssd.jpl.nasa.gov/ftp/ssd/SCRIPTS
+    Author      : Jon.D.Giorgini@jpl.nasa.gov
+
+********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************

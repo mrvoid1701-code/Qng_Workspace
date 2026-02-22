@@ -1,0 +1,17 @@
+metric,value
+test_id,QNG-T-GRSWEEP-001
+dataset_id,DS-005
+decision,pass
+n_science,9
+n_controls,10
+tau_hat,1.368655e-04
+chi2_science_alpha0,2.242712e+04
+chi2_science_alpha1,1.657783e+04
+delta_chi2_science_alpha1_minus_alpha0,-5849.293279
+chi2_control_alpha0,8.000000
+chi2_control_alpha1,6.757701
+delta_chi2_control_alpha1_minus_alpha0,-1.242299
+control_delta_ratio_vs_science,2.123845e-04
+rule_pass_S1_monotonic_activation,True
+rule_pass_S2_endpoint_signal_strength,True
+rule_pass_S3_control_clean_ratio,True

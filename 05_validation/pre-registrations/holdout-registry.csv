@@ -1,0 +1,10 @@
+created_utc,track_id,model_version,holdout_id,prereg_file,scope,flyby_pass_ids,pioneer_record_ids,status,notes
+2026-02-21T13:59:02Z,C-086b2,v1,H1,05_validation/pre-registrations/qng-c-086b2-holdout-v1.md,holdout,"CASSINI_1,MESSENGER_1,EPOXI_1","P10_EQ23,P11_EQ24",executed-fail,Post-lock run on 2026-02-21: fail
+2026-02-21T13:59:02Z,C-086b2,v1,H2,05_validation/pre-registrations/qng-c-086b2-holdout-v1.md,holdout,"CASSINI_1,MESSENGER_1,EPOXI_2","P10_EQ23,P10P11_FINAL",executed-fail,Post-lock run on 2026-02-21: fail
+2026-02-21T13:59:02Z,C-086b2,v1,H3,05_validation/pre-registrations/qng-c-086b2-holdout-v1.md,holdout,"CASSINI_1,MESSENGER_1,EPOXI_5","P11_EQ24,P10P11_FINAL",executed-fail,Post-lock run on 2026-02-21: fail
+2026-02-21T13:59:02Z,C-086b3,v1,H1,05_validation/pre-registrations/qng-c-086b3-scaling-law-v1.md,holdout,JUNO_1,"P10_EQ23,P11_EQ24",locked,Locked disjoint holdout for b3
+2026-02-21T13:59:02Z,C-086b3,v1,H2,05_validation/pre-registrations/qng-c-086b3-scaling-law-v1.md,holdout,BEPICOLOMBO_1,"P10_EQ23,P10P11_FINAL",locked,Locked disjoint holdout for b3
+2026-02-21T13:59:02Z,C-086b3,v1,H3,05_validation/pre-registrations/qng-c-086b3-scaling-law-v1.md,holdout,SOLAR_ORBITER_1,"P11_EQ24,P10P11_FINAL",locked,Locked disjoint holdout for b3
+2026-02-21T17:13:15Z,C-086b3,v1,H1,05_validation/pre-registrations/qng-c-086b3-scaling-law-v1.md,holdout,JUNO_1,"P10_EQ23,P11_EQ24",executed-fail,Post-ingest run: fail (provisional delta_v placeholders from Horizons ingest)
+2026-02-21T17:13:15Z,C-086b3,v1,H2,05_validation/pre-registrations/qng-c-086b3-scaling-law-v1.md,holdout,BEPICOLOMBO_1,"P10_EQ23,P10P11_FINAL",executed-fail,Post-ingest run: fail (provisional delta_v placeholders from Horizons ingest)
+2026-02-21T17:13:15Z,C-086b3,v1,H3,05_validation/pre-registrations/qng-c-086b3-scaling-law-v1.md,holdout,SOLAR_ORBITER_1,"P11_EQ24,P10P11_FINAL",executed-fail,Post-ingest run: fail (provisional delta_v placeholders from Horizons ingest)

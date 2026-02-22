@@ -1,0 +1,5 @@
+check,value,threshold,status
+delta_fit,-3.279686e+05 / -3.279646e+05,delta_chi2<0 and delta_aic<=-10,pass
+qm_signature,"r2_s=0.943245, r2_eff=0.998324",r2_s>=0.75 and r2_eff>=0.88,pass
+qft_signature,"r2_kg=0.862623, corr=0.999162",r2_kg>=0.45 and corr>=0.88,pass
+stability,0.019215,< 0.35,pass

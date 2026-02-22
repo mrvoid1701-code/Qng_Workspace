@@ -1,0 +1,6 @@
+line_no,content
+1,- Claim statement: Memory-corrected acceleration can be modeled as a = -grad Sigma + tau(v dot grad)grad Sigma.
+2,- chi: straton load (chi = m/c).
+3,a = -nablaSigma + tau*(v.nabla)nablaSigma
+4,- Memory-corrected acceleration can be modeled as a = -grad Sigma + tau(v dot grad)grad Sigma.
+5,- Verify sign convention against g = -nablaSigma definition.

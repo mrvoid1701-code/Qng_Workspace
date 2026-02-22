@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-033",
+  "claim_id": "QNG-C-072",
+  "claim_statement": "Example estimate gives chi about 2.33e-7 s kg per m for m = 70 kg.",
+  "priority": "P3",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-072.md",
+  "formula_anchor": "chi = 70/(3e8) = 2.33e-7 kg*s/m",
+  "dataset": "Symbolic math + dimensional analysis",
+  "method": "Check algebraic consistency, unit consistency and limit behavior against linked derivation.",
+  "pass_condition": "Equation is internally consistent, dimensionally valid and compatible with stated limit cases.",
+  "fail_condition": "Any dimensional contradiction, algebraic inconsistency or failed limit-case reproduction.",
+  "parameters": {
+    "dataset_id": "DS-007",
+    "mode": "formal_math",
+    "seed": 3033,
+    "derivation": "03_math/derivations/qng-c-072.md",
+    "formula_anchor": "chi = 70/(3e8) = 2.33e-7 kg*s/m"
+  },
+  "inputs": [
+    "05_validation/dataset-manifest.json",
+    "03_math/derivations/qng-c-072.md",
+    "scripts/run_qng_p3_symbolic_validation.py"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_p3_symbolic_validation.py --test-id QNG-T-033 --claim-id QNG-C-072 --mode formal_math --dataset-id DS-007 --derivation \"03_math/derivations/qng-c-072.md\" --formula-anchor \"chi = 70/(3e8) = 2.33e-7 kg*s/m\" --seed 3033 --out-dir \"05_validation/evidence/artifacts/qng-t-033\""
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-033/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-033/checks-table.csv",
+    "05_validation/evidence/artifacts/qng-t-033/parameter-stability.md",
+    "05_validation/evidence/artifacts/qng-t-033/equation-lines.csv",
+    "05_validation/evidence/artifacts/qng-t-033/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "Symbolic formal-math checks pass consistency/unit/sign/limit gates on the linked derivation text.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-16"
+  },
+  "reproducibility": {
+    "seed": 3033,
+    "code_version": "local-workspace-2026-02-16",
+    "environment": "Python stdlib symbolic/synthetic mode (formal_math)"
+  }
+}

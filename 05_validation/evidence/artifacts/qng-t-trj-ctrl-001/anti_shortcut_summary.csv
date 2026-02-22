@@ -1,0 +1,12 @@
+metric,value
+n_runs,1200
+orientation_median_delta_chi2,-3003.075016
+orientation_p_value,0.011667
+orientation_ratio_vs_real,0.256489
+segment_median_delta_chi2,-1.972086e+04
+segment_p_value,0.050833
+segment_ratio_vs_real,0.842167
+directionality_base,0.857143
+directionality_randomized_median,0.428571
+directionality_tail_p,0.057500
+control_mean_abs_over_sigma,0.400000

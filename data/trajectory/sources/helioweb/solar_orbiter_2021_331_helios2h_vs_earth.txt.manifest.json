@@ -1,0 +1,24 @@
+{
+  "source": "NASA HELIOWeb",
+  "url": "https://omniweb.gsfc.nasa.gov/cgi/models/helios2_h.cgi",
+  "http_status": 200,
+  "content_type": "text/html",
+  "payload": {
+    "activity": "retrieve",
+    "object": "46",
+    "coordinate": "1",
+    "start_year": "2021",
+    "start_day": "331",
+    "stop_year": "2021",
+    "stop_day": "331",
+    "resolution": "Hourly",
+    "equinox": "2",
+    "object2": "04",
+    "precn": "4",
+    "frm1": "1"
+  },
+  "output_file": "data\\trajectory\\sources\\helioweb\\solar_orbiter_2021_331_helios2h_vs_earth.txt",
+  "output_size_bytes": 1863,
+  "output_sha256": "f8041960dfea12531e4ecc2c1f9662faf6dd5e875ccaad79fadae03eab889426",
+  "cwd": "C:\\Users\\tigan\\Desktop\\qng workspace"
+}

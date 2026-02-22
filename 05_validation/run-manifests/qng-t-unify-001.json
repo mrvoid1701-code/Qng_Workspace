@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-UNIFY-001",
+  "claim_id": "QNG-UNIFY-001",
+  "claim_statement": "A single global memory parameter should fit lensing offsets and rotation curves simultaneously under fixed comparability settings.",
+  "priority": "P2",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-082.md",
+  "formula_anchor": "obs_lens ~ lambda*gradSigma and v_obs^2 ~ v_baryon^2 + lambda*history_term",
+  "dataset": "DS-006 lensing + rotation",
+  "method": "Fit one global lambda and compare against baseline and two-parameter reference with same sample/noise/likelihood.",
+  "pass_condition": "Locked gates U1-U4 pass.",
+  "fail_condition": "Any locked unify gate fails.",
+  "parameters": {
+    "lambda_max": 4.0,
+    "grid_coarse": 8000,
+    "grid_fine": 6000
+  },
+  "inputs": [
+    "data/lensing/lensing_ds006_hybrid.csv",
+    "data/rotation/rotation_ds006_rotmod.csv",
+    "scripts/run_qng_t_unify_hysteresis_001.py",
+    "05_validation/pre-registrations/qng-t-unify-001.md"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_unify_hysteresis_001.py --test-id-unify QNG-T-UNIFY-001 --test-id-hyst QNG-T-HYST-001 --dataset-id DS-006 --lensing-csv data/lensing/lensing_ds006_hybrid.csv --rotation-csv data/rotation/rotation_ds006_rotmod.csv --out-dir 05_validation/evidence/artifacts/qng-t-unify-001"
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-unify-001/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-unify-001/one_parameter_comparison.csv",
+    "05_validation/evidence/artifacts/qng-t-unify-001/run-summary.md",
+    "05_validation/evidence/artifacts/qng-t-unify-001/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "One-parameter global law passed U1-U4 with strong AIC/BIC support.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-21"
+  },
+  "reproducibility": {
+    "seed": "not_applicable_grid_search",
+    "code_version": "local-workspace-2026-02-21",
+    "environment": "Python stdlib runner"
+  }
+}

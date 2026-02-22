@@ -1,0 +1,34 @@
+{
+  "timestamp_utc": "2026-02-16T14:42:57Z",
+  "python": "3.10.11",
+  "platform": "Windows-10-10.0.22631-SP0",
+  "test_id": "QNG-T-046",
+  "claim_id": "QNG-C-095",
+  "mode": "qm_qft",
+  "dataset_id": "DS-004",
+  "derivation": "03_math/derivations/qng-c-095.md",
+  "formula_anchor": "N_i(t+1)=U(...,eta_i)",
+  "seed": 3046,
+  "duration_seconds": 0.006827,
+  "dataset_manifest_entry": {
+    "dataset_name": "Ensemble update simulation + operator fitting",
+    "dataset_type": "simulation",
+    "tests": [
+      "QNG-T-046",
+      "QNG-T-047"
+    ],
+    "claims": [
+      "QNG-C-095",
+      "QNG-C-096"
+    ],
+    "highest_priority": "P3",
+    "source_url": "TODO",
+    "license": "TODO",
+    "local_path": "TODO",
+    "version_or_release": "TODO",
+    "last_verified": "YYYY-MM-DD",
+    "notes": "TODO",
+    "dataset_id": "DS-004"
+  },
+  "warnings": []
+}

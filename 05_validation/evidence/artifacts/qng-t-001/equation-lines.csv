@@ -1,0 +1,5 @@
+line_no,content
+1,- chi: straton load (chi = m/c).
+2,persist_i(t+1) = H(Sigma_i(t) - Sigma_min)
+3,Node exists <=> Sigma_i >= Sigma_min
+4,- Verify sign convention against g = -nablaSigma definition.

@@ -1,0 +1,7 @@
+line_no,content
+1,"- Claim statement: Geometry emerges from the evolving graph G = (N, E), not from embedded coordinates."
+2,- chi: straton load (chi = m/c).
+3,"G = (N, E)"
+4,"d_G(i,j) = min_path(i->j) edge_count"
+5,"- Geometry emerges from the evolving graph G = (N, E), not from embedded coordinates."
+6,- Verify sign convention against g = -nablaSigma definition.

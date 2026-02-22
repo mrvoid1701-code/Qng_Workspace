@@ -1,0 +1,44 @@
+QNG C-086b3 scaling run log
+timestamp_utc: 2026-02-21T17:12:57Z
+test_id: QNG-T-041
+dataset_id: DS-005
+flyby_csv: C:\Users\tigan\Desktop\qng workspace\data\trajectory\flyby_ds005_real.csv
+calibration_pass_ids: 
+holdout_pass_ids: JUNO_1,BEPICOLOMBO_1,SOLAR_ORBITER_1
+ridge_lambda: 1.000000e-06
+n_total_rows: 16
+n_calibration: 13
+n_holdout: 3
+holdout_status: fail
+duration_seconds: 0.054958
+
+dataset_manifest_entry:
+{
+  "dataset_name": "Flyby/deep-space telemetry (Galileo, NEAR, Rosetta, Cassini, Juno, Pioneer)",
+  "dataset_type": "spacecraft",
+  "tests": [
+    "QNG-T-010",
+    "QNG-T-011",
+    "QNG-T-025",
+    "QNG-T-028",
+    "QNG-T-041"
+  ],
+  "claims": [
+    "QNG-C-025",
+    "QNG-C-026",
+    "QNG-C-055",
+    "QNG-C-060",
+    "QNG-C-086"
+  ],
+  "highest_priority": "P1",
+  "source_url": "TODO",
+  "license": "TODO",
+  "local_path": "TODO",
+  "version_or_release": "TODO",
+  "last_verified": "YYYY-MM-DD",
+  "notes": "TODO",
+  "dataset_id": "DS-005"
+}
+
+warnings:
+- none

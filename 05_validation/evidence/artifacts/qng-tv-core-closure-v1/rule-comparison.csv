@@ -1,0 +1,3 @@
+rule,tv01_pass_rate,tv02_pass_rate,tv03_pass_rate,tv04_pass_rate,gate_recommendation
+V-A,0.000000,0.000000,0.833333,1.000000,fail
+V-B,1.000000,1.000000,1.000000,1.000000,pass

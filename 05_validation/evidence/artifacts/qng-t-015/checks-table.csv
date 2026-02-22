@@ -1,0 +1,5 @@
+check,value,threshold,status
+n_equations,2,>= 1,pass
+token_coverage,1.000000,>= 0.30,pass
+checks+units+limit,True,True,pass
+consistency_score,1.000000,>= 0.60,pass

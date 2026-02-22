@@ -1,0 +1,7 @@
+gate_id,metric,value,threshold,status
+B1,weak_field_h_norm (max med/p90 across datasets),0.147479 / 0.255004,med<=0.180000 and p90<=0.300000,pass
+B2,"metric_sanity (min eig global, max cond_p90)",0.300471 / 2.128081,min_eig>=0.250000 and cond_p90<=2.500000,pass
+B3,newton_direction (min median/p10 cos_raw),0.992374 / 0.951282,median>=0.950000 and p10>=0.900000,pass
+B4,continuum_stability (max median/p90 drift),0.059885 / 0.178355,median<=0.070000 and p90<=0.200000,pass
+B5,control_separation (min raw-shuffled median gap),1.106037,>=0.900000,pass
+FINAL,decision,pass,B1&B2&B3&B4&B5 all pass on all datasets,pass

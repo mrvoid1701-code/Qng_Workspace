@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-028",
+  "claim_id": "QNG-C-060",
+  "claim_statement": "Flyby and deep-space anomalies follow directional lag acceleration law.",
+  "priority": "P1",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-060.md",
+  "formula_anchor": "a_res ~ -tau*(v.nabla)nablaSigma",
+  "dataset": "Flyby/deep-space telemetry (Galileo, NEAR, Rosetta, Cassini, Juno, Pioneer)",
+  "method": "Fit lag term a_res=-tau(v.nabla)nablaSigma on trajectory residuals vs GR-only baseline.",
+  "pass_condition": "Single tau-band improves fit metrics and residual direction matches prediction across missions.",
+  "fail_condition": "No significant fit improvement or inconsistent/random tau and sign across missions.",
+  "parameters": {
+    "dataset_id": "DS-005",
+    "flyby_csv": "data/trajectory/flyby_ds005_real.csv",
+    "pioneer_csv": "data/trajectory/pioneer_ds005_anchor.csv",
+    "use_pioneer_anchor": true,
+    "seed": 20260220,
+    "n_control_runs": 400,
+    "leave_out_runs": 96,
+    "data_source_mode": "real_published_flyby_plus_pioneer_anchor"
+  },
+  "inputs": [
+    "05_validation/dataset-manifest.json",
+    "data/trajectory/flyby_ds005_real.csv",
+    "data/trajectory/pioneer_ds005_anchor.csv",
+    "data/trajectory/README_ds005_real.md",
+    "scripts/run_qng_t_028_trajectory_real.py"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_028_trajectory_real.py --test-id QNG-T-028 --dataset-id DS-005 --flyby-csv data/trajectory/flyby_ds005_real.csv --use-pioneer-anchor --pioneer-csv data/trajectory/pioneer_ds005_anchor.csv --out-dir \"05_validation/evidence/artifacts/qng-t-028\" --seed 20260220"
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-028/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-028/flyby-derived.csv",
+    "05_validation/evidence/artifacts/qng-t-028/mission-fits.csv",
+    "05_validation/evidence/artifacts/qng-t-028/model-comparison.md",
+    "05_validation/evidence/artifacts/qng-t-028/negative-controls-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-028/robustness-checks.csv",
+    "05_validation/evidence/artifacts/qng-t-028/parameter-stability.md",
+    "05_validation/evidence/artifacts/qng-t-028/trajectory-residuals.png",
+    "05_validation/evidence/artifacts/qng-t-028/directionality.png",
+    "05_validation/evidence/artifacts/qng-t-028/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "Real DS-005 cross-domain rerun (flyby + Pioneer anchor) passes fit, directional, control, robustness, and Pioneer post-correction gates for QNG-T-028.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-21"
+  },
+  "reproducibility": {
+    "seed": 20260220,
+    "code_version": "local-workspace-2026-02-21",
+    "environment": "Python stdlib-only real flyby + pioneer anchor summary pipeline"
+  }
+}

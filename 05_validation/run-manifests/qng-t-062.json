@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-062",
+  "claim_id": "QNG-C-117",
+  "claim_statement": "Priority tests target flyby lag, dark-sector lensing, CMB coherence, and structure datasets.",
+  "priority": "P3",
+  "status": "queued-p3",
+  "derivation_path": "03_math/derivations/qng-c-117.md",
+  "formula_anchor": "Z_total = sum_i w_i * z_i",
+  "dataset": "Symbolic math + dimensional analysis",
+  "method": "Check algebraic consistency, unit consistency and limit behavior against linked derivation.",
+  "pass_condition": "Equation is internally consistent, dimensionally valid and compatible with stated limit cases.",
+  "fail_condition": "Any dimensional contradiction, algebraic inconsistency or failed limit-case reproduction.",
+  "parameters": {
+    "tau": null,
+    "chi": null,
+    "sigma_min": null,
+    "kernel_type": null
+  },
+  "inputs": [],
+  "commands": [],
+  "outputs": [],
+  "decision": {
+    "result": "pending",
+    "note": "",
+    "reviewer": "",
+    "date": "YYYY-MM-DD"
+  },
+  "reproducibility": {
+    "seed": null,
+    "code_version": "TODO",
+    "environment": "TODO"
+  }
+}

@@ -1,0 +1,13 @@
+metric,value
+dataset_id,DS-002
+runs,18
+steps,180
+k_entropy_fit_mean,1.000101
+r2_entropy_mean,0.999634
+omega_monotonic_ratio_mean,1.000000
+entropy_monotonic_ratio_mean,0.954321
+rule_r2_entropy,True
+rule_omega_monotonic,True
+rule_entropy_monotonic,True
+rule_k_positive,True
+pass_recommendation,pass

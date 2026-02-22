@@ -1,0 +1,5 @@
+gate_id,metric,value,threshold,status
+G1,stable_fraction_per_dataset,all>=0.99,>=0.99 each dataset,pass
+G2,cos_metric_vs_newton (median/p10),see dataset_summary.csv,median>=0.95 and p10>=0.90 each dataset,pass
+G3,mag_ratio_metric_vs_newton (median/p90),see dataset_summary.csv,0.50<=median<=3.00 and p90<=3.50 each dataset,pass
+FINAL,decision,pass,G1&G2&G3 all pass on all datasets,pass

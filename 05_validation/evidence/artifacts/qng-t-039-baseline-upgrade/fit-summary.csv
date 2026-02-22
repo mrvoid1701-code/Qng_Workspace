@@ -1,0 +1,19 @@
+metric,value
+rotation_csv,C:\Users\tigan\Desktop\qng workspace\data\rotation\rotation_ds006_rotmod.csv
+n_rotation,3391
+chi2_null_baseline,1.025646e+06
+chi2_flex_baseline,6.008261e+05
+chi2_memory,1.569151e+05
+aic_null_baseline,1.025646e+06
+aic_flex_baseline,6.008281e+05
+aic_memory,1.569171e+05
+bic_null_baseline,1.025646e+06
+bic_flex_baseline,6.008342e+05
+bic_memory,1.569232e+05
+a_flex_baseline,5863.869799
+k_memory,1.000000
+delta_chi2_memory_vs_flex,-4.439109e+05
+delta_aic_memory_vs_flex,-4.439109e+05
+delta_bic_memory_vs_flex,-4.439109e+05
+delta_chi2_per_point_memory_vs_flex,-130.908564
+rule_pass_memory_beats_flex,True

@@ -1,0 +1,444 @@
+﻿<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QNG Mission Workbench</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">QNG</div>
+          <div class="brand-copy">
+            <h1>Mission Workbench</h1>
+            <p id="workspacePath">loading...</p>
+          </div>
+        </div>
+
+        <div class="global-actions">
+          <label class="theme-select-wrap" for="themeSelect">
+            <span>Theme</span>
+            <select id="themeSelect">
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="green-dark">Green Dark</option>
+              <option value="green-deep">Green Deep</option>
+            </select>
+          </label>
+          <button id="lintBtn" class="btn ghost" type="button">Lint</button>
+          <button id="syncBtn" class="btn ghost" type="button">Sync</button>
+          <button id="exportBtn" class="btn primary" type="button">Export Validated</button>
+        </div>
+      </header>
+
+      <nav class="tabs" id="tabNav">
+        <button class="tab-btn active" data-tab="explorer" type="button">Explorer</button>
+        <button class="tab-btn" data-tab="mission" type="button">Mission Control</button>
+        <button class="tab-btn" data-tab="workbench" type="button">Claim Workbench</button>
+        <button class="tab-btn" data-tab="results" type="button">Results</button>
+        <button class="tab-btn" data-tab="exports" type="button">Exports</button>
+        <button class="tab-btn" data-tab="graph" type="button">Graph</button>
+      </nav>
+
+      <main class="tab-stage">
+        <section class="tab-panel active" id="tab-explorer">
+          <div class="explorer-grid">
+            <aside class="panel panel-tree">
+              <div class="panel-head">
+                <h2>Files</h2>
+                <div class="inline-actions">
+                  <input id="treeFilter" type="search" placeholder="Filter files" />
+                  <button id="refreshBtn" class="btn tiny ghost" type="button">Refresh</button>
+                  <button id="newFileBtn" class="btn tiny ghost" type="button">New</button>
+                </div>
+              </div>
+              <div id="treeRoot" class="tree"></div>
+            </aside>
+
+            <section class="panel panel-editor">
+              <div class="panel-head">
+                <h2 id="activeFileTitle">No file selected</h2>
+                <div class="inline-actions">
+                  <span id="dirtyBadge" class="badge hidden">Unsaved</span>
+                  <button id="saveBtn" class="btn tiny primary" type="button" disabled>Save</button>
+                </div>
+              </div>
+              <textarea id="editor" spellcheck="false" placeholder="Select a text file to start editing..."></textarea>
+            </section>
+
+            <section class="panel panel-preview">
+              <div class="panel-head">
+                <h2>Preview</h2>
+              </div>
+              <article id="preview" class="preview"></article>
+            </section>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="tab-mission">
+          <div class="mission-grid">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Mission Summary</h2>
+                <button id="missionRefreshBtn" class="btn tiny ghost" type="button">Refresh</button>
+              </div>
+              <div id="missionCards" class="cards"></div>
+              <div class="subpanel">
+                <h3>Run Journal</h3>
+                <div id="runJournal" class="run-list"></div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <h2>P1 Queue</h2>
+              </div>
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Test</th>
+                      <th>Claim</th>
+                      <th>Status</th>
+                      <th>Next Action</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="p1TableBody"></tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="tab-workbench">
+          <div class="workbench-grid">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Test Matrix</h2>
+                <button id="wbRefreshBtn" class="btn tiny ghost" type="button">Refresh</button>
+              </div>
+
+              <div class="filters">
+                <select id="wbPriority">
+                  <option value="">All priorities</option>
+                  <option value="P1">P1</option>
+                  <option value="P2">P2</option>
+                  <option value="P3">P3</option>
+                </select>
+                <select id="wbStatus">
+                  <option value="">All statuses</option>
+                  <option value="queued-p1">queued-p1</option>
+                  <option value="queued-p2">queued-p2</option>
+                  <option value="queued-p3">queued-p3</option>
+                  <option value="in-progress">in-progress</option>
+                  <option value="pass">pass</option>
+                  <option value="fail">fail</option>
+                  <option value="blocked">blocked</option>
+                </select>
+                <input id="wbSearch" type="search" placeholder="Search by ID, formula, claim" />
+                <button id="wbApplyBtn" class="btn tiny ghost" type="button">Apply</button>
+                <button id="wbResetBtn" class="btn tiny ghost" type="button">Reset</button>
+              </div>
+
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Test ID</th>
+                      <th>Claim ID</th>
+                      <th>Priority</th>
+                      <th>Exec Status</th>
+                      <th>Authenticity</th>
+                      <th>Leakage</th>
+                      <th>Neg Ctrl</th>
+                      <th>Last Run</th>
+                    </tr>
+                  </thead>
+                  <tbody id="wbTableBody"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Selected Test</h2>
+              </div>
+
+              <div id="wbDetail" class="detail">Select a test row to inspect and update.</div>
+
+              <form id="wbForm" class="detail-form hidden">
+                <label>
+                  Test ID
+                  <input id="wbFormTestId" type="text" readonly />
+                </label>
+                <label>
+                  Exec Status
+                  <select id="wbFormStatus">
+                    <option value="queued-p1">queued-p1</option>
+                    <option value="queued-p2">queued-p2</option>
+                    <option value="queued-p3">queued-p3</option>
+                    <option value="in-progress">in-progress</option>
+                    <option value="pass">pass</option>
+                    <option value="fail">fail</option>
+                    <option value="blocked">blocked</option>
+                  </select>
+                </label>
+                <label>
+                  Authenticity
+                  <select id="wbFormAuthenticity">
+                    <option value="gold">gold</option>
+                    <option value="silver">silver</option>
+                    <option value="bronze">bronze</option>
+                  </select>
+                </label>
+                <label>
+                  Leakage Risk
+                  <select id="wbFormLeakageRisk">
+                    <option value="low">low</option>
+                    <option value="med">med</option>
+                    <option value="high">high</option>
+                  </select>
+                </label>
+                <label>
+                  Negative Control
+                  <select id="wbFormNegativeControl">
+                    <option value="none">none</option>
+                    <option value="planned">planned</option>
+                    <option value="done">done</option>
+                  </select>
+                </label>
+                <label>
+                  Last Run
+                  <input id="wbFormLastRun" type="date" />
+                </label>
+                <label>
+                  Metric / Value
+                  <input id="wbFormMetric" type="text" placeholder="AUC=0.93 or TODO" />
+                </label>
+                <label>
+                  Decision Note
+                  <textarea id="wbFormDecision" rows="3" placeholder="Short decision summary"></textarea>
+                </label>
+                <label>
+                  Next Action
+                  <textarea id="wbFormNext" rows="3" placeholder="What is next"></textarea>
+                </label>
+                <div class="inline-actions">
+                  <button id="wbFormSave" class="btn tiny primary" type="submit">Save Update</button>
+                  <button id="wbOpenEvidenceBtn" class="btn tiny ghost" type="button">Open Evidence</button>
+                  <button id="wbOpenDerivationBtn" class="btn tiny ghost" type="button">Open Derivation</button>
+                  <button id="wbOpenClaimBtn" class="btn tiny ghost" type="button">Open Claim</button>
+                </div>
+              </form>
+            </section>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="tab-graph">
+          <div class="graph-grid">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Dependency Graph</h2>
+                <div class="inline-actions">
+                  <select id="graphPriority">
+                    <option value="P1">P1 focus</option>
+                    <option value="P2">P2 focus</option>
+                    <option value="P3">P3 focus</option>
+                    <option value="ALL">All</option>
+                  </select>
+                  <button id="graphResetBtn" class="btn tiny ghost" type="button">Reset Focus</button>
+                  <button id="graphOpenSelectedBtn" class="btn tiny ghost" type="button" disabled>
+                    Open Selected
+                  </button>
+                  <button id="graphRefreshBtn" class="btn tiny ghost" type="button">Refresh</button>
+                </div>
+              </div>
+
+              <div id="graphCounts" class="chip-row"></div>
+              <div class="graph-wrap">
+                <svg id="graphSvg" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid meet"></svg>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Node Detail</h2>
+              </div>
+              <div id="graphDetail" class="detail">Click a node for metadata.</div>
+            </section>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="tab-results">
+          <div class="results-grid">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Test Results</h2>
+                <button id="resultsRefreshBtn" class="btn tiny ghost" type="button">Refresh</button>
+              </div>
+
+              <div class="filters">
+                <select id="resultsPriority">
+                  <option value="">All priorities</option>
+                  <option value="P1">P1</option>
+                  <option value="P2">P2</option>
+                  <option value="P3">P3</option>
+                </select>
+                <select id="resultsStatus">
+                  <option value="">All statuses</option>
+                  <option value="in-progress">in-progress</option>
+                  <option value="pass">pass</option>
+                  <option value="fail">fail</option>
+                  <option value="blocked">blocked</option>
+                  <option value="queued-p1">queued-p1</option>
+                  <option value="queued-p2">queued-p2</option>
+                  <option value="queued-p3">queued-p3</option>
+                </select>
+                <input id="resultsSearch" type="search" placeholder="Search by test, claim, metric, note" />
+                <button id="resultsApplyBtn" class="btn tiny ghost" type="button">Apply</button>
+                <button id="resultsResetBtn" class="btn tiny ghost" type="button">Reset</button>
+              </div>
+
+              <div class="table-wrap">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Test ID</th>
+                      <th>Status</th>
+                      <th>Authenticity</th>
+                      <th>Leakage</th>
+                      <th>Neg Ctrl</th>
+                      <th>Last Run</th>
+                      <th>Artifacts</th>
+                      <th>Metric</th>
+                    </tr>
+                  </thead>
+                  <tbody id="resultsTableBody"></tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Result Detail</h2>
+                <div class="inline-actions">
+                  <button id="resultsExportPackageBtn" class="btn tiny ghost" type="button">Export Package</button>
+                  <button id="resultsDetailToggleBtn" class="btn tiny ghost" type="button">Hide Detail</button>
+                </div>
+              </div>
+              <div class="result-detail-stack">
+                <div id="resultsDetail" class="detail">Select a test result to inspect artifacts and metrics.</div>
+                <div class="subpanel result-metrics-wrap">
+                  <h3>Metrics</h3>
+                  <div class="table-wrap">
+                    <table class="data-table">
+                      <thead>
+                        <tr>
+                          <th>Metric</th>
+                          <th>Value</th>
+                        </tr>
+                      </thead>
+                      <tbody id="resultsMetricsBody"></tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="subpanel result-artifacts-wrap">
+                  <h3>Artifacts</h3>
+                  <div id="resultsSlider" class="artifact-slider hidden">
+                    <div class="artifact-slider-stage">
+                      <button id="resultsSliderPrevBtn" class="btn tiny ghost" type="button" aria-label="Previous image">
+                        Prev
+                      </button>
+                      <img id="resultsSliderImage" class="artifact-slider-image" alt="Artifact preview" />
+                      <button id="resultsSliderNextBtn" class="btn tiny ghost" type="button" aria-label="Next image">
+                        Next
+                      </button>
+                    </div>
+                    <div class="artifact-slider-meta">
+                      <span id="resultsSliderCounter" class="chip">0 / 0</span>
+                      <span id="resultsSliderCaption" class="tree-muted">Select an artifact image.</span>
+                    </div>
+                  </div>
+                  <div id="resultsArtifacts" class="artifact-grid"></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="tab-exports">
+          <div class="exports-grid">
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Export Center</h2>
+                <button id="exportsRefreshBtn" class="btn tiny ghost" type="button">Refresh</button>
+              </div>
+              <div id="exportsGate" class="detail">Loading export readiness...</div>
+
+              <div class="subpanel">
+                <h3>Quick Actions</h3>
+                <div class="inline-actions export-actions">
+                  <button id="exportsValidatedBtn" class="btn tiny primary" type="button">Export Validated (Gold)</button>
+                  <button id="exportsDossierBtn" class="btn tiny ghost" type="button">Export Full Dossier</button>
+                  <label class="check-inline" for="exportsDossierMdOnly">
+                    <input id="exportsDossierMdOnly" type="checkbox" />
+                    <span>MD only</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="subpanel">
+                <h3>Claim/Test Package</h3>
+                <div class="filters export-form">
+                  <select id="exportsPackageMode">
+                    <option value="single">Selected Gold test</option>
+                    <option value="all-gold">All Gold tests</option>
+                  </select>
+                  <select id="exportsPackageTest"></select>
+                  <label class="check-inline" for="exportsPackageMdOnly">
+                    <input id="exportsPackageMdOnly" type="checkbox" />
+                    <span>MD only</span>
+                  </label>
+                  <button id="exportsPackageBtn" class="btn tiny ghost" type="button">Export Package</button>
+                </div>
+                <div id="exportsPackageHint" class="tree-muted">Choose one Gold test package or export all Gold packages.</div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-head">
+                <h2>Recent Exports</h2>
+              </div>
+              <div id="exportsFiles" class="run-list"></div>
+              <div class="subpanel">
+                <h3>Last Export Output</h3>
+                <pre id="exportsOutput" class="exports-output"></pre>
+              </div>
+            </section>
+          </div>
+        </section>
+      </main>
+
+      <footer class="statusbar">
+        <span id="statusText">Ready</span>
+        <span class="hint">Ctrl+S save, Ctrl+1..6 switch tabs</span>
+      </footer>
+
+      <section class="console panel">
+        <div class="panel-head">
+          <h2>System Output</h2>
+          <button id="clearConsoleBtn" class="btn tiny ghost" type="button">Clear</button>
+        </div>
+        <pre id="systemOutput"></pre>
+      </section>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

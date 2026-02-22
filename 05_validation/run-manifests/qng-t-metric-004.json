@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-METRIC-004",
+  "claim_id": "QNG-CORE-METRIC-V3-CONTROL",
+  "claim_statement": "Metric v3 remains discriminative under label-permutation and graph-rewire anti-leak controls.",
+  "priority": "P3",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-core-emergent-metric-v1.md",
+  "formula_anchor": "anti_leak_controls(metric_v3): label_permutation, graph_rewire, graph_rewire+label_permutation",
+  "dataset": "Cosmological toy simulation / synthetic catalogs",
+  "method": "Run supplementary anti-leak controls with fixed thresholds and compare control medians against collapse threshold.",
+  "pass_condition": "All control medians are below 0.55 without changing metric-lock-v3 or D1-D4 gates.",
+  "fail_condition": "Any anti-leak control median is >= 0.55.",
+  "parameters": {
+    "dataset_id": "DS-002",
+    "samples": 72,
+    "seed": 3401,
+    "rewire_runs": 12,
+    "control_threshold": 0.55
+  },
+  "inputs": [
+    "01_notes/metric/metric-lock-v3.md",
+    "05_validation/pre-registrations/qng-metric-hardening-v3.md",
+    "05_validation/pre-registrations/qng-metric-anti-leak-v1.md",
+    "scripts/run_qng_metric_anti_leak_v1.py",
+    "05_validation/dataset-manifest.json"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_metric_anti_leak_v1.py --dataset-id DS-002 --samples 72 --seed 3401 --rewire-runs 12 --out-dir \"05_validation/evidence/artifacts/qng-metric-anti-leak-v1\""
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-metric-anti-leak-v1/control_summary.csv",
+    "05_validation/evidence/artifacts/qng-metric-anti-leak-v1/rewire_runs.csv",
+    "05_validation/evidence/artifacts/qng-metric-anti-leak-v1/config.json",
+    "05_validation/evidence/artifacts/qng-metric-anti-leak-v1/run-log.txt",
+    "05_validation/evidence/artifacts/qng-metric-anti-leak-v1/artifact-hashes.json"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "Label permutation and graph-rewire controls collapse as expected; no lock/gate edits required.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-21"
+  },
+  "reproducibility": {
+    "seed": 3401,
+    "code_version": "local-workspace-2026-02-21",
+    "environment": "Python stdlib anti-leak control runner"
+  }
+}
+

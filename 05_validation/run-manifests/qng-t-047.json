@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-047",
+  "claim_id": "QNG-C-096",
+  "claim_statement": "QFT-like dynamics emerge from coherent node excitations with Klein-Gordon-type propagation.",
+  "priority": "P3",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-096.md",
+  "formula_anchor": "Phi(x,t)=sum_i phi_i(t) delta(x-x_i)",
+  "dataset": "Ensemble update simulation + operator fitting",
+  "method": "Estimate effective operators from stochastic update ensembles and compare with claimed emergent forms.",
+  "pass_condition": "Controlled regime reproduces claimed Schrodinger-like / Klein-Gordon-like effective behavior.",
+  "fail_condition": "No stable emergent operator class consistent with the stated claim.",
+  "parameters": {
+    "dataset_id": "DS-004",
+    "mode": "qm_qft",
+    "seed": 3047,
+    "derivation": "03_math/derivations/qng-c-096.md",
+    "formula_anchor": "Phi(x,t)=sum_i phi_i(t) delta(x-x_i)"
+  },
+  "inputs": [
+    "05_validation/dataset-manifest.json",
+    "03_math/derivations/qng-c-096.md",
+    "scripts/run_qng_p3_symbolic_validation.py"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_p3_symbolic_validation.py --test-id QNG-T-047 --claim-id QNG-C-096 --mode qm_qft --dataset-id DS-004 --derivation \"03_math/derivations/qng-c-096.md\" --formula-anchor \"Phi(x,t)=sum_i phi_i(t) delta(x-x_i)\" --seed 3047 --out-dir \"05_validation/evidence/artifacts/qng-t-047\""
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-047/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-047/checks-table.csv",
+    "05_validation/evidence/artifacts/qng-t-047/parameter-stability.md",
+    "05_validation/evidence/artifacts/qng-t-047/ensemble-series.csv",
+    "05_validation/evidence/artifacts/qng-t-047/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "QM/QFT ensemble diagnostics pass delta-fit, signature, and stability gates for emergent operators.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-16"
+  },
+  "reproducibility": {
+    "seed": 3047,
+    "code_version": "local-workspace-2026-02-16",
+    "environment": "Python stdlib symbolic/synthetic mode (qm_qft)"
+  }
+}

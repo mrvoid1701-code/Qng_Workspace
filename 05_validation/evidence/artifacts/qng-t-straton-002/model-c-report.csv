@@ -1,0 +1,2 @@
+best_beta_grid,best_alpha_c_grid,ll_c_grid,bic_c_grid,best_beta_continuous,best_alpha_c_continuous,ll_c_continuous,bic_c_continuous,beta_grid_vs_continuous_diff,delta_bic_c_vs_a,delta_bic_c_vs_b,delta_ll_c_vs_b,model_c_preferred_over_b,bic_penalty_k2_vs_k1,beta_ci_lo_95,beta_ci_hi_95
+0.1,-0.0004862668857298382,-2523.8174418937992,5052.7647825025215,0.10000044257962573,-0.0004862652660307766,-2523.818482104929,5052.766862924781,4.42579625725692e-07,430.2482643295307,-5100.943965942317,2551.754457649889,True,2.5649493574615367,0.1,2.95

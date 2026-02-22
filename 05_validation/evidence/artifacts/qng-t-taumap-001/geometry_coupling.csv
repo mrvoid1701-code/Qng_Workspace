@@ -1,0 +1,4 @@
+metric,value
+pearson_abs_aobs_vs_abs_feature,0.978480
+perm_p_value,0.044000
+n_permutations,5000

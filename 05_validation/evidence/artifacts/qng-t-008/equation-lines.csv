@@ -1,0 +1,7 @@
+line_no,content
+1,- Claim statement: Core CTM relation is T_C = t_R + tau(chi) + nablaSigma times tau.
+2,- chi: straton load (chi = m/c).
+3,T_C = t_R + v*tau(chi) + deltaSigma
+4,DeltaL = v*tau(chi)
+5,- Core CTM relation is T_C = t_R + tau(chi) + nablaSigma times tau.
+6,- Verify sign convention against g = -nablaSigma definition.

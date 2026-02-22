@@ -1,0 +1,4 @@
+line_no,content
+1,- chi: straton load (chi = m/c).
+2,rho_chi(t) = integral_{-inf}^{t} chi(t')*K(t-t') dt'
+3,- Verify sign convention against g = -nablaSigma definition.

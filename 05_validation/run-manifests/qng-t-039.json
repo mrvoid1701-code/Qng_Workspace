@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-039",
+  "claim_id": "QNG-C-082",
+  "claim_statement": "Rotation-curve excess can be explained by historical Sigma lag from prior mass distributions.",
+  "priority": "P1",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-082.md",
+  "formula_anchor": "v_c(r)^2/r = g_baryon(r) + g_memory(r)",
+  "dataset": "Lensing + rotation datasets (Hubble, JWST, Euclid, Bullet-like clusters, RC catalogs)",
+  "method": "Fit Sigma-memory kernel model and compare against GR+particle-DM baseline.",
+  "pass_condition": "Offsets/profiles reproduced with stable memory parameters and consistent cross-dataset behavior.",
+  "fail_condition": "Model cannot reproduce offsets/profiles or needs unstable/nonphysical parameter tuning.",
+  "parameters": {
+    "dataset_id": "DS-006",
+    "strict_input": true,
+    "primary_seed": 142,
+    "primary_lensing_csv": "data/lensing/cluster_offsets_real.csv",
+    "rotation_csv": "data/rotation/rotation_ds006_rotmod.csv",
+    "primary_negative_control_runs": 48,
+    "primary_negative_control_seed": 197,
+    "robustness_sweep_lensing_csv": [
+      "data/lensing/cluster_offsets_psz2_strict3.csv",
+      "data/lensing/cluster_offsets_psz2_strict4.csv",
+      "data/lensing/cluster_offsets_psz2_strict5.csv",
+      "data/lensing/cluster_offsets_spt_anchor.csv"
+    ],
+    "robustness_sweep_seeds": [
+      143,
+      144,
+      145,
+      146
+    ],
+    "robustness_negative_control_runs": 24,
+    "robustness_negative_control_seeds": [
+      198,
+      200,
+      201,
+      199
+    ]
+  },
+  "inputs": [
+    "data/lensing/cluster_offsets_real.csv",
+    "data/lensing/cluster_offsets_psz2_strict3.csv",
+    "data/lensing/cluster_offsets_psz2_strict4.csv",
+    "data/lensing/cluster_offsets_psz2_strict5.csv",
+    "data/lensing/cluster_offsets_spt_anchor.csv",
+    "data/rotation/rotation_ds006_rotmod.csv",
+    "05_validation/dataset-manifest.json",
+    "scripts/run_qng_t_027_lensing_dark.py",
+    "scripts/run_qng_t_027_negative_controls.py",
+    "scripts/run_qng_t_039_rotation_baseline_upgrade.py",
+    "scripts/lint_workspace.py"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\lint_workspace.py",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_027_lensing_dark.py --test-id QNG-T-039 --dataset-id DS-006 --model-baseline gr_dm --model-memory qng_sigma_memory --lensing-csv \"data/lensing/cluster_offsets_real.csv\" --rotation-csv \"data/rotation/rotation_ds006_rotmod.csv\" --out-dir \"05_validation/evidence/artifacts/qng-t-039-direct\" --seed 142 --strict-input",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_027_negative_controls.py --lensing-csv \"data/lensing/cluster_offsets_real.csv\" --rotation-csv \"data/rotation/rotation_ds006_rotmod.csv\" --out-dir \"05_validation/evidence/artifacts/qng-t-039-direct\" --n-runs 48 --seed 197",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_027_lensing_dark.py --test-id QNG-T-039 --dataset-id DS-006 --model-baseline gr_dm --model-memory qng_sigma_memory --lensing-csv \"data/lensing/cluster_offsets_psz2_strict3.csv\" --rotation-csv \"data/rotation/rotation_ds006_rotmod.csv\" --out-dir \"05_validation/evidence/artifacts/qng-t-039-psz2-strict3\" --seed 143 --strict-input",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_027_lensing_dark.py --test-id QNG-T-039 --dataset-id DS-006 --model-baseline gr_dm --model-memory qng_sigma_memory --lensing-csv \"data/lensing/cluster_offsets_psz2_strict4.csv\" --rotation-csv \"data/rotation/rotation_ds006_rotmod.csv\" --out-dir \"05_validation/evidence/artifacts/qng-t-039-psz2-strict4\" --seed 144 --strict-input",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_027_lensing_dark.py --test-id QNG-T-039 --dataset-id DS-006 --model-baseline gr_dm --model-memory qng_sigma_memory --lensing-csv \"data/lensing/cluster_offsets_psz2_strict5.csv\" --rotation-csv \"data/rotation/rotation_ds006_rotmod.csv\" --out-dir \"05_validation/evidence/artifacts/qng-t-039-psz2-strict5\" --seed 145 --strict-input",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_027_lensing_dark.py --test-id QNG-T-039 --dataset-id DS-006 --model-baseline gr_dm --model-memory qng_sigma_memory --lensing-csv \"data/lensing/cluster_offsets_spt_anchor.csv\" --rotation-csv \"data/rotation/rotation_ds006_rotmod.csv\" --out-dir \"05_validation/evidence/artifacts/qng-t-039-spt-anchor\" --seed 146 --strict-input",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_027_negative_controls.py --lensing-csv \"data/lensing/cluster_offsets_psz2_strict3.csv\" --rotation-csv \"data/rotation/rotation_ds006_rotmod.csv\" --out-dir \"05_validation/evidence/artifacts/qng-t-039-psz2-strict3\" --n-runs 24 --seed 198",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_027_negative_controls.py --lensing-csv \"data/lensing/cluster_offsets_psz2_strict4.csv\" --rotation-csv \"data/rotation/rotation_ds006_rotmod.csv\" --out-dir \"05_validation/evidence/artifacts/qng-t-039-psz2-strict4\" --n-runs 24 --seed 200",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_027_negative_controls.py --lensing-csv \"data/lensing/cluster_offsets_psz2_strict5.csv\" --rotation-csv \"data/rotation/rotation_ds006_rotmod.csv\" --out-dir \"05_validation/evidence/artifacts/qng-t-039-psz2-strict5\" --n-runs 24 --seed 201",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_027_negative_controls.py --lensing-csv \"data/lensing/cluster_offsets_spt_anchor.csv\" --rotation-csv \"data/rotation/rotation_ds006_rotmod.csv\" --out-dir \"05_validation/evidence/artifacts/qng-t-039-spt-anchor\" --n-runs 24 --seed 199",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_039_rotation_baseline_upgrade.py --rotation-csv \"data/rotation/rotation_ds006_rotmod.csv\" --out-dir \"05_validation/evidence/artifacts/qng-t-039-baseline-upgrade\" --seed 20260221"
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-039-direct/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-039-direct/model-comparison.md",
+    "05_validation/evidence/artifacts/qng-t-039-direct/robustness-checks.md",
+    "05_validation/evidence/artifacts/qng-t-039-direct/robustness-checks.csv",
+    "05_validation/evidence/artifacts/qng-t-039-direct/parameter-stability.md",
+    "05_validation/evidence/artifacts/qng-t-039-direct/lensing-offsets.png",
+    "05_validation/evidence/artifacts/qng-t-039-direct/rotation-overlay.png",
+    "05_validation/evidence/artifacts/qng-t-039-direct/negative-controls-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-039-direct/negative-controls-runs.csv",
+    "05_validation/evidence/artifacts/qng-t-039-direct/negative-controls.md",
+    "05_validation/evidence/artifacts/qng-t-039-direct/promotion-gold.md",
+    "05_validation/evidence/artifacts/qng-t-039-direct/run-log.txt",
+    "05_validation/evidence/artifacts/qng-t-039-psz2-strict3/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-039-psz2-strict3/negative-controls-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-039-psz2-strict4/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-039-psz2-strict4/negative-controls-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-039-psz2-strict5/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-039-psz2-strict5/negative-controls-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-039-spt-anchor/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-039-spt-anchor/negative-controls-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-039-baseline-upgrade/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-039-baseline-upgrade/model-comparison.md",
+    "05_validation/evidence/artifacts/qng-t-039-baseline-upgrade/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "Direct-catalog MCXC x PSZ2 run passes with BIC support, same-likelihood comparability checks, leave-out and outlier-trim robustness, threshold sweeps, independent SPT anchor replication, and a rotation equal-flexibility baseline-upgrade check. Gold retained.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-21"
+  },
+  "reproducibility": {
+    "seed": 142,
+    "code_version": "local-workspace-2026-02-17",
+    "environment": "Python stdlib + local DS-006 direct catalogs (MCXC/PSZ2/SPT) + Rotmod rotation data"
+  }
+}

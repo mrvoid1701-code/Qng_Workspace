@@ -1,0 +1,16 @@
+metric,value
+subset_fraction,0.250000
+subset_count_each,64
+relaxed_obs_median,0.296762
+merging_obs_median,2.089370
+relaxed_pred_median,0.296762
+merging_pred_median,2.089370
+relaxed_obs_std,0.140674
+merging_obs_std,0.334314
+relaxed_pred_std,0.140674
+merging_pred_std,0.334314
+dispersion_ratio_obs,2.376508
+dispersion_ratio_pred,2.376508
+dispersion_alignment_log,0.000000
+relaxed_mae,0.000000
+merging_mae,0.000000

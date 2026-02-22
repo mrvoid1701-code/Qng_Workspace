@@ -1,0 +1,22 @@
+{
+  "source": "NASA HELIOWeb",
+  "url": "https://omniweb.gsfc.nasa.gov/cgi/models/helios1.cgi",
+  "http_status": 200,
+  "content_type": "text/html",
+  "payload": {
+    "activity": "retrieve",
+    "object": "37",
+    "coordinate": "1",
+    "start_year": "2020",
+    "start_day": "101",
+    "stop_year": "2020",
+    "stop_day": "101",
+    "resolution": "001",
+    "equinox": "2",
+    "object2": "04"
+  },
+  "output_file": "data\\trajectory\\sources\\helioweb\\bepicolombo_2020_101_helios1_vs_earth.txt",
+  "output_size_bytes": 564,
+  "output_sha256": "8987e5f39146c2d7a36cbcb6d24613f00058d46d61fd1c58d896e58d1c7b1d85",
+  "cwd": "C:\\Users\\tigan\\Desktop\\qng workspace"
+}

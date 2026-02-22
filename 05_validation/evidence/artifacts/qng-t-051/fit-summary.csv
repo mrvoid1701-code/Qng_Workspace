@@ -1,0 +1,11 @@
+metric,value
+dataset_id,DS-002
+runs,18
+steps,180
+r2_scale_mean,0.998836
+r2_scale_cv,1.362912e-04
+mape_scale_mean,0.008347
+rule_r2_mean,True
+rule_mape,True
+rule_r2_cv,True
+pass_recommendation,pass

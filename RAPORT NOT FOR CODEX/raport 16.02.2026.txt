@@ -1,0 +1,60 @@
+Raport riguros (16 februarie 2026)
+
+  1. Ai creat și stabilizat workspace-ul QNG în C:\Users\tigan\Desktop\qng workspace, cu structură completă (00_source … 07_exports), scripturi și UI local.
+  2. Ai completat registrul de claims și ai trecut claimurile în format de lucru consistent (inclusiv completări în engleză pentru câmpurile de claim/workbench).
+  3. Ai extins zona matematică (03_math) cu derivări/simboluri pentru loturile P1/P2/P3.
+  4. Ai pus în funcțiune pipeline-ul de validare (05_validation) cu:
+
+  - results-log.md
+  - evidence/*.md
+  - run-manifests/*.json
+  - dataset-manifest.(md/json)
+  - artefacte în 05_validation/evidence/artifacts/...
+
+  5. Ai importat și folosit date pentru DS-006 (Rotmod + proxy Planck lensing) și ai rulat teste stricte pe ele.
+  6. Ai executat și trecut testele:
+
+  - Lensing/Dark strict-input: QNG-T-027, QNG-T-039, QNG-T-012, QNG-T-017, QNG-T-018, QNG-T-019.
+  - N-body synthetic: QNG-T-029.
+  - Cosmo/CMB: QNG-T-050, QNG-T-051, QNG-T-052, QNG-T-053.
+  - Trajectory synthetic (DS-005): QNG-T-028, QNG-T-041, QNG-T-010, QNG-T-011, QNG-T-025.
+  - Timing/Wave synthetic (DS-008): QNG-T-042, QNG-T-043, QNG-T-031, QNG-T-032, QNG-T-037.
+
+  7. Ai adăugat două runnere noi:
+
+  - scripts/run_qng_t_028_trajectory.py
+  - scripts/run_qng_t_042_timing_wave.py
+
+  8. Ai reparat un bug real în runnerul de traiectorie (fit_per_mission call mismatch) în scripts/run_qng_t_028_trajectory.py.
+  9. Ai modernizat UI și fluxul de vizualizare rezultate:
+
+  - tab-uri Explorer/Mission/Workbench/Results/Graph
+  - slider pentru imagini artefact
+  - buton Hide/Show pentru Result Detail
+  - layout ajustat pentru acces la artefacte
+  - sync status în Mission Control.
+
+  10. Ai făcut upgrade de guvernanță pe workflow (cerința ta nouă):
+
+  - câmpuri obligatorii în per-test log: authenticity, leakage_risk, negative_control
+  - regulă de release: Export Validated blocat dacă există pass non-Gold.
+  - implementare în backend/UI/export/lint:
+      - scripts/workspace_ui.py
+      - ui/index.html
+      - ui/app.js
+      - scripts/export_validated_writing.py
+      - scripts/lint_workspace.py
+      - compatibilitate generatori (generate_results_log.py, generate_run_manifests.py, fill_claim_sections.py).
+
+  Stare actuală verificată
+
+  - Claims: 118
+  - Tests: 53
+  - Exec status: 21 pass, 32 queued-p3
+  - Pass authenticity breakdown: 0 gold, 10 silver, 11 bronze
+  - Release gate: blocked (corect, conform regulii Gold-only)
+  - lint_workspace.py: ok
+
+  Observație critică
+
+  - Testele DS-005/DS-008 sunt marcate clar ca synthetic diagnostics (utile pentru dezvoltare/filtrare internă), nu publication-grade fără rerun pe date reale.

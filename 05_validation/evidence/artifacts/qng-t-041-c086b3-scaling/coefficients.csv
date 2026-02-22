@@ -1,0 +1,7 @@
+coefficient,beta,std_error,z_approx
+intercept,6.079488,9.381292e-07,6.480438e+06
+log_v_perigee,-5.990773,3.822959e-07,-1.567052e+07
+log_altitude,-34.881671,1.383960e-06,-2.520425e+07
+log_grad_g_proxy,-11.289131,5.022636e-07,-2.247651e+07
+log_geom_proxy,15.932134,1.019903e-06,1.562122e+07
+log_non_grav_proxy,0.000000,5222.113684,0.000000

@@ -1,0 +1,49 @@
+﻿{
+    "schema_version":  "1.0",
+    "test_id":  "QNG-T-050",
+    "claim_id":  "QNG-C-103",
+    "claim_statement":  "Cosmic expansion corresponds to proliferation of stable nodes and relational complexity.",
+    "priority":  "P2",
+    "status":  "pass",
+    "derivation_path":  "03_math/derivations/qng-c-103.md",
+    "formula_anchor":  "a(t) proportional to |N(t)|^(1/3)",
+    "dataset":  "Cosmological toy simulation / synthetic catalogs",
+    "method":  "Simulate node-growth + memory dynamics and test scaling/signature predictions.",
+    "pass_condition":  "Predicted scaling/signatures appear across reasonable parameter bands without ad-hoc tuning.",
+    "fail_condition":  "Signatures absent or only appear under nonphysical/extreme parameter tuning.",
+    "parameters":  {
+                       "steps":  180,
+                       "runs":  18,
+                       "seed_base":  410,
+                       "sigma_min":  0.34,
+                       "base_growth":  0.0105,
+                       "memory_weight":  0.22,
+                       "noise_scale":  1
+                   },
+    "inputs":  [
+                   "05_validation/dataset-manifest.json",
+                   "scripts/run_qng_p2_cosmo_suite.py"
+               ],
+    "commands":  [
+                     ".\\.venv\\Scripts\\python.exe scripts\\run_qng_p2_cosmo_suite.py --dataset-id DS-002 --steps 180 --runs 18 --seed 410 --sigma-min 0.34 --base-growth 0.0105 --memory-weight 0.22 --noise-scale 1.0 --artifact-root \"05_validation/evidence/artifacts\""
+                 ],
+    "outputs":  [
+                    "05_validation/evidence/artifacts/qng-t-050/fit-summary.csv",
+                    "05_validation/evidence/artifacts/qng-t-050/robustness-runs.csv",
+                    "05_validation/evidence/artifacts/qng-t-050/parameter-stability.md",
+                    "05_validation/evidence/artifacts/qng-t-050/expansion-complexity.png",
+                    "05_validation/evidence/artifacts/qng-t-050/simulation-timeseries.csv",
+                    "05_validation/evidence/artifacts/qng-t-050/run-log.txt"
+                ],
+    "decision":  {
+                     "result":  "pass",
+                     "note":  "DS-002 suite confirms expansion-proliferation-complexity signatures with robust seed stability.",
+                     "reviewer":  "workspace-ui",
+                     "date":  "2026-02-16"
+                 },
+    "reproducibility":  {
+                            "seed":  410,
+                            "code_version":  "local-workspace-2026-02-16",
+                            "environment":  "Python stdlib toy-simulation suite"
+                        }
+}

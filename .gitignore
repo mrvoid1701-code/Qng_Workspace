@@ -1,0 +1,8 @@
+.venv/
+__pycache__/
+*.pyc
+07_exports/
+01_notes/page_text/
+01_notes/source_text.md
+
+# Ignore large planck_lensing parts\ndata/lensing/planck_lensing_4096_r3_part/

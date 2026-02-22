@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-052",
+  "claim_id": "QNG-C-107",
+  "claim_statement": "Structure formation proceeds by coherent accretion along stability gradients.",
+  "priority": "P2",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-107.md",
+  "formula_anchor": "J = -mu_s * nablaSigma",
+  "dataset": "Cosmological toy simulation / synthetic catalogs",
+  "method": "Simulate node-growth + memory dynamics and test scaling/signature predictions.",
+  "pass_condition": "Predicted scaling/signatures appear across reasonable parameter bands without ad-hoc tuning.",
+  "fail_condition": "Signatures absent or only appear under nonphysical/extreme parameter tuning.",
+  "parameters": {
+    "ell_min": 30,
+    "ell_max": 2500,
+    "baseline_window": 121,
+    "memory_window": 21,
+    "peak_min_distance": 60,
+    "prominence_frac": 0.02
+  },
+  "inputs": [
+    "data/cmb/planck/COM_PowerSpect_CMB-TT-full_R3.01.txt",
+    "data/cmb/planck/COM_PowerSpect_CMB-TE-full_R3.01.txt",
+    "data/cmb/planck/COM_PowerSpect_CMB-EE-full_R3.01.txt",
+    "data/cmb/planck/qng_v3_unified_best_fit.txt"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_052_cmb_coherence.py --dataset-id DS-002 --tt-file \"data/cmb/planck/COM_PowerSpect_CMB-TT-full_R3.01.txt\" --te-file \"data/cmb/planck/COM_PowerSpect_CMB-TE-full_R3.01.txt\" --ee-file \"data/cmb/planck/COM_PowerSpect_CMB-EE-full_R3.01.txt\" --out-dir \"05_validation/evidence/artifacts/qng-t-052\" --ell-min 30 --ell-max 2500 --baseline-window 121 --memory-window 21 --peak-min-distance 60 --prominence-frac 0.02"
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-052/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-052/parameter-stability.md",
+    "05_validation/evidence/artifacts/qng-t-052/peak-table.csv",
+    "05_validation/evidence/artifacts/qng-t-052/tt-spectrum.png",
+    "05_validation/evidence/artifacts/qng-t-052/te-spectrum.png",
+    "05_validation/evidence/artifacts/qng-t-052/ee-spectrum.png",
+    "05_validation/evidence/artifacts/qng-t-052/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "Planck CMB diagnostics pass all registered gates for the current DS-002 scope.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-16"
+  },
+  "reproducibility": {
+    "seed": null,
+    "code_version": "local-workspace-2026-02-16",
+    "environment": "Python stdlib runner (no external fitting dependencies)"
+  }
+}

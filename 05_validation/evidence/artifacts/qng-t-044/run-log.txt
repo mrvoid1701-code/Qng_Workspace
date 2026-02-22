@@ -1,0 +1,36 @@
+{
+  "timestamp_utc": "2026-02-16T14:42:57Z",
+  "python": "3.10.11",
+  "platform": "Windows-10-10.0.22631-SP0",
+  "test_id": "QNG-T-044",
+  "claim_id": "QNG-C-093",
+  "mode": "gr_limit",
+  "dataset_id": "DS-001",
+  "derivation": "03_math/derivations/qng-c-093.md",
+  "formula_anchor": "a_total = -nablaSigma - tau*(v.nabla)nablaSigma + O(tau^2)",
+  "seed": 3044,
+  "duration_seconds": 0.001406,
+  "dataset_manifest_entry": {
+    "dataset_name": "Analytical + symbolic limit analysis",
+    "dataset_type": "analytical",
+    "tests": [
+      "QNG-T-038",
+      "QNG-T-044",
+      "QNG-T-045"
+    ],
+    "claims": [
+      "QNG-C-081",
+      "QNG-C-093",
+      "QNG-C-094"
+    ],
+    "highest_priority": "P3",
+    "source_url": "TODO",
+    "license": "TODO",
+    "local_path": "TODO",
+    "version_or_release": "TODO",
+    "last_verified": "YYYY-MM-DD",
+    "notes": "TODO",
+    "dataset_id": "DS-001"
+  },
+  "warnings": []
+}

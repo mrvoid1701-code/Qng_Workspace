@@ -1,0 +1,22 @@
+{
+  "source": "NASA HELIOWeb",
+  "url": "https://omniweb.gsfc.nasa.gov/cgi/models/helios1.cgi",
+  "http_status": 200,
+  "content_type": "text/html",
+  "payload": {
+    "activity": "retrieve",
+    "object": "46",
+    "coordinate": "1",
+    "start_year": "2021",
+    "start_day": "331",
+    "stop_year": "2021",
+    "stop_day": "331",
+    "resolution": "001",
+    "equinox": "2",
+    "object2": ""
+  },
+  "output_file": "data\\trajectory\\sources\\helioweb\\solar_orbiter_2021_331_helios1.txt",
+  "output_size_bytes": 526,
+  "output_sha256": "31b1db6cf7d0b3aa3f8d4b661bb4ca8e6368c73d729daf26cdf92d0be03b126a",
+  "cwd": "C:\\Users\\tigan\\Desktop\\qng workspace"
+}

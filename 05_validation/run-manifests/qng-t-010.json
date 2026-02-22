@@ -1,0 +1,49 @@
+{
+    "schema_version": "1.0",
+    "test_id": "QNG-T-010",
+    "claim_id": "QNG-C-025",
+    "claim_statement": "Stratonic lag produces residual gravitational forces in dynamic systems.",
+    "priority": "P2",
+    "status": "pass",
+    "derivation_path": "03_math/derivations/qng-c-025.md",
+    "formula_anchor": "a_res ~ -tau * (v . nabla) nablaSigma",
+    "dataset": "Flyby/deep-space telemetry (Galileo, NEAR, Rosetta, Cassini, Juno, Pioneer)",
+    "method": "Fit lag term a_res=-tau(v.nabla)nablaSigma on trajectory residuals vs GR-only baseline.",
+    "pass_condition": "Single tau-band improves fit metrics and residual direction matches prediction across missions.",
+    "fail_condition": "No significant fit improvement or inconsistent/random tau and sign across missions.",
+    "parameters": {
+        "dataset_id": "DS-005",
+        "seed": 852,
+        "tau_truth": 2.8e-09,
+        "noise_sigma": 5.4e-10,
+        "points_per_mission": 120,
+        "missions": "Galileo,NEAR,Rosetta,Cassini,Juno,Pioneer"
+    },
+    "inputs": [
+        "05_validation/dataset-manifest.json",
+        "scripts/run_qng_t_028_trajectory.py"
+    ],
+    "commands": [
+        ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_028_trajectory.py --dataset-id DS-005 --seed 852 --tau-truth 2.8e-09 --noise-sigma 5.4e-10 --out-dir \"05_validation/evidence/artifacts/qng-t-010\""
+    ],
+    "outputs": [
+        "05_validation/evidence/artifacts/qng-t-010/fit-summary.csv",
+        "05_validation/evidence/artifacts/qng-t-010/telemetry-sample.csv",
+        "05_validation/evidence/artifacts/qng-t-010/mission-fits.csv",
+        "05_validation/evidence/artifacts/qng-t-010/parameter-stability.md",
+        "05_validation/evidence/artifacts/qng-t-010/trajectory-residuals.png",
+        "05_validation/evidence/artifacts/qng-t-010/directionality.png",
+        "05_validation/evidence/artifacts/qng-t-010/run-log.txt"
+    ],
+    "decision": {
+        "result": "pass",
+        "note": "DS-005 synthetic trajectory diagnostics pass all registered gates; keep synthetic caveat until real mission telemetry ingestion.",
+        "reviewer": "workspace-ui",
+        "date": "2026-02-16"
+    },
+    "reproducibility": {
+        "seed": 852,
+        "code_version": "local-workspace-2026-02-16",
+        "environment": "Python stdlib-only synthetic trajectory pipeline"
+    }
+}

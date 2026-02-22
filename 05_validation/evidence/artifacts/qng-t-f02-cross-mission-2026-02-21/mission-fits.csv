@@ -1,0 +1,4 @@
+mission_id,n_points,tau_hat,directionality,amp_median
+Galileo,2,-0.005295,0.500000,4.621745e-06
+NEAR,1,0.002579,1.000000,1.976037e-05
+Rosetta,1,0.001820,1.000000,2.563878e-06

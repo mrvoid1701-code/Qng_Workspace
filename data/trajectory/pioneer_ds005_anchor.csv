@@ -1,0 +1,4 @@
+record_id,mission_id,interval_start,interval_end,r_au_mean,v_km_s,a_obs_m_s2,a_sigma_m_s2,bias_corr_m_s2,source_ref,notes
+P10_EQ23,Pioneer10,1987-01-03,1998-07-22,55.0,12.2,7.84e-10,1.6e-11,0.0,Anderson2002_PRD_Eq23,Experimental value from Eq.23 in 10^-8 cm/s^2 converted to m/s^2.
+P11_EQ24,Pioneer11,1987-01-05,1990-10-01,27.0,11.6,8.55e-10,1.5e-11,0.0,Anderson2002_PRD_Eq24,Experimental value from Eq.24 in 10^-8 cm/s^2 converted to m/s^2.
+P10P11_FINAL,Pioneer10+11,1987-01-03,1998-07-22,48.1,12.0,8.74e-10,1.33e-10,0.90e-10,Anderson2002_PRD_Eq54_TableII,Final value with total systematic uncertainty and reported net bias estimate.

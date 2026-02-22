@@ -1,0 +1,50 @@
+﻿[
+    {
+        "url":  "https://link.springer.com/article/10.1007/s11214-021-00800-3",
+        "file":  "springer_s11214-021-00800-3_article.html",
+        "bytes":  710169,
+        "sha256":  "1F4A5DEE8E9A6CCF771B4E09AF16333E3F5BC0BD3D3022B88F22801276BC3191"
+    },
+    {
+        "url":  "https://link.springer.com/content/pdf/10.1007/s11214-021-00800-3.pdf",
+        "file":  "springer_s11214-021-00800-3.pdf",
+        "bytes":  5837106,
+        "sha256":  "D011D4E6DCC1F1B4106F924E206BD0B8E327A642192F598A5DD065488F55EEB9"
+    },
+    {
+        "url":  "https://link.springer.com/article/10.1007/s11214-021-00861-4",
+        "file":  "springer_s11214-021-00861-4_article.html",
+        "bytes":  925104,
+        "sha256":  "3A70A9C87FB948F36B534035C0C62F6801A5FADD5EC2570E79885A2E708437F9"
+    },
+    {
+        "url":  "https://link.springer.com/content/pdf/10.1007/s11214-021-00861-4.pdf",
+        "file":  "springer_s11214-021-00861-4.pdf",
+        "bytes":  10002039,
+        "sha256":  "07CC65E5D1C86E8BFF4E9973C9203B7DF796D69FF17C61C0F24E6D4DBE4F8100"
+    },
+    {
+        "url":  "https://www.cosmos.esa.int/web/bepicolombo-flyby/earth-flyby",
+        "file":  "esa_bepicolombo_earth_flyby_page.html",
+        "bytes":  240020,
+        "sha256":  "A1E3E5814B4CB26F4C493ADC92D5B7ACDCD27F5C6C003481579624D351BDD946"
+    },
+    {
+        "url":  "https://arxiv.org/pdf/2201.05107.pdf",
+        "file":  "arxiv_2201.05107.pdf",
+        "bytes":  921190,
+        "sha256":  "E870A7F9EBBC76F62A61E91270F9B2DD5DCE7015E2FC6729FAE6E00BBB717D19"
+    },
+    {
+        "url":  "https://archives.esac.esa.int/psa/",
+        "file":  "esa_psa_homepage.html",
+        "bytes":  2518,
+        "sha256":  "24BD58E99DFB8BEFA639B20370B16A5CA5BE981E86207930CDA322B27BF3F30A"
+    },
+    {
+        "url":  "https://archives.esac.esa.int/psa/ftp/",
+        "file":  "esa_psa_ftp_index.html",
+        "bytes":  4858,
+        "sha256":  "864175985743D53D159634825C0425E696F76E6723CDD4603B203CB3038ABBCF"
+    }
+]

@@ -1,0 +1,17 @@
+metric,value
+n_orientation_runs,400
+orientation_median_delta_chi2,-3013.520769
+orientation_ratio_vs_real,0.257381
+orientation_p_value,0.022500
+n_segment_runs,400
+segment_median_delta_chi2,-1.979034e+04
+segment_ratio_vs_real,0.845134
+segment_p_value,0.050000
+control_mean_abs_accel,5.062381e-07
+control_mean_sigma,6.101904e-07
+control_mean_abs_over_sigma,0.400000
+n_controls,10
+rule_pass_orientation_shuffle,True
+rule_pass_segment_shuffle,True
+rule_pass_control_zero,True
+negative_control_pass,True

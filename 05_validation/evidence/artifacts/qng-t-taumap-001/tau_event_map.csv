@@ -1,0 +1,5 @@
+pass_id,mission_id,event_date,data_domain,feature_x_abs,a_obs_abs,sigma,tau_hat,tau_hat_abs
+GALILEO_1,Galileo,1990-12-08,flyby_real,0.001325,7.338714e-06,1.497697e-07,-0.005537,0.005537
+GALILEO_2,Galileo,1992-12-08,flyby_real,0.003176,9.690936e-06,2.106725e-06,0.003051,0.003051
+NEAR_1,NEAR,1998-01-23,flyby_real,0.009623,2.481307e-05,2.396508e-07,0.002579,0.002579
+ROSETTA_1,Rosetta,2005-03-04,flyby_real,0.001249,2.271812e-06,3.786353e-08,0.001820,0.001820

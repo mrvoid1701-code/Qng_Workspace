@@ -1,0 +1,244 @@
+[
+  {
+    "dataset_name": "Analytical + symbolic limit analysis",
+    "dataset_type": "analytical",
+    "tests": [
+      "QNG-T-038",
+      "QNG-T-044",
+      "QNG-T-045"
+    ],
+    "claims": [
+      "QNG-C-081",
+      "QNG-C-093",
+      "QNG-C-094"
+    ],
+    "highest_priority": "P3",
+    "source_url": "https://doi.org/10.1103/PhysRevLett.100.091102; internal source files in data/trajectory/sources/",
+    "license": "Derived numeric summaries from published literature; see source papers",
+    "local_path": "data/trajectory/flyby_ds005_real.csv",
+    "version_or_release": "ds005-real-v1",
+    "last_verified": "2026-02-17",
+    "notes": "Published pass-level Earth-flyby residual compilation (Anderson 2008 + Meessen 2017) with Pioneer deep-space anchor file from Anderson 2002 summary equations/tables. Non-gravitational correction columns are explicit and currently zeroed where source tables provide residual-only summaries.",
+    "dataset_id": "DS-001"
+  },
+  {
+    "dataset_name": "Cosmological toy simulation / synthetic catalogs",
+    "dataset_type": "simulation",
+    "tests": [
+      "QNG-T-050",
+      "QNG-T-051",
+      "QNG-T-052",
+      "QNG-T-053",
+      "QNG-T-METRIC-001",
+      "QNG-T-METRIC-002",
+      "QNG-T-METRIC-003",
+      "QNG-T-METRIC-004"
+    ],
+    "claims": [
+      "QNG-C-103",
+      "QNG-C-104",
+      "QNG-C-107",
+      "QNG-C-111",
+      "QNG-CORE-METRIC-V1",
+      "QNG-CORE-METRIC-V2",
+      "QNG-CORE-METRIC-V3",
+      "QNG-CORE-METRIC-V3-CONTROL"
+    ],
+    "highest_priority": "P2",
+    "source_url": "TODO",
+    "license": "TODO",
+    "local_path": "TODO",
+    "version_or_release": "TODO",
+    "last_verified": "YYYY-MM-DD",
+    "notes": "TODO",
+    "dataset_id": "DS-002"
+  },
+  {
+    "dataset_name": "Discrete/N-body simulation environment",
+    "dataset_type": "simulation",
+    "tests": [
+      "QNG-T-029"
+    ],
+    "claims": [
+      "QNG-C-062"
+    ],
+    "highest_priority": "P1",
+    "source_url": "TODO",
+    "license": "TODO",
+    "local_path": "TODO",
+    "version_or_release": "TODO",
+    "last_verified": "YYYY-MM-DD",
+    "notes": "TODO",
+    "dataset_id": "DS-003"
+  },
+  {
+    "dataset_name": "Ensemble update simulation + operator fitting",
+    "dataset_type": "simulation",
+    "tests": [
+      "QNG-T-046",
+      "QNG-T-047"
+    ],
+    "claims": [
+      "QNG-C-095",
+      "QNG-C-096"
+    ],
+    "highest_priority": "P3",
+    "source_url": "TODO",
+    "license": "TODO",
+    "local_path": "TODO",
+    "version_or_release": "TODO",
+    "last_verified": "YYYY-MM-DD",
+    "notes": "TODO",
+    "dataset_id": "DS-004"
+  },
+  {
+    "dataset_name": "Flyby/deep-space telemetry (Galileo, NEAR, Rosetta, Cassini, Juno, Pioneer)",
+    "dataset_type": "spacecraft",
+    "tests": [
+      "QNG-T-010",
+      "QNG-T-011",
+      "QNG-T-025",
+      "QNG-T-028",
+      "QNG-T-041"
+    ],
+    "claims": [
+      "QNG-C-025",
+      "QNG-C-026",
+      "QNG-C-055",
+      "QNG-C-060",
+      "QNG-C-086"
+    ],
+    "highest_priority": "P1",
+    "source_url": "TODO",
+    "license": "TODO",
+    "local_path": "TODO",
+    "version_or_release": "TODO",
+    "last_verified": "YYYY-MM-DD",
+    "notes": "TODO",
+    "dataset_id": "DS-005"
+  },
+  {
+    "dataset_name": "Lensing + rotation datasets (Hubble, JWST, Euclid, Bullet-like clusters, RC catalogs)",
+    "dataset_type": "astronomy",
+    "tests": [
+      "QNG-T-012",
+      "QNG-T-017",
+      "QNG-T-018",
+      "QNG-T-019",
+      "QNG-T-027",
+      "QNG-T-039"
+    ],
+    "claims": [
+      "QNG-C-027",
+      "QNG-C-037",
+      "QNG-C-038",
+      "QNG-C-040",
+      "QNG-C-058",
+      "QNG-C-082"
+    ],
+    "highest_priority": "P1",
+    "source_url": "TODO",
+    "license": "TODO",
+    "local_path": "TODO",
+    "version_or_release": "TODO",
+    "last_verified": "YYYY-MM-DD",
+    "notes": "TODO",
+    "dataset_id": "DS-006"
+  },
+  {
+    "dataset_name": "Symbolic math + dimensional analysis",
+    "dataset_type": "other",
+    "tests": [
+      "QNG-T-001",
+      "QNG-T-002",
+      "QNG-T-003",
+      "QNG-T-004",
+      "QNG-T-005",
+      "QNG-T-006",
+      "QNG-T-007",
+      "QNG-T-008",
+      "QNG-T-009",
+      "QNG-T-013",
+      "QNG-T-014",
+      "QNG-T-015",
+      "QNG-T-016",
+      "QNG-T-020",
+      "QNG-T-021",
+      "QNG-T-022",
+      "QNG-T-023",
+      "QNG-T-024",
+      "QNG-T-026",
+      "QNG-T-030",
+      "QNG-T-033",
+      "QNG-T-034",
+      "QNG-T-035",
+      "QNG-T-036",
+      "QNG-T-040",
+      "QNG-T-048",
+      "QNG-T-049"
+    ],
+    "claims": [
+      "QNG-C-004",
+      "QNG-C-007",
+      "QNG-C-012",
+      "QNG-C-014",
+      "QNG-C-018",
+      "QNG-C-019",
+      "QNG-C-020",
+      "QNG-C-021",
+      "QNG-C-024",
+      "QNG-C-029",
+      "QNG-C-032",
+      "QNG-C-033",
+      "QNG-C-036",
+      "QNG-C-042",
+      "QNG-C-044",
+      "QNG-C-048",
+      "QNG-C-051",
+      "QNG-C-054",
+      "QNG-C-056",
+      "QNG-C-064",
+      "QNG-C-072",
+      "QNG-C-073",
+      "QNG-C-074",
+      "QNG-C-077",
+      "QNG-C-085",
+      "QNG-C-100",
+      "QNG-C-101"
+    ],
+    "highest_priority": "P3",
+    "source_url": "TODO",
+    "license": "TODO",
+    "local_path": "TODO",
+    "version_or_release": "TODO",
+    "last_verified": "YYYY-MM-DD",
+    "notes": "TODO",
+    "dataset_id": "DS-007"
+  },
+  {
+    "dataset_name": "Timing/waveforms (GPS residuals, binary pulsars, LIGO/Virgo/KAGRA)",
+    "dataset_type": "timing-waveform",
+    "tests": [
+      "QNG-T-031",
+      "QNG-T-032",
+      "QNG-T-037",
+      "QNG-T-042",
+      "QNG-T-043"
+    ],
+    "claims": [
+      "QNG-C-066",
+      "QNG-C-069",
+      "QNG-C-078",
+      "QNG-C-090",
+      "QNG-C-091"
+    ],
+    "highest_priority": "P1",
+    "source_url": "TODO",
+    "license": "TODO",
+    "local_path": "TODO",
+    "version_or_release": "TODO",
+    "last_verified": "YYYY-MM-DD",
+    "notes": "TODO",
+    "dataset_id": "DS-008"
+  }
+]

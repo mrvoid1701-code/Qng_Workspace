@@ -1,0 +1,4 @@
+pass_id,mission_id,trajectory_class,amp_obs_m_s2,amp_pred_m_s2,log_error,ratio_pred_over_obs,altitude_km,v_perigee_m_s,grad_g_proxy,geom_proxy,non_grav_proxy_m_s2,is_control
+JUNO_1,Juno,flyby,1.000000e-12,1.904316e-04,19.064803,1.904316e+08,566.588700,1.492393e+04,1.190070e-06,0.197760,0.000000,False
+BEPICOLOMBO_1,BepiColombo,flyby,1.000000e-12,0.000000,-1.000488,0.367700,1.268599e+04,7595.331679,5.752903e-08,0.032794,0.000000,False
+SOLAR_ORBITER_1,SolarOrbiter,flyby,1.000000e-12,1.178824e-04,18.585198,1.178824e+08,458.768700,1.513571e+04,1.247266e-06,0.116417,0.000000,False

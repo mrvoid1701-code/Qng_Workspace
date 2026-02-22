@@ -1,0 +1,4 @@
+source_file,pass_id,year,day,hour_at_min_distance,min_distance_au,rad_au_at_min_distance,se_lat_deg_at_min_distance,se_lon_deg_at_min_distance,n_hour_rows
+data/trajectory/sources/helioweb/bepicolombo_2020_101_helios2h_vs_earth.txt,BEPICOLOMBO_1,2020,101,4,0.000100,-0.000000,0.001000,0.008000,24
+data/trajectory/sources/helioweb/juno_2013_282_helios2h_vs_earth.txt,JUNO_1,2013,282,19,0.000100,-0.000100,-0.002000,359.995000,24
+data/trajectory/sources/helioweb/solar_orbiter_2021_331_helios2h_vs_earth.txt,SOLAR_ORBITER_1,2021,331,5,0.000100,0.000100,0.002000,359.995000,24

@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-041",
+  "claim_id": "QNG-C-086",
+  "claim_statement": "C-086a directional near-perigee signature is primary; C-086b v1 is frozen fail history; C-086b2 and C-086b3 are locked numeric branches under disjoint holdouts.",
+  "priority": "P1",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-086.md",
+  "formula_anchor": "C-086a sign(a_res_parallel)=sign(v.gradSigma); C-086b2 band audit + C-086b3 covariate scaling audit under disjoint holdouts",
+  "dataset": "Flyby/deep-space telemetry (Galileo, NEAR, Rosetta, Cassini, Juno, Pioneer)",
+  "method": "Fit lag term a_res=-tau(v.nabla)nablaSigma on trajectory residuals vs GR-only baseline with fixed controls and report-only amplitude audit.",
+  "pass_condition": "Directional/sign and robustness gates pass on same-sample weighted likelihood.",
+  "fail_condition": "Directional gates fail after controls, or consistency collapses under robustness checks.",
+  "parameters": {
+    "dataset_id": "DS-005",
+    "flyby_csv": "data/trajectory/flyby_ds005_real.csv",
+    "pioneer_csv": "data/trajectory/pioneer_ds005_anchor.csv",
+    "use_pioneer_anchor": true,
+    "amp_gate_mode": "report-only",
+    "seed": 20260222,
+    "n_control_runs": 400,
+    "leave_out_runs": 96,
+    "data_source_mode": "real_published_flyby_plus_pioneer_anchor"
+  },
+  "inputs": [
+    "05_validation/dataset-manifest.json",
+    "data/trajectory/flyby_ds005_real.csv",
+    "data/trajectory/pioneer_ds005_anchor.csv",
+    "data/trajectory/README_ds005_real.md",
+    "05_validation/pre-registrations/qng-c-086b-amplitude-band-v1.md",
+    "05_validation/pre-registrations/qng-c-086b-amplitude-band-v2.md",
+    "05_validation/pre-registrations/qng-c-086b2-holdout-v1.md",
+    "05_validation/pre-registrations/qng-c-086b3-scaling-law-v1.md",
+    "05_validation/pre-registrations/qng-c-086b3-scaling-law-v1-run-record-2026-02-21.md",
+    "05_validation/pre-registrations/holdout-registry.csv",
+    "data/trajectory/flyby_ds005_holdout_from_horizons.csv",
+    "scripts/run_qng_t_028_trajectory_real.py",
+    "scripts/run_qng_t_041_c086b3_scaling.py",
+    "scripts/ingest_ds005_holdout_from_horizons.py"
+  ],
+  "commands": [
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_028_trajectory_real.py --test-id QNG-T-041 --dataset-id DS-005 --flyby-csv data/trajectory/flyby_ds005_real.csv --use-pioneer-anchor --pioneer-csv data/trajectory/pioneer_ds005_anchor.csv --amp-gate-mode report-only --out-dir \"05_validation/evidence/artifacts/qng-t-041\" --seed 20260222",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_028_trajectory_real.py --test-id QNG-T-041 --dataset-id DS-005 --flyby-csv data/trajectory/flyby_ds005_real.csv --use-pioneer-anchor --pioneer-csv data/trajectory/pioneer_ds005_anchor.csv --flyby-pass-ids CASSINI_1,MESSENGER_1,EPOXI_1 --pioneer-record-ids P10_EQ23,P11_EQ24 --amp-gate-mode strict --amp-band-min 1e-6 --amp-band-max 6e-6 --out-dir \"05_validation/evidence/artifacts/qng-t-041-c086b2-holdout-h1\" --seed 20260241",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_028_trajectory_real.py --test-id QNG-T-041 --dataset-id DS-005 --flyby-csv data/trajectory/flyby_ds005_real.csv --use-pioneer-anchor --pioneer-csv data/trajectory/pioneer_ds005_anchor.csv --flyby-pass-ids CASSINI_1,MESSENGER_1,EPOXI_2 --pioneer-record-ids P10_EQ23,P10P11_FINAL --amp-gate-mode strict --amp-band-min 1e-6 --amp-band-max 6e-6 --out-dir \"05_validation/evidence/artifacts/qng-t-041-c086b2-holdout-h2\" --seed 20260242",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_028_trajectory_real.py --test-id QNG-T-041 --dataset-id DS-005 --flyby-csv data/trajectory/flyby_ds005_real.csv --use-pioneer-anchor --pioneer-csv data/trajectory/pioneer_ds005_anchor.csv --flyby-pass-ids CASSINI_1,MESSENGER_1,EPOXI_5 --pioneer-record-ids P11_EQ24,P10P11_FINAL --amp-gate-mode strict --amp-band-min 1e-6 --amp-band-max 6e-6 --out-dir \"05_validation/evidence/artifacts/qng-t-041-c086b2-holdout-h3\" --seed 20260243",
+    ".\\.venv\\Scripts\\python.exe scripts\\ingest_ds005_holdout_from_horizons.py --apply",
+    ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_041_c086b3_scaling.py --test-id QNG-T-041 --dataset-id DS-005 --flyby-csv data/trajectory/flyby_ds005_real.csv --holdout-pass-ids JUNO_1,BEPICOLOMBO_1,SOLAR_ORBITER_1 --out-dir \"05_validation/evidence/artifacts/qng-t-041-c086b3-scaling\""
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-041/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-041/flyby-derived.csv",
+    "05_validation/evidence/artifacts/qng-t-041/mission-fits.csv",
+    "05_validation/evidence/artifacts/qng-t-041/model-comparison.md",
+    "05_validation/evidence/artifacts/qng-t-041/negative-controls-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-041/robustness-checks.csv",
+    "05_validation/evidence/artifacts/qng-t-041/parameter-stability.md",
+    "05_validation/evidence/artifacts/qng-t-041/trajectory-residuals.png",
+    "05_validation/evidence/artifacts/qng-t-041/directionality.png",
+    "05_validation/evidence/artifacts/qng-t-041/run-log.txt",
+    "05_validation/evidence/artifacts/qng-t-041-strict-batch-summary.md",
+    "05_validation/evidence/artifacts/qng-t-041-c086b-v2-summary.md",
+    "05_validation/evidence/artifacts/qng-t-041-c086b2-holdout-summary.md",
+    "05_validation/evidence/artifacts/qng-t-041-c086b3-scaling/fit-summary.csv",
+    "05_validation/evidence/artifacts/qng-t-041-c086b3-scaling/scaling-model.md",
+    "05_validation/evidence/artifacts/qng-t-041-c086b3-scaling/coefficients.csv",
+    "05_validation/evidence/artifacts/qng-t-041-c086b3-scaling/calibration-predictions.csv",
+    "05_validation/evidence/artifacts/qng-t-041-c086b3-scaling/holdout-predictions.csv",
+    "05_validation/evidence/artifacts/qng-t-041-c086b3-scaling/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "Directional C-086a gates pass on real cross-domain DS-005 run; C-086b v1 is frozen fail history; C-086b2 holdout fails; C-086b3 holdout is now executed (not blocked) and currently fails under provisional Horizons-ingested holdout residual placeholders.",
+    "reviewer": "workspace-ui",
+    "date": "2026-02-21"
+  },
+  "reproducibility": {
+    "seed": 20260222,
+    "code_version": "local-workspace-2026-02-21",
+    "environment": "Python stdlib-only real flyby + pioneer anchor summary pipeline"
+  }
+}

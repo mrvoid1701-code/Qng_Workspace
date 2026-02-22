@@ -1,0 +1,55 @@
+{
+    "schema_version": "1.0",
+    "test_id": "QNG-T-029",
+    "claim_id": "QNG-C-062",
+    "claim_statement": "N-body simulations with memory kernels should reproduce QNG-consistent structure signatures.",
+    "priority": "P1",
+    "status": "pass",
+    "derivation_path": "03_math/derivations/qng-c-062.md",
+    "formula_anchor": "Sigma^n = sum_{m<=n} w_{n-m}*chi^m, w_r~exp(-r*dt/tau)",
+    "dataset": "Discrete/N-body simulation environment",
+    "method": "Run memory-kernel N-body and compare morphology/kinematics against instantaneous-gravity baseline.",
+    "pass_condition": "Kernel model improves target metrics (offsets, halo evolution, structure coherence) reproducibly.",
+    "fail_condition": "No metric improvement or unstable dynamics under realistic parameter ranges.",
+    "parameters": {
+        "dataset_id": "DS-003",
+        "runs": 12,
+        "steps": 160,
+        "particles": 140,
+        "seed": 730,
+        "dt": 0.06,
+        "noise_scale": 1.0,
+        "truth_tau": 1.3,
+        "truth_k": 0.85,
+        "tau_grid": "0.45,0.70,1.00,1.30,1.70,2.20",
+        "k_grid": "0.25,0.45,0.65,0.85,1.05",
+        "g_base_grid": "0.82,0.94,1.06,1.18"
+    },
+    "inputs": [
+        "05_validation/dataset-manifest.json",
+        "scripts/run_qng_t_029_simulation_nbody.py"
+    ],
+    "commands": [
+        ".\\.venv\\Scripts\\python.exe scripts\\run_qng_t_029_simulation_nbody.py --dataset-id DS-003 --runs 12 --steps 160 --particles 140 --seed 730 --dt 0.06 --noise-scale 1.0 --truth-tau 1.30 --truth-k 0.85 --out-dir \"05_validation/evidence/artifacts/qng-t-029\""
+    ],
+    "outputs": [
+        "05_validation/evidence/artifacts/qng-t-029/fit-summary.csv",
+        "05_validation/evidence/artifacts/qng-t-029/robustness-runs.csv",
+        "05_validation/evidence/artifacts/qng-t-029/parameter-stability.md",
+        "05_validation/evidence/artifacts/qng-t-029/profile-overlay.png",
+        "05_validation/evidence/artifacts/qng-t-029/centroid-offset.png",
+        "05_validation/evidence/artifacts/qng-t-029/simulation-timeseries.csv",
+        "05_validation/evidence/artifacts/qng-t-029/run-log.txt"
+    ],
+    "decision": {
+        "result": "pass",
+        "note": "DS-003 synthetic N-body suite shows strong memory-kernel improvement vs instantaneous baseline across all registered gates for QNG-T-029.",
+        "reviewer": "workspace-ui",
+        "date": "2026-02-16"
+    },
+    "reproducibility": {
+        "seed": 730,
+        "code_version": "local-workspace-2026-02-16",
+        "environment": "Python stdlib-only simulation pipeline"
+    }
+}

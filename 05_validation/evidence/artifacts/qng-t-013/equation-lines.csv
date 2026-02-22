@@ -1,0 +1,6 @@
+line_no,content
+1,"- Claim statement: Universe dynamics follow discrete updates N_i(t+1) = U(N_i, neighbors, eta_i)."
+2,- chi: straton load (chi = m/c).
+3,"N_i(t+1) = U(N_i(t), {N_j(t)}_{j in Adj(i)}, eta_i(t))"
+4,"- Universe dynamics follow discrete updates N_i(t+1) = U(N_i, neighbors, eta_i)."
+5,- Verify sign convention against g = -nablaSigma definition.

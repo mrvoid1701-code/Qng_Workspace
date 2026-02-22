@@ -1,0 +1,7 @@
+line_no,content
+1,"- Claim statement: CTM base relation is T_C = t_R + DeltaL(chi,v) with DeltaL = v tau(chi)."
+2,- chi: straton load (chi = m/c).
+3,T_C = t_R + DeltaL
+4,DeltaL = v*tau(chi)
+5,"- CTM base relation is T_C = t_R + DeltaL(chi,v) with DeltaL = v tau(chi)."
+6,- Verify sign convention against g = -nablaSigma definition.

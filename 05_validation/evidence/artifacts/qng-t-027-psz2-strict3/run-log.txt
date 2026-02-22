@@ -1,0 +1,44 @@
+QNG-T-027 run log
+timestamp_utc: 2026-02-16T16:53:40Z
+python: 3.10.11
+platform: Windows-10-10.0.22631-SP0
+dataset_id: DS-006
+baseline_model: gr_dm
+memory_model: qng_sigma_memory
+seed: 42
+subsamples: 24
+fraction: 0.8
+data_source_mode: provided
+lensing_points: 485
+rotation_points: 3391
+duration_seconds: 47.388
+
+dataset_manifest_entry:
+{
+  "dataset_name": "Lensing + rotation datasets (Hubble, JWST, Euclid, Bullet-like clusters, RC catalogs)",
+  "dataset_type": "astronomy",
+  "tests": [
+    "QNG-T-012",
+    "QNG-T-017",
+    "QNG-T-018",
+    "QNG-T-019",
+    "QNG-T-027",
+    "QNG-T-039"
+  ],
+  "claims": [
+    "QNG-C-027",
+    "QNG-C-037",
+    "QNG-C-038",
+    "QNG-C-040",
+    "QNG-C-058",
+    "QNG-C-082"
+  ],
+  "highest_priority": "P1",
+  "source_url": "https://astroweb.cwru.edu/SPARC/ ; https://pla.esac.esa.int/",
+  "license": "SPARC/Rotmod public tables + Planck Legacy Archive terms",
+  "local_path": "data/rotation/rotation_ds006_rotmod.csv ; data/lensing/lensing_ds006_hybrid.csv ; data/lensing/clowe_2006_table2_positions.csv ; data/lensing/spt_sz_table4_catalog.csv ; data/lensing/mcxc_full_from_cds.dat ; data/lensing/mcxc_ReadMe.txt ; data/lensing/mcxc_catalog_full.csv ; data/lensing/psz2_full_from_cds.dat ; data/lensing/psz2_ReadMe.txt ; data/lensing/psz2_catalog_full.csv ; data/lensing/cluster_offsets_real.csv ; C:/Users/tigan/Downloads/e01_TM8_0.200_0.400keV_3arcm_c947_AIT_sum_Ratesmap.fits ; C:/Users/tigan/Downloads/e01_TM8_0.400_0.600keV_3arcm_c947_AIT_sum_Ratesmap.fits ; C:/Users/tigan/Downloads/GALAXY CLUSTERS DISCOVERED VIA THE SUNYAEV-ZEL’DOVICH EFFECT IN THE.pdf ; C:/Users/tigan/Downloads/xarv the mcxc1007.1916.pdf",
+  "version_or_release": "Rotmod_LTG + DS006 hybrid lensing v1 + MCXC full catalog (1743) + Planck PSZ2 catalog (1653) + strict direct MCXCxPSZ2 offset pairs (527)",
+  "last_verified": "2026-02-16",
+  "notes": "Current DS-006 state includes: (1) Rotmod real rotation data, (2) MCXC full CDS ingestion to data/lensing/mcxc_catalog_full.csv (1743 systems), (3) Planck PSZ2 CDS ingestion to data/lensing/psz2_catalog_full.csv (1653 systems), and (4) strict direct MCXCxPSZ2 offset build to data/lensing/cluster_offsets_real.csv (527 matched pairs after dropping id matches with separation >5 arcmin via --strict-id-sep). Strict-input + permutation negative controls pass for QNG-T-027 on this enlarged direct set. Gold/publication-grade status remains blocked pending external bias audits and additional independent lensing-center catalogs.",
+  "dataset_id": "DS-006"
+}

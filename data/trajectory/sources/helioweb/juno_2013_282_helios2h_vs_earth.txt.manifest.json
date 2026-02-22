@@ -1,0 +1,24 @@
+{
+  "source": "NASA HELIOWeb",
+  "url": "https://omniweb.gsfc.nasa.gov/cgi/models/helios2_h.cgi",
+  "http_status": 200,
+  "content_type": "text/html",
+  "payload": {
+    "activity": "retrieve",
+    "object": "39",
+    "coordinate": "1",
+    "start_year": "2013",
+    "start_day": "282",
+    "stop_year": "2013",
+    "stop_day": "282",
+    "resolution": "Hourly",
+    "equinox": "2",
+    "object2": "04",
+    "precn": "4",
+    "frm1": "1"
+  },
+  "output_file": "data\\trajectory\\sources\\helioweb\\juno_2013_282_helios2h_vs_earth.txt",
+  "output_size_bytes": 1854,
+  "output_sha256": "f274806f2c20152803ef834544b6b0d9021e3f572647caf45352162b06280f47",
+  "cwd": "C:\\Users\\tigan\\Desktop\\qng workspace"
+}
