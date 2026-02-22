@@ -163,6 +163,55 @@
 - [ ] `QNG-T-V03` - Voyager directional acceleration test.
 - [ ] `QNG-T-V01` - Voyager residual acceleration detection under strict systematics.
 
+## Priority P10 - Trajectory & Lag Tests (Claims-Derived)
+
+Teste derivate din claims `predicted`/`testable` care nu au inca un test formal.
+
+- [ ] `QNG-T-C055` - Verifica ca magnitudinea anomaliei directionale depinde de orientarea vitezei relativ la gradientii campului Sigma (`C-055`). Dataset: DS-005. Gates: corelatie directionala semnificativa, collapse la shuffle control.
+- [ ] `QNG-T-C067` - Verifica absenta anomaliei lag pe traiectorii simetrice/circulare — control negativ formal (`C-067`). Dataset: DS-005 (segmente circulare/simetrice). Gates: delta_v aproape de zero, fara semnal directional.
+- [ ] `QNG-T-C068` - Testa deviatii GPS de la GR cand intarzierea tau devine relevanta (`C-068`). Dataset: date publice GPS residuals. Gates: abatere masurabile vs GR pur.
+- [ ] `QNG-T-C070` - Testa ca probele cu chi ridicat in miscare directionata arata anomalii de acceleratie masurabile (`C-070`). Dataset: DS-005 (misiuni cu masa mare + viteza directionala). Gates: corelatie chi x v x grad_Sigma, collapse la control.
+- [ ] `QNG-T-C026` - Test formal: anomaliile Pioneer si flyby sunt consecinte de ordinul intai ale dinamicii lag (`C-026`). Derivare: `03_math/derivations/qng-c-026.md`. Gates: reproductibilitate cantitativa a magnitudinii anomaliei cu un singur parametru tau.
+
+## Priority P11 - Lensing & Dark Sector Tests (Claims-Derived)
+
+- [ ] `QNG-T-C059` - Verifica ca clusterele post-merger pastreaza semnaturi de memorie in hartile de lensing (`C-059`). Dataset: DS-006 (clustere post-merger vs relaxate). Gates: offset baryon-lensing mai mare la clustere recent fuzionate, collapse la permutare.
+- [ ] `QNG-T-C083` - Verifica ca profilurile halo difera pentru galaxii cu masa vizibila similara dar istorii diferite (`C-083`). Dataset: DS-006 (galaxii izolate vs cu interactiuni recente). Gates: diferenta semnificativa statistica a profilului Sigma, control negativ curat.
+- [ ] `QNG-T-C087` - Verifica predictia de lensing: centre deplasate, arcuri asimetrice, pattern-uri temporale (`C-087`). Dataset: DS-006. Gates: offset sistematic centru lensing vs centru barionic, asimetrie arcuri masurabile.
+- [ ] `QNG-T-C089` - Verifica ca structurile cu colaps intarziat arata offset-uri baryon-dark si mismatch-uri de viteza (`C-089`). Dataset: DS-006 + date velocitate clustere. Gates: corelatie offset cu varsta/historia clusterului.
+- [ ] `QNG-T-C040` - Verifica ca halourile dark sunt dependente de timp si pot disipa prin relaxare pe termen lung (`C-040`). Derivare: `03_math/derivations/qng-c-040.md`. Dataset: DS-006 (clustere la redshift diferit). Gates: trend temporal al amplitudinii Sigma-lag.
+- [ ] `QNG-T-C061` - Verifica ca halourile pot disparea in sisteme izolate vechi fara influx nou de materie (`C-061`). Dataset: DS-006 (galaxii izolate vechi). Gates: amplitudine Sigma-lag mai mica la sisteme izolate vechi vs tinere/active.
+- [ ] `QNG-T-C088` - Verifica ca galaxiile mai vechi arata semne de decay al haloului dark pe masura ce relaxarea progreseaza (`C-088`). Dataset: DS-006 (sample pe redshift). Gates: corelatie negativa varsta galaxie vs amplitudine halo.
+- [ ] `QNG-T-C075` - Verifica ca gradientii flux-straton pot mapa regiuni gravitationale ascunse fara particule noi (`C-075`). Dataset: DS-006. Gates: predictie Sigma-gradient reproduce pozitia massei dark observate mai bine decat modelul particule.
+
+## Priority P12 - Precision Astrophysics Tests (Claims-Derived)
+
+- [ ] `QNG-T-C090` - Testa ca timing pulsari include intarzieri TOA oscilatorii si ecouri de memorie (`C-090`). Derivare: `03_math/derivations/qng-c-090.md`. Dataset: date publice IPTA/PPTA pulsar timing. Gates: reziduu TOA corelat cu gradientul Sigma local, control negativ curat.
+- [ ] `QNG-T-C091` - Testa ca propagarea undelor gravitationale depinde de tau(chi) si ringdown-ul arata distorsiuni care scala cu asimetria masei (`C-091`). Derivare: `03_math/derivations/qng-c-091.md`. Dataset: cataloage LIGO/VIRGO (GW events). Gates: reziduu ringdown corelat cu parametrul tau estimat.
+- [ ] `QNG-T-C098` - Verifica ca in afara limitelor clasice apar efecte de memorie, lag si decoerenta de faza (`C-098`). Dataset: combinat DS-005 + DS-006 (regim extrem). Gates: abatere sistematica de la GR pur in regim de viteza mare / gradient mare.
+
+## Priority P13 - Cosmological Tests (Claims-Derived)
+
+- [ ] `QNG-T-C105` - Testa interpretarea CMB ca suprafata de relaxare a turbulentei nodale timpurii (`C-105`). Dataset: date CMB Planck (`data/cmb/`). Gates: corelatie pattern CMB cu model relaxare QNG, BIC vs LCDM.
+- [ ] `QNG-T-C106` - Verifica ca anizotropiile CMB si deplasarile peak-urilor provin din domenii de fluctuatie timpurii (`C-106`). Dataset: date CMB Planck. Gates: reproductibilitate peak-uri CMB cu model QNG vs LCDM.
+- [ ] `QNG-T-C107` - Verifica ca formarea structurilor urmeaza acretie coerenta de-a lungul gradientilor de stabilitate (`C-107`). Derivare: `03_math/derivations/qng-c-107.md`. Dataset: survey-uri de structura la scara mare. Gates: corelatie filament/void cu model Sigma-gradient.
+- [ ] `QNG-T-C108` - Verifica ca filamentele cosmice sunt coridoare phase-stabile unde coerenta directionala supravietuieste (`C-108`). Derivare: `03_math/derivations/qng-c-108.md`. Dataset: date structura la scara mare. Gates: anizotropie tau mai mica in filamente vs void-uri.
+- [ ] `QNG-T-C109` - Verifica ca acceleratia cosmica aparenta poate emerge din schimbarea ratei de update si desincronizare globala (`C-109`). Derivare: `03_math/derivations/qng-c-109.md`. Dataset: date supernova tip Ia / CMB. Gates: reproductibilitate expansiune accelerata fara Lambda, BIC vs LCDM.
+- [ ] `QNG-T-C110` - Verifica predictia QNG de anomalii timpurii: non-Gaussianitate, cold spots, aliniere axe (`C-110`). Dataset: date CMB Planck. Gates: detectie non-Gaussianitate la nivel prevazut de model.
+- [ ] `QNG-T-C112` - Testa ca inflatia poate fi inlocuita cu mecanism coherence-burst cu sincronizare globala rapida (`C-112`). Dataset: date CMB (spectru putere primordial). Gates: reproductibilitate spectru plat fara inflaton, BIC comparabil.
+- [ ] `QNG-T-C102` - Verifica ca universul incepe ca retea nodala minima stabila deasupra Sigma_min, evitand singularitatea initiala (`C-102`). Dataset: simulare sintetica (bootstrap nodal). Gates: absenta singularitatii in model, consistenta cu observatii timpurii CMB.
+
+## Priority P14 - Falsification Completeness (Claims-Derived)
+
+- [ ] `QNG-T-C092` - Test formal de falsificare: absenta semnaturilor lag constrange tau si chi si poate falsifica variante QNG (`C-092`, `C-118`). Derivare: `03_math/derivations/qng-c-118.md`. Gates: limita superioara tau din non-detectie, eliminare variante cu tau prea mare.
+- [ ] `QNG-T-C118` - Executa formal criteriile de falsificare: esec la fit tau-lag, absenta Sigma-lag lensing, GR recovery esuata in simulari nodale (`C-118`). Derivare: `03_math/derivations/qng-c-118.md`. Gates: toate cele 3 criterii testate si documentate cu rezultat explicit.
+- [ ] Adauga cel putin un falsifier formal per claim de tip `predicted` cu confidence `medium` sau `high` care nu are inca un test in test-plan.
+
+## Priority P15 - Simulation & Lab Analogues (Claims-Derived)
+
+- [ ] `QNG-T-C062` - Ruleaza simulari N-body cu kernel-uri de memorie si verifica reproductibilitatea semnaturilor de structura QNG-consistente (`C-062`). Derivare: `03_math/derivations/qng-c-062.md`. Gates: BIC model-memorie vs model standard, control curat la kernel zero.
+- [ ] `QNG-T-C063` - Construieste analoguri graf de laborator care reproduc stabilitate, lag si atractori emergenti (`C-063`). Dataset: simulare sintetica (graf discret). Gates: tranzitii de stabilitate reproductibile, lag masurabil, atractor persistent.
+
 ## Later / Not Now (Parking)
 
 - [ ] Environment lock hardening: add explicit Python version + `requirements.txt` / `pip freeze` snapshot to repro pack.
