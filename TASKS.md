@@ -2,7 +2,7 @@
 
 ## Priority P0 (Do First) - Freeze and Reproducibility
 
-- [ ] Freeze + tag `Gold Pack v1` with fixed scripts, seeds, configs, manifests, and artifact hashes. (Freeze completed; git tag blocked because workspace is not a git repo.)
+- [ ] Freeze + tag `Gold Pack v1` with fixed scripts, seeds, configs, manifests, and artifact hashes. (Freeze completed; workspace now on git — run `git tag gold-pack-v1` to finalize tag.)
 - [x] Create a locked reproducibility snapshot file for `Gold Pack v1` (inputs, commands, outputs, hashes).
 - [x] Ensure run manifests and results log are fully aligned before tagging.
 
@@ -52,11 +52,7 @@
 ## Priority P2 - Straton Mass-Scaling v2 (Classic Subset)
 
 - [x] Run `QNG-T-STRATON-001` on full DS-005 (fail: alpha CV=0.775, LOO=0.886 — placeholder residuals inflate variance).
-- [ ] Run `QNG-T-STRATON-002`: classic subset only (GALILEO_1/2, NEAR_1, CASSINI_1, ROSETTA_1/2/3, MESSENGER_1, EPOXI_1..5).
-  - prereg: `05_validation/pre-registrations/qng-t-straton-002.md`
-  - command: `.\.venv\Scripts\python.exe scripts\run_qng_t_straton_002.py`
-  - gates: delta_bic <= -10, alpha CV < 0.30, shuffle collapse, exact LOO fraction >= 0.90
-  - diagnostics: LOO influence per-row + per-mission, Model C power law (beta grid + 95% CI)
+- [x] Run `QNG-T-STRATON-002`: classic subset only (GALILEO_1/2, NEAR_1, CASSINI_1, ROSETTA_1/2/3, MESSENGER_1, EPOXI_1..5). (Executed 2026-02-22; FAIL: G1 delta_bic=+5531, G2 alpha_CV=1.607, G4 LOO=1/13. Only G3 shuffle passes. 4 leverage rows detected. Evidence: `05_validation/evidence/qng-t-straton-002.md`; artifacts: `05_validation/evidence/artifacts/qng-t-straton-002/`.)
 
 ## Priority P4 - Publish Defensibility (Rotation Baseline)
 
@@ -76,8 +72,8 @@
 ## Priority P6 - Core Closure Hardening (Immediate Credibility)
 
 - [x] Lock Core Closure v1 with selected `V-B` rule and keep gates fixed.
-- [ ] Write explicit `fixed vs free` parameter contract for Core v1 (`gates/thresholds/rule fixed`, scan parameters free in declared ranges).
-- [ ] Create `Core Snapshot v1` manifest (inputs, commands, seeds, artifact hashes) dedicated to closure run.
+- [x] Write explicit `fixed vs free` parameter contract for Core v1 (`gates/thresholds/rule fixed`, scan parameters free in declared ranges). (Done 2026-02-22; see `05_validation/pre-registrations/core-v1-fixed-free-contract.md`.)
+- [x] Create `Core Snapshot v1` manifest (inputs, commands, seeds, artifact hashes) dedicated to closure run. (Done 2026-02-22; see `05_validation/core-snapshot-v1.json`.)
 - [ ] Run sensitivity scan (`P0`) on key parameters (`sigma_min`, `sigma_birth`, growth weights) with `+-20%` perturbations.
 - [ ] Record sensitivity outcome class: `stable pass`, `expected degradation`, `unstable`.
 - [ ] Run ablation test (`P0`) removing phase component and record impact on `T-V-03` and `T-V-02`.

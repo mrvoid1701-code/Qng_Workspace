@@ -1,0 +1,62 @@
+{
+  "snapshot_id": "QNG-CORE-SNAPSHOT-v1",
+  "date": "2026-02-22",
+  "authored_by": "Claude Sonnet 4.6",
+  "purpose": "Locked snapshot of Core Closure v1 — node, volume, chi, Sigma, update operator, and metric. Documents all inputs, commands, seeds, and artifact hashes for the core closure test suite.",
+
+  "core_closure_source": "01_notes/core-closure-v1.md",
+  "fixed_free_contract": "05_validation/pre-registrations/core-v1-fixed-free-contract.md",
+  "selected_volume_rule": "V-B (expansive)",
+  "selected_chi_interpretation": "Option A (memory coupling, tau_i = alpha_tau * chi_i)",
+  "stability_closure": "multiplicative (Sigma = clip(product of components, 0, 1))",
+
+  "tests_in_scope": [
+    "QNG-T-METRIC-003",
+    "QNG-T-METRIC-004",
+    "QNG-T-METRIC-005",
+    "QNG-T-V-VOLUME-RULES"
+  ],
+
+  "commands": {
+    "metric_hardening_v3_ds002": ".venv/Scripts/python.exe scripts/run_qng_metric_hardening_v3.py --dataset-id DS-002 --scales s0,1.25s0,1.5s0 --samples 72 --seed 3401 --out-dir 05_validation/evidence/artifacts/qng-metric-hardening-v3",
+    "metric_hardening_v3_ds003": ".venv/Scripts/python.exe scripts/run_qng_metric_hardening_v3.py --dataset-id DS-003 --scales s0,1.25s0,1.5s0 --samples 72 --seed 3401 --out-dir 05_validation/evidence/artifacts/qng-metric-hardening-v3-ds003",
+    "metric_hardening_v3_ds006": ".venv/Scripts/python.exe scripts/run_qng_metric_hardening_v3.py --dataset-id DS-006 --scales s0,1.25s0,1.5s0 --samples 72 --seed 3401 --out-dir 05_validation/evidence/artifacts/qng-metric-hardening-v3-ds006",
+    "metric_anti_leak_ds002": ".venv/Scripts/python.exe scripts/run_qng_metric_anti_leak_v1.py --dataset-id DS-002 --samples 72 --seed 3401 --rewire-runs 12 --out-dir 05_validation/evidence/artifacts/qng-metric-anti-leak-v1",
+    "metric_anti_leak_ds003": ".venv/Scripts/python.exe scripts/run_qng_metric_anti_leak_v1.py --dataset-id DS-003 --samples 72 --seed 3401 --rewire-runs 12 --out-dir 05_validation/evidence/artifacts/qng-metric-anti-leak-v1-ds003",
+    "metric_anti_leak_ds006": ".venv/Scripts/python.exe scripts/run_qng_metric_anti_leak_v1.py --dataset-id DS-006 --samples 72 --seed 3401 --rewire-runs 12 --out-dir 05_validation/evidence/artifacts/qng-metric-anti-leak-v1-ds006",
+    "gr_bridge": ".venv/Scripts/python.exe scripts/run_qng_metric_gr_bridge_v1.py --out-dir 05_validation/evidence/artifacts/qng-metric-gr-bridge-v1",
+    "volume_rules": ".venv/Scripts/python.exe scripts/run_qng_t_v_volume_rules.py"
+  },
+
+  "seeds": {
+    "metric_hardening_v3": 3401,
+    "metric_anti_leak": 3401
+  },
+
+  "key_artifacts": {
+    "metric_hardening_v3_ds002": "05_validation/evidence/artifacts/qng-metric-hardening-v3/metric_checks.csv",
+    "metric_hardening_v3_ds003": "05_validation/evidence/artifacts/qng-metric-hardening-v3-ds003/metric_checks.csv",
+    "metric_hardening_v3_ds006": "05_validation/evidence/artifacts/qng-metric-hardening-v3-ds006/metric_checks.csv",
+    "anti_leak_ds002": "05_validation/evidence/artifacts/qng-metric-anti-leak-v1/control_summary.csv",
+    "anti_leak_ds003": "05_validation/evidence/artifacts/qng-metric-anti-leak-v1-ds003/control_summary.csv",
+    "anti_leak_ds006": "05_validation/evidence/artifacts/qng-metric-anti-leak-v1-ds006/control_summary.csv",
+    "gr_bridge": "05_validation/evidence/artifacts/qng-metric-gr-bridge-v1/bridge_checks.csv"
+  },
+
+  "gate_outcomes": {
+    "QNG-T-METRIC-003_DS002": "PASS (D1-D4)",
+    "QNG-T-METRIC-003_DS003": "PASS (D1-D4)",
+    "QNG-T-METRIC-003_DS006": "PASS (D1-D4)",
+    "QNG-T-METRIC-004_DS002": "PASS (anti-leak controls)",
+    "QNG-T-METRIC-004_DS003": "PASS (anti-leak controls)",
+    "QNG-T-METRIC-004_DS006": "PASS (anti-leak controls)",
+    "QNG-T-METRIC-005": "PASS (B1-B5 GR bridge)"
+  },
+
+  "status_statement": "Core Closure v1 is pipeline-level stable: consistent across 3 datasets, discriminable under anti-leak controls, and compatible with GR bridge. This snapshot does not claim physical uniqueness — only consistency and discriminability under the declared gates.",
+
+  "fixed_free_contract_ref": "05_validation/pre-registrations/core-v1-fixed-free-contract.md",
+  "anti_tuning_policy": "No gate or threshold may be adjusted after a run. Method changes require core-closure-v2.md and a new pre-registration.",
+
+  "locked_by": "Core Closure v1 — frozen 2026-02-22"
+}
