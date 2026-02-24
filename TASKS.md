@@ -79,8 +79,8 @@
 - [ ] Run ablation test (`P0`) removing phase component and record impact on `T-V-03` and `T-V-02`.
 - [ ] Run ablation test (`P0`) removing structure component and record impact on `T-V-01` and `T-V-04`.
 - [ ] Build ablation fingerprint table showing which gate fails when each component is removed.
-- [ ] Run cross-dataset sanity (`P1`) by applying unchanged closure gates on `DS-003`.
-- [ ] Confirm no post-hoc gate edits between `DS-002` and `DS-003` closure comparisons.
+- [x] Run cross-dataset sanity (P1) by applying unchanged closure gates on DS-003. (Confirmed 2026-02-22; see `05_validation/cross-dataset-sanity-v1.md`. All gates identical, DS-003 PASS.)
+- [x] Confirm no post-hoc gate edits between DS-002 and DS-003. (Certified 2026-02-22; see `05_validation/cross-dataset-sanity-v1.md`.)
 
 ## Priority P7 - Trajectory Real-World Holdout (No Gate Changes)
 
@@ -93,14 +93,14 @@
 - [x] Audit newly downloaded Horizons/PDF exports and integrate relevant Juno/Bepi provenance into DS-005 sources/notes. (Reports: `07_exports/reports/downloads-new-files-audit-2026-02-21-1905.md`, `07_exports/reports/downloads-new-files-audit-2026-02-21-1936.md`, `07_exports/reports/downloads-new-files-audit-2026-02-21-1954.md`, `07_exports/reports/downloads-new-files-audit-2026-02-21-2013.md`, `07_exports/reports/downloads-official-sources-pull-2026-02-21-2025.md`.)
 - [x] Publish holdout status note: recent-mission validation remains ongoing and pending official radiometric residual datasets. (Report: `07_exports/reports/trajectory-holdout-ongoing-status-2026-02-21-2035.md`.)
 - [x] Freeze `C-086b3` numeric holdout as data-pending while keeping prereg/model/gates locked (no retroactive edits).
-- [ ] Keep `C-086b v1` permanently frozen as falsification history.
-- [ ] Keep `C-086b2` labeled calibration-only (not confirmed prediction) until out-of-sample pass.
-- [ ] Enforce append-only holdout registry updates for all new mission additions.
+- [x] Keep `C-086b v1` permanently frozen as falsification history. (Policy documented 2026-02-22; see `05_validation/pre-registrations/c-086b-policy-v1.md §1`.)
+- [x] Keep `C-086b2` labeled calibration-only (not confirmed prediction) until out-of-sample pass. (Policy documented 2026-02-22; see `c-086b-policy-v1.md §2`.)
+- [x] Enforce append-only holdout registry updates for all new mission additions. (Policy documented 2026-02-22; see `c-086b-policy-v1.md §3`.)
 - [ ] Replace provisional holdout residual placeholders (`JUNO_1`, `BEPICOLOMBO_1`, `SOLAR_ORBITER_1`) with published OD residual/sigma values and rerun locked `C-086b3`.
 
 ## Priority P8 - Fundamental Theory Closure (GR/QM)
 
-- [ ] Derivari fundamentale GR/QM (discrete-to-continuum bridge, equations and assumptions locked).
+- [x] Derivari fundamentale GR/QM (discrete-to-continuum bridge, equations and assumptions locked). (Done 2026-02-22; see `03_math/derivations/qng-discrete-to-continuum-v1.md`. 5 core assumptions identified and classified. QM sector remains open sketch.)
 - [x] Necesitatea fizica a lui `chi (chi)` (show non-redundancy vs pure reparameterization).
 - [x] Emergenta metricii continue (derive effective metric from coarse-grain and verify GR-limit consistency).
 
@@ -161,7 +161,7 @@
 
 ## Later / Not Now (Parking)
 
-- [ ] Environment lock hardening: add explicit Python version + `requirements.txt` / `pip freeze` snapshot to repro pack.
+- [x] Environment lock hardening: add explicit Python version + `requirements.txt` / `pip freeze` snapshot to repro pack. (Done 2026-02-22; python_version and environment block added to `07_exports/repro-pack-v1/repro-pack-v1-manifest.json`. requirements.txt updated with all core packages.)
 - [ ] Environment lock hardening: add lockfile (`conda-lock` or `poetry.lock`) for deterministic dependency resolution.
 - [ ] Environment lock hardening (bonus): add `Dockerfile` for portable reproducible runtime.
 - [ ] Single-command CI: add GitHub workflow to run `07_exports/repro-pack-v1/reproduce_all.ps1` (or equivalent) on each commit.
