@@ -118,6 +118,9 @@
 - [x] Run `QNG-T-METRIC-003` and record full pass (`D1-D4`) with reproducible artifacts.
 - [x] Run locked v3 cross-dataset replication on `DS-003` and `DS-006` before any v4 edits.
 - [x] Add and run `QNG-T-METRIC-005` (GR Bridge v1) on locked `qng-metric-hardening-v3*` artifacts and record full `B1-B5` pass.
+- [x] Open `metric-lock-v4` (Frobenius normalization, vacuum singularity fix): lock definition, prereg, implement `run_qng_metric_hardening_v4.py`, run G0+D1-D4 on DS-002/DS-003/DS-006 — all PASS (κ_max≈1.94, D3 med≈0.994). (Done 2026-02-24; evidence: `05_validation/evidence/qng-metric-hardening-v4.md`.)
+- [x] `QNG-T-CURL-001` — Curl of acceleration field test: lock prereg, implement script, run on DS-002/DS-003/DS-006. C1 PASS (curl_rel ~1e-11, machine precision — exactly curl-free in constant-metric regime). C2 PASS. (Done 2026-02-24; evidence: `05_validation/evidence/qng-t-curl-001.md`.)
+- [x] Lock Σ dynamics minimal equation (EOM-Σ): selected generalized Poisson `Δ_g Σ = α ρ`, proved Newtonian limit recovery, 1 new free parameter (α = 4πG), T-SIG-003 analytic PASS. (Done 2026-02-24; derivation: `03_math/derivations/qng-sigma-dynamics-v1.md`; prereg: `qng-sigma-dynamics-prereg-v1.md`.)
 
 ## Priority P9 - High-Impact Next Tests (Requested)
 

@@ -1,0 +1,5 @@
+gate_id,metric,value,threshold,status
+C1,median_curl_rel,1.990609e-11,<0.100000,pass
+C1,p90_curl_rel,6.014909e-11,<0.300000,pass
+C2,median_curl_rel_rewired,6.432147e-11,>1.500000x median_real=2.985913e-11,pass
+FINAL,decision,pass,C1&C2,pass
