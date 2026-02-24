@@ -103,3 +103,11 @@ Cross-dataset replication (same lock, same gates, no method edits):
 - Validated on REAL data: no
 - Suggestive: yes
 - Speculative: no (for pipeline-level statement)
+
+## Calibration vs Holdout (No-Double-Dipping Declaration)
+
+- **Calibration set:** DS-002 — used to develop and select v3 metric method (Hessian + conformal gauge + anisotropy shrinkage k=0.4). Gates D1-D4 were fixed on this dataset before cross-dataset runs.
+- **Holdout sets:** DS-003, DS-006 — run with unchanged lock and unchanged gates after DS-002 pass. No method edits were made between DS-002 and DS-003/DS-006 runs.
+- **Tuning:** anisotropy shrinkage `k=0.4` was selected in metric-lock-v3 before this prereg was locked. It is not tuned post-hoc.
+- **Locked gates:** D1-D4 thresholds are identical across all three datasets. No per-dataset threshold adjustment was made.
+- **Statement:** DS-003 and DS-006 results are genuine out-of-sample replications, not calibration outcomes.

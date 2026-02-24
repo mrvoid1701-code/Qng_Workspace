@@ -65,3 +65,10 @@ Add an explicit anti-leak / anti-shortcut control layer beyond D4:
 - Authenticity: silver
 - Leakage risk: low
 - Negative control: done
+
+## Calibration vs Holdout (No-Double-Dipping Declaration)
+
+- **Calibration set:** DS-002 — anti-leak control thresholds (`< 0.55`) were locked in prereg before any run.
+- **Holdout sets:** DS-003, DS-006 — run with identical thresholds and identical control types after DS-002 pass. No threshold edits between datasets.
+- **Tuning:** no control parameters were tuned post-hoc. The threshold `< 0.55` was set in prereg to be strictly below the positive signal (~0.99), not fitted to control outcomes.
+- **Statement:** DS-003 and DS-006 anti-leak results are genuine out-of-sample replications.

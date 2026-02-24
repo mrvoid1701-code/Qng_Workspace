@@ -2,7 +2,7 @@
 
 ## Priority P0 (Do First) - Freeze and Reproducibility
 
-- [ ] Freeze + tag `Gold Pack v1` with fixed scripts, seeds, configs, manifests, and artifact hashes. (Freeze completed; workspace now on git — run `git tag gold-pack-v1` to finalize tag.)
+- [x] Freeze + tag `Gold Pack v1` with fixed scripts, seeds, configs, manifests, and artifact hashes. (Tag `gold-pack-v1` created 2026-02-22. Run `git push origin gold-pack-v1` to push tag to GitHub.)
 - [x] Create a locked reproducibility snapshot file for `Gold Pack v1` (inputs, commands, outputs, hashes).
 - [x] Ensure run manifests and results log are fully aligned before tagging.
 
@@ -132,9 +132,9 @@
 ## Backlog / Secondary
 
 - [ ] Graph section upgrade in UI (`Explorer -> Graph`) with improved usability and workflow guidance.
-- [ ] Remove duplicated claims.
-- [ ] Identify weakest assumptions.
-- [ ] Update test plan with at least one falsifier per core claim.
+- [x] Remove duplicated claims. (Checked 2026-02-22 — no duplicates found: 118 claims, sequential numbering, no duplicate titles or statements.)
+- [x] Identify weakest assumptions. (Done 2026-02-22; see `04_models/weakest-assumptions-v1.md`. Weakest: chi=m/c mass scaling — FAIL on STRATON-002. Most robust: emergent metric from Hessian(Sigma).)
+- [x] Update test plan with at least one falsifier per core claim. (Done 2026-02-22; see `05_validation/falsifiers-per-core-claim-v1.md`.)
 
 ## Mission Test Queue (Ordered)
 
@@ -165,5 +165,5 @@
 - [ ] Environment lock hardening: add lockfile (`conda-lock` or `poetry.lock`) for deterministic dependency resolution.
 - [ ] Environment lock hardening (bonus): add `Dockerfile` for portable reproducible runtime.
 - [ ] Single-command CI: add GitHub workflow to run `07_exports/repro-pack-v1/reproduce_all.ps1` (or equivalent) on each commit.
-- [ ] No-double-dipping explicitness: in metric prereg/evidence, mark clearly what is calibration set vs holdout set.
-- [ ] No-double-dipping explicitness: in metric prereg/evidence, mark clearly what is tuning vs what is locked gates.
+- [x] No-double-dipping explicitness: in metric prereg/evidence, mark clearly what is calibration set vs holdout set. (Done 2026-02-22; added calibration vs holdout section to `qng-metric-hardening-v3.md` and `qng-metric-anti-leak-v1.md`.)
+- [x] No-double-dipping explicitness: in metric prereg/evidence, mark clearly what is tuning vs what is locked gates. (Done 2026-02-22; same sections above. Also formalized in `core-v1-fixed-free-contract.md`.)

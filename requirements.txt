@@ -1,2 +1,15 @@
+# QNG Workspace — Python dependencies
+# Python version: 3.10+
+# Generated: 2026-02-22
+# Usage: pip install -r requirements.txt
+
+# Core scientific stack
+numpy>=1.26.0
+pandas>=2.0.0
+matplotlib>=3.7.0
+
+# PDF processing
 pypdf>=4.0.0
 
+# Optional (used by some scripts, install if available)
+# scipy>=1.11.0  — used for optimization in some tests; install separately if needed
