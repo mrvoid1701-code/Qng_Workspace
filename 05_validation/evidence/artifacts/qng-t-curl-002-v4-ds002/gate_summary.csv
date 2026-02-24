@@ -1,0 +1,8 @@
+gate_id,metric,value,threshold,status
+C1,median_curl_rel_static_v4,1.788364e-11,<1.000000e-08,pass
+C2,median_lag_iso_v4/10.0x_static,2.176664e-11 vs 1.788364e-10,>10.0x,fail
+C2,median_lag_grad_v4/10.0x_static,2.054507e-11 vs 1.788364e-10,>10.0x,fail
+C3,median_rewired/10.0x_static,5.263512e-11 vs 1.788364e-10,>10.0x,fail
+INFO,median_curl_rel_static_v3,1.764232e-11,informational,info
+INFO,median_curl_rel_lag_iso_v3,2.153841e-11,informational,info
+FINAL,decision,fail,C1&C2&C3,fail

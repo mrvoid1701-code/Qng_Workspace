@@ -1,0 +1,48 @@
+{
+  "dataset_id": "DS-002",
+  "seed": 3401,
+  "samples_requested": 72,
+  "anchors_used": 72,
+  "normalization": {
+    "distance_scale": "divide_by_median_edge_length",
+    "median_edge_length_raw": 0.35940511998035335,
+    "s0": 1.0,
+    "scales_cli": "s0,1.25s0,1.5s0",
+    "scales_used": [
+      {
+        "label": "1s0",
+        "value": 1.0
+      },
+      {
+        "label": "1.25s0",
+        "value": 1.25
+      },
+      {
+        "label": "1.5s0",
+        "value": 1.5
+      }
+    ]
+  },
+  "chart_method": "two-landmark geodesic tangent chart",
+  "smoothing_kernel": "gaussian over local graph distances (applied to Sigma field)",
+  "metric_estimator": "v4 dynamic metric: Sigma Hessian + SPD projection + Frobenius normalization + anisotropy shrinkage (iso=1/sqrt(2))",
+  "metric_estimator_params": {
+    "anisotropy_keep": 0.4,
+    "frob_floor": 1e-09,
+    "normalization": "frobenius",
+    "iso_target": 0.707107
+  },
+  "gates": {
+    "G0a_nan_inf_max": 0,
+    "G0b_cond_global_max": 1000.0,
+    "G0c_cond_lowcurv_max": 200.0,
+    "G0_lowcurv_frob_threshold": 0.05,
+    "D1_eps": 1e-08,
+    "D2_median_max": 0.1,
+    "D2_p90_max": 0.25,
+    "D3_median_min": 0.9,
+    "D3_p10_min": 0.7,
+    "D4_shuffle_median_max": 0.55
+  },
+  "decision": "pass"
+}

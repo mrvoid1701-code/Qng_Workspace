@@ -1,0 +1,7 @@
+gate_id,metric,value,threshold,status
+B1,weak_field_h_norm from iso=0.707107 (max med/p90),0.190396 / 0.286935,med<=0.200000 and p90<=0.320000,pass
+B2,"metric_sanity (min_eig, max cond_p90)",0.424735 / 1.851328,min_eig>=0.250000 and cond_p90<=2.500000,pass
+B3,newton_direction (min median/p10 cos_raw),0.993310 / 0.963787,median>=0.950000 and p10>=0.900000,pass
+B4,continuum_stability (max median/p90 drift),0.052547 / 0.144365,median<=0.070000 and p90<=0.200000,pass
+B5,control_separation (min raw-shuffled gap),1.098472,>=0.900000,pass
+FINAL,decision,pass,B1&B2&B3&B4&B5,pass

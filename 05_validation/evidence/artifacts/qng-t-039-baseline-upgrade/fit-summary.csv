@@ -1,5 +1,5 @@
 metric,value
-rotation_csv,C:\Users\tigan\Desktop\qng workspace\data\rotation\rotation_ds006_rotmod.csv
+rotation_csv,/sessions/eager-peaceful-bardeen/mnt/qng workspace/Qng_Workspace/data/rotation/rotation_ds006_rotmod.csv
 n_rotation,3391
 chi2_null_baseline,1.025646e+06
 chi2_flex_baseline,6.008261e+05

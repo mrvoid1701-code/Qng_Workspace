@@ -1,6 +1,6 @@
 QNG-T-039 rotation baseline-upgrade run log
-timestamp_utc: 2026-02-21T16:42:47Z
-rotation_csv: C:\Users\tigan\Desktop\qng workspace\data\rotation\rotation_ds006_rotmod.csv
+timestamp_utc: 2026-02-24T08:04:47Z
+rotation_csv: /sessions/eager-peaceful-bardeen/mnt/qng workspace/Qng_Workspace/data/rotation/rotation_ds006_rotmod.csv
 seed: 20260221
 n_rotation: 3391
 a_flex_baseline: 5863.869799

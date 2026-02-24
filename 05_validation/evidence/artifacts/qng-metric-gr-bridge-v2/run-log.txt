@@ -1,0 +1,11 @@
+QNG Metric GR Bridge v2 run log
+timestamp_utc: 2026-02-24T08:17:27Z
+metric_version: v4 (Frobenius normalization)
+iso_ref: 0.707107
+decision: pass
+n_datasets: 3
+
+Per-dataset results:
+  DS-002: B1=True B2=True B3=True B4=True B5=True h_med=0.170546 h_p90=0.277671 cond_p90=1.809708 cos_med=0.993310
+  DS-003: B1=True B2=True B3=True B4=True B5=True h_med=0.182126 h_p90=0.286935 cond_p90=1.851328 cos_med=0.994588
+  DS-006: B1=True B2=True B3=True B4=True B5=True h_med=0.190396 h_p90=0.280348 cond_p90=1.821578 cos_med=0.995880

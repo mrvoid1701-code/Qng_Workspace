@@ -1,0 +1,16 @@
+gate_id,metric,value,threshold,status
+M1,median_rel_static,1.804112e-04,-,info
+M2,median_rel_lag_iso,5.551115e-04,-,info
+M3,median_rel_lag_grad,4.440892e-04,-,info
+M4,median_rel_rewired,1.942890e-04,-,info
+M5,median_abs_static,1.804112e-16,-,info
+M6,median_abs_lag_iso,5.551115e-16,-,info
+M7,median_abs_lag_grad,4.440892e-16,-,info
+M8,median_abs_rewired,1.942890e-16,-,info
+M9,lag_factor,3.076923,-,info
+M10,rewire_factor,1.076923,-,info
+C1,median_curl_rel_static,1.804112e-04,<1.000000e-08,fail
+C2,lag_factor,3.076923,>=1.150000,pass
+C3,rewire_factor,1.076923,>=2.500000,fail
+C4,tau sweep monotonicity,1.804112e-04->5.551115e-04->8.881784e-04->0.001998,nondecreasing & tau4>=1.5x tau0,pass
+FINAL,decision,fail,C1&C2&C3&C4,fail

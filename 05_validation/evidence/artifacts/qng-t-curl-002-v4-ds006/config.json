@@ -1,0 +1,14 @@
+{
+  "dataset_id": "DS-006",
+  "seed": 20260224,
+  "samples": 72,
+  "anchors_used": 72,
+  "tau_test": 1.0,
+  "rewire_fraction": 0.5,
+  "gates": {
+    "C1_static_max": 1e-08,
+    "C2_lag_factor_min": 10.0,
+    "C3_rewire_factor_min": 10.0
+  },
+  "decision": "fail"
+}

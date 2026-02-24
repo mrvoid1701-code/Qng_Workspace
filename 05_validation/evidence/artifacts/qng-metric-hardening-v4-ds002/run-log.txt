@@ -1,0 +1,57 @@
+QNG metric hardening v4 run log
+timestamp_utc: 2026-02-24T08:02:06Z
+python: 3.10.12
+platform: Linux-6.8.0-94-generic-x86_64-with-glibc2.35
+dataset_id: DS-002
+scales_cli: s0,1.25s0,1.5s0
+samples: 72
+seed: 3401
+duration_seconds: 0.947
+anchors_used: 72
+decision: pass
+
+dataset_manifest_entry:
+{
+  "dataset_name": "Cosmological toy simulation / synthetic catalogs",
+  "dataset_type": "simulation",
+  "tests": [
+    "QNG-T-050",
+    "QNG-T-051",
+    "QNG-T-052",
+    "QNG-T-053",
+    "QNG-T-METRIC-001",
+    "QNG-T-METRIC-002",
+    "QNG-T-METRIC-003",
+    "QNG-T-METRIC-004"
+  ],
+  "claims": [
+    "QNG-C-103",
+    "QNG-C-104",
+    "QNG-C-107",
+    "QNG-C-111",
+    "QNG-CORE-METRIC-V1",
+    "QNG-CORE-METRIC-V2",
+    "QNG-CORE-METRIC-V3",
+    "QNG-CORE-METRIC-V3-CONTROL"
+  ],
+  "highest_priority": "P2",
+  "source_url": "TODO",
+  "license": "TODO",
+  "local_path": "TODO",
+  "version_or_release": "TODO",
+  "last_verified": "YYYY-MM-DD",
+  "notes": "TODO",
+  "dataset_id": "DS-002"
+}
+
+artifact_hashes_sha256:
+- metric_checks.csv: 7a1462a85617708a88dd96c6ea5ef41cb08fb0390eee3de4840a7716f53d50ee
+- eigs.csv: f391ce8324276ec545c480b92d27359230755f6f5def5b7cafaf30aa623345d5
+- drift.csv: 1c63793ee624d6f919e48b35e522da7c982ede2395afff0bffadf965f7e63770
+- align_sigma.csv: 5b60c143278432a0ac4e61a5c594b9320f3a230e90d436df3d02821e86e66312
+- vacuum_gate.csv: 69da36f1886913b080dbc2c5d306cacd9ffbcbdb3df32f549a67e7b0ab3e88ef
+- config.json: e2b9c87c17a8caad00955b9e34cb0c81c1efe3db92cb39fbd8f8220431c289ae
+- eigs-hist.png: cc3d5abe7e9438eb7d9bdcf6f3b5c3dfa91c9cd5f7a3a2e5e67473bce15c2139
+- drift-distribution.png: 0c0e8905fa04c34072d7d5c5af7705111d5738a2f2ecb1b4375604eeb6ceb207
+- cos-sim-distribution.png: dcc7f324fba5dab1be23d3e422a637de0be257541ee49db5a300087953acc202
+- cond-number-hist.png: d588b83672a358cff20e40d6f0841ecf198ddf5fe4c32126226b4adf9e74b129

@@ -1,0 +1,11 @@
+gate_id,metric,value,threshold,status
+G0,nan_inf_count,0,<=0,pass
+G0,cond_global_max,1.938887,<1000.000000,pass
+G0,cond_lowcurv_max,1.938887,<200.000000,pass
+D1,min_eig_global,0.425122,>=1.000000e-08,pass
+D2,median_delta_g,0.051209,<=0.100000,pass
+D2,p90_delta_g,0.144365,<=0.250000,pass
+D3,median_cos_sim,0.993309,>=0.900000,pass
+D3,p10_cos_sim,0.971186,>=0.700000,pass
+D4,median_cos_sim_shuffled,-0.106239,<0.550000,pass
+FINAL,decision,pass,G0&D1&D2&D3&D4,pass

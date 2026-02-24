@@ -1,0 +1,27 @@
+{
+  "timestamp_utc": "2026-02-24T08:17:27Z",
+  "version": "v2",
+  "metric_version": "v4 (Frobenius normalization)",
+  "iso_ref": 0.7071067811865475,
+  "artifact_dirs_cli": "qng-metric-hardening-v4-ds002,qng-metric-hardening-v4-ds003,qng-metric-hardening-v4-ds006",
+  "scale_ref": "1s0",
+  "thresholds": {
+    "iso_ref": 0.7071067811865475,
+    "weak_med_h_max": 0.2,
+    "weak_p90_h_max": 0.32,
+    "min_eig_floor": 0.25,
+    "cond_p90_max": 2.5,
+    "drift_median_max": 0.07,
+    "drift_p90_max": 0.2,
+    "cos_raw_median_min": 0.95,
+    "cos_raw_p10_min": 0.9,
+    "shuffle_gap_min": 0.9
+  },
+  "n_datasets": 3,
+  "decision": "pass",
+  "runtime": {
+    "python": "3.10.11",
+    "platform": "Windows-10-10.0.22631-SP0",
+    "duration_seconds": 0.0794
+  }
+}

@@ -1,0 +1,43 @@
+QNG metric hardening v4 run log
+timestamp_utc: 2026-02-24T08:02:07Z
+python: 3.10.12
+platform: Linux-6.8.0-94-generic-x86_64-with-glibc2.35
+dataset_id: DS-003
+scales_cli: s0,1.25s0,1.5s0
+samples: 72
+seed: 3401
+duration_seconds: 0.838
+anchors_used: 72
+decision: pass
+
+dataset_manifest_entry:
+{
+  "dataset_name": "Discrete/N-body simulation environment",
+  "dataset_type": "simulation",
+  "tests": [
+    "QNG-T-029"
+  ],
+  "claims": [
+    "QNG-C-062"
+  ],
+  "highest_priority": "P1",
+  "source_url": "TODO",
+  "license": "TODO",
+  "local_path": "TODO",
+  "version_or_release": "TODO",
+  "last_verified": "YYYY-MM-DD",
+  "notes": "TODO",
+  "dataset_id": "DS-003"
+}
+
+artifact_hashes_sha256:
+- metric_checks.csv: 51e7d48843a80ed28da16911cec045d6e29c0495375feea9b041a7c5bb7cffa3
+- eigs.csv: cfff6489a7a4a369831b3d504da9c1a482cf22501d6a73ab75953b3228fe576e
+- drift.csv: f212b4099e9e29946426802be9e6e81570b28613ba7ed69f6ef141db29c0e8ea
+- align_sigma.csv: fc2145d138c8e69fdeea702864f0728c08ee74dd79666331e42a2cb3de1923f3
+- vacuum_gate.csv: 134e035723f0ef7862aeffafb28c2b50017406e28d886896ff8ebf66794dde41
+- config.json: e766e942c586f997e465025c4e1fa112a853bad65cda576578dd1e175af95554
+- eigs-hist.png: d503ab0a040fd01951187853475188be4ba6debc4d1fdeccf901b0afa98f0ec6
+- drift-distribution.png: 3521fb868f8493612eba8017c23117eb7cb01797543ae66b98ca5b4e77dfb0be
+- cos-sim-distribution.png: 585d387890faa00c1e32c8f29d5097e4a62374e3d18a4b27c541256dca8f39a5
+- cond-number-hist.png: cffaa97a0db9be72a8e62be2f2b7ba6f143015a65e73cae1d5ef26739f6691f1
