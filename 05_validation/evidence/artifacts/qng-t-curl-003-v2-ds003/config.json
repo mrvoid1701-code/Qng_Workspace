@@ -1,0 +1,20 @@
+{
+  "script": "curl-003-v2",
+  "dataset_id": "DS-003",
+  "seed": 20260225,
+  "samples": 72,
+  "local_m": 20,
+  "n_sub": 10,
+  "tau_test": 1.0,
+  "v_iso": [
+    0.7071067811865475,
+    0.7071067811865475
+  ],
+  "v_grad": [
+    0.8944271909999159,
+    0.4472135954999579
+  ],
+  "rewire_fraction": 0.4,
+  "anchors_used": 72,
+  "anchors_skipped": 0
+}

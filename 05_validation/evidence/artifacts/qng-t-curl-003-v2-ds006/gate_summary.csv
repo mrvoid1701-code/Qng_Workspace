@@ -1,0 +1,5 @@
+gate,metric,value,threshold,status
+C1,median_curl_rel_static,8.009102e-11,<1e-08,pass
+C2,lag_factor_iso,5597391324.359,>10,pass
+C3,rewire_factor,118280856499.704,>10,pass
+FINAL,all_pass,pass,pass,pass

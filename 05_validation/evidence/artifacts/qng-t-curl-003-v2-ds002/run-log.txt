@@ -1,0 +1,12 @@
+=== QNG-T-CURL-003-v2 | dataset=DS-002 seed=20260225 ===
+samples=72 local_m=20 n_sub=10 tau=1.0
+graph: n=280 median_edge=0.3492
+anchors selected: 72
+anchors processed: 72  skipped: 0
+median curl_rel_static  = 1.070e-10  (C1 threshold < 1e-08)
+median curl_rel_lag_iso = 6.719e-01  factor=6276963700.7x (C2 threshold > 10x)
+median curl_rel_rewired = 1.958e+01  factor=182920380770.6x (C3 threshold > 10x)
+C1 (static < 1e-8): PASS
+C2 (lag > 10x static): PASS
+C3 (rewired > 10x static): PASS
+DECISION: PASS
