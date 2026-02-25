@@ -293,6 +293,15 @@ Teste propuse (din roadmap QNG):
 
 **Important:** Toate testele Pioneer/Voyager necesită pre-registration ÎNAINTE de rulare (anti-gaming policy).
 
+### Update 2026-02-25 (Codex)
+- QNG-T-PIONEER-v1 prereg + run executate (simple a = τ·|∇Σ|). Gate FAIL — predicție prea mare și nu respectă controalele interioare.
+- Limitare structurală: forma a=τ·GM/r² nu poate produce anomalia constantă Pioneer; niciun τ nu o repară.
+- Pentru v2 este nevoie mai întâi de analiză teoretică asupra:
+  - unităților/semnificației lui τ (calibrat în T-028 ca coeficient de regresie, nu timp fizic),
+  - formei corecte a termenului de lag la distanțe mari: a_lag ≈ −τ (v·∇)(g⁻¹∇Σ) ∝ τ·(GM)·v_r / r³, nu 1/r².
+- Acest pas cere input de la autorul teoriei; Codex nu poate fixa formula fără specificație.
+***
+
 ---
 
 ## Starea de după sesiunea 2026-02-25
