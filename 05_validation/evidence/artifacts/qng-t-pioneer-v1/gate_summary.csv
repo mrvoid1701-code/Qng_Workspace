@@ -1,0 +1,4 @@
+gate,metric,value,threshold,status
+G1,Pioneer band,3.041e-08..2.482e-09,"[6e-10,1.1e-9] all r∈[20,70] AU",fail
+G2,Inner control max,8.121e-05,<1e-12,fail
+FINAL,decision,fail,G1&G2,fail
