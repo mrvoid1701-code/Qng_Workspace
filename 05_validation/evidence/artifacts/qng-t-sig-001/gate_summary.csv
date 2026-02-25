@@ -1,0 +1,4 @@
+gate,metric,value,threshold,status
+G1,p90_residual,2.097268e-09,<1.0e-1,pass
+G2,iter_converged,2,<= 49,pass
+FINAL,decision,pass,G1 & G2,pass

@@ -1,0 +1,10 @@
+{
+  "grid": 100,
+  "domain": 5.0,
+  "max_iter": 50,
+  "tol_g": 0.01,
+  "p90_residual": 2.097268192721173e-09,
+  "final_iter": 2,
+  "g1_pass": true,
+  "g2_pass": true
+}
