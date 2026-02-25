@@ -1,0 +1,16 @@
+anisotropy_keep,tau_universal,delta_chi2,returncode,success,out_dir
+0.2,0.25,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.20_tau0.25
+0.2,0.4,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.20_tau0.40
+0.2,0.55,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.20_tau0.55
+0.3,0.25,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.30_tau0.25
+0.3,0.4,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.30_tau0.40
+0.3,0.55,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.30_tau0.55
+0.4,0.25,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.40_tau0.25
+0.4,0.4,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.40_tau0.40
+0.4,0.55,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.40_tau0.55
+0.5,0.25,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.50_tau0.25
+0.5,0.4,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.50_tau0.40
+0.5,0.55,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.50_tau0.55
+0.6,0.25,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.60_tau0.25
+0.6,0.4,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.60_tau0.40
+0.6,0.55,-5849.293279,0,True,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-t-028-sens-v4\comb_ani0.60_tau0.55

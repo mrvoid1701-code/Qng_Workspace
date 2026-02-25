@@ -1,0 +1,49 @@
+QNG trajectory REAL run log
+timestamp_utc: 2026-02-25T13:53:33Z
+test_id: QNG-T-028
+dataset_id: DS-005
+flyby_csv: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\data\trajectory\flyby_ds005_real.csv
+use_pioneer_anchor: True
+pioneer_csv: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\data\trajectory\pioneer_ds005_anchor.csv
+flyby_pass_ids: 
+pioneer_record_ids: 
+amp_gate_mode: report-only
+amp_band_min: 1.000000e-10
+amp_band_max: 1.000000e-08
+n_control_runs: 400
+leave_out_runs: 96
+seed: 20260225
+science_rows: 9
+control_rows: 13
+science_flyby_rows: 6
+science_pioneer_rows: 3
+required_rules: rule_pass_delta_chi2, rule_pass_delta_aic, rule_pass_delta_bic, rule_pass_directionality, rule_pass_sign_consistency, rule_pass_stability, rule_pass_control_zero, rule_pass_orientation_shuffle, rule_pass_segment_shuffle, rule_pass_perigee_whole, rule_pass_inbound_outbound, rule_pass_leave_out, rule_pass_outlier_trim, rule_pass_pioneer_domain, rule_pass_pioneer_postcorr
+duration_seconds: 0.135182
+
+dataset_manifest_entry:
+{
+  "dataset_name": "Flyby/deep-space telemetry (Galileo, NEAR, Rosetta, Cassini, Juno, Pioneer)",
+  "dataset_type": "spacecraft",
+  "tests": [
+    "QNG-T-010",
+    "QNG-T-011",
+    "QNG-T-025",
+    "QNG-T-028",
+    "QNG-T-041"
+  ],
+  "claims": [
+    "QNG-C-025",
+    "QNG-C-026",
+    "QNG-C-055",
+    "QNG-C-060",
+    "QNG-C-086"
+  ],
+  "highest_priority": "P1",
+  "source_url": "TODO",
+  "license": "TODO",
+  "local_path": "TODO",
+  "version_or_release": "TODO",
+  "last_verified": "YYYY-MM-DD",
+  "notes": "TODO",
+  "dataset_id": "DS-005"
+}

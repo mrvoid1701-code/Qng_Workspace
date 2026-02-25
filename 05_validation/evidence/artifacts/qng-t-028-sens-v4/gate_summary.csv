@@ -1,0 +1,3 @@
+gate,metric,value,threshold,status
+G1,passes_with_delta_chi2<0,15,>=12 of 15,pass
+FINAL,decision,pass,G1,pass
