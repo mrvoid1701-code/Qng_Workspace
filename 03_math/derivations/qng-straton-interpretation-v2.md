@@ -359,33 +359,173 @@ Pioneer 10 ($v_r = 12.5$ km/s). This is a sharp, falsifiable prediction.
 
 ### 9. Distinguishability from thermal recoil
 
+#### 9.1 Models in comparison
+
 The currently accepted explanation for the Pioneer anomaly is asymmetric
 thermal radiation from the spacecraft RTGs (radioisotope thermoelectric
-generators) [Turyshev et al., PRL 108, 241101, 2012]. Under this explanation:
+generators) [Turyshev et al., PRL 108, 241101, 2012]. The thermal recoil model
+predicts an anomalous acceleration of the form
 
-- The anomaly **decreases over time** as RTG power decays (~0.8 W/yr).
-- The anomaly is **spacecraft-specific** (depends on RTG placement geometry).
-- The anomaly has **no dependence on heliocentric distance** per se, only on
-  RTG thermal state.
+$$a_{\text{thermal}} = \alpha_{\text{RTG}} \cdot P(t) \cdot \mathbf{G}(\text{geometry})$$
+
+where $P(t)$ is RTG power output (decaying exponentially, $\sim 0.8\,\text{W/yr}$),
+$\mathbf{G}$ is the spacecraft geometry tensor, and $\alpha_{\text{RTG}}$ is a
+calibration constant. This model predicts:
+
+- The anomaly **decreases monotonically over mission duration** as RTG power
+  decays.
+- The anomaly is **spacecraft-specific**, with magnitude and direction determined
+  by thermal asymmetry in RTG placement.
+- The anomaly is **independent of heliocentric velocity**.
 
 Under QNG straton (this document):
 
-- The anomaly is **proportional to $v_r$**, regardless of spacecraft construction.
-- The anomaly is **distance-independent** (already demonstrated by $\alpha = 3/2$).
-- Spacecraft with similar $v_r$ should show similar anomalies regardless of
-  RTG configuration.
+$$a_{\text{QNG}} = C \cdot v_r = 6.99 \times 10^{-14} \;\text{s}^{-1} \times v_r$$
 
-**Critical test:** Compare anomaly measurements (if available) for probes with
-very different $v_r$ but similar RTG configurations, or vice versa. A
-correlation with $v_r$ and no correlation with RTG power output would favor QNG;
-the reverse would favor thermal recoil.
+This predicts:
 
-**Honest assessment:** The thermal recoil model has been validated quantitatively
-for Pioneer 10/11 with detailed thermal modeling [Turyshev et al. 2012]. The
-QNG straton model is a *new theoretical prediction* that has not yet been compared
-to the tracking data at the same level of detail. The QNG model does not claim
-to refute the thermal explanation; it claims that the QNG lag effect, if real,
-would produce a similar-magnitude acceleration with a distinct velocity dependence.
+- The anomaly is **proportional to radial velocity**, independent of spacecraft
+  construction or RTG configuration.
+- The anomaly is **constant in magnitude** if $v_r$ is constant (regardless of
+  mission elapsed time).
+- Probes with different $v_r$ should show different anomalies even if they
+  have identical RTG systems.
+
+#### 9.2 Identification strategy: joint regression model
+
+To distinguish the two hypotheses, a joint regression model can be fitted to
+anomaly measurements (if available) from multiple probes:
+
+$$\boxed{a_{\text{measured}} = a_{\text{thermal}}(t, P, \text{geo})
++ a_{\text{QNG}}(v_r) + \epsilon_{\text{measurement}}}$$
+
+Fit parameters: $(P_0, \text{RTG geometry}, C_{\text{QNG}}, \text{baseline})$.
+
+**Outcomes that falsify QNG straton:**
+
+1. The coefficient $C_{\text{QNG}}$ is consistent with zero (95\% CL),
+   with thermal-only model explaining variance equally well.
+2. The $v_r$ dependence is present but with coefficient statistically
+   inconsistent with $6.99 \times 10^{-14}\,\text{s}^{-1}$ (by $> 3\sigma$).
+3. For probes with low $v_r$ scatter but varying RTG power, the anomaly
+   time-history is better explained by RTG decay than by QNG at $> 95\%$ confidence.
+
+**Outcomes that falsify thermal recoil (at fixed $v_r$):**
+
+1. Anomaly magnitude varies by $> 30\%$ across probes with similar RTG power
+   but different $v_r$ (after correcting for measurement uncertainty).
+2. No detectable time-decay in anomaly for a single probe, despite significant
+   RTG power loss.
+
+#### 9.3 Honest assessment
+
+The thermal recoil model has been validated quantitatively for Pioneer 10/11
+with detailed thermal modeling [Turyshev et al. 2012]. The QNG straton model is
+a *new theoretical prediction* not yet compared to tracking data at the same
+level of detail. The QNG model does not claim to refute the thermal explanation;
+it claims that the QNG lag effect, if real, produces a similar-magnitude
+acceleration with a distinct velocity-dependent signature. **Both mechanisms
+could contribute.** A regression model jointly estimating both terms is the
+scientifically appropriate approach.
+
+#### 9.4 Velocity-projection coupling: status and falsifiability
+
+##### 9.4.1 Current status
+
+The velocity-projection coupling (VPC) — the postulate that only the radial
+velocity component $v_r$ enters the lag term (Eq. 2) — is not currently derived
+from the QNG equations of motion or from discrete-graph symmetry arguments.
+It is a structural assumption imposed to:
+
+1. Eliminate the tangential acceleration $a_\theta_{\text{lag}} \propto v_\theta$,
+   which would cause secular orbital decay.
+2. Make the lag term vanish for circular orbits ($v_r = 0$), permitting Mercury
+   and other planets to have zero secular anomaly.
+
+**VPC is necessary for solar-system consistency.** Without it, QNG straton is
+falsified (see §9.4.2 below).
+
+##### 9.4.2 Derivation requirement
+
+VPC must be derived from one of the following:
+
+(a) **Discrete graph-averaging kernel.** Show that the naive Hessian lag
+    formula (Eq. 1) integrates over the graph coarse-graining kernel to project
+    onto $v_r$ only, with the $v_\theta$ component canceling to leading order.
+
+(b) **Graph update symmetry.** Prove that the discrete update rule for the
+    graph metric in the limit of node density $\to \infty$ respects a symmetry
+    that couples the lag term only to the field-gradient direction.
+
+(c) **Σ field equation.** Show that VPC emerges naturally when the lag term is
+    incorporated into the Σ dynamics equation $\partial_i(g^{ij}\partial_j\Sigma)
+    = 4\pi\rho + \tau_{\text{phys}}(\ldots)$ and the boundary conditions are
+    self-consistently solved.
+
+Without such a derivation, VPC remains a postulate and the straton layer has
+reduced theoretical foundation.
+
+##### 9.4.3 Falsifier for VPC
+
+**Observational falsifier:** If future high-precision ephemeris data reveals
+that **any near-circular bound orbit** (Mercury, Venus, Earth, or a satellite)
+exhibits a secular energy drift — at magnitude $\Delta a_{\text{lag}} > 10^{-12}\,\text{m/s}^2$ —
+then the tangential coupling $\propto v_\theta$ has survived graph averaging
+and VPC is false. Such a detection **immediately falsifies the straton layer**,
+even if the radial anomaly $\propto v_r$ remains consistent with QNG.
+
+**Computational falsifier:** If a detailed simulation of the QNG graph
+dynamics (including discrete update rules) shows that the full Hessian lag term
+(Eq. 1, without VPC restriction) *does not* reduce to Eq. (2) under coarse
+graining, then VPC is false and the straton interpretation fails.
+
+#### 9.5 Physical interpretation of l₀: geometric resolution, not empty space
+
+A common concern is that in the outer solar system (Oort cloud, 100–1000 AU),
+the lattice scale grows to $l_0 \sim 10^{15}$–$10^{17}\,\text{m}$, raising the
+question: *Is this a real physical gap in spacetime, or a breakdown of the model?*
+
+##### 9.5.1 l₀ as an effective geometric resolution
+
+$l_0$ is **not** an empty gap. Rather, it is the characteristic length scale at
+which the emergent metric $g_{ij}$ (derived from the discrete graph Hessian,
+§ Metric hardening v4) transitions from resolving individual curvature
+fluctuations to describing an effective continuum geometry. This is analogous to:
+
+- In lattice QCD, the lattice spacing $a$ limits UV resolution in the gauge
+  field; increasing $a$ does not create empty space, but coarsens the
+  representation of gluon dynamics.
+- In hydrodynamics, the mean free path $\lambda$ is the resolution limit of
+  continuum fluid equations; a system with $\lambda \gg L$ does not have
+  empty space, but rather cannot be accurately described at scales $\lesssim \lambda$.
+
+In QNG, $l_0(r)$ is the resolution scale of the emergent geometric layer. At
+distances where $l_0 > 1\,\text{AU}$, the discrete graph cannot represent
+sub-AU-scale curvature variations. But **geometry and gravity are still present**
+— they are simply described at a coarser effective level.
+
+##### 9.5.2 No contradiction with local physics
+
+Coarse-graining the lattice to scale $l_0$ does not imply:
+- Spacetime becomes discontinuous or has gaps.
+- Information propagation is slower than $c$.
+- Matter or light cannot traverse the region.
+
+Rather, it means the QNG equations of motion (with lag term parameterized by
+$\tau_{\text{phys}}(r)$) are valid *on scales* $\gtrsim l_0$, and observables
+at scales $\gtrsim l_0$ follow the predictions of this straton layer.
+Local strong-field tests (binary pulsars, gravitational wave detectors
+operating at frequencies $f \gg c/l_0(r)$) would require a UV-complete theory
+of the QNG graph; this document does not address that regime.
+
+##### 9.5.3 Why l₀ scales with field strength
+
+The scaling $l_0 \propto |\nabla\Sigma|^{-3/2}$ means the graph **refines in
+strong fields** (small $l_0$ near masses) and **coarsens in weak fields**
+(large $l_0$ in voids). This is natural: stronger curvature requires finer
+geometric resolution to represent. Deep in space where gravity is weak, a
+coarser lattice suffices. This is consistent with adaptive-mesh methods in
+computational relativity, where mesh refinement follows curvature.
 
 ---
 
@@ -393,56 +533,57 @@ would produce a similar-magnitude acceleration with a distinct velocity dependen
 
 ### 10. What this document does NOT establish
 
-1. **VPC is not derived.** The velocity-projection coupling is a postulate.
-   Without it, the full Hessian lag term (Eq. 1) produces tangential drag that
-   is catastrophically excluded. Deriving VPC from graph-averaging symmetry
-   is required future work.
+1. **VPC is not derived; it is a postulate with explicit falsifiers.**
+   Velocity-projection coupling (Eq. 2) is imposed to avoid secular orbital
+   decay. Derivation from graph-averaging symmetry (§ 9.4.2 requirements a–c)
+   is required. Falsifier: detection of $\Delta a_{\text{lag}} > 10^{-12}\,\text{m/s}^2$
+   in any circular orbit (§ 9.4.3).
 
-2. **$\alpha = 3/2$ is not derived from QNG dynamics.** The exponent is fixed
-   phenomenologically by the Pioneer distance profile. A first-principles
-   derivation — e.g., from self-similarity of the graph Laplacian spectrum, or
-   from the Σ field equation — would elevate it from a phenomenological constraint
-   to a prediction.
+2. **$\alpha = 3/2$ is phenomenologically fixed, not first-principles derived.**
+   The exponent is uniquely determined by requiring the Pioneer anomaly to be
+   distance-independent. A derivation from the Σ field equation or graph
+   Laplacian self-similarity would elevate this from a constraint to a prediction.
 
-3. **$l_{0,\text{1AU}} = 0.86$ AU is calibrated, not predicted.** The absolute
-   scale of the graph lattice is determined from Pioneer data. Connecting it to
-   a fundamental QNG parameter (node density, coupling constant) is open.
+3. **$l_{0,\text{1AU}} = 0.86$ AU is calibrated from Pioneer data, not predicted.**
+   The absolute graph scale is determined from observational anomaly magnitude.
+   Connection to fundamental QNG parameters (node density, coupling constant)
+   remains open.
 
-4. **No numerical simulation.** This document is purely analytic (Newtonian
-   Hessian of $\Sigma = -GM/r$ with field-dependent $l_0$). The QNG graph
-   simulations (metric v4, T-028) use a discrete graph in $\mathbb{R}^2$, not
-   the solar system. The straton layer is an *interpretive bridge* between the
-   graph model and physical observations; it has not been tested in simulation.
+4. **l₀ in the outer solar system (up to $10^{17}\,\text{m}$) is an effective
+   geometric resolution scale**, not an empty physical gap (§ 9.5). The straton
+   layer is valid only on scales $\gtrsim l_0$; UV completion requires full
+   discrete QNG dynamics.
 
-5. **CURL status is inconclusive.** The CURL test series (001–005) gave
-   method-sensitive results. We make no claim about nonconservative signatures
-   from the lag term based on current evidence.
+5. **No QNG graph simulation of solar-system dynamics.** This document is purely
+   analytic. The QNG graph simulations (metric v4, T-028) are in 2D Euclidean
+   space with artificial symmetries, not the astrophysical setting. Straton
+   interpretation is an *inferential bridge*, not yet tested in simulation.
 
-6. **Mainstream Pioneer explanation exists.** The thermal recoil model
-   [Turyshev et al., PRL 108, 2012] explains the Pioneer anomaly quantitatively
-   without new physics. The QNG straton prediction is a *competing hypothesis*
-   that must be distinguished by its velocity-scaling signature, not by the
-   magnitude alone.
+6. **CURL test status is inconclusive / method-sensitive.** No claim is made
+   about nonconservative curl signatures based on current CURL evidence.
 
-### 11. Required next steps (ordered by priority)
+7. **Both thermal recoil and QNG could contribute.** This document proposes
+   a joint regression model (§ 9.2) to distinguish them observationally, not
+   to refute mainstream thermal recoil.
 
-1. **Derive or falsify VPC** from the discrete QNG update rule or
-   graph-averaging kernel.
+### 11. Required next steps (revised, ordered by priority)
 
-2. **Derive $\alpha = 3/2$** from the Σ field equation or from
-   self-similarity of the graph Laplacian.
+1. **Derive VPC** from graph-averaging kernel or discrete update symmetry
+   (§ 9.4.2, priority CRITICAL). Falsify or validate with orbital ephemeris
+   (§ 9.4.3).
 
-3. **Pioneer v2 numerical test:** Implement Eq. (13) as a pre-registered
-   test against published Pioneer tracking residuals (not just the anomaly
-   magnitude, but the $v_r$-dependence if data resolution permits).
+2. **Joint regression model** on multi-probe anomaly data: fit thermal + QNG
+   terms simultaneously (§ 9.2). Determine which model dominates or if both
+   contribute.
 
-4. **Cross-probe comparison:** Compile published anomaly estimates for
-   Voyager 1, Voyager 2, and New Horizons; compare to $C \cdot v_r$ prediction.
+3. **Derive $\alpha = 3/2$** from Σ field equation or graph Laplacian
+   self-similarity.
 
-5. **Second-order Mercury effects:** Compute the second-order perihelion
-   precession from the oscillating $v_r$-dependent perturbation. Even though
-   the first-order secular average is zero, the oscillating term may produce
-   a rectified second-order effect scaling as $\tau^2$.
+4. **Clarify l₀ physics:** perform detailed lattice QCD-like analysis of how
+   the emergent metric $g_{ij}$ depends on local lattice refinement (§ 9.5).
+
+5. **Numerical simulation:** implement discrete QNG graph in 3D spacetime
+   around a point mass; test whether Scenario B + VPC prediction holds in silico.
 
 ---
 
