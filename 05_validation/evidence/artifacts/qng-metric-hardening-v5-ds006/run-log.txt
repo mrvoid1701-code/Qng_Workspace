@@ -1,0 +1,58 @@
+QNG metric hardening v5 run log
+timestamp_utc: 2026-02-27T18:47:14Z
+python: 3.11.14
+platform: Linux-4.4.0-x86_64-with-glibc2.39
+dataset_id: DS-006
+scales_cli: s0,1.25s0,1.5s0
+samples: 72
+seed: 3401
+alpha: 1.0
+duration_seconds: 1.023
+anchors_used: 72
+decision: pass
+
+dataset_manifest_entry:
+{
+  "dataset_name": "Lensing + rotation datasets (Hubble, JWST, Euclid, Bullet-like clusters, RC catalogs)",
+  "dataset_type": "astronomy",
+  "tests": [
+    "QNG-T-012",
+    "QNG-T-017",
+    "QNG-T-018",
+    "QNG-T-019",
+    "QNG-T-027",
+    "QNG-T-039"
+  ],
+  "claims": [
+    "QNG-C-027",
+    "QNG-C-037",
+    "QNG-C-038",
+    "QNG-C-040",
+    "QNG-C-058",
+    "QNG-C-082"
+  ],
+  "highest_priority": "P1",
+  "source_url": "TODO",
+  "license": "TODO",
+  "local_path": "TODO",
+  "version_or_release": "TODO",
+  "last_verified": "YYYY-MM-DD",
+  "notes": "TODO",
+  "dataset_id": "DS-006"
+}
+
+artifact_hashes_sha256:
+- metric_checks.csv: 9740dbd3da569d9a99caf0260dd8993f28d90ce66dc4524d926c9b4e68e1a393
+- eigs.csv: 3ef30015cbdfde4efe43a234f4841e47d571bedc73ec5f7bdfd18fdf9066997d
+- drift.csv: 66a87aa100d1eb351971369810bcb2af8eabaf7b267eda4c111b079bd1239b52
+- align_sigma.csv: 9e3629f8122991434451fecd2aa5efb45be3fcce050a90403bf90bb2a1a1a9e2
+- vacuum_gate.csv: 3eb750b4ec762acc4badcc264275b9b7dffb10d7cd27fdbb28c6d0b32813b00d
+- ppn_gamma.csv: 3697e4d4e9ea36fcefdf86f67e2be6423a0d68457395c7a77f36a113b906b581
+- g00_norm_check.csv: 604034648c00c799b4d36e68eabb9982ded9ca218bc179c4964698c7a7b79bda
+- config.json: 16ae8f6180546d6fb112ae2a77ab1df26b233ddf90cad9eb4b849533c579e2ee
+- eigs-hist.png: ff6cdce9e05371d27d231a733ac700620fa5124f83154ef54cb426ccb4c576f1
+- drift-distribution.png: 7a59053c0d109d9e8a71dd94b69ea3a7a720da314bad85310eec6b5464426326
+- cos-sim-distribution.png: 84ad8b9cd71f56ccffa1d0832de184117258639f94d43ed5a95ce9f630ebd77c
+- cond-number-hist.png: b4fa1690444a60116be223edaeb9b8b024f0b2c8ee16daf7712b7a41f58c407b
+- gamma-abs-err-hist.png: 9e9d4b65410fd95a61103403e4c779f747679382dbc1e875aacd2b636531bea8
+- g00-trace-ratio-hist.png: 2336bcf1367af1486a16eb6f2b756db36eb22f0a14f5bff1a622726bbf6d9333

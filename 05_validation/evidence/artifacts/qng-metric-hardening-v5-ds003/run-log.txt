@@ -1,0 +1,48 @@
+QNG metric hardening v5 run log
+timestamp_utc: 2026-02-27T18:47:13Z
+python: 3.11.14
+platform: Linux-4.4.0-x86_64-with-glibc2.39
+dataset_id: DS-003
+scales_cli: s0,1.25s0,1.5s0
+samples: 72
+seed: 3401
+alpha: 1.0
+duration_seconds: 0.815
+anchors_used: 72
+decision: pass
+
+dataset_manifest_entry:
+{
+  "dataset_name": "Discrete/N-body simulation environment",
+  "dataset_type": "simulation",
+  "tests": [
+    "QNG-T-029"
+  ],
+  "claims": [
+    "QNG-C-062"
+  ],
+  "highest_priority": "P1",
+  "source_url": "TODO",
+  "license": "TODO",
+  "local_path": "TODO",
+  "version_or_release": "TODO",
+  "last_verified": "YYYY-MM-DD",
+  "notes": "TODO",
+  "dataset_id": "DS-003"
+}
+
+artifact_hashes_sha256:
+- metric_checks.csv: 84577c281ecb13cfc89aa4f65c62d468b323f830b0ae90e29126f38ac5d52404
+- eigs.csv: 158e913ab80f71d077fbbd7b02ffbaefbd9b291b0ca18f798e648b1c02dd7da6
+- drift.csv: f212b4099e9e29946426802be9e6e81570b28613ba7ed69f6ef141db29c0e8ea
+- align_sigma.csv: fc2145d138c8e69fdeea702864f0728c08ee74dd79666331e42a2cb3de1923f3
+- vacuum_gate.csv: 86467e6f4fde3c3a94a8c6585c8d77678b86a6dbb2c65af7d64297d640cf724f
+- ppn_gamma.csv: debdcfeb25301dab7df85961a11c0bd394b4eb7687678aac76cba2f2cd3e4984
+- g00_norm_check.csv: be21f3639a212e1d7ceedbfc35915599d8936360be44bdfe6a909f1c711769c7
+- config.json: edb5d4b4f5a36a5b975f075740895f0d18bacaef3b351f36f18ba308b80361e2
+- eigs-hist.png: 37645699f1478d1d3aecb9518cea121364781e6864617b16da788c7c14f5cb88
+- drift-distribution.png: 3521fb868f8493612eba8017c23117eb7cb01797543ae66b98ca5b4e77dfb0be
+- cos-sim-distribution.png: f31319f7d98b7bca3284f0243171dae0046914022f6596c63f4bb52329800ee0
+- cond-number-hist.png: dbdfb764a39ec6a89b610fdacb29c810fd662bc4672c0dab14634c75deaf55ca
+- gamma-abs-err-hist.png: 6a329d9983be42dfc5c2c76b7e1563ac20595debf12c803f26deb2702849b1ea
+- g00-trace-ratio-hist.png: ab660c095f61ec5f6e694baa96c7d0cbd5a1ae5516a988962a388d2655661a8f
