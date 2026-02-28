@@ -1,0 +1,19 @@
+{
+  "script": "run_qng_covariant_cons_v1.py",
+  "dataset_id": "DS-002",
+  "seed": 3401,
+  "phi_scale": 0.1,
+  "c_wave": 0.15,
+  "dt": 0.4,
+  "n_steps": 400,
+  "n_nodes": 280,
+  "mean_degree": 9.3714,
+  "mean_alpha": 0.808269,
+  "E_flat_drift": 0.11785125,
+  "E_cov_drift": 0.00110381,
+  "drift_ratio": 106.7677,
+  "tr_err": 1.9602e-14,
+  "run_utc": "2026-02-28T17:44:52.073668Z",
+  "elapsed_s": 0.25,
+  "decision": "pass"
+}

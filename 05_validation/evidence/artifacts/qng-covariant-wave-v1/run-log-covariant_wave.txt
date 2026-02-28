@@ -1,0 +1,29 @@
+======================================================================
+QNG covariant metric-wave □h_{μν} with ADM background (v1)
+Run started: 2026-02-28T17:38:35.489555Z
+======================================================================
+
+Graph: n=280  mean_degree=9.37
+ADM metric: Φ_scale=0.1  mean_α=0.808269  min_α=0.675000
+Speed reduction 1−mean(α) = 0.191731
+
+IC: Gaussian AMP=0.01  σ=1.0
+E_cov(0)=1.384473e-05  E_flat(0)=1.384473e-05
+
+Running 200 covariant leapfrog steps…
+  Forward simulation done in 0.12s
+
+Running 200 steps backward (time-reversal)…
+  Time-reversal error: 9.540979e-15  (0.05s)
+
+QNG covariant wave completed.
+decision=pass  G13=True(a=True,b=True,c=True,d=True)
+G13a stability:   max|h|/AMP=1.000000  threshold=≤1.5
+G13b E_cov drift: |E_cov(T)/E_cov(0)−1|=0.003297  threshold=<0.02
+G13c speed red.:  1−mean(α)=0.191731  threshold=>0.05
+G13d time-rev.:   err=9.540979e-15  threshold=<0.0001
+
+Note: E_flat drift = 0.076127  (metric breaks flat conservation)
+Note: E_cov vs E_flat at T: ratio = 1.085969
+
+Artifacts written to: /home/user/Qng_Workspace/05_validation/evidence/artifacts/qng-covariant-wave-v1
