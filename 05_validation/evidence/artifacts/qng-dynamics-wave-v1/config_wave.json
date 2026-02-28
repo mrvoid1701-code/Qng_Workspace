@@ -19,7 +19,10 @@
   "thresholds": {
     "g5a_stability_max": 1.5,
     "g5b_spread_ratio_min": 1.2,
-    "g5c_dynamism_min": 1.2
+    "g5c_dynamism_min": 1.2,
+    "g5d_freq_rel_tol": 0.25,
+    "g5d_min_crossings": 2,
+    "n_steps_g5d": 300
   },
   "results": {
     "E0": 1.2669589023432761e-05,
@@ -31,6 +34,11 @@
     "sigma_final_rel": 1.4132858808134983,
     "dynamism_ratio": 1.4041444709536113,
     "u_centre_rel": 0.5730341044685776,
+    "lambda_d": -1.4072120843176923,
+    "omega_pred": 0.17793895553573444,
+    "omega_meas": 0.1832595714594046,
+    "freq_rel": 1.029901355257768,
+    "n_crossings": 7,
     "decision": "pass"
   }
 }

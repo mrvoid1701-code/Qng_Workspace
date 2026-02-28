@@ -26,12 +26,20 @@ Gates:
            (RMS spread grows → wave propagates away from source)
     G5c — Dynamism: max_t σ(t) / min_t σ(t) > 1.2
            (spread is NOT constant → perturbation is evolving, not frozen)
+    G5d — Dispersion: excite the highest-frequency eigenmode of the graph
+           Laplacian (most-negative eigenvalue λ_d, found via power iteration);
+           measure the oscillation frequency ω_meas from zero-crossings of a
+           single node's time-series in a separate 300-step sub-simulation;
+           verify ω_meas ≈ c·√|λ_d| (within 25%).  This directly confirms the
+           linear dispersion relation ω = c|k| for the discrete wave equation.
 
 Outputs (in --out-dir):
     wave_energy.csv          E(t) and σ(t) at each recorded timestep
-    metric_checks_wave.csv   G5 gate summary
-    wave_energy-hist.png     E(t)/E(0) vs time (raster)
-    wave_spread-hist.png     σ(t)/σ(0) vs time (raster)
+    wave_eigenmode.csv       G5d eigenmode sub-simulation: u[node](t) vs time
+    metric_checks_wave.csv   G5 gate summary (G5a–G5d)
+    wave_energy-plot.png     E(t)/E(0) vs time (raster)
+    wave_spread-plot.png     σ(t)/σ(0) vs time (raster)
+    wave_eigenmode-plot.png  eigenmode trajectory u(t) with ±AMP reference lines
     run-log-wave.txt
 
 Derivation reference: 03_math/derivations/qng-wave-equation-v1.md
@@ -69,6 +77,7 @@ N_STEPS_DEFAULT = 80     # total simulation steps  → T = 80×0.40 = 32 time un
 SIGMA_INIT_DEFAULT = 1.0 # Gaussian initial width (Euclidean graph coordinate units)
 AMP_INIT = 0.01          # perturbation amplitude (small → linear regime)
 RECORD_EVERY = 4         # record E(t) and σ(t) every this many steps
+N_STEPS_G5D = 300        # G5d eigenmode sub-simulation steps (T = 300×0.4 = 120 time units)
 
 
 # ── Gate thresholds ───────────────────────────────────────────────────────────
@@ -77,6 +86,8 @@ class WaveThresholds:
     g5a_stability_max: float = 1.5      # max|u(t)| / max|u(0)| ≤ 1.5 (no blow-up)
     g5b_spread_ratio_min: float = 1.2   # σ(T)/σ(0) > 1.2
     g5c_dynamism_min: float = 1.2       # max_t σ(t) / min_t σ(t) > 1.2
+    g5d_freq_rel_tol: float = 0.25      # |ω_meas/ω_pred − 1| < 0.25
+    g5d_min_crossings: int = 2          # need at least this many zero-crossings
 
 
 # ── Utility ───────────────────────────────────────────────────────────────────
@@ -247,6 +258,56 @@ def rms_spread(
     if den < 1e-30:
         return 0.0
     return math.sqrt(num / den)
+
+
+# ── G5d: power iteration for most-negative Laplacian eigenvalue ──────────────
+def power_iteration_min_eigenvalue(
+    neighbours: list[list[int]],
+    n_iters: int = 500,
+    seed: int = 42,
+) -> tuple[float, list[float]]:
+    """
+    Find the most-negative eigenvalue λ_d (and its eigenvector v_d) of the
+    degree-normalised Laplacian L_rw via power iteration on −L_rw.
+
+    −L_rw has eigenvalues in [0, 2]; its largest eigenvalue corresponds to
+    the MOST NEGATIVE eigenvalue of L_rw (the highest-frequency wave mode).
+
+    Returns (lambda_d, v_d) where:
+        lambda_d ≤ 0  (most negative eigenvalue of L_rw)
+        v_d           normalised so max_i |v_d[i]| = 1.0
+    """
+    rng = random.Random(seed)
+    n = len(neighbours)
+    v = [rng.gauss(0.0, 1.0) for _ in range(n)]
+    norm = math.sqrt(sum(x * x for x in v))
+    v = [x / norm for x in v]
+
+    lam = 0.0
+    for _ in range(n_iters):
+        # Apply L_rw to v
+        Lv = [0.0] * n
+        for i in range(n):
+            nb = neighbours[i]
+            ki = len(nb)
+            if ki > 0:
+                Lv[i] = sum(v[j] - v[i] for j in nb) / ki
+        # Rayleigh quotient of L_rw (will converge to λ_d)
+        num = sum(v[i] * Lv[i] for i in range(n))
+        den = sum(v[i] * v[i] for i in range(n))
+        lam = num / den if den > 1e-30 else 0.0
+        # Power iteration step: apply −L_rw = negate Lv
+        neg_Lv = [-x for x in Lv]
+        norm = math.sqrt(sum(x * x for x in neg_Lv))
+        if norm < 1e-12:
+            break
+        v = [x / norm for x in neg_Lv]
+
+    # Normalise so max |v_i| = 1
+    v_max = max(abs(x) for x in v)
+    if v_max > 1e-12:
+        v = [x / v_max for x in v]
+    return lam, v
 
 
 # ── Canvas / PNG writer (minimal, identical to v5/v6) ────────────────────────
@@ -431,11 +492,11 @@ def main() -> int:
 
     # ── Leapfrog evolution ────────────────────────────────────────────────────
     energy_rows: list[dict[str, str]] = []
-    energy_vals: list[float] = []   # E(t)/E(0)
-    spread_vals: list[float] = []   # σ(t)/σ(0)
-    spread_abs_vals: list[float] = []  # σ(t) absolute, for dynamism
+    energy_vals: list[float] = []       # E(t)/E(0)
+    spread_vals: list[float] = []       # σ(t)/σ(0)
+    spread_abs_vals: list[float] = []   # σ(t) absolute, for dynamism
     time_vals: list[float] = []
-    max_u_all_time: float = max_u0  # track amplitude stability
+    max_u_all_time: float = max_u0      # track amplitude stability (G5a)
 
     for step in range(args.n_steps):
         # Graph Laplacian applied to current u
@@ -501,7 +562,60 @@ def main() -> int:
     dynamism_ratio = sigma_max_t / sigma_min_t if sigma_min_t > 1e-12 else float("nan")
     gate_g5c = math.isfinite(dynamism_ratio) and dynamism_ratio > thresholds.g5c_dynamism_min
 
-    gate_g5 = gate_g5a and gate_g5b and gate_g5c
+    # G5d: dispersion — eigenmode frequency test
+    #   1. Find λ_d (most-negative eigenvalue) and eigenvector v_d via power iteration.
+    #   2. Excite a sub-simulation starting from v_d (scaled to AMP_INIT amplitude).
+    #   3. Count zero-crossings of u[node_d](t) to measure ω_meas.
+    #   4. Predicted: ω_pred = c · √|λ_d|.  Gate: |ω_meas/ω_pred − 1| < 0.25.
+    lambda_d, v_d = power_iteration_min_eigenvalue(neighbours, seed=args.seed)
+    # node with largest |v_d| → strongest signal, easiest to count crossings
+    node_d = max(range(n), key=lambda i: abs(v_d[i]))
+    omega_pred = args.c_wave * math.sqrt(abs(lambda_d)) if lambda_d < 0 else 0.0
+
+    # Sub-simulation IC: u_i = AMP_INIT * v_d[i]  (max already normalised to 1)
+    ud_cur = [AMP_INIT * v_d[i] for i in range(n)]
+    ud_prev = ud_cur[:]   # zero initial velocity
+
+    eigenmode_rows: list[dict[str, str]] = []
+    eigenmode_traj: list[float] = []   # u[node_d](t)
+    eigenmode_times: list[float] = []
+
+    for step_d in range(N_STEPS_G5D):
+        Lu_d = apply_laplacian(ud_cur, neighbours)
+        ud_next = [
+            2.0 * ud_cur[i] - ud_prev[i] + c2 * dt * dt * Lu_d[i]
+            for i in range(n)
+        ]
+        if step_d % RECORD_EVERY == 0 or step_d == N_STEPS_G5D - 1:
+            t_d = step_d * dt
+            eigenmode_rows.append({
+                "step": str(step_d),
+                "time": fmt(t_d),
+                "u_node": fmt(ud_cur[node_d]),
+            })
+            eigenmode_traj.append(ud_cur[node_d])
+            eigenmode_times.append(t_d)
+        ud_prev = ud_cur
+        ud_cur = ud_next
+
+    # Count zero-crossings in the recorded trajectory
+    n_crossings = sum(
+        1 for k in range(1, len(eigenmode_traj))
+        if eigenmode_traj[k - 1] * eigenmode_traj[k] < 0.0
+    )
+    # Also count crossings in the un-subsampled loop would be more accurate, but
+    # with RECORD_EVERY=4 we sample every 4 steps (dt_rec=1.6 time units).
+    # Period ≈ 2π/ω_pred ≈ 31 time units → ~19 samples/period → no aliasing.
+    t_g5d = N_STEPS_G5D * dt
+    omega_meas = math.pi * n_crossings / t_g5d if t_g5d > 0 else 0.0
+    freq_rel = omega_meas / omega_pred if omega_pred > 1e-12 else float("nan")
+    gate_g5d = (
+        math.isfinite(freq_rel)
+        and abs(freq_rel - 1.0) < thresholds.g5d_freq_rel_tol
+        and n_crossings >= thresholds.g5d_min_crossings
+    )
+
+    gate_g5 = gate_g5a and gate_g5b and gate_g5c and gate_g5d
     decision = "pass" if gate_g5 else "fail"
 
     # ── Write outputs ─────────────────────────────────────────────────────────
@@ -524,13 +638,21 @@ def main() -> int:
          "value": fmt(dynamism_ratio),
          "threshold": f">{thresholds.g5c_dynamism_min}",
          "status": "pass" if gate_g5c else "fail"},
+        {"gate_id": "G5d", "metric": "freq_ratio",
+         "value": fmt(freq_rel),
+         "threshold": f"|omega_meas/omega_pred-1|<{thresholds.g5d_freq_rel_tol} & crossings>={thresholds.g5d_min_crossings}",
+         "status": "pass" if gate_g5d else "fail"},
         {"gate_id": "FINAL", "metric": "decision",
          "value": decision,
-         "threshold": "G5a&G5b&G5c",
+         "threshold": "G5a&G5b&G5c&G5d",
          "status": decision},
     ]
     write_csv(out_dir / "metric_checks_wave.csv",
               ["gate_id", "metric", "value", "threshold", "status"], metric_rows)
+
+    # G5d: eigenmode time-series CSV
+    write_csv(out_dir / "wave_eigenmode.csv",
+              ["step", "time", "u_node"], eigenmode_rows)
 
     # Time-series plots
     plot_timeseries(out_dir / "wave_energy-plot.png", time_vals, energy_vals,
@@ -538,6 +660,10 @@ def main() -> int:
     plot_timeseries(out_dir / "wave_spread-plot.png", time_vals, spread_vals,
                     color=(30, 150, 90), hline=thresholds.g5b_spread_ratio_min,
                     hline_color=(200, 60, 60))
+
+    # G5d: eigenmode oscillation plot (u vs t, with ±AMP reference lines)
+    plot_timeseries(out_dir / "wave_eigenmode-plot.png", eigenmode_times, eigenmode_traj,
+                    color=(140, 40, 180), hline=0.0, hline_color=(120, 120, 120))
 
     # Config and hashes
     config = {
@@ -559,6 +685,9 @@ def main() -> int:
             "g5a_stability_max": thresholds.g5a_stability_max,
             "g5b_spread_ratio_min": thresholds.g5b_spread_ratio_min,
             "g5c_dynamism_min": thresholds.g5c_dynamism_min,
+            "g5d_freq_rel_tol": thresholds.g5d_freq_rel_tol,
+            "g5d_min_crossings": thresholds.g5d_min_crossings,
+            "n_steps_g5d": N_STEPS_G5D,
         },
         "results": {
             "E0": e0,
@@ -570,6 +699,11 @@ def main() -> int:
             "sigma_final_rel": sigma_final_rel,
             "dynamism_ratio": dynamism_ratio,
             "u_centre_rel": u_centre_rel,
+            "lambda_d": lambda_d,
+            "omega_pred": omega_pred,
+            "omega_meas": omega_meas,
+            "freq_rel": freq_rel if math.isfinite(freq_rel) else None,
+            "n_crossings": n_crossings,
             "decision": decision,
         },
     }
@@ -577,6 +711,7 @@ def main() -> int:
 
     files_for_hash = [
         out_dir / "wave_energy.csv",
+        out_dir / "wave_eigenmode.csv",
         out_dir / "metric_checks_wave.csv",
         out_dir / "config_wave.json",
     ]
@@ -605,6 +740,9 @@ def main() -> int:
         f"  (G5b threshold >{thresholds.g5b_spread_ratio_min})",
         f"dynamism_ratio={dynamism_ratio:.6f}  (G5c threshold >{thresholds.g5c_dynamism_min})",
         f"u_centre_rel={u_centre_rel:.4f}  (informational)",
+        f"lambda_d={lambda_d:.6f}  omega_pred={omega_pred:.6f}  omega_meas={omega_meas:.6f}",
+        f"  freq_rel={fmt(freq_rel)}  n_crossings={n_crossings}"
+        f"  (G5d threshold |freq_rel-1|<{thresholds.g5d_freq_rel_tol} & crossings>={thresholds.g5d_min_crossings})",
         "",
     ]
     if warnings:
@@ -616,7 +754,7 @@ def main() -> int:
     print("QNG dynamics wave v1 completed.")
     print(f"Artifacts: {out_dir}")
     print(
-        f"decision={decision}  G5={gate_g5}(a={gate_g5a},b={gate_g5b},c={gate_g5c})"
+        f"decision={decision}  G5={gate_g5}(a={gate_g5a},b={gate_g5b},c={gate_g5c},d={gate_g5d})"
     )
     print(
         f"G5a (stability): max_u/max_u0={fmt(stability_ratio)} threshold=<={thresholds.g5a_stability_max}"
@@ -626,6 +764,11 @@ def main() -> int:
     )
     print(
         f"G5c (dynamism): max_σ/min_σ={fmt(dynamism_ratio)} threshold=>{thresholds.g5c_dynamism_min}"
+    )
+    print(
+        f"G5d (dispersion): λ_d={lambda_d:.4f}  ω_pred={omega_pred:.4f}"
+        f"  ω_meas={omega_meas:.4f}  freq_rel={fmt(freq_rel)}"
+        f"  crossings={n_crossings}  threshold=|·-1|<{thresholds.g5d_freq_rel_tol}"
     )
     print(
         f"E0={fmt(e0)}  E_final={fmt(e_final)}  (T={t_final:.1f}  c={args.c_wave}  dt={args.dt}  steps={args.n_steps})"

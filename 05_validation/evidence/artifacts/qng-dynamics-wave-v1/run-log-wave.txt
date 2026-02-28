@@ -1,5 +1,5 @@
 QNG dynamics wave v1 run log
-timestamp_utc: 2026-02-28T05:05:54Z
+timestamp_utc: 2026-02-28T05:27:18Z
 python: 3.11.14
 platform: Linux-4.4.0-x86_64-with-glibc2.39
 dataset_id: DS-002
@@ -8,7 +8,7 @@ centre_idx: 279  sigma_centre=0.8744
 c_wave: 0.15  dt: 0.4  n_steps: 80
 cfl: 0.0600  (limit: sqrt(2)=1.4142)
 sigma_init: 1.0  amp_init: 0.01
-duration_seconds: 0.112
+duration_seconds: 0.303
 decision: pass
 
 E0=1.2670e-05  E_final=5.7267e-06  E_final_rel=0.452002
@@ -17,3 +17,5 @@ sigma0=0.9380  sigma_final=1.3256  ratio=1.4133
   (G5b threshold >1.2)
 dynamism_ratio=1.404144  (G5c threshold >1.2)
 u_centre_rel=0.5730  (informational)
+lambda_d=-1.407212  omega_pred=0.177939  omega_meas=0.183260
+  freq_rel=1.029901  n_crossings=7  (G5d threshold |freq_rel-1|<0.25 & crossings>=2)
