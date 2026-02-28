@@ -1,0 +1,25 @@
+======================================================================
+QNG metric dynamics — tensorial wave propagation (v1)
+Run started: 2026-02-28T13:25:19.942532Z
+======================================================================
+
+Graph: n=280  mean_degree=9.37  edges=1312
+Params: c=0.15  dt=0.4  N=80  T=32.0  σ_init=1.0
+CFL number: c·dt = 0.0600  (must be ≤ √2 ≈ 1.414)
+
+IC: h_+(i,0) = Gaussian(AMP=0.01, σ=1.0), h_×=h_tr=0
+max|h_+(i,0)| = 0.010000
+E_+(0) = 1.384473e-05  (KE=0.000000, PE=1.384473e-05)
+
+Running 80 leapfrog steps (3 modes)…
+  Done in 0.06s
+
+QNG metric dynamics (tensorial) completed.
+decision=pass  G7=True(a=True,b=True,c=True,d=True)
+G7a (stability):    stability_ratio=1.000000  threshold=≤1.5
+G7b (cross leak):   cross_leak=0.000000  threshold=<1e-12
+G7c (trace leak):   trace_leak=0.000000  threshold=<1e-12
+G7d (energy drift): |E(T)/E(0)-1|=2.744430e-04  threshold=<0.1
+E_+(0)=1.384473e-05  E_+(T)=1.384093e-05
+
+Artifacts written to: /home/user/Qng_Workspace/05_validation/evidence/artifacts/qng-metric-dynamics-v1

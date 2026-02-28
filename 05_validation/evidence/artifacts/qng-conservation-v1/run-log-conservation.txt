@@ -1,0 +1,28 @@
+======================================================================
+QNG emergent energy-momentum conservation (v1)
+Run started: 2026-02-28T13:29:23.381819Z
+======================================================================
+
+Graph: n=280  mean_degree=9.37
+Params: c=0.15  dt=0.4  N=200  T=80.0  σ_init=1.0
+
+IC: Gaussian(AMP=0.01, σ=1.0)
+E(0)=1.384473e-05  KE(0)=0.000000  PE(0)=1.384473e-05
+min ε(i,0)=1.387756e-10  max ε(i,0)=2.315163e-07
+
+Running 200 leapfrog steps (forward)…
+  Forward simulation done in 0.07s
+
+Running 200 leapfrog steps (backward / time-reversal)…
+  Backward simulation done in 0.04s
+  Time-reversal error: 6.873842e-15
+
+QNG conservation completed.
+decision=pass  G9=True(a=True,b=True,c=True,d=True)
+G9a (energy positivity): min_eps=1.387756e-10  threshold=≥0.0
+G9b (energy conservation): |E(T)/E(0)-1|=0.001315  threshold=<0.02
+G9c (time-reversal): max|u_back-u0|/max|u0|=6.873842e-15  threshold=<0.0001
+G9d (virial theorem): |<KE>/<PE>-1|=0.007736  threshold=<0.3
+<KE>=6.892049e-06  <PE>=6.945781e-06  <KE>/<PE>=0.992264
+
+Artifacts written to: /home/user/Qng_Workspace/05_validation/evidence/artifacts/qng-conservation-v1

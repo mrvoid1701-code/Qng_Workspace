@@ -1,0 +1,6 @@
+gate_id,metric,value,threshold,status
+G9a,min_energy_density,1.387756e-10,≥0.0,pass
+G9b,energy_drift,0.001315,|E(T)/E(0)-1|<0.02,pass
+G9c,time_reversal_err,6.873842e-15,max|u_back-u0|/max|u0|<0.0001,pass
+G9d,virial_deviation,0.007736,|<KE>/<PE>-1|<0.3,pass
+FINAL,decision,pass,G9a&G9b&G9c&G9d,pass

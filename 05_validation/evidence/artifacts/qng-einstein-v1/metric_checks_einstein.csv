@@ -1,0 +1,6 @@
+gate_id,metric,value,threshold,status
+G8a,mean_F,-5.26829268,<-1.0,pass
+G8b,cv_R,0.34556840,>0.05,pass
+G8c,offdiag_sym,0.01960641,<0.3,pass
+G8d,aniso_ratio,0.20703219,<0.5,pass
+FINAL,decision,pass,G8a&G8b&G8c&G8d,pass
