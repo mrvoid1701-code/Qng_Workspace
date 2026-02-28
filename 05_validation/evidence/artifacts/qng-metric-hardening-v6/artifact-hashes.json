@@ -1,0 +1,19 @@
+{
+  "metric_checks.csv": "735c1ddda7ffa4166a3cad23fd521cd8f52fc16c65f8c90667d536c0e16d16e4",
+  "eigs.csv": "3ef30015cbdfde4efe43a234f4841e47d571bedc73ec5f7bdfd18fdf9066997d",
+  "drift.csv": "66a87aa100d1eb351971369810bcb2af8eabaf7b267eda4c111b079bd1239b52",
+  "align_sigma.csv": "9e3629f8122991434451fecd2aa5efb45be3fcce050a90403bf90bb2a1a1a9e2",
+  "vacuum_gate.csv": "3eb750b4ec762acc4badcc264275b9b7dffb10d7cd27fdbb28c6d0b32813b00d",
+  "ppn_gamma.csv": "3697e4d4e9ea36fcefdf86f67e2be6423a0d68457395c7a77f36a113b906b581",
+  "g00_norm_check.csv": "604034648c00c799b4d36e68eabb9982ded9ca218bc179c4964698c7a7b79bda",
+  "config.json": "5441e05e92f79d1130cbb2a64cbc1278eb33bd5bc71f3d268e83759bcc297492",
+  "eigs-hist.png": "402ddf80cc12beeea2f54d3fb62c6b406d1bc722949745960e544ceded43bb97",
+  "drift-distribution.png": "7a59053c0d109d9e8a71dd94b69ea3a7a720da314bad85310eec6b5464426326",
+  "cos-sim-distribution.png": "bb01d708fae4dc325fb8b5c8ea98e06d12f5c7211a24af6cf4aab9ea5dde399d",
+  "cond-number-hist.png": "b239f1bea974ca1af7ce5f0ffee304879e7d29e70e4ab1a4dc752272e8527149",
+  "gamma-abs-err-hist.png": "76a101855bed35aa42b45deb9d0ebcfa3a447826dc3e84210b71a90fb9d44afb",
+  "g00-trace-ratio-hist.png": "1849890123ade79352ff4a997e740677ac20c18a9358e8a8be731700b2c6a310",
+  "tidal_fidelity.csv": "14fc0930fa4daf8c5c0a55cf864bc049a37954c7becd0824adb9cb5278fbac7f",
+  "tidal-frob-hist.png": "47269147f6eb6765607ca13a1d69b616ef61b3681de0b951a8919e0adbdce534",
+  "tidal-devratio-hist.png": "4c488a8c2bb504f7951b476a93c4eeaec6dc609fe07544e7ae6f0a66edf1dfca"
+}
