@@ -1,0 +1,6 @@
+gate_id,metric,value,threshold,status
+G6a,mu_0,3.119931e-10,<1e-06,pass
+G6b,mu_1_fiedler,0.01076498,>0.001,pass
+G6c,slope_rel,0.85686723,|slope_meas/alpha_Weyl-1|<0.25,pass
+G6d,continuum_r2,0.99150205,>0.95,pass
+FINAL,decision,pass,G6a&G6b&G6c&G6d,pass
