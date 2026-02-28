@@ -1,0 +1,36 @@
+{
+  "dataset_id": "DS-002",
+  "seed": 3401,
+  "n_nodes": 280,
+  "centre_idx": 279,
+  "centre_xy": [
+    -0.09106657458429623,
+    -0.13959837025602218
+  ],
+  "c_wave": 0.15,
+  "dt": 0.4,
+  "cfl": 0.06,
+  "n_steps": 80,
+  "t_final": 32.0,
+  "sigma_init": 1.0,
+  "amp_init": 0.01,
+  "laplacian": "degree-normalised random-walk",
+  "scheme": "leapfrog",
+  "thresholds": {
+    "g5a_stability_max": 1.5,
+    "g5b_spread_ratio_min": 1.2,
+    "g5c_dynamism_min": 1.2
+  },
+  "results": {
+    "E0": 1.2669589023432761e-05,
+    "E_final": 5.726673682211936e-06,
+    "E_final_rel": 0.45200153466859044,
+    "stability_ratio": 1.0,
+    "sigma0": 0.9379759567350078,
+    "sigma_final": 1.3256281761961193,
+    "sigma_final_rel": 1.4132858808134983,
+    "dynamism_ratio": 1.4041444709536113,
+    "u_centre_rel": 0.5730341044685776,
+    "decision": "pass"
+  }
+}
