@@ -1,0 +1,30 @@
+======================================================================
+QNG covariant metric — ADM decomposition (v1)
+Run started: 2026-02-28T17:14:31.739692Z
+======================================================================
+
+Graph: n=280  mean_degree=9.37
+Phi_scale = 0.1
+
+σ field: min=0.043816  max=0.855516
+
+ADM metric components:
+  Φ: min=-0.100000  max=-0.005122
+  N: min=0.900000  max=0.994878
+  γ: min=1.010243  max=1.200000
+
+Mass centre: vertex 196  at (-0.279781, -0.173702)  σ=0.855516
+
+Geodesic acceleration:
+  mean |a| = 0.019428
+  mean a_radial = 0.017229  (positive = inward)
+  fraction inward = 0.986
+
+QNG covariant metric completed.
+decision=pass  G10=True(a=True,b=True,c=True,d=True)
+G10a (no horizon):      min N=0.900000  threshold=>0.0
+G10b (weak field):      max|Φ|=0.100000  threshold=<0.5
+G10c (positive metric): min γ=1.010243  threshold=>0.0
+G10d (inward gravity):  mean a_radial=0.017229  threshold=>0.0
+
+Artifacts written to: /home/user/Qng_Workspace/05_validation/evidence/artifacts/qng-covariant-metric-v1

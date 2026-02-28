@@ -1,0 +1,20 @@
+{
+  "script": "run_qng_gr_solutions_v1.py",
+  "dataset_id": "DS-002",
+  "seed": 3401,
+  "n_nodes": 280,
+  "mean_degree": 9.3714,
+  "mean_R": -5.191997,
+  "std_R": 1.79419,
+  "Lambda_dS": -2.595999,
+  "homogeneity_cv": 0.345568,
+  "mean_R_inner": -5.535219,
+  "mean_R_outer": -4.567379,
+  "radial_ratio": 1.211903,
+  "powerlaw_slope": -0.139654,
+  "powerlaw_r2": 0.224767,
+  "n_bins": 10,
+  "run_utc": "2026-02-28T17:16:26.515753Z",
+  "elapsed_s": 0.04,
+  "decision": "pass"
+}
