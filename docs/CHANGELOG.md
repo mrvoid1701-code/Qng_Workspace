@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-03-01 - G16b-v2 candidate prereg evaluation (frozen)
+
+- Added prereg evaluation runner:
+  - `scripts/tools/run_g16b_v2_candidate_eval_v1.py`
+- Added sanity and prereg evidence outputs:
+  - `05_validation/evidence/artifacts/g16b-v2-candidate-sanity-v1/summary.csv`
+  - `05_validation/evidence/artifacts/g16b-v2-candidate-prereg-v1/summary.csv`
+  - `05_validation/evidence/artifacts/g16b-v2-candidate-prereg-v1/report.md`
+  - `05_validation/evidence/artifacts/g16b-v2-candidate-prereg-v1/prereg_manifest.json`
+- Frozen protocol executed on `DS-002/003/006 x seeds 3401..3600` with `phi_scale=0.08` and strict prereg checks.
+- Outcome:
+  - `G16b-v1` fail `127/600`
+  - `G16b-v2` fail `113/600`
+  - v2 does not meet promotion rule (`600/600`), remains candidate-only.
+- Updated proposal and reproducibility docs:
+  - `docs/G16B_DEFINITION_CHANGE_PROPOSAL.md`
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-01 - G16b component diagnostics expansion + candidate proposal
 
 - Expanded G16 taxonomy diagnostics with per-profile G16b component outputs:

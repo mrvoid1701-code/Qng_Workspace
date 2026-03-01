@@ -2,56 +2,78 @@
 
 Date: 2026-03-01
 
-## Current Status
+## Status
 
-- Official gate logic remains unchanged.
-- `G16b` currently uses global linear fit quality: `R²(G11, 8πG T11) > 0.05`.
-- This document proposes a **candidate** diagnostic upgrade only (`G16b-v2`), not an immediate replacement.
+- Official gate remains unchanged: `G16b-v1`.
+- `G16b-v2` is candidate-only and evaluated in parallel.
+- No math formulas or thresholds in `run_qng_action_v1.py` were modified.
 
-## Why v1 Is Fragile
+## Why v1 is fragile
 
-- A single global `R²` can under-represent coupling when:
-  - stress signal is low or sign-mixed (`T11` near-zero dominated),
-  - relation is monotonic but not strongly linear,
-  - high-signal subset behaves differently from the full set.
-- In the current 60-profile grid, all `G16` failures are `G16b`-only failures.
+- `G16b-v1` uses one global fit metric: `R2(G11, 8pi G T11) > 0.05`.
+- A single global `R2` can understate coupling in low-signal profiles where `T11` is sign-mixed or near-zero dominated.
+- In recent diagnostics, all `G16` failures are `G16b`-driven.
 
-## v2 Candidate Diagnostics (No Gate Switch Yet)
+## Candidate v2 definition (diagnostic)
 
-Candidate package to track per profile:
+For each profile:
 
-- `mean/std` for `T11` and `G11`
-- sign fractions for `T11`: positive / negative / near-zero
-- signal dominance ratio: `std(T11) / |mean(T11)|`
-- Pearson `r(T11, G11)`
-- Spearman `ρ(T11, G11)`
-- high-signal subset diagnostics (top 20% `|T11|`):
-  - `R²_high_signal`
-  - `Pearson_high_signal`
-  - `Spearman_high_signal`
+- compute `std(T11)/abs(mean(T11))`.
+- if ratio `> 10`: evaluate on high-signal subset `top 20% abs(T11)`.
+- else: evaluate on full profile.
+- require all three:
+  - `abs(pearson) > 0.2`
+  - `abs(spearman) > 0.2`
+  - `R2 > 0.05`
 
-These are diagnostics, not official thresholds in this commit.
+This is a candidate estimator for robustness diagnostics, not the official decision gate.
 
-## A/B Diagnosis Framing
+## Pre-registered protocol
 
-- Axis A: `T11` discretization/noise issue
-  - e.g. low-signal or sign-cancelled stress proxy.
-- Axis B: geometric/matter operator compatibility issue
-  - e.g. monotonic relation but weak global linear fit.
+- Datasets: `DS-002, DS-003, DS-006`
+- Seeds: `3401..3600` (200 each, total 600)
+- Fixed phi scale: `0.08`
+- Fixed candidate thresholds:
+  - `low_signal_ratio = 10.0`
+  - `high_signal_quantile = 0.80`
+  - `corr_min = 0.2`
+  - `r2_min = 0.05`
+- Promotion rule: v2 becomes official only if pass is `600/600` under this frozen protocol.
 
-Taxonomy output maps each failing profile to a provisional A/B issue axis.
+## Results (frozen run)
 
-## Promotion Rule (Pre-Registered)
+Evidence path:
 
-`G16b-v2` can be promoted from candidate to official decision gate only if all are met:
+- `05_validation/evidence/artifacts/g16b-v2-candidate-prereg-v1/summary.csv`
+- `05_validation/evidence/artifacts/g16b-v2-candidate-prereg-v1/report.md`
+- `05_validation/evidence/artifacts/g16b-v2-candidate-prereg-v1/prereg_manifest.json`
 
-1. Fixed protocol is frozen before reruns (datasets, seeds, metrics, thresholds if any).
-2. Evaluation grid minimum: `DS-002/DS-003/DS-006` × `200 seeds` each.
-3. Results are stable across reruns without changing formulas or thresholds.
-4. Legacy `G16b-v1` remains reported in parallel for one release cycle.
+Observed:
 
-Until then:
+- `G16b-v1` fails: `127/600`
+- `G16b-v2` fails: `113/600`
+- improved (`v1 fail -> v2 pass`): `43`
+- degraded (`v1 pass -> v2 fail`): `29`
+- v2 pass total: `487/600` (target `600/600` not met)
 
-- `G16b-v1` remains official.
-- `G16b-v2` remains candidate diagnostic only.
+By dataset:
 
+- DS-002: v1 fail `42`, v2 fail `40`
+- DS-003: v1 fail `41`, v2 fail `41`
+- DS-006: v1 fail `44`, v2 fail `32`
+
+By signal regime:
+
+- low-signal profiles (`n=210`): v1 fail `60`, v2 fail `17` (strong improvement)
+- full-signal profiles (`n=390`): v1 fail `67`, v2 fail `96` (degradation)
+
+## Decision
+
+- `G16b-v2` is **not eligible for promotion** under current pre-registered criterion.
+- Keep `G16b-v1` official.
+- Keep `G16b-v2` as candidate diagnostic while refining definition before any new prereg run.
+
+## Next hardening direction (no immediate gate switch)
+
+- Preserve v1 behavior in full-signal regime and apply robust diagnostics only in low-signal regime.
+- Keep reporting both v1 and v2 side-by-side for at least one release cycle.

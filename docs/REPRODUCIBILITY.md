@@ -120,3 +120,24 @@ Main outputs:
 Definition-change proposal (candidate only):
 
 - `docs/G16B_DEFINITION_CHANGE_PROPOSAL.md`
+
+## 8) G16b-v2 candidate prereg evaluation (frozen protocol)
+
+Sanity check (3 profiles):
+
+```bash
+python scripts/tools/run_g16b_v2_candidate_eval_v1.py --mode sanity
+```
+
+Full prereg run (600 profiles, fixed protocol):
+
+```bash
+python scripts/tools/run_g16b_v2_candidate_eval_v1.py --mode prereg --strict-prereg
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/g16b-v2-candidate-sanity-v1/summary.csv`
+- `05_validation/evidence/artifacts/g16b-v2-candidate-prereg-v1/summary.csv`
+- `05_validation/evidence/artifacts/g16b-v2-candidate-prereg-v1/report.md`
+- `05_validation/evidence/artifacts/g16b-v2-candidate-prereg-v1/prereg_manifest.json`
