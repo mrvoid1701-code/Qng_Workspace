@@ -12,6 +12,14 @@
 - This assumption can break on **multi-peak datasets** (notably `DS-003`), where radial shells around one peak are not a stable proxy for potential depth classes.
 - `G15b-v2` uses **potential quantiles** (`top 10% U` vs `bottom 10% U`), invariant to peak multiplicity and directly tied to the field used by the metric.
 
+## Physical Interpretation
+
+- `G15b-v1` is a **geometric proxy**: radial shells around one selected center.
+- `G15b-v2` is a **potential-aligned proxy**: it compares Shapiro-delay response across quantiles of `U`, the field that defines the weak-field metric response.
+- Framing consequence:
+  - `v1` can be useful as a single-peak sanity check.
+  - `v2` is the decision gate because it tracks the physically relevant ordering variable (`U`) and is invariant to peak multiplicity.
+
 ## Definitions
 
 - `G15b-v1` (legacy):
@@ -58,6 +66,19 @@ Key result:
 - Overall `v1` fail rate rises from `0.095` (non-multi-peak) to `0.283` (multi-peak), lift `+0.188`
 - On `DS-003`, `v1` fail rises from `0.320` to `0.547` under the same proxy
 - `v2` remains stable (`0.000` fail in both groups)
+
+Sensitivity robustness check (threshold family):
+
+- ratio thresholds: `0.95, 0.97, 0.98, 0.99`
+- distance thresholds: `0.05, 0.10, 0.15`
+- artifact target:
+  `05_validation/evidence/artifacts/g15b-multipeak-diagnosis-v1/multipeak_sensitivity.csv`
+- expected decision criterion:
+  positive `v1` fail-rate lift across the grid while `v2` remains stable.
+- observed (ALL datasets, 12 combinations):
+  - positive `v1` lift: `12/12`
+  - `v1` lift range: `+0.107423` to `+0.384483`
+  - non-zero `v2` fail cases: `0/12`
 
 ## Reporting Convention
 
