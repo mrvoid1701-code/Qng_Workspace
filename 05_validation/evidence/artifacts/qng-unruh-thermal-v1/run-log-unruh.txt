@@ -1,0 +1,53 @@
+======================================================================
+QNG Unruh Thermal Vacuum (v1) — G19
+Run started: 2026-03-01T03:42:43.563532Z
+======================================================================
+
+Graph: n=280  mean_degree=9.37
+
+[1] Eigenmode computation: 20 modes × 350 iterations
+  Done in 2.55s  |  μ_0=6.615177e-05  μ_1=0.010782
+  K_eff=19  |  ω ∈ [0.157422, 0.532398]
+
+[2] Unruh temperature field T_Unruh(i) = a_eff(i)/(2π)
+  α_proxy = k_i / k̄   (k̄ = 9.37)
+  T_Unruh: min=0.006369  max=0.099634  mean=0.025022
+  std(T) = 0.010970  cv = 0.438404
+  Threshold G19a: cv > 0.05
+  → T_global = 0.025022  [mean Unruh temperature]
+
+[3] Bose-Einstein occupation n_k(T_global)
+  n_k: min=5.744704e-10  max=0.001855  mean=1.920934e-04
+  ω_k/T ∈ [6.29, 21.28]
+
+[4] G19b — Quantum vs classical thermal energy
+  E_BE(T)  = 6.107728e-04  [Bose-Einstein]
+  E_MB     = 0.475409  [classical equipartition = K_eff × T]
+  E_MB / E_BE = 778.373368
+  Threshold G19b: ratio > 2.0
+
+[5] G19c — Temperature doubling: E_BE(2T) / E_BE(T)
+  E_BE(2T) = 0.024110
+  E_BE(T)  = 6.107728e-04
+  Ratio    = 39.474272
+  Classical would give ratio = 2.0; quantum gives >> 2
+  Threshold G19c: ratio > 3.0
+
+[6] G19d — ΔG_thermal(i,j) spatial decay (600 pair sample)
+  ΔG_thermal: min=-9.101034e-05  max=1.306004e-04  mean=-1.808654e-06
+  r_{ij}: min=0.116727  max=5.297464  mean=2.415677
+  OLS ΔG ~ a + b·r:  a=9.118238e-05  b=-3.849481e-05  R²=0.692591
+  Threshold G19d: slope < -1e-05
+
+  ΔG_thermal(i,i) [local thermal fluctuation]:
+    min=3.121275e-06  max=1.338976e-04  mean=7.879428e-05
+    All positive: True
+
+QNG Unruh Thermal completed in 2.58s
+decision=pass  G19=True(a=True,b=True,c=True,d=True)
+  G19a cv(T_Unruh):      0.438404  threshold=>0.05
+  G19b E_MB/E_BE:        778.373368  threshold=>2.0
+  G19c E_BE(2T)/E_BE(T): 39.474272  threshold=>3.0
+  G19d ΔG slope:         -3.849481e-05  threshold=<-1e-05
+
+Artifacts written to: /home/user/Qng_Workspace/05_validation/evidence/artifacts/qng-unruh-thermal-v1

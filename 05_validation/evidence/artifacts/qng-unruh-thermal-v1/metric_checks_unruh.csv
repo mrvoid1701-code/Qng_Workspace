@@ -1,0 +1,6 @@
+gate_id,metric,value,threshold,status
+G19a,cv_T_Unruh,0.438404,>0.05,pass
+G19b,E_MB_over_E_BE,778.373368,>2.0,pass
+G19c,E_BE_2T_ratio,39.474272,>3.0,pass
+G19d,dG_thermal_slope,-3.849481e-05,<-1e-05,pass
+FINAL,decision,pass,G19a&G19b&G19c&G19d,pass

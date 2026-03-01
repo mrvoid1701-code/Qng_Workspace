@@ -1,0 +1,23 @@
+{
+  "script": "run_qng_unruh_thermal_v1.py",
+  "dataset_id": "DS-002",
+  "seed": 3401,
+  "n_nodes": 280,
+  "mean_degree": 9.3714,
+  "K_eff": 19,
+  "m_eff_sq": 0.014,
+  "T_global": 0.02502154,
+  "T_unruh_mean": 0.02502154,
+  "T_unruh_std": 0.01096954,
+  "cv_T_unruh": 0.438404,
+  "E_BE_T": 0.0006107728,
+  "E_MB": 0.47540926,
+  "ratio_supp_E_MB_over_E_BE": 778.3734,
+  "E_BE_2T": 0.0241098106,
+  "ratio_T_doubling": 39.4743,
+  "dG_slope": -3.849e-05,
+  "dG_r2": 0.692591,
+  "run_utc": "2026-03-01T03:42:46.224887Z",
+  "elapsed_s": 2.58,
+  "decision": "pass"
+}
