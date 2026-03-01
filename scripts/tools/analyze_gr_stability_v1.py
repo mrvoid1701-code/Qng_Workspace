@@ -58,10 +58,32 @@ METRICS: list[MetricSpec] = [
     MetricSpec("g13c_speed_reduction", "G13c speed reduction", False),
 ]
 
+OFFICIAL_STATUS_FIELDS = [
+    "g10_status",
+    "g11_status",
+    "g12_status",
+    "g13_status",
+    "g14_status",
+    "g15b_v2_status",
+    "g16_status",
+]
+
+DIAGNOSTIC_STATUS_FIELDS = [
+    "g10_status",
+    "g11_status",
+    "g12_status",
+    "g13_status",
+    "g14_status",
+    "g15_status",
+    "g16_status",
+]
+
 STATUS_KEYS = [
     "g13_status",
     "g14_status",
     "g15_status",
+    "all_pass_official",
+    "all_pass_diagnostic",
     "g16_status",
     "g15b_v2_status",
     "all_pass",
@@ -121,6 +143,19 @@ def pass_rate(rows: list[dict[str, str]], key: str) -> float:
     return passed / float(len(rows))
 
 
+def ensure_pass_flags(row: dict[str, str]) -> dict[str, str]:
+    out = dict(row)
+    if not out.get("all_pass_diagnostic", "").strip():
+        diag_ok = all(out.get(k, "").strip().lower() == "pass" for k in DIAGNOSTIC_STATUS_FIELDS)
+        out["all_pass_diagnostic"] = "pass" if diag_ok else "fail"
+    if not out.get("all_pass_official", "").strip():
+        off_ok = all(out.get(k, "").strip().lower() == "pass" for k in OFFICIAL_STATUS_FIELDS)
+        out["all_pass_official"] = "pass" if off_ok else "fail"
+    if not out.get("all_pass", "").strip():
+        out["all_pass"] = out["all_pass_diagnostic"]
+    return out
+
+
 def metric_values(rows: list[dict[str, str]], key: str) -> list[float]:
     out: list[float] = []
     for row in rows:
@@ -137,6 +172,7 @@ def format_float(value: float, digits: int = 6) -> str:
 
 
 def build_dataset_stats(rows: list[dict[str, str]]) -> list[dict[str, Any]]:
+    rows = [ensure_pass_flags(r) for r in rows]
     by_dataset: dict[str, list[dict[str, str]]] = {}
     for row in rows:
         by_dataset.setdefault(row["dataset_id"], []).append(row)
@@ -172,6 +208,7 @@ def build_dataset_stats(rows: list[dict[str, str]]) -> list[dict[str, Any]]:
 
 
 def build_worst_cases(rows: list[dict[str, str]], top_k: int) -> list[dict[str, Any]]:
+    rows = [ensure_pass_flags(r) for r in rows]
     out: list[dict[str, Any]] = []
     for metric in METRICS:
         parsed: list[dict[str, Any]] = []
@@ -234,13 +271,14 @@ def write_report(
     lines.append("## Dataset Stats")
     lines.append("")
     lines.append(
-        "| dataset | n | all_pass | g13_pass | g14_pass | g15_pass | g16_pass | g15b_v2_pass | "
-        "g13b_p95 | g14b_p95 | g13c_p05 |"
+        "| dataset | n | all_official | all_diagnostic | g13_pass | g14_pass | "
+        "g15_legacy_pass | g16_pass | g15b_v2_pass | g13b_p95 | g14b_p95 | g13c_p05 |"
     )
-    lines.append("| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |")
+    lines.append("| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |")
     for r in stats_rows:
         lines.append(
-            f"| {r['dataset_id']} | {r['n']} | {r['all_pass_pass_rate']} | {r['g13_status_pass_rate']} | "
+            f"| {r['dataset_id']} | {r['n']} | {r['all_pass_official_pass_rate']} | "
+            f"{r['all_pass_diagnostic_pass_rate']} | {r['g13_status_pass_rate']} | "
             f"{r['g14_status_pass_rate']} | {r['g15_status_pass_rate']} | {r['g16_status_pass_rate']} | "
             f"{r['g15b_v2_status_pass_rate']} | {r['g13b_p95']} | {r['g14b_p95']} | {r['g13c_p05']} |"
         )
@@ -282,6 +320,8 @@ def main() -> int:
         [
             "dataset_id",
             "n",
+            "all_pass_official_pass_rate",
+            "all_pass_diagnostic_pass_rate",
             "all_pass_pass_rate",
             "g13_status_pass_rate",
             "g14_status_pass_rate",
@@ -356,4 +396,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -31,6 +31,9 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 - Historical `QNG-T-*` tests remain tracked in `05_validation/test-plan.md` and `05_validation/results-log.md`.
 - `G15b-v2` is the official decision gate for G15b.
 - `G15b-v1` remains legacy diagnostic-only (single-peak sanity check).
+- GR run summaries expose two chain views:
+  - `all_pass_official` (uses `G15b-v2` for decision logic)
+  - `all_pass_diagnostic` (legacy chain, keeps `G15` final for diagnostics)
 - Effective date for official switch: `2026-03-01` (promotion commit `15dd881`).
 - Freeze reference tag: `gr-ppn-g15b-v2-official` (see `docs/CHANGELOG.md`).
 

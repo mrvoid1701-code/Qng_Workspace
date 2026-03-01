@@ -49,7 +49,7 @@ python scripts/run_qng_ppn_debug_v1.py --datasets DS-003 --seeds 3401,3402,3403,
 
 ## 4) GR regression guard (G10..G16 freeze check)
 
-Run against frozen baseline (`gr-ppn-g15b-v2-official`, grid20 baseline default):
+Run against frozen official baseline (`gr-ppn-g15b-v2-official`):
 
 ```bash
 python scripts/run_qng_gr_regression_guard_v1.py --out-dir 05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check
@@ -67,17 +67,29 @@ Main outputs:
 - `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/regression_report.md`
 - `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/regression_report.json`
 
-## 5) Rebuild baseline json from sweep summary (grid20 helper)
+Survey-mode check (includes legacy diagnostic perspective):
+
+```bash
+python scripts/run_qng_gr_regression_guard_v1.py --baseline-json 05_validation/evidence/artifacts/gr-regression-baseline-v1/gr_baseline_grid20.json --out-dir 05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check_survey
+```
+
+## 5) Rebuild baseline JSONs from grid20 summary
 
 Source files for the current deep baseline are tracked here:
 
 - `05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/summary.csv`
 - `05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/run-log-grid20.txt`
 
-Rebuild command:
+Rebuild survey baseline (keeps full profile grid, including expected fails in diagnostic mode):
 
 ```bash
-python scripts/tools/build_gr_baseline_from_sweep.py --summary-csv 05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/summary.csv --out-json 05_validation/evidence/artifacts/gr-regression-baseline-v1/gr_baseline_grid20.json --baseline-id gr-g10-g16-regression-grid20-v1 --effective-tag gr-ppn-g15b-v2-official --effective-commit ebce36d --effective-date-utc 2026-03-01
+python scripts/tools/build_gr_baseline_from_sweep.py --summary-csv 05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/summary.csv --out-json 05_validation/evidence/artifacts/gr-regression-baseline-v1/gr_baseline_grid20.json --mode survey --baseline-id gr-g10-g16-regression-survey-grid20-v1 --effective-tag gr-ppn-g15b-v2-official --effective-commit dd37edc --effective-date-utc 2026-03-01
+```
+
+Rebuild official baseline (filtered to profiles with `all_pass_official=pass`):
+
+```bash
+python scripts/tools/build_gr_baseline_from_sweep.py --summary-csv 05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/summary.csv --out-json 05_validation/evidence/artifacts/gr-regression-baseline-v1/gr_baseline_official.json --mode official --baseline-id gr-g10-g16-regression-official-v1 --effective-tag gr-ppn-g15b-v2-official --effective-commit dd37edc --effective-date-utc 2026-03-01
 ```
 
 ## 6) GR stability diagnostics from grid20 summary

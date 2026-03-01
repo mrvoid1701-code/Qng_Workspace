@@ -40,7 +40,7 @@ DEFAULT_BASELINE_JSON = (
     / "evidence"
     / "artifacts"
     / "gr-regression-baseline-v1"
-    / "gr_baseline_grid20.json"
+    / "gr_baseline_official.json"
 )
 DEFAULT_OUT_DIR = (
     ROOT
@@ -67,6 +67,26 @@ GATE_SPECS: list[GateSpec] = [
     GateSpec("G14", "run_qng_covariant_cons_v1.py", "metric_checks_cov_cons.csv"),
     GateSpec("G15", "run_qng_ppn_v1.py", "metric_checks_ppn.csv"),
     GateSpec("G16", "run_qng_action_v1.py", "metric_checks_action.csv"),
+]
+
+OFFICIAL_STATUS_FIELDS = [
+    "g10_status",
+    "g11_status",
+    "g12_status",
+    "g13_status",
+    "g14_status",
+    "g15b_v2_status",
+    "g16_status",
+]
+
+DIAGNOSTIC_STATUS_FIELDS = [
+    "g10_status",
+    "g11_status",
+    "g12_status",
+    "g13_status",
+    "g14_status",
+    "g15_status",
+    "g16_status",
 ]
 
 
@@ -259,7 +279,25 @@ def collect_observed_for_profile(
     g13_rows = gate_rows.get("G13", [])
     g14_rows = gate_rows.get("G14", [])
     g15_rows = gate_rows.get("G15", [])
-    all_pass = all(gate_status.get(f"G{i}", "") == "pass" for i in range(10, 17))
+    g15b_v2_status = get_status(g15_rows, "G15b-v2")
+    row_status = {
+        "g10_status": gate_status.get("G10", ""),
+        "g11_status": gate_status.get("G11", ""),
+        "g12_status": gate_status.get("G12", ""),
+        "g13_status": gate_status.get("G13", ""),
+        "g14_status": gate_status.get("G14", ""),
+        "g15_status": gate_status.get("G15", ""),
+        "g16_status": gate_status.get("G16", ""),
+        "g15b_v2_status": g15b_v2_status,
+    }
+    all_pass_official = all(
+        row_status.get(field, "").strip().lower() == "pass"
+        for field in OFFICIAL_STATUS_FIELDS
+    )
+    all_pass_diagnostic = all(
+        row_status.get(field, "").strip().lower() == "pass"
+        for field in DIAGNOSTIC_STATUS_FIELDS
+    )
 
     return {
         "dataset_id": dataset_id,
@@ -272,8 +310,10 @@ def collect_observed_for_profile(
         "g14_status": gate_status.get("G14", ""),
         "g15_status": gate_status.get("G15", ""),
         "g16_status": gate_status.get("G16", ""),
-        "g15b_v2_status": get_status(g15_rows, "G15b-v2"),
-        "all_pass": "pass" if all_pass else "fail",
+        "g15b_v2_status": g15b_v2_status,
+        "all_pass_official": "pass" if all_pass_official else "fail",
+        "all_pass_diagnostic": "pass" if all_pass_diagnostic else "fail",
+        "all_pass": "pass" if all_pass_diagnostic else "fail",
         "g15a_gamma_dev": get_metric(g15_rows, "G15a", "gamma_dev"),
         "g15d_ep_ratio": get_metric(g15_rows, "G15d", "EP_ratio"),
         "g15b_shapiro_ratio": get_metric(g15_rows, "G15b", "shapiro_ratio"),
@@ -479,6 +519,8 @@ def main() -> int:
         "g15_status",
         "g16_status",
         "g15b_v2_status",
+        "all_pass_official",
+        "all_pass_diagnostic",
         "all_pass",
         "g15a_gamma_dev",
         "g15d_ep_ratio",

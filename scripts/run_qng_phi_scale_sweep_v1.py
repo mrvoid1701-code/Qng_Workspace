@@ -27,6 +27,8 @@ Artifacts written:
   * G13 E_cov drift (from gate row G13b metric E_cov_drift)
   * G14 E_cov drift (from gate row G14b metric E_cov_drift)
   * PASS/FAIL for each gate G10..G16
+  * all_pass_official (uses G15b-v2)
+  * all_pass_diagnostic (legacy G15 final)
 
 Policy:
 - stdlib only
@@ -67,6 +69,26 @@ GATE_SPECS: list[GateSpec] = [
     GateSpec("G14", "run_qng_covariant_cons_v1.py", "metric_checks_cov_cons.csv"),
     GateSpec("G15", "run_qng_ppn_v1.py", "metric_checks_ppn.csv"),
     GateSpec("G16", "run_qng_action_v1.py", "metric_checks_action.csv"),
+]
+
+OFFICIAL_STATUS_FIELDS = [
+    "g10_status",
+    "g11_status",
+    "g12_status",
+    "g13_status",
+    "g14_status",
+    "g15b_v2_status",
+    "g16_status",
+]
+
+DIAGNOSTIC_STATUS_FIELDS = [
+    "g10_status",
+    "g11_status",
+    "g12_status",
+    "g13_status",
+    "g14_status",
+    "g15_status",
+    "g16_status",
 ]
 
 
@@ -191,6 +213,8 @@ def write_summary(path: Path, rows: list[dict[str, Any]]) -> None:
         "g14_status",
         "g15_status",
         "g16_status",
+        "all_pass_official",
+        "all_pass_diagnostic",
         "all_pass",
         "g15a_gamma_dev",
         "g15d_ep_ratio",
@@ -293,7 +317,25 @@ def main() -> int:
                 g15_rows = per_gate_rows.get("G15", [])
                 g13_rows = per_gate_rows.get("G13", [])
                 g14_rows = per_gate_rows.get("G14", [])
-                all_pass = all(per_gate_status.get(f"G{i}", "") == "pass" for i in range(10, 17))
+                g15b_v2_status = get_gate_status(g15_rows, "G15b-v2")
+                row_status = {
+                    "g10_status": per_gate_status.get("G10", ""),
+                    "g11_status": per_gate_status.get("G11", ""),
+                    "g12_status": per_gate_status.get("G12", ""),
+                    "g13_status": per_gate_status.get("G13", ""),
+                    "g14_status": per_gate_status.get("G14", ""),
+                    "g15_status": per_gate_status.get("G15", ""),
+                    "g16_status": per_gate_status.get("G16", ""),
+                    "g15b_v2_status": g15b_v2_status,
+                }
+                all_pass_diagnostic = all(
+                    row_status.get(field, "").strip().lower() == "pass"
+                    for field in DIAGNOSTIC_STATUS_FIELDS
+                )
+                all_pass_official = all(
+                    row_status.get(field, "").strip().lower() == "pass"
+                    for field in OFFICIAL_STATUS_FIELDS
+                )
 
                 summary_rows.append(
                     {
@@ -307,11 +349,13 @@ def main() -> int:
                         "g14_status": per_gate_status.get("G14", ""),
                         "g15_status": per_gate_status.get("G15", ""),
                         "g16_status": per_gate_status.get("G16", ""),
-                        "all_pass": "pass" if all_pass else "fail",
+                        "all_pass_official": "pass" if all_pass_official else "fail",
+                        "all_pass_diagnostic": "pass" if all_pass_diagnostic else "fail",
+                        "all_pass": "pass" if all_pass_diagnostic else "fail",
                         "g15a_gamma_dev": get_metric_value(g15_rows, "G15a", "gamma_dev"),
                         "g15d_ep_ratio": get_metric_value(g15_rows, "G15d", "EP_ratio"),
                         "g15b_shapiro_ratio": get_metric_value(g15_rows, "G15b", "shapiro_ratio"),
-                        "g15b_v2_status": get_gate_status(g15_rows, "G15b-v2"),
+                        "g15b_v2_status": g15b_v2_status,
                         "g15b_v2_shapiro_ratio": get_metric_value(g15_rows, "G15b-v2", "shapiro_ratio_v2"),
                         "g13b_e_cov_drift": get_metric_value(g13_rows, "G13b", "E_cov_drift"),
                         "g14b_e_cov_drift": get_metric_value(g14_rows, "G14b", "E_cov_drift"),
@@ -323,10 +367,15 @@ def main() -> int:
     summary_path = out_dir / "summary.csv"
     write_summary(summary_path, summary_rows)
 
-    pass_count = sum(1 for row in summary_rows if row["all_pass"] == "pass")
+    pass_diag = sum(1 for row in summary_rows if row["all_pass_diagnostic"] == "pass")
+    pass_off = sum(1 for row in summary_rows if row["all_pass_official"] == "pass")
     elapsed_total = time.time() - start
     log("\n" + "=" * 72)
-    log(f"Rows: {len(summary_rows)}  all_pass={pass_count}/{len(summary_rows)}")
+    log(
+        f"Rows: {len(summary_rows)}  "
+        f"all_pass_official={pass_off}/{len(summary_rows)}  "
+        f"all_pass_diagnostic={pass_diag}/{len(summary_rows)}"
+    )
     log(f"summary.csv: {summary_path}")
     log(f"Elapsed: {elapsed_total:.2f}s")
     log("=" * 72)

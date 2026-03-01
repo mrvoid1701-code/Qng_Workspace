@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-03-01 - GR baseline semantics split (official vs survey)
+
+- Added explicit pass semantics in sweep/guard outputs:
+  - `all_pass_official` (uses `G15b-v2`, excludes legacy-v1 effect)
+  - `all_pass_diagnostic` (legacy chain including `G15` final)
+- Added baseline modes in baseline builder:
+  - `--mode survey` (full grid, including expected diagnostic fails)
+  - `--mode official` (filtered pass-only official profiles)
+- Added official baseline file:
+  - `05_validation/evidence/artifacts/gr-regression-baseline-v1/gr_baseline_official.json`
+- Guard default baseline now points to official baseline:
+  - `scripts/run_qng_gr_regression_guard_v1.py`
+- Updated tracked source summary with explicit official/diagnostic pass columns:
+  - `05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/summary.csv`
+
 ## 2026-03-01 - GR stability diagnostics (no math changes)
 
 - Added diagnostics tool for G13/G14 drift stability from sweep summaries:
@@ -17,8 +32,7 @@
   - `05_validation/evidence/artifacts/gr-regression-baseline-v1/gr_baseline_grid20.json`
 - Added baseline builder helper:
   - `scripts/tools/build_gr_baseline_from_sweep.py`
-- Guard default baseline now points to:
-  - `05_validation/evidence/artifacts/gr-regression-baseline-v1/gr_baseline_grid20.json`
+- `gr_baseline_grid20.json` is now maintained as survey baseline (not pass-only official baseline).
 - Added provenance source summary and run-log:
   - `05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/`
 
