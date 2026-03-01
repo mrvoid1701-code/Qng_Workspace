@@ -92,16 +92,23 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 import argparse
-import csv
 import hashlib
 import json
 import math
-import random
 import statistics
 import struct
 import sys
 import time
 import zlib
+
+from _common import (
+    add_standard_cli_args,
+    configure_stdio_utf8,
+    ensure_outdir,
+    rng as make_rng,
+    write_csv as write_csv_common,
+    write_run_manifest,
+)
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -140,17 +147,14 @@ def sha256_of(path: Path) -> str:
 
 
 def write_csv(path: Path, fieldnames: list[str], rows: list[dict]) -> None:
-    with path.open("w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=fieldnames)
-        w.writeheader()
-        w.writerows(rows)
+    write_csv_common(path, fieldnames, rows)
 
 
 # ── Graph builder ─────────────────────────────────────────────────────────────
 def build_dataset_graph(
     dataset_id: str, seed: int
 ) -> tuple[list[tuple[float, float]], list[float], list[list[tuple[int, float]]]]:
-    rng = random.Random(seed)
+    rng = make_rng(seed)
     ds = dataset_id.upper().strip()
     if ds == "DS-002":
         n, k, spread = 280, 8, 2.3
@@ -434,18 +438,22 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(
         description="QNG Action Functional S[g, σ] (v1) — Gate G16."
     )
-    p.add_argument("--dataset-id", default="DS-002")
-    p.add_argument("--seed", type=int, default=3401)
-    p.add_argument("--out-dir", default=str(DEFAULT_OUT_DIR))
+    add_standard_cli_args(
+        p,
+        default_dataset_id="DS-002",
+        default_seed=3401,
+        default_out_dir=str(DEFAULT_OUT_DIR),
+        include_plots=True,
+    )
     p.add_argument("--phi-scale", type=float, default=PHI_SCALE)
     return p.parse_args()
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 def main() -> int:
+    configure_stdio_utf8()
     args = parse_args()
-    out_dir = Path(args.out_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
+    out_dir = ensure_outdir(args.out_dir)
 
     log_lines: list[str] = []
     def log(msg: str = "") -> None:
@@ -632,101 +640,128 @@ def main() -> int:
     ]
 
     # ── Write artifacts ───────────────────────────────────────────────────────
-    act_csv = out_dir / "action.csv"
-    write_csv(act_csv,
-              ["vertex", "vol", "sigma_norm", "R", "G11",
-               "L_rw_sigma", "EL_res", "T11", "H_ii", "action_density"],
-              [
-                  {
-                      "vertex": i,
-                      "vol": fmt(vol[i]),
-                      "sigma_norm": fmt(sigma_norm[i]),
-                      "R": fmt(R_vals[i]),
-                      "G11": fmt(G11_vals[i]),
-                      "L_rw_sigma": fmt(L_sigma[i]),
-                      "EL_res": fmt(EL_res[i]),
-                      "T11": fmt(T11_vals[i]),
-                      "H_ii": fmt(H_diag[i]),
-                      "action_density": fmt(action_density[i]),
-                  }
-                  for i in range(n)
-              ])
+    if args.write_artifacts:
+        act_csv = out_dir / "action.csv"
+        write_csv(
+            act_csv,
+            ["vertex", "vol", "sigma_norm", "R", "G11", "L_rw_sigma", "EL_res", "T11", "H_ii", "action_density"],
+            [
+                {
+                    "vertex": i,
+                    "vol": fmt(vol[i]),
+                    "sigma_norm": fmt(sigma_norm[i]),
+                    "R": fmt(R_vals[i]),
+                    "G11": fmt(G11_vals[i]),
+                    "L_rw_sigma": fmt(L_sigma[i]),
+                    "EL_res": fmt(EL_res[i]),
+                    "T11": fmt(T11_vals[i]),
+                    "H_ii": fmt(H_diag[i]),
+                    "action_density": fmt(action_density[i]),
+                }
+                for i in range(n)
+            ],
+        )
 
-    mc_csv = out_dir / "metric_checks_action.csv"
-    write_csv(mc_csv, ["gate_id", "metric", "value", "threshold", "status"], [
-        {"gate_id": "G16a", "metric": "closure_rel",
-         "value": fmt(closure_rel),
-         "threshold": f"<{thresholds.g16a_closure_max}",
-         "status": "pass" if gate_g16a else "fail"},
-        {"gate_id": "G16b", "metric": "r2_G11_T11",
-         "value": fmt(r2_ET),
-         "threshold": f">{thresholds.g16b_r2_min}",
-         "status": "pass" if gate_g16b else "fail"},
-        {"gate_id": "G16c", "metric": "m_sq_abs",
-         "value": fmt(abs(m_sq)),
-         "threshold": f">{thresholds.g16c_mass_abs_min}",
-         "status": "pass" if gate_g16c else "fail"},
-        {"gate_id": "G16d", "metric": "hessian_frac_neg",
-         "value": fmt(frac_neg),
-         "threshold": f">{thresholds.g16d_hessian_frac_min}",
-         "status": "pass" if gate_g16d else "fail"},
-        {"gate_id": "FINAL", "metric": "decision", "value": decision,
-         "threshold": "G16a&G16b&G16c&G16d", "status": decision},
-    ])
+        mc_csv = out_dir / "metric_checks_action.csv"
+        write_csv(mc_csv, ["gate_id", "metric", "value", "threshold", "status"], [
+            {"gate_id": "G16a", "metric": "closure_rel",
+             "value": fmt(closure_rel),
+             "threshold": f"<{thresholds.g16a_closure_max}",
+             "status": "pass" if gate_g16a else "fail"},
+            {"gate_id": "G16b", "metric": "r2_G11_T11",
+             "value": fmt(r2_ET),
+             "threshold": f">{thresholds.g16b_r2_min}",
+             "status": "pass" if gate_g16b else "fail"},
+            {"gate_id": "G16c", "metric": "m_sq_abs",
+             "value": fmt(abs(m_sq)),
+             "threshold": f">{thresholds.g16c_mass_abs_min}",
+             "status": "pass" if gate_g16c else "fail"},
+            {"gate_id": "G16d", "metric": "hessian_frac_neg",
+             "value": fmt(frac_neg),
+             "threshold": f">{thresholds.g16d_hessian_frac_min}",
+             "status": "pass" if gate_g16d else "fail"},
+            {"gate_id": "FINAL", "metric": "decision", "value": decision,
+             "threshold": "G16a&G16b&G16c&G16d", "status": decision},
+        ])
 
-    plot_action(
-        out_dir / "action-plot.png",
-        sigma_norm, action_density, T11_vals, G11_vals, G_eff_abs,
-    )
+        plot_path = out_dir / "action-plot.png"
+        if args.plots:
+            plot_action(
+                plot_path,
+                sigma_norm,
+                action_density,
+                T11_vals,
+                G11_vals,
+                G_eff_abs,
+            )
 
-    config = {
-        "script": "run_qng_action_v1.py",
-        "dataset_id": args.dataset_id,
-        "seed": args.seed,
-        "phi_scale": args.phi_scale,
-        "n_nodes": n,
-        "mean_degree": round(mean_degree, 4),
-        "mean_R": round(mean_R, 6),
-        "Lambda_eff": round(Lambda_eff, 6),
-        "G_eff_signed": round(G_eff_signed, 8),
-        "S_EH": round(S_EH, 6),
-        "S_cosmo": round(S_cosmo, 6),
-        "S_gravity": round(S_gravity, 6),
-        "S_kin": round(S_kin, 6),
-        "S_pot": round(S_pot, 6),
-        "S_total": round(S_total, 6),
-        "m_sq_fit": round(m_sq, 8),
-        "m_sq_abs": round(abs(m_sq), 8),
-        "closure_rel": round(closure_rel, 8),
-        "r2_G11_T11": round(r2_ET, 6),
-        "frac_hessian_neg": round(frac_neg, 6),
-        "run_utc": datetime.utcnow().isoformat() + "Z",
-        "elapsed_s": round(elapsed, 3),
-        "decision": decision,
-    }
-    (out_dir / "config_action.json").write_text(
-        json.dumps(config, indent=2), encoding="utf-8"
-    )
+        config_path = out_dir / "config_action.json"
+        config = {
+            "script": "run_qng_action_v1.py",
+            "dataset_id": args.dataset_id,
+            "seed": args.seed,
+            "phi_scale": args.phi_scale,
+            "n_nodes": n,
+            "mean_degree": round(mean_degree, 4),
+            "mean_R": round(mean_R, 6),
+            "Lambda_eff": round(Lambda_eff, 6),
+            "G_eff_signed": round(G_eff_signed, 8),
+            "S_EH": round(S_EH, 6),
+            "S_cosmo": round(S_cosmo, 6),
+            "S_gravity": round(S_gravity, 6),
+            "S_kin": round(S_kin, 6),
+            "S_pot": round(S_pot, 6),
+            "S_total": round(S_total, 6),
+            "m_sq_fit": round(m_sq, 8),
+            "m_sq_abs": round(abs(m_sq), 8),
+            "closure_rel": round(closure_rel, 8),
+            "r2_G11_T11": round(r2_ET, 6),
+            "frac_hessian_neg": round(frac_neg, 6),
+            "run_utc": datetime.utcnow().isoformat() + "Z",
+            "elapsed_s": round(elapsed, 3),
+            "decision": decision,
+        }
+        config_path.write_text(json.dumps(config, indent=2), encoding="utf-8")
 
-    artifact_files = [
-        act_csv, mc_csv,
-        out_dir / "action-plot.png",
-        out_dir / "config_action.json",
-    ]
-    (out_dir / "artifact-hashes-action.json").write_text(
-        json.dumps(
-            {p.name: sha256_of(p) for p in artifact_files if p.exists()},
-            indent=2,
-        ),
-        encoding="utf-8",
-    )
-    (out_dir / "run-log-action.txt").write_text(
-        "\n".join(log_lines), encoding="utf-8"
-    )
-    log(f"\nArtifacts written to: {out_dir}")
-    (out_dir / "run-log-action.txt").write_text(
-        "\n".join(log_lines), encoding="utf-8"
-    )
+        manifest_path = write_run_manifest(
+            out_dir=out_dir,
+            script_name="run_qng_action_v1.py",
+            args_dict={
+                "dataset_id": args.dataset_id,
+                "seed": args.seed,
+                "phi_scale": args.phi_scale,
+                "out_dir": str(out_dir),
+                "write_artifacts": bool(args.write_artifacts),
+                "plots": bool(args.plots),
+            },
+            gate_id="G16",
+            decision=decision,
+            elapsed_s=elapsed,
+            extras={
+                "closure_rel": round(closure_rel, 8),
+                "r2_G11_T11": round(r2_ET, 6),
+                "m_sq_abs": round(abs(m_sq), 8),
+                "frac_hessian_neg": round(frac_neg, 6),
+            },
+        )
+
+        run_log_path = out_dir / "run-log-action.txt"
+        run_log_path.write_text("\n".join(log_lines), encoding="utf-8")
+
+        artifact_files = [act_csv, mc_csv, config_path, manifest_path, run_log_path]
+        if args.plots:
+            artifact_files.append(plot_path)
+        (out_dir / "artifact-hashes-action.json").write_text(
+            json.dumps(
+                {p.name: sha256_of(p) for p in artifact_files if p.exists()},
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
+        log(f"\nArtifacts written to: {out_dir}")
+        run_log_path.write_text("\n".join(log_lines), encoding="utf-8")
+    else:
+        log("\nArtifacts skipped (--no-write-artifacts).")
     return 0 if gate_g16 else 1
 
 

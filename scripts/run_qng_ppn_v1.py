@@ -86,16 +86,23 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 import argparse
-import csv
 import hashlib
 import json
 import math
-import random
 import statistics
 import struct
 import sys
 import time
 import zlib
+
+from _common import (
+    add_standard_cli_args,
+    configure_stdio_utf8,
+    ensure_outdir,
+    rng as make_rng,
+    write_csv as write_csv_common,
+    write_run_manifest,
+)
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -135,17 +142,14 @@ def sha256_of(path: Path) -> str:
 
 
 def write_csv(path: Path, fieldnames: list[str], rows: list[dict]) -> None:
-    with path.open("w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=fieldnames)
-        w.writeheader()
-        w.writerows(rows)
+    write_csv_common(path, fieldnames, rows)
 
 
 # ── Graph builder ─────────────────────────────────────────────────────────────
 def build_dataset_graph(
     dataset_id: str, seed: int
 ) -> tuple[list[tuple[float, float]], list[float], list[list[int]]]:
-    rng = random.Random(seed)
+    rng = make_rng(seed)
     ds = dataset_id.upper().strip()
     if ds == "DS-002":
         n, k, spread = 280, 8, 2.3
@@ -301,18 +305,22 @@ def parse_args():
     p = argparse.ArgumentParser(
         description="QNG PPN parameters γ, β, Shapiro delay (v1) — Gate G15."
     )
-    p.add_argument("--dataset-id", default="DS-002")
-    p.add_argument("--seed", type=int, default=3401)
-    p.add_argument("--out-dir", default=str(DEFAULT_OUT_DIR))
+    add_standard_cli_args(
+        p,
+        default_dataset_id="DS-002",
+        default_seed=3401,
+        default_out_dir=str(DEFAULT_OUT_DIR),
+        include_plots=True,
+    )
     p.add_argument("--phi-scale", type=float, default=PHI_SCALE)
     return p.parse_args()
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 def main() -> int:
+    configure_stdio_utf8()
     args = parse_args()
-    out_dir = Path(args.out_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
+    out_dir = ensure_outdir(args.out_dir)
 
     log_lines: list[str] = []
     def log(msg=""):
@@ -461,65 +469,103 @@ def main() -> int:
         f"threshold=<{thresholds.g15d_ep_max}")
 
     # ── Write artifacts ───────────────────────────────────────────────────────
-    ppn_csv = out_dir / "ppn.csv"
-    write_csv(ppn_csv,
-              ["vertex","U","gamma_PPN","beta_PPN","c_eff","delta_S"],
-              [
-                  {
-                      "vertex": i,
-                      "U": fmt(U_vals[i]),
-                      "gamma_PPN": fmt(gamma_PPN[i]),
-                      "beta_PPN": fmt(beta_PPN[i]),
-                      "c_eff": fmt(c_eff[i]),
-                      "delta_S": fmt(delta_S[i]),
-                  }
-                  for i in range(n)
-              ])
+    if args.write_artifacts:
+        ppn_csv = out_dir / "ppn.csv"
+        write_csv(
+            ppn_csv,
+            ["vertex", "U", "gamma_PPN", "beta_PPN", "c_eff", "delta_S"],
+            [
+                {
+                    "vertex": i,
+                    "U": fmt(U_vals[i]),
+                    "gamma_PPN": fmt(gamma_PPN[i]),
+                    "beta_PPN": fmt(beta_PPN[i]),
+                    "c_eff": fmt(c_eff[i]),
+                    "delta_S": fmt(delta_S[i]),
+                }
+                for i in range(n)
+            ],
+        )
 
-    mc_csv = out_dir / "metric_checks_ppn.csv"
-    write_csv(mc_csv, ["gate_id","metric","value","threshold","status"], [
-        {"gate_id":"G15a","metric":"gamma_dev",
-         "value":fmt(gamma_dev),"threshold":f"<{thresholds.g15a_gamma_dev_max}",
-         "status":"pass" if gate_g15a else "fail"},
-        {"gate_id":"G15b","metric":"shapiro_ratio",
-         "value":fmt(shapiro_ratio),"threshold":f">{thresholds.g15b_shapiro_ratio_min}",
-         "status":"pass" if gate_g15b else "fail"},
-        {"gate_id":"G15c","metric":"beta_PPN",
-         "value":fmt(mean_beta),
-         "threshold":f"({thresholds.g15c_beta_lo},{thresholds.g15c_beta_hi})",
-         "status":"pass" if gate_g15c else "fail"},
-        {"gate_id":"G15d","metric":"EP_ratio",
-         "value":fmt(ep_ratio),"threshold":f"<{thresholds.g15d_ep_max}",
-         "status":"pass" if gate_g15d else "fail"},
-        {"gate_id":"FINAL","metric":"decision","value":decision,
-         "threshold":"G15a&G15b&G15c&G15d","status":decision},
-    ])
+        mc_csv = out_dir / "metric_checks_ppn.csv"
+        write_csv(mc_csv, ["gate_id", "metric", "value", "threshold", "status"], [
+            {"gate_id": "G15a", "metric": "gamma_dev",
+             "value": fmt(gamma_dev), "threshold": f"<{thresholds.g15a_gamma_dev_max}",
+             "status": "pass" if gate_g15a else "fail"},
+            {"gate_id": "G15b", "metric": "shapiro_ratio",
+             "value": fmt(shapiro_ratio), "threshold": f">{thresholds.g15b_shapiro_ratio_min}",
+             "status": "pass" if gate_g15b else "fail"},
+            {"gate_id": "G15c", "metric": "beta_PPN",
+             "value": fmt(mean_beta),
+             "threshold": f"({thresholds.g15c_beta_lo},{thresholds.g15c_beta_hi})",
+             "status": "pass" if gate_g15c else "fail"},
+            {"gate_id": "G15d", "metric": "EP_ratio",
+             "value": fmt(ep_ratio), "threshold": f"<{thresholds.g15d_ep_max}",
+             "status": "pass" if gate_g15d else "fail"},
+            {"gate_id": "FINAL", "metric": "decision", "value": decision,
+             "threshold": "G15a&G15b&G15c&G15d", "status": decision},
+        ])
 
-    plot_ppn(out_dir/"ppn-plot.png", U_vals, gamma_PPN, beta_PPN)
+        plot_path = out_dir / "ppn-plot.png"
+        if args.plots:
+            plot_ppn(plot_path, U_vals, gamma_PPN, beta_PPN)
 
-    config = {
-        "script":"run_qng_ppn_v1.py",
-        "dataset_id":args.dataset_id,"seed":args.seed,
-        "phi_scale":args.phi_scale,
-        "n_nodes":n,"mean_degree":round(mean_degree,4),
-        "mean_gamma_PPN":round(mean_gamma,6),
-        "gamma_dev":round(gamma_dev,6),
-        "mean_beta_PPN":round(mean_beta,6),
-        "shapiro_ratio":round(shapiro_ratio,6),
-        "ep_ratio":round(ep_ratio,6),
-        "run_utc":datetime.utcnow().isoformat()+"Z",
-        "elapsed_s":round(elapsed,3),"decision":decision,
-    }
-    (out_dir/"config_ppn.json").write_text(json.dumps(config,indent=2),encoding="utf-8")
+        config_path = out_dir / "config_ppn.json"
+        config = {
+            "script": "run_qng_ppn_v1.py",
+            "dataset_id": args.dataset_id,
+            "seed": args.seed,
+            "phi_scale": args.phi_scale,
+            "n_nodes": n,
+            "mean_degree": round(mean_degree, 4),
+            "mean_gamma_PPN": round(mean_gamma, 6),
+            "gamma_dev": round(gamma_dev, 6),
+            "mean_beta_PPN": round(mean_beta, 6),
+            "shapiro_ratio": round(shapiro_ratio, 6),
+            "ep_ratio": round(ep_ratio, 6),
+            "run_utc": datetime.utcnow().isoformat() + "Z",
+            "elapsed_s": round(elapsed, 3),
+            "decision": decision,
+        }
+        config_path.write_text(json.dumps(config, indent=2), encoding="utf-8")
 
-    artifact_files=[ppn_csv,mc_csv,out_dir/"ppn-plot.png",out_dir/"config_ppn.json"]
-    (out_dir/"artifact-hashes-ppn.json").write_text(
-        json.dumps({p.name:sha256_of(p) for p in artifact_files if p.exists()},indent=2),
-        encoding="utf-8"
-    )
-    (out_dir/"run-log-ppn.txt").write_text("\n".join(log_lines),encoding="utf-8")
-    log(f"\nArtifacts written to: {out_dir}")
-    (out_dir/"run-log-ppn.txt").write_text("\n".join(log_lines),encoding="utf-8")
+        manifest_path = write_run_manifest(
+            out_dir=out_dir,
+            script_name="run_qng_ppn_v1.py",
+            args_dict={
+                "dataset_id": args.dataset_id,
+                "seed": args.seed,
+                "phi_scale": args.phi_scale,
+                "out_dir": str(out_dir),
+                "write_artifacts": bool(args.write_artifacts),
+                "plots": bool(args.plots),
+            },
+            gate_id="G15",
+            decision=decision,
+            elapsed_s=elapsed,
+            extras={
+                "gamma_dev": round(gamma_dev, 6),
+                "shapiro_ratio": round(shapiro_ratio, 6),
+                "mean_beta_ppn": round(mean_beta, 6),
+                "ep_ratio": round(ep_ratio, 6),
+            },
+        )
+
+        run_log_path = out_dir / "run-log-ppn.txt"
+        run_log_path.write_text("\n".join(log_lines), encoding="utf-8")
+
+        artifact_files = [ppn_csv, mc_csv, config_path, manifest_path, run_log_path]
+        if args.plots:
+            artifact_files.append(plot_path)
+        (out_dir / "artifact-hashes-ppn.json").write_text(
+            json.dumps({p.name: sha256_of(p) for p in artifact_files if p.exists()}, indent=2),
+            encoding="utf-8",
+        )
+
+        log(f"\nArtifacts written to: {out_dir}")
+        run_log_path.write_text("\n".join(log_lines), encoding="utf-8")
+    else:
+        log("\nArtifacts skipped (--no-write-artifacts).")
     return 0 if gate_g15 else 1
 
 

@@ -61,16 +61,23 @@ from dataclasses import dataclass
 from datetime import datetime
 from pathlib import Path
 import argparse
-import csv
 import hashlib
 import json
 import math
-import random
 import statistics
 import struct
 import sys
 import time
 import zlib
+
+from _common import (
+    add_standard_cli_args,
+    configure_stdio_utf8,
+    ensure_outdir,
+    rng as make_rng,
+    write_csv as write_csv_common,
+    write_run_manifest,
+)
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -112,17 +119,14 @@ def sha256_of(path: Path) -> str:
 
 
 def write_csv(path: Path, fieldnames: list[str], rows: list[dict]) -> None:
-    with path.open("w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=fieldnames)
-        w.writeheader()
-        w.writerows(rows)
+    write_csv_common(path, fieldnames, rows)
 
 
 # ── Graph builder ─────────────────────────────────────────────────────────────
 def build_dataset_graph(
     dataset_id: str, seed: int
 ) -> tuple[list[tuple[float, float]], list[float], list[list[tuple[int, float]]]]:
-    rng = random.Random(seed)
+    rng = make_rng(seed)
     ds = dataset_id.upper().strip()
     if ds == "DS-002":
         n, k, spread = 280, 8, 2.3
@@ -355,18 +359,22 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(
         description="QNG covariant metric: ADM decomposition (v1) — Gate G10."
     )
-    p.add_argument("--dataset-id", default="DS-002")
-    p.add_argument("--seed", type=int, default=3401)
-    p.add_argument("--out-dir", default=str(DEFAULT_OUT_DIR))
+    add_standard_cli_args(
+        p,
+        default_dataset_id="DS-002",
+        default_seed=3401,
+        default_out_dir=str(DEFAULT_OUT_DIR),
+        include_plots=True,
+    )
     p.add_argument("--phi-scale", type=float, default=PHI_SCALE)
     return p.parse_args()
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
 def main() -> int:
+    configure_stdio_utf8()
     args = parse_args()
-    out_dir = Path(args.out_dir)
-    out_dir.mkdir(parents=True, exist_ok=True)
+    out_dir = ensure_outdir(args.out_dir)
 
     log_lines: list[str] = []
 
@@ -465,91 +473,111 @@ def main() -> int:
         f"threshold=>{thresholds.g10d_accel_min}")
 
     # ── Write artifacts ───────────────────────────────────────────────────────
-    cm_csv = out_dir / "covariant_metric.csv"
-    write_csv(cm_csv,
-              ["vertex", "x", "y", "sigma", "Phi", "N", "gamma",
-               "a_x", "a_y", "a_radial"],
-              [
-                  {
-                      "vertex": i,
-                      "x": fmt(coords[i][0]), "y": fmt(coords[i][1]),
-                      "sigma": fmt(sigma[i]),
-                      "Phi": fmt(phi[i]),
-                      "N": fmt(lapse[i]),
-                      "gamma": fmt(gamma[i]),
-                      "a_x": fmt(a_x[i]), "a_y": fmt(a_y[i]),
-                      "a_radial": fmt(a_radial[i]),
-                  }
-                  for i in range(n)
-              ])
+    if args.write_artifacts:
+        cm_csv = out_dir / "covariant_metric.csv"
+        write_csv(
+            cm_csv,
+            ["vertex", "x", "y", "sigma", "Phi", "N", "gamma", "a_x", "a_y", "a_radial"],
+            [
+                {
+                    "vertex": i,
+                    "x": fmt(coords[i][0]),
+                    "y": fmt(coords[i][1]),
+                    "sigma": fmt(sigma[i]),
+                    "Phi": fmt(phi[i]),
+                    "N": fmt(lapse[i]),
+                    "gamma": fmt(gamma[i]),
+                    "a_x": fmt(a_x[i]),
+                    "a_y": fmt(a_y[i]),
+                    "a_radial": fmt(a_radial[i]),
+                }
+                for i in range(n)
+            ],
+        )
 
-    mc_csv = out_dir / "metric_checks_covariant.csv"
-    write_csv(mc_csv, ["gate_id", "metric", "value", "threshold", "status"], [
-        {"gate_id": "G10a", "metric": "min_N",
-         "value": fmt(min(lapse)),
-         "threshold": f">{thresholds.g10a_lapse_min}",
-         "status": "pass" if gate_g10a else "fail"},
-        {"gate_id": "G10b", "metric": "max_abs_Phi",
-         "value": fmt(max(abs(p) for p in phi)),
-         "threshold": f"<{thresholds.g10b_weakfield_max}",
-         "status": "pass" if gate_g10b else "fail"},
-        {"gate_id": "G10c", "metric": "min_gamma",
-         "value": fmt(min(gamma)),
-         "threshold": f">{thresholds.g10c_gamma_min}",
-         "status": "pass" if gate_g10c else "fail"},
-        {"gate_id": "G10d", "metric": "mean_a_radial",
-         "value": fmt(mean_a_radial),
-         "threshold": f">{thresholds.g10d_accel_min}",
-         "status": "pass" if gate_g10d else "fail"},
-        {"gate_id": "FINAL", "metric": "decision",
-         "value": decision, "threshold": "G10a&G10b&G10c&G10d",
-         "status": decision},
-    ])
+        mc_csv = out_dir / "metric_checks_covariant.csv"
+        write_csv(mc_csv, ["gate_id", "metric", "value", "threshold", "status"], [
+            {"gate_id": "G10a", "metric": "min_N",
+             "value": fmt(min(lapse)),
+             "threshold": f">{thresholds.g10a_lapse_min}",
+             "status": "pass" if gate_g10a else "fail"},
+            {"gate_id": "G10b", "metric": "max_abs_Phi",
+             "value": fmt(max(abs(p) for p in phi)),
+             "threshold": f"<{thresholds.g10b_weakfield_max}",
+             "status": "pass" if gate_g10b else "fail"},
+            {"gate_id": "G10c", "metric": "min_gamma",
+             "value": fmt(min(gamma)),
+             "threshold": f">{thresholds.g10c_gamma_min}",
+             "status": "pass" if gate_g10c else "fail"},
+            {"gate_id": "G10d", "metric": "mean_a_radial",
+             "value": fmt(mean_a_radial),
+             "threshold": f">{thresholds.g10d_accel_min}",
+             "status": "pass" if gate_g10d else "fail"},
+            {"gate_id": "FINAL", "metric": "decision",
+             "value": decision, "threshold": "G10a&G10b&G10c&G10d",
+             "status": decision},
+        ])
 
-    plot_covariant_metric(
-        out_dir / "covariant_metric-plot.png",
-        coords, lapse, a_radial,
-    )
+        plot_path = out_dir / "covariant_metric-plot.png"
+        if args.plots:
+            plot_covariant_metric(plot_path, coords, lapse, a_radial)
 
-    config = {
-        "script": "run_qng_covariant_metric_v1.py",
-        "dataset_id": args.dataset_id,
-        "seed": args.seed,
-        "phi_scale": args.phi_scale,
-        "n_nodes": n,
-        "mean_degree": round(mean_degree, 4),
-        "sigma_max": round(sigma_max, 6),
-        "min_N": round(min(lapse), 6),
-        "max_N": round(max(lapse), 6),
-        "min_gamma": round(min(gamma), 6),
-        "max_gamma": round(max(gamma), 6),
-        "mean_a_radial": round(mean_a_radial, 8),
-        "run_utc": datetime.utcnow().isoformat() + "Z",
-        "elapsed_s": round(elapsed, 3),
-        "decision": decision,
-    }
-    (out_dir / "config_covariant.json").write_text(
-        json.dumps(config, indent=2), encoding="utf-8"
-    )
+        config_path = out_dir / "config_covariant.json"
+        config = {
+            "script": "run_qng_covariant_metric_v1.py",
+            "dataset_id": args.dataset_id,
+            "seed": args.seed,
+            "phi_scale": args.phi_scale,
+            "n_nodes": n,
+            "mean_degree": round(mean_degree, 4),
+            "sigma_max": round(sigma_max, 6),
+            "min_N": round(min(lapse), 6),
+            "max_N": round(max(lapse), 6),
+            "min_gamma": round(min(gamma), 6),
+            "max_gamma": round(max(gamma), 6),
+            "mean_a_radial": round(mean_a_radial, 8),
+            "run_utc": datetime.utcnow().isoformat() + "Z",
+            "elapsed_s": round(elapsed, 3),
+            "decision": decision,
+        }
+        config_path.write_text(json.dumps(config, indent=2), encoding="utf-8")
 
-    (out_dir / "run-log-covariant.txt").write_text(
-        "\n".join(log_lines), encoding="utf-8"
-    )
+        manifest_path = write_run_manifest(
+            out_dir=out_dir,
+            script_name="run_qng_covariant_metric_v1.py",
+            args_dict={
+                "dataset_id": args.dataset_id,
+                "seed": args.seed,
+                "phi_scale": args.phi_scale,
+                "out_dir": str(out_dir),
+                "write_artifacts": bool(args.write_artifacts),
+                "plots": bool(args.plots),
+            },
+            gate_id="G10",
+            decision=decision,
+            elapsed_s=elapsed,
+            extras={
+                "min_N": round(min(lapse), 6),
+                "max_abs_phi": round(max(abs(p) for p in phi), 6),
+                "min_gamma": round(min(gamma), 6),
+                "mean_a_radial": round(mean_a_radial, 8),
+            },
+        )
 
-    artifact_files = [
-        cm_csv, mc_csv,
-        out_dir / "covariant_metric-plot.png",
-        out_dir / "config_covariant.json",
-    ]
-    hashes = {p.name: sha256_of(p) for p in artifact_files if p.exists()}
-    (out_dir / "artifact-hashes-covariant.json").write_text(
-        json.dumps(hashes, indent=2), encoding="utf-8"
-    )
+        run_log_path = out_dir / "run-log-covariant.txt"
+        run_log_path.write_text("\n".join(log_lines), encoding="utf-8")
 
-    log(f"\nArtifacts written to: {out_dir}")
-    (out_dir / "run-log-covariant.txt").write_text(
-        "\n".join(log_lines), encoding="utf-8"
-    )
+        artifact_files = [cm_csv, mc_csv, config_path, manifest_path, run_log_path]
+        if args.plots:
+            artifact_files.append(plot_path)
+        hashes = {p.name: sha256_of(p) for p in artifact_files if p.exists()}
+        (out_dir / "artifact-hashes-covariant.json").write_text(
+            json.dumps(hashes, indent=2), encoding="utf-8"
+        )
+        log(f"\nArtifacts written to: {out_dir}")
+        run_log_path.write_text("\n".join(log_lines), encoding="utf-8")
+    else:
+        log("\nArtifacts skipped (--no-write-artifacts).")
 
     return 0 if gate_g10 else 1
 
