@@ -46,3 +46,17 @@ DS-003 multi-seed stability check:
 ```bash
 python scripts/run_qng_ppn_debug_v1.py --datasets DS-003 --seeds 3401,3402,3403,3404,3405,3406,3407,3408,3409,3410 --phi-scale 0.08 --out-dir 05_validation/evidence/artifacts/qng-ppn-debug-v1-ds003-seed-sweep
 ```
+
+## 4) GR regression guard (G10..G16 freeze check)
+
+Run against frozen baseline (`gr-ppn-g15b-v2-official`):
+
+```bash
+python scripts/run_qng_gr_regression_guard_v1.py --out-dir 05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/observed_summary.csv`
+- `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/regression_report.md`
+- `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/regression_report.json`

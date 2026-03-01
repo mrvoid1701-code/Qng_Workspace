@@ -1,0 +1,130 @@
+{
+  "baseline_id": "gr-g10-g16-regression-v1",
+  "effective_tag": "gr-ppn-g15b-v2-official",
+  "effective_commit": "d9a60e9",
+  "effective_date_utc": "2026-03-01",
+  "notes": [
+    "Housekeeping regression guard only; no scientific threshold changes.",
+    "Baseline profiles use PHI_SCALE=0.08 with fixed seed=3401 for DS-002/DS-003/DS-006.",
+    "G15 final decision is legacy-v1 in current runner; G15b-v2 status is tracked explicitly."
+  ],
+  "profiles": [
+    {
+      "dataset_id": "DS-002",
+      "seed": 3401,
+      "phi_scale": "0.08"
+    },
+    {
+      "dataset_id": "DS-003",
+      "seed": 3401,
+      "phi_scale": "0.08"
+    },
+    {
+      "dataset_id": "DS-006",
+      "seed": 3401,
+      "phi_scale": "0.08"
+    }
+  ],
+  "compare": {
+    "status_fields": [
+      "g10_status",
+      "g11_status",
+      "g12_status",
+      "g13_status",
+      "g14_status",
+      "g15_status",
+      "g16_status",
+      "g15b_v2_status",
+      "all_pass"
+    ],
+    "numeric_fields": {
+      "g15a_gamma_dev": {
+        "abs_tol": 1e-06
+      },
+      "g15d_ep_ratio": {
+        "abs_tol": 1e-06
+      },
+      "g15b_shapiro_ratio": {
+        "abs_tol": 1e-06
+      },
+      "g15b_v2_shapiro_ratio": {
+        "abs_tol": 1e-06
+      },
+      "g13b_e_cov_drift": {
+        "abs_tol": 1e-06
+      },
+      "g14b_e_cov_drift": {
+        "abs_tol": 1e-06
+      },
+      "g13c_speed_reduction": {
+        "abs_tol": 1e-06
+      }
+    }
+  },
+  "expected_rows": [
+    {
+      "dataset_id": "DS-002",
+      "seed": 3401,
+      "phi_scale": "0.08",
+      "g10_status": "pass",
+      "g11_status": "pass",
+      "g12_status": "pass",
+      "g13_status": "pass",
+      "g14_status": "pass",
+      "g15_status": "pass",
+      "g16_status": "pass",
+      "g15b_v2_status": "pass",
+      "all_pass": "pass",
+      "g15a_gamma_dev": "0.022587",
+      "g15d_ep_ratio": "0.086167",
+      "g15b_shapiro_ratio": "2.419454",
+      "g15b_v2_shapiro_ratio": "6.481096",
+      "g13b_e_cov_drift": "0.002911",
+      "g14b_e_cov_drift": "8.405627e-04",
+      "g13c_speed_reduction": "0.157442"
+    },
+    {
+      "dataset_id": "DS-003",
+      "seed": 3401,
+      "phi_scale": "0.08",
+      "g10_status": "pass",
+      "g11_status": "pass",
+      "g12_status": "pass",
+      "g13_status": "pass",
+      "g14_status": "pass",
+      "g15_status": "fail",
+      "g16_status": "pass",
+      "g15b_v2_status": "pass",
+      "all_pass": "fail",
+      "g15a_gamma_dev": "0.025954",
+      "g15d_ep_ratio": "0.072804",
+      "g15b_shapiro_ratio": "1.944373",
+      "g15b_v2_shapiro_ratio": "4.320491",
+      "g13b_e_cov_drift": "0.004385",
+      "g14b_e_cov_drift": "0.001927",
+      "g13c_speed_reduction": "0.178945"
+    },
+    {
+      "dataset_id": "DS-006",
+      "seed": 3401,
+      "phi_scale": "0.08",
+      "g10_status": "pass",
+      "g11_status": "pass",
+      "g12_status": "pass",
+      "g13_status": "pass",
+      "g14_status": "pass",
+      "g15_status": "pass",
+      "g16_status": "pass",
+      "g15b_v2_status": "pass",
+      "all_pass": "pass",
+      "g15a_gamma_dev": "0.017696",
+      "g15d_ep_ratio": "0.101833",
+      "g15b_shapiro_ratio": "3.427312",
+      "g15b_v2_shapiro_ratio": "14.264256",
+      "g13b_e_cov_drift": "7.356327e-04",
+      "g14b_e_cov_drift": "7.335762e-04",
+      "g13c_speed_reduction": "0.125288"
+    }
+  ]
+}
+

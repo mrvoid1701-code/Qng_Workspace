@@ -209,9 +209,17 @@ def parse_args() -> argparse.Namespace:
     return p.parse_args()
 
 
+def as_repo_relative(path: Path) -> str:
+    abs_path = path.resolve()
+    try:
+        return str(abs_path.relative_to(ROOT.resolve())).replace("\\", "/")
+    except ValueError:
+        return abs_path.as_posix()
+
+
 def main() -> int:
     args = parse_args()
-    out_dir = Path(args.out_dir)
+    out_dir = Path(args.out_dir).resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
     runs_root = out_dir / RUNS_DIR_NAME
     runs_root.mkdir(parents=True, exist_ok=True)
@@ -297,7 +305,7 @@ def main() -> int:
                         "g13b_e_cov_drift": get_metric_value(g13_rows, "G13b", "E_cov_drift"),
                         "g14b_e_cov_drift": get_metric_value(g14_rows, "G14b", "E_cov_drift"),
                         "g13c_speed_reduction": get_metric_value(g13_rows, "G13c", "speed_reduction"),
-                        "run_root": str(combo_root.relative_to(ROOT)).replace("\\", "/"),
+                        "run_root": as_repo_relative(combo_root),
                     }
                 )
 
