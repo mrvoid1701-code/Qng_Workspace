@@ -103,3 +103,15 @@ Main outputs:
 - `05_validation/evidence/artifacts/gr-stability-v1/dataset_stats.csv`
 - `05_validation/evidence/artifacts/gr-stability-v1/worst_cases.csv`
 - `05_validation/evidence/artifacts/gr-stability-v1/report.md`
+
+## 7) G16 failure taxonomy (diagnostics only, no threshold tuning)
+
+```bash
+python scripts/tools/run_g16_failure_taxonomy_v1.py --summary-csv 05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/summary.csv --out-dir 05_validation/evidence/artifacts/g16-failure-taxonomy-v1 --top-patterns 5
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/g16-failure-taxonomy-v1/g16_fail_cases.csv`
+- `05_validation/evidence/artifacts/g16-failure-taxonomy-v1/g16_pass_cases.csv`
+- `05_validation/evidence/artifacts/g16-failure-taxonomy-v1/g16_failure_taxonomy.md`

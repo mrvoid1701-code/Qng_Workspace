@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-03-01 - G16 failure taxonomy diagnostics (no math changes)
+
+- Added G16 taxonomy runner:
+  - `scripts/tools/run_g16_failure_taxonomy_v1.py`
+- Added taxonomy artifacts from grid20 profiles:
+  - `05_validation/evidence/artifacts/g16-failure-taxonomy-v1/g16_fail_cases.csv`
+  - `05_validation/evidence/artifacts/g16-failure-taxonomy-v1/g16_pass_cases.csv`
+  - `05_validation/evidence/artifacts/g16-failure-taxonomy-v1/g16_failure_taxonomy.md`
+- Current result snapshot:
+  - all observed G16 fails are `G16b`-driven (Einstein coupling R² sub-gate), with `G16a/G16c/G16d` passing.
+
 ## 2026-03-01 - GR baseline semantics split (official vs survey)
 
 - Added explicit pass semantics in sweep/guard outputs:
