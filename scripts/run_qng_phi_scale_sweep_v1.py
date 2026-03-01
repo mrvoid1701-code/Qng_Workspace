@@ -106,6 +106,13 @@ def get_metric_value(rows: list[dict[str, str]], gate_id: str, metric: str) -> s
     return ""
 
 
+def get_gate_status(rows: list[dict[str, str]], gate_id: str) -> str:
+    for row in rows:
+        if row.get("gate_id") == gate_id:
+            return row.get("status", "").strip().lower()
+    return ""
+
+
 def get_final_status(rows: list[dict[str, str]]) -> str:
     for row in rows:
         if row.get("gate_id") == "FINAL":
@@ -188,6 +195,8 @@ def write_summary(path: Path, rows: list[dict[str, Any]]) -> None:
         "g15a_gamma_dev",
         "g15d_ep_ratio",
         "g15b_shapiro_ratio",
+        "g15b_v2_status",
+        "g15b_v2_shapiro_ratio",
         "g13b_e_cov_drift",
         "g14b_e_cov_drift",
         "g13c_speed_reduction",
@@ -302,6 +311,8 @@ def main() -> int:
                         "g15a_gamma_dev": get_metric_value(g15_rows, "G15a", "gamma_dev"),
                         "g15d_ep_ratio": get_metric_value(g15_rows, "G15d", "EP_ratio"),
                         "g15b_shapiro_ratio": get_metric_value(g15_rows, "G15b", "shapiro_ratio"),
+                        "g15b_v2_status": get_gate_status(g15_rows, "G15b-v2"),
+                        "g15b_v2_shapiro_ratio": get_metric_value(g15_rows, "G15b-v2", "shapiro_ratio_v2"),
                         "g13b_e_cov_drift": get_metric_value(g13_rows, "G13b", "E_cov_drift"),
                         "g14b_e_cov_drift": get_metric_value(g14_rows, "G14b", "E_cov_drift"),
                         "g13c_speed_reduction": get_metric_value(g13_rows, "G13c", "speed_reduction"),

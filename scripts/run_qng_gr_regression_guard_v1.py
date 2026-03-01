@@ -40,7 +40,7 @@ DEFAULT_BASELINE_JSON = (
     / "evidence"
     / "artifacts"
     / "gr-regression-baseline-v1"
-    / "gr_baseline.json"
+    / "gr_baseline_grid20.json"
 )
 DEFAULT_OUT_DIR = (
     ROOT

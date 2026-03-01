@@ -11,13 +11,13 @@ Example values:
 - output root: `07_exports/repro/gr_chain_ds002_s3401`
 
 ```bash
-python scripts/run_qng_covariant_metric_v1.py --dataset-id DS-002 --seed 3401 --outdir 07_exports/repro/gr_chain_ds002_s3401/g10
-python scripts/run_qng_einstein_eq_v1.py --dataset-id DS-002 --seed 3401 --outdir 07_exports/repro/gr_chain_ds002_s3401/g11
-python scripts/run_qng_gr_solutions_v1.py --dataset-id DS-002 --seed 3401 --outdir 07_exports/repro/gr_chain_ds002_s3401/g12
-python scripts/run_qng_covariant_wave_v1.py --dataset-id DS-002 --seed 3401 --outdir 07_exports/repro/gr_chain_ds002_s3401/g13
-python scripts/run_qng_covariant_cons_v1.py --dataset-id DS-002 --seed 3401 --outdir 07_exports/repro/gr_chain_ds002_s3401/g14
-python scripts/run_qng_ppn_v1.py --dataset-id DS-002 --seed 3401 --outdir 07_exports/repro/gr_chain_ds002_s3401/g15
-python scripts/run_qng_action_v1.py --dataset-id DS-002 --seed 3401 --outdir 07_exports/repro/gr_chain_ds002_s3401/g16
+python scripts/run_qng_covariant_metric_v1.py --dataset-id DS-002 --seed 3401 --out-dir 07_exports/repro/gr_chain_ds002_s3401/g10
+python scripts/run_qng_einstein_eq_v1.py --dataset-id DS-002 --seed 3401 --out-dir 07_exports/repro/gr_chain_ds002_s3401/g11
+python scripts/run_qng_gr_solutions_v1.py --dataset-id DS-002 --seed 3401 --out-dir 07_exports/repro/gr_chain_ds002_s3401/g12
+python scripts/run_qng_covariant_wave_v1.py --dataset-id DS-002 --seed 3401 --out-dir 07_exports/repro/gr_chain_ds002_s3401/g13
+python scripts/run_qng_covariant_cons_v1.py --dataset-id DS-002 --seed 3401 --out-dir 07_exports/repro/gr_chain_ds002_s3401/g14
+python scripts/run_qng_ppn_v1.py --dataset-id DS-002 --seed 3401 --out-dir 07_exports/repro/gr_chain_ds002_s3401/g15
+python scripts/run_qng_action_v1.py --dataset-id DS-002 --seed 3401 --out-dir 07_exports/repro/gr_chain_ds002_s3401/g16
 ```
 
 ## 2) PHI scale sweep
@@ -49,7 +49,7 @@ python scripts/run_qng_ppn_debug_v1.py --datasets DS-003 --seeds 3401,3402,3403,
 
 ## 4) GR regression guard (G10..G16 freeze check)
 
-Run against frozen baseline (`gr-ppn-g15b-v2-official`):
+Run against frozen baseline (`gr-ppn-g15b-v2-official`, grid20 baseline default):
 
 ```bash
 python scripts/run_qng_gr_regression_guard_v1.py --out-dir 05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check
@@ -66,3 +66,16 @@ Main outputs:
 - `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/observed_summary.csv`
 - `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/regression_report.md`
 - `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/regression_report.json`
+
+## 5) Rebuild baseline json from sweep summary (grid20 helper)
+
+Source files for the current deep baseline are tracked here:
+
+- `05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/summary.csv`
+- `05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/run-log-grid20.txt`
+
+Rebuild command:
+
+```bash
+python scripts/tools/build_gr_baseline_from_sweep.py --summary-csv 05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/summary.csv --out-json 05_validation/evidence/artifacts/gr-regression-baseline-v1/gr_baseline_grid20.json --baseline-id gr-g10-g16-regression-grid20-v1 --effective-tag gr-ppn-g15b-v2-official --effective-commit ebce36d --effective-date-utc 2026-03-01
+```

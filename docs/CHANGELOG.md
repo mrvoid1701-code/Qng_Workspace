@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-03-01 - GR regression guard deep baseline (grid20)
+
+- Added deep baseline config (DS-002/003/006 x seeds 3401..3420, `PHI_SCALE=0.08`):
+  - `05_validation/evidence/artifacts/gr-regression-baseline-v1/gr_baseline_grid20.json`
+- Added baseline builder helper:
+  - `scripts/tools/build_gr_baseline_from_sweep.py`
+- Guard default baseline now points to:
+  - `05_validation/evidence/artifacts/gr-regression-baseline-v1/gr_baseline_grid20.json`
+- Added provenance source summary and run-log:
+  - `05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/`
+
 ## 2026-03-01 - GR/PPN freeze: `gr-ppn-g15b-v2-official`
 
 - Freeze scope: GR/PPN decision policy for G15b.
