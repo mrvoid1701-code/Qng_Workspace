@@ -1,0 +1,64 @@
+======================================================================
+QNG Semiclassical Back-reaction (v1) — G20
+Run started: 2026-03-01T04:37:55.028605Z
+======================================================================
+
+Graph: n=280  mean_degree=9.37
+Back-reaction coupling λ = 0.05
+
+[1] Eigenmode computation: 20 modes × 350 iterations
+  Done in 2.68s  |  μ_0=6.615177e-05  μ_1=0.010782
+  K_eff=19  |  ω ∈ [0.157422, 0.532398]  |  E_0 = 3.351481
+
+[2] Flat metric α^(0) = k_i/k̄
+  α^(0): min=0.853659  max=1.600610  mean=1.000000
+
+[3] Vacuum energy density ε_vac^(0)(i) = ½ Σ_k ω_k ψ_k(i)²
+  ε_vac: min=0.003594  max=0.028808  mean=0.011970
+  std=0.004949  cv=0.413501
+  Σ_i ε_vac(i) = 3.351481  (should = E_0 = 3.351481)
+
+[G20a] Energy conservation: |Σε_vac − E_0|/E_0 = 0.000000
+  Threshold: < 0.01
+
+[G20b] Spatial variation: cv(ε_vac) = 0.413501
+  Threshold: > 0.05
+
+[4] Back-reaction field f(i) = (ε_vac(i) − ē)/ē
+  f: min=-0.699780  max=1.406741  mean≈-2.304704e-17
+
+[5] First-order quantum corrections (λ = 0.05)
+  δω_k: min=-3.515747e-04  max=0.007362
+  E_0^(0)  = 3.351481
+  δE_0     = 0.014275
+  E_0^(1)  = 3.365756
+  |δE_0|/E_0 = 0.004259
+  Analytic estimate: λ/2 × cv² = 0.004275
+  Threshold G20c: (1e-05, 0.3)
+
+[6] Corrected metric α^(1)(i) = α^(0)(i) · (1 + λ·f(i))
+  α^(1): min=0.824090  max=1.581485  mean=0.999433
+  All α^(1) > 0: True
+  |δα/α|: mean=0.016277  max=0.070337
+
+[G20d] Self-consistency: ε_vac^(1) vs ε_vac^(0)
+  ε_vac^(1): min=0.003602  max=0.029125
+  Residual |Δε_vac|/ē: mean=0.004259  max=0.026486
+  Analytic estimate: λ cv² / 2 = 0.004275
+  Threshold G20d: max(residual) < 0.2
+
+======================================================================
+QNG Semiclassical Back-reaction completed in 2.71s
+decision=pass  G20=True(a=True,b=True,c=True,d=True)
+  G20a energy conservation: |ΔE|/E = 0.000000  threshold=<0.01
+  G20b cv(ε_vac):           0.413501  threshold=>0.05
+  G20c |δE_0|/E_0:          0.004259  threshold∈(1e-05,0.3)
+  G20d max(residual):        0.026486  threshold=<0.2
+
+Physical summary:
+  Quantum vacuum corrects the metric by up to 7.034%
+  Zero-point energy shifts by 0.4259%
+  One back-reaction step is self-consistent: max residual = 0.026486
+  The GR ↔ QM loop closes at first order (λ = 0.05).
+
+Artifacts written to: /home/user/Qng_Workspace/05_validation/evidence/artifacts/qng-semiclassical-v1
