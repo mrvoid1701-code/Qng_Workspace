@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-03-01 - G16b component diagnostics expansion + candidate proposal
+
+- Expanded G16 taxonomy diagnostics with per-profile G16b component outputs:
+  - `mean/std` for `T11` and `G11`
+  - `T11` sign fractions
+  - `std(T11)/|mean(T11)|`
+  - Pearson and Spearman correlations
+  - high-signal subset diagnostics (top 20% `|T11|`)
+- Added consolidated diagnostics CSV:
+  - `05_validation/evidence/artifacts/g16-failure-taxonomy-v1/g16b_component_diagnostics.csv`
+- Added A/B issue-axis mapping for failing profiles in taxonomy outputs.
+- Added candidate-only proposal doc (no official gate switch):
+  - `docs/G16B_DEFINITION_CHANGE_PROPOSAL.md`
+
 ## 2026-03-01 - G16 failure taxonomy diagnostics (no math changes)
 
 - Added G16 taxonomy runner:

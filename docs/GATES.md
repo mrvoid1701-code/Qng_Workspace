@@ -34,6 +34,7 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 - GR run summaries expose two chain views:
   - `all_pass_official` (uses `G15b-v2` for decision logic)
   - `all_pass_diagnostic` (legacy chain, keeps `G15` final for diagnostics)
+- `G16b-v2` is currently candidate diagnostic-only (see `docs/G16B_DEFINITION_CHANGE_PROPOSAL.md`).
 - Effective date for official switch: `2026-03-01` (promotion commit `15dd881`).
 - Freeze reference tag: `gr-ppn-g15b-v2-official` (see `docs/CHANGELOG.md`).
 

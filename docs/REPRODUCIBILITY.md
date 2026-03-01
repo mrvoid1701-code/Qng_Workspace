@@ -114,4 +114,9 @@ Main outputs:
 
 - `05_validation/evidence/artifacts/g16-failure-taxonomy-v1/g16_fail_cases.csv`
 - `05_validation/evidence/artifacts/g16-failure-taxonomy-v1/g16_pass_cases.csv`
+- `05_validation/evidence/artifacts/g16-failure-taxonomy-v1/g16b_component_diagnostics.csv`
 - `05_validation/evidence/artifacts/g16-failure-taxonomy-v1/g16_failure_taxonomy.md`
+
+Definition-change proposal (candidate only):
+
+- `docs/G16B_DEFINITION_CHANGE_PROPOSAL.md`

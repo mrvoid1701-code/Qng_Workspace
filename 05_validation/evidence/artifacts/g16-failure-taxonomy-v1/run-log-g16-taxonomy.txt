@@ -1,206 +1,65 @@
 ========================================================================
 G16 failure taxonomy v1
-start_utc=2026-03-01T23:01:48.694095Z
+start_utc=2026-03-01T23:13:57.488424Z
 profiles=60
 ========================================================================
 [1/60] ds-002_seed3401_phi0p08
-  run_action rc=0
 [2/60] ds-002_seed3402_phi0p08
-  run_action rc=0
 [3/60] ds-002_seed3403_phi0p08
-  run_action rc=0
 [4/60] ds-002_seed3404_phi0p08
-  run_action rc=0
 [5/60] ds-002_seed3405_phi0p08
-  run_action rc=0
 [6/60] ds-002_seed3406_phi0p08
-  run_action rc=0
 [7/60] ds-002_seed3407_phi0p08
-  run_action rc=0
 [8/60] ds-002_seed3408_phi0p08
-  run_action rc=0
 [9/60] ds-002_seed3409_phi0p08
-  run_action rc=0
 [10/60] ds-002_seed3410_phi0p08
-  run_action rc=0
 [11/60] ds-002_seed3411_phi0p08
-  run_action rc=1
-  tail:
-    QNG Action Functional completed.
-    decision=fail  G16=False(a=True,b=False,c=True,d=True)
-    G16a closure:   |S_grav−mean_σ|/mean_σ = 1.149098e-14  threshold=<0.01
-    G16b EOM R²:    OLS R²(G11,8πG T11)=0.036065  threshold=>0.05
-    G16c |m²_fit|:  0.012038  threshold=>0.005
-    G16d Hessian:   frac(H_ii<0)=1.000000  threshold=>0.9
-    
-    Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\g16-failure-taxonomy-v1\runs\ds-002_seed3411_phi0p08\g16
 [12/60] ds-002_seed3412_phi0p08
-  run_action rc=0
 [13/60] ds-002_seed3413_phi0p08
-  run_action rc=0
 [14/60] ds-002_seed3414_phi0p08
-  run_action rc=0
 [15/60] ds-002_seed3415_phi0p08
-  run_action rc=0
 [16/60] ds-002_seed3416_phi0p08
-  run_action rc=0
 [17/60] ds-002_seed3417_phi0p08
-  run_action rc=0
 [18/60] ds-002_seed3418_phi0p08
-  run_action rc=1
-  tail:
-    QNG Action Functional completed.
-    decision=fail  G16=False(a=True,b=False,c=True,d=True)
-    G16a closure:   |S_grav−mean_σ|/mean_σ = 5.665855e-15  threshold=<0.01
-    G16b EOM R²:    OLS R²(G11,8πG T11)=0.020231  threshold=>0.05
-    G16c |m²_fit|:  0.012473  threshold=>0.005
-    G16d Hessian:   frac(H_ii<0)=1.000000  threshold=>0.9
-    
-    Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\g16-failure-taxonomy-v1\runs\ds-002_seed3418_phi0p08\g16
 [19/60] ds-002_seed3419_phi0p08
-  run_action rc=0
 [20/60] ds-002_seed3420_phi0p08
-  run_action rc=1
-  tail:
-    QNG Action Functional completed.
-    decision=fail  G16=False(a=True,b=False,c=True,d=True)
-    G16a closure:   |S_grav−mean_σ|/mean_σ = 1.710682e-14  threshold=<0.01
-    G16b EOM R²:    OLS R²(G11,8πG T11)=0.022709  threshold=>0.05
-    G16c |m²_fit|:  0.011653  threshold=>0.005
-    G16d Hessian:   frac(H_ii<0)=1.000000  threshold=>0.9
-    
-    Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\g16-failure-taxonomy-v1\runs\ds-002_seed3420_phi0p08\g16
 [21/60] ds-003_seed3401_phi0p08
-  run_action rc=0
 [22/60] ds-003_seed3402_phi0p08
-  run_action rc=0
 [23/60] ds-003_seed3403_phi0p08
-  run_action rc=0
 [24/60] ds-003_seed3404_phi0p08
-  run_action rc=0
 [25/60] ds-003_seed3405_phi0p08
-  run_action rc=1
-  tail:
-    QNG Action Functional completed.
-    decision=fail  G16=False(a=True,b=False,c=True,d=True)
-    G16a closure:   |S_grav−mean_σ|/mean_σ = 1.706870e-14  threshold=<0.01
-    G16b EOM R²:    OLS R²(G11,8πG T11)=0.048157  threshold=>0.05
-    G16c |m²_fit|:  0.007594  threshold=>0.005
-    G16d Hessian:   frac(H_ii<0)=1.000000  threshold=>0.9
-    
-    Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\g16-failure-taxonomy-v1\runs\ds-003_seed3405_phi0p08\g16
 [26/60] ds-003_seed3406_phi0p08
-  run_action rc=0
 [27/60] ds-003_seed3407_phi0p08
-  run_action rc=1
-  tail:
-    QNG Action Functional completed.
-    decision=fail  G16=False(a=True,b=False,c=True,d=True)
-    G16a closure:   |S_grav−mean_σ|/mean_σ = 1.651870e-15  threshold=<0.01
-    G16b EOM R²:    OLS R²(G11,8πG T11)=0.003736  threshold=>0.05
-    G16c |m²_fit|:  0.006880  threshold=>0.005
-    G16d Hessian:   frac(H_ii<0)=1.000000  threshold=>0.9
-    
-    Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\g16-failure-taxonomy-v1\runs\ds-003_seed3407_phi0p08\g16
 [28/60] ds-003_seed3408_phi0p08
-  run_action rc=0
 [29/60] ds-003_seed3409_phi0p08
-  run_action rc=0
 [30/60] ds-003_seed3410_phi0p08
-  run_action rc=0
 [31/60] ds-003_seed3411_phi0p08
-  run_action rc=0
 [32/60] ds-003_seed3412_phi0p08
-  run_action rc=0
 [33/60] ds-003_seed3413_phi0p08
-  run_action rc=0
 [34/60] ds-003_seed3414_phi0p08
-  run_action rc=1
-  tail:
-    QNG Action Functional completed.
-    decision=fail  G16=False(a=True,b=False,c=True,d=True)
-    G16a closure:   |S_grav−mean_σ|/mean_σ = 7.957083e-15  threshold=<0.01
-    G16b EOM R²:    OLS R²(G11,8πG T11)=0.044386  threshold=>0.05
-    G16c |m²_fit|:  0.007795  threshold=>0.005
-    G16d Hessian:   frac(H_ii<0)=1.000000  threshold=>0.9
-    
-    Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\g16-failure-taxonomy-v1\runs\ds-003_seed3414_phi0p08\g16
 [35/60] ds-003_seed3415_phi0p08
-  run_action rc=0
 [36/60] ds-003_seed3416_phi0p08
-  run_action rc=0
 [37/60] ds-003_seed3417_phi0p08
-  run_action rc=0
 [38/60] ds-003_seed3418_phi0p08
-  run_action rc=1
-  tail:
-    QNG Action Functional completed.
-    decision=fail  G16=False(a=True,b=False,c=True,d=True)
-    G16a closure:   |S_grav−mean_σ|/mean_σ = 2.630045e-15  threshold=<0.01
-    G16b EOM R²:    OLS R²(G11,8πG T11)=0.002159  threshold=>0.05
-    G16c |m²_fit|:  0.008131  threshold=>0.005
-    G16d Hessian:   frac(H_ii<0)=1.000000  threshold=>0.9
-    
-    Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\g16-failure-taxonomy-v1\runs\ds-003_seed3418_phi0p08\g16
 [39/60] ds-003_seed3419_phi0p08
-  run_action rc=0
 [40/60] ds-003_seed3420_phi0p08
-  run_action rc=0
 [41/60] ds-006_seed3401_phi0p08
-  run_action rc=0
 [42/60] ds-006_seed3402_phi0p08
-  run_action rc=0
 [43/60] ds-006_seed3403_phi0p08
-  run_action rc=0
 [44/60] ds-006_seed3404_phi0p08
-  run_action rc=0
 [45/60] ds-006_seed3405_phi0p08
-  run_action rc=0
 [46/60] ds-006_seed3406_phi0p08
-  run_action rc=0
 [47/60] ds-006_seed3407_phi0p08
-  run_action rc=0
 [48/60] ds-006_seed3408_phi0p08
-  run_action rc=0
 [49/60] ds-006_seed3409_phi0p08
-  run_action rc=0
 [50/60] ds-006_seed3410_phi0p08
-  run_action rc=0
 [51/60] ds-006_seed3411_phi0p08
-  run_action rc=1
-  tail:
-    QNG Action Functional completed.
-    decision=fail  G16=False(a=True,b=False,c=True,d=True)
-    G16a closure:   |S_grav−mean_σ|/mean_σ = 2.442225e-14  threshold=<0.01
-    G16b EOM R²:    OLS R²(G11,8πG T11)=0.045440  threshold=>0.05
-    G16c |m²_fit|:  0.019945  threshold=>0.005
-    G16d Hessian:   frac(H_ii<0)=1.000000  threshold=>0.9
-    
-    Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\g16-failure-taxonomy-v1\runs\ds-006_seed3411_phi0p08\g16
 [52/60] ds-006_seed3412_phi0p08
-  run_action rc=0
 [53/60] ds-006_seed3413_phi0p08
-  run_action rc=0
 [54/60] ds-006_seed3414_phi0p08
-  run_action rc=0
 [55/60] ds-006_seed3415_phi0p08
-  run_action rc=0
 [56/60] ds-006_seed3416_phi0p08
-  run_action rc=0
 [57/60] ds-006_seed3417_phi0p08
-  run_action rc=0
 [58/60] ds-006_seed3418_phi0p08
-  run_action rc=1
-  tail:
-    QNG Action Functional completed.
-    decision=fail  G16=False(a=True,b=False,c=True,d=True)
-    G16a closure:   |S_grav−mean_σ|/mean_σ = 7.992130e-16  threshold=<0.01
-    G16b EOM R²:    OLS R²(G11,8πG T11)=0.043875  threshold=>0.05
-    G16c |m²_fit|:  0.019378  threshold=>0.005
-    G16d Hessian:   frac(H_ii<0)=1.000000  threshold=>0.9
-    
-    Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\g16-failure-taxonomy-v1\runs\ds-006_seed3418_phi0p08\g16
 [59/60] ds-006_seed3419_phi0p08
-  run_action rc=0
 [60/60] ds-006_seed3420_phi0p08
-  run_action rc=0
