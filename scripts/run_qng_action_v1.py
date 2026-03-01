@@ -116,7 +116,7 @@ DEFAULT_OUT_DIR = (
     ROOT / "05_validation" / "evidence" / "artifacts" / "qng-action-v1"
 )
 
-PHI_SCALE = 0.10
+PHI_SCALE = 0.08
 
 
 # ── Gate thresholds ───────────────────────────────────────────────────────────

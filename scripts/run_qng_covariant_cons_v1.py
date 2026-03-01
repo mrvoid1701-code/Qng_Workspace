@@ -79,7 +79,7 @@ DEFAULT_OUT_DIR = (
     ROOT / "05_validation" / "evidence" / "artifacts" / "qng-covariant-cons-v1"
 )
 
-PHI_SCALE    = 0.10
+PHI_SCALE    = 0.08
 C_WAVE       = 0.15
 DT           = 0.40
 N_STEPS      = 400       # longer run to accumulate E_flat drift

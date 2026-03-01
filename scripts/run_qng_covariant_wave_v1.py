@@ -88,7 +88,7 @@ DEFAULT_OUT_DIR = (
 )
 
 # ── Physics parameters ─────────────────────────────────────────────────────────
-PHI_SCALE   = 0.10
+PHI_SCALE   = 0.08
 C_WAVE      = 0.15
 DT          = 0.40
 N_STEPS     = 200

@@ -19,7 +19,7 @@ Isotropic spatial metric (space stretches near mass):
 
     γ_{ij}(i) = (1 − 2Φ(i)) δ_{ij}   ≡ γ(i) δ_{ij}
 
-With Φ_scale = 0.10:  γ(i) = 1 + 0.2·σ(i)/σ_max ∈ [1.0, 1.2]  (always > 0)
+With Φ_scale = 0.08:  γ(i) = 1 + 0.16·σ(i)/σ_max ∈ [1.0, 1.16]  (always > 0)
 
 Full 2+1 spacetime metric (zero shift N^i = 0):
 
@@ -86,7 +86,7 @@ DEFAULT_OUT_DIR = (
 )
 
 # ── Physics parameters ─────────────────────────────────────────────────────────
-PHI_SCALE = 0.10   # weak-field parameter; |Φ| ≤ PHI_SCALE << 1
+PHI_SCALE = 0.08   # weak-field parameter; |Φ| ≤ PHI_SCALE << 1
 
 
 # ── Gate thresholds ───────────────────────────────────────────────────────────
