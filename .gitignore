@@ -20,11 +20,25 @@ Thumbs.db
 # Large split source chunks (kept outside git)
 data/lensing/planck_lensing_4096_r3_part/
 
-# Generated runtime artifacts under evidence/artifacts
-05_validation/evidence/artifacts/**/run-log*.txt
-05_validation/evidence/artifacts/**/config*.json
-05_validation/evidence/artifacts/**/artifact-hashes*.json
+# Generated runtime junk under evidence/artifacts / exports
+05_validation/evidence/artifacts/**/__pycache__/
+05_validation/evidence/artifacts/**/*.tmp
+05_validation/evidence/artifacts/**/*.bak
+05_validation/evidence/artifacts/**/run-log.txt
+05_validation/evidence/artifacts/**/artifact-hashes.json
+05_validation/evidence/artifacts/**/config.json
+07_exports/**/__pycache__/
+07_exports/**/*.tmp
+07_exports/**/*.bak
+
+# Keep reproducibility-facing records versioned (do not ignore)
+!05_validation/evidence/artifacts/**/run-manifest*.json
+!05_validation/evidence/artifacts/**/artifact-hashes-*.json
+!05_validation/evidence/artifacts/**/run-log-*.txt
+!05_validation/evidence/artifacts/**/config_*.json
+!05_validation/evidence/artifacts/**/*.md
 
 # Local smoke/scratch exports
 07_exports/smoke/
 07_exports/tmp/
+07_exports/tmp*/
