@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-03-01 - G16b hybrid promotion prereg + attack validation
+
+- Added promotion prereg doc:
+  - `docs/G16B_HYBRID_PROMOTION_PREREG.md`
+- Added promotion criteria evaluator:
+  - `scripts/tools/evaluate_g16b_hybrid_promotion_v1.py`
+- Added promotion/attack evidence outputs:
+  - `05_validation/evidence/artifacts/g16b-hybrid-promotion-eval-v1/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/g16b-hybrid-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/g16b-hybrid-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600/`
+  - `05_validation/evidence/artifacts/g16b-hybrid-promotion-eval-v1/promotion_decision.md`
+- Added attack-run summary artifacts:
+  - `05_validation/evidence/artifacts/g16b-v2-candidate-attack-seed500-v1/summary.csv`
+  - `05_validation/evidence/artifacts/g16b-v2-candidate-attack-holdout-v1/summary.csv`
+  - `05_validation/evidence/artifacts/g16b-split-hybrid-attack-seed500-v1/summary.csv`
+  - `05_validation/evidence/artifacts/g16b-split-hybrid-attack-holdout-v1/summary.csv`
+- Outcome:
+  - primary decision: `PASS`
+  - attack seed-range decision: `PASS`
+  - attack holdout decision: `PASS`
+  - hybrid marked `PROMOTION-READY` (official gate switch still explicit/separate).
+
 ## 2026-03-01 - G16b hybrid split candidate prereg (low=v2, high=v1)
 
 - Added hybrid evaluator:

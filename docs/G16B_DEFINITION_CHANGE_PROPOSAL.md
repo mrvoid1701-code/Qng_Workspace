@@ -140,3 +140,21 @@ Decision:
 
 - hybrid-v1 is acceptable as **next promotion candidate** under prereg checks.
 - official gate remains `G16b-v1` until promotion rule is explicitly frozen and completed.
+
+## Promotion Pre-Registration Status
+
+See:
+
+- `docs/G16B_HYBRID_PROMOTION_PREREG.md`
+- `05_validation/evidence/artifacts/g16b-hybrid-promotion-eval-v1/promotion_decision.md`
+
+Current state (2026-03-01):
+
+- primary grid: PASS
+- attack seed-range (500 seeds/dataset): PASS
+- attack holdout datasets: PASS
+
+Conclusion:
+
+- hybrid evidence package is promotion-ready.
+- official switch should be done in a dedicated commit to keep change history explicit.

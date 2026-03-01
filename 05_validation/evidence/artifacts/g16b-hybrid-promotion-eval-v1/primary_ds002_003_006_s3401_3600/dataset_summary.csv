@@ -1,0 +1,4 @@
+dataset_id,n,v1_pass,v1_fail,hybrid_pass,hybrid_fail,improved,degraded,uplift_pp,nondegrade_pass
+DS-002,200,158,42,172,28,14,0,7.000,true
+DS-003,200,159,41,162,38,3,0,1.500,true
+DS-006,200,156,44,182,18,26,0,13.000,true

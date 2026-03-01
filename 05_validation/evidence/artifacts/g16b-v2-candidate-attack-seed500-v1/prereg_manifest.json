@@ -1,0 +1,23 @@
+{
+  "generated_utc": "2026-03-01T23:51:46.266728Z",
+  "mode": "prereg",
+  "strict_prereg": false,
+  "datasets": [
+    "DS-002",
+    "DS-003",
+    "DS-006"
+  ],
+  "seed_start": 3601,
+  "seed_end": 4100,
+  "phi_scale": 0.08,
+  "low_signal_ratio_threshold": 10.0,
+  "corr_min_abs": 0.2,
+  "r2_min": 0.05,
+  "high_signal_quantile": 0.8,
+  "promotion_rule": "promote only if G16b-v2 passes 600/600 on DS-002/003/006 x seeds 3401..3600",
+  "notes": [
+    "G16b-v2 candidate only; official gate remains G16b-v1.",
+    "No formula/threshold changes in run_qng_action_v1.py.",
+    "Use absolute correlations because sign can be convention-dependent."
+  ]
+}
