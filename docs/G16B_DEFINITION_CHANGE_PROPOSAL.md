@@ -107,3 +107,36 @@ Decision:
 
 - split-v1 is **not acceptable yet** for promotion because it violates the prereg non-degradation condition in high-signal regime.
 - keep `G16b-v1` official and keep split policy as diagnostic-only candidate.
+
+## Hybrid Split Follow-up (v1, prereg)
+
+Date: 2026-03-01
+
+To avoid post-hoc tuning in high-signal regime:
+
+- low-signal rule and thresholds remain exactly the pre-registered `G16b-v2` definition.
+- high-signal regime uses unchanged legacy `G16b-v1`.
+
+Hybrid policy:
+
+- if `is_low_signal=true` (from v2 prereg; `std(T11)/|mean(T11)| > 10`) -> decision = `g16b_v2`
+- else -> decision = `g16b_v1`
+
+Evidence:
+
+- `05_validation/evidence/artifacts/g16b-split-hybrid-prereg-v1/summary.csv`
+- `05_validation/evidence/artifacts/g16b-split-hybrid-prereg-v1/report.md`
+
+Observed on DS-002/003/006 x seeds 3401..3600:
+
+- `g16b_v1` fail: `127/600`
+- `g16b_hybrid` fail: `84/600`
+- improved vs v1: `43`
+- degraded vs v1: `0`
+- low-signal fail: `60 -> 17`
+- high-signal fail: `67 -> 67` (non-degradation preserved)
+
+Decision:
+
+- hybrid-v1 is acceptable as **next promotion candidate** under prereg checks.
+- official gate remains `G16b-v1` until promotion rule is explicitly frozen and completed.

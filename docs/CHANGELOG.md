@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-03-01 - G16b hybrid split candidate prereg (low=v2, high=v1)
+
+- Added hybrid evaluator:
+  - `scripts/tools/run_g16b_split_hybrid_v1.py`
+- Added evidence outputs:
+  - `05_validation/evidence/artifacts/g16b-split-hybrid-sanity-v1/summary.csv`
+  - `05_validation/evidence/artifacts/g16b-split-hybrid-prereg-v1/summary.csv`
+  - `05_validation/evidence/artifacts/g16b-split-hybrid-prereg-v1/report.md`
+  - `05_validation/evidence/artifacts/g16b-split-hybrid-prereg-v1/prereg_manifest.json`
+- Policy:
+  - low-signal profiles use pre-registered `g16b_v2` decision
+  - high-signal profiles keep legacy `g16b_v1` decision
+- Result on DS-002/003/006 x seeds 3401..3600:
+  - v1 fail `127/600`
+  - hybrid fail `84/600`
+  - improved `43`, degraded `0`
+- Candidate passes prereg non-degradation checks and is marked as next promotion candidate (official gate unchanged).
+
 ## 2026-03-01 - G16b split protocol candidate (low/high signal) prereg eval
 
 - Added split-protocol evaluator:

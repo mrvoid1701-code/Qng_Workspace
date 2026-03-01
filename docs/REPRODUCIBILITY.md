@@ -162,3 +162,24 @@ Main outputs:
 - `05_validation/evidence/artifacts/g16b-split-protocol-prereg-v1/summary.csv`
 - `05_validation/evidence/artifacts/g16b-split-protocol-prereg-v1/report.md`
 - `05_validation/evidence/artifacts/g16b-split-protocol-prereg-v1/prereg_manifest.json`
+
+## 10) G16b hybrid split candidate (low=v2, high=v1)
+
+Sanity check:
+
+```bash
+python scripts/tools/run_g16b_split_hybrid_v1.py --mode sanity
+```
+
+Full prereg evaluation:
+
+```bash
+python scripts/tools/run_g16b_split_hybrid_v1.py --mode prereg
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/g16b-split-hybrid-sanity-v1/summary.csv`
+- `05_validation/evidence/artifacts/g16b-split-hybrid-prereg-v1/summary.csv`
+- `05_validation/evidence/artifacts/g16b-split-hybrid-prereg-v1/report.md`
+- `05_validation/evidence/artifacts/g16b-split-hybrid-prereg-v1/prereg_manifest.json`
