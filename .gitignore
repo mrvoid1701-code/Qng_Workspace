@@ -1,9 +1,30 @@
-.venv/
+# Python
 __pycache__/
 *.pyc
-07_exports/
+*.pyo
+*.pyd
+.venv/
+venv/
+qng_env/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local extracted text
 01_notes/page_text/
 01_notes/source_text.md
 
-# Ignore large planck_lensing parts\ndata/lensing/planck_lensing_4096_r3_part/
+# Large split source chunks (kept outside git)
 data/lensing/planck_lensing_4096_r3_part/
+
+# Generated runtime artifacts under evidence/artifacts
+05_validation/evidence/artifacts/**/run-log*.txt
+05_validation/evidence/artifacts/**/config*.json
+05_validation/evidence/artifacts/**/artifact-hashes*.json
+
+# Local smoke/scratch exports
+07_exports/smoke/
+07_exports/tmp/
