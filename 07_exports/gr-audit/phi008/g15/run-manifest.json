@@ -1,0 +1,21 @@
+{
+  "script": "run_qng_ppn_v1.py",
+  "gate_id": "G15",
+  "decision": "pass",
+  "elapsed_s": 0.031915,
+  "run_utc": "2026-03-01T21:03:55.064373Z",
+  "args": {
+    "dataset_id": "DS-002",
+    "seed": 3401,
+    "phi_scale": 0.08,
+    "out_dir": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\07_exports\\gr-audit\\phi008\\g15",
+    "write_artifacts": true,
+    "plots": true
+  },
+  "extras": {
+    "gamma_dev": 0.022587,
+    "shapiro_ratio": 2.419454,
+    "mean_beta_ppn": 0.5,
+    "ep_ratio": 0.086167
+  }
+}

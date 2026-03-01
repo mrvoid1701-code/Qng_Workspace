@@ -1,0 +1,6 @@
+gate_id,metric,value,threshold,status
+G13a,stability_ratio,1.000000,≤1.5,pass
+G13b,E_cov_drift,0.004486,<0.02,pass
+G13c,speed_reduction,0.217472,>0.05,pass
+G13d,time_reversal_err,1.144917e-14,<0.0001,pass
+FINAL,decision,pass,G13a&G13b&G13c&G13d,pass

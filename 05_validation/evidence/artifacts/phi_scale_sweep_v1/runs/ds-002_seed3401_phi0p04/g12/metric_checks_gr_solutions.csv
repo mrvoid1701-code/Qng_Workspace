@@ -1,0 +1,6 @@
+gate_id,metric,value,threshold,status
+G12a,abs_Lambda_dS,2.595999,>0.1,pass
+G12b,homogeneity_cv,0.345568,<0.6,pass
+G12c,radial_ratio,1.211903,>1.0,pass
+G12d,powerlaw_slope,-0.139654,<-0.03,pass
+FINAL,decision,pass,G12a&G12b&G12c&G12d,pass

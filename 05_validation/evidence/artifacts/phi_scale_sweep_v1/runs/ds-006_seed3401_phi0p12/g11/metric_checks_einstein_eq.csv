@@ -1,0 +1,6 @@
+gate_id,metric,value,threshold,status
+G11a,hamiltonian_R2,0.070451,>0.02,pass
+G11b,slope_abs_B,2.071820,>0.296971,pass
+G11c,bianchi_ratio,0.236768,<1.5,pass
+G11d,max_trace_G,8.881784e-16,<1e-10,pass
+FINAL,decision,pass,G11a&G11b&G11c&G11d,pass

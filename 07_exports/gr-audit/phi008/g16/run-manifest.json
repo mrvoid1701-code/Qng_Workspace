@@ -1,0 +1,21 @@
+{
+  "script": "run_qng_action_v1.py",
+  "gate_id": "G16",
+  "decision": "pass",
+  "elapsed_s": 0.031155,
+  "run_utc": "2026-03-01T21:03:55.102313Z",
+  "args": {
+    "dataset_id": "DS-002",
+    "seed": 3401,
+    "phi_scale": 0.08,
+    "out_dir": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\07_exports\\gr-audit\\phi008\\g16",
+    "write_artifacts": true,
+    "plots": true
+  },
+  "extras": {
+    "closure_rel": 0.0,
+    "r2_G11_T11": 0.136126,
+    "m_sq_abs": 0.01402002,
+    "frac_hessian_neg": 1.0
+  }
+}

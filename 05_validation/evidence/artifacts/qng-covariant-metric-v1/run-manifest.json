@@ -1,0 +1,21 @@
+{
+  "script": "run_qng_covariant_metric_v1.py",
+  "gate_id": "G10",
+  "decision": "pass",
+  "elapsed_s": 0.020718,
+  "run_utc": "2026-03-01T20:49:05.131303Z",
+  "args": {
+    "dataset_id": "DS-002",
+    "seed": 3401,
+    "phi_scale": 0.1,
+    "out_dir": "/sessions/charming-gracious-planck/mnt/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qng-covariant-metric-v1",
+    "write_artifacts": true,
+    "plots": false
+  },
+  "extras": {
+    "min_N": 0.9,
+    "max_abs_phi": 0.1,
+    "min_gamma": 1.010243,
+    "mean_a_radial": 0.01722904
+  }
+}

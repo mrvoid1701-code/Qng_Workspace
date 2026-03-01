@@ -1,0 +1,44 @@
+======================================================================
+QNG PPN parameters γ, β and Shapiro delay (v1)
+Run started: 2026-03-01T21:03:21.975873Z
+======================================================================
+
+Graph: n=280  mean_degree=9.37
+
+PPN metric components:
+  U = -Φ: min=0.008195  max=0.160000
+  N = 1-U: min=0.840000  max=0.991805
+  g00 = -N²: min=-0.983678  max=-0.705600
+  g11 = γ_s: min=1.016389  max=1.320000
+
+[1] PPN γ parameter (space curvature / time curvature):
+  γ_PPN: mean=1.046429  std=0.020790
+  |mean(γ) − 1| = 0.046429
+  GR prediction: γ = 1 (first-order exact)
+  QNG correction: γ ≈ 1/(1-U/2) ∈ [1.0041, 1.0870]
+
+[2] PPN β parameter (second-order metric nonlinearity):
+  β_PPN (analytical): 0.500000 for lapse N = 1+Φ
+  GR prediction: β = 1.0  (Schwarzschild isotropic)
+  QNG deviation: Δβ = 0.500000 (from lapse choice)
+
+[3] Shapiro delay δ_S = 1/c_eff − 1:
+  c_eff: min=0.731126  max=0.983777
+  δ_S: min=0.016491  max=0.367753
+  mean δ_S (inner r < r_33): 0.278458
+  mean δ_S (outer r > r_66): 0.111512
+  Shapiro ratio inner/outer: 2.497118
+
+[4] Equivalence principle: c_eff vs U universality:
+  std(c_eff + 2U - 1) = 0.013684
+  mean(U) = 0.087986
+  EP ratio: std_res / mean_U = 0.155525
+
+QNG PPN completed.
+decision=fail  G15=False(a=True,b=True,c=True,d=False)
+G15a γ_PPN:        |mean(γ)−1|=0.046429  threshold=<0.06
+G15b Shapiro:      inner/outer=2.497118  threshold=>2.0
+G15c β_PPN:        mean β=0.500000  threshold∈(0.3,0.7)
+G15d EP principle: std_res/mean_U=0.155525  threshold=<0.15
+
+Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\07_exports\gr-audit\sweep-g15-phi-0,16

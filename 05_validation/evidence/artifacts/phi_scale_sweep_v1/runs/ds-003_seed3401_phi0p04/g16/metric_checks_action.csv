@@ -1,0 +1,6 @@
+gate_id,metric,value,threshold,status
+G16a,closure_rel,1.443814e-14,<0.01,pass
+G16b,r2_G11_T11,0.159519,>0.05,pass
+G16c,m_sq_abs,0.008205,>0.005,pass
+G16d,hessian_frac_neg,1.000000,>0.9,pass
+FINAL,decision,pass,G16a&G16b&G16c&G16d,pass

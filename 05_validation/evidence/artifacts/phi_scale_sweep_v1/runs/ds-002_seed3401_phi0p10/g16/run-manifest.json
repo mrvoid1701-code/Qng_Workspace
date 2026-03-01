@@ -1,0 +1,21 @@
+{
+  "script": "run_qng_action_v1.py",
+  "gate_id": "G16",
+  "decision": "pass",
+  "elapsed_s": 0.034564,
+  "run_utc": "2026-03-01T21:12:43.783124Z",
+  "args": {
+    "dataset_id": "DS-002",
+    "seed": 3401,
+    "phi_scale": 0.1,
+    "out_dir": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\05_validation\\evidence\\artifacts\\phi_scale_sweep_v1\\runs\\ds-002_seed3401_phi0p10\\g16",
+    "write_artifacts": true,
+    "plots": false
+  },
+  "extras": {
+    "closure_rel": 0.0,
+    "r2_G11_T11": 0.136764,
+    "m_sq_abs": 0.01402002,
+    "frac_hessian_neg": 1.0
+  }
+}

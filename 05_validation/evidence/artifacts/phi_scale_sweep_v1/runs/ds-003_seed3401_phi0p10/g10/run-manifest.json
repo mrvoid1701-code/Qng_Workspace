@@ -1,0 +1,21 @@
+{
+  "script": "run_qng_covariant_metric_v1.py",
+  "gate_id": "G10",
+  "decision": "pass",
+  "elapsed_s": 0.017722,
+  "run_utc": "2026-03-01T21:12:50.376489Z",
+  "args": {
+    "dataset_id": "DS-003",
+    "seed": 3401,
+    "phi_scale": 0.1,
+    "out_dir": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\05_validation\\evidence\\artifacts\\phi_scale_sweep_v1\\runs\\ds-003_seed3401_phi0p10\\g10",
+    "write_artifacts": true,
+    "plots": false
+  },
+  "extras": {
+    "min_N": 0.9,
+    "max_abs_phi": 0.1,
+    "min_gamma": 1.025053,
+    "mean_a_radial": 0.01679894
+  }
+}

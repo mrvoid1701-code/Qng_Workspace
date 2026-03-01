@@ -1,0 +1,27 @@
+======================================================================
+QNG emergent covariant conservation ∇_μ T^{μν} = 0 (v1)
+Run started: 2026-03-01T21:04:48.986882Z
+======================================================================
+
+Graph: n=280  mean_degree=9.37
+ADM α: mean=0.842558  min=0.729655  max=0.983761
+  Flat/covariant mass ratio 1/α: mean=1.193476
+
+IC: AMP=0.01  σ_init=1.0
+E_cov(0)=1.384473e-05  E_flat(0)=1.384473e-05
+Initial ratio E_cov/E_flat = 1.000000
+
+Running 400 covariant leapfrog steps…
+  Done in 0.11s
+
+Running 400 backward steps…
+  Time-reversal error: 2.210688e-14
+
+QNG covariant conservation completed.
+decision=pass  G14=True(a=True,b=True,c=True,d=True)
+G14a flat broken:   |ΔE_flat/E|=0.090595  threshold=≥0.01
+G14b cov conserved: |ΔE_cov/E|=8.405627e-04   threshold=<0.02
+G14c drift ratio:   E_flat/E_cov=107.778425  threshold=>3.0
+G14d time-rev.:     err=2.210688e-14  threshold=<0.0001
+
+Artifacts written to: 07_exports\gr-audit\default-after\g14

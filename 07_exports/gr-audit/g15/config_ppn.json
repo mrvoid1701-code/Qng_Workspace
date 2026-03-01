@@ -1,0 +1,16 @@
+{
+  "script": "run_qng_ppn_v1.py",
+  "dataset_id": "DS-002",
+  "seed": 3401,
+  "phi_scale": 0.1,
+  "n_nodes": 280,
+  "mean_degree": 9.3714,
+  "mean_gamma_PPN": 1.028426,
+  "gamma_dev": 0.028426,
+  "mean_beta_PPN": 0.5,
+  "shapiro_ratio": 2.437506,
+  "ep_ratio": 0.104868,
+  "run_utc": "2026-03-01T21:02:09.672140Z",
+  "elapsed_s": 0.026,
+  "decision": "pass"
+}

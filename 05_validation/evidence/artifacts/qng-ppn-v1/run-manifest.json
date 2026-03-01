@@ -1,0 +1,21 @@
+{
+  "script": "run_qng_ppn_v1.py",
+  "gate_id": "G15",
+  "decision": "pass",
+  "elapsed_s": 0.020849,
+  "run_utc": "2026-03-01T20:49:07.080640Z",
+  "args": {
+    "dataset_id": "DS-002",
+    "seed": 3401,
+    "phi_scale": 0.1,
+    "out_dir": "/sessions/charming-gracious-planck/mnt/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qng-ppn-v1",
+    "write_artifacts": true,
+    "plots": false
+  },
+  "extras": {
+    "gamma_dev": 0.028426,
+    "shapiro_ratio": 2.437506,
+    "mean_beta_ppn": 0.5,
+    "ep_ratio": 0.104868
+  }
+}
