@@ -55,6 +55,12 @@ Run against frozen baseline (`gr-ppn-g15b-v2-official`):
 python scripts/run_qng_gr_regression_guard_v1.py --out-dir 05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check
 ```
 
+Or via master runner:
+
+```bash
+python scripts/run_all.py --group gr-guard
+```
+
 Main outputs:
 
 - `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/observed_summary.csv`

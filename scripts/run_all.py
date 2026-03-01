@@ -12,6 +12,7 @@ Usage:
     python scripts/run_all.py --group curl             # curl validation suite
     python scripts/run_all.py --group cosmo            # cosmology / CMB
     python scripts/run_all.py --group symbolic         # symbolic validation
+    python scripts/run_all.py --group gr-guard         # GR regression guard (G10-G16)
     python scripts/run_all.py --group gates,metric     # mai multe grupuri
 
     python scripts/run_all.py --list                   # listează ce script intră în fiecare grup
@@ -110,11 +111,16 @@ GROUPS: dict[str, list[str]] = {
     "symbolic": [
         "run_qng_p3_symbolic_validation.py",
     ],
+    # Regression guard: baseline freeze check for GR gates G10..G16
+    "gr-guard": [
+        "run_qng_gr_regression_guard_v1.py",
+    ],
 }
 
 # Ordinea recomandată pentru --group all
 ALL_ORDER = [
     "gates",
+    "gr-guard",
     "metric",
     "curl",
     "trajectory",
@@ -131,6 +137,20 @@ RED   = "\033[31m"
 YELLOW = "\033[33m"
 BOLD  = "\033[1m"
 RESET = "\033[0m"
+
+
+def _configure_stdio_utf8() -> None:
+    """Best-effort UTF-8 stdout/stderr on Windows terminals."""
+    for stream_name in ("stdout", "stderr"):
+        stream = getattr(sys, stream_name, None)
+        if stream is None:
+            continue
+        reconfigure = getattr(stream, "reconfigure", None)
+        if callable(reconfigure):
+            try:
+                reconfigure(encoding="utf-8")
+            except Exception:
+                pass
 
 
 def _color(text: str, code: str) -> str:
@@ -206,6 +226,8 @@ def get_cmd(script_path: Path, base_args: list[str], args: argparse.Namespace) -
 # ──────────────────────────────────────────────────────────────────────────────
 
 def main() -> None:
+    _configure_stdio_utf8()
+
     parser = argparse.ArgumentParser(
         description="QNG Master Runner — rulează runnerii selectați și raportează PASS/FAIL.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -214,7 +236,7 @@ def main() -> None:
     parser.add_argument(
         "--group", "-g",
         default="gates",
-        help="Grup(uri) de rulat: gates, metric, trajectory, curl, cosmo, symbolic, all. "
+        help="Grup(uri) de rulat: gates, gr-guard, metric, trajectory, curl, cosmo, symbolic, all. "
              "Separate prin virgulă pentru mai multe. (default: gates)",
     )
     parser.add_argument("--list", "-l", action="store_true", help="Listează scripturi per grup și iese.")
