@@ -1,0 +1,4 @@
+dataset_id,seed,phi_scale,g15_final_status,g15a_gamma_dev,g15d_ep_ratio,g15b_v1_ratio,g15b_v1_status,g15b_v2_ratio,g15b_v2_status,run_rc,run_dir
+DS-002,3401,0.08,pass,0.022587,0.086167,2.419454,pass,6.481096,pass,0,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-ppn-debug-v1\runs\ds-002_seed3401
+DS-003,3401,0.08,fail,0.025954,0.072804,1.944373,fail,4.320491,pass,1,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-ppn-debug-v1\runs\ds-003_seed3401
+DS-006,3401,0.08,pass,0.017696,0.101833,3.427312,pass,14.264256,pass,0,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-ppn-debug-v1\runs\ds-006_seed3401

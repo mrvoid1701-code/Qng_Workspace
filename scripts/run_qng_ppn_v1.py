@@ -73,6 +73,9 @@ Outputs (in --out-dir):
     ppn.csv                     per-vertex: U, gamma_PPN, beta_PPN, c_eff, delta_S
     metric_checks_ppn.csv       G15 gate summary
     ppn-plot.png                scatter of γ_PPN and β_PPN vs U
+    g15b_debug_profiles.csv     optional debug table (U, c_eff, radius to primary peak)
+    g15b_debug_peaks.csv        optional top sigma peaks + classifications
+    g15b_debug_pairwise_distances.csv  optional top-peak pair distances
     config_ppn.json
     run-log-ppn.txt
     artifact-hashes-ppn.json
@@ -143,6 +146,37 @@ def sha256_of(path: Path) -> str:
 
 def write_csv(path: Path, fieldnames: list[str], rows: list[dict]) -> None:
     write_csv_common(path, fieldnames, rows)
+
+
+def top_indices_desc(values: list[float], count: int) -> list[int]:
+    if count <= 0:
+        return []
+    return sorted(range(len(values)), key=lambda i: (-values[i], i))[:count]
+
+
+def quantile_u_sets(U_vals: list[float], frac: float = 0.10) -> tuple[set[int], set[int], int]:
+    n = len(U_vals)
+    k = max(1, int(math.floor(frac * n)))
+    asc = sorted(range(n), key=lambda i: (U_vals[i], i))
+    desc = sorted(range(n), key=lambda i: (-U_vals[i], i))
+
+    inner = set(desc[:k])
+    outer_list: list[int] = []
+    for idx in asc:
+        if idx in inner:
+            continue
+        outer_list.append(idx)
+        if len(outer_list) >= k:
+            break
+    if len(outer_list) < k:
+        for idx in asc:
+            if idx in outer_list:
+                continue
+            outer_list.append(idx)
+            if len(outer_list) >= k:
+                break
+    outer = set(outer_list)
+    return inner, outer, k
 
 
 # ── Graph builder ─────────────────────────────────────────────────────────────
@@ -313,6 +347,18 @@ def parse_args():
         include_plots=True,
     )
     p.add_argument("--phi-scale", type=float, default=PHI_SCALE)
+    p.add_argument(
+        "--debug-mode",
+        action=argparse.BooleanOptionalAction,
+        default=False,
+        help="Write and print extended G15b diagnostics (default: false).",
+    )
+    p.add_argument(
+        "--debug-topk",
+        type=int,
+        default=10,
+        help="Number of top sigma peaks for debug reporting (default: 10).",
+    )
     return p.parse_args()
 
 
@@ -413,25 +459,80 @@ def main() -> int:
     c_eff   = [lapse[i] / math.sqrt(gamma_s[i]) for i in range(n)]
     delta_S = [1.0 / c_eff[i] - 1.0 for i in range(n)]
 
-    centre_idx = max(range(n), key=lambda i: sigma[i])
+    centre_idx = top_indices_desc(sigma, 1)[0]
     cx, cy = coords[centre_idx]
     radii = [math.hypot(coords[i][0]-cx, coords[i][1]-cy) for i in range(n)]
     r_sorted = sorted(radii)
     r_p33 = r_sorted[n // 3]
     r_p66 = r_sorted[2 * n // 3]
 
-    dS_inner = [delta_S[i] for i in range(n) if radii[i] <= r_p33]
-    dS_outer = [delta_S[i] for i in range(n) if radii[i] >= r_p66]
+    v1_inner = {i for i in range(n) if radii[i] <= r_p33}
+    v1_outer = {i for i in range(n) if radii[i] >= r_p66}
+    dS_inner = [delta_S[i] for i in v1_inner]
+    dS_outer = [delta_S[i] for i in v1_outer]
     mean_dS_inner = statistics.mean(dS_inner) if dS_inner else 0.0
     mean_dS_outer = statistics.mean(dS_outer) if dS_outer else 0.0
     shapiro_ratio = (mean_dS_inner / mean_dS_outer
                      if mean_dS_outer > 1e-10 else float("inf"))
+
+    v2_inner, v2_outer, v2_k = quantile_u_sets(U_vals, frac=0.10)
+    dS_inner_v2 = [delta_S[i] for i in v2_inner]
+    dS_outer_v2 = [delta_S[i] for i in v2_outer]
+    mean_dS_inner_v2 = statistics.mean(dS_inner_v2) if dS_inner_v2 else 0.0
+    mean_dS_outer_v2 = statistics.mean(dS_outer_v2) if dS_outer_v2 else 0.0
+    shapiro_ratio_v2 = (mean_dS_inner_v2 / mean_dS_outer_v2
+                        if mean_dS_outer_v2 > 1e-10 else float("inf"))
 
     log(f"  c_eff: min={fmt(min(c_eff))}  max={fmt(max(c_eff))}")
     log(f"  δ_S: min={fmt(min(delta_S))}  max={fmt(max(delta_S))}")
     log(f"  mean δ_S (inner r < r_33): {fmt(mean_dS_inner)}")
     log(f"  mean δ_S (outer r > r_66): {fmt(mean_dS_outer)}")
     log(f"  Shapiro ratio inner/outer: {fmt(shapiro_ratio)}")
+    log(f"  Shapiro ratio v2 (top10% U / bottom10% U): {fmt(shapiro_ratio_v2)}")
+
+    mean_U_v1_inner = statistics.mean([U_vals[i] for i in v1_inner]) if v1_inner else 0.0
+    mean_U_v1_outer = statistics.mean([U_vals[i] for i in v1_outer]) if v1_outer else 0.0
+    mean_U_v2_inner = statistics.mean([U_vals[i] for i in v2_inner]) if v2_inner else 0.0
+    mean_U_v2_outer = statistics.mean([U_vals[i] for i in v2_outer]) if v2_outer else 0.0
+
+    log("\n[3b] G15b-v2 quantile split diagnostics:")
+    log(f"  v2 set size: k={v2_k} of n={n}")
+    log(f"  v2 inner mean(U): {fmt(mean_U_v2_inner)}")
+    log(f"  v2 outer mean(U): {fmt(mean_U_v2_outer)}")
+
+    debug_topk = max(1, min(n, int(args.debug_topk)))
+    peak_indices = top_indices_desc(sigma, debug_topk)
+    primary_peak = peak_indices[0]
+    ppx, ppy = coords[primary_peak]
+    radius_to_primary = [
+        math.hypot(coords[i][0] - ppx, coords[i][1] - ppy) for i in range(n)
+    ]
+
+    if args.debug_mode:
+        log("\n[DBG] Top sigma peaks (rank, vertex, sigma, x, y, r_to_primary):")
+        for rank, idx in enumerate(peak_indices, start=1):
+            x, y = coords[idx]
+            log(
+                f"  {rank:02d}  v={idx:03d}  sigma={fmt(sigma[idx])}"
+                f"  x={fmt(x)}  y={fmt(y)}  r={fmt(radius_to_primary[idx])}"
+            )
+
+        log("[DBG] Pairwise distances among top sigma peaks:")
+        for a in range(len(peak_indices)):
+            i = peak_indices[a]
+            for b in range(a + 1, len(peak_indices)):
+                j = peak_indices[b]
+                dij = math.hypot(
+                    coords[i][0] - coords[j][0],
+                    coords[i][1] - coords[j][1],
+                )
+                log(f"  v{i:03d}-v{j:03d}: d={fmt(dij)}")
+
+        log("[DBG] Inner/outer classification counts and mean(U):")
+        log(f"  v1 inner={len(v1_inner)} outer={len(v1_outer)}")
+        log(f"  v1 mean(U) inner={fmt(mean_U_v1_inner)} outer={fmt(mean_U_v1_outer)}")
+        log(f"  v2 inner={len(v2_inner)} outer={len(v2_outer)}")
+        log(f"  v2 mean(U) inner={fmt(mean_U_v2_inner)} outer={fmt(mean_U_v2_outer)}")
 
     # ── Equivalence principle ──────────────────────────────────────────────────
     # All vertices follow the same c_eff → U relation:
@@ -449,6 +550,7 @@ def main() -> int:
     # ── Gate evaluation ───────────────────────────────────────────────────────
     gate_g15a = gamma_dev          < thresholds.g15a_gamma_dev_max
     gate_g15b = shapiro_ratio      > thresholds.g15b_shapiro_ratio_min
+    gate_g15b_v2 = shapiro_ratio_v2 > thresholds.g15b_shapiro_ratio_min
     gate_g15c = (mean_beta > thresholds.g15c_beta_lo and
                  mean_beta < thresholds.g15c_beta_hi)
     gate_g15d = ep_ratio           < thresholds.g15d_ep_max
@@ -462,6 +564,8 @@ def main() -> int:
     log(f"G15a γ_PPN:        |mean(γ)−1|={fmt(gamma_dev)}  "
         f"threshold=<{thresholds.g15a_gamma_dev_max}")
     log(f"G15b Shapiro:      inner/outer={fmt(shapiro_ratio)}  "
+        f"threshold=>{thresholds.g15b_shapiro_ratio_min}")
+    log(f"G15b-v2 Shapiro:   top10%U/bot10%U={fmt(shapiro_ratio_v2)}  "
         f"threshold=>{thresholds.g15b_shapiro_ratio_min}")
     log(f"G15c β_PPN:        mean β={fmt(mean_beta)}  "
         f"threshold∈({thresholds.g15c_beta_lo},{thresholds.g15c_beta_hi})")
@@ -495,6 +599,9 @@ def main() -> int:
             {"gate_id": "G15b", "metric": "shapiro_ratio",
              "value": fmt(shapiro_ratio), "threshold": f">{thresholds.g15b_shapiro_ratio_min}",
              "status": "pass" if gate_g15b else "fail"},
+            {"gate_id": "G15b-v2", "metric": "shapiro_ratio_v2",
+             "value": fmt(shapiro_ratio_v2), "threshold": f">{thresholds.g15b_shapiro_ratio_min}",
+             "status": "pass" if gate_g15b_v2 else "fail"},
             {"gate_id": "G15c", "metric": "beta_PPN",
              "value": fmt(mean_beta),
              "threshold": f"({thresholds.g15c_beta_lo},{thresholds.g15c_beta_hi})",
@@ -516,12 +623,16 @@ def main() -> int:
             "dataset_id": args.dataset_id,
             "seed": args.seed,
             "phi_scale": args.phi_scale,
+            "debug_mode": bool(args.debug_mode),
+            "debug_topk": int(debug_topk),
             "n_nodes": n,
             "mean_degree": round(mean_degree, 4),
             "mean_gamma_PPN": round(mean_gamma, 6),
             "gamma_dev": round(gamma_dev, 6),
             "mean_beta_PPN": round(mean_beta, 6),
             "shapiro_ratio": round(shapiro_ratio, 6),
+            "shapiro_ratio_v2": round(shapiro_ratio_v2, 6),
+            "g15b_v2_pass": bool(gate_g15b_v2),
             "ep_ratio": round(ep_ratio, 6),
             "run_utc": datetime.utcnow().isoformat() + "Z",
             "elapsed_s": round(elapsed, 3),
@@ -539,6 +650,8 @@ def main() -> int:
                 "out_dir": str(out_dir),
                 "write_artifacts": bool(args.write_artifacts),
                 "plots": bool(args.plots),
+                "debug_mode": bool(args.debug_mode),
+                "debug_topk": int(debug_topk),
             },
             gate_id="G15",
             decision=decision,
@@ -546,10 +659,104 @@ def main() -> int:
             extras={
                 "gamma_dev": round(gamma_dev, 6),
                 "shapiro_ratio": round(shapiro_ratio, 6),
+                "shapiro_ratio_v2": round(shapiro_ratio_v2, 6),
                 "mean_beta_ppn": round(mean_beta, 6),
                 "ep_ratio": round(ep_ratio, 6),
             },
         )
+
+        debug_files: list[Path] = []
+        if args.debug_mode:
+            debug_profiles_csv = out_dir / "g15b_debug_profiles.csv"
+            write_csv(
+                debug_profiles_csv,
+                [
+                    "vertex",
+                    "U",
+                    "c_eff",
+                    "delta_S",
+                    "radius_to_primary_peak",
+                    "in_v1_inner",
+                    "in_v1_outer",
+                    "in_v2_inner",
+                    "in_v2_outer",
+                ],
+                [
+                    {
+                        "vertex": i,
+                        "U": fmt(U_vals[i]),
+                        "c_eff": fmt(c_eff[i]),
+                        "delta_S": fmt(delta_S[i]),
+                        "radius_to_primary_peak": fmt(radius_to_primary[i]),
+                        "in_v1_inner": int(i in v1_inner),
+                        "in_v1_outer": int(i in v1_outer),
+                        "in_v2_inner": int(i in v2_inner),
+                        "in_v2_outer": int(i in v2_outer),
+                    }
+                    for i in range(n)
+                ],
+            )
+
+            debug_peaks_csv = out_dir / "g15b_debug_peaks.csv"
+            write_csv(
+                debug_peaks_csv,
+                [
+                    "rank",
+                    "vertex",
+                    "sigma",
+                    "x",
+                    "y",
+                    "radius_to_primary_peak",
+                    "U",
+                    "c_eff",
+                    "delta_S",
+                    "class_v1",
+                    "class_v2",
+                ],
+                [
+                    {
+                        "rank": rank,
+                        "vertex": idx,
+                        "sigma": fmt(sigma[idx]),
+                        "x": fmt(coords[idx][0]),
+                        "y": fmt(coords[idx][1]),
+                        "radius_to_primary_peak": fmt(radius_to_primary[idx]),
+                        "U": fmt(U_vals[idx]),
+                        "c_eff": fmt(c_eff[idx]),
+                        "delta_S": fmt(delta_S[idx]),
+                        "class_v1": (
+                            "inner"
+                            if idx in v1_inner
+                            else ("outer" if idx in v1_outer else "mid")
+                        ),
+                        "class_v2": (
+                            "inner"
+                            if idx in v2_inner
+                            else ("outer" if idx in v2_outer else "mid")
+                        ),
+                    }
+                    for rank, idx in enumerate(peak_indices, start=1)
+                ],
+            )
+
+            debug_pairwise_csv = out_dir / "g15b_debug_pairwise_distances.csv"
+            pair_rows: list[dict[str, str | int]] = []
+            for i_pos, i in enumerate(peak_indices):
+                for j in peak_indices[i_pos + 1:]:
+                    pair_rows.append(
+                        {
+                            "peak_i": i,
+                            "peak_j": j,
+                            "distance": fmt(
+                                math.hypot(
+                                    coords[i][0] - coords[j][0],
+                                    coords[i][1] - coords[j][1],
+                                )
+                            ),
+                        }
+                    )
+            write_csv(debug_pairwise_csv, ["peak_i", "peak_j", "distance"], pair_rows)
+            debug_files.extend([debug_profiles_csv, debug_peaks_csv, debug_pairwise_csv])
 
         run_log_path = out_dir / "run-log-ppn.txt"
         run_log_path.write_text("\n".join(log_lines), encoding="utf-8")
@@ -557,6 +764,7 @@ def main() -> int:
         artifact_files = [ppn_csv, mc_csv, config_path, manifest_path, run_log_path]
         if args.plots:
             artifact_files.append(plot_path)
+        artifact_files.extend(debug_files)
         (out_dir / "artifact-hashes-ppn.json").write_text(
             json.dumps({p.name: sha256_of(p) for p in artifact_files if p.exists()}, indent=2),
             encoding="utf-8",
