@@ -1,0 +1,8 @@
+GR stability diagnostics v1
+generated_utc=2026-03-01T22:49:01.323936Z
+source_summary=C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/summary.csv
+rows=60
+top_k=10
+dataset_stats_csv=C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stability-v1/dataset_stats.csv
+worst_cases_csv=C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stability-v1/worst_cases.csv
+report_md=C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stability-v1/report.md

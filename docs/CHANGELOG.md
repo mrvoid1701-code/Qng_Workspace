@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-03-01 - GR stability diagnostics (no math changes)
+
+- Added diagnostics tool for G13/G14 drift stability from sweep summaries:
+  - `scripts/tools/analyze_gr_stability_v1.py`
+- Added baseline-derived outputs:
+  - `05_validation/evidence/artifacts/gr-stability-v1/dataset_stats.csv`
+  - `05_validation/evidence/artifacts/gr-stability-v1/worst_cases.csv`
+  - `05_validation/evidence/artifacts/gr-stability-v1/report.md`
+- Added reproducibility command for this diagnostics pass:
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-01 - GR regression guard deep baseline (grid20)
 
 - Added deep baseline config (DS-002/003/006 x seeds 3401..3420, `PHI_SCALE=0.08`):

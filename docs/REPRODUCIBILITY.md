@@ -79,3 +79,15 @@ Rebuild command:
 ```bash
 python scripts/tools/build_gr_baseline_from_sweep.py --summary-csv 05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/summary.csv --out-json 05_validation/evidence/artifacts/gr-regression-baseline-v1/gr_baseline_grid20.json --baseline-id gr-g10-g16-regression-grid20-v1 --effective-tag gr-ppn-g15b-v2-official --effective-commit ebce36d --effective-date-utc 2026-03-01
 ```
+
+## 6) GR stability diagnostics from grid20 summary
+
+```bash
+python scripts/tools/analyze_gr_stability_v1.py --summary-csv 05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stability-v1 --top-k 10 --tag gr-ppn-g15b-v2-official
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/gr-stability-v1/dataset_stats.csv`
+- `05_validation/evidence/artifacts/gr-stability-v1/worst_cases.csv`
+- `05_validation/evidence/artifacts/gr-stability-v1/report.md`
