@@ -1,0 +1,11 @@
+dataset_id,seed,phi_scale,g15_final_status,g15a_gamma_dev,g15d_ep_ratio,g15b_v1_ratio,g15b_v1_status,g15b_v2_ratio,g15b_v2_status,run_rc,run_dir
+DS-003,3401,0.08,fail,0.025954,0.072804,1.944373,fail,4.320491,pass,1,05_validation\evidence\artifacts\qng-ppn-debug-v1-ds003-seed-sweep\runs\ds-003_seed3401
+DS-003,3402,0.08,fail,0.025740,0.075190,1.890996,fail,4.605672,pass,1,05_validation\evidence\artifacts\qng-ppn-debug-v1-ds003-seed-sweep\runs\ds-003_seed3402
+DS-003,3403,0.08,fail,0.026875,0.075793,1.786072,fail,4.219157,pass,1,05_validation\evidence\artifacts\qng-ppn-debug-v1-ds003-seed-sweep\runs\ds-003_seed3403
+DS-003,3404,0.08,fail,0.025545,0.079208,1.880516,fail,4.114306,pass,1,05_validation\evidence\artifacts\qng-ppn-debug-v1-ds003-seed-sweep\runs\ds-003_seed3404
+DS-003,3405,0.08,pass,0.025980,0.078626,2.058160,pass,4.256086,pass,0,05_validation\evidence\artifacts\qng-ppn-debug-v1-ds003-seed-sweep\runs\ds-003_seed3405
+DS-003,3406,0.08,fail,0.025311,0.078460,1.942011,fail,4.764245,pass,1,05_validation\evidence\artifacts\qng-ppn-debug-v1-ds003-seed-sweep\runs\ds-003_seed3406
+DS-003,3407,0.08,pass,0.024891,0.083189,2.304436,pass,4.860327,pass,0,05_validation\evidence\artifacts\qng-ppn-debug-v1-ds003-seed-sweep\runs\ds-003_seed3407
+DS-003,3408,0.08,fail,0.026167,0.074662,1.909521,fail,4.356953,pass,1,05_validation\evidence\artifacts\qng-ppn-debug-v1-ds003-seed-sweep\runs\ds-003_seed3408
+DS-003,3409,0.08,fail,0.025655,0.078569,1.817631,fail,4.477706,pass,1,05_validation\evidence\artifacts\qng-ppn-debug-v1-ds003-seed-sweep\runs\ds-003_seed3409
+DS-003,3410,0.08,pass,0.025481,0.073521,2.062119,pass,4.258930,pass,0,05_validation\evidence\artifacts\qng-ppn-debug-v1-ds003-seed-sweep\runs\ds-003_seed3410

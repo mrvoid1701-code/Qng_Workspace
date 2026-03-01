@@ -18,7 +18,7 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 | G12 | Known GR solutions sanity (de Sitter + Schwarzschild forms) | `scripts/run_qng_gr_solutions_v1.py` |
 | G13 | Covariant metric-wave dynamics | `scripts/run_qng_covariant_wave_v1.py` |
 | G14 | Covariant conservation (`∇_μ T^{μν}=0`) | `scripts/run_qng_covariant_cons_v1.py` |
-| G15 | PPN parameters (`γ`, `β`) + Shapiro-delay checks | `scripts/run_qng_ppn_v1.py` |
+| G15 | PPN parameters (`γ`, `β`) + Shapiro-delay checks (`G15b-v1` legacy radial-shell, `G15b-v2` candidate potential-quantile) | `scripts/run_qng_ppn_v1.py` |
 | G16 | Discrete action functional and Euler-Lagrange closure | `scripts/run_qng_action_v1.py` |
 | G17 | Canonical quantization on graph (QM bridge) | `scripts/run_qng_qm_bridge_v1.py` |
 | G18 | Quantum information and emergent geometry diagnostics | `scripts/run_qng_qm_info_v1.py` |
@@ -29,3 +29,4 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 
 - This mapping is implementation-oriented (script-level).
 - Historical `QNG-T-*` tests remain tracked in `05_validation/test-plan.md` and `05_validation/results-log.md`.
+- `G15b-v1` remains the official legacy gate; `G15b-v2` is reported as candidate until promotion criteria in `docs/G15B_DEFINITION_CHANGE_PROPOSAL.md` are met.

@@ -1,0 +1,7 @@
+gate_id,metric,value,threshold,status
+G15a,gamma_dev,0.026875,<0.06,pass
+G15b,shapiro_ratio,1.786072,>2.0,fail
+G15b-v2,shapiro_ratio_v2,4.219157,>2.0,pass
+G15c,beta_PPN,0.500000,"(0.3,0.7)",pass
+G15d,EP_ratio,0.075793,<0.15,pass
+FINAL,decision,fail,G15a&G15b&G15c&G15d,fail

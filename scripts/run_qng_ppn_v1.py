@@ -59,9 +59,12 @@ We verify this by testing that the ratio a_radial / (−∂_r Φ) = 1 universall
 Gates (G15):
     G15a — γ_PPN ≈ 1: |mean(γ_PPN) − 1| < 0.06
            (first-order GR; correction is O(U²/2) ~ O(Φ²_scale/2))
-    G15b — Shapiro delay inward:
+    G15b — Shapiro delay inward (legacy radial-shell proxy):
            mean(δ_S)_inner / mean(δ_S)_outer > 2.0
            (signal delayed more near mass)
+    G15b-v2 — candidate potential-quantile proxy (non-breaking add-on):
+           inner = top 10% U, outer = bottom 10% U
+           mean(δ_S)_inner / mean(δ_S)_outer > 2.0
     G15c — β_PPN bounded: β_PPN ∈ (0.3, 0.7)
            (our construction gives β = 1/2; GR gives 1; shows non-trivial
             second-order structure)
@@ -563,9 +566,11 @@ def main() -> int:
         f"(a={gate_g15a},b={gate_g15b},c={gate_g15c},d={gate_g15d})")
     log(f"G15a γ_PPN:        |mean(γ)−1|={fmt(gamma_dev)}  "
         f"threshold=<{thresholds.g15a_gamma_dev_max}")
-    log(f"G15b Shapiro:      inner/outer={fmt(shapiro_ratio)}  "
+    log(f"G15b-v1 Shapiro (legacy radial-shell): "
+        f"inner/outer={fmt(shapiro_ratio)}  "
         f"threshold=>{thresholds.g15b_shapiro_ratio_min}")
-    log(f"G15b-v2 Shapiro:   top10%U/bot10%U={fmt(shapiro_ratio_v2)}  "
+    log(f"G15b-v2 Shapiro (candidate potential-quantile): "
+        f"top10%U/bot10%U={fmt(shapiro_ratio_v2)}  "
         f"threshold=>{thresholds.g15b_shapiro_ratio_min}")
     log(f"G15c β_PPN:        mean β={fmt(mean_beta)}  "
         f"threshold∈({thresholds.g15c_beta_lo},{thresholds.g15c_beta_hi})")
@@ -632,6 +637,8 @@ def main() -> int:
             "mean_beta_PPN": round(mean_beta, 6),
             "shapiro_ratio": round(shapiro_ratio, 6),
             "shapiro_ratio_v2": round(shapiro_ratio_v2, 6),
+            "g15b_v1_label": "radial-shell Shapiro proxy (legacy)",
+            "g15b_v2_label": "potential-quantile Shapiro proxy (candidate)",
             "g15b_v2_pass": bool(gate_g15b_v2),
             "ep_ratio": round(ep_ratio, 6),
             "run_utc": datetime.utcnow().isoformat() + "Z",
