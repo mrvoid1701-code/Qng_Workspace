@@ -217,6 +217,15 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Comma-separated glob patterns for category (B) keep set.",
     )
+    parser.add_argument(
+        "--max-delete",
+        type=int,
+        default=200,
+        help=(
+            "Safety cap for actual deletions. "
+            "If category (A) exceeds this value, tool stops (default: 200)."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -247,10 +256,22 @@ def main() -> int:
     print_category("(C) source-code changes (should be committed)", cat_c)
 
     if args.delete_generated:
+        planned = len(cat_a)
+        if not args.dry_run and planned > args.max_delete:
+            print("\nDelete category (A):")
+            print(
+                "  safety stop: planned deletions "
+                f"{planned} exceed --max-delete {args.max_delete}"
+            )
+            print(
+                "  review the report and rerun with a larger --max-delete "
+                "to confirm manually."
+            )
+            return 3
         print("\nDelete category (A):")
         deleted, missing = delete_files(cat_a, dry_run=args.dry_run)
         if args.dry_run:
-            print(f"  planned deletions: {len(cat_a)}")
+            print(f"  planned deletions: {planned}")
         else:
             empty_removed = 0
             for target in TARGETS:
