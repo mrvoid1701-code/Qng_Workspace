@@ -158,18 +158,47 @@ def resolve_groups(group_arg: str) -> list[str]:
     return scripts
 
 
-def build_extra_args(args: argparse.Namespace) -> list[str]:
-    """Construiește lista de argumente passthrough."""
+def build_base_args(args: argparse.Namespace) -> list[str]:
+    """Construiește lista de argumente passthrough de bază (fără flags condiționale)."""
     extra: list[str] = []
     if args.dataset_id:
         extra += ["--dataset-id", args.dataset_id]
     if args.seed is not None:
         extra += ["--seed", str(args.seed)]
-    if args.no_plots:
-        extra.append("--no-plots")
-    if args.no_artifacts:
-        extra.append("--no-write-artifacts")
     return extra
+
+
+_flag_support_cache: dict[tuple[str, str], bool] = {}
+
+
+def _supports_flag(script_path: Path, flag: str) -> bool:
+    """Verifică dacă scriptul acceptă un flag (via --help). Rezultat cached."""
+    key = (str(script_path), flag)
+    if key not in _flag_support_cache:
+        try:
+            result = subprocess.run(
+                [sys.executable, str(script_path), "--help"],
+                capture_output=True, text=True, timeout=10,
+            )
+            _flag_support_cache[key] = flag in (result.stdout + result.stderr)
+        except Exception:
+            _flag_support_cache[key] = False
+    return _flag_support_cache[key]
+
+
+def get_cmd(script_path: Path, base_args: list[str], args: argparse.Namespace) -> list[str]:
+    """Construiește comanda completă pentru un script, cu probe pentru flags opționale."""
+    cmd = [sys.executable, str(script_path)]
+    # Fiecare flag e trimis doar dacă scriptul îl acceptă
+    if args.dataset_id and _supports_flag(script_path, "--dataset-id"):
+        cmd += ["--dataset-id", args.dataset_id]
+    if args.seed is not None and _supports_flag(script_path, "--seed"):
+        cmd += ["--seed", str(args.seed)]
+    if args.no_plots and _supports_flag(script_path, "--plots"):
+        cmd.append("--no-plots")
+    if args.no_artifacts and _supports_flag(script_path, "--write-artifacts"):
+        cmd.append("--no-write-artifacts")
+    return cmd
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -215,12 +244,14 @@ def main() -> None:
 
     # ── Rezolvă scripturi ──
     scripts = resolve_groups(args.group)
-    extra = build_extra_args(args)
+    base_args = build_base_args(args)
 
     print(f"\n{_color('QNG Master Runner', BOLD)}")
     print(f"Grup(uri): {_color(args.group, YELLOW)} → {len(scripts)} scripturi")
-    if extra:
-        print(f"Extra args: {' '.join(extra)}")
+    if base_args:
+        print(f"Base args: {' '.join(base_args)}")
+    if args.no_plots:
+        print("Plots: dezactivate (acolo unde scriptul suportă)")
     if args.dry_run:
         print(_color("[DRY RUN — nicio comandă nu va fi executată]", YELLOW))
     print("─" * 70)
@@ -237,7 +268,7 @@ def main() -> None:
             results.append((label, "SKIP", 0.0))
             continue
 
-        cmd = [sys.executable, str(script_path)] + extra
+        cmd = get_cmd(script_path, base_args, args)
         print(f"{prefix} {label} ...", end="", flush=True)
 
         if args.dry_run:
