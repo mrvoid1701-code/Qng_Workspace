@@ -17,13 +17,15 @@ This file documents what must remain versioned in Git for reproducibility and pu
 - `05_validation/evidence/artifacts/**/*.csv` used as published evidence tables
 - `05_validation/evidence/artifacts/**/*.png` used as published evidence figures
 - `05_validation/run-manifests/**`
+- `05_validation/evidence/artifacts/**/run-manifest*.json` for reproducibility
+- `05_validation/evidence/artifacts/**/artifact-hashes-*.json` for reproducibility where published
 - `07_exports/**` that are intentionally published deliverables
 
 ## Generated Files (Do Not Track By Default)
 
 - `05_validation/evidence/artifacts/**/run-log*.txt`
 - `05_validation/evidence/artifacts/**/config*.json`
-- `05_validation/evidence/artifacts/**/artifact-hashes*.json`
+- `05_validation/evidence/artifacts/**/runs/` (regenerable per-run dumps)
 - local smoke output under `07_exports/smoke/` and `07_exports/tmp/`
 
 ## Safety Rule
