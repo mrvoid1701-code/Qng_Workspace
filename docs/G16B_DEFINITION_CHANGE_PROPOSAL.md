@@ -77,3 +77,33 @@ By signal regime:
 
 - Preserve v1 behavior in full-signal regime and apply robust diagnostics only in low-signal regime.
 - Keep reporting both v1 and v2 side-by-side for at least one release cycle.
+
+## Split-Protocol Follow-up (v1, prereg)
+
+Date: 2026-03-01
+
+Implemented diagnostic split candidate:
+
+- signal index: `p90(|T11|)`
+- regime split:
+  - `low` if `p90(|T11|) <= 0.024`
+  - `high` otherwise
+- low gate (robust): `abs(Pearson_hs)>0.2`, `abs(Spearman_hs)>0.2`, `R2_hs>0.05`
+- high gate (physics-leaning): `abs(Pearson_full)>0.2`, `abs(cosine_full)>0.2`, `R2_origin_full>0.05`
+
+Evidence:
+
+- `05_validation/evidence/artifacts/g16b-split-protocol-prereg-v1/summary.csv`
+- `05_validation/evidence/artifacts/g16b-split-protocol-prereg-v1/report.md`
+
+Observed on DS-002/003/006 x seeds 3401..3600:
+
+- v1 fail: `127/600`
+- split fail: `100/600` (overall better)
+- low-signal fail: `62 -> 20` (improves)
+- high-signal fail: `65 -> 80` (degrades)
+
+Decision:
+
+- split-v1 is **not acceptable yet** for promotion because it violates the prereg non-degradation condition in high-signal regime.
+- keep `G16b-v1` official and keep split policy as diagnostic-only candidate.

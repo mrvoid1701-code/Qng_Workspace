@@ -141,3 +141,24 @@ Main outputs:
 - `05_validation/evidence/artifacts/g16b-v2-candidate-prereg-v1/summary.csv`
 - `05_validation/evidence/artifacts/g16b-v2-candidate-prereg-v1/report.md`
 - `05_validation/evidence/artifacts/g16b-v2-candidate-prereg-v1/prereg_manifest.json`
+
+## 9) G16b split protocol candidate (low/high signal, frozen)
+
+Sanity check:
+
+```bash
+python scripts/tools/run_g16b_split_protocol_v1.py --mode sanity
+```
+
+Full prereg run:
+
+```bash
+python scripts/tools/run_g16b_split_protocol_v1.py --mode prereg --strict-prereg
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/g16b-split-protocol-sanity-v1/summary.csv`
+- `05_validation/evidence/artifacts/g16b-split-protocol-prereg-v1/summary.csv`
+- `05_validation/evidence/artifacts/g16b-split-protocol-prereg-v1/report.md`
+- `05_validation/evidence/artifacts/g16b-split-protocol-prereg-v1/prereg_manifest.json`

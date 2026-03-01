@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-03-01 - G16b split protocol candidate (low/high signal) prereg eval
+
+- Added split-protocol evaluator:
+  - `scripts/tools/run_g16b_split_protocol_v1.py`
+- Added sanity and prereg evidence:
+  - `05_validation/evidence/artifacts/g16b-split-protocol-sanity-v1/summary.csv`
+  - `05_validation/evidence/artifacts/g16b-split-protocol-prereg-v1/summary.csv`
+  - `05_validation/evidence/artifacts/g16b-split-protocol-prereg-v1/report.md`
+  - `05_validation/evidence/artifacts/g16b-split-protocol-prereg-v1/prereg_manifest.json`
+- Frozen protocol:
+  - signal index `p90(|T11|)`, threshold `0.024`
+  - low gate: abs Pearson/Spearman + high-signal R2
+  - high gate: abs Pearson + abs cosine + slope-only R2
+- Result snapshot:
+  - v1 fail `127/600`
+  - split fail `100/600`
+  - low-signal improved (`62 -> 20` fails), high-signal degraded (`65 -> 80` fails)
+- Decision: split-v1 remains candidate-only; official G16b stays v1.
+
 ## 2026-03-01 - G16b-v2 candidate prereg evaluation (frozen)
 
 - Added prereg evaluation runner:
