@@ -1,0 +1,191 @@
+========================================================================
+QNG PHI_SCALE sweep v1
+Run started: 2026-03-01T21:12:36.013634Z
+Datasets=['DS-002', 'DS-003', 'DS-006']  Seeds=[3401]  Phi_scales=[0.04, 0.06, 0.08, 0.1, 0.12]
+========================================================================
+
+[1/15] ds-002_seed3401_phi0p04
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.41s
+  G14: rc=0 status=pass elapsed=0.42s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[2/15] ds-002_seed3401_phi0p06
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.45s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[3/15] ds-002_seed3401_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.44s
+  G15: rc=0 status=pass elapsed=0.12s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[4/15] ds-002_seed3401_phi0p10
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.36s
+  G14: rc=0 status=pass elapsed=0.41s
+  G15: rc=0 status=pass elapsed=0.12s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[5/15] ds-002_seed3401_phi0p12
+  G10: rc=0 status=pass elapsed=0.16s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.39s
+  G14: rc=0 status=pass elapsed=0.45s
+  G15: rc=0 status=pass elapsed=0.12s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[6/15] ds-003_seed3401_phi0p04
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.36s
+  G14: rc=0 status=pass elapsed=0.38s
+  G15: rc=1 status=fail elapsed=0.12s
+    tail:
+      QNG PPN completed.
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a γ_PPN:        |mean(γ)−1|=0.012791  threshold=<0.06
+      G15b Shapiro:      inner/outer=1.921528  threshold=>2.0
+      G15c β_PPN:        mean β=0.500000  threshold∈(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.038579  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\phi_scale_sweep_v1\runs\ds-003_seed3401_phi0p04\g15
+  G16: rc=0 status=pass elapsed=0.14s
+
+[7/15] ds-003_seed3401_phi0p06
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.39s
+  G15: rc=1 status=fail elapsed=0.14s
+    tail:
+      QNG PPN completed.
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a γ_PPN:        |mean(γ)−1|=0.019325  threshold=<0.06
+      G15b Shapiro:      inner/outer=1.932662  threshold=>2.0
+      G15c β_PPN:        mean β=0.500000  threshold∈(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.056188  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\phi_scale_sweep_v1\runs\ds-003_seed3401_phi0p06\g15
+  G16: rc=0 status=pass elapsed=0.12s
+
+[8/15] ds-003_seed3401_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.36s
+  G14: rc=0 status=pass elapsed=0.38s
+  G15: rc=1 status=fail elapsed=0.14s
+    tail:
+      QNG PPN completed.
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a γ_PPN:        |mean(γ)−1|=0.025954  threshold=<0.06
+      G15b Shapiro:      inner/outer=1.944373  threshold=>2.0
+      G15c β_PPN:        mean β=0.500000  threshold∈(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.072804  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\phi_scale_sweep_v1\runs\ds-003_seed3401_phi0p08\g15
+  G16: rc=0 status=pass elapsed=0.14s
+
+[9/15] ds-003_seed3401_phi0p10
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.20s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.38s
+  G15: rc=1 status=fail elapsed=0.12s
+    tail:
+      QNG PPN completed.
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a γ_PPN:        |mean(γ)−1|=0.032680  threshold=<0.06
+      G15b Shapiro:      inner/outer=1.956680  threshold=>2.0
+      G15c β_PPN:        mean β=0.500000  threshold∈(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.088513  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\phi_scale_sweep_v1\runs\ds-003_seed3401_phi0p10\g15
+  G16: rc=0 status=pass elapsed=0.14s
+
+[10/15] ds-003_seed3401_phi0p12
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.36s
+  G14: rc=0 status=pass elapsed=0.38s
+  G15: rc=1 status=fail elapsed=0.14s
+    tail:
+      QNG PPN completed.
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a γ_PPN:        |mean(γ)−1|=0.039506  threshold=<0.06
+      G15b Shapiro:      inner/outer=1.969606  threshold=>2.0
+      G15c β_PPN:        mean β=0.500000  threshold∈(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.103386  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\phi_scale_sweep_v1\runs\ds-003_seed3401_phi0p12\g15
+  G16: rc=0 status=pass elapsed=0.12s
+
+[11/15] ds-006_seed3401_phi0p04
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.25s
+  G12: rc=0 status=pass elapsed=0.25s
+  G13: rc=0 status=pass elapsed=0.44s
+  G14: rc=0 status=pass elapsed=0.50s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[12/15] ds-006_seed3401_phi0p06
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.25s
+  G13: rc=0 status=pass elapsed=0.44s
+  G14: rc=0 status=pass elapsed=0.48s
+  G15: rc=0 status=pass elapsed=0.16s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[13/15] ds-006_seed3401_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.47s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[14/15] ds-006_seed3401_phi0p10
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.45s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[15/15] ds-006_seed3401_phi0p12
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.25s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.45s
+  G14: rc=0 status=pass elapsed=0.48s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+========================================================================
+Rows: 15  all_pass=10/15
+summary.csv: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\phi_scale_sweep_v1\summary.csv
+Elapsed: 26.65s
+========================================================================
