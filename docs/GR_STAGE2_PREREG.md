@@ -2,7 +2,7 @@
 
 Date: 2026-03-02  
 Stage ID: `GR-Stage-2`  
-Status: prereg/candidate lane (not official GR decision lane yet)
+Status: prereg completed; official Stage-2 governance mapping active
 
 ## Goal
 
@@ -67,9 +67,9 @@ python scripts/tools/run_gr_stage2_prereg_v1.py --mode prereg --datasets DS-002,
 
 ## Governance
 
-- Stage-2 does not replace Stage-1 official GR decisions automatically.
-- Promotion to official expanded GR scope requires explicit closure criteria and separate decision record after this prereg run.
-- QM gates (`G17..G20`) remain in a separate lane during Stage-2.
+- Stage-2 does not replace Stage-1 (`G10..G16`) official guard logic automatically.
+- Stage-2 official switch requires explicit criteria + separate decision record.
+- QM gates (`G17..G20`) remain in a separate lane during Stage-2/Stage-2.5 hardening.
 
 ## Execution Record (2026-03-02)
 
@@ -90,3 +90,11 @@ Follow-up diagnostics and candidate plan:
 - candidate evaluation + promotion records: `05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v1/`
 - revised candidate prereg: `05_validation/pre-registrations/gr-stage2-g11-g12-candidate-v2.md`
 - revised candidate evaluation + promotion records: `05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v2/`
+
+## Closure Update (2026-03-02)
+
+Official Stage-2 governance mapping was switched after criteria closure:
+
+- policy doc: `docs/GR_STAGE2_OFFICIAL_SWITCH.md`
+- effective tag: `gr-stage2-g11g12-v2-official`
+- official policy runner: `scripts/tools/run_gr_stage2_official_v2.py`

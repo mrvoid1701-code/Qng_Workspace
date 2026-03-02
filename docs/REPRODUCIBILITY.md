@@ -352,3 +352,18 @@ python scripts/tools/evaluate_gr_stage2_g11_g12_promotion_v1.py --summary-csv 05
 Decision summary:
 
 - `05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v2/promotion_decision.md`
+
+## 17) GR Stage-2 official policy application (post-switch)
+
+Apply official Stage-2 mapping on frozen Stage-2 prereg profiles:
+
+```bash
+python scripts/tools/run_gr_stage2_official_v2.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage2-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-official-v2 --policy-id gr-stage2-official-v2 --effective-tag gr-stage2-g11g12-v2-official
+```
+
+Outputs:
+
+- `05_validation/evidence/artifacts/gr-stage2-official-v2/summary.csv`
+- `05_validation/evidence/artifacts/gr-stage2-official-v2/dataset_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage2-official-v2/report.md`
+- `05_validation/evidence/artifacts/gr-stage2-official-v2/official_manifest.json`

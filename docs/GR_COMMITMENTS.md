@@ -18,6 +18,10 @@ These are the claims we consider supported under the current gate stack and evid
 4. Official decision policies are frozen and reproducible:
    - `G15b`: `v2` official, `v1` legacy diagnostic
    - `G16b`: hybrid official (low-signal -> `v2`, high-signal -> `v1`)
+5. Stage-2 governance policy is frozen for reproducibility checks:
+   - `G11`: official Stage-2 mapping uses `G11a-v2`
+   - `G12`: official Stage-2 mapping uses `G12d-v2`
+   - switch/criteria record: `docs/GR_STAGE2_OFFICIAL_SWITCH.md`
 
 ## What We Explicitly Do NOT Claim Yet
 

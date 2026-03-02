@@ -25,6 +25,9 @@ The GR-like chain is currently defined by gates `G10..G16`:
   - high-signal -> `G16b-v1` branch
 - `G16b legacy diagnostic`: `G16b-v1`
 - `G16b candidate component`: `G16b-v2`
+- `GR-Stage-2 official policy`: `G11a-v2 + G12d-v2` governance mapping
+  - effective tag: `gr-stage2-g11g12-v2-official`
+  - source decision: `docs/GR_STAGE2_OFFICIAL_SWITCH.md`
 
 ## Baseline Used For Guard
 
@@ -57,6 +60,12 @@ Frozen metadata:
   - `degraded_vs_v1=0`
 - Promotion/attack package passed and switch is now official.
 - Source: `05_validation/evidence/artifacts/g16b-hybrid-promotion-eval-v1/`.
+
+4. Stage-2 official closure
+- Primary (`DS-002/003/006`, seeds `3401..3600`):
+  - `STAGE2`: `570/600 -> 587/600` (`97.833%`, degraded `0`)
+- Attack A + holdout maintain degraded `0`.
+- Source: `05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v2/`.
 
 ## Current Readout
 

@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-03-02 - Stage-2 official governance switch definition (G11a-v2 + G12d-v2)
+
+- Added Stage-2 official policy applier:
+  - `scripts/tools/run_gr_stage2_official_v2.py`
+- Added Stage-2 switch criteria and decision policy doc:
+  - `docs/GR_STAGE2_OFFICIAL_SWITCH.md`
+- Updated gate/status/commitment docs for Stage-2 official mapping:
+  - `docs/GATES.md`
+  - `docs/GR_STAGE2_PREREG.md`
+  - `docs/GR_STATUS.md`
+  - `docs/GR_COMMITMENTS.md`
+  - `docs/REPRODUCIBILITY.md`
+  - `README.md`
+  - `docs/ROADMAP.md`
+- Added one-command target:
+  - `Makefile` (`gr_stage2_official_apply`)
+
 ## 2026-03-02 - Stage-2 G11/G12 candidate eval v2 (high-signal correlation rule)
 
 - Added revised candidate eval runner:
