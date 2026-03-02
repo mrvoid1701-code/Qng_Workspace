@@ -17,6 +17,8 @@ make gr_stage3_prereg
 make gr_stage3_taxonomy
 make gr_stage3_eval
 make qm_lane_check DS=DS-002 SEED=3401
+make qm_stage1_smoke
+make qm_gr_coupling_audit_smoke
 ```
 
 Python fallback (if `make` is unavailable):
@@ -699,3 +701,29 @@ Expected readout:
 - official-v3 rerun: `Stage-3 570/600 -> 597/600`, `degraded_vs_v2=0`
 - guard decision: `PASS` (`profiles_missing=0`, `profiles_mismatch=0`)
 - strict fail scope: `3` (`G11` only)
+
+## 33) QM-Stage-1 prereg + evaluation + QM-GR coupling audit
+
+Pre-registration:
+
+- `05_validation/pre-registrations/qm-stage1-prereg-v1.md`
+
+Smoke package:
+
+```bash
+python scripts/tools/run_qm_stage1_prereg_v1.py --mode smoke --datasets DS-002,DS-003,DS-006 --out-dir 05_validation/evidence/artifacts/qm-stage1-smoke-v1
+python scripts/tools/evaluate_qm_stage1_prereg_v1.py --summary-csv 05_validation/evidence/artifacts/qm-stage1-smoke-v1/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-eval-v1/smoke_ds002_003_006_s3401 --eval-id qm-stage1-smoke-v1 --strict-datasets DS-002,DS-003,DS-006 --require-zero-rc --min-all-pass-rate 0.0
+```
+
+Frozen primary prereg package:
+
+```bash
+python scripts/tools/run_qm_stage1_prereg_v1.py --mode prereg --datasets DS-002,DS-003,DS-006 --seed-start 3401 --seed-end 3600 --strict-prereg --out-dir 05_validation/evidence/artifacts/qm-stage1-prereg-v1
+python scripts/tools/evaluate_qm_stage1_prereg_v1.py --summary-csv 05_validation/evidence/artifacts/qm-stage1-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-eval-v1/primary_ds002_003_006_s3401_3600 --eval-id qm-stage1-primary-v1 --strict-datasets DS-002,DS-003,DS-006 --require-zero-rc --min-all-pass-rate 0.0
+```
+
+QM-GR coupling audit (G20 + Stage-3 GR guard stability):
+
+```bash
+python scripts/tools/run_qm_gr_coupling_audit_v1.py --mode smoke --datasets DS-002,DS-003,DS-006 --out-dir 05_validation/evidence/artifacts/qm-gr-coupling-audit-smoke-v1 --gr-baseline-json 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json --gr-summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv
+```

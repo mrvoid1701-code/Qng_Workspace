@@ -4,7 +4,7 @@ Date: 2026-03-02
 
 ## Separation Rule
 
-During `GR-Stage-2`, QM gates are evaluated in an isolated lane and do not affect:
+During `GR-Stage-2` and `GR-Stage-3`, QM gates are evaluated in an isolated lane and do not affect:
 
 - `all_pass_official` for GR Stage-1,
 - GR baseline guard decisions,
@@ -32,6 +32,18 @@ Example:
 ```bash
 python scripts/tools/run_qm_lane_check_v1.py --dataset-id DS-002 --seed 3401
 ```
+
+## QM-Stage-1 Prereg (v1)
+
+Pre-registration:
+
+- `05_validation/pre-registrations/qm-stage1-prereg-v1.md`
+
+Runners:
+
+- `scripts/tools/run_qm_stage1_prereg_v1.py`
+- `scripts/tools/evaluate_qm_stage1_prereg_v1.py`
+- `scripts/tools/run_qm_gr_coupling_audit_v1.py` (G20 + GR guard stability audit)
 
 ## Governance
 

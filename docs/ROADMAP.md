@@ -19,6 +19,7 @@ QNG workspace is in a reproducibility-hardening phase:
 5. Keep Stage-3 official baseline/guard frozen (`gr-stage3-g11g12-v3-official`) and enforce non-regression checks on reruns.
 6. Track remaining Stage-3 official fail classes (`3/600`, all `G11`) via preregistered estimator hardening (no threshold tuning).
 7. Keep QM lane criteria separate from GR promotion criteria while Stage-2/Stage-3 official baselines remain frozen.
+8. Freeze `QM-Stage-1` prereg package (primary + attack + holdout) and track QM-GR coupling audit via G20 + GR guard checks.
 
 ## Non-Goals for Housekeeping Passes
 

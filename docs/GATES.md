@@ -63,4 +63,5 @@ Gate map for the core GR/QM chain and metric hardening sequence.
   - v3: `docs/GR_STAGE2_G11_V3_OFFICIAL_SWITCH.md`
   - v4: `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md`
 - QM decision criteria are tracked in a separate lane: `docs/QM_LANE_POLICY.md`.
+- QM-Stage-1 prereg source: `05_validation/pre-registrations/qm-stage1-prereg-v1.md`.
 

@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-03-02 - QM-Stage-1 prereg scaffold + coupling audit tooling
+
+- Added QM-Stage-1 prereg runner:
+  - `scripts/tools/run_qm_stage1_prereg_v1.py`
+- Added QM-Stage-1 evaluator:
+  - `scripts/tools/evaluate_qm_stage1_prereg_v1.py`
+- Added QM-GR coupling audit runner:
+  - `scripts/tools/run_qm_gr_coupling_audit_v1.py`
+- Added QM-Stage-1 prereg document:
+  - `05_validation/pre-registrations/qm-stage1-prereg-v1.md`
+- Added make targets:
+  - `qm_stage1_smoke`
+  - `qm_stage1_prereg`
+  - `qm_stage1_eval`
+  - `qm_gr_coupling_audit_smoke`
+  - `qm_gr_coupling_audit`
+- Updated QM lane/roadmap/repro references:
+  - `docs/QM_LANE_POLICY.md`
+  - `docs/ROADMAP.md`
+  - `docs/GATES.md`
+  - `docs/REPRODUCIBILITY.md`
+- Executed smoke packages:
+  - `05_validation/evidence/artifacts/qm-stage1-smoke-v1/` (`all_pass_qm_lane=2/3`)
+  - `05_validation/evidence/artifacts/qm-stage1-eval-v1/smoke_ds002_003_006_s3401/` (`decision=HOLD`)
+  - `05_validation/evidence/artifacts/qm-gr-coupling-audit-smoke-v1/` (`gr_guard_pre=PASS`, `gr_guard_post=PASS`)
+
 ## 2026-03-02 - Stage-3 official-v3 rerun (600) + baseline guard + fail taxonomy
 
 - Executed full frozen Stage-3 prereg rerun package:
