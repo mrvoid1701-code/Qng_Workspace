@@ -275,3 +275,20 @@ python scripts/tools/run_qm_lane_check_v1.py --dataset-id DS-002 --seed 3401
 Main output:
 
 - `07_exports/repro/qm_lane_check/<dataset_seed_tag>/summary.csv`
+
+## 14) GR Stage-2 failure taxonomy (G11/G12)
+
+```bash
+python scripts/tools/analyze_gr_stage2_failures_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-failure-taxonomy-v1
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/gr-stage2-failure-taxonomy-v1/g11_fail_cases.csv`
+- `05_validation/evidence/artifacts/gr-stage2-failure-taxonomy-v1/g12_fail_cases.csv`
+- `05_validation/evidence/artifacts/gr-stage2-failure-taxonomy-v1/pattern_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage2-failure-taxonomy-v1/report.md`
+
+Candidate prereg plan:
+
+- `05_validation/pre-registrations/gr-stage2-g11-g12-candidate-v1.md`

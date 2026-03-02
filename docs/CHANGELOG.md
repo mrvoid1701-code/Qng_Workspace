@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-03-02 - Stage-2 G11/G12 failure taxonomy + candidate prereg plan
+
+- Added taxonomy analyzer:
+  - `scripts/tools/analyze_gr_stage2_failures_v1.py`
+- Added taxonomy evidence package:
+  - `05_validation/evidence/artifacts/gr-stage2-failure-taxonomy-v1/g11_fail_cases.csv`
+  - `05_validation/evidence/artifacts/gr-stage2-failure-taxonomy-v1/g12_fail_cases.csv`
+  - `05_validation/evidence/artifacts/gr-stage2-failure-taxonomy-v1/pattern_summary.csv`
+  - `05_validation/evidence/artifacts/gr-stage2-failure-taxonomy-v1/report.md`
+- Added candidate-only prereg plan (no v1 switch):
+  - `05_validation/pre-registrations/gr-stage2-g11-g12-candidate-v1.md`
+- Added one-command target and docs pointers:
+  - `Makefile` (`gr_stage2_taxonomy`)
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-02 - GR Stage-2 prereg execution record (600 profiles)
 
 - Executed frozen Stage-2 grid:

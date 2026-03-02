@@ -82,3 +82,8 @@ Full prereg run was executed with frozen settings:
   - `lane_strong_field`: `585/600`
   - `lane_tensor`: `600/600`
 - `stage2_pass`: `570/600`
+
+Follow-up diagnostics and candidate plan:
+
+- taxonomy package: `05_validation/evidence/artifacts/gr-stage2-failure-taxonomy-v1/`
+- candidate prereg (no v1 switch): `05_validation/pre-registrations/gr-stage2-g11-g12-candidate-v1.md`
