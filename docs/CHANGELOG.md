@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-03-02 - Stage-2 baseline/guard refresh (official policy)
+
+- Added Stage-2 baseline builder:
+  - `scripts/tools/build_gr_stage2_baseline_v1.py`
+- Added Stage-2 regression guard:
+  - `scripts/tools/run_gr_stage2_regression_guard_v1.py`
+- Built baseline and verified guard:
+  - `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/gr_stage2_baseline_official.json`
+  - `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check/regression_report.json`
+- Added one-command targets:
+  - `Makefile` (`gr_stage2_baseline_build`, `gr_stage2_baseline_guard`)
+- Added reproducibility commands:
+  - `docs/REPRODUCIBILITY.md` (Stage-2 baseline section)
+
 ## 2026-03-02 - Stage-2 official rerun (600 profiles, frozen grid)
 
 - Executed official Stage-2 policy on full prereg grid source:

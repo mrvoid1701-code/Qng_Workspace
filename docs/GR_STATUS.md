@@ -35,6 +35,10 @@ Regression guard baseline is:
 
 - `05_validation/evidence/artifacts/gr-regression-baseline-v1/gr_baseline_official.json`
 
+Stage-2 governance baseline is:
+
+- `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/gr_stage2_baseline_official.json`
+
 Frozen metadata:
 
 - `effective_tag`: `gr-g16b-hybrid-official`

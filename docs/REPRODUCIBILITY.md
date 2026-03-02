@@ -367,3 +367,25 @@ Outputs:
 - `05_validation/evidence/artifacts/gr-stage2-official-v2/dataset_summary.csv`
 - `05_validation/evidence/artifacts/gr-stage2-official-v2/report.md`
 - `05_validation/evidence/artifacts/gr-stage2-official-v2/official_manifest.json`
+
+## 18) GR Stage-2 baseline build + regression guard
+
+Build frozen Stage-2 baseline from official summary:
+
+```bash
+python scripts/tools/build_gr_stage2_baseline_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v2/summary.csv --out-json 05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/gr_stage2_baseline_official.json --baseline-id gr-stage2-official-baseline-v1 --effective-tag gr-stage2-g11g12-v2-official
+```
+
+Run Stage-2 guard:
+
+```bash
+python scripts/tools/run_gr_stage2_regression_guard_v1.py --baseline-json 05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/gr_stage2_baseline_official.json --summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v2/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check
+```
+
+Outputs:
+
+- `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/gr_stage2_baseline_official.json`
+- `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check/observed_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check/mismatches.csv`
+- `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check/regression_report.md`
+- `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check/regression_report.json`
