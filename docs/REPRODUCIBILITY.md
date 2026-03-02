@@ -461,3 +461,39 @@ python scripts/tools/run_gr_stage2_regression_guard_v1.py --baseline-json 05_val
 Decision note:
 
 - `05_validation/evidence/artifacts/gr-stage2-official-v3-rerun-v3-600-v1/rerun_decision.md`
+
+## 22) G11 fail-closure + G11a-v4 candidate prereg (official-v3 baseline)
+
+Strict fail-closure taxonomy on official-v3 rerun (6 fails scope):
+
+```bash
+python scripts/tools/analyze_gr_stage2_g11_fail_closure_v3_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v3-rerun-v3-600-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-fail-closure-v3-v1
+```
+
+Primary candidate eval (`DS-002/003/006`, `3401..3600`):
+
+```bash
+python scripts/tools/run_gr_stage2_g11_candidate_eval_v4.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v3-rerun-v3-600-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-candidate-v4/primary_ds002_003_006_s3401_3600
+python scripts/tools/evaluate_gr_stage2_g11_v4_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-g11-candidate-v4/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-v4-promotion-eval-v1/primary_ds002_003_006_s3401_3600 --eval-id gr-stage2-g11-v4-primary-v1 --strict-datasets DS-002,DS-003,DS-006 --min-improved 2 --max-fails-after 3
+```
+
+Attack A (seed block):
+
+```bash
+python scripts/tools/run_gr_stage2_g11_candidate_eval_v3.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage2-g11-g12-candidate-eval-v2/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-candidate-v3-for-v4/attack_seed500_ds002_003_006_s3601_4100
+python scripts/tools/run_gr_stage2_g11_candidate_eval_v4.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage2-g11-candidate-v3-for-v4/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-candidate-v4/attack_seed500_ds002_003_006_s3601_4100
+python scripts/tools/evaluate_gr_stage2_g11_v4_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-g11-candidate-v4/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-v4-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100 --eval-id gr-stage2-g11-v4-attack-seed500-v1 --strict-datasets DS-002,DS-003,DS-006 --min-improved 0
+```
+
+Attack B (holdout):
+
+```bash
+python scripts/tools/run_gr_stage2_g11_candidate_eval_v3.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage2-g11-g12-candidate-eval-v2/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-candidate-v3-for-v4/attack_holdout_ds004_008_s3401_3600
+python scripts/tools/run_gr_stage2_g11_candidate_eval_v4.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage2-g11-candidate-v3-for-v4/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-candidate-v4/attack_holdout_ds004_008_s3401_3600
+python scripts/tools/evaluate_gr_stage2_g11_v4_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-g11-candidate-v4/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-v4-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600 --eval-id gr-stage2-g11-v4-attack-holdout-v1 --strict-datasets DS-004,DS-008 --min-improved 0
+```
+
+Decision summary:
+
+- `05_validation/pre-registrations/gr-stage2-g11-candidate-v4.md`
+- `05_validation/evidence/artifacts/gr-stage2-g11-v4-promotion-eval-v1/promotion_decision.md`

@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-03-02 - G11 fail-closure v3 taxonomy + G11a-v4 candidate prereg
+
+- Added strict fail-closure taxonomy script (official-v3 6-fail scope + nearest-pass comparison):
+  - `scripts/tools/analyze_gr_stage2_g11_fail_closure_v3_v1.py`
+- Added G11 candidate eval runner v4 (robust rank fallback, no threshold tuning):
+  - `scripts/tools/run_gr_stage2_g11_candidate_eval_v4.py`
+- Added G11 v4 promotion evaluator:
+  - `scripts/tools/evaluate_gr_stage2_g11_v4_promotion_v1.py`
+- Added prereg definition:
+  - `05_validation/pre-registrations/gr-stage2-g11-candidate-v4.md`
+- Added taxonomy evidence package:
+  - `05_validation/evidence/artifacts/gr-stage2-g11-fail-closure-v3-v1/`
+- Added candidate eval + promotion evidence package:
+  - `05_validation/evidence/artifacts/gr-stage2-g11-candidate-v4/`
+  - `05_validation/evidence/artifacts/gr-stage2-g11-v4-promotion-eval-v1/`
+- Added promotion decision summary:
+  - `05_validation/evidence/artifacts/gr-stage2-g11-v4-promotion-eval-v1/promotion_decision.md`
+- Updated reproducibility command set:
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-02 - Stage-2 full rerun confirmation on official-v3 mapping (600 profiles)
 
 - Executed full strict rerun on frozen prereg grid:

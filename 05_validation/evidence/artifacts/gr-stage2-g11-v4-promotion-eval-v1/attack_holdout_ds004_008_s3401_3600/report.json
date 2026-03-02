@@ -1,0 +1,35 @@
+{
+  "eval_id": "gr-stage2-g11-v4-attack-holdout-v1",
+  "generated_utc": "2026-03-02T10:06:57.797806Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage2-g11-candidate-v4/attack_holdout_ds004_008_s3401_3600/summary.csv",
+  "datasets": [
+    "DS-004",
+    "DS-008"
+  ],
+  "criteria": {
+    "min_improved": 0,
+    "max_fails_after": -1,
+    "require_zero_degraded": true,
+    "require_per_dataset_nondegrade": true
+  },
+  "totals": {
+    "n": 400,
+    "g11_v3_pass": 398,
+    "g11_v4_pass": 398,
+    "g11_v3_fail": 2,
+    "g11_v4_fail": 2,
+    "g11_improved": 0,
+    "g11_degraded": 0,
+    "stage2_v3_pass": 398,
+    "stage2_v4_pass": 398,
+    "stage2_improved": 0,
+    "stage2_degraded": 0
+  },
+  "checks": {
+    "zero_degraded": true,
+    "improved_min": true,
+    "per_dataset_nondegrade": true,
+    "max_fails_after": true
+  },
+  "decision": "PASS"
+}

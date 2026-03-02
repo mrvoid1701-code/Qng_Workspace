@@ -1,0 +1,36 @@
+{
+  "eval_id": "gr-stage2-g11-v4-attack-seed500-v1",
+  "generated_utc": "2026-03-02T10:06:57.799815Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage2-g11-candidate-v4/attack_seed500_ds002_003_006_s3601_4100/summary.csv",
+  "datasets": [
+    "DS-002",
+    "DS-003",
+    "DS-006"
+  ],
+  "criteria": {
+    "min_improved": 0,
+    "max_fails_after": -1,
+    "require_zero_degraded": true,
+    "require_per_dataset_nondegrade": true
+  },
+  "totals": {
+    "n": 1500,
+    "g11_v3_pass": 1464,
+    "g11_v4_pass": 1470,
+    "g11_v3_fail": 36,
+    "g11_v4_fail": 30,
+    "g11_improved": 6,
+    "g11_degraded": 0,
+    "stage2_v3_pass": 1460,
+    "stage2_v4_pass": 1466,
+    "stage2_improved": 6,
+    "stage2_degraded": 0
+  },
+  "checks": {
+    "zero_degraded": true,
+    "improved_min": true,
+    "per_dataset_nondegrade": true,
+    "max_fails_after": true
+  },
+  "decision": "PASS"
+}
