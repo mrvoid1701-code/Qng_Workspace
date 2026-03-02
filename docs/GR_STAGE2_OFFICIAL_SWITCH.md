@@ -1,5 +1,9 @@
 # GR Stage-2 Official Switch (G11a-v2 + G12d-v2)
 
+Superseded on 2026-03-02 by `G11a-v3` governance update:
+
+- `docs/GR_STAGE2_G11_V3_OFFICIAL_SWITCH.md`
+
 Date: 2026-03-02  
 Effective tag: `gr-stage2-g11g12-v2-official`
 

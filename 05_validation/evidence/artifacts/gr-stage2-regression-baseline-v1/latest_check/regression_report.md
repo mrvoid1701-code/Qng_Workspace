@@ -1,8 +1,8 @@
 # GR Stage-2 Regression Guard Report (v1)
 
-- generated_utc: `2026-03-02T08:48:49.969712Z`
+- generated_utc: `2026-03-02T09:32:57.098349Z`
 - baseline_id: `gr-stage2-official-baseline-v1`
-- effective_tag: `gr-stage2-g11g12-v2-official`
+- effective_tag: `gr-stage2-g11-v3-official`
 - decision: `PASS`
 
 ## Summary

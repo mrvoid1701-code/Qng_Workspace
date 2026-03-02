@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Analyze G11 failures from Stage-2 official policy output (v2).
+Analyze G11 failures from Stage-2 official policy output.
 
 Scope:
 - failure taxonomy is reported strictly on rows where `g11_status=fail`
@@ -34,7 +34,7 @@ DEFAULT_SOURCE_SUMMARY = (
     / "05_validation"
     / "evidence"
     / "artifacts"
-    / "gr-stage2-official-v2"
+    / "gr-stage2-official-v3"
     / "summary.csv"
 )
 DEFAULT_OUT_DIR = (
@@ -42,7 +42,7 @@ DEFAULT_OUT_DIR = (
     / "05_validation"
     / "evidence"
     / "artifacts"
-    / "gr-stage2-g11-failure-taxonomy-v2"
+    / "gr-stage2-g11-failure-taxonomy-v3"
 )
 
 MULTI_PEAK_RATIO_THRESHOLD = 0.98

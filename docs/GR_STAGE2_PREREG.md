@@ -99,3 +99,12 @@ Official Stage-2 governance mapping was switched after criteria closure:
 - effective tag: `gr-stage2-g11g12-v2-official`
 - official policy runner: `scripts/tools/run_gr_stage2_official_v2.py`
 - official 600-profile rerun package: `05_validation/evidence/artifacts/gr-stage2-official-v2/`
+
+## Governance Update (2026-03-02, G11a-v3)
+
+Stage-2 governance was further hardened by promoting `G11a-v3` while keeping `G12d-v2` frozen:
+
+- policy doc: `docs/GR_STAGE2_G11_V3_OFFICIAL_SWITCH.md`
+- effective tag: `gr-stage2-g11-v3-official`
+- official policy runner: `scripts/tools/run_gr_stage2_official_v3.py`
+- official package: `05_validation/evidence/artifacts/gr-stage2-official-v3/`

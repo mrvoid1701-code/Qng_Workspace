@@ -25,7 +25,7 @@ DEFAULT_SUMMARY = (
     / "05_validation"
     / "evidence"
     / "artifacts"
-    / "gr-stage2-official-v2"
+    / "gr-stage2-official-v3"
     / "summary.csv"
 )
 DEFAULT_OUT = (

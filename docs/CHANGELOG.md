@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-03-02 - Stage-2 official governance switch to G11a-v3
+
+- Added Stage-2 official policy applier:
+  - `scripts/tools/run_gr_stage2_official_v3.py`
+- Added v3 switch decision record:
+  - `docs/GR_STAGE2_G11_V3_OFFICIAL_SWITCH.md`
+- Applied official-v3 governance package on frozen official-v2 summary:
+  - `05_validation/evidence/artifacts/gr-stage2-official-v3/`
+  - `G11`: `587/600 -> 594/600`
+  - `STAGE2`: `587/600 -> 594/600`
+  - `degraded_vs_v2=0`
+- Updated defaults/targets/docs for official-v3 paths and tag:
+  - `Makefile`
+  - `scripts/tools/build_gr_stage2_baseline_v1.py`
+  - `scripts/tools/run_gr_stage2_regression_guard_v1.py`
+  - `scripts/tools/analyze_gr_stage2_g11_official_fails_v1.py`
+  - `docs/GATES.md`
+  - `docs/GR_STATUS.md`
+  - `docs/GR_STAGE2_PREREG.md`
+  - `docs/GR_COMMITMENTS.md`
+  - `docs/REPRODUCIBILITY.md`
+  - `README.md`
+  - `docs/ROADMAP.md`
+
 ## 2026-03-02 - Stage-2 G11a-v3 candidate prereg (Poisson-source hardening)
 
 - Added candidate eval runner:

@@ -30,7 +30,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--summary-csv", required=True)
     p.add_argument("--out-json", required=True)
     p.add_argument("--baseline-id", default="gr-stage2-official-baseline-v1")
-    p.add_argument("--effective-tag", default="gr-stage2-g11g12-v2-official")
+    p.add_argument("--effective-tag", default="gr-stage2-g11-v3-official")
     p.add_argument("--effective-commit", default="")
     p.add_argument("--effective-date-utc", default="")
     p.add_argument("--status-fields", default=",".join(DEFAULT_STATUS_FIELDS))
