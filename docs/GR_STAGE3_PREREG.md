@@ -103,3 +103,24 @@ Strict failure taxonomy + candidate-v2 proposal package:
 
 - `05_validation/evidence/artifacts/gr-stage3-failure-taxonomy-v1/`
 - candidate prereg: `05_validation/pre-registrations/gr-stage3-g11-g12-candidate-v2.md`
+
+Candidate-v2 evaluation closure (primary + attacks):
+
+- candidate summary roots:
+  - `05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/attack_holdout_ds004_008_s3401_3600/`
+- promotion-eval roots:
+  - `05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v1/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600/`
+- block decisions:
+  - primary: `PASS` (`Stage3 570 -> 592`, improved `22`, degraded `0`)
+  - attack seed500: `PASS` (`Stage3 1345 -> 1433`, improved `88`, degraded `0`)
+  - attack holdout: `PASS` (`Stage3 380 -> 398`, improved `18`, degraded `0`)
+
+All prereg constraints were satisfied in these candidate runs:
+
+- `degraded_vs_v1 = 0`
+- per-dataset non-degradation `true`
+- net uplift on primary (`improved_vs_v1 > 0`)

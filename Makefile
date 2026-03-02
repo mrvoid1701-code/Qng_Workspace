@@ -3,7 +3,7 @@ DS ?= DS-003
 SEED ?= 3520
 PHI ?= 0.08
 
-.PHONY: help gr_official_check gr_baseline_guard gr_sweep_phi gr_stage2_smoke gr_stage2_prereg gr_stage3_smoke gr_stage3_prereg gr_stage3_taxonomy gr_stage3_eval qm_lane_check gr_stage2_taxonomy gr_stage2_candidate_primary gr_stage2_candidate_v2_primary gr_stage2_official_apply gr_stage2_baseline_build gr_stage2_baseline_guard gr_stage2_g11_taxonomy_v2 gr_stage2_g11_taxonomy_v3 gr_stage2_g11_v3_primary
+.PHONY: help gr_official_check gr_baseline_guard gr_sweep_phi gr_stage2_smoke gr_stage2_prereg gr_stage3_smoke gr_stage3_prereg gr_stage3_attack_seed500 gr_stage3_attack_holdout gr_stage3_taxonomy gr_stage3_eval gr_stage3_candidate_v2_primary gr_stage3_candidate_v2_attack gr_stage3_candidate_v2_holdout qm_lane_check gr_stage2_taxonomy gr_stage2_candidate_primary gr_stage2_candidate_v2_primary gr_stage2_official_apply gr_stage2_baseline_build gr_stage2_baseline_guard gr_stage2_g11_taxonomy_v2 gr_stage2_g11_taxonomy_v3 gr_stage2_g11_v3_primary
 
 help:
 	@echo "Targets:"
@@ -14,8 +14,13 @@ help:
 	@echo "  make gr_stage2_prereg"
 	@echo "  make gr_stage3_smoke"
 	@echo "  make gr_stage3_prereg"
+	@echo "  make gr_stage3_attack_seed500"
+	@echo "  make gr_stage3_attack_holdout"
 	@echo "  make gr_stage3_taxonomy"
 	@echo "  make gr_stage3_eval"
+	@echo "  make gr_stage3_candidate_v2_primary"
+	@echo "  make gr_stage3_candidate_v2_attack"
+	@echo "  make gr_stage3_candidate_v2_holdout"
 	@echo "  make gr_stage2_taxonomy"
 	@echo "  make gr_stage2_candidate_primary"
 	@echo "  make gr_stage2_candidate_v2_primary"
@@ -47,11 +52,29 @@ gr_stage3_smoke:
 gr_stage3_prereg:
 	$(PYTHON) scripts/tools/run_gr_stage3_prereg_v1.py --mode prereg --datasets DS-002,DS-003,DS-006 --seed-start 3401 --seed-end 3600 --strict-prereg
 
+gr_stage3_attack_seed500:
+	$(PYTHON) scripts/tools/run_gr_stage3_prereg_v1.py --mode prereg --datasets DS-002,DS-003,DS-006 --seed-start 3601 --seed-end 4100 --out-dir 05_validation/evidence/artifacts/gr-stage3-attack-seed500-v1
+
+gr_stage3_attack_holdout:
+	$(PYTHON) scripts/tools/run_gr_stage3_prereg_v1.py --mode prereg --datasets DS-004,DS-008 --seed-start 3401 --seed-end 3600 --out-dir 05_validation/evidence/artifacts/gr-stage3-attack-holdout-v1
+
 gr_stage3_taxonomy:
 	$(PYTHON) scripts/tools/analyze_stage3_failures_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage3-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-failure-taxonomy-v1
 
 gr_stage3_eval:
 	$(PYTHON) scripts/tools/evaluate_gr_stage3_prereg_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage3-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-prereg-eval-v1/primary_ds002_003_006_s3401_3600 --eval-id gr-stage3-prereg-eval-v1
+
+gr_stage3_candidate_v2_primary:
+	$(PYTHON) scripts/tools/run_gr_stage3_g11_g12_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage3-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/primary_ds002_003_006_s3401_3600
+	$(PYTHON) scripts/tools/evaluate_gr_stage3_g11_g12_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v1/primary_ds002_003_006_s3401_3600 --eval-id gr-stage3-g11-g12-primary-v2 --strict-datasets DS-002,DS-003,DS-006 --require-zero-degraded --require-per-dataset-nondegrade --require-net-uplift
+
+gr_stage3_candidate_v2_attack:
+	$(PYTHON) scripts/tools/run_gr_stage3_g11_g12_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage3-attack-seed500-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/attack_seed500_ds002_003_006_s3601_4100
+	$(PYTHON) scripts/tools/evaluate_gr_stage3_g11_g12_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100 --eval-id gr-stage3-g11-g12-attack-seed500-v2 --strict-datasets DS-002,DS-003,DS-006 --require-zero-degraded --require-per-dataset-nondegrade --no-require-net-uplift
+
+gr_stage3_candidate_v2_holdout:
+	$(PYTHON) scripts/tools/run_gr_stage3_g11_g12_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage3-attack-holdout-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/attack_holdout_ds004_008_s3401_3600
+	$(PYTHON) scripts/tools/evaluate_gr_stage3_g11_g12_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600 --eval-id gr-stage3-g11-g12-attack-holdout-v2 --strict-datasets DS-004,DS-008 --require-zero-degraded --require-per-dataset-nondegrade --no-require-net-uplift
 
 gr_stage2_taxonomy:
 	$(PYTHON) scripts/tools/analyze_gr_stage2_failures_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-failure-taxonomy-v1

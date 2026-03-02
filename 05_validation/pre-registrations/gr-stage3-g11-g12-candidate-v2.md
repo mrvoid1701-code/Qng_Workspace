@@ -87,3 +87,26 @@ Global:
 
 If any degraded profile appears, candidate-v2 is not promoted.
 
+## Execution Closure (2026-03-02)
+
+All prereg blocks were executed and evaluated:
+
+- primary:
+  - summary: `05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/primary_ds002_003_006_s3401_3600/summary.csv`
+  - eval: `05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v1/primary_ds002_003_006_s3401_3600/report.json`
+  - Stage3: `570 -> 592`, improved `22`, degraded `0`
+- attack A (seed500):
+  - summary: `05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/attack_seed500_ds002_003_006_s3601_4100/summary.csv`
+  - eval: `05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100/report.json`
+  - Stage3: `1345 -> 1433`, improved `88`, degraded `0`
+- attack B (holdout):
+  - summary: `05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/attack_holdout_ds004_008_s3401_3600/summary.csv`
+  - eval: `05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600/report.json`
+  - Stage3: `380 -> 398`, improved `18`, degraded `0`
+
+Protocol verdict:
+
+- all blocks `PASS`
+- `degraded_vs_v1 = 0` in every block
+- per-dataset non-degradation `true` in every block
+- primary net uplift satisfied

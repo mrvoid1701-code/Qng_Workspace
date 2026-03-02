@@ -1,0 +1,21 @@
+{
+  "generated_utc": "2026-03-02T12:14:16.796618Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage3-attack-holdout-v1/summary.csv",
+  "constants": {
+    "g11_high_signal_quantile": 0.8,
+    "g11_corr_min": 0.2,
+    "g11_trim_fraction": 0.1,
+    "g11_smooth_alpha": 0.5,
+    "g11_smooth_iters": 1,
+    "g11_multi_peak_ratio_thr": 0.98,
+    "g11_multi_peak_dist_thr": 0.1,
+    "g12_slope_threshold": -0.03,
+    "g12_min_bin_count": 4,
+    "g12_winsor_q": 0.1,
+    "g12_drop_edge_bins": true
+  },
+  "notes": [
+    "Direct v1 pass carry-over is enabled for non-degrading candidate evaluation.",
+    "Candidate-v2 is not an official switch; governance decision is separate."
+  ]
+}
