@@ -2,6 +2,24 @@
 
 Exact commands for reproducible GR-chain reruns (housekeeping only, no math edits).
 
+## 0) One-command reproducibility (Makefile)
+
+Quick commands:
+
+```bash
+make gr_official_check DS=DS-003 SEED=3520
+make gr_baseline_guard
+make gr_sweep_phi
+```
+
+Python fallback (if `make` is unavailable):
+
+```bash
+python scripts/tools/gr_one_command.py official-check --dataset-id DS-003 --seed 3520
+python scripts/tools/gr_one_command.py baseline-guard
+python scripts/tools/gr_one_command.py sweep-phi
+```
+
 ## 1) Rerun G10..G16 for a fixed dataset + seed
 
 Example values:

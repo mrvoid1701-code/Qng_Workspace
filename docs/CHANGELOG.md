@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-03-02 - GR status + one-command reproducibility + commitments freeze
+
+- Added short GR status page:
+  - `docs/GR_STATUS.md`
+- Added frozen physics-facing scope contract:
+  - `docs/GR_COMMITMENTS.md`
+- Added one-command GR helper:
+  - `scripts/tools/gr_one_command.py`
+  - subcommands: `official-check`, `baseline-guard`, `sweep-phi`
+- Added top-level `Makefile` targets:
+  - `make gr_official_check DS=DS-003 SEED=3520`
+  - `make gr_baseline_guard`
+  - `make gr_sweep_phi`
+- Updated reproducibility and repo index docs:
+  - `docs/REPRODUCIBILITY.md`
+  - `README.md`
+
 ## 2026-03-02 - G16b official switch to hybrid policy
 
 - Added pre-switch safety tag:
