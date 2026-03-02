@@ -2,7 +2,7 @@
 
 Date: 2026-03-02  
 Stage ID: `GR-Stage-3`  
-Status: prereg scaffold active; candidate lane only
+Status: prereg scaffold complete; official mapping active via governance switch
 
 ## Goal
 
@@ -64,8 +64,9 @@ python scripts/tools/run_gr_stage3_prereg_v1.py --mode prereg --datasets DS-002,
 
 ## Governance
 
-- Stage-3 is a candidate expansion lane and does not overwrite Stage-1 or Stage-2 official policies.
-- Any official switch must be a separate governance decision with explicit criteria and tag.
+- Stage-3 protocol remains the frozen rerun source for official mapping.
+- Official Stage-3 policy is defined in `docs/GR_STAGE3_OFFICIAL_SWITCH.md`.
+- Any future official policy update must be a separate governance decision with explicit criteria and tag.
 - QM gates (`G17..G20`) remain out of Stage-3 decision status and stay in a separate lane.
 
 ## Execution Record (2026-03-02)

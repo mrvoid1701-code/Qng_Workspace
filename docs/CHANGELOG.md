@@ -1,5 +1,40 @@
 # Changelog
 
+## 2026-03-02 - Stage-3 official rerun (600) + baseline guard + fail taxonomy
+
+- Added Stage-3 baseline/guard tooling:
+  - `scripts/tools/build_gr_stage3_baseline_v1.py`
+  - `scripts/tools/run_gr_stage3_regression_guard_v1.py`
+- Updated Stage-3 taxonomy analyzer to support official summary schemas:
+  - `scripts/tools/analyze_stage3_failures_v1.py`
+- Added Stage-3 rerun/baseline/taxonomy make targets:
+  - `gr_stage3_rerun_600`
+  - `gr_stage3_official_rerun_apply`
+  - `gr_stage3_baseline_build`
+  - `gr_stage3_baseline_guard`
+  - `gr_stage3_official_taxonomy`
+- Executed frozen Stage-3 rerun package:
+  - `05_validation/evidence/artifacts/gr-stage3-prereg-rerun-v2-600-v1/`
+  - prereg readout: `stage3_pass=570/600`
+- Applied official-v2 on rerun package:
+  - `05_validation/evidence/artifacts/gr-stage3-official-v2-rerun-v1/`
+  - `G11`: `581/600 -> 593/600`
+  - `G12`: `585/600 -> 599/600`
+  - `Stage-3`: `570/600 -> 592/600`
+  - `degraded_vs_v1=0`
+- Refreshed Stage-3 official baseline + guard:
+  - `05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json`
+  - `05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/latest_check/regression_report.json` (`PASS`)
+- Added strict taxonomy package for remaining official fails (`8`):
+  - `05_validation/evidence/artifacts/gr-stage3-official-v2-failure-taxonomy-v1/`
+  - dominant classes: `weak_corr_multi_peak`, `weak_corr_sparse_graph`
+- Updated references/docs:
+  - `docs/GR_STAGE3_OFFICIAL_SWITCH.md`
+  - `docs/GR_STAGE3_PREREG.md`
+  - `docs/GR_STATUS.md`
+  - `docs/ROADMAP.md`
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-02 - Stage-3 governance switch definition (G11/G12 v2 policy)
 
 - Added Stage-3 official policy applier:

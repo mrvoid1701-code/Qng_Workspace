@@ -89,5 +89,11 @@ Frozen metadata:
 
 - GR guard against official baseline: `PASS`
 - GR Stage-3 official policy: active (`gr-stage3-g11g12-v2-official`)
+- Stage-3 guard against official baseline: `PASS`
+- Stage-3 remaining official primary fails: `8/600`
+  - `G11`: `7`
+  - `G12`: `1`
+  - dominant classes: `weak_corr_multi_peak`, `weak_corr_sparse_graph`
 - Latest run artifact:
   - `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/regression_report.json`
+  - `05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/latest_check/regression_report.json`

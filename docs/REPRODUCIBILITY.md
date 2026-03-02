@@ -582,7 +582,7 @@ Main outputs:
 - `05_validation/evidence/artifacts/gr-stage3-failure-taxonomy-v1/report.md`
 - `05_validation/evidence/artifacts/gr-stage3-failure-taxonomy-v1/candidate_v2_proposal.md`
 
-Candidate-v2 prereg document (no official switch yet):
+Candidate-v2 prereg document (historical prereg source for official switch):
 
 - `05_validation/pre-registrations/gr-stage3-g11-g12-candidate-v2.md`
 
@@ -600,3 +600,47 @@ Key outputs:
 - `05_validation/evidence/artifacts/gr-stage3-official-v2/dataset_summary.csv`
 - `05_validation/evidence/artifacts/gr-stage3-official-v2/report.md`
 - `05_validation/evidence/artifacts/gr-stage3-official-v2/official_manifest.json`
+
+## 28) Stage-3 official rerun (600 profiles) on frozen grid
+
+Run strict Stage-3 rerun and candidate-v2 mapper:
+
+```bash
+python scripts/tools/run_gr_stage3_prereg_v1.py --mode prereg --datasets DS-002,DS-003,DS-006 --seed-start 3401 --seed-end 3600 --out-dir 05_validation/evidence/artifacts/gr-stage3-prereg-rerun-v2-600-v1
+python scripts/tools/run_gr_stage3_g11_g12_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage3-prereg-rerun-v2-600-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/rerun_ds002_003_006_s3401_3600
+python scripts/tools/run_gr_stage3_official_v2.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/rerun_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-official-v2-rerun-v1 --policy-id gr-stage3-official-v2-rerun-v1 --effective-tag gr-stage3-g11g12-v2-official
+```
+
+Key outputs:
+
+- `05_validation/evidence/artifacts/gr-stage3-prereg-rerun-v2-600-v1/report.md`
+- `05_validation/evidence/artifacts/gr-stage3-official-v2-rerun-v1/report.md`
+
+## 29) Stage-3 baseline refresh + guard
+
+Build baseline and run strict regression guard:
+
+```bash
+python scripts/tools/build_gr_stage3_baseline_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v2-rerun-v1/summary.csv --out-json 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json --baseline-id gr-stage3-official-baseline-v1 --effective-tag gr-stage3-g11g12-v2-official
+python scripts/tools/run_gr_stage3_regression_guard_v1.py --baseline-json 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json --summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v2-rerun-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/latest_check
+```
+
+Key outputs:
+
+- `05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json`
+- `05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/latest_check/regression_report.json`
+
+## 30) Stage-3 official fail taxonomy (strict fail scope)
+
+Run taxonomy only on remaining official Stage-3 fails:
+
+```bash
+python scripts/tools/analyze_stage3_failures_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v2-rerun-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-official-v2-failure-taxonomy-v1
+```
+
+Key outputs:
+
+- `05_validation/evidence/artifacts/gr-stage3-official-v2-failure-taxonomy-v1/fail_profiles.csv`
+- `05_validation/evidence/artifacts/gr-stage3-official-v2-failure-taxonomy-v1/class_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage3-official-v2-failure-taxonomy-v1/pattern_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage3-official-v2-failure-taxonomy-v1/report.md`

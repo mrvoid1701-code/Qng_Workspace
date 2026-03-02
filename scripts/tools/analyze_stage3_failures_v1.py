@@ -76,6 +76,13 @@ def norm_status(v: str) -> str:
     return "pass" if (v or "").strip().lower() == "pass" else "fail"
 
 
+def pick(row: dict[str, str], *keys: str) -> str:
+    for k in keys:
+        if k in row and (row.get(k) or "").strip():
+            return str(row.get(k, ""))
+    return ""
+
+
 def to_float(text: str) -> float | None:
     try:
         return float(text)
@@ -308,16 +315,16 @@ def main() -> int:
                 "dataset_id": dataset_id,
                 "seed": seed,
                 "run_root": row["run_root"],
-                "g10_status": norm_status(row.get("g10_status", "")),
-                "g11_status": norm_status(row.get("g11_status", "")),
-                "g12_status": norm_status(row.get("g12_status", "")),
-                "g7_status": norm_status(row.get("g7_status", "")),
-                "g8_status": norm_status(row.get("g8_status", "")),
-                "g9_status": norm_status(row.get("g9_status", "")),
-                "stage3_status": norm_status(row.get("stage3_status", "")),
-                "g11a_status": norm_status(row.get("g11a", "")),
-                "g11b_status": norm_status(row.get("g11b", "")),
-                "g12d_status": norm_status(row.get("g12d", "")),
+                "g10_status": norm_status(pick(row, "g10_status")),
+                "g11_status": norm_status(pick(row, "g11_status", "g11_v2_status")),
+                "g12_status": norm_status(pick(row, "g12_status", "g12_v2_status")),
+                "g7_status": norm_status(pick(row, "g7_status")),
+                "g8_status": norm_status(pick(row, "g8_status")),
+                "g9_status": norm_status(pick(row, "g9_status")),
+                "stage3_status": norm_status(pick(row, "stage3_status", "stage3_v2_status")),
+                "g11a_status": norm_status(pick(row, "g11a", "g11a_v2_status", "g11a_v1_status")),
+                "g11b_status": norm_status(pick(row, "g11b", "g11b_status")),
+                "g12d_status": norm_status(pick(row, "g12d", "g12d_v2_status", "g12d_v1_status")),
                 "g11a_value": g11a_val,
                 "g11a_margin": g11a_margin,
                 "g11b_value": g11b_val,
@@ -558,7 +565,7 @@ def main() -> int:
     lines.append("")
     lines.append("- This is diagnostic-only; no thresholds/formulas were changed.")
     lines.append("- `low_signal` and `sparse_graph` are percentile labels (P25) for comparative taxonomy only.")
-    lines.append("- Candidate-v2 definitions should be preregistered before any rerun/promotion attempt.")
+    lines.append("- Any further estimator-policy updates should be preregistered before rerun/promotion.")
     (out_dir / "report.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
     print(f"fail_profiles_csv:      {out_dir / 'fail_profiles.csv'}")
