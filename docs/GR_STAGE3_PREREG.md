@@ -65,7 +65,9 @@ python scripts/tools/run_gr_stage3_prereg_v1.py --mode prereg --datasets DS-002,
 ## Governance
 
 - Stage-3 protocol remains the frozen rerun source for official mapping.
-- Official Stage-3 policy is defined in `docs/GR_STAGE3_OFFICIAL_SWITCH.md`.
+- Official Stage-3 policy is defined in:
+  - `docs/GR_STAGE3_OFFICIAL_SWITCH.md` (v2, historical)
+  - `docs/GR_STAGE3_G11G12_V3_OFFICIAL_SWITCH.md` (v3, current)
 - Any future official policy update must be a separate governance decision with explicit criteria and tag.
 - QM gates (`G17..G20`) remain out of Stage-3 decision status and stay in a separate lane.
 
@@ -125,3 +127,12 @@ All prereg constraints were satisfied in these candidate runs:
 - `degraded_vs_v1 = 0`
 - per-dataset non-degradation `true`
 - net uplift on primary (`improved_vs_v1 > 0`)
+
+Candidate-v3 closure and official-v3 switch:
+
+- candidate-v3 primary/attack/holdout promotion package:
+  - `05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v2/`
+- official policy application (v3):
+  - `05_validation/evidence/artifacts/gr-stage3-official-v3/`
+- switch record:
+  - `docs/GR_STAGE3_G11G12_V3_OFFICIAL_SWITCH.md`

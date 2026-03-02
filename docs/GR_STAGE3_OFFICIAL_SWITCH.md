@@ -1,5 +1,9 @@
 # GR Stage-3 Official Switch (G11/G12 v2 policy)
 
+Superseded on 2026-03-02 by `G11/G12 v3` governance update:
+
+- `docs/GR_STAGE3_G11G12_V3_OFFICIAL_SWITCH.md`
+
 Date: 2026-03-02  
 Effective tag: `gr-stage3-g11g12-v2-official`
 

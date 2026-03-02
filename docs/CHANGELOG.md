@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-03-02 - Stage-3 official governance switch to G11/G12 v3
+
+- Added Stage-3 official policy applier:
+  - `scripts/tools/run_gr_stage3_official_v3.py`
+- Added v3 switch record:
+  - `docs/GR_STAGE3_G11G12_V3_OFFICIAL_SWITCH.md`
+- Marked v2 switch record as superseded by v3:
+  - `docs/GR_STAGE3_OFFICIAL_SWITCH.md`
+- Applied official-v3 governance package on frozen candidate-v3 primary summary:
+  - `05_validation/evidence/artifacts/gr-stage3-official-v3/`
+  - `G11`: `593/600 -> 597/600`
+  - `G12`: `599/600 -> 600/600`
+  - `STAGE3`: `592/600 -> 597/600`
+  - `degraded_vs_v2=0`
+- Updated Stage-3 governance references and run targets:
+  - `Makefile`
+  - `docs/GATES.md`
+  - `docs/GR_STATUS.md`
+  - `docs/GR_COMMITMENTS.md`
+  - `docs/GR_STAGE3_PREREG.md`
+  - `docs/ROADMAP.md`
+
 ## 2026-03-02 - Stage-3 candidate-v3 fail-closure sprint (official-v2 baseline)
 
 - Added Stage-3 candidate-v3 runner (`v2 -> v3`):

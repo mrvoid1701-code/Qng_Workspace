@@ -50,13 +50,14 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 - `GR-Stage-2` prereg expansion lane (strong-field + 3+1 + tensor): `docs/GR_STAGE2_PREREG.md`.
 - `GR-Stage-3` prereg extension lane (adds geometry + conservation checks): `docs/GR_STAGE3_PREREG.md`.
 - Stage-3 official decision policy (governance-layer mapping on frozen runs):
-  - `G11` official uses candidate-v2 decision status
-  - `G12` official uses candidate-v2 decision status
+  - `G11` official uses candidate-v3 decision status
+  - `G12` official uses candidate-v3 decision status
   - `G7/G8/G9` remain inherited unchanged
-  - runner: `scripts/tools/run_gr_stage3_official_v2.py`
-  - effective tag: `gr-stage3-g11g12-v2-official`
+  - runner: `scripts/tools/run_gr_stage3_official_v3.py`
+  - effective tag: `gr-stage3-g11g12-v3-official`
 - Stage-3 official switch record:
-  - `docs/GR_STAGE3_OFFICIAL_SWITCH.md`
+  - `docs/GR_STAGE3_OFFICIAL_SWITCH.md` (v2, historical)
+  - `docs/GR_STAGE3_G11G12_V3_OFFICIAL_SWITCH.md` (v3, current)
 - Stage-2 official switch records:
   - v2: `docs/GR_STAGE2_OFFICIAL_SWITCH.md`
   - v3: `docs/GR_STAGE2_G11_V3_OFFICIAL_SWITCH.md`
