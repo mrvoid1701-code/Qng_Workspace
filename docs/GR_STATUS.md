@@ -78,6 +78,12 @@ Frozen metadata:
 - `weak_rank_corr`: `2`
 - Source: `05_validation/evidence/artifacts/gr-stage2-g11-candidate-v4/primary_ds002_003_006_s3401_3600/summary.csv`.
 
+6. Stage-3 primary prereg readout (candidate lane)
+- `stage3_pass`: `570/600` (`95.0%`)
+- `G7/G8/G9`: `600/600` each
+- dominant fail signatures: `G11` (`15`), `G12` (`11`), `G11+G12` (`4`)
+- Source: `05_validation/evidence/artifacts/gr-stage3-prereg-eval-v1/primary_ds002_003_006_s3401_3600/`.
+
 ## Current Readout
 
 - GR guard against official baseline: `PASS`

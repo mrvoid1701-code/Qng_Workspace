@@ -81,3 +81,20 @@ Smoke package executed with frozen Stage-3 settings:
   - `lane_geometry`: `3/3`
   - `lane_conservation`: `3/3`
 - `stage3_pass`: `3/3`
+
+Full prereg package executed with frozen Stage-3 settings:
+
+- output root: `05_validation/evidence/artifacts/gr-stage3-prereg-v1/`
+- profiles: `600` (`DS-002/003/006`, seeds `3401..3600`)
+- lane pass counts:
+  - `lane_3p1_core`: `581/600`
+  - `lane_strong_field`: `585/600`
+  - `lane_tensor`: `600/600`
+  - `lane_geometry`: `600/600`
+  - `lane_conservation`: `600/600`
+- `stage3_pass`: `570/600`
+
+Primary-grid evaluation package:
+
+- `05_validation/evidence/artifacts/gr-stage3-prereg-eval-v1/primary_ds002_003_006_s3401_3600/`
+- recommendation: `HOLD` (candidate lane remains non-official)

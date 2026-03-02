@@ -1,18 +1,27 @@
 # Changelog
 
-## 2026-03-02 - Stage-3 prereg scaffold (v1) + smoke execution
+## 2026-03-02 - Stage-3 prereg scaffold (v1) + full primary run + evaluation
 
 - Added Stage-3 prereg runner with one-summary output:
   - `scripts/tools/run_gr_stage3_prereg_v1.py`
+- Added Stage-3 prereg evaluator:
+  - `scripts/tools/evaluate_gr_stage3_prereg_v1.py`
 - Added Stage-3 protocol docs:
   - `docs/GR_STAGE3_PREREG.md`
   - `05_validation/pre-registrations/gr-stage3-prereg-v1.md`
 - Added Stage-3 smoke evidence package:
   - `05_validation/evidence/artifacts/gr-stage3-smoke-v1/`
   - result: `stage3_pass=3/3` (`DS-002/003/006`, seed `3401`)
+- Added Stage-3 full primary evidence package:
+  - `05_validation/evidence/artifacts/gr-stage3-prereg-v1/`
+  - result: `stage3_pass=570/600`
+- Added Stage-3 primary evaluation package:
+  - `05_validation/evidence/artifacts/gr-stage3-prereg-eval-v1/primary_ds002_003_006_s3401_3600/`
+  - recommendation: `HOLD`
 - Added Stage-3 make targets:
   - `gr_stage3_smoke`
   - `gr_stage3_prereg`
+  - `gr_stage3_eval`
 - Updated references and reproducibility docs:
   - `README.md`
   - `docs/GATES.md`
