@@ -743,3 +743,31 @@ Key outputs:
 - `05_validation/evidence/artifacts/g17-diagnosis-ds003-v1/class_summary.csv`
 - `05_validation/evidence/artifacts/g17-diagnosis-ds003-v1/feature_correlations.csv`
 - `05_validation/evidence/artifacts/g17-diagnosis-ds003-v1/report.md`
+
+## 35) QM G17 candidate-v2 (hybrid local-gap) DS-003 mini + promotion eval
+
+Build DS-003 mini source package (`3401..3430`):
+
+```bash
+python scripts/tools/run_qm_stage1_prereg_v1.py --mode prereg --datasets DS-003 --seed-start 3401 --seed-end 3430 --out-dir 05_validation/evidence/artifacts/qm-stage1-ds003-mini-v1
+```
+
+Run candidate-v2 hybrid policy on frozen summary:
+
+```bash
+python scripts/tools/run_qm_g17_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-ds003-mini-v1/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g17-candidate-v2/ds003_s3401_3430
+```
+
+Run promotion evaluator with strict non-degradation checks:
+
+```bash
+python scripts/tools/evaluate_qm_g17_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v2/ds003_s3401_3430/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/ds003_s3401_3430 --eval-id qm-g17-ds003-mini-v2 --strict-datasets DS-003 --require-zero-degraded --require-per-dataset-nondegrade --require-net-uplift
+```
+
+Key outputs:
+
+- `05_validation/evidence/artifacts/qm-stage1-ds003-mini-v1/summary.csv`
+- `05_validation/evidence/artifacts/qm-stage1-ds003-mini-v1/dataset_summary.csv`
+- `05_validation/evidence/artifacts/qm-g17-candidate-v2/ds003_s3401_3430/summary.csv`
+- `05_validation/evidence/artifacts/qm-g17-candidate-v2/ds003_s3401_3430/report.md`
+- `05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/ds003_s3401_3430/report.md`

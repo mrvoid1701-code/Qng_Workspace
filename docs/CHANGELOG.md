@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-03-02 - QM G17 candidate-v2 hybrid (DS-003 mini) + promotion eval
+
+- Added candidate runner (governance layer, no core threshold/formula edits):
+  - `scripts/tools/run_qm_g17_candidate_eval_v2.py`
+- Added promotion evaluator:
+  - `scripts/tools/evaluate_qm_g17_promotion_v1.py`
+- Added prereg record:
+  - `05_validation/pre-registrations/qm-g17-candidate-v2.md`
+- Added one-command make targets:
+  - `qm_stage1_ds003_mini`
+  - `qm_g17_candidate_v2_ds003_mini`
+  - `qm_g17_candidate_v2_primary`
+  - `qm_g17_promotion_primary`
+- Executed DS-003 mini candidate package (`3401..3430`):
+  - `05_validation/evidence/artifacts/qm-g17-candidate-v2/ds003_s3401_3430/`
+  - `G17: 20/30 -> 30/30`, `degraded=0`
+  - `QM lane: 19/30 -> 27/30`, `degraded=0`
+- Executed strict promotion eval:
+  - `05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/ds003_s3401_3430/`
+  - decision: `PASS`
+
 ## 2026-03-02 - G17 DS-003 mini-sprint diagnosis (3401..3430)
 
 - Added G17 diagnosis runner:

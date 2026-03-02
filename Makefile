@@ -3,7 +3,7 @@ DS ?= DS-003
 SEED ?= 3520
 PHI ?= 0.08
 
-.PHONY: help gr_official_check gr_baseline_guard gr_sweep_phi gr_stage2_smoke gr_stage2_prereg gr_stage3_smoke gr_stage3_prereg gr_stage3_attack_seed500 gr_stage3_attack_holdout gr_stage3_taxonomy gr_stage3_eval gr_stage3_candidate_v2_primary gr_stage3_candidate_v2_attack gr_stage3_candidate_v2_holdout gr_stage3_official_apply gr_stage3_official_attack_apply gr_stage3_official_holdout_apply gr_stage3_candidate_v3_primary gr_stage3_candidate_v3_attack gr_stage3_candidate_v3_holdout gr_stage3_rerun_600 gr_stage3_official_rerun_apply gr_stage3_baseline_build gr_stage3_baseline_guard gr_stage3_official_taxonomy qm_lane_check qm_stage1_smoke qm_stage1_prereg qm_stage1_eval qm_gr_coupling_audit_smoke qm_gr_coupling_audit qm_g17_diag_ds003 gr_stage2_taxonomy gr_stage2_candidate_primary gr_stage2_candidate_v2_primary gr_stage2_official_apply gr_stage2_baseline_build gr_stage2_baseline_guard gr_stage2_g11_taxonomy_v2 gr_stage2_g11_taxonomy_v3 gr_stage2_g11_v3_primary
+.PHONY: help gr_official_check gr_baseline_guard gr_sweep_phi gr_stage2_smoke gr_stage2_prereg gr_stage3_smoke gr_stage3_prereg gr_stage3_attack_seed500 gr_stage3_attack_holdout gr_stage3_taxonomy gr_stage3_eval gr_stage3_candidate_v2_primary gr_stage3_candidate_v2_attack gr_stage3_candidate_v2_holdout gr_stage3_official_apply gr_stage3_official_attack_apply gr_stage3_official_holdout_apply gr_stage3_candidate_v3_primary gr_stage3_candidate_v3_attack gr_stage3_candidate_v3_holdout gr_stage3_rerun_600 gr_stage3_official_rerun_apply gr_stage3_baseline_build gr_stage3_baseline_guard gr_stage3_official_taxonomy qm_lane_check qm_stage1_smoke qm_stage1_prereg qm_stage1_eval qm_gr_coupling_audit_smoke qm_gr_coupling_audit qm_g17_diag_ds003 qm_stage1_ds003_mini qm_g17_candidate_v2_ds003_mini qm_g17_candidate_v2_primary qm_g17_promotion_primary gr_stage2_taxonomy gr_stage2_candidate_primary gr_stage2_candidate_v2_primary gr_stage2_official_apply gr_stage2_baseline_build gr_stage2_baseline_guard gr_stage2_g11_taxonomy_v2 gr_stage2_g11_taxonomy_v3 gr_stage2_g11_v3_primary
 
 help:
 	@echo "Targets:"
@@ -47,6 +47,10 @@ help:
 	@echo "  make qm_gr_coupling_audit_smoke"
 	@echo "  make qm_gr_coupling_audit"
 	@echo "  make qm_g17_diag_ds003"
+	@echo "  make qm_stage1_ds003_mini"
+	@echo "  make qm_g17_candidate_v2_ds003_mini"
+	@echo "  make qm_g17_candidate_v2_primary"
+	@echo "  make qm_g17_promotion_primary"
 
 gr_official_check:
 	$(PYTHON) scripts/tools/gr_one_command.py official-check --dataset-id $(DS) --seed $(SEED) --phi-scale $(PHI)
@@ -179,3 +183,16 @@ qm_gr_coupling_audit:
 
 qm_g17_diag_ds003:
 	$(PYTHON) scripts/tools/run_g17_diagnosis_v1.py --dataset-id DS-003 --seed-start 3401 --seed-end 3430 --out-dir 05_validation/evidence/artifacts/g17-diagnosis-ds003-v1
+
+qm_stage1_ds003_mini:
+	$(PYTHON) scripts/tools/run_qm_stage1_prereg_v1.py --mode prereg --datasets DS-003 --seed-start 3401 --seed-end 3430 --out-dir 05_validation/evidence/artifacts/qm-stage1-ds003-mini-v1
+
+qm_g17_candidate_v2_ds003_mini:
+	$(PYTHON) scripts/tools/run_qm_g17_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-ds003-mini-v1/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g17-candidate-v2/ds003_s3401_3430
+	$(PYTHON) scripts/tools/evaluate_qm_g17_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v2/ds003_s3401_3430/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/ds003_s3401_3430 --eval-id qm-g17-ds003-mini-v2 --strict-datasets DS-003 --require-zero-degraded --require-per-dataset-nondegrade --require-net-uplift
+
+qm_g17_candidate_v2_primary:
+	$(PYTHON) scripts/tools/run_qm_g17_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g17-candidate-v2/primary_ds002_003_006_s3401_3600
+
+qm_g17_promotion_primary:
+	$(PYTHON) scripts/tools/evaluate_qm_g17_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v2/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/primary_ds002_003_006_s3401_3600 --eval-id qm-g17-primary-v2 --strict-datasets DS-002,DS-003,DS-006 --require-zero-degraded --require-per-dataset-nondegrade --require-net-uplift

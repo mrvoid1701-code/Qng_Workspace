@@ -1,0 +1,16 @@
+{
+  "mode": "prereg",
+  "generated_utc": "2026-03-02T14:32:42.618777Z",
+  "datasets": [
+    "DS-003"
+  ],
+  "seed_start": 3401,
+  "seed_end": 3430,
+  "profiles": 30,
+  "strict_prereg": false,
+  "runner": "run_qm_stage1_prereg_v1.py",
+  "notes": [
+    "Runs G17..G20 via run_qm_lane_check_v1.py per dataset/seed profile.",
+    "QM lane is separated from GR official pass/fail decisions."
+  ]
+}
