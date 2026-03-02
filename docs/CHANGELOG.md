@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-03-02 - G17 DS-003 mini-sprint diagnosis (3401..3430)
+
+- Added G17 diagnosis runner:
+  - `scripts/tools/run_g17_diagnosis_v1.py`
+- Added one-command target:
+  - `Makefile` (`qm_g17_diag_ds003`)
+- Executed DS-003 seed block (`3401..3430`) diagnosis package:
+  - `05_validation/evidence/artifacts/g17-diagnosis-ds003-v1/`
+  - result: `G17 pass=20/30`, `fail=10/30`
+  - component split: `G17a fail=10`, `G17b/c/d fail=0`
+  - taxonomy: `multipeak_mode_mixing=10`
+- Updated reproducibility commands:
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-02 - QM-Stage-1 prereg scaffold + coupling audit tooling
 
 - Added QM-Stage-1 prereg runner:

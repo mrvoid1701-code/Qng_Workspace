@@ -19,6 +19,7 @@ make gr_stage3_eval
 make qm_lane_check DS=DS-002 SEED=3401
 make qm_stage1_smoke
 make qm_gr_coupling_audit_smoke
+make qm_g17_diag_ds003
 ```
 
 Python fallback (if `make` is unavailable):
@@ -727,3 +728,18 @@ QM-GR coupling audit (G20 + Stage-3 GR guard stability):
 ```bash
 python scripts/tools/run_qm_gr_coupling_audit_v1.py --mode smoke --datasets DS-002,DS-003,DS-006 --out-dir 05_validation/evidence/artifacts/qm-gr-coupling-audit-smoke-v1 --gr-baseline-json 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json --gr-summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv
 ```
+
+## 34) G17 DS-003 mini-sprint diagnosis (seeds 3401..3430)
+
+Run targeted diagnosis batch:
+
+```bash
+python scripts/tools/run_g17_diagnosis_v1.py --dataset-id DS-003 --seed-start 3401 --seed-end 3430 --out-dir 05_validation/evidence/artifacts/g17-diagnosis-ds003-v1
+```
+
+Key outputs:
+
+- `05_validation/evidence/artifacts/g17-diagnosis-ds003-v1/summary.csv`
+- `05_validation/evidence/artifacts/g17-diagnosis-ds003-v1/class_summary.csv`
+- `05_validation/evidence/artifacts/g17-diagnosis-ds003-v1/feature_correlations.csv`
+- `05_validation/evidence/artifacts/g17-diagnosis-ds003-v1/report.md`

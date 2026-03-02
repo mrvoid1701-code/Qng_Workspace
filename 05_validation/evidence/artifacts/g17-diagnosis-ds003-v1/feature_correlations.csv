@@ -1,0 +1,12 @@
+feature,corr_fail_indicator,delta_fail_minus_pass
+spectral_gap,-0.843137,-0.002764
+mu_12_spacing,0.606763,0.002001
+mu_min_spacing,0.271514,0.000607
+sigma_peak2_to_peak1,0.132571,0.001703
+sigma_mean,0.118769,0.003699
+mu_degenerate_pairs_eps1e3,-0.099340,-0.150000
+peak12_distance_norm,-0.081414,-0.006427
+multi_peak_score,-0.078745,-0.006160
+sigma_var,-0.044135,-0.000332
+sigma_p90_mean,-0.028051,-0.000573
+heisenberg_dev,0.000000,0.000000
