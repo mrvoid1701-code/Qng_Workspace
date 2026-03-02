@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-03-02 - GR Stage-2 prereg execution record (600 profiles)
+
+- Executed frozen Stage-2 grid:
+  - datasets: `DS-002/003/006`
+  - seeds: `3401..3600`
+  - profiles: `600`
+- Added evidence package:
+  - `05_validation/evidence/artifacts/gr-stage2-prereg-v1/summary.csv`
+  - `05_validation/evidence/artifacts/gr-stage2-prereg-v1/dataset_summary.csv`
+  - `05_validation/evidence/artifacts/gr-stage2-prereg-v1/report.md`
+  - `05_validation/evidence/artifacts/gr-stage2-prereg-v1/prereg_manifest.json`
+- Updated protocol doc with execution record:
+  - `docs/GR_STAGE2_PREREG.md`
+
 ## 2026-03-02 - GR Stage-2 prereg tooling + QM lane split
 
 - Added GR Stage-2 prereg runner with one-summary CSV:

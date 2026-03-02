@@ -70,3 +70,15 @@ python scripts/tools/run_gr_stage2_prereg_v1.py --mode prereg --datasets DS-002,
 - Stage-2 does not replace Stage-1 official GR decisions automatically.
 - Promotion to official expanded GR scope requires explicit closure criteria and separate decision record after this prereg run.
 - QM gates (`G17..G20`) remain in a separate lane during Stage-2.
+
+## Execution Record (2026-03-02)
+
+Full prereg run was executed with frozen settings:
+
+- output root: `05_validation/evidence/artifacts/gr-stage2-prereg-v1/`
+- profiles: `600` (`DS-002/003/006`, seeds `3401..3600`)
+- lane pass counts:
+  - `lane_3p1`: `581/600`
+  - `lane_strong_field`: `585/600`
+  - `lane_tensor`: `600/600`
+- `stage2_pass`: `570/600`
