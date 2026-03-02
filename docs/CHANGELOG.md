@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-03-02 - Stage-2 full rerun confirmation on official-v3 mapping (600 profiles)
+
+- Executed full strict rerun on frozen prereg grid:
+  - `05_validation/evidence/artifacts/gr-stage2-prereg-rerun-v3-600-v1/`
+  - result: `stage2_pass=570/600` (same as frozen prereg package)
+- Re-applied governance v2 and v3 on rerun outputs:
+  - `05_validation/evidence/artifacts/gr-stage2-official-v2-rerun-v3-600-v1/`
+  - `05_validation/evidence/artifacts/gr-stage2-official-v3-rerun-v3-600-v1/`
+  - official-v3 result: `594/600`, `improved_vs_v2=7`, `degraded_vs_v2=0`
+- Added explicit rerun decision note:
+  - `05_validation/evidence/artifacts/gr-stage2-official-v3-rerun-v3-600-v1/rerun_decision.md`
+- Added consistency guard package against frozen official-v3 baseline:
+  - `05_validation/evidence/artifacts/gr-stage2-official-v3-rerun-v3-600-v1/consistency_guard/`
+  - decision: `PASS` with zero mismatches
+
 ## 2026-03-02 - Stage-2 official governance switch to G11a-v3
 
 - Added Stage-2 official policy applier:
