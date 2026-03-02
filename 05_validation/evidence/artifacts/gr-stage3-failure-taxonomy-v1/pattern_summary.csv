@@ -1,0 +1,4 @@
+fail_pattern,count,rate_pct
+G11,15,50.000
+G12,11,36.667
+G11+G12,4,13.333

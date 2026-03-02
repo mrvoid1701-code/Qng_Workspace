@@ -6,6 +6,8 @@
   - `scripts/tools/run_gr_stage3_prereg_v1.py`
 - Added Stage-3 prereg evaluator:
   - `scripts/tools/evaluate_gr_stage3_prereg_v1.py`
+- Added Stage-3 strict failure taxonomy analyzer:
+  - `scripts/tools/analyze_stage3_failures_v1.py`
 - Added Stage-3 protocol docs:
   - `docs/GR_STAGE3_PREREG.md`
   - `05_validation/pre-registrations/gr-stage3-prereg-v1.md`
@@ -18,9 +20,15 @@
 - Added Stage-3 primary evaluation package:
   - `05_validation/evidence/artifacts/gr-stage3-prereg-eval-v1/primary_ds002_003_006_s3401_3600/`
   - recommendation: `HOLD`
+- Added Stage-3 failure taxonomy package:
+  - `05_validation/evidence/artifacts/gr-stage3-failure-taxonomy-v1/`
+  - strict fail scope: `30` profiles
+- Added Stage-3 G11/G12 candidate-v2 prereg proposal:
+  - `05_validation/pre-registrations/gr-stage3-g11-g12-candidate-v2.md`
 - Added Stage-3 make targets:
   - `gr_stage3_smoke`
   - `gr_stage3_prereg`
+  - `gr_stage3_taxonomy`
   - `gr_stage3_eval`
 - Updated references and reproducibility docs:
   - `README.md`

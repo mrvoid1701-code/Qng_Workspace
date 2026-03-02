@@ -14,6 +14,7 @@ make gr_stage2_smoke
 make gr_stage2_prereg
 make gr_stage3_smoke
 make gr_stage3_prereg
+make gr_stage3_taxonomy
 make gr_stage3_eval
 make qm_lane_check DS=DS-002 SEED=3401
 ```
@@ -28,6 +29,7 @@ python scripts/tools/run_gr_stage2_prereg_v1.py --mode smoke
 python scripts/tools/run_gr_stage2_prereg_v1.py --mode prereg --datasets DS-002,DS-003,DS-006 --seed-start 3401 --seed-end 3600 --strict-prereg
 python scripts/tools/run_gr_stage3_prereg_v1.py --mode smoke
 python scripts/tools/run_gr_stage3_prereg_v1.py --mode prereg --datasets DS-002,DS-003,DS-006 --seed-start 3401 --seed-end 3600 --strict-prereg
+python scripts/tools/analyze_stage3_failures_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage3-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-failure-taxonomy-v1
 python scripts/tools/evaluate_gr_stage3_prereg_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage3-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-prereg-eval-v1/primary_ds002_003_006_s3401_3600 --eval-id gr-stage3-prereg-eval-v1
 python scripts/tools/run_qm_lane_check_v1.py --dataset-id DS-002 --seed 3401
 ```
@@ -562,3 +564,24 @@ Main outputs:
 - `05_validation/evidence/artifacts/gr-stage3-prereg-eval-v1/primary_ds002_003_006_s3401_3600/fail_patterns.csv`
 - `05_validation/evidence/artifacts/gr-stage3-prereg-eval-v1/primary_ds002_003_006_s3401_3600/report.md`
 - `05_validation/evidence/artifacts/gr-stage3-prereg-eval-v1/primary_ds002_003_006_s3401_3600/decision.md`
+
+## 26) Stage-3 failure taxonomy (strict fail scope) + candidate-v2 prereg
+
+Run strict taxonomy over Stage-3 fails:
+
+```bash
+python scripts/tools/analyze_stage3_failures_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage3-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-failure-taxonomy-v1
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/gr-stage3-failure-taxonomy-v1/fail_profiles.csv`
+- `05_validation/evidence/artifacts/gr-stage3-failure-taxonomy-v1/class_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage3-failure-taxonomy-v1/pattern_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage3-failure-taxonomy-v1/feature_correlations.csv`
+- `05_validation/evidence/artifacts/gr-stage3-failure-taxonomy-v1/report.md`
+- `05_validation/evidence/artifacts/gr-stage3-failure-taxonomy-v1/candidate_v2_proposal.md`
+
+Candidate-v2 prereg document (no official switch yet):
+
+- `05_validation/pre-registrations/gr-stage3-g11-g12-candidate-v2.md`

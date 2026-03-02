@@ -98,3 +98,8 @@ Primary-grid evaluation package:
 
 - `05_validation/evidence/artifacts/gr-stage3-prereg-eval-v1/primary_ds002_003_006_s3401_3600/`
 - recommendation: `HOLD` (candidate lane remains non-official)
+
+Strict failure taxonomy + candidate-v2 proposal package:
+
+- `05_validation/evidence/artifacts/gr-stage3-failure-taxonomy-v1/`
+- candidate prereg: `05_validation/pre-registrations/gr-stage3-g11-g12-candidate-v2.md`

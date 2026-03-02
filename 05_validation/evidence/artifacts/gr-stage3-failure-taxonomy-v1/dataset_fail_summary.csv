@@ -1,0 +1,4 @@
+dataset_id,n_profiles,stage3_fail,g11_fail,g12_fail,multi_peak_count,low_signal_count,sparse_graph_count
+DS-002,200,9,5,5,140,0,0
+DS-003,200,15,12,6,128,0,150
+DS-006,200,6,2,4,143,150,0
