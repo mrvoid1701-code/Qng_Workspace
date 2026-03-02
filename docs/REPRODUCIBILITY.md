@@ -389,3 +389,19 @@ Outputs:
 - `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check/mismatches.csv`
 - `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check/regression_report.md`
 - `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check/regression_report.json`
+
+## 19) GR Stage-2 G11 fail-only taxonomy (official-v2)
+
+Run strict taxonomy over official-v2 `G11` fails:
+
+```bash
+python scripts/tools/analyze_gr_stage2_g11_official_fails_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v2/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v2
+```
+
+Outputs:
+
+- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v2/g11_fail_cases.csv`
+- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v2/dataset_fail_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v2/pattern_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v2/dataset_thresholds.csv`
+- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v2/report.md`

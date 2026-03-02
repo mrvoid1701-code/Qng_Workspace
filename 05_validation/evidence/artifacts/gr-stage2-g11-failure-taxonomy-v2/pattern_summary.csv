@@ -1,0 +1,10 @@
+kind,pattern,count,rate_pct
+root_cause,low_signal_weak_corr,6,46.154
+root_cause,weak_high_signal_corr,4,30.769
+root_cause,multi_peak_weak_corr,2,15.385
+root_cause,g11b_slope_fail,1,7.692
+flag_hit_count,flag_weak_high_signal_corr,12,92.308
+flag_hit_count,flag_low_signal,6,46.154
+flag_hit_count,flag_multi_peak,6,46.154
+flag_hit_count,flag_sparse_graph,1,7.692
+flag_hit_count,flag_degenerate_geometry,2,15.385

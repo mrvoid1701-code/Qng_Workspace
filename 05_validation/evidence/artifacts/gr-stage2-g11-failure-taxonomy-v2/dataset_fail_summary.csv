@@ -1,0 +1,4 @@
+dataset_id,g11_fail_count,weak_corr_count,low_signal_count,multi_peak_count,sparse_graph_count,degenerate_geometry_count,r_std_median,r_p90_abs_median
+DS-002,3,2,1,2,0,0,1.792539,7.666667
+DS-003,8,8,5,3,1,2,1.622508,6.279220
+DS-006,2,2,0,1,0,0,2.018285,8.635151

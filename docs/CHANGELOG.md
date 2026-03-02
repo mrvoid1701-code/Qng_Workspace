@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-03-02 - Stage-2 G11 fail-only taxonomy (official-v2)
+
+- Added strict fail-only analyzer:
+  - `scripts/tools/analyze_gr_stage2_g11_official_fails_v1.py`
+- Generated evidence package:
+  - `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v2/g11_fail_cases.csv`
+  - `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v2/dataset_fail_summary.csv`
+  - `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v2/pattern_summary.csv`
+  - `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v2/report.md`
+- Added one-command target and reproducibility section:
+  - `Makefile` (`gr_stage2_g11_taxonomy_v2`)
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-02 - Stage-2 baseline/guard refresh (official policy)
 
 - Added Stage-2 baseline builder:
