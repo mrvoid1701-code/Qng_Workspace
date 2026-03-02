@@ -1,7 +1,7 @@
 # QM G17 Candidate-v2 Pre-Registration (Hybrid Local-Gap Policy)
 
-Date: 2026-03-02  
-Status: candidate-only (does not replace G17-v1 by default)
+Date: 2026-03-02
+Status: **PROMOTED → official policy as of 2026-03-02** (`qm-stage1-g17-v2-official`)
 
 ## Why This Candidate Exists
 
@@ -76,3 +76,34 @@ Primary uplift:
 
 4. `improved_vs_v1 > 0` on primary for `G17`.
 5. `improved_vs_v1 > 0` on primary for `QM_LANE` (if applicable).
+
+## Execution Closure (2026-03-02)
+
+All prereg blocks executed and evaluated via `evaluate_qm_g17_promotion_v1.py`:
+
+**Primary** (`DS-002,DS-003,DS-006`, seeds `3401..3600`):
+- G17: `439 → 564/600` (+125 improved, **0 degraded**) ✓
+- QM lane: `411 → 513/600` (+102 improved, **0 degraded**) ✓
+- eval: `05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/primary_ds002_003_006_s3401_3600/report.json`
+
+**Attack A** (`DS-002,DS-003,DS-006`, seeds `3601..4100`):
+- G17: `1092 → 1416/1500` (+324 improved, **0 degraded**) ✓
+- QM lane: `1017 → 1255/1500` (+238 improved, **0 degraded**) ✓
+- eval: `05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100/report.json`
+
+**Attack B holdout** (`DS-004,DS-008`, seeds `3401..3600`):
+- G17: `356 → 400/400` (**100%**, +44 improved, **0 degraded**) ✓
+- QM lane: `322 → 360/400` (+38 improved, **0 degraded**) ✓
+- eval: `05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600/report.json`
+
+**GR coupling audit** (smoke, post-G17-v2):
+- guard-pre: PASS, G20 on DS-002/003/006 seed 3401: 3/3 pass, guard-post: PASS
+- GR Stage-3 baseline unaffected ✓
+- artifacts: `05_validation/evidence/artifacts/qm-gr-coupling-audit-post-g17v2-smoke-v1/`
+
+**Policy verdict: PROMOTED**
+- all blocks: `degraded = 0` (mandatory criteria satisfied)
+- per-dataset non-degradation: satisfied in all blocks
+- primary net uplift: satisfied (G17 +20.8pp, QM lane +17.0pp)
+- G17-v1 retained as legacy diagnostic column
+- G17-v2 is now the decision gate in QM Stage-1 official policy

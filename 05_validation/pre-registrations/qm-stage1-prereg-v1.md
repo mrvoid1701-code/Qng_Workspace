@@ -1,8 +1,21 @@
 # QM-Stage-1 Pre-Registration (Frozen Protocol v1)
 
-Date: 2026-03-02  
-Stage ID: `QM-Stage-1`  
-Status: prereg scaffold (separate lane from GR official decisions)
+Date: 2026-03-02
+Stage ID: `QM-Stage-1`
+Status: **OFFICIAL — G17-v2 promoted 2026-03-02** (`qm-stage1-g17-v2-official`)
+
+## Official Switch Summary (2026-03-02)
+
+G17-v2 (hybrid local-gap policy) promoted to official decision gate following successful
+completion of all pre-registered evaluation blocks. GR Stage-3 baseline unaffected.
+
+| Block | G17 | QM Lane | Degraded |
+|---|---|---|---|
+| Primary (600) | 439→564 (+20.8pp) | 411→513 (+17.0pp) | 0 |
+| Attack-seed500 (1500) | 1092→1416 (+21.6pp) | 1017→1255 (+15.9pp) | 0 |
+| Holdout DS-004/008 (400) | 356→400 (100%) | 322→360 (+9.5pp) | 0 |
+
+G17-v1 retained as legacy diagnostic column. GR coupling audit: guard-pre/post both PASS.
 
 ## Goal
 
