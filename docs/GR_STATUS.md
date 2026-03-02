@@ -2,6 +2,7 @@
 
 Date: 2026-03-02
 Status owner: QNG GR/PPN lane
+Freeze contract: `docs/GR_STAGE1_FREEZE.md`
 
 ## What "GR-like" Means In This Repo
 
@@ -62,4 +63,3 @@ Frozen metadata:
 - GR guard against official baseline: `PASS`
 - Latest run artifact:
   - `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/regression_report.json`
-

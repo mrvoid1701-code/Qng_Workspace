@@ -42,6 +42,7 @@ python scripts/run_qng_covariant_metric_v1.py --dataset-id DS-002 --seed 3401
 - `docs/GATES.md` gate map G1..G20 and runner mapping
 - `docs/GR_STATUS.md` GR status snapshot in 60 seconds
 - `docs/GR_COMMITMENTS.md` frozen physics-facing scope commitments
+- `docs/GR_STAGE1_FREEZE.md` internal release freeze scope/guarantees/non-claims
 
 ## Housekeeping Policy
 

@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-03-02 - GR Stage-1 internal freeze
+
+- Added internal freeze page:
+  - `docs/GR_STAGE1_FREEZE.md`
+- Linked freeze page from repository index:
+  - `README.md`
+- Updated roadmap to reflect:
+  - Stage-1 frozen scope
+  - Stage-2 prereg as next GR expansion
+  - QM lane separation until Stage-2 closure
+
 ## 2026-03-02 - GR status + one-command reproducibility + commitments freeze
 
 - Added short GR status page:
