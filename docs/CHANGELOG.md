@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-03-02 - GR Stage-2 prereg tooling + QM lane split
+
+- Added GR Stage-2 prereg runner with one-summary CSV:
+  - `scripts/tools/run_gr_stage2_prereg_v1.py`
+- Added QM standalone lane runner:
+  - `scripts/tools/run_qm_lane_check_v1.py`
+- Added Stage-2 prereg doc:
+  - `docs/GR_STAGE2_PREREG.md`
+- Added QM lane separation policy:
+  - `docs/QM_LANE_POLICY.md`
+- Extended reproducibility command set:
+  - `Makefile`
+  - `docs/REPRODUCIBILITY.md`
+- Updated gate/docs index pointers:
+  - `docs/GATES.md`
+  - `README.md`
+
 ## 2026-03-02 - GR Stage-1 internal freeze
 
 - Added internal freeze page:

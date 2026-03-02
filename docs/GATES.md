@@ -41,4 +41,7 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 - `G16b-v2` remains candidate diagnostic component (used by official hybrid only in low-signal regime).
 - Effective date for `G16b` official hybrid switch: `2026-03-02`.
 - Freeze reference tags: `gr-ppn-g15b-v2-official`, `pre-g16b-hybrid-official`, `gr-g16b-hybrid-official` (see `docs/CHANGELOG.md`).
+- `GR-Stage-1` freeze contract: `docs/GR_STAGE1_FREEZE.md`.
+- `GR-Stage-2` prereg expansion lane (strong-field + 3+1 + tensor): `docs/GR_STAGE2_PREREG.md`.
+- QM decision criteria are tracked in a separate lane: `docs/QM_LANE_POLICY.md`.
 

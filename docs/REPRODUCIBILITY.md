@@ -10,6 +10,9 @@ Quick commands:
 make gr_official_check DS=DS-003 SEED=3520
 make gr_baseline_guard
 make gr_sweep_phi
+make gr_stage2_smoke
+make gr_stage2_prereg
+make qm_lane_check DS=DS-002 SEED=3401
 ```
 
 Python fallback (if `make` is unavailable):
@@ -18,6 +21,9 @@ Python fallback (if `make` is unavailable):
 python scripts/tools/gr_one_command.py official-check --dataset-id DS-003 --seed 3520
 python scripts/tools/gr_one_command.py baseline-guard
 python scripts/tools/gr_one_command.py sweep-phi
+python scripts/tools/run_gr_stage2_prereg_v1.py --mode smoke
+python scripts/tools/run_gr_stage2_prereg_v1.py --mode prereg --datasets DS-002,DS-003,DS-006 --seed-start 3401 --seed-end 3600 --strict-prereg
+python scripts/tools/run_qm_lane_check_v1.py --dataset-id DS-002 --seed 3401
 ```
 
 ## 1) Rerun G10..G16 for a fixed dataset + seed
@@ -235,3 +241,37 @@ python scripts/tools/evaluate_g16b_hybrid_promotion_v1.py --summary-csv 05_valid
 Decision summary:
 
 - `05_validation/evidence/artifacts/g16b-hybrid-promotion-eval-v1/promotion_decision.md`
+
+## 12) GR Stage-2 prereg lane (strong-field + 3+1 + tensor)
+
+Protocol:
+
+- `docs/GR_STAGE2_PREREG.md`
+
+Runner:
+
+```bash
+python scripts/tools/run_gr_stage2_prereg_v1.py --mode smoke
+python scripts/tools/run_gr_stage2_prereg_v1.py --mode prereg --datasets DS-002,DS-003,DS-006 --seed-start 3401 --seed-end 3600 --strict-prereg
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/gr-stage2-smoke-v1/summary.csv`
+- `05_validation/evidence/artifacts/gr-stage2-prereg-v1/summary.csv`
+
+## 13) QM lane standalone checks (separate from GR decisions)
+
+Policy:
+
+- `docs/QM_LANE_POLICY.md`
+
+Runner:
+
+```bash
+python scripts/tools/run_qm_lane_check_v1.py --dataset-id DS-002 --seed 3401
+```
+
+Main output:
+
+- `07_exports/repro/qm_lane_check/<dataset_seed_tag>/summary.csv`

@@ -47,3 +47,7 @@ Planned next stage (not yet claimed as validated):
 3. full tensor-mode validation,
 4. then QM bridge extension on top of that frozen GR stage.
 
+Protocol pointer:
+
+- `docs/GR_STAGE2_PREREG.md`
+- `docs/QM_LANE_POLICY.md`
