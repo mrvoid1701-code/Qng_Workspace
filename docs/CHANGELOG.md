@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-03-02 - Stage-2 G11/G12 candidate eval v2 (high-signal correlation rule)
+
+- Added revised candidate eval runner:
+  - `scripts/tools/run_gr_stage2_g11_g12_candidate_eval_v2.py`
+- Added revised candidate prereg:
+  - `05_validation/pre-registrations/gr-stage2-g11-g12-candidate-v2.md`
+- Executed and stored revised candidate eval outputs:
+  - `05_validation/evidence/artifacts/gr-stage2-g11-g12-candidate-eval-v2/`
+  - `05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v2/`
+- Added revised promotion decision summary:
+  - `05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v2/promotion_decision.md`
+- Updated reproducibility and one-command targets:
+  - `docs/REPRODUCIBILITY.md`
+  - `docs/GR_STAGE2_PREREG.md`
+  - `Makefile` (`gr_stage2_candidate_v2_primary`)
+
 ## 2026-03-02 - Stage-2 G11/G12 candidate eval (primary + attacks)
 
 - Added candidate eval runner:
