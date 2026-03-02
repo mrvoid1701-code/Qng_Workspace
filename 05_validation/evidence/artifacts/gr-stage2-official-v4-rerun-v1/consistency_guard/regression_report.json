@@ -1,7 +1,7 @@
 {
-  "generated_utc": "2026-03-02T10:20:26.746414Z",
+  "generated_utc": "2026-03-02T10:19:52.732982Z",
   "baseline_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/gr_stage2_baseline_official.json",
-  "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage2-official-v4/summary.csv",
+  "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage2-official-v4-rerun-v1/summary.csv",
   "baseline_id": "gr-stage2-official-baseline-v1",
   "effective_tag": "gr-stage2-g11-v4-official",
   "profiles_total": 600,

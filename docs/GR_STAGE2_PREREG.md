@@ -108,3 +108,12 @@ Stage-2 governance was further hardened by promoting `G11a-v3` while keeping `G1
 - effective tag: `gr-stage2-g11-v3-official`
 - official policy runner: `scripts/tools/run_gr_stage2_official_v3.py`
 - official package: `05_validation/evidence/artifacts/gr-stage2-official-v3/`
+
+## Governance Update (2026-03-02, G11a-v4)
+
+Stage-2 governance was hardened again by promoting `G11a-v4` while keeping `G12d-v2` frozen:
+
+- policy doc: `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md`
+- effective tag: `gr-stage2-g11-v4-official`
+- official policy runner: `scripts/tools/run_gr_stage2_official_v4.py`
+- official package: `05_validation/evidence/artifacts/gr-stage2-official-v4/`

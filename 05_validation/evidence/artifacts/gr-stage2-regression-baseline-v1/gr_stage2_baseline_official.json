@@ -1,6 +1,6 @@
 {
   "baseline_id": "gr-stage2-official-baseline-v1",
-  "effective_tag": "gr-stage2-g11-v3-official",
+  "effective_tag": "gr-stage2-g11-v4-official",
   "effective_commit": "",
   "effective_date_utc": "",
   "notes": [
@@ -4970,13 +4970,13 @@
       "dataset_id": "DS-003",
       "seed": 3413,
       "g10_status": "pass",
-      "g11_status": "fail",
+      "g11_status": "pass",
       "g12_status": "pass",
       "g7_status": "pass",
-      "lane_3p1_status": "fail",
+      "lane_3p1_status": "pass",
       "lane_strong_field_status": "pass",
       "lane_tensor_status": "pass",
-      "stage2_status": "fail"
+      "stage2_status": "pass"
     },
     {
       "dataset_id": "DS-003",
@@ -5702,13 +5702,13 @@
       "dataset_id": "DS-003",
       "seed": 3474,
       "g10_status": "pass",
-      "g11_status": "fail",
+      "g11_status": "pass",
       "g12_status": "pass",
       "g7_status": "pass",
-      "lane_3p1_status": "fail",
+      "lane_3p1_status": "pass",
       "lane_strong_field_status": "pass",
       "lane_tensor_status": "pass",
-      "stage2_status": "fail"
+      "stage2_status": "pass"
     },
     {
       "dataset_id": "DS-003",
@@ -7082,13 +7082,13 @@
       "dataset_id": "DS-003",
       "seed": 3589,
       "g10_status": "pass",
-      "g11_status": "fail",
+      "g11_status": "pass",
       "g12_status": "pass",
       "g7_status": "pass",
-      "lane_3p1_status": "fail",
+      "lane_3p1_status": "pass",
       "lane_strong_field_status": "pass",
       "lane_tensor_status": "pass",
-      "stage2_status": "fail"
+      "stage2_status": "pass"
     },
     {
       "dataset_id": "DS-003",

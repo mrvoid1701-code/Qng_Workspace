@@ -1,5 +1,9 @@
 # GR Stage-2 Official Switch (G11a-v3 + G12d-v2 frozen)
 
+Superseded on 2026-03-02 by `G11a-v4` governance update:
+
+- `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md`
+
 Date: 2026-03-02  
 Effective tag: `gr-stage2-g11-v3-official`
 

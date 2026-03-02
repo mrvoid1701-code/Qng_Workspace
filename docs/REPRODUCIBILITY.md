@@ -353,33 +353,33 @@ Decision summary:
 
 - `05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v2/promotion_decision.md`
 
-## 17) GR Stage-2 official policy application (G11a-v3 switch)
+## 17) GR Stage-2 official policy application (G11a-v4 switch)
 
-Apply official Stage-2 mapping on frozen official-v2 summary profiles:
+Apply official Stage-2 mapping on frozen official-v3 summary profiles:
 
 ```bash
-python scripts/tools/run_gr_stage2_official_v3.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v2/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-official-v3 --policy-id gr-stage2-official-v3 --effective-tag gr-stage2-g11-v3-official
+python scripts/tools/run_gr_stage2_official_v4.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v3/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-official-v4 --policy-id gr-stage2-official-v4 --effective-tag gr-stage2-g11-v4-official
 ```
 
 Outputs:
 
-- `05_validation/evidence/artifacts/gr-stage2-official-v3/summary.csv`
-- `05_validation/evidence/artifacts/gr-stage2-official-v3/dataset_summary.csv`
-- `05_validation/evidence/artifacts/gr-stage2-official-v3/report.md`
-- `05_validation/evidence/artifacts/gr-stage2-official-v3/official_manifest.json`
+- `05_validation/evidence/artifacts/gr-stage2-official-v4/summary.csv`
+- `05_validation/evidence/artifacts/gr-stage2-official-v4/dataset_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage2-official-v4/report.md`
+- `05_validation/evidence/artifacts/gr-stage2-official-v4/official_manifest.json`
 
 ## 18) GR Stage-2 baseline build + regression guard
 
 Build frozen Stage-2 baseline from official summary:
 
 ```bash
-python scripts/tools/build_gr_stage2_baseline_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v3/summary.csv --out-json 05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/gr_stage2_baseline_official.json --baseline-id gr-stage2-official-baseline-v1 --effective-tag gr-stage2-g11-v3-official
+python scripts/tools/build_gr_stage2_baseline_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v4/summary.csv --out-json 05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/gr_stage2_baseline_official.json --baseline-id gr-stage2-official-baseline-v1 --effective-tag gr-stage2-g11-v4-official
 ```
 
 Run Stage-2 guard:
 
 ```bash
-python scripts/tools/run_gr_stage2_regression_guard_v1.py --baseline-json 05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/gr_stage2_baseline_official.json --summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v3/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check
+python scripts/tools/run_gr_stage2_regression_guard_v1.py --baseline-json 05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/gr_stage2_baseline_official.json --summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v4/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check
 ```
 
 Outputs:
@@ -390,21 +390,21 @@ Outputs:
 - `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check/regression_report.md`
 - `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check/regression_report.json`
 
-## 19) GR Stage-2 G11 fail-only taxonomy (official-v3)
+## 19) GR Stage-2 G11 fail-only taxonomy (official-v4)
 
-Run strict taxonomy over official-v3 `G11` fails:
+Run strict taxonomy over official-v4 `G11` fails:
 
 ```bash
-python scripts/tools/analyze_gr_stage2_g11_official_fails_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v3/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v3
+python scripts/tools/analyze_gr_stage2_g11_official_fails_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v4/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v4
 ```
 
 Outputs:
 
-- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v3/g11_fail_cases.csv`
-- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v3/dataset_fail_summary.csv`
-- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v3/pattern_summary.csv`
-- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v3/dataset_thresholds.csv`
-- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v3/report.md`
+- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v4/g11_fail_cases.csv`
+- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v4/dataset_fail_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v4/pattern_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v4/dataset_thresholds.csv`
+- `05_validation/evidence/artifacts/gr-stage2-g11-failure-taxonomy-v4/report.md`
 
 ## 20) GR Stage-2 G11a-v3 candidate prereg evaluation
 
@@ -497,3 +497,24 @@ Decision summary:
 
 - `05_validation/pre-registrations/gr-stage2-g11-candidate-v4.md`
 - `05_validation/evidence/artifacts/gr-stage2-g11-v4-promotion-eval-v1/promotion_decision.md`
+
+## 23) Governance switch execution record (official-v4)
+
+Apply official-v4 on frozen official-v3 rerun package:
+
+```bash
+python scripts/tools/run_gr_stage2_official_v4.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v3-rerun-v3-600-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-official-v4-rerun-v1 --policy-id gr-stage2-official-v4-rerun-v1 --effective-tag gr-stage2-g11-v4-official
+```
+
+Consistency check vs refreshed official-v4 baseline:
+
+```bash
+python scripts/tools/run_gr_stage2_regression_guard_v1.py --baseline-json 05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/gr_stage2_baseline_official.json --summary-csv 05_validation/evidence/artifacts/gr-stage2-official-v4-rerun-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-official-v4-rerun-v1/consistency_guard
+```
+
+Key outputs:
+
+- `05_validation/evidence/artifacts/gr-stage2-official-v4/report.md`
+- `05_validation/evidence/artifacts/gr-stage2-official-v4-rerun-v1/report.md`
+- `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check/regression_report.json`
+- `05_validation/evidence/artifacts/gr-stage2-official-v4-rerun-v1/consistency_guard/regression_report.json`

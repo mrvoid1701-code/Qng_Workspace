@@ -25,9 +25,9 @@ The GR-like chain is currently defined by gates `G10..G16`:
   - high-signal -> `G16b-v1` branch
 - `G16b legacy diagnostic`: `G16b-v1`
 - `G16b candidate component`: `G16b-v2`
-- `GR-Stage-2 official policy`: `G11a-v3 + G12d-v2` governance mapping
-  - effective tag: `gr-stage2-g11-v3-official`
-  - source decision: `docs/GR_STAGE2_G11_V3_OFFICIAL_SWITCH.md`
+- `GR-Stage-2 official policy`: `G11a-v4 + G12d-v2` governance mapping
+  - effective tag: `gr-stage2-g11-v4-official`
+  - source decision: `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md`
 
 ## Baseline Used For Guard
 
@@ -66,10 +66,15 @@ Frozen metadata:
 - Source: `05_validation/evidence/artifacts/g16b-hybrid-promotion-eval-v1/`.
 
 4. Stage-2 official closure
-- Governance switch over frozen official-v2 summary (`n=600`):
-  - `G11`: `587/600 -> 594/600`
-  - `STAGE2`: `587/600 -> 594/600` (`99.0%`, degraded `0`)
-- Source: `05_validation/evidence/artifacts/gr-stage2-official-v3/`.
+- Governance switch over frozen official-v3 summary (`n=600`):
+  - `G11`: `594/600 -> 597/600`
+  - `STAGE2`: `594/600 -> 597/600` (`99.5%`, degraded `0`)
+- Source: `05_validation/evidence/artifacts/gr-stage2-official-v4/`.
+
+5. Remaining known limitation classes (primary, v4)
+- `g11b_slope_fail`: `1`
+- `weak_rank_corr`: `2`
+- Source: `05_validation/evidence/artifacts/gr-stage2-g11-candidate-v4/primary_ds002_003_006_s3401_3600/summary.csv`.
 
 ## Current Readout
 

@@ -1,5 +1,37 @@
 # Changelog
 
+## 2026-03-02 - Stage-2 official governance switch to G11a-v4
+
+- Added Stage-2 official policy applier:
+  - `scripts/tools/run_gr_stage2_official_v4.py`
+- Added v4 switch decision record:
+  - `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md`
+- Marked v3 switch record as superseded by v4:
+  - `docs/GR_STAGE2_G11_V3_OFFICIAL_SWITCH.md`
+- Applied official-v4 governance package on frozen official-v3 summary:
+  - `05_validation/evidence/artifacts/gr-stage2-official-v4/`
+  - `G11`: `594/600 -> 597/600`
+  - `STAGE2`: `594/600 -> 597/600`
+  - `degraded_vs_v3=0`
+- Confirmed same result on rerun package:
+  - `05_validation/evidence/artifacts/gr-stage2-official-v4-rerun-v1/`
+  - `STAGE2`: `597/600`, `degraded_vs_v3=0`
+- Refreshed Stage-2 baseline + latest check:
+  - `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/gr_stage2_baseline_official.json`
+  - `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check/regression_report.json` (`PASS`)
+- Updated defaults/targets/docs to v4 paths and effective tag:
+  - `Makefile`
+  - `scripts/tools/build_gr_stage2_baseline_v1.py`
+  - `scripts/tools/run_gr_stage2_regression_guard_v1.py`
+  - `scripts/tools/analyze_gr_stage2_g11_official_fails_v1.py`
+  - `docs/GATES.md`
+  - `docs/GR_STATUS.md`
+  - `docs/GR_STAGE2_PREREG.md`
+  - `docs/GR_COMMITMENTS.md`
+  - `docs/REPRODUCIBILITY.md`
+  - `README.md`
+  - `docs/ROADMAP.md`
+
 ## 2026-03-02 - G11 fail-closure v3 taxonomy + G11a-v4 candidate prereg
 
 - Added strict fail-closure taxonomy script (official-v3 6-fail scope + nearest-pass comparison):

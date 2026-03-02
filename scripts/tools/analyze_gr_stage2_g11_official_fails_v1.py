@@ -34,7 +34,7 @@ DEFAULT_SOURCE_SUMMARY = (
     / "05_validation"
     / "evidence"
     / "artifacts"
-    / "gr-stage2-official-v3"
+    / "gr-stage2-official-v4"
     / "summary.csv"
 )
 DEFAULT_OUT_DIR = (
@@ -42,7 +42,7 @@ DEFAULT_OUT_DIR = (
     / "05_validation"
     / "evidence"
     / "artifacts"
-    / "gr-stage2-g11-failure-taxonomy-v3"
+    / "gr-stage2-g11-failure-taxonomy-v4"
 )
 
 MULTI_PEAK_RATIO_THRESHOLD = 0.98
