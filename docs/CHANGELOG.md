@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-03-02 - Stage-3 prereg scaffold (v1) + smoke execution
+
+- Added Stage-3 prereg runner with one-summary output:
+  - `scripts/tools/run_gr_stage3_prereg_v1.py`
+- Added Stage-3 protocol docs:
+  - `docs/GR_STAGE3_PREREG.md`
+  - `05_validation/pre-registrations/gr-stage3-prereg-v1.md`
+- Added Stage-3 smoke evidence package:
+  - `05_validation/evidence/artifacts/gr-stage3-smoke-v1/`
+  - result: `stage3_pass=3/3` (`DS-002/003/006`, seed `3401`)
+- Added Stage-3 make targets:
+  - `gr_stage3_smoke`
+  - `gr_stage3_prereg`
+- Updated references and reproducibility docs:
+  - `README.md`
+  - `docs/GATES.md`
+  - `docs/GR_COMMITMENTS.md`
+  - `docs/GR_STATUS.md`
+  - `docs/REPRODUCIBILITY.md`
+  - `docs/ROADMAP.md`
+
 ## 2026-03-02 - Stage-2 official governance switch to G11a-v4
 
 - Added Stage-2 official policy applier:

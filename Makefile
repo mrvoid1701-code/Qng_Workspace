@@ -3,7 +3,7 @@ DS ?= DS-003
 SEED ?= 3520
 PHI ?= 0.08
 
-.PHONY: help gr_official_check gr_baseline_guard gr_sweep_phi gr_stage2_smoke gr_stage2_prereg qm_lane_check gr_stage2_taxonomy gr_stage2_candidate_primary gr_stage2_candidate_v2_primary gr_stage2_official_apply gr_stage2_baseline_build gr_stage2_baseline_guard gr_stage2_g11_taxonomy_v2 gr_stage2_g11_taxonomy_v3 gr_stage2_g11_v3_primary
+.PHONY: help gr_official_check gr_baseline_guard gr_sweep_phi gr_stage2_smoke gr_stage2_prereg gr_stage3_smoke gr_stage3_prereg qm_lane_check gr_stage2_taxonomy gr_stage2_candidate_primary gr_stage2_candidate_v2_primary gr_stage2_official_apply gr_stage2_baseline_build gr_stage2_baseline_guard gr_stage2_g11_taxonomy_v2 gr_stage2_g11_taxonomy_v3 gr_stage2_g11_v3_primary
 
 help:
 	@echo "Targets:"
@@ -12,6 +12,8 @@ help:
 	@echo "  make gr_sweep_phi"
 	@echo "  make gr_stage2_smoke"
 	@echo "  make gr_stage2_prereg"
+	@echo "  make gr_stage3_smoke"
+	@echo "  make gr_stage3_prereg"
 	@echo "  make gr_stage2_taxonomy"
 	@echo "  make gr_stage2_candidate_primary"
 	@echo "  make gr_stage2_candidate_v2_primary"
@@ -36,6 +38,12 @@ gr_stage2_smoke:
 
 gr_stage2_prereg:
 	$(PYTHON) scripts/tools/run_gr_stage2_prereg_v1.py --mode prereg --datasets DS-002,DS-003,DS-006 --seed-start 3401 --seed-end 3600 --strict-prereg
+
+gr_stage3_smoke:
+	$(PYTHON) scripts/tools/run_gr_stage3_prereg_v1.py --mode smoke
+
+gr_stage3_prereg:
+	$(PYTHON) scripts/tools/run_gr_stage3_prereg_v1.py --mode prereg --datasets DS-002,DS-003,DS-006 --seed-start 3401 --seed-end 3600 --strict-prereg
 
 gr_stage2_taxonomy:
 	$(PYTHON) scripts/tools/analyze_gr_stage2_failures_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-failure-taxonomy-v1

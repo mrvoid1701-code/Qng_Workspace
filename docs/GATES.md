@@ -48,6 +48,7 @@ Gate map for the core GR/QM chain and metric hardening sequence.
   - effective tag: `gr-stage2-g11-v4-official`
 - `GR-Stage-1` freeze contract: `docs/GR_STAGE1_FREEZE.md`.
 - `GR-Stage-2` prereg expansion lane (strong-field + 3+1 + tensor): `docs/GR_STAGE2_PREREG.md`.
+- `GR-Stage-3` prereg extension lane (adds geometry + conservation checks): `docs/GR_STAGE3_PREREG.md`.
 - Stage-2 official switch records:
   - v2: `docs/GR_STAGE2_OFFICIAL_SWITCH.md`
   - v3: `docs/GR_STAGE2_G11_V3_OFFICIAL_SWITCH.md`

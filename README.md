@@ -44,6 +44,7 @@ python scripts/run_qng_covariant_metric_v1.py --dataset-id DS-002 --seed 3401
 - `docs/GR_COMMITMENTS.md` frozen physics-facing scope commitments
 - `docs/GR_STAGE1_FREEZE.md` internal release freeze scope/guarantees/non-claims
 - `docs/GR_STAGE2_PREREG.md` frozen prereg protocol for strong-field/3+1/tensor expansion
+- `docs/GR_STAGE3_PREREG.md` frozen prereg protocol for Stage-3 lane extension (`G8/G9` added)
 - `docs/GR_STAGE2_OFFICIAL_SWITCH.md` Stage-2 governance switch record (v2)
 - `docs/GR_STAGE2_G11_V3_OFFICIAL_SWITCH.md` Stage-2 governance switch record (v3)
 - `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md` Stage-2 governance switch record (v4)

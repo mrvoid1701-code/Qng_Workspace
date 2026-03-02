@@ -57,4 +57,5 @@ Planned next stage (not yet claimed as validated):
 Protocol pointer:
 
 - `docs/GR_STAGE2_PREREG.md`
+- `docs/GR_STAGE3_PREREG.md`
 - `docs/QM_LANE_POLICY.md`

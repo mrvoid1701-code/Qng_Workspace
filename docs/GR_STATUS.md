@@ -28,6 +28,8 @@ The GR-like chain is currently defined by gates `G10..G16`:
 - `GR-Stage-2 official policy`: `G11a-v4 + G12d-v2` governance mapping
   - effective tag: `gr-stage2-g11-v4-official`
   - source decision: `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md`
+- `GR-Stage-3 prereg lane`: candidate-only extension with added `G8/G9` lanes
+  - protocol: `docs/GR_STAGE3_PREREG.md`
 
 ## Baseline Used For Guard
 
@@ -79,5 +81,6 @@ Frozen metadata:
 ## Current Readout
 
 - GR guard against official baseline: `PASS`
+- GR Stage-3 prereg scaffold: active (candidate lane, no official switch)
 - Latest run artifact:
   - `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/regression_report.json`

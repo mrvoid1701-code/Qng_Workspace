@@ -12,6 +12,8 @@ make gr_baseline_guard
 make gr_sweep_phi
 make gr_stage2_smoke
 make gr_stage2_prereg
+make gr_stage3_smoke
+make gr_stage3_prereg
 make qm_lane_check DS=DS-002 SEED=3401
 ```
 
@@ -23,6 +25,8 @@ python scripts/tools/gr_one_command.py baseline-guard
 python scripts/tools/gr_one_command.py sweep-phi
 python scripts/tools/run_gr_stage2_prereg_v1.py --mode smoke
 python scripts/tools/run_gr_stage2_prereg_v1.py --mode prereg --datasets DS-002,DS-003,DS-006 --seed-start 3401 --seed-end 3600 --strict-prereg
+python scripts/tools/run_gr_stage3_prereg_v1.py --mode smoke
+python scripts/tools/run_gr_stage3_prereg_v1.py --mode prereg --datasets DS-002,DS-003,DS-006 --seed-start 3401 --seed-end 3600 --strict-prereg
 python scripts/tools/run_qm_lane_check_v1.py --dataset-id DS-002 --seed 3401
 ```
 
@@ -518,3 +522,25 @@ Key outputs:
 - `05_validation/evidence/artifacts/gr-stage2-official-v4-rerun-v1/report.md`
 - `05_validation/evidence/artifacts/gr-stage2-regression-baseline-v1/latest_check/regression_report.json`
 - `05_validation/evidence/artifacts/gr-stage2-official-v4-rerun-v1/consistency_guard/regression_report.json`
+
+## 24) GR Stage-3 prereg lane (v1, extended lanes with G8/G9)
+
+Protocol:
+
+- `docs/GR_STAGE3_PREREG.md`
+- `05_validation/pre-registrations/gr-stage3-prereg-v1.md`
+
+Runner:
+
+```bash
+python scripts/tools/run_gr_stage3_prereg_v1.py --mode smoke
+python scripts/tools/run_gr_stage3_prereg_v1.py --mode prereg --datasets DS-002,DS-003,DS-006 --seed-start 3401 --seed-end 3600 --strict-prereg
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/gr-stage3-smoke-v1/summary.csv`
+- `05_validation/evidence/artifacts/gr-stage3-smoke-v1/dataset_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage3-smoke-v1/report.md`
+- `05_validation/evidence/artifacts/gr-stage3-smoke-v1/prereg_manifest.json`
+- `05_validation/evidence/artifacts/gr-stage3-prereg-v1/summary.csv`
