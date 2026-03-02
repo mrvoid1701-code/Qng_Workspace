@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-03-02 - Stage-3 governance switch definition (G11/G12 v2 policy)
+
+- Added Stage-3 official policy applier:
+  - `scripts/tools/run_gr_stage3_official_v2.py`
+- Added Stage-3 official switch record:
+  - `docs/GR_STAGE3_OFFICIAL_SWITCH.md`
+- Updated Stage-3 map/status references:
+  - `docs/GATES.md`
+  - `docs/GR_STATUS.md`
+  - `docs/GR_COMMITMENTS.md`
+  - `docs/ROADMAP.md`
+  - `docs/REPRODUCIBILITY.md`
+- Added Stage-3 one-command target:
+  - `Makefile` (`gr_stage3_official_apply`)
+
 ## 2026-03-02 - Stage-3 prereg scaffold (v1) + full primary run + evaluation
 
 - Added Stage-3 prereg runner with one-summary output:

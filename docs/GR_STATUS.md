@@ -28,8 +28,9 @@ The GR-like chain is currently defined by gates `G10..G16`:
 - `GR-Stage-2 official policy`: `G11a-v4 + G12d-v2` governance mapping
   - effective tag: `gr-stage2-g11-v4-official`
   - source decision: `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md`
-- `GR-Stage-3 prereg lane`: candidate-only extension with added `G8/G9` lanes
-  - protocol: `docs/GR_STAGE3_PREREG.md`
+- `GR-Stage-3 official policy`: `G11/G12` candidate-v2 governance mapping
+  - effective tag: `gr-stage3-g11g12-v2-official`
+  - source decision: `docs/GR_STAGE3_OFFICIAL_SWITCH.md`
 
 ## Baseline Used For Guard
 
@@ -78,15 +79,15 @@ Frozen metadata:
 - `weak_rank_corr`: `2`
 - Source: `05_validation/evidence/artifacts/gr-stage2-g11-candidate-v4/primary_ds002_003_006_s3401_3600/summary.csv`.
 
-6. Stage-3 primary prereg readout (candidate lane)
-- `stage3_pass`: `570/600` (`95.0%`)
-- `G7/G8/G9`: `600/600` each
-- dominant fail signatures: `G11` (`15`), `G12` (`11`), `G11+G12` (`4`)
-- Source: `05_validation/evidence/artifacts/gr-stage3-prereg-eval-v1/primary_ds002_003_006_s3401_3600/`.
+6. Stage-3 official-v2 mapping closure
+- primary: `570/600 -> 592/600` (`degraded=0`)
+- attack seed500: `1345/1500 -> 1433/1500` (`degraded=0`)
+- holdout: `380/400 -> 398/400` (`degraded=0`)
+- Source: `05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v1/report.md`.
 
 ## Current Readout
 
 - GR guard against official baseline: `PASS`
-- GR Stage-3 prereg scaffold: active (candidate lane, no official switch)
+- GR Stage-3 official policy: active (`gr-stage3-g11g12-v2-official`)
 - Latest run artifact:
   - `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/regression_report.json`

@@ -16,9 +16,9 @@ QNG workspace is in a reproducibility-hardening phase:
 2. Replace placeholder holdout residual rows with publication-grade values where still pending.
 3. Extend public-ready export bundles in `07_exports/` from locked evidence.
 4. Keep run manifests and keepfiles policy aligned when adding new gates/runners.
-5. Execute `GR-Stage-2` prereg lane (strong-field + 3+1 coverage expansion + tensor-mode checks) with frozen protocol.
-6. Keep QM lane criteria separate from GR promotion criteria while Stage-2 official baseline/guard is stabilized (`G11a-v4`, `G12d-v2` frozen mapping).
-7. Extend `GR-Stage-3` from primary run to attack/holdout blocks under frozen protocol before any claim expansion.
+5. Freeze and guard Stage-3 official baseline (`gr-stage3-g11g12-v2-official`) after rerun consistency checks.
+6. Run strict Stage-3 failure taxonomy on remaining official fails and classify limitation signatures.
+7. Keep QM lane criteria separate from GR promotion criteria while Stage-2/Stage-3 official baselines are stabilized.
 
 ## Non-Goals for Housekeeping Passes
 

@@ -585,3 +585,18 @@ Main outputs:
 Candidate-v2 prereg document (no official switch yet):
 
 - `05_validation/pre-registrations/gr-stage3-g11-g12-candidate-v2.md`
+
+## 27) Stage-3 governance switch (official-v2)
+
+Apply official Stage-3 mapping from frozen candidate-v2 summary:
+
+```bash
+python scripts/tools/run_gr_stage3_official_v2.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-official-v2 --policy-id gr-stage3-official-v2 --effective-tag gr-stage3-g11g12-v2-official
+```
+
+Key outputs:
+
+- `05_validation/evidence/artifacts/gr-stage3-official-v2/summary.csv`
+- `05_validation/evidence/artifacts/gr-stage3-official-v2/dataset_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage3-official-v2/report.md`
+- `05_validation/evidence/artifacts/gr-stage3-official-v2/official_manifest.json`

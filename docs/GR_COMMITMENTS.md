@@ -25,6 +25,12 @@ These are the claims we consider supported under the current gate stack and evid
      - `docs/GR_STAGE2_OFFICIAL_SWITCH.md` (v2)
      - `docs/GR_STAGE2_G11_V3_OFFICIAL_SWITCH.md` (v3)
      - `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md` (v4)
+6. Stage-3 governance policy is frozen for reproducibility checks:
+   - `G11`: official Stage-3 mapping uses candidate-v2 decision status
+   - `G12`: official Stage-3 mapping uses candidate-v2 decision status
+   - `G7/G8/G9`: inherited unchanged from source runs
+   - switch/criteria record:
+     - `docs/GR_STAGE3_OFFICIAL_SWITCH.md`
 
 ## What We Explicitly Do NOT Claim Yet
 

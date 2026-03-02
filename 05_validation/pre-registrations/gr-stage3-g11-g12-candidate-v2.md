@@ -3,6 +3,10 @@
 Date: 2026-03-02  
 Protocol ID: `gr-stage3-g11-g12-candidate-v2`
 
+Superseded as official decision mapping on 2026-03-02:
+
+- `docs/GR_STAGE3_OFFICIAL_SWITCH.md`
+
 ## Intent
 
 Address Stage-3 primary fail signatures (`G11`, `G12`, and `G11+G12`) with candidate-only estimators, without changing official gate formulas/thresholds.
