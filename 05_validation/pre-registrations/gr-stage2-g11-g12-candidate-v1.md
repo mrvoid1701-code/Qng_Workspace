@@ -82,3 +82,21 @@ Gate switch policy:
 
 - if all criteria pass: promote candidate to official for next Stage-2 release point.
 - else: keep v1 official; keep v2 candidate-only.
+
+## Execution Record (2026-03-02)
+
+Evaluations were executed on:
+
+1. primary grid: `DS-002/003/006`, `3401..3600`
+2. attack A: `DS-002/003/006`, `3601..4100`
+3. attack B: `DS-004/008`, `3401..3600`
+
+Outcome summary:
+
+- `G12-v2`: passed all criteria in primary + both attacks.
+- `G11-v2`: failed uplift criterion in all runs (no recovered fail-cases).
+- combined `G11+G12` promotion package: not eligible for official switch.
+
+Decision file:
+
+- `05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v1/promotion_decision.md`

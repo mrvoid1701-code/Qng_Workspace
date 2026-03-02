@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-03-02 - Stage-2 G11/G12 candidate eval (primary + attacks)
+
+- Added candidate eval runner:
+  - `scripts/tools/run_gr_stage2_g11_g12_candidate_eval_v1.py`
+- Added promotion evaluator:
+  - `scripts/tools/evaluate_gr_stage2_g11_g12_promotion_v1.py`
+- Executed and stored attack grids:
+  - `05_validation/evidence/artifacts/gr-stage2-attack-seed500-v1/`
+  - `05_validation/evidence/artifacts/gr-stage2-attack-holdout-v1/`
+- Stored candidate eval outputs:
+  - `05_validation/evidence/artifacts/gr-stage2-g11-g12-candidate-eval-v1/`
+  - `05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v1/`
+- Added decision summary:
+  - `05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v1/promotion_decision.md`
+- Updated prereg/doc tooling:
+  - `05_validation/pre-registrations/gr-stage2-g11-g12-candidate-v1.md`
+  - `docs/REPRODUCIBILITY.md`
+  - `Makefile`
+
 ## 2026-03-02 - Stage-2 G11/G12 failure taxonomy + candidate prereg plan
 
 - Added taxonomy analyzer:

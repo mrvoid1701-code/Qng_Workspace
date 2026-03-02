@@ -87,3 +87,4 @@ Follow-up diagnostics and candidate plan:
 
 - taxonomy package: `05_validation/evidence/artifacts/gr-stage2-failure-taxonomy-v1/`
 - candidate prereg (no v1 switch): `05_validation/pre-registrations/gr-stage2-g11-g12-candidate-v1.md`
+- candidate evaluation + promotion records: `05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v1/`

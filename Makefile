@@ -3,7 +3,7 @@ DS ?= DS-003
 SEED ?= 3520
 PHI ?= 0.08
 
-.PHONY: help gr_official_check gr_baseline_guard gr_sweep_phi gr_stage2_smoke gr_stage2_prereg qm_lane_check gr_stage2_taxonomy
+.PHONY: help gr_official_check gr_baseline_guard gr_sweep_phi gr_stage2_smoke gr_stage2_prereg qm_lane_check gr_stage2_taxonomy gr_stage2_candidate_primary
 
 help:
 	@echo "Targets:"
@@ -13,6 +13,7 @@ help:
 	@echo "  make gr_stage2_smoke"
 	@echo "  make gr_stage2_prereg"
 	@echo "  make gr_stage2_taxonomy"
+	@echo "  make gr_stage2_candidate_primary"
 	@echo "  make qm_lane_check DS=DS-002 SEED=3401"
 
 gr_official_check:
@@ -32,6 +33,10 @@ gr_stage2_prereg:
 
 gr_stage2_taxonomy:
 	$(PYTHON) scripts/tools/analyze_gr_stage2_failures_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-failure-taxonomy-v1
+
+gr_stage2_candidate_primary:
+	$(PYTHON) scripts/tools/run_gr_stage2_g11_g12_candidate_eval_v1.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage2-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-g12-candidate-eval-v1/primary_ds002_003_006_s3401_3600
+	$(PYTHON) scripts/tools/evaluate_gr_stage2_g11_g12_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-g11-g12-candidate-eval-v1/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v1/primary_ds002_003_006_s3401_3600 --eval-id gr-stage2-g11-g12-primary-v1 --strict-datasets DS-002,DS-003,DS-006
 
 qm_lane_check:
 	$(PYTHON) scripts/tools/run_qm_lane_check_v1.py --dataset-id $(DS) --seed $(SEED)
