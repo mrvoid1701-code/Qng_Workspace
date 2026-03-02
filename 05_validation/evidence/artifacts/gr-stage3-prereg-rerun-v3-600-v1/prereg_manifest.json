@@ -1,0 +1,44 @@
+{
+  "generated_utc": "2026-03-02T13:53:56.897268Z",
+  "mode": "prereg",
+  "datasets": [
+    "DS-002",
+    "DS-003",
+    "DS-006"
+  ],
+  "seed_start": 3401,
+  "seed_end": 3600,
+  "phi_scale_where_applicable": 0.08,
+  "tensor_config": {
+    "n_steps": 80,
+    "dt": 0.4,
+    "c_wave": 0.15
+  },
+  "conservation_config": {
+    "n_steps": 200,
+    "dt": 0.4,
+    "c_wave": 0.15
+  },
+  "stage3_lanes": {
+    "lane_3p1_core": [
+      "G10",
+      "G11"
+    ],
+    "lane_strong_field": [
+      "G12"
+    ],
+    "lane_tensor": [
+      "G7"
+    ],
+    "lane_geometry": [
+      "G8"
+    ],
+    "lane_conservation": [
+      "G9"
+    ]
+  },
+  "notes": [
+    "Stage-3 remains prereg/candidate until promotion criteria are explicitly closed.",
+    "QM lane is tracked separately and excluded from Stage-3 decision CSV."
+  ]
+}

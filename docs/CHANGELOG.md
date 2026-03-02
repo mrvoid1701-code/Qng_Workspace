@@ -1,5 +1,28 @@
 # Changelog
 
+## 2026-03-02 - Stage-3 official-v3 rerun (600) + baseline guard + fail taxonomy
+
+- Executed full frozen Stage-3 prereg rerun package:
+  - `05_validation/evidence/artifacts/gr-stage3-prereg-rerun-v3-600-v1/`
+  - prereg readout: `stage3_pass=570/600`
+- Applied official-v3 governance on rerun package:
+  - `05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/`
+  - `G11`: `581/600 -> 597/600`
+  - `G12`: `585/600 -> 600/600`
+  - `Stage-3`: `570/600 -> 597/600`
+  - `improved_vs_v2=27`
+  - `degraded_vs_v2=0`
+- Refreshed Stage-3 official baseline + guard:
+  - `05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json`
+  - `05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/latest_check/regression_report.json` (`PASS`)
+- Added strict fail taxonomy package for remaining official-v3 fails (`3`):
+  - `05_validation/evidence/artifacts/gr-stage3-official-v3-failure-taxonomy-v1/`
+  - classes: `g11b_slope_instability`, `weak_corr_multi_peak`, `weak_corr_sparse_graph`
+- Added known limitations note:
+  - `docs/GR_STAGE3_KNOWN_LIMITATIONS.md`
+- Updated Stage-3 rerun/guard/taxonomy targets to v3 paths:
+  - `Makefile`
+
 ## 2026-03-02 - Stage-3 official governance switch to G11/G12 v3
 
 - Added Stage-3 official policy applier:

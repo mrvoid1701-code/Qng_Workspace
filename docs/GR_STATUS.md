@@ -93,7 +93,7 @@ Frozen metadata:
 - Stage-3 remaining official primary fails: `3/600`
   - `G11`: `3`
   - `G12`: `0`
-  - dominant classes: `weak_corr_multi_peak`, `weak_corr_sparse_graph`
+  - dominant classes: `g11b_slope_instability`, `weak_corr_multi_peak`, `weak_corr_sparse_graph`
 - Latest run artifact:
   - `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/regression_report.json`
   - `05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/latest_check/regression_report.json`

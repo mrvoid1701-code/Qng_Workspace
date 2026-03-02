@@ -1,8 +1,8 @@
 {
   "baseline_id": "gr-stage3-official-baseline-v1",
-  "effective_tag": "gr-stage3-g11g12-v2-official",
-  "effective_commit": "442beee",
-  "effective_date_utc": "2026-03-02",
+  "effective_tag": "gr-stage3-g11g12-v3-official",
+  "effective_commit": "",
+  "effective_date_utc": "",
   "notes": [
     "Generated from Stage-3 official policy summary.",
     "Status-only guard baseline for Stage-3 governance mapping."
@@ -3262,17 +3262,17 @@
       "dataset_id": "DS-002",
       "seed": 3453,
       "g10_status": "pass",
-      "g11_status": "fail",
+      "g11_status": "pass",
       "g12_status": "pass",
       "g7_status": "pass",
       "g8_status": "pass",
       "g9_status": "pass",
-      "lane_3p1_status": "fail",
+      "lane_3p1_status": "pass",
       "lane_strong_field_status": "pass",
       "lane_tensor_status": "pass",
       "lane_geometry_status": "pass",
       "lane_conservation_status": "pass",
-      "stage3_status": "fail"
+      "stage3_status": "pass"
     },
     {
       "dataset_id": "DS-002",
@@ -5439,16 +5439,16 @@
       "seed": 3589,
       "g10_status": "pass",
       "g11_status": "pass",
-      "g12_status": "fail",
+      "g12_status": "pass",
       "g7_status": "pass",
       "g8_status": "pass",
       "g9_status": "pass",
       "lane_3p1_status": "pass",
-      "lane_strong_field_status": "fail",
+      "lane_strong_field_status": "pass",
       "lane_tensor_status": "pass",
       "lane_geometry_status": "pass",
       "lane_conservation_status": "pass",
-      "stage3_status": "fail"
+      "stage3_status": "pass"
     },
     {
       "dataset_id": "DS-002",
@@ -5870,17 +5870,17 @@
       "dataset_id": "DS-003",
       "seed": 3416,
       "g10_status": "pass",
-      "g11_status": "fail",
+      "g11_status": "pass",
       "g12_status": "pass",
       "g7_status": "pass",
       "g8_status": "pass",
       "g9_status": "pass",
-      "lane_3p1_status": "fail",
+      "lane_3p1_status": "pass",
       "lane_strong_field_status": "pass",
       "lane_tensor_status": "pass",
       "lane_geometry_status": "pass",
       "lane_conservation_status": "pass",
-      "stage3_status": "fail"
+      "stage3_status": "pass"
     },
     {
       "dataset_id": "DS-003",
@@ -8638,17 +8638,17 @@
       "dataset_id": "DS-003",
       "seed": 3589,
       "g10_status": "pass",
-      "g11_status": "fail",
+      "g11_status": "pass",
       "g12_status": "pass",
       "g7_status": "pass",
       "g8_status": "pass",
       "g9_status": "pass",
-      "lane_3p1_status": "fail",
+      "lane_3p1_status": "pass",
       "lane_strong_field_status": "pass",
       "lane_tensor_status": "pass",
       "lane_geometry_status": "pass",
       "lane_conservation_status": "pass",
-      "stage3_status": "fail"
+      "stage3_status": "pass"
     },
     {
       "dataset_id": "DS-003",
@@ -10510,17 +10510,17 @@
       "dataset_id": "DS-006",
       "seed": 3506,
       "g10_status": "pass",
-      "g11_status": "fail",
+      "g11_status": "pass",
       "g12_status": "pass",
       "g7_status": "pass",
       "g8_status": "pass",
       "g9_status": "pass",
-      "lane_3p1_status": "fail",
+      "lane_3p1_status": "pass",
       "lane_strong_field_status": "pass",
       "lane_tensor_status": "pass",
       "lane_geometry_status": "pass",
       "lane_conservation_status": "pass",
-      "stage3_status": "fail"
+      "stage3_status": "pass"
     },
     {
       "dataset_id": "DS-006",

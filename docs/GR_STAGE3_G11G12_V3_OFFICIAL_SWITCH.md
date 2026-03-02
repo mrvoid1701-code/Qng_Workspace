@@ -63,6 +63,17 @@ Reference packages:
 - `05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v3/primary_ds002_003_006_s3401_3600/summary.csv`
 - `05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v2/report.md`
 
+## Post-switch Confirmation (Rerun 600)
+
+Frozen full-grid rerun confirmed the same official-v3 policy behavior:
+
+- prereg rerun: `05_validation/evidence/artifacts/gr-stage3-prereg-rerun-v3-600-v1/`
+- official-v3 rerun: `05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/`
+- rerun result: `Stage-3 570/600 -> 597/600`, `degraded_vs_v2=0`
+- baseline guard: `PASS` (`profiles_missing=0`, `profiles_mismatch=0`)
+- strict fail taxonomy: `05_validation/evidence/artifacts/gr-stage3-official-v3-failure-taxonomy-v1/`
+- known-limitations note: `docs/GR_STAGE3_KNOWN_LIMITATIONS.md`
+
 ## Implementation
 
 Official policy application runner:
