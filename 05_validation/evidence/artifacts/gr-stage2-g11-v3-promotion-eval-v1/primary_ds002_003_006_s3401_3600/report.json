@@ -1,0 +1,33 @@
+{
+  "eval_id": "gr-stage2-g11-v3-primary-v1",
+  "generated_utc": "2026-03-02T09:19:11.293092Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage2-g11-candidate-v3/primary_ds002_003_006_s3401_3600/summary.csv",
+  "datasets": [
+    "DS-002",
+    "DS-003",
+    "DS-006"
+  ],
+  "criteria": {
+    "min_improved": 5,
+    "require_zero_degraded": true,
+    "require_per_dataset_nondegrade": true,
+    "min_weak_corr_drop": 2
+  },
+  "totals": {
+    "n": 600,
+    "g11_v2_pass": 587,
+    "g11_v3_pass": 594,
+    "improved": 7,
+    "degraded": 0,
+    "weak_corr_fail_count_v2": 12,
+    "weak_corr_fail_count_v3": 5,
+    "weak_corr_drop": 7
+  },
+  "checks": {
+    "zero_degraded": true,
+    "improved_min": true,
+    "per_dataset_nondegrade": true,
+    "weak_corr_drop_min": true
+  },
+  "decision": "PASS"
+}

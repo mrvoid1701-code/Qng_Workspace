@@ -1,0 +1,4 @@
+dataset_id,n,g11_v2_pass,g11_v3_pass,improved,degraded,nondegrade_pass
+DS-002,200,197,199,2,0,true
+DS-003,200,192,197,5,0,true
+DS-006,200,198,198,0,0,true

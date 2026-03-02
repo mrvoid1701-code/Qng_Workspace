@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-03-02 - Stage-2 G11a-v3 candidate prereg (Poisson-source hardening)
+
+- Added candidate eval runner:
+  - `scripts/tools/run_gr_stage2_g11_candidate_eval_v3.py`
+- Added candidate promotion evaluator:
+  - `scripts/tools/evaluate_gr_stage2_g11_v3_promotion_v1.py`
+- Added prereg definition:
+  - `05_validation/pre-registrations/gr-stage2-g11-candidate-v3.md`
+- Stored candidate eval outputs:
+  - `05_validation/evidence/artifacts/gr-stage2-g11-candidate-v3/`
+  - `05_validation/evidence/artifacts/gr-stage2-g11-v3-promotion-eval-v1/`
+- Added decision summary:
+  - `05_validation/evidence/artifacts/gr-stage2-g11-v3-promotion-eval-v1/promotion_decision.md`
+- Updated reproducibility and one-command target:
+  - `docs/REPRODUCIBILITY.md`
+  - `Makefile` (`gr_stage2_g11_v3_primary`)
+
 ## 2026-03-02 - Stage-2 G11 fail-only taxonomy (official-v2)
 
 - Added strict fail-only analyzer:
