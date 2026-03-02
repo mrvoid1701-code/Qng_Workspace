@@ -96,4 +96,4 @@ Observed decisions:
 Result:
 
 - prereg criteria satisfied across all required runs.
-- hybrid is marked `PROMOTION-READY` pending explicit official gate switch commit.
+- hybrid was marked `PROMOTION-READY` and is now promoted to official `G16b` decision gate (switch commit dated `2026-03-02`).

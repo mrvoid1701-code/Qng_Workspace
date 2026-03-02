@@ -450,7 +450,11 @@ def main() -> int:
         g16b_v2_pass = corr_ok and r2_ok
 
         g16a_status = metrics.get("G16a", {}).get("status", "").strip().lower() or "fail"
-        g16b_v1_status = metrics.get("G16b", {}).get("status", "").strip().lower() or "fail"
+        g16b_v1_status = (
+            metrics.get("G16b-v1", {}).get("status", "").strip().lower()
+            or metrics.get("G16b", {}).get("status", "").strip().lower()
+            or "fail"
+        )
         g16c_status = metrics.get("G16c", {}).get("status", "").strip().lower() or "fail"
         g16d_status = metrics.get("G16d", {}).get("status", "").strip().lower() or "fail"
 
@@ -552,7 +556,7 @@ def main() -> int:
         "high_signal_quantile": args.high_signal_quantile,
         "promotion_rule": PREREG_PROMOTION_RULE,
         "notes": [
-            "G16b-v2 candidate only; official gate remains G16b-v1.",
+            "G16b-v2 remains candidate-only; official gate is G16b hybrid (v1 high-signal + v2 low-signal).",
             "No formula/threshold changes in run_qng_action_v1.py.",
             "Use absolute correlations because sign can be convention-dependent.",
         ],

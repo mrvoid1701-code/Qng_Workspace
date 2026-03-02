@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-03-02 - G16b official switch to hybrid policy
+
+- Added pre-switch safety tag:
+  - `pre-g16b-hybrid-official`
+- Promoted `G16b` official decision in:
+  - `scripts/run_qng_action_v1.py`
+  - policy: low-signal (`std(T11)/|mean(T11)| > 10`) uses `G16b-v2`; high-signal uses legacy `G16b-v1`
+- Preserved audit rows in action metric artifacts:
+  - `G16b` (official hybrid status)
+  - `G16b-v1` (legacy)
+  - `G16b-v2` (candidate component metrics)
+- Updated compatibility readers:
+  - `scripts/tools/run_g16b_v2_candidate_eval_v1.py`
+  - `scripts/tools/run_g16_failure_taxonomy_v1.py`
+  - `scripts/tools/run_g16b_split_hybrid_v1.py`
+- Updated docs and logs:
+  - `docs/GATES.md`
+  - `docs/G16B_DEFINITION_CHANGE_PROPOSAL.md`
+  - `docs/G16B_HYBRID_PROMOTION_PREREG.md`
+  - `docs/REPRODUCIBILITY.md`
+  - `05_validation/results-log.md`
+- Added smoke evidence package (`G13`, `G15`, `G16`):
+  - `05_validation/evidence/artifacts/g16b-official-switch-smoke-v1/`
+
 ## 2026-03-01 - G16b hybrid promotion prereg + attack validation
 
 - Added promotion prereg doc:

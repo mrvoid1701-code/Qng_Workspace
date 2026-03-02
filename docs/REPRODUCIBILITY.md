@@ -20,6 +20,12 @@ python scripts/run_qng_ppn_v1.py --dataset-id DS-002 --seed 3401 --out-dir 07_ex
 python scripts/run_qng_action_v1.py --dataset-id DS-002 --seed 3401 --out-dir 07_exports/repro/gr_chain_ds002_s3401/g16
 ```
 
+`run_qng_action_v1.py` writes:
+
+- `G16b` = official hybrid decision
+- `G16b-v1` = legacy diagnostic
+- `G16b-v2` = candidate diagnostic component
+
 ## 2) PHI scale sweep
 
 ```bash
@@ -49,7 +55,7 @@ python scripts/run_qng_ppn_debug_v1.py --datasets DS-003 --seeds 3401,3402,3403,
 
 ## 4) GR regression guard (G10..G16 freeze check)
 
-Run against frozen official baseline (`gr-ppn-g15b-v2-official`):
+Run against frozen official baseline (current official chain includes `G15b-v2` + `G16b-hybrid`):
 
 ```bash
 python scripts/run_qng_gr_regression_guard_v1.py --out-dir 05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check
@@ -163,7 +169,7 @@ Main outputs:
 - `05_validation/evidence/artifacts/g16b-split-protocol-prereg-v1/report.md`
 - `05_validation/evidence/artifacts/g16b-split-protocol-prereg-v1/prereg_manifest.json`
 
-## 10) G16b hybrid split candidate (low=v2, high=v1)
+## 10) G16b hybrid split evaluation (low=v2, high=v1)
 
 Sanity check:
 

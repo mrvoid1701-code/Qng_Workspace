@@ -16,6 +16,7 @@ Execution log linked 1:1 with `05_validation/test-plan.md`.
 | Run ID | Date | Scope | Tests touched | Result summary | Notes |
 | --- | --- | --- | --- | --- | --- |
 | RUN-P1-001 | YYYY-MM-DD | P1 batch execution | All P1 tests | pending | Execute highest-priority empirical checks first |
+| RUN-P3-G16B-HYBRID-031 | 2026-03-02 | G16b official policy switch (`v1` -> `hybrid`) | G16, GR guard/baseline | pass | Promoted frozen hybrid rule to official `G16b` decision logic in `run_qng_action_v1.py` (low-signal uses v2, high-signal keeps v1), preserved `G16b-v1`/`G16b-v2` diagnostics in artifacts, and refreshed regression baseline/guard artifacts without threshold or formula edits. |
 | RUN-P1-TRJ-REAL-001 | 2026-02-17 | P1 trajectory real validation | QNG-T-028, QNG-T-041 | T-028 pass, T-041 fail (amplitude band) | DS-005 real flyby run with explicit non-grav columns, shuffle controls, and robustness sweeps |
 | RUN-P0-GOLDPACK-001 | 2026-02-20 | Freeze / reproducibility pack | QNG-T-027, QNG-T-039 | Gold Pack v1 freeze generated; tag blocked (no git repo) | Added hash inventory, freeze manifest, one-page gold summary, and aligned run manifests |
 | RUN-P2-TRJ-XDOM-001 | 2026-02-21 | P2 trajectory cross-domain rerun | QNG-T-011, QNG-T-028 | T-011 pass, T-028 pass | DS-005 real flyby + Pioneer anchor run with post-correction gate and shared control/robustness checks |

@@ -66,9 +66,9 @@ Gates (G16):
     G16a — Hamiltonian-constraint closure:
            |S_gravity − mean(σ/σ_max)| / mean(σ/σ_max) < 0.01
            (on-shell action = matter energy; algebraically exact for OLS fit)
-    G16b — Einstein equations (metric EL):
-           OLS R²(G_{11} vs 8πG T_{11}) > 0.05
-           (gravity and matter sectors are coupled)
+    G16b — Einstein equations (metric EL), official hybrid policy:
+           if std(T11)/|mean(T11)| > 10 -> use v2 signal-aware check
+           else -> use v1 OLS R²(G_{11} vs 8πG T_{11}) > 0.05
     G16c — Klein-Gordon mass (matter EL):
            |m²_fit| > 0.005
            (effective L_rw mass is non-trivially large; L_rw eigenvalues ∈ [−1,0])
@@ -117,6 +117,12 @@ DEFAULT_OUT_DIR = (
 )
 
 PHI_SCALE = 0.08
+
+# Frozen G16b hybrid policy constants (promotion-ready protocol).
+G16B_V2_LOW_SIGNAL_RATIO = 10.0
+G16B_V2_CORR_MIN = 0.2
+G16B_V2_R2_MIN = 0.05
+G16B_V2_HIGH_SIGNAL_QUANTILE = 0.80
 
 
 # ── Gate thresholds ───────────────────────────────────────────────────────────
@@ -284,6 +290,75 @@ def ols_fit(
 
 
 # ── Discrete gradient ─────────────────────────────────────────────────────────
+def percentile(values: list[float], p: float) -> float:
+    if not values:
+        return float("nan")
+    vals = sorted(values)
+    if len(vals) == 1:
+        return vals[0]
+    pos = (len(vals) - 1) * p
+    lo = int(pos)
+    hi = min(lo + 1, len(vals) - 1)
+    frac = pos - lo
+    return vals[lo] * (1.0 - frac) + vals[hi] * frac
+
+
+def mean_std(values: list[float]) -> tuple[float, float]:
+    if not values:
+        return float("nan"), float("nan")
+    if len(values) == 1:
+        return values[0], 0.0
+    return statistics.mean(values), statistics.pstdev(values)
+
+
+def pearson_corr(x_vals: list[float], y_vals: list[float]) -> float:
+    if len(x_vals) != len(y_vals) or len(x_vals) < 2:
+        return float("nan")
+    mx, sx = mean_std(x_vals)
+    my, sy = mean_std(y_vals)
+    if sx <= 1e-30 or sy <= 1e-30:
+        return float("nan")
+    cov = sum((x_vals[i] - mx) * (y_vals[i] - my) for i in range(len(x_vals))) / len(x_vals)
+    return cov / (sx * sy)
+
+
+def rank_values(values: list[float]) -> list[float]:
+    order = sorted(range(len(values)), key=lambda i: values[i])
+    ranks = [0.0] * len(values)
+    i = 0
+    while i < len(order):
+        j = i
+        v = values[order[i]]
+        while j + 1 < len(order) and values[order[j + 1]] == v:
+            j += 1
+        rank = (i + j + 2) / 2.0
+        for k in range(i, j + 1):
+            ranks[order[k]] = rank
+        i = j + 1
+    return ranks
+
+
+def spearman_corr(x_vals: list[float], y_vals: list[float]) -> float:
+    if len(x_vals) != len(y_vals) or len(x_vals) < 2:
+        return float("nan")
+    return pearson_corr(rank_values(x_vals), rank_values(y_vals))
+
+
+def high_signal_subset(
+    g11_vals: list[float],
+    t11_vals: list[float],
+    quantile: float,
+) -> tuple[list[float], list[float], float]:
+    abs_t = [abs(v) for v in t11_vals]
+    threshold = percentile(abs_t, quantile)
+    pairs = [(g11_vals[i], t11_vals[i]) for i in range(len(t11_vals)) if abs_t[i] >= threshold]
+    if not pairs:
+        return [], [], threshold
+    g = [p[0] for p in pairs]
+    t = [p[1] for p in pairs]
+    return g, t, threshold
+
+
 def compute_gradient(
     field: list[float],
     coords: list[tuple[float, float]],
@@ -611,11 +686,57 @@ def main() -> int:
     log(f"  fraction H_ii < 0: {n_neg}/{n} = {fmt(frac_neg)}")
 
     # ── Gate evaluation ───────────────────────────────────────────────────────
-    gate_g16a = closure_rel   < thresholds.g16a_closure_max
-    gate_g16b = r2_ET         > thresholds.g16b_r2_min
+    gate_g16a = closure_rel < thresholds.g16a_closure_max
+    gate_g16b_v1 = r2_ET > thresholds.g16b_r2_min
+
+    # Frozen hybrid policy:
+    # - low-signal profiles use v2 candidate decision
+    # - high-signal profiles keep legacy v1 decision
+    t11_mean, t11_std = mean_std(T11_vals)
+    t11_std_to_abs_mean = (
+        t11_std / abs(t11_mean)
+        if (not math.isnan(t11_std) and not math.isnan(t11_mean) and abs(t11_mean) > 1e-12)
+        else float("inf")
+    )
+    is_low_signal = t11_std_to_abs_mean > G16B_V2_LOW_SIGNAL_RATIO
+
+    pearson_full = pearson_corr(T11_vals, G11_vals)
+    spearman_full = spearman_corr(T11_vals, G11_vals)
+    _, _, r2_full = ols_fit(T11_vals, G11_vals)
+    abs_pearson_full = abs(pearson_full) if not math.isnan(pearson_full) else float("nan")
+    abs_spearman_full = abs(spearman_full) if not math.isnan(spearman_full) else float("nan")
+
+    g11_high, t11_high, high_signal_abs_t11_min = high_signal_subset(
+        G11_vals,
+        T11_vals,
+        G16B_V2_HIGH_SIGNAL_QUANTILE,
+    )
+    pearson_high = pearson_corr(t11_high, g11_high)
+    spearman_high = spearman_corr(t11_high, g11_high)
+    _, _, r2_high = ols_fit(t11_high, g11_high)
+    abs_pearson_high = abs(pearson_high) if not math.isnan(pearson_high) else float("nan")
+    abs_spearman_high = abs(spearman_high) if not math.isnan(spearman_high) else float("nan")
+
+    if is_low_signal:
+        v2_corr_ok = (
+            abs_pearson_high > G16B_V2_CORR_MIN
+            and abs_spearman_high > G16B_V2_CORR_MIN
+        )
+        v2_r2_ok = r2_high > G16B_V2_R2_MIN
+        g16b_v2_branch = "high_signal"
+    else:
+        v2_corr_ok = (
+            abs_pearson_full > G16B_V2_CORR_MIN
+            and abs_spearman_full > G16B_V2_CORR_MIN
+        )
+        v2_r2_ok = r2_full > G16B_V2_R2_MIN
+        g16b_v2_branch = "full_signal"
+    gate_g16b_v2 = v2_corr_ok and v2_r2_ok
+    gate_g16b = gate_g16b_v2 if is_low_signal else gate_g16b_v1
+
     gate_g16c = abs(m_sq) > thresholds.g16c_mass_abs_min
-    gate_g16d = frac_neg      > thresholds.g16d_hessian_frac_min
-    gate_g16  = gate_g16a and gate_g16b and gate_g16c and gate_g16d
+    gate_g16d = frac_neg > thresholds.g16d_hessian_frac_min
+    gate_g16 = gate_g16a and gate_g16b and gate_g16c and gate_g16d
     decision  = "pass" if gate_g16 else "fail"
 
     elapsed = time.time() - t0
@@ -624,8 +745,22 @@ def main() -> int:
         f"(a={gate_g16a},b={gate_g16b},c={gate_g16c},d={gate_g16d})")
     log(f"G16a closure:   |S_grav−mean_σ|/mean_σ = {fmt(closure_rel)}"
         f"  threshold=<{thresholds.g16a_closure_max}")
-    log(f"G16b EOM R²:    OLS R²(G11,8πG T11)={fmt(r2_ET)}"
-        f"  threshold=>{thresholds.g16b_r2_min}")
+    log(f"G16b official (hybrid): {'v2(low-signal)' if is_low_signal else 'v1(high-signal)'} -> {'pass' if gate_g16b else 'fail'}")
+    log(
+        f"  low_signal_flag={str(is_low_signal).lower()}  std(T11)/|mean(T11)|={fmt(t11_std_to_abs_mean)}"
+        f"  threshold>{G16B_V2_LOW_SIGNAL_RATIO}"
+    )
+    log(
+        f"  v1 legacy: R²(G11,8πG T11)={fmt(r2_ET)}  threshold>{thresholds.g16b_r2_min}"
+        f"  status={'pass' if gate_g16b_v1 else 'fail'}"
+    )
+    log(
+        f"  v2 candidate[{g16b_v2_branch}]: |pearson|={fmt(abs_pearson_high if is_low_signal else abs_pearson_full)}"
+        f" |spearman|={fmt(abs_spearman_high if is_low_signal else abs_spearman_full)}"
+        f" R²={fmt(r2_high if is_low_signal else r2_full)}"
+        f"  thresholds>|corr|>{G16B_V2_CORR_MIN}, R²>{G16B_V2_R2_MIN}"
+        f"  status={'pass' if gate_g16b_v2 else 'fail'}"
+    )
     log(f"G16c |m²_fit|:  {fmt(abs(m_sq))}"
         f"  threshold=>{thresholds.g16c_mass_abs_min}")
     log(f"G16d Hessian:   frac(H_ii<0)={fmt(frac_neg)}"
@@ -668,10 +803,34 @@ def main() -> int:
              "value": fmt(closure_rel),
              "threshold": f"<{thresholds.g16a_closure_max}",
              "status": "pass" if gate_g16a else "fail"},
-            {"gate_id": "G16b", "metric": "r2_G11_T11",
+            {"gate_id": "G16b", "metric": "hybrid_policy",
+             "value": "v2(low-signal)" if is_low_signal else "v1(high-signal)",
+             "threshold": "if std(T11)/|mean(T11)|>10 use v2 else v1",
+             "status": "pass" if gate_g16b else "fail"},
+            {"gate_id": "G16b-v1", "metric": "r2_G11_T11",
              "value": fmt(r2_ET),
              "threshold": f">{thresholds.g16b_r2_min}",
-             "status": "pass" if gate_g16b else "fail"},
+             "status": "pass" if gate_g16b_v1 else "fail"},
+            {"gate_id": "G16b-v2", "metric": "std_to_abs_mean_T11",
+             "value": fmt(t11_std_to_abs_mean),
+             "threshold": f">{G16B_V2_LOW_SIGNAL_RATIO} => high_signal branch",
+             "status": "pass" if gate_g16b_v2 else "fail"},
+            {"gate_id": "G16b-v2", "metric": "r2_selected_branch",
+             "value": fmt(r2_high if is_low_signal else r2_full),
+             "threshold": f">{G16B_V2_R2_MIN}",
+             "status": "pass" if gate_g16b_v2 else "fail"},
+            {"gate_id": "G16b-v2", "metric": "abs_pearson_selected_branch",
+             "value": fmt(abs_pearson_high if is_low_signal else abs_pearson_full),
+             "threshold": f">{G16B_V2_CORR_MIN}",
+             "status": "pass" if gate_g16b_v2 else "fail"},
+            {"gate_id": "G16b-v2", "metric": "abs_spearman_selected_branch",
+             "value": fmt(abs_spearman_high if is_low_signal else abs_spearman_full),
+             "threshold": f">{G16B_V2_CORR_MIN}",
+             "status": "pass" if gate_g16b_v2 else "fail"},
+            {"gate_id": "G16b-v2", "metric": "branch",
+             "value": g16b_v2_branch,
+             "threshold": "high_signal|full_signal",
+             "status": "pass" if gate_g16b_v2 else "fail"},
             {"gate_id": "G16c", "metric": "m_sq_abs",
              "value": fmt(abs(m_sq)),
              "threshold": f">{thresholds.g16c_mass_abs_min}",
@@ -716,6 +875,19 @@ def main() -> int:
             "m_sq_abs": round(abs(m_sq), 8),
             "closure_rel": round(closure_rel, 8),
             "r2_G11_T11": round(r2_ET, 6),
+            "g16b_policy": "hybrid_v1",
+            "g16b_selected_branch": "v2_low_signal" if is_low_signal else "v1_high_signal",
+            "g16b_v1_status": "pass" if gate_g16b_v1 else "fail",
+            "g16b_v2_status": "pass" if gate_g16b_v2 else "fail",
+            "g16b_status": "pass" if gate_g16b else "fail",
+            "t11_std_to_abs_mean": round(t11_std_to_abs_mean, 8) if not math.isinf(t11_std_to_abs_mean) else "inf",
+            "r2_full_recomputed": round(r2_full, 6),
+            "r2_high_signal": round(r2_high, 6) if not math.isnan(r2_high) else None,
+            "abs_pearson_full": round(abs_pearson_full, 6) if not math.isnan(abs_pearson_full) else None,
+            "abs_spearman_full": round(abs_spearman_full, 6) if not math.isnan(abs_spearman_full) else None,
+            "abs_pearson_high_signal": round(abs_pearson_high, 6) if not math.isnan(abs_pearson_high) else None,
+            "abs_spearman_high_signal": round(abs_spearman_high, 6) if not math.isnan(abs_spearman_high) else None,
+            "high_signal_abs_t11_min": round(high_signal_abs_t11_min, 8) if not math.isnan(high_signal_abs_t11_min) else None,
             "frac_hessian_neg": round(frac_neg, 6),
             "run_utc": datetime.utcnow().isoformat() + "Z",
             "elapsed_s": round(elapsed, 3),
@@ -740,6 +912,11 @@ def main() -> int:
             extras={
                 "closure_rel": round(closure_rel, 8),
                 "r2_G11_T11": round(r2_ET, 6),
+                "g16b_status": "pass" if gate_g16b else "fail",
+                "g16b_v1_status": "pass" if gate_g16b_v1 else "fail",
+                "g16b_v2_status": "pass" if gate_g16b_v2 else "fail",
+                "g16b_selected_branch": "v2_low_signal" if is_low_signal else "v1_high_signal",
+                "t11_std_to_abs_mean": round(t11_std_to_abs_mean, 8) if not math.isinf(t11_std_to_abs_mean) else "inf",
                 "m_sq_abs": round(abs(m_sq), 8),
                 "frac_hessian_neg": round(frac_neg, 6),
             },

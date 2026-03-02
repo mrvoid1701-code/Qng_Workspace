@@ -245,7 +245,7 @@ def main() -> int:
         },
         "notes": [
             "No new thresholds or formulas introduced.",
-            "Hybrid policy is candidate-only; official gate remains G16b-v1.",
+            "Hybrid policy is now the official G16b decision gate; script retained for reproducible evaluation outputs.",
         ],
     }
     manifest_path = out_dir / "prereg_manifest.json"
@@ -259,4 +259,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

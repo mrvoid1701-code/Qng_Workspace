@@ -1,12 +1,13 @@
-# G16b Definition Change Proposal (Candidate-Only)
+# G16b Definition Change Proposal (Historical + Promotion Record)
 
 Date: 2026-03-01
 
 ## Status
 
-- Official gate remains unchanged: `G16b-v1`.
-- `G16b-v2` is candidate-only and evaluated in parallel.
-- No math formulas or thresholds in `run_qng_action_v1.py` were modified.
+- Official gate is now `G16b-hybrid` (effective date `2026-03-02`).
+- `G16b-v1` remains legacy diagnostic baseline.
+- `G16b-v2` remains candidate diagnostic component (used by hybrid only for low-signal profiles).
+- No thresholds/formulas were retuned for promotion; switch uses frozen prereg definition.
 
 ## Why v1 is fragile
 
@@ -138,8 +139,8 @@ Observed on DS-002/003/006 x seeds 3401..3600:
 
 Decision:
 
-- hybrid-v1 is acceptable as **next promotion candidate** under prereg checks.
-- official gate remains `G16b-v1` until promotion rule is explicitly frozen and completed.
+- hybrid-v1 was accepted as the promotion candidate under prereg checks.
+- historical note: this section preceded the official switch; see status at top for current policy.
 
 ## Promotion Pre-Registration Status
 
@@ -156,5 +157,5 @@ Current state (2026-03-01):
 
 Conclusion:
 
-- hybrid evidence package is promotion-ready.
-- official switch should be done in a dedicated commit to keep change history explicit.
+- hybrid evidence package met promotion requirements.
+- official switch was completed in a dedicated commit on `2026-03-02`.

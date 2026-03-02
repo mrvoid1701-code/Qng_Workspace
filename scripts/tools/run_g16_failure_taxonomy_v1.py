@@ -607,6 +607,8 @@ def main() -> int:
             peak_distance_threshold=args.peak_distance_threshold,
         )
 
+        g16b_legacy_row = metrics.get("G16b-v1", {}) or metrics.get("G16b", {})
+
         row: dict[str, Any] = {
             "dataset_id": profile.dataset_id,
             "seed": profile.seed,
@@ -618,7 +620,7 @@ def main() -> int:
             "g16d_status": sub_status["G16d"],
             "fail_signature": fail_signature(sub_status),
             "closure_rel": metrics.get("G16a", {}).get("value", ""),
-            "r2_G11_T11": metrics.get("G16b", {}).get("value", ""),
+            "r2_G11_T11": g16b_legacy_row.get("value", ""),
             "m_sq_abs": metrics.get("G16c", {}).get("value", ""),
             "hessian_frac_neg": metrics.get("G16d", {}).get("value", ""),
             "n_nodes": cfg.get("n_nodes", sig["n_nodes"]),

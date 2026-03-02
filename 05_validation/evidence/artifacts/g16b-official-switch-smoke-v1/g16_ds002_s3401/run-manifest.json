@@ -1,0 +1,26 @@
+{
+  "script": "run_qng_action_v1.py",
+  "gate_id": "G16",
+  "decision": "pass",
+  "elapsed_s": 0.035608,
+  "run_utc": "2026-03-02T00:10:48.056469Z",
+  "args": {
+    "dataset_id": "DS-002",
+    "seed": 3401,
+    "phi_scale": 0.08,
+    "out_dir": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\05_validation\\evidence\\artifacts\\g16b-official-switch-smoke-v1\\g16_ds002_s3401",
+    "write_artifacts": true,
+    "plots": false
+  },
+  "extras": {
+    "closure_rel": 0.0,
+    "r2_G11_T11": 0.136126,
+    "g16b_status": "pass",
+    "g16b_v1_status": "pass",
+    "g16b_v2_status": "pass",
+    "g16b_selected_branch": "v2_low_signal",
+    "t11_std_to_abs_mean": 15.29455515,
+    "m_sq_abs": 0.01402002,
+    "frac_hessian_neg": 1.0
+  }
+}

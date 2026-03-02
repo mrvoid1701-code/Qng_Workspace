@@ -34,7 +34,11 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 - GR run summaries expose two chain views:
   - `all_pass_official` (uses `G15b-v2` for decision logic)
   - `all_pass_diagnostic` (legacy chain, keeps `G15` final for diagnostics)
-- `G16b-v2` is currently candidate diagnostic-only (see `docs/G16B_DEFINITION_CHANGE_PROPOSAL.md`).
-- Effective date for official switch: `2026-03-01` (promotion commit `15dd881`).
-- Freeze reference tag: `gr-ppn-g15b-v2-official` (see `docs/CHANGELOG.md`).
+- `G16b` official decision gate uses frozen hybrid policy:
+  - low-signal (`std(T11)/|mean(T11)| > 10`) -> `G16b-v2`
+  - high-signal -> `G16b-v1`
+- `G16b-v1` remains legacy diagnostic baseline.
+- `G16b-v2` remains candidate diagnostic component (used by official hybrid only in low-signal regime).
+- Effective date for `G16b` official hybrid switch: `2026-03-02`.
+- Freeze reference tags: `gr-ppn-g15b-v2-official` and `pre-g16b-hybrid-official` (see `docs/CHANGELOG.md`).
 
