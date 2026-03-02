@@ -94,6 +94,9 @@ Frozen metadata:
   - `G11`: `7`
   - `G12`: `1`
   - dominant classes: `weak_corr_multi_peak`, `weak_corr_sparse_graph`
+- Stage-3 candidate-v3 fail-closure (candidate-only, official unchanged):
+  - primary: `592/600 -> 597/600` (`degraded=0`)
+  - remaining candidate fails on primary: `3/600` (all `G11`)
 - Latest run artifact:
   - `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/regression_report.json`
   - `05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/latest_check/regression_report.json`

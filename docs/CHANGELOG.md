@@ -1,5 +1,35 @@
 # Changelog
 
+## 2026-03-02 - Stage-3 candidate-v3 fail-closure sprint (official-v2 baseline)
+
+- Added Stage-3 candidate-v3 runner (`v2 -> v3`):
+  - `scripts/tools/run_gr_stage3_g11_g12_candidate_eval_v3.py`
+- Added Stage-3 candidate-v3 promotion evaluator:
+  - `scripts/tools/evaluate_gr_stage3_g11_g12_promotion_v2.py`
+- Added Stage-3 candidate-v3 prereg:
+  - `05_validation/pre-registrations/gr-stage3-g11-g12-candidate-v3.md`
+- Added Stage-3 official-v2 attack/holdout mapping packages:
+  - `05_validation/evidence/artifacts/gr-stage3-official-v2-attack-seed500-v1/`
+  - `05_validation/evidence/artifacts/gr-stage3-official-v2-attack-holdout-v1/`
+- Added Stage-3 candidate-v3 evidence packages:
+  - `05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v3/`
+  - `05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v2/`
+- Added Stage-3 candidate-v3 consolidated decision report:
+  - `05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v2/report.md`
+- Primary closure result (`official-v2 -> candidate-v3`):
+  - `G11`: `593/600 -> 597/600`
+  - `G12`: `599/600 -> 600/600`
+  - `STAGE3`: `592/600 -> 597/600`
+  - `degraded_vs_v2=0`
+- Attack/holdout checks:
+  - attack seed500: `STAGE3 1433/1500 -> 1452/1500`, `degraded_vs_v2=0`
+  - holdout: `STAGE3 398/400 -> 398/400`, `degraded_vs_v2=0`
+- Updated Stage-3 target list/docs:
+  - `Makefile`
+  - `docs/GR_STATUS.md`
+  - `docs/ROADMAP.md`
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-02 - Stage-3 official rerun (600) + baseline guard + fail taxonomy
 
 - Added Stage-3 baseline/guard tooling:
