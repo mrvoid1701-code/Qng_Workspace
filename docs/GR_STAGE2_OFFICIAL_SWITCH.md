@@ -78,3 +78,7 @@ This runner computes official Stage-2 status from frozen Stage-2 profile runs an
 - `dataset_summary.csv`
 - `report.md`
 - `official_manifest.json`
+
+Execution artifact (600-profile rerun on frozen Stage-2 grid):
+
+- `05_validation/evidence/artifacts/gr-stage2-official-v2/`

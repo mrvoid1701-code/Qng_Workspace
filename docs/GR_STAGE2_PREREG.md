@@ -98,3 +98,4 @@ Official Stage-2 governance mapping was switched after criteria closure:
 - policy doc: `docs/GR_STAGE2_OFFICIAL_SWITCH.md`
 - effective tag: `gr-stage2-g11g12-v2-official`
 - official policy runner: `scripts/tools/run_gr_stage2_official_v2.py`
+- official 600-profile rerun package: `05_validation/evidence/artifacts/gr-stage2-official-v2/`

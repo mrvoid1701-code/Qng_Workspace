@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-03-02 - Stage-2 official rerun (600 profiles, frozen grid)
+
+- Executed official Stage-2 policy on full prereg grid source:
+  - input: `05_validation/evidence/artifacts/gr-stage2-prereg-v1/summary.csv`
+  - output: `05_validation/evidence/artifacts/gr-stage2-official-v2/`
+- Confirmed official counts:
+  - `G11`: `587/600`
+  - `G12`: `600/600`
+  - `STAGE2`: `587/600`
+  - `improved_vs_legacy=17`, `degraded_vs_legacy=0`
+
 ## 2026-03-02 - Stage-2 official governance switch definition (G11a-v2 + G12d-v2)
 
 - Added Stage-2 official policy applier:
