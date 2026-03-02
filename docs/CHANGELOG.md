@@ -2,6 +2,7 @@
 
 ## 2026-03-02 - QM G17-v2 candidate full prereg blocks (primary + attack + holdout)
 
+- elapsed wall-clock runtime for this full batch (primary + attack + holdout + eval + coupling smoke): `~5 hours` on 2026-03-02.
 - Added Stage-1 summary combiner:
   - `scripts/tools/combine_qm_stage1_summaries_v1.py`
 - Updated candidate report framing:
