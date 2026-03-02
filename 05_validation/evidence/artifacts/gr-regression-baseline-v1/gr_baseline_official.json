@@ -1,9 +1,9 @@
 {
   "baseline_id": "gr-g10-g16-regression-official-v1",
   "baseline_mode": "official",
-  "effective_tag": "gr-ppn-g15b-v2-official",
-  "effective_commit": "dd37edc",
-  "effective_date_utc": "2026-03-01",
+  "effective_tag": "gr-g16b-hybrid-official",
+  "effective_commit": "077478d",
+  "effective_date_utc": "2026-03-02",
   "notes": [
     "Generated from run_qng_phi_scale_sweep_v1.py summary output.",
     "Housekeeping regression guard baseline only; no formula/threshold edits.",
@@ -92,7 +92,17 @@
     },
     {
       "dataset_id": "DS-002",
+      "seed": 3418,
+      "phi_scale": "0.08"
+    },
+    {
+      "dataset_id": "DS-002",
       "seed": 3419,
+      "phi_scale": "0.08"
+    },
+    {
+      "dataset_id": "DS-002",
+      "seed": 3420,
       "phi_scale": "0.08"
     },
     {
@@ -108,6 +118,11 @@
     {
       "dataset_id": "DS-003",
       "seed": 3404,
+      "phi_scale": "0.08"
+    },
+    {
+      "dataset_id": "DS-003",
+      "seed": 3405,
       "phi_scale": "0.08"
     },
     {
@@ -212,6 +227,11 @@
     },
     {
       "dataset_id": "DS-006",
+      "seed": 3411,
+      "phi_scale": "0.08"
+    },
+    {
+      "dataset_id": "DS-006",
       "seed": 3412,
       "phi_scale": "0.08"
     },
@@ -238,6 +258,11 @@
     {
       "dataset_id": "DS-006",
       "seed": 3417,
+      "phi_scale": "0.08"
+    },
+    {
+      "dataset_id": "DS-006",
+      "seed": 3418,
       "phi_scale": "0.08"
     },
     {
@@ -609,6 +634,26 @@
     },
     {
       "dataset_id": "DS-002",
+      "seed": 3418,
+      "phi_scale": "0.08",
+      "g10_status": "pass",
+      "g11_status": "pass",
+      "g12_status": "pass",
+      "g13_status": "pass",
+      "g14_status": "pass",
+      "g15b_v2_status": "pass",
+      "g16_status": "pass",
+      "all_pass_official": "pass",
+      "g15a_gamma_dev": "0.020920",
+      "g15d_ep_ratio": "0.099029",
+      "g15b_shapiro_ratio": "3.147432",
+      "g15b_v2_shapiro_ratio": "10.376322",
+      "g13b_e_cov_drift": "0.003013",
+      "g14b_e_cov_drift": "0.001758",
+      "g13c_speed_reduction": "0.146084"
+    },
+    {
+      "dataset_id": "DS-002",
       "seed": 3419,
       "phi_scale": "0.08",
       "g10_status": "pass",
@@ -626,6 +671,26 @@
       "g13b_e_cov_drift": "0.005248",
       "g14b_e_cov_drift": "7.406437e-04",
       "g13c_speed_reduction": "0.155961"
+    },
+    {
+      "dataset_id": "DS-002",
+      "seed": 3420,
+      "phi_scale": "0.08",
+      "g10_status": "pass",
+      "g11_status": "pass",
+      "g12_status": "pass",
+      "g13_status": "pass",
+      "g14_status": "pass",
+      "g15b_v2_status": "pass",
+      "g16_status": "pass",
+      "all_pass_official": "pass",
+      "g15a_gamma_dev": "0.022125",
+      "g15d_ep_ratio": "0.092523",
+      "g15b_shapiro_ratio": "2.543520",
+      "g15b_v2_shapiro_ratio": "6.467023",
+      "g13b_e_cov_drift": "0.004577",
+      "g14b_e_cov_drift": "0.001262",
+      "g13c_speed_reduction": "0.154269"
     },
     {
       "dataset_id": "DS-003",
@@ -686,6 +751,26 @@
       "g13b_e_cov_drift": "0.002674",
       "g14b_e_cov_drift": "2.980299e-04",
       "g13c_speed_reduction": "0.176250"
+    },
+    {
+      "dataset_id": "DS-003",
+      "seed": 3405,
+      "phi_scale": "0.08",
+      "g10_status": "pass",
+      "g11_status": "pass",
+      "g12_status": "pass",
+      "g13_status": "pass",
+      "g14_status": "pass",
+      "g15b_v2_status": "pass",
+      "g16_status": "pass",
+      "all_pass_official": "pass",
+      "g15a_gamma_dev": "0.025980",
+      "g15d_ep_ratio": "0.078626",
+      "g15b_shapiro_ratio": "2.058160",
+      "g15b_v2_shapiro_ratio": "4.256086",
+      "g13b_e_cov_drift": "0.005204",
+      "g14b_e_cov_drift": "9.468461e-05",
+      "g13c_speed_reduction": "0.178822"
     },
     {
       "dataset_id": "DS-003",
@@ -1089,6 +1174,26 @@
     },
     {
       "dataset_id": "DS-006",
+      "seed": 3411,
+      "phi_scale": "0.08",
+      "g10_status": "pass",
+      "g11_status": "pass",
+      "g12_status": "pass",
+      "g13_status": "pass",
+      "g14_status": "pass",
+      "g15b_v2_status": "pass",
+      "g16_status": "pass",
+      "all_pass_official": "pass",
+      "g15a_gamma_dev": "0.018448",
+      "g15d_ep_ratio": "0.107300",
+      "g15b_shapiro_ratio": "3.410323",
+      "g15b_v2_shapiro_ratio": "13.300929",
+      "g13b_e_cov_drift": "0.004184",
+      "g14b_e_cov_drift": "1.045779e-04",
+      "g13c_speed_reduction": "0.129968"
+    },
+    {
+      "dataset_id": "DS-006",
       "seed": 3412,
       "phi_scale": "0.08",
       "g10_status": "pass",
@@ -1206,6 +1311,26 @@
       "g13b_e_cov_drift": "0.003807",
       "g14b_e_cov_drift": "9.324056e-05",
       "g13c_speed_reduction": "0.127548"
+    },
+    {
+      "dataset_id": "DS-006",
+      "seed": 3418,
+      "phi_scale": "0.08",
+      "g10_status": "pass",
+      "g11_status": "pass",
+      "g12_status": "pass",
+      "g13_status": "pass",
+      "g14_status": "pass",
+      "g15b_v2_status": "pass",
+      "g16_status": "pass",
+      "all_pass_official": "pass",
+      "g15a_gamma_dev": "0.017086",
+      "g15d_ep_ratio": "0.119788",
+      "g15b_shapiro_ratio": "5.289823",
+      "g15b_v2_shapiro_ratio": "22.260287",
+      "g13b_e_cov_drift": "0.002862",
+      "g14b_e_cov_drift": "0.001447",
+      "g13c_speed_reduction": "0.120298"
     },
     {
       "dataset_id": "DS-006",

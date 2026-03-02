@@ -40,5 +40,5 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 - `G16b-v1` remains legacy diagnostic baseline.
 - `G16b-v2` remains candidate diagnostic component (used by official hybrid only in low-signal regime).
 - Effective date for `G16b` official hybrid switch: `2026-03-02`.
-- Freeze reference tags: `gr-ppn-g15b-v2-official` and `pre-g16b-hybrid-official` (see `docs/CHANGELOG.md`).
+- Freeze reference tags: `gr-ppn-g15b-v2-official`, `pre-g16b-hybrid-official`, `gr-g16b-hybrid-official` (see `docs/CHANGELOG.md`).
 

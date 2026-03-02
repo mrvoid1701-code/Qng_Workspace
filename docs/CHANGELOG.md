@@ -24,6 +24,23 @@
 - Added smoke evidence package (`G13`, `G15`, `G16`):
   - `05_validation/evidence/artifacts/g16b-official-switch-smoke-v1/`
 
+## 2026-03-02 - GR baseline/guard refresh after G16b switch
+
+- Regenerated baseline source grid:
+  - `05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/summary.csv`
+  - `05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs_grid20/run-log-grid20.txt`
+  - grid definition: `DS-002/003/006 x seeds 3401..3420 x phi_scale=0.08`
+- Rebuilt baseline JSONs with new effective tag:
+  - `05_validation/evidence/artifacts/gr-regression-baseline-v1/gr_baseline_grid20.json`
+  - `05_validation/evidence/artifacts/gr-regression-baseline-v1/gr_baseline_official.json`
+  - effective_tag: `gr-g16b-hybrid-official`
+  - effective_commit: `077478d`
+  - effective_date_utc: `2026-03-02`
+- Reran regression guard against refreshed official baseline:
+  - `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/`
+  - result: `PASS`
+  - source summary counts: `all_pass_official=53/60`, `all_pass_diagnostic=42/60`
+
 ## 2026-03-01 - G16b hybrid promotion prereg + attack validation
 
 - Added promotion prereg doc:
