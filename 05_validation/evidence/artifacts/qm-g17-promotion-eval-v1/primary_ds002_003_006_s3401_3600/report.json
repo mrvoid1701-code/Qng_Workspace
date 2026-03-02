@@ -1,0 +1,50 @@
+{
+  "eval_id": "qm-g17-primary-v2",
+  "generated_utc": "2026-03-02T16:40:52.532812Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-g17-candidate-v2/primary_ds002_003_006_s3401_3600/summary.csv",
+  "datasets": [
+    "DS-002",
+    "DS-003",
+    "DS-006"
+  ],
+  "criteria": {
+    "require_zero_degraded": true,
+    "require_net_uplift": true,
+    "require_per_dataset_nondegrade": true
+  },
+  "g17": {
+    "totals": {
+      "n": 600,
+      "v1_pass": 439,
+      "v2_pass": 564,
+      "improved": 125,
+      "degraded": 0,
+      "uplift_pp": 20.833333,
+      "failcase_uplift_pp": 77.639752
+    },
+    "checks": {
+      "zero_degraded": true,
+      "net_uplift_failcases": true,
+      "per_dataset_nondegrade": true
+    },
+    "decision": true
+  },
+  "qm_lane": {
+    "totals": {
+      "n": 600,
+      "v1_pass": 411,
+      "v2_pass": 513,
+      "improved": 102,
+      "degraded": 0,
+      "uplift_pp": 17.0,
+      "failcase_uplift_pp": 53.968254
+    },
+    "checks": {
+      "zero_degraded": true,
+      "net_uplift_failcases": true,
+      "per_dataset_nondegrade": true
+    },
+    "decision": true
+  },
+  "overall_decision": "PASS"
+}

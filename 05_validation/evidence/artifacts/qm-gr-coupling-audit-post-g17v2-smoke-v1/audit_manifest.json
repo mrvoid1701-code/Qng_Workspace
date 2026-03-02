@@ -1,0 +1,20 @@
+{
+  "mode": "smoke",
+  "generated_utc": "2026-03-02T19:38:21.100543Z",
+  "datasets": [
+    "DS-002",
+    "DS-003",
+    "DS-006"
+  ],
+  "seed_start": 3401,
+  "seed_end": 3401,
+  "profiles": 3,
+  "gr_baseline_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json",
+  "gr_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv",
+  "gr_guard_pre": "PASS",
+  "gr_guard_post": "PASS",
+  "notes": [
+    "Runs G20 only for coupling audit readout.",
+    "Verifies Stage-3 GR baseline guard remains PASS pre/post audit."
+  ]
+}

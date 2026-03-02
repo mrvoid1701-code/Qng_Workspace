@@ -771,3 +771,47 @@ Key outputs:
 - `05_validation/evidence/artifacts/qm-g17-candidate-v2/ds003_s3401_3430/summary.csv`
 - `05_validation/evidence/artifacts/qm-g17-candidate-v2/ds003_s3401_3430/report.md`
 - `05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/ds003_s3401_3430/report.md`
+
+## 36) QM G17 candidate-v2 full prereg blocks (primary + attack + holdout)
+
+Run Stage-1 source packages:
+
+```bash
+python scripts/tools/run_qm_stage1_prereg_v1.py --mode prereg --datasets DS-002 --seed-start 3401 --seed-end 3600 --out-dir 05_validation/evidence/artifacts/qm-stage1-prereg-primary-v1/ds002_s3401_3600
+python scripts/tools/run_qm_stage1_prereg_v1.py --mode prereg --datasets DS-003 --seed-start 3401 --seed-end 3600 --out-dir 05_validation/evidence/artifacts/qm-stage1-prereg-primary-v1/ds003_s3401_3600
+python scripts/tools/run_qm_stage1_prereg_v1.py --mode prereg --datasets DS-006 --seed-start 3401 --seed-end 3600 --out-dir 05_validation/evidence/artifacts/qm-stage1-prereg-primary-v1/ds006_s3401_3600
+
+python scripts/tools/run_qm_stage1_prereg_v1.py --mode prereg --datasets DS-002 --seed-start 3601 --seed-end 4100 --out-dir 05_validation/evidence/artifacts/qm-stage1-attack-seed500-v1/ds002_s3601_4100
+python scripts/tools/run_qm_stage1_prereg_v1.py --mode prereg --datasets DS-003 --seed-start 3601 --seed-end 4100 --out-dir 05_validation/evidence/artifacts/qm-stage1-attack-seed500-v1/ds003_s3601_4100
+python scripts/tools/run_qm_stage1_prereg_v1.py --mode prereg --datasets DS-006 --seed-start 3601 --seed-end 4100 --out-dir 05_validation/evidence/artifacts/qm-stage1-attack-seed500-v1/ds006_s3601_4100
+
+python scripts/tools/run_qm_stage1_prereg_v1.py --mode prereg --datasets DS-004 --seed-start 3401 --seed-end 3600 --out-dir 05_validation/evidence/artifacts/qm-stage1-attack-holdout-v1/ds004_s3401_3600
+python scripts/tools/run_qm_stage1_prereg_v1.py --mode prereg --datasets DS-008 --seed-start 3401 --seed-end 3600 --out-dir 05_validation/evidence/artifacts/qm-stage1-attack-holdout-v1/ds008_s3401_3600
+```
+
+Combine Stage-1 summaries:
+
+```bash
+python scripts/tools/combine_qm_stage1_summaries_v1.py --summary-csvs 05_validation/evidence/artifacts/qm-stage1-prereg-primary-v1/ds002_s3401_3600/summary.csv,05_validation/evidence/artifacts/qm-stage1-prereg-primary-v1/ds003_s3401_3600/summary.csv,05_validation/evidence/artifacts/qm-stage1-prereg-primary-v1/ds006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-prereg-primary-v1/combined_ds002_003_006_s3401_3600
+python scripts/tools/combine_qm_stage1_summaries_v1.py --summary-csvs 05_validation/evidence/artifacts/qm-stage1-attack-seed500-v1/ds002_s3601_4100/summary.csv,05_validation/evidence/artifacts/qm-stage1-attack-seed500-v1/ds003_s3601_4100/summary.csv,05_validation/evidence/artifacts/qm-stage1-attack-seed500-v1/ds006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-attack-seed500-v1/combined_ds002_003_006_s3601_4100
+python scripts/tools/combine_qm_stage1_summaries_v1.py --summary-csvs 05_validation/evidence/artifacts/qm-stage1-attack-holdout-v1/ds004_s3401_3600/summary.csv,05_validation/evidence/artifacts/qm-stage1-attack-holdout-v1/ds008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-attack-holdout-v1/combined_ds004_008_s3401_3600
+```
+
+Run candidate-v2 and promotion eval:
+
+```bash
+python scripts/tools/run_qm_g17_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-prereg-primary-v1/combined_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g17-candidate-v2/primary_ds002_003_006_s3401_3600
+python scripts/tools/evaluate_qm_g17_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v2/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/primary_ds002_003_006_s3401_3600 --eval-id qm-g17-primary-v2 --strict-datasets DS-002,DS-003,DS-006 --require-zero-degraded --require-per-dataset-nondegrade --require-net-uplift
+
+python scripts/tools/run_qm_g17_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-attack-seed500-v1/combined_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g17-candidate-v2/attack_seed500_ds002_003_006_s3601_4100
+python scripts/tools/evaluate_qm_g17_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v2/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100 --eval-id qm-g17-attack-seed500-v2 --strict-datasets DS-002,DS-003,DS-006 --require-zero-degraded --require-per-dataset-nondegrade --no-require-net-uplift
+
+python scripts/tools/run_qm_g17_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-attack-holdout-v1/combined_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g17-candidate-v2/attack_holdout_ds004_008_s3401_3600
+python scripts/tools/evaluate_qm_g17_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v2/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600 --eval-id qm-g17-attack-holdout-v2 --strict-datasets DS-004,DS-008 --require-zero-degraded --require-per-dataset-nondegrade --no-require-net-uplift
+```
+
+Run post-candidate QM-GR coupling smoke:
+
+```bash
+python scripts/tools/run_qm_gr_coupling_audit_v1.py --mode smoke --datasets DS-002,DS-003,DS-006 --out-dir 05_validation/evidence/artifacts/qm-gr-coupling-audit-post-g17v2-smoke-v1 --gr-baseline-json 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json --gr-summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv
+```

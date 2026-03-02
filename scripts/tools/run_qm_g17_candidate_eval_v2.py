@@ -358,9 +358,9 @@ def main() -> int:
         "",
         "## Notes",
         "",
-        "- G17-v1 remains unchanged (legacy diagnostic baseline).",
-        "- G17-v2 applies local gap recovery only when multi-peak mixing is detected.",
-        "- Existing runner thresholds/formulas are unchanged; this is governance-layer evaluation.",
+        "- G17a-v1 global-gap diagnostic is treated as valid in single-well/single-peak regimes.",
+        "- G17-v2 preserves v1 behavior in that regime and applies local-gap recovery only under multi-peak mixing.",
+        "- No threshold tuning was applied in core runners; this is an observable-definition hardening at governance layer.",
     ]
     report_md = out_dir / "report.md"
     report_md.write_text("\n".join(report_lines) + "\n", encoding="utf-8")

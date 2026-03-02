@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-03-02 - QM G17-v2 candidate full prereg blocks (primary + attack + holdout)
+
+- Added Stage-1 summary combiner:
+  - `scripts/tools/combine_qm_stage1_summaries_v1.py`
+- Updated candidate report framing:
+  - `scripts/tools/run_qm_g17_candidate_eval_v2.py`
+  - explicit single-peak/single-well interpretation for v1 global gap
+  - explicit multi-peak local-gap recovery for v2
+  - explicit no-threshold-tuning statement
+- Executed primary block (`DS-002/003/006`, `3401..3600`) and candidate eval:
+  - `05_validation/evidence/artifacts/qm-stage1-prereg-primary-v1/combined_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-g17-candidate-v2/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/primary_ds002_003_006_s3401_3600/`
+  - result: `G17 439/600 -> 564/600`, `QM_LANE 411/600 -> 513/600`, `degraded=0`, decision `PASS`
+- Executed attack block (`DS-002/003/006`, `3601..4100`) and candidate eval:
+  - `05_validation/evidence/artifacts/qm-stage1-attack-seed500-v1/combined_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/qm-g17-candidate-v2/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100/`
+  - result: `G17 1092/1500 -> 1416/1500`, `QM_LANE 1017/1500 -> 1255/1500`, `degraded=0`, decision `PASS`
+- Executed holdout block (`DS-004/008`, `3401..3600`) and candidate eval:
+  - `05_validation/evidence/artifacts/qm-stage1-attack-holdout-v1/combined_ds004_008_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-g17-candidate-v2/attack_holdout_ds004_008_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600/`
+  - result: `G17 356/400 -> 400/400`, `QM_LANE 322/400 -> 360/400`, `degraded=0`, decision `PASS`
+- Executed post-candidate QM-GR coupling smoke:
+  - `05_validation/evidence/artifacts/qm-gr-coupling-audit-post-g17v2-smoke-v1/`
+  - result: `G20 3/3`, `GR guard pre=PASS`, `GR guard post=PASS`, unchanged.
+
 ## 2026-03-02 - QM G17 candidate-v2 hybrid (DS-003 mini) + promotion eval
 
 - Added candidate runner (governance layer, no core threshold/formula edits):
