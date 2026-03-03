@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-03-03 - Stability dual-channel governance lock + v6 prereg skeleton
+
+- Added dual-channel governance doc:
+  - `docs/STABILITY_DUAL_CHANNELS.md`
+  - defines `S1 energetic` vs `S2 structural` reporting contract
+- Added candidate prereg skeleton:
+  - `05_validation/pre-registrations/qng-stability-convergence-v6.md`
+  - locks statistical S1 decision framing (candidate-only, not executed)
+- No threshold/formula changes in this update.
+
 ## 2026-03-03 - Stability dual-attributes diagnostic (S1/S2 test)
 
 - Added diagnostic tool:

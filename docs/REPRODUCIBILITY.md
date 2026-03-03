@@ -642,6 +642,16 @@ Main outputs:
 - `05_validation/evidence/artifacts/stability-dual-attributes-v1/seed_dual_attributes.csv`
 - `05_validation/evidence/artifacts/stability-dual-attributes-v1/report.md`
 
+## 57) Stability dual-channel governance + v6 prereg (candidate skeleton)
+
+Governance doc:
+
+- `docs/STABILITY_DUAL_CHANNELS.md`
+
+Candidate prereg (not executed yet):
+
+- `05_validation/pre-registrations/qng-stability-convergence-v6.md`
+
 Primary candidate eval:
 
 ```bash
