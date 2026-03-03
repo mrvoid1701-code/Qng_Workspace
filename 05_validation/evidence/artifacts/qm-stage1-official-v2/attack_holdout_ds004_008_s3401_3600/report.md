@@ -1,6 +1,6 @@
 # QM Stage-1 Official Policy Application (v2)
 
-- generated_utc: `2026-03-02T20:03:38.192974Z`
+- generated_utc: `2026-03-03T01:44:01.714078Z`
 - source_summary_csv: `C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-g17-candidate-v2/attack_holdout_ds004_008_s3401_3600/summary.csv`
 - policy_id: `qm-stage1-official-v2-attack-holdout`
 - effective_tag: `qm-stage1-g17-v2-official`
