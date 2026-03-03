@@ -674,6 +674,49 @@ Main outputs:
 - `05_validation/evidence/artifacts/stability-convergence-v6/report.json`
 - `05_validation/pre-registrations/qng-stability-convergence-v6-run-record-2026-03-03.md`
 
+## 58) Stability convergence v6 promotion audit (primary + attack + shifted holdout)
+
+Run primary comparator packages (legacy v5-like vs v6):
+
+```bash
+python scripts/tools/run_stability_convergence_gate_v4.py --summary-csv 05_validation/evidence/artifacts/stability-convergence-v6/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/primary_s3401_3420/legacy_v5like --prereg-doc 05_validation/pre-registrations/qng-stability-convergence-v5.md --full-metric-field delta_energy_rel --bulk-metric-field delta_energy_rel --step-tol 0.002 --full-step-fraction-min 0.75 --bulk-step-fraction-min 0.85 --overall-improvement-min 0.005 --support-worsen-factor-max 1.25 --rho-full-max -0.60 --full-seed-pass-fraction-min 0.85 --bulk-seed-pass-fraction-min 0.85 --bulk-min-profiles-per-level 5 --bulk-core-size-min 6 --bulk-core-ratio-min 0.10 --bulk-bootstrap-reps 400 --bulk-ci-alpha 0.05 --no-strict-exit
+python scripts/tools/run_stability_convergence_gate_v6.py --summary-csv 05_validation/evidence/artifacts/stability-convergence-v6/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/primary_s3401_3420/v6_candidate --prereg-doc 05_validation/pre-registrations/qng-stability-convergence-v6.md --full-metric-field delta_energy_rel --bulk-metric-field delta_energy_rel --bulk-core-size-min 6 --bulk-core-ratio-min 0.10 --bulk-min-profiles-per-level 5 --bootstrap-reps 2000 --ci-alpha 0.05 --no-strict-exit
+```
+
+Run attack seed block:
+
+```bash
+python scripts/tools/run_stability_stress_v1.py --dataset-id STABILITY-CONVERGENCE-V6-ATTACK --seed-list 3601,3602,3603,3604,3605,3606,3607,3608,3609,3610,3611,3612,3613,3614,3615,3616,3617,3618,3619,3620 --n-nodes-list 24,28,32,36,40,44,48 --steps-list 60 --out-dir 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/attack_seed3601_3620/raw --no-strict-exit
+python scripts/tools/run_stability_convergence_gate_v4.py --summary-csv 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/attack_seed3601_3620/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/attack_seed3601_3620/legacy_v5like --prereg-doc 05_validation/pre-registrations/qng-stability-convergence-v5.md --full-metric-field delta_energy_rel --bulk-metric-field delta_energy_rel --step-tol 0.002 --full-step-fraction-min 0.75 --bulk-step-fraction-min 0.85 --overall-improvement-min 0.005 --support-worsen-factor-max 1.25 --rho-full-max -0.60 --full-seed-pass-fraction-min 0.85 --bulk-seed-pass-fraction-min 0.85 --bulk-min-profiles-per-level 5 --bulk-core-size-min 6 --bulk-core-ratio-min 0.10 --bulk-bootstrap-reps 400 --bulk-ci-alpha 0.05 --no-strict-exit
+python scripts/tools/run_stability_convergence_gate_v6.py --summary-csv 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/attack_seed3601_3620/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/attack_seed3601_3620/v6_candidate --prereg-doc 05_validation/pre-registrations/qng-stability-convergence-v6.md --full-metric-field delta_energy_rel --bulk-metric-field delta_energy_rel --bulk-core-size-min 6 --bulk-core-ratio-min 0.10 --bulk-min-profiles-per-level 5 --bootstrap-reps 2000 --ci-alpha 0.05 --no-strict-exit
+```
+
+Run shifted holdout regime:
+
+```bash
+python scripts/tools/run_stability_stress_v1.py --dataset-id STABILITY-CONVERGENCE-V6-HOLDOUT --seed-list 3501,3502,3503,3504,3505,3506,3507,3508,3509,3510,3511,3512,3513,3514,3515,3516,3517,3518,3519,3520 --n-nodes-list 30,36,42,48 --steps-list 80 --edge-prob-grid 0.05,0.12,0.25 --chi-scale-grid 0.40,1.00,1.80 --noise-grid 0.00,0.02,0.05 --phi-shock-grid 0.00,0.60 --out-dir 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/holdout_regime_shift_s3501_3520/raw --no-strict-exit
+python scripts/tools/run_stability_convergence_gate_v4.py --summary-csv 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/holdout_regime_shift_s3501_3520/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/holdout_regime_shift_s3501_3520/legacy_v5like --prereg-doc 05_validation/pre-registrations/qng-stability-convergence-v5.md --full-metric-field delta_energy_rel --bulk-metric-field delta_energy_rel --step-tol 0.002 --full-step-fraction-min 0.75 --bulk-step-fraction-min 0.85 --overall-improvement-min 0.005 --support-worsen-factor-max 1.25 --rho-full-max -0.60 --full-seed-pass-fraction-min 0.85 --bulk-seed-pass-fraction-min 0.85 --bulk-min-profiles-per-level 5 --bulk-core-size-min 6 --bulk-core-ratio-min 0.10 --bulk-bootstrap-reps 400 --bulk-ci-alpha 0.05 --no-strict-exit
+python scripts/tools/run_stability_convergence_gate_v6.py --summary-csv 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/holdout_regime_shift_s3501_3520/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/holdout_regime_shift_s3501_3520/v6_candidate --prereg-doc 05_validation/pre-registrations/qng-stability-convergence-v6.md --full-metric-field delta_energy_rel --bulk-metric-field delta_energy_rel --bulk-core-size-min 6 --bulk-core-ratio-min 0.10 --bulk-min-profiles-per-level 5 --bootstrap-reps 2000 --ci-alpha 0.05 --no-strict-exit
+```
+
+Aggregate promotion audit:
+
+```bash
+python scripts/tools/evaluate_stability_convergence_v6_promotion_v1.py --audit-root 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1 --blocks primary_s3401_3420,attack_seed3601_3620,holdout_regime_shift_s3501_3520 --out-dir 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1 --eval-id stability-convergence-v6-promotion-eval-v1
+```
+
+Or:
+
+```bash
+make stability_convergence_v6_promotion_eval
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/block_summary.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/promotion_report.md`
+- `05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/promotion_report.json`
+
 ## 17) GR Stage-2 official policy application (G11a-v4 switch)
 
 Apply official Stage-2 mapping on frozen official-v3 summary profiles:

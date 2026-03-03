@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-03-03 - Stability convergence v6 promotion audit (primary + attack + shifted holdout)
+
+- Added promotion evaluator:
+  - `scripts/tools/evaluate_stability_convergence_v6_promotion_v1.py`
+- Added Make target:
+  - `stability_convergence_v6_promotion_eval`
+- Built audit evidence package:
+  - `05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/`
+  - includes:
+    - primary comparator (`legacy_v5like` vs `v6_candidate`)
+    - attack seed block (`3601..3620`)
+    - shifted holdout regime block (`3501..3520`, sparse/noise/phi-shock shifted grid)
+- Promotion audit result:
+  - `promotion_report.json`: `PASS`
+  - `zero_degraded_seed=true`
+  - `all_v6_blocks_pass=true`
+  - `holdout_shift_block_pass=true`
+  - `s2_all_blocks_ok=true`, `s1_ci_all_blocks_ok=true`
+- Residual diagnostic note:
+  - `no_positive_seed_slopes=false` (tracked as diagnostic, not promotion blocker)
+
 ## 2026-03-03 - Stability convergence v6 candidate run (dual-channel gate)
 
 - Added v6 gate runner:
