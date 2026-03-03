@@ -48,6 +48,32 @@ Holdout (`DS-004/008`, seeds `3401..3600`, `n=400`):
 - `QM lane`: `360/400 -> 372/400`
 - `degraded_vs_v1 = 0`
 
+## Governance Application Results (Official-v3 Apply)
+
+Primary (`DS-002/003/006`, seeds `3401..3600`, `n=600`):
+
+- `G18`: `551/600 -> 564/600`
+- `QM lane`: `513/600 -> 526/600`
+- `degraded_vs_v1 = 0`
+
+Attack (`DS-002/003/006`, seeds `3601..4100`, `n=1500`):
+
+- `G18`: `1339/1500 -> 1395/1500`
+- `QM lane`: `1255/1500 -> 1311/1500`
+- `degraded_vs_v1 = 0`
+
+Holdout (`DS-004/008`, seeds `3401..3600`, `n=400`):
+
+- `G18`: `360/400 -> 372/400`
+- `QM lane`: `360/400 -> 372/400`
+- `degraded_vs_v1 = 0`
+
+Regression guard (`primary + attack + holdout`):
+
+- decision: `PASS`
+- profile drift: `none`
+- official pass-rate degradation: `none`
+
 ## Implementation
 
 Official policy application runner:

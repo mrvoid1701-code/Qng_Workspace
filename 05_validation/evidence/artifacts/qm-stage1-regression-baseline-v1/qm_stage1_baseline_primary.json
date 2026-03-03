@@ -1,8 +1,8 @@
 {
   "baseline_id": "qm-stage1-baseline-primary-v1",
   "block_id": "primary",
-  "generated_utc": "2026-03-03T01:57:11.639511Z",
-  "effective_tag": "qm-stage1-g17-v2-official",
+  "generated_utc": "2026-03-03T02:35:07.345650Z",
+  "effective_tag": "qm-stage1-g18-v2-official",
   "effective_commit": "",
   "effective_date_utc": "",
   "notes": [
@@ -11,9 +11,9 @@
     "Numeric metric stats are descriptive and sourced from metrics summary when available."
   ],
   "sources": {
-    "official_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v2/primary_ds002_003_006_s3401_3600/summary.csv",
-    "metrics_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-g17-candidate-v2/primary_ds002_003_006_s3401_3600/summary.csv",
-    "promotion_report_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/primary_ds002_003_006_s3401_3600/report.json"
+    "official_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v3/primary_ds002_003_006_s3401_3600/summary.csv",
+    "metrics_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-g18-candidate-v2/primary_ds002_003_006_s3401_3600/summary.csv",
+    "promotion_report_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-g18-promotion-eval-v1/primary_ds002_003_006_s3401_3600/report.json"
   },
   "profiles": [
     {
@@ -2442,16 +2442,28 @@
       "g17c_status",
       "g17d_status",
       "g17_status_legacy",
+      "g18_status_legacy",
       "all_pass_qm_lane_legacy",
-      "g17a_status_v1"
+      "g17a_status_v1",
+      "g18a_status",
+      "g18b_status",
+      "g18c_status",
+      "g18d_status_v1",
+      "g18d_status_v2"
     ],
     "numeric_metric_fields": [
-      "g17a_gap_global",
-      "g17a_gap_local",
-      "g17b_slope",
-      "g17c_e0_per_mode",
-      "g17d_heisenberg_dev",
-      "local_basin_nodes",
+      "g18d_ds_global",
+      "g18d_ds_hi",
+      "g18d_ds_lo",
+      "g18d_ds_local_agg",
+      "g18d_ds_local_peak1",
+      "g18d_ds_local_peak2",
+      "g18d_local_fit_points_peak1",
+      "g18d_local_fit_points_peak2",
+      "g18d_local_r2_peak1",
+      "g18d_local_r2_peak2",
+      "local_basin_nodes_peak1",
+      "local_basin_nodes_peak2",
       "multi_peak_mixing",
       "peak12_distance_norm",
       "sigma_peak2_to_peak1"
@@ -2465,9 +2477,9 @@
         "pass_rate": 0.94
       },
       "g18_status": {
-        "pass": 551,
+        "pass": 564,
         "total": 600,
-        "pass_rate": 0.9183333333333333
+        "pass_rate": 0.94
       },
       "g19_status": {
         "pass": 596,
@@ -2480,9 +2492,9 @@
         "pass_rate": 1.0
       },
       "all_pass_qm_lane": {
-        "pass": 513,
+        "pass": 526,
         "total": 600,
-        "pass_rate": 0.855
+        "pass_rate": 0.8766666666666667
       }
     },
     "subgates": {
@@ -2514,9 +2526,9 @@
         "pass_rate": 0.94
       },
       "g18_status": {
-        "pass": 551,
+        "pass": 564,
         "total": 600,
-        "pass_rate": 0.9183333333333333
+        "pass_rate": 0.94
       },
       "g19_status": {
         "pass": 596,
@@ -2529,9 +2541,9 @@
         "pass_rate": 1.0
       },
       "all_pass_qm_lane": {
-        "pass": 513,
+        "pass": 526,
         "total": 600,
-        "pass_rate": 0.855
+        "pass_rate": 0.8766666666666667
       },
       "g17a_status_v2": {
         "pass": 599,
@@ -2558,30 +2570,114 @@
         "total": 600,
         "pass_rate": 0.7316666666666667
       },
-      "all_pass_qm_lane_legacy": {
-        "pass": 411,
+      "g18_status_legacy": {
+        "pass": 551,
         "total": 600,
-        "pass_rate": 0.685
+        "pass_rate": 0.9183333333333333
+      },
+      "all_pass_qm_lane_legacy": {
+        "pass": 513,
+        "total": 600,
+        "pass_rate": 0.855
       },
       "g17a_status_v1": {
         "pass": 468,
         "total": 600,
         "pass_rate": 0.78
+      },
+      "g18a_status": {
+        "pass": 600,
+        "total": 600,
+        "pass_rate": 1.0
+      },
+      "g18b_status": {
+        "pass": 600,
+        "total": 600,
+        "pass_rate": 1.0
+      },
+      "g18c_status": {
+        "pass": 600,
+        "total": 600,
+        "pass_rate": 1.0
+      },
+      "g18d_status_v1": {
+        "pass": 551,
+        "total": 600,
+        "pass_rate": 0.9183333333333333
+      },
+      "g18d_status_v2": {
+        "pass": 564,
+        "total": 600,
+        "pass_rate": 0.94
       }
     }
   },
   "numeric_metrics": {
-    "g17a_gap_global": {
+    "g18d_ds_global": {
       "count": 600,
-      "min": 0.004319,
-      "median": 0.011237,
-      "p95": 0.0127854
+      "min": 0.962518,
+      "median": 1.3222535,
+      "p95": 1.48415045
     },
-    "g17a_gap_local": {
+    "g18d_ds_local_peak1": {
+      "count": 49,
+      "min": 0.605072257888,
+      "median": 1.108679077928,
+      "p95": 1.536199981503
+    },
+    "g18d_ds_local_peak2": {
+      "count": 49,
+      "min": 0.576713210316,
+      "median": 1.078897031181,
+      "p95": 1.414601772142
+    },
+    "g18d_ds_local_agg": {
+      "count": 49,
+      "min": 0.657784673161,
+      "median": 1.069267940228,
+      "p95": 1.408484317577
+    },
+    "g18d_local_r2_peak1": {
+      "count": 49,
+      "min": 0.622965298315,
+      "median": 0.868495890205,
+      "p95": 0.944453606716
+    },
+    "g18d_local_r2_peak2": {
+      "count": 49,
+      "min": 0.424896055226,
+      "median": 0.825868939649,
+      "p95": 0.942560997268
+    },
+    "g18d_local_fit_points_peak1": {
       "count": 600,
-      "min": 0.008138376255,
-      "median": 0.045984394605,
-      "p95": 0.072504876005
+      "min": 0.0,
+      "median": 0.0,
+      "p95": 7.0
+    },
+    "g18d_local_fit_points_peak2": {
+      "count": 600,
+      "min": 0.0,
+      "median": 0.0,
+      "p95": 7.0
+    },
+    "g18d_ds_lo": {
+      "count": 600,
+      "min": 1.2,
+      "median": 1.2,
+      "p95": 1.2
+    },
+    "g18d_ds_hi": {
+      "count": 600,
+      "min": 3.5,
+      "median": 3.5,
+      "p95": 3.5
+    },
+    "multi_peak_mixing": {
+      "count": 600,
+      "min": 1.0,
+      "median": 1.0,
+      "p95": 1.0
     },
     "sigma_peak2_to_peak1": {
       "count": 600,
@@ -2595,35 +2691,17 @@
       "median": 0.064394404129,
       "p95": 0.144837678087
     },
-    "multi_peak_mixing": {
-      "count": 600,
-      "min": 1.0,
-      "median": 1.0,
-      "p95": 1.0
-    },
-    "local_basin_nodes": {
-      "count": 600,
-      "min": 31.0,
-      "median": 42.0,
-      "p95": 48.0
-    },
-    "g17b_slope": {
-      "count": 600,
-      "min": -0.02419,
-      "median": -0.0143455,
-      "p95": -0.0099553
-    },
-    "g17c_e0_per_mode": {
-      "count": 600,
-      "min": 0.161049,
-      "median": 0.1760205,
-      "p95": 0.18337385
-    },
-    "g17d_heisenberg_dev": {
+    "local_basin_nodes_peak1": {
       "count": 600,
       "min": 0.0,
       "median": 0.0,
-      "p95": 0.0
+      "p95": 36.0
+    },
+    "local_basin_nodes_peak2": {
+      "count": 600,
+      "min": 0.0,
+      "median": 0.0,
+      "p95": 36.0
     }
   },
   "metrics_coverage": {
@@ -2632,30 +2710,26 @@
     "profiles_missing_metrics": 0
   },
   "promotion_eval": {
-    "eval_id": "qm-g17-primary-v2",
+    "eval_id": "qm-g18-primary-v2",
     "overall_decision": "PASS",
     "criteria": {
       "require_zero_degraded": true,
       "require_net_uplift": true,
-      "require_per_dataset_nondegrade": true
+      "require_per_dataset_nondegrade": true,
+      "require_uplift_datasets": true,
+      "uplift_datasets": [
+        "DS-003"
+      ]
     },
-    "g17_totals": {
-      "n": 600,
-      "v1_pass": 439,
-      "v2_pass": 564,
-      "improved": 125,
-      "degraded": 0,
-      "uplift_pp": 20.833333,
-      "failcase_uplift_pp": 77.639752
-    },
+    "g17_totals": {},
     "qm_lane_totals": {
       "n": 600,
-      "v1_pass": 411,
-      "v2_pass": 513,
-      "improved": 102,
+      "v1_pass": 513,
+      "v2_pass": 526,
+      "improved": 13,
       "degraded": 0,
-      "uplift_pp": 17.0,
-      "failcase_uplift_pp": 53.968254
+      "uplift_pp": 2.166667,
+      "failcase_uplift_pp": 14.942529
     }
   }
 }

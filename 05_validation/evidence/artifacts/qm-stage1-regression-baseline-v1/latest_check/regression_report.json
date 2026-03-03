@@ -1,11 +1,11 @@
 {
-  "generated_utc": "2026-03-03T01:57:19.359505Z",
+  "generated_utc": "2026-03-03T02:35:14.911465Z",
   "decision": "PASS",
   "blocks": [
     {
       "block_id": "primary",
       "baseline_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_primary.json",
-      "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v2/primary_ds002_003_006_s3401_3600/summary.csv",
+      "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v3/primary_ds002_003_006_s3401_3600/summary.csv",
       "profiles_expected": 600,
       "profiles_observed": 600,
       "profiles_missing": 0,
@@ -18,7 +18,7 @@
     {
       "block_id": "attack",
       "baseline_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_attack.json",
-      "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v2/attack_seed500_ds002_003_006_s3601_4100/summary.csv",
+      "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v3/attack_seed500_ds002_003_006_s3601_4100/summary.csv",
       "profiles_expected": 1500,
       "profiles_observed": 1500,
       "profiles_missing": 0,
@@ -31,7 +31,7 @@
     {
       "block_id": "holdout",
       "baseline_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_holdout.json",
-      "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v2/attack_holdout_ds004_008_s3401_3600/summary.csv",
+      "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v3/attack_holdout_ds004_008_s3401_3600/summary.csv",
       "profiles_expected": 400,
       "profiles_observed": 400,
       "profiles_missing": 0,

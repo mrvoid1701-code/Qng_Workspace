@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-03-03 - QM Stage-1 official-v3 apply + baseline guard + taxonomy v2
+
+- Applied official-v3 governance packages:
+  - `05_validation/evidence/artifacts/qm-stage1-official-v3/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v3/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v3/attack_holdout_ds004_008_s3401_3600/`
+- Official-v3 apply readout:
+  - primary: `G18 551/600 -> 564/600`, `QM lane 513/600 -> 526/600`, `degraded=0`
+  - attack: `G18 1339/1500 -> 1395/1500`, `QM lane 1255/1500 -> 1311/1500`, `degraded=0`
+  - holdout: `G18 360/400 -> 372/400`, `QM lane 360/400 -> 372/400`, `degraded=0`
+- Rebuilt QM Stage-1 baseline artifacts for v3 policy:
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_primary.json`
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_attack.json`
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_holdout.json`
+- Reran regression guard:
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/latest_check/`
+  - decision: `PASS` (all blocks, no profile drift, no pass-rate degradation)
+- Generated post-switch taxonomy packages:
+  - `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v2/`
+  - `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v2/`
+- Post-switch taxonomy v2 readout (`n=2500`):
+  - QM lane fail profiles: `291` (previous v1: `372`)
+  - dominant failing gate: `G18` (`169`), followed by `G17` (`120`)
+  - dominant `G17` subgate in fail-cases: `G17b` (`115`)
+  - strict `G18` fail profiles: `169`, dominant subgate `G18d`, `G20` fail count remains `0`
+
 ## 2026-03-03 - QM Stage-1 governance switch prep (G18d-v2 official policy v3)
 
 - Added official policy applier:
