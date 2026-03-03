@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-03-03 - Stability convergence v6 extended audit v1 (200 seeds/block)
+
+- Added locked prereg:
+  - `05_validation/pre-registrations/qng-stability-convergence-v6-extended-v1.md`
+- Added resumable orchestrator:
+  - `scripts/tools/run_stability_convergence_v6_extended_eval_v1.py`
+- Added Make target:
+  - `stability_convergence_v6_extended_eval`
+- Executed full extended package:
+  - `05_validation/evidence/artifacts/stability-convergence-v6-extended-v1/`
+- Added run record:
+  - `05_validation/pre-registrations/qng-stability-convergence-v6-extended-v1-run-record-2026-03-03.md`
+- Result:
+  - decision `PASS`
+  - `zero_degraded_seed=true`
+  - `all_v6_blocks_pass=true`
+  - `holdout_shift_block_pass=true`
+  - `total_degraded_seed_count=0`
+  - runtime `~1h57m` (manifest)
+
 ## 2026-03-03 - Stability convergence v6 baseline+guard + telemetry + lock-in
 
 - Added baseline builder:

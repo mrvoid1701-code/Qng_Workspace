@@ -1,0 +1,25 @@
+{
+  "eval_id": "stability-convergence-v6-extended-promotion-eval-v1",
+  "generated_utc": "2026-03-03T17:43:14.316278+00:00",
+  "audit_root": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v6-extended-v1",
+  "blocks": [
+    "primary_s3401_3600",
+    "attack_s3601_3800",
+    "holdout_shifted_s3801_4000"
+  ],
+  "checks": {
+    "zero_degraded_seed": true,
+    "all_v6_blocks_pass": true,
+    "holdout_shift_block_pass": true,
+    "no_seed_set_mismatch": true,
+    "s2_all_blocks_ok": true,
+    "s1_ci_all_blocks_ok": true,
+    "no_positive_seed_slopes": false
+  },
+  "totals": {
+    "block_count": 3,
+    "total_degraded_seed_count": 0,
+    "total_missing_seed_count": 0
+  },
+  "decision": "PASS"
+}

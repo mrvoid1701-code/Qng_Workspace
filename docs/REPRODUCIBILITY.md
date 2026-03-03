@@ -750,6 +750,33 @@ Main outputs:
 - `05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/latest_check/regression_report.json`
 - `05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/latest_check/telemetry.csv`
 
+## 60) Stability convergence v6 extended audit (200 seeds/block)
+
+Locked prereg:
+
+- `05_validation/pre-registrations/qng-stability-convergence-v6-extended-v1.md`
+
+Run (resumable orchestrator):
+
+```bash
+python scripts/tools/run_stability_convergence_v6_extended_eval_v1.py --out-dir 05_validation/evidence/artifacts/stability-convergence-v6-extended-v1 --prereg-doc 05_validation/pre-registrations/qng-stability-convergence-v6-extended-v1.md --resume
+```
+
+Or:
+
+```bash
+make stability_convergence_v6_extended_eval
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/stability-convergence-v6-extended-v1/block_summary.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v6-extended-v1/promotion_report.md`
+- `05_validation/evidence/artifacts/stability-convergence-v6-extended-v1/promotion_report.json`
+- `05_validation/evidence/artifacts/stability-convergence-v6-extended-v1/manifest.json`
+- `05_validation/evidence/artifacts/stability-convergence-v6-extended-v1/run-log.txt`
+- `05_validation/pre-registrations/qng-stability-convergence-v6-extended-v1-run-record-2026-03-03.md`
+
 ## 17) GR Stage-2 official policy application (G11a-v4 switch)
 
 Apply official Stage-2 mapping on frozen official-v3 summary profiles:
