@@ -97,3 +97,5 @@ Next stage:
 
 - `QM-Stage-2` is not official yet (candidate/prereg lane only).
 - promotion requires prereg protocol + non-degradation + coupling-audit revalidation.
+- prereg protocol: `docs/QM_STAGE2_PREREG.md`
+- orchestration runner: `scripts/tools/run_qm_stage2_prereg_v1.py`

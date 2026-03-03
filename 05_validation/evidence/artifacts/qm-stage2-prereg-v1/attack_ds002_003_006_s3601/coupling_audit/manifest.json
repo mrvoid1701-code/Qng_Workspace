@@ -1,0 +1,32 @@
+{
+  "generated_utc": "2026-03-03T21:18:47.388347Z",
+  "policy_id": "qm-gr-coupling-audit-v2",
+  "ds_list": [
+    "DS-002",
+    "DS-003",
+    "DS-006"
+  ],
+  "seed_min": 3601,
+  "seed_max": 3601,
+  "chunk_size": 25,
+  "resume": true,
+  "write_artifacts": false,
+  "plots": false,
+  "profiles_total_expected": 3,
+  "profiles_completed": 3,
+  "profiles_missing": 0,
+  "g20_pass": 3,
+  "g20_rc_fail_profiles": 0,
+  "gr_guard_pre_all_pass": true,
+  "gr_guard_post_all_pass": true,
+  "chunk_decisions_all_pass": true,
+  "gr_baseline_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json",
+  "gr_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv",
+  "artifacts": {
+    "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage2-prereg-v1/attack_ds002_003_006_s3601/coupling_audit/summary.csv",
+    "dataset_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage2-prereg-v1/attack_ds002_003_006_s3601/coupling_audit/dataset_summary.csv",
+    "chunk_checks_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage2-prereg-v1/attack_ds002_003_006_s3601/coupling_audit/chunk_checks.csv",
+    "report_md": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage2-prereg-v1/attack_ds002_003_006_s3601/coupling_audit/report.md",
+    "run_log_txt": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage2-prereg-v1/attack_ds002_003_006_s3601/coupling_audit/run-log.txt"
+  }
+}

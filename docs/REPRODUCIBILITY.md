@@ -1438,3 +1438,38 @@ Outputs:
 - `05_validation/evidence/artifacts/stability-v1-failure-taxonomy-v1/pattern_summary.csv`
 - `05_validation/evidence/artifacts/stability-v1-failure-taxonomy-v1/feature_correlations.csv`
 - `05_validation/evidence/artifacts/stability-v1-failure-taxonomy-v1/report.md`
+
+## 46) QM Stage-2 prereg orchestration (candidate lane)
+
+Protocol:
+
+- `docs/QM_STAGE2_PREREG.md`
+
+Smoke run:
+
+```bash
+make qm_stage2_smoke
+```
+
+Full prereg orchestration:
+
+```bash
+make qm_stage2_prereg
+```
+
+Direct runner:
+
+```bash
+python scripts/tools/run_qm_stage2_prereg_v1.py --mode smoke --execute --with-coupling-audit --chunk-size 25 --resume-coupling --no-write-artifacts --no-plots
+python scripts/tools/run_qm_stage2_prereg_v1.py --mode prereg --strict-prereg --execute --with-coupling-audit --chunk-size 25 --resume-coupling --no-write-artifacts --no-plots
+```
+
+Outputs:
+
+- `05_validation/evidence/artifacts/qm-stage2-prereg-v1/summary.csv`
+- `05_validation/evidence/artifacts/qm-stage2-prereg-v1/report.md`
+- `05_validation/evidence/artifacts/qm-stage2-prereg-v1/manifest.json`
+- per-block outputs under:
+  - `05_validation/evidence/artifacts/qm-stage2-prereg-v1/<block_id>/qm_lane/`
+  - `05_validation/evidence/artifacts/qm-stage2-prereg-v1/<block_id>/eval/`
+  - `05_validation/evidence/artifacts/qm-stage2-prereg-v1/<block_id>/coupling_audit/`

@@ -74,6 +74,9 @@ Gate map for the core GR/QM chain and metric hardening sequence.
   - `docs/QM_STAGE1_G18_V2_OFFICIAL_SWITCH.md` (current, v3)
 - `QM-Stage-1` freeze contract:
   - `docs/QM_STAGE1_FREEZE.md`
+- `QM-Stage-2` prereg lane (candidate-only, not official):
+  - `docs/QM_STAGE2_PREREG.md`
+  - orchestration: `scripts/tools/run_qm_stage2_prereg_v1.py`
 - QM decision criteria are tracked in a separate lane: `docs/QM_LANE_POLICY.md`.
 - QM-Stage-1 prereg source: `05_validation/pre-registrations/qm-stage1-prereg-v1.md`.
 - Stability lane official decision policy:

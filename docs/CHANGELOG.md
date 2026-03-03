@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-03-03 - Public visibility refresh + QM Stage-2 prereg orchestration bootstrap
+
+- Added Stage-1 bridge note:
+  - `docs/QM_GR_BRIDGE_NOTE_STAGE1.md`
+- Added QM Stage-2 prereg protocol doc:
+  - `docs/QM_STAGE2_PREREG.md`
+- Added orchestration runner:
+  - `scripts/tools/run_qm_stage2_prereg_v1.py`
+- Added Make targets:
+  - `qm_stage2_smoke`
+  - `qm_stage2_prereg`
+- Updated index docs:
+  - `README.md`
+  - `docs/ROADMAP.md`
+  - `docs/GATES.md`
+  - `docs/QM_LANE_POLICY.md`
+  - `docs/REPRODUCIBILITY.md`
+- Executed smoke package:
+  - `05_validation/evidence/artifacts/qm-stage2-prereg-v1/`
+  - primary smoke block: `HOLD` (`2/3` QM-lane pass), coupling `PASS`
+  - attack smoke block: `HOLD` (`2/3` QM-lane pass), coupling `PASS`
+  - holdout smoke block: `PASS` (`2/2` QM-lane pass), coupling `PASS`
+  - combined smoke decision: `HOLD` (`1/3` blocks PASS)
+- Scope guard:
+  - no physics threshold/formula changes (tooling/docs only)
+
 ## 2026-03-03 - Stability convergence v6 extended audit v1 (200 seeds/block)
 
 - Added locked prereg:

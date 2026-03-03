@@ -44,6 +44,8 @@ help:
 	@echo "  make qm_stage1_smoke"
 	@echo "  make qm_stage1_prereg"
 	@echo "  make qm_stage1_eval"
+	@echo "  make qm_stage2_smoke"
+	@echo "  make qm_stage2_prereg"
 	@echo "  make qm_gr_coupling_audit_smoke"
 	@echo "  make qm_gr_coupling_audit"
 	@echo "  make qm_gr_coupling_audit_primary_chunked"
@@ -219,6 +221,14 @@ qm_stage1_prereg:
 
 qm_stage1_eval:
 	$(PYTHON) scripts/tools/evaluate_qm_stage1_prereg_v1.py --summary-csv 05_validation/evidence/artifacts/qm-stage1-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-eval-v1/primary_ds002_003_006_s3401_3600 --eval-id qm-stage1-primary-v1 --strict-datasets DS-002,DS-003,DS-006 --require-zero-rc --min-all-pass-rate 0.0
+
+.PHONY: qm_stage2_smoke qm_stage2_prereg
+
+qm_stage2_smoke:
+	$(PYTHON) scripts/tools/run_qm_stage2_prereg_v1.py --mode smoke --execute --with-coupling-audit --chunk-size 25 --resume-coupling --no-write-artifacts --no-plots --out-dir 05_validation/evidence/artifacts/qm-stage2-prereg-v1
+
+qm_stage2_prereg:
+	$(PYTHON) scripts/tools/run_qm_stage2_prereg_v1.py --mode prereg --strict-prereg --execute --with-coupling-audit --chunk-size 25 --resume-coupling --no-write-artifacts --no-plots --out-dir 05_validation/evidence/artifacts/qm-stage2-prereg-v1
 
 qm_gr_coupling_audit_smoke:
 	$(PYTHON) scripts/tools/run_qm_gr_coupling_audit_v1.py --mode smoke --datasets DS-002,DS-003,DS-006 --out-dir 05_validation/evidence/artifacts/qm-gr-coupling-audit-smoke-v1 --gr-baseline-json 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json --gr-summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv
