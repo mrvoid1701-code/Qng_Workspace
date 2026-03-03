@@ -974,3 +974,32 @@ Expected:
   - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/latest_check/regression_report.json`
 - smoke `all_pass_qm_lane=pass` in:
   - `07_exports/repro/qm_stage1_freeze_smoke_ds003_s3520/summary.csv`
+
+## 44) Stability term strict sweep (QNG-v1-strict)
+
+Policy/derivations:
+
+- `docs/STABILITY_V1_STRICT.md`
+- `03_math/derivations/qng-stability-action-v1.md`
+- `03_math/derivations/qng-stability-update-v1.md`
+- `05_validation/pre-registrations/qng-stability-v1-strict.md`
+
+Run:
+
+```bash
+make stability_v1_stress
+```
+
+Direct Python fallback:
+
+```bash
+python scripts/tools/run_stability_stress_v1.py --out-dir 05_validation/evidence/artifacts/stability-v1
+```
+
+Outputs:
+
+- `05_validation/evidence/artifacts/stability-v1/summary.csv`
+- `05_validation/evidence/artifacts/stability-v1/gate_summary.csv`
+- `05_validation/evidence/artifacts/stability-v1/report.md`
+- `05_validation/evidence/artifacts/stability-v1/manifest.json`
+- `05_validation/evidence/artifacts/stability-v1/run-log.txt`

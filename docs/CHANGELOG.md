@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-03-03 - Stability term lane bootstrap (QNG-v1-strict)
+
+- Added strict stability governance contract:
+  - `docs/STABILITY_V1_STRICT.md`
+- Added explicit action definition:
+  - `03_math/derivations/qng-stability-action-v1.md`
+- Added variational update derivation:
+  - `03_math/derivations/qng-stability-update-v1.md`
+- Added preregistered strict protocol:
+  - `05_validation/pre-registrations/qng-stability-v1-strict.md`
+- Added stress runner:
+  - `scripts/tools/run_stability_stress_v1.py`
+- Added one-command make target:
+  - `stability_v1_stress`
+- Added reproducibility section:
+  - `docs/REPRODUCIBILITY.md` (section 44)
+
 ## 2026-03-03 - QM Stage-1 freeze verification + full coupling audit v2 rerun
 
 - Executed full QM-GR coupling audit v2 packages (chunked + resume-safe):

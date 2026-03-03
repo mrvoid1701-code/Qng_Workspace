@@ -1,0 +1,10 @@
+gate,pass_count,fail_count,pass_rate
+gate_sigma_bounds,54,0,1.000000
+gate_metric_positive,54,0,1.000000
+gate_metric_cond,54,0,1.000000
+gate_runaway,54,0,1.000000
+gate_energy_drift,44,10,0.814815
+gate_variational_residual,54,0,1.000000
+gate_alpha_drift,54,0,1.000000
+gate_no_signalling,54,0,1.000000
+all_pass,44,10,0.814815
