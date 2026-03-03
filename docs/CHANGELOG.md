@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-03-03 - Stability dual-attributes diagnostic (S1/S2 test)
+
+- Added diagnostic tool:
+  - `scripts/tools/analyze_stability_dual_attributes_v1.py`
+- Added Make target:
+  - `stability_dual_attributes`
+- Executed evidence package:
+  - `05_validation/evidence/artifacts/stability-dual-attributes-v1/`
+- Result snapshot:
+  - `S2 structural` stayed saturated (`structural_profile_pass_fraction=1.0`, `structural_seed_pass_fraction=1.0`)
+  - `S1 energetic` degraded (`energetic_profile_pass_fraction~0.84`, energetic seed pass `0.0`)
+  - supports a two-attribute interpretation (energetic vs structural channels)
+
 ## 2026-03-03 - Stability convergence v5 candidate run (expanded levels)
 
 - Added prereg:

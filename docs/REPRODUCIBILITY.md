@@ -622,6 +622,26 @@ Main outputs:
 - `05_validation/evidence/artifacts/stability-convergence-v5/report.json`
 - `05_validation/pre-registrations/qng-stability-convergence-v5-run-record-2026-03-03.md`
 
+## 56) Stability dual-attributes diagnostic (S1 energetic vs S2 structural)
+
+Run:
+
+```bash
+python scripts/tools/analyze_stability_dual_attributes_v1.py --run-dirs 05_validation/evidence/artifacts/stability-convergence-v4,05_validation/evidence/artifacts/stability-convergence-v5 --out-dir 05_validation/evidence/artifacts/stability-dual-attributes-v1
+```
+
+Or:
+
+```bash
+make stability_dual_attributes
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/stability-dual-attributes-v1/lane_summary.csv`
+- `05_validation/evidence/artifacts/stability-dual-attributes-v1/seed_dual_attributes.csv`
+- `05_validation/evidence/artifacts/stability-dual-attributes-v1/report.md`
+
 Primary candidate eval:
 
 ```bash
