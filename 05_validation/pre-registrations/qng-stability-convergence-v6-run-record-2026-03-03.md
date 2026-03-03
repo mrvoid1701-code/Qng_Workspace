@@ -39,7 +39,7 @@ Gate outputs:
 
 ## Duration Note
 
-Recorded cumulative process duration for this dual-channel stabilization cycle: `~5 hours`.
+Correction: the previously noted `~5 hours` duration belongs to a different prior test batch, not this v6 convergence run.
 
 ## Governance Note
 

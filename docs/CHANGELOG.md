@@ -16,7 +16,7 @@
 - Result:
   - decision `PASS` (`S2 pass_fraction=1.0`, `S1 full/bulk CI upper < 0`)
 - Process note:
-  - cumulative dual-channel stabilization cycle duration recorded as `~5 hours`
+  - corrected: the `~5 hours` runtime note refers to a different earlier test batch, not this v6 run
 - No physics threshold/formula changes in this update.
 
 ## 2026-03-03 - Stability dual-channel governance lock + v6 prereg skeleton
