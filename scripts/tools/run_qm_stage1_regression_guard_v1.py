@@ -14,7 +14,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parent.parent.parent
 BASE = ROOT / "05_validation" / "evidence" / "artifacts"
 BASELINE_DIR = BASE / "qm-stage1-regression-baseline-v1"
-OFFICIAL_DIR = BASE / "qm-stage1-official-v2"
+OFFICIAL_DIR = BASE / "qm-stage1-official-v3"
 
 
 def parse_args() -> argparse.Namespace:

@@ -1,5 +1,30 @@
 # Changelog
 
+## 2026-03-03 - QM Stage-1 governance switch prep (G18d-v2 official policy v3)
+
+- Added official policy applier:
+  - `scripts/tools/run_qm_stage1_official_v3.py`
+- Added official switch record:
+  - `docs/QM_STAGE1_G18_V2_OFFICIAL_SWITCH.md`
+- Updated make targets to apply v3 policy from frozen G18 candidate summaries:
+  - `qm_stage1_official_apply_primary`
+  - `qm_stage1_official_apply_attack`
+  - `qm_stage1_official_apply_holdout`
+- Kept explicit historical v2 apply targets for reproducibility:
+  - `qm_stage1_official_v2_apply_primary`
+  - `qm_stage1_official_v2_apply_attack`
+  - `qm_stage1_official_v2_apply_holdout`
+- Updated baseline/guard/taxonomy defaults to v3 policy inputs:
+  - `scripts/tools/build_qm_stage1_baseline_v1.py`
+  - `scripts/tools/run_qm_stage1_regression_guard_v1.py`
+  - `scripts/tools/analyze_qm_stage1_failures_v1.py`
+- Updated policy docs and reproducibility commands:
+  - `docs/GATES.md`
+  - `docs/QM_LANE_POLICY.md`
+  - `docs/QM_STAGE1_BASELINE_GUARD.md`
+  - `docs/ROADMAP.md`
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-03 - QM G18d candidate-v2 hybrid prereg run (primary + attack + holdout)
 
 - Added prereg record:

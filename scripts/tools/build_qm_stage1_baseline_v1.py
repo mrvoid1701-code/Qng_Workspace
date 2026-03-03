@@ -21,21 +21,21 @@ BLOCK_DEFAULTS = {
         / "05_validation"
         / "evidence"
         / "artifacts"
-        / "qm-stage1-official-v2"
+        / "qm-stage1-official-v3"
         / "primary_ds002_003_006_s3401_3600"
         / "summary.csv",
         "metrics_summary_csv": ROOT
         / "05_validation"
         / "evidence"
         / "artifacts"
-        / "qm-g17-candidate-v2"
+        / "qm-g18-candidate-v2"
         / "primary_ds002_003_006_s3401_3600"
         / "summary.csv",
         "promotion_report_json": ROOT
         / "05_validation"
         / "evidence"
         / "artifacts"
-        / "qm-g17-promotion-eval-v1"
+        / "qm-g18-promotion-eval-v1"
         / "primary_ds002_003_006_s3401_3600"
         / "report.json",
         "out_json": BASELINE_DIR / "qm_stage1_baseline_primary.json",
@@ -46,21 +46,21 @@ BLOCK_DEFAULTS = {
         / "05_validation"
         / "evidence"
         / "artifacts"
-        / "qm-stage1-official-v2"
+        / "qm-stage1-official-v3"
         / "attack_seed500_ds002_003_006_s3601_4100"
         / "summary.csv",
         "metrics_summary_csv": ROOT
         / "05_validation"
         / "evidence"
         / "artifacts"
-        / "qm-g17-candidate-v2"
+        / "qm-g18-candidate-v2"
         / "attack_seed500_ds002_003_006_s3601_4100"
         / "summary.csv",
         "promotion_report_json": ROOT
         / "05_validation"
         / "evidence"
         / "artifacts"
-        / "qm-g17-promotion-eval-v1"
+        / "qm-g18-promotion-eval-v1"
         / "attack_seed500_ds002_003_006_s3601_4100"
         / "report.json",
         "out_json": BASELINE_DIR / "qm_stage1_baseline_attack.json",
@@ -71,21 +71,21 @@ BLOCK_DEFAULTS = {
         / "05_validation"
         / "evidence"
         / "artifacts"
-        / "qm-stage1-official-v2"
+        / "qm-stage1-official-v3"
         / "attack_holdout_ds004_008_s3401_3600"
         / "summary.csv",
         "metrics_summary_csv": ROOT
         / "05_validation"
         / "evidence"
         / "artifacts"
-        / "qm-g17-candidate-v2"
+        / "qm-g18-candidate-v2"
         / "attack_holdout_ds004_008_s3401_3600"
         / "summary.csv",
         "promotion_report_json": ROOT
         / "05_validation"
         / "evidence"
         / "artifacts"
-        / "qm-g17-promotion-eval-v1"
+        / "qm-g18-promotion-eval-v1"
         / "attack_holdout_ds004_008_s3401_3600"
         / "report.json",
         "out_json": BASELINE_DIR / "qm_stage1_baseline_holdout.json",
@@ -120,7 +120,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--promotion-report-json", default="")
     p.add_argument("--out-json", default="")
     p.add_argument("--baseline-id", default="")
-    p.add_argument("--effective-tag", default="qm-stage1-g17-v2-official")
+    p.add_argument("--effective-tag", default="qm-stage1-g18-v2-official")
     p.add_argument("--effective-commit", default="")
     p.add_argument("--effective-date-utc", default="")
     p.add_argument("--official-status-fields", default=",".join(DEFAULT_OFFICIAL_STATUS_FIELDS))

@@ -63,13 +63,15 @@ Gate map for the core GR/QM chain and metric hardening sequence.
   - v3: `docs/GR_STAGE2_G11_V3_OFFICIAL_SWITCH.md`
   - v4: `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md`
 - QM Stage-1 official decision policy (governance-layer mapping on frozen runs):
-  - `G17` official uses candidate-v2 decision status
-  - `G17-v1` remains legacy diagnostic-only
-  - `G18/G19/G20` remain inherited unchanged
-  - runner: `scripts/tools/run_qm_stage1_official_v2.py`
-  - effective tag: `qm-stage1-g17-v2-official`
-- QM Stage-1 official switch record:
-  - `docs/QM_STAGE1_G17_V2_OFFICIAL_SWITCH.md`
+  - `G17` official remains inherited from prior official-v2 governance output
+  - `G18` official uses candidate-v2 decision status (`G18d-v2`)
+  - `G17-v1` and `G18-v1` remain legacy diagnostic-only
+  - `G19/G20` remain inherited unchanged
+  - runner: `scripts/tools/run_qm_stage1_official_v3.py`
+  - effective tag: `qm-stage1-g18-v2-official`
+- QM Stage-1 official switch records:
+  - `docs/QM_STAGE1_G17_V2_OFFICIAL_SWITCH.md` (historical, v2)
+  - `docs/QM_STAGE1_G18_V2_OFFICIAL_SWITCH.md` (current, v3)
 - QM decision criteria are tracked in a separate lane: `docs/QM_LANE_POLICY.md`.
 - QM-Stage-1 prereg source: `05_validation/pre-registrations/qm-stage1-prereg-v1.md`.
 

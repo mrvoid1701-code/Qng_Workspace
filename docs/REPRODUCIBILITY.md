@@ -816,14 +816,14 @@ Run post-candidate QM-GR coupling smoke:
 python scripts/tools/run_qm_gr_coupling_audit_v1.py --mode smoke --datasets DS-002,DS-003,DS-006 --out-dir 05_validation/evidence/artifacts/qm-gr-coupling-audit-post-g17v2-smoke-v1 --gr-baseline-json 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json --gr-summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv
 ```
 
-## 37) QM Stage-1 official switch apply (G17-v2 governance)
+## 37) QM Stage-1 official switch apply (G18d-v2 governance)
 
-Apply official policy packages from frozen candidate-v2 summaries:
+Apply official policy packages from frozen `G18` candidate-v2 summaries:
 
 ```bash
-python scripts/tools/run_qm_stage1_official_v2.py --source-summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v2/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v2/primary_ds002_003_006_s3401_3600 --policy-id qm-stage1-official-v2 --effective-tag qm-stage1-g17-v2-official --source-policy-id qm-g17-candidate-v2-hybrid
-python scripts/tools/run_qm_stage1_official_v2.py --source-summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v2/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v2/attack_seed500_ds002_003_006_s3601_4100 --policy-id qm-stage1-official-v2-attack-seed500 --effective-tag qm-stage1-g17-v2-official --source-policy-id qm-g17-candidate-v2-hybrid
-python scripts/tools/run_qm_stage1_official_v2.py --source-summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v2/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v2/attack_holdout_ds004_008_s3401_3600 --policy-id qm-stage1-official-v2-attack-holdout --effective-tag qm-stage1-g17-v2-official --source-policy-id qm-g17-candidate-v2-hybrid
+python scripts/tools/run_qm_stage1_official_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v2/primary_ds002_003_006_s3401_3600/summary.csv --reference-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v2/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v3/primary_ds002_003_006_s3401_3600 --policy-id qm-stage1-official-v3 --effective-tag qm-stage1-g18-v2-official --source-policy-id qm-g18-candidate-v2-hybrid-local-ds --reference-policy-id qm-stage1-official-v2
+python scripts/tools/run_qm_stage1_official_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v2/attack_seed500_ds002_003_006_s3601_4100/summary.csv --reference-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v2/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v3/attack_seed500_ds002_003_006_s3601_4100 --policy-id qm-stage1-official-v3-attack-seed500 --effective-tag qm-stage1-g18-v2-official --source-policy-id qm-g18-candidate-v2-hybrid-local-ds --reference-policy-id qm-stage1-official-v2
+python scripts/tools/run_qm_stage1_official_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v2/attack_holdout_ds004_008_s3401_3600/summary.csv --reference-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v2/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v3/attack_holdout_ds004_008_s3401_3600 --policy-id qm-stage1-official-v3-attack-holdout --effective-tag qm-stage1-g18-v2-official --source-policy-id qm-g18-candidate-v2-hybrid-local-ds --reference-policy-id qm-stage1-official-v2
 ```
 
 Equivalent one-command targets:
@@ -865,7 +865,7 @@ Outputs:
 
 ## 39) QM Stage-1 failure taxonomy (post-switch)
 
-Run taxonomy from existing official-v2 summaries:
+Run taxonomy from existing official-v3 summaries:
 
 ```bash
 make qm_stage1_taxonomy
@@ -873,11 +873,11 @@ make qm_stage1_taxonomy
 
 Outputs:
 
-- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/qm_fail_cases.csv`
-- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/qm_pass_cases.csv`
-- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/pattern_summary.csv`
-- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/feature_correlations.csv`
-- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/report.md`
+- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v2/qm_fail_cases.csv`
+- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v2/qm_pass_cases.csv`
+- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v2/pattern_summary.csv`
+- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v2/feature_correlations.csv`
+- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v2/report.md`
 
 ## 40) QM Stage-1 G18 failure taxonomy (strict subgate focus)
 
@@ -889,12 +889,12 @@ make qm_stage1_g18_taxonomy
 
 Outputs:
 
-- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/g18_fail_cases.csv`
-- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/g18_pass_cases.csv`
-- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/pattern_summary_g18_subgates.csv`
-- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/regime_summary.csv`
-- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/feature_correlations.csv`
-- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/report.md`
+- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v2/g18_fail_cases.csv`
+- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v2/g18_pass_cases.csv`
+- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v2/pattern_summary_g18_subgates.csv`
+- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v2/regime_summary.csv`
+- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v2/feature_correlations.csv`
+- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v2/report.md`
 
 ## 41) QM G18d candidate-v2 prereg blocks + promotion eval
 

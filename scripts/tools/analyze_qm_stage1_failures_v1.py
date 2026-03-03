@@ -3,7 +3,7 @@
 Analyze QM Stage-1 post-switch failures and build a taxonomy package.
 
 Scope:
-- uses existing official-v2 summary artifacts (primary/attack/holdout)
+- uses existing official summary artifacts (primary/attack/holdout)
 - emits fail/pass case tables, pattern summaries, optional feature correlations
 - no gate threshold/formula changes
 """
@@ -25,19 +25,19 @@ ART = ROOT / "05_validation" / "evidence" / "artifacts"
 DEFAULT_OUT = ART / "qm-stage1-failure-taxonomy-v1"
 
 DEFAULT_SUMMARY_CSVS = [
-    ART / "qm-stage1-official-v2" / "primary_ds002_003_006_s3401_3600" / "summary.csv",
-    ART / "qm-stage1-official-v2" / "attack_seed500_ds002_003_006_s3601_4100" / "summary.csv",
-    ART / "qm-stage1-official-v2" / "attack_holdout_ds004_008_s3401_3600" / "summary.csv",
+    ART / "qm-stage1-official-v3" / "primary_ds002_003_006_s3401_3600" / "summary.csv",
+    ART / "qm-stage1-official-v3" / "attack_seed500_ds002_003_006_s3601_4100" / "summary.csv",
+    ART / "qm-stage1-official-v3" / "attack_holdout_ds004_008_s3401_3600" / "summary.csv",
 ]
 DEFAULT_METRICS_SUMMARY_CSVS = [
-    ART / "qm-g17-candidate-v2" / "primary_ds002_003_006_s3401_3600" / "summary.csv",
-    ART / "qm-g17-candidate-v2" / "attack_seed500_ds002_003_006_s3601_4100" / "summary.csv",
-    ART / "qm-g17-candidate-v2" / "attack_holdout_ds004_008_s3401_3600" / "summary.csv",
+    ART / "qm-g18-candidate-v2" / "primary_ds002_003_006_s3401_3600" / "summary.csv",
+    ART / "qm-g18-candidate-v2" / "attack_seed500_ds002_003_006_s3601_4100" / "summary.csv",
+    ART / "qm-g18-candidate-v2" / "attack_holdout_ds004_008_s3401_3600" / "summary.csv",
 ]
 DEFAULT_PROMOTION_REPORT_JSONS = [
-    ART / "qm-g17-promotion-eval-v1" / "primary_ds002_003_006_s3401_3600" / "report.json",
-    ART / "qm-g17-promotion-eval-v1" / "attack_seed500_ds002_003_006_s3601_4100" / "report.json",
-    ART / "qm-g17-promotion-eval-v1" / "attack_holdout_ds004_008_s3401_3600" / "report.json",
+    ART / "qm-g18-promotion-eval-v1" / "primary_ds002_003_006_s3401_3600" / "report.json",
+    ART / "qm-g18-promotion-eval-v1" / "attack_seed500_ds002_003_006_s3601_4100" / "report.json",
+    ART / "qm-g18-promotion-eval-v1" / "attack_holdout_ds004_008_s3401_3600" / "report.json",
 ]
 
 GATE_FIELDS = ["g17_status", "g18_status", "g19_status", "g20_status"]

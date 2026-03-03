@@ -4,7 +4,7 @@ This document defines the QM Stage-1 baseline/guard workflow, analogous to GR ba
 
 ## Scope
 
-- Lane: QM Stage-1 official (`qm-stage1-g17-v2-official`)
+- Lane: QM Stage-1 official (`qm-stage1-g18-v2-official`)
 - Blocks:
   - primary (`DS-002/003/006`, seeds `3401..3600`)
   - attack (`DS-002/003/006`, seeds `3601..4100`)
@@ -13,11 +13,11 @@ This document defines the QM Stage-1 baseline/guard workflow, analogous to GR ba
 ## Baseline Inputs
 
 - Official summaries:
-  - `05_validation/evidence/artifacts/qm-stage1-official-v2/*/summary.csv`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v3/*/summary.csv`
 - Promotion artifacts:
-  - `05_validation/evidence/artifacts/qm-g17-promotion-eval-v1/*/report.json`
+  - `05_validation/evidence/artifacts/qm-g18-promotion-eval-v1/*/report.json`
 - Numeric metric source summaries (for descriptive min/median/p95 stats):
-  - `05_validation/evidence/artifacts/qm-g17-candidate-v2/*/summary.csv`
+  - `05_validation/evidence/artifacts/qm-g18-candidate-v2/*/summary.csv`
 
 ## Build Baselines
 
