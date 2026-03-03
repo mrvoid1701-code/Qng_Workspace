@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-03-03 - QM Stage-1 failure taxonomy (post G17-v2 official)
+
+- Added QM Stage-1 taxonomy analyzer:
+  - `scripts/tools/analyze_qm_stage1_failures_v1.py`
+- Added make target:
+  - `qm_stage1_taxonomy`
+- Generated taxonomy package:
+  - `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/qm_fail_cases.csv`
+  - `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/qm_pass_cases.csv`
+  - `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/pattern_summary.csv`
+  - `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/feature_correlations.csv`
+  - `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/report.md`
+- Post-switch readout (`n=2500`):
+  - fail profiles: `372`
+  - dominant failing gate: `G18`
+  - dominant failing subgate: `G17b`
+  - `G20` fails in QM-lane fail-cases: `0`
+
 ## 2026-03-03 - QM Stage-1 baseline + regression guard (v1)
 
 - Added QM Stage-1 baseline builder:

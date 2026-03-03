@@ -862,3 +862,19 @@ Outputs:
 - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_holdout.json`
 - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/latest_check/regression_report.json`
 - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/latest_check/regression_report.md`
+
+## 39) QM Stage-1 failure taxonomy (post-switch)
+
+Run taxonomy from existing official-v2 summaries:
+
+```bash
+make qm_stage1_taxonomy
+```
+
+Outputs:
+
+- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/qm_fail_cases.csv`
+- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/qm_pass_cases.csv`
+- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/pattern_summary.csv`
+- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/feature_correlations.csv`
+- `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/report.md`
