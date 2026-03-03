@@ -87,3 +87,13 @@ Candidate-v2 tooling/evidence:
 Official switch record:
 
 - `docs/STABILITY_ENERGY_V2_OFFICIAL_SWITCH.md`
+- `docs/STABILITY_V2_FREEZE.md`
+
+Noether/action alignment note:
+
+- `03_math/derivations/qng-stability-noether-alignment-sketch-v1.md`
+
+Convergence contract:
+
+- `05_validation/pre-registrations/qng-stability-convergence-v1.md`
+- `05_validation/pre-registrations/qng-stability-convergence-v1-run-record-2026-03-03.md`

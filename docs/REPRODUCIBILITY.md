@@ -398,6 +398,32 @@ make stability_baseline_build
 make stability_regression_guard
 ```
 
+## 48) Stability convergence gate (discrete -> continuum contract)
+
+Frozen prereg:
+
+- `05_validation/pre-registrations/qng-stability-convergence-v1.md`
+
+Run:
+
+```bash
+python scripts/tools/run_stability_stress_v1.py --dataset-id STABILITY-CONVERGENCE-V1 --seed-list 3401 --n-nodes-list 24,30,36,42,48 --steps-list 60 --out-dir 05_validation/evidence/artifacts/stability-convergence-v1/raw --no-strict-exit
+python scripts/tools/run_stability_convergence_gate_v1.py --summary-csv 05_validation/evidence/artifacts/stability-convergence-v1/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v1 --step-tol 0.002 --min-step-pass-fraction 0.75 --min-overall-improvement 0.005 --support-worsen-factor-max 1.25
+```
+
+Or:
+
+```bash
+make stability_convergence_v1
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/stability-convergence-v1/level_stats.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v1/step_checks.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v1/report.md`
+- `05_validation/evidence/artifacts/stability-convergence-v1/report.json`
+
 Primary candidate eval:
 
 ```bash

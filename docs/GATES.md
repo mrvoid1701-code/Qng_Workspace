@@ -85,4 +85,7 @@ Gate map for the core GR/QM chain and metric hardening sequence.
   - effective tag: `stability-energy-v2-official`
 - Stability official switch record:
   - `docs/STABILITY_ENERGY_V2_OFFICIAL_SWITCH.md`
+- Stability freeze/contract docs:
+  - `docs/STABILITY_V2_FREEZE.md`
+  - `05_validation/pre-registrations/qng-stability-convergence-v1.md`
 

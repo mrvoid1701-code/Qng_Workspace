@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-03-03 - Stability freeze v2 + Noether alignment sketch + convergence gate v1
+
+- Added one-page freeze contract:
+  - `docs/STABILITY_V2_FREEZE.md`
+- Added Noether/action alignment proof sketch:
+  - `03_math/derivations/qng-stability-noether-alignment-sketch-v1.md`
+- Added convergence prereg contract:
+  - `05_validation/pre-registrations/qng-stability-convergence-v1.md`
+- Added convergence gate tooling:
+  - `scripts/tools/run_stability_convergence_gate_v1.py`
+- Added Make targets:
+  - `stability_convergence_v1_run`
+  - `stability_convergence_v1_gate`
+  - `stability_convergence_v1`
+- Added reproducibility section:
+  - `docs/REPRODUCIBILITY.md` (section 48)
+- Added run record:
+  - `05_validation/pre-registrations/qng-stability-convergence-v1-run-record-2026-03-03.md`
+- Executed convergence gate package:
+  - `05_validation/evidence/artifacts/stability-convergence-v1/`
+  - decision: `PASS` (`step_pass_fraction=0.75`, `overall_improvement=0.017213`, `support_ratio=1.055047`)
+
 ## 2026-03-03 - Stability official-v2 apply + baseline guard
 
 - Executed official-v2 policy apply packages:
