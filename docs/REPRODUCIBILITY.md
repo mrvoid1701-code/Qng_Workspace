@@ -840,3 +840,25 @@ Key outputs (per block):
 - `dataset_summary.csv`
 - `report.md`
 - `official_manifest.json`
+
+## 38) QM Stage-1 baseline build + regression guard
+
+Build baselines (primary + attack + holdout):
+
+```bash
+make qm_stage1_baseline_build
+```
+
+Run guard:
+
+```bash
+make qm_stage1_regression_guard
+```
+
+Outputs:
+
+- `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_primary.json`
+- `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_attack.json`
+- `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_holdout.json`
+- `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/latest_check/regression_report.json`
+- `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/latest_check/regression_report.md`

@@ -70,3 +70,17 @@ Governance applier:
 Switch record:
 
 - `docs/QM_STAGE1_G17_V2_OFFICIAL_SWITCH.md`
+
+## QM Stage-1 Baseline + Guard (v1)
+
+Baseline builder:
+
+- `scripts/tools/build_qm_stage1_baseline_v1.py`
+
+Regression guard:
+
+- `scripts/tools/run_qm_stage1_regression_guard_v1.py`
+
+Reference doc:
+
+- `docs/QM_STAGE1_BASELINE_GUARD.md`

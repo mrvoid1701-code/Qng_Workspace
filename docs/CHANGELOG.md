@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-03-03 - QM Stage-1 baseline + regression guard (v1)
+
+- Added QM Stage-1 baseline builder:
+  - `scripts/tools/build_qm_stage1_baseline_v1.py`
+- Added QM Stage-1 regression guard:
+  - `scripts/tools/run_qm_stage1_regression_guard_v1.py`
+- Added make targets:
+  - `qm_stage1_baseline_build`
+  - `qm_stage1_regression_guard`
+- Added baseline/guard reference doc:
+  - `docs/QM_STAGE1_BASELINE_GUARD.md`
+- Linked baseline/guard workflow in lane policy:
+  - `docs/QM_LANE_POLICY.md`
+- Generated baseline artifacts:
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_primary.json`
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_attack.json`
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_holdout.json`
+- Generated latest guard check package:
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/latest_check/`
+  - decision: `PASS` (primary/attack/holdout; no official pass-rate degradation; no profile-set drift)
+
 ## 2026-03-03 - QM Stage-1 official switch to G17-v2 policy
 
 - Governance switch frozen with tags:
