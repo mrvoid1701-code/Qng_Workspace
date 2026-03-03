@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-03-03 - Stability official-v2 apply + baseline guard
+
+- Executed official-v2 policy apply packages:
+  - `05_validation/evidence/artifacts/stability-official-v2/primary_s3401/`
+  - `05_validation/evidence/artifacts/stability-official-v2/attack_s3401_4401/`
+  - `05_validation/evidence/artifacts/stability-official-v2/holdout_n30_42_s3401/`
+- Added baseline tooling:
+  - `scripts/tools/build_stability_baseline_v1.py`
+  - `scripts/tools/run_stability_regression_guard_v1.py`
+- Added baseline/guard docs:
+  - `docs/STABILITY_BASELINE_GUARD.md`
+  - `docs/REPRODUCIBILITY.md` (section 47)
+- Added Make targets:
+  - `stability_baseline_build`
+  - `stability_regression_guard`
+- Regression guard result:
+  - `05_validation/evidence/artifacts/stability-regression-baseline-v1/latest_check/`
+  - decision: `PASS` (primary/attack/holdout; no profile drift; no official pass-rate degradation)
+
 ## 2026-03-03 - Stability governance switch prep (energy v2 official policy)
 
 - Added official policy apply runner:

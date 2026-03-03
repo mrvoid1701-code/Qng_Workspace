@@ -77,6 +77,8 @@ help:
 	@echo "  make stability_official_apply_primary"
 	@echo "  make stability_official_apply_attack"
 	@echo "  make stability_official_apply_holdout"
+	@echo "  make stability_baseline_build"
+	@echo "  make stability_regression_guard"
 
 gr_official_check:
 	$(PYTHON) scripts/tools/gr_one_command.py official-check --dataset-id $(DS) --seed $(SEED) --phi-scale $(PHI)
@@ -329,4 +331,12 @@ stability_official_apply_attack:
 stability_official_apply_holdout:
 	$(PYTHON) scripts/tools/run_stability_official_v2.py --source-summary-csv 05_validation/evidence/artifacts/stability-energy-covariant-v2/holdout_n30_42_s3401/summary.csv --out-dir 05_validation/evidence/artifacts/stability-official-v2/holdout_n30_42_s3401 --policy-id stability-official-v2-holdout --effective-tag stability-energy-v2-official --source-policy-id stability-energy-covariant-v2
 
-.PHONY: stability_v2_prereg_primary stability_v2_prereg_attack stability_v2_prereg_holdout stability_energy_candidate_v2_primary stability_energy_candidate_v2_attack stability_energy_candidate_v2_holdout stability_energy_promotion_primary stability_energy_promotion_attack stability_energy_promotion_holdout stability_energy_promotion_bundle stability_energy_v2_full stability_official_apply_primary stability_official_apply_attack stability_official_apply_holdout
+stability_baseline_build:
+	$(PYTHON) scripts/tools/build_stability_baseline_v1.py --block primary --summary-csv 05_validation/evidence/artifacts/stability-official-v2/primary_s3401/summary.csv --out-json 05_validation/evidence/artifacts/stability-regression-baseline-v1/stability_baseline_primary.json --baseline-id stability-baseline-primary-v1 --effective-tag stability-energy-v2-official
+	$(PYTHON) scripts/tools/build_stability_baseline_v1.py --block attack --summary-csv 05_validation/evidence/artifacts/stability-official-v2/attack_s3401_4401/summary.csv --out-json 05_validation/evidence/artifacts/stability-regression-baseline-v1/stability_baseline_attack.json --baseline-id stability-baseline-attack-v1 --effective-tag stability-energy-v2-official
+	$(PYTHON) scripts/tools/build_stability_baseline_v1.py --block holdout --summary-csv 05_validation/evidence/artifacts/stability-official-v2/holdout_n30_42_s3401/summary.csv --out-json 05_validation/evidence/artifacts/stability-regression-baseline-v1/stability_baseline_holdout.json --baseline-id stability-baseline-holdout-v1 --effective-tag stability-energy-v2-official
+
+stability_regression_guard:
+	$(PYTHON) scripts/tools/run_stability_regression_guard_v1.py --baseline-primary-json 05_validation/evidence/artifacts/stability-regression-baseline-v1/stability_baseline_primary.json --baseline-attack-json 05_validation/evidence/artifacts/stability-regression-baseline-v1/stability_baseline_attack.json --baseline-holdout-json 05_validation/evidence/artifacts/stability-regression-baseline-v1/stability_baseline_holdout.json --summary-primary-csv 05_validation/evidence/artifacts/stability-official-v2/primary_s3401/summary.csv --summary-attack-csv 05_validation/evidence/artifacts/stability-official-v2/attack_s3401_4401/summary.csv --summary-holdout-csv 05_validation/evidence/artifacts/stability-official-v2/holdout_n30_42_s3401/summary.csv --out-dir 05_validation/evidence/artifacts/stability-regression-baseline-v1/latest_check
+
+.PHONY: stability_v2_prereg_primary stability_v2_prereg_attack stability_v2_prereg_holdout stability_energy_candidate_v2_primary stability_energy_candidate_v2_attack stability_energy_candidate_v2_holdout stability_energy_promotion_primary stability_energy_promotion_attack stability_energy_promotion_holdout stability_energy_promotion_bundle stability_energy_v2_full stability_official_apply_primary stability_official_apply_attack stability_official_apply_holdout stability_baseline_build stability_regression_guard

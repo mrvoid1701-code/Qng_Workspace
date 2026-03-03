@@ -369,6 +369,35 @@ Main outputs:
 - `05_validation/evidence/artifacts/stability-energy-promotion-eval-v1/*/report.json`
 - `05_validation/evidence/artifacts/stability-energy-promotion-eval-v1/promotion_decision.md`
 
+## 47) Stability official-v2 apply + baseline guard
+
+Apply official policy mapping (governance-layer switch):
+
+```bash
+python scripts/tools/run_stability_official_v2.py --source-summary-csv 05_validation/evidence/artifacts/stability-energy-covariant-v2/primary_s3401/summary.csv --out-dir 05_validation/evidence/artifacts/stability-official-v2/primary_s3401 --policy-id stability-official-v2 --effective-tag stability-energy-v2-official
+python scripts/tools/run_stability_official_v2.py --source-summary-csv 05_validation/evidence/artifacts/stability-energy-covariant-v2/attack_s3401_4401/summary.csv --out-dir 05_validation/evidence/artifacts/stability-official-v2/attack_s3401_4401 --policy-id stability-official-v2-attack --effective-tag stability-energy-v2-official
+python scripts/tools/run_stability_official_v2.py --source-summary-csv 05_validation/evidence/artifacts/stability-energy-covariant-v2/holdout_n30_42_s3401/summary.csv --out-dir 05_validation/evidence/artifacts/stability-official-v2/holdout_n30_42_s3401 --policy-id stability-official-v2-holdout --effective-tag stability-energy-v2-official
+```
+
+Build baselines + run guard:
+
+```bash
+python scripts/tools/build_stability_baseline_v1.py --block primary
+python scripts/tools/build_stability_baseline_v1.py --block attack
+python scripts/tools/build_stability_baseline_v1.py --block holdout
+python scripts/tools/run_stability_regression_guard_v1.py --out-dir 05_validation/evidence/artifacts/stability-regression-baseline-v1/latest_check
+```
+
+Or via Makefile:
+
+```bash
+make stability_official_apply_primary
+make stability_official_apply_attack
+make stability_official_apply_holdout
+make stability_baseline_build
+make stability_regression_guard
+```
+
 Primary candidate eval:
 
 ```bash
