@@ -1,6 +1,6 @@
 # Stability Convergence V2 Failure Taxonomy (v1)
 
-- generated_utc: `2026-03-03T12:26:15.644119+00:00`
+- generated_utc: `2026-03-03T12:40:14.288698+00:00`
 - source_report: `C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v2/report.json`
 - source_seed_checks: `C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v2/seed_checks.csv`
 - source_level_stats: `C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v2/level_stats.csv`
@@ -22,6 +22,7 @@
 - fail-mode distribution: `{'pass': 10, 'bulk_only_fail': 8, 'full_and_bulk_fail': 2}`
 - failing transitions (bulk scope): `{'30->36': 7, '36->42': 1}`
 - failing transitions (full scope, fail seeds): `{'30->36': 7, '42->48': 2, '36->42': 1}`
+- bulk_fail dominated by boundary `30->36`; majority bulk-only; indicates bulk-definition fragility under scaling rather than global convergence failure.
 
 ## Top 3 Hypothesized Causes
 

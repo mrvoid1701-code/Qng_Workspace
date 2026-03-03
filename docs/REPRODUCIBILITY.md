@@ -486,6 +486,33 @@ Main outputs:
 - `05_validation/evidence/artifacts/stability-convergence-v2-diagnostic-sweep-v1/bulk_rho_heatmap.csv`
 - `05_validation/evidence/artifacts/stability-convergence-v2-diagnostic-sweep-v1/report.md`
 
+## 51) Stability convergence gate v3 (Sigma-mask core-stable bulk)
+
+Locked prereg:
+
+- `05_validation/pre-registrations/qng-stability-convergence-v3.md`
+
+Run:
+
+```bash
+python scripts/tools/run_stability_convergence_gate_v3.py --summary-csv 05_validation/evidence/artifacts/stability-convergence-v2/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v3 --step-tol 0.002 --full-step-fraction-min 0.75 --bulk-step-fraction-min 0.85 --overall-improvement-min 0.005 --support-worsen-factor-max 1.25 --rho-full-max -0.60 --rho-bulk-max -0.80 --full-seed-pass-fraction-min 0.85 --bulk-seed-pass-fraction-min 0.85 --bulk-min-profiles-per-level 5
+```
+
+Or:
+
+```bash
+make stability_convergence_v3_gate
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/stability-convergence-v3/seed_checks.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v3/level_stats.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v3/step_checks.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v3/report.md`
+- `05_validation/evidence/artifacts/stability-convergence-v3/report.json`
+- `05_validation/pre-registrations/qng-stability-convergence-v3-run-record-2026-03-03.md`
+
 Primary candidate eval:
 
 ```bash

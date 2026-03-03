@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-03-03 - Stability convergence v3 runner + execution (Sigma-mask core-stable bulk)
+
+- Added v3 gate runner:
+  - `scripts/tools/run_stability_convergence_gate_v3.py`
+- Added Make target:
+  - `stability_convergence_v3_gate`
+- Extended taxonomy report sentence (explicit interpretation guard):
+  - `bulk_fail dominated by boundary 30->36 ...`
+- Executed v3 gate package:
+  - `05_validation/evidence/artifacts/stability-convergence-v3/`
+- Added run record:
+  - `05_validation/pre-registrations/qng-stability-convergence-v3-run-record-2026-03-03.md`
+- Result:
+  - decision remains `FAIL` (same aggregate as v2; no freeze/baseline promotion)
+
 ## 2026-03-03 - Stability convergence v2 taxonomy hardening (bulk definition + level map)
 
 - Updated taxonomy tool:

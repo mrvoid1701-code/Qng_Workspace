@@ -1,6 +1,6 @@
 # Stability Convergence V2 Diagnostic Sweep (v1)
 
-- generated_utc: `2026-03-03T12:26:19.277704+00:00`
+- generated_utc: `2026-03-03T12:40:14.274287+00:00`
 - raw_summary_csv: `C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v2/raw/summary.csv`
 - mode: `diagnostic-only`
 - note: `not for promotion / not for threshold selection`

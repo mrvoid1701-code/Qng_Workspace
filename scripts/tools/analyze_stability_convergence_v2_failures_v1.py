@@ -399,6 +399,7 @@ def main() -> int:
         f"- fail-mode distribution: `{dict(Counter([str(r['fail_mode']) for r in full_vs_bulk_rows]))}`",
         f"- failing transitions (bulk scope): `{dict(bulk_transition_counter)}`",
         f"- failing transitions (full scope, fail seeds): `{dict(full_transition_counter)}`",
+        "- bulk_fail dominated by boundary `30->36`; majority bulk-only; indicates bulk-definition fragility under scaling rather than global convergence failure.",
         "",
         "## Top 3 Hypothesized Causes",
         "",
