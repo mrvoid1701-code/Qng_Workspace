@@ -1,5 +1,39 @@
 # Changelog
 
+## 2026-03-03 - Stability energy candidate-v2 prereg execution (primary + attack + holdout)
+
+- Extended stability runner for prereg block support (tooling-only):
+  - `scripts/tools/run_stability_stress_v1.py`
+  - added block controls: `--dataset-id`, `--seed-list`, `--n-nodes-list`, `--steps-list`
+  - no equation/threshold changes
+- Added candidate/evaluation tooling:
+  - `scripts/tools/run_stability_energy_candidate_eval_v2.py`
+  - `scripts/tools/evaluate_stability_energy_promotion_v1.py`
+  - `scripts/tools/summarize_stability_energy_promotion_v1.py`
+- Added Make targets:
+  - `stability_v2_prereg_primary`
+  - `stability_v2_prereg_attack`
+  - `stability_v2_prereg_holdout`
+  - `stability_energy_candidate_v2_primary`
+  - `stability_energy_candidate_v2_attack`
+  - `stability_energy_candidate_v2_holdout`
+  - `stability_energy_promotion_primary`
+  - `stability_energy_promotion_attack`
+  - `stability_energy_promotion_holdout`
+  - `stability_energy_promotion_bundle`
+  - `stability_energy_v2_full`
+- Added run record:
+  - `05_validation/pre-registrations/qng-stability-energy-covariant-v2-run-record-2026-03-03.md`
+- Executed prereg blocks and candidate promotion checks:
+  - source: `05_validation/evidence/artifacts/stability-v1-prereg-v2/`
+  - candidate: `05_validation/evidence/artifacts/stability-energy-covariant-v2/`
+  - promotion: `05_validation/evidence/artifacts/stability-energy-promotion-eval-v1/`
+- Results:
+  - primary (`n=54`): `PASS`, energy improved `10`, degraded `0`, all-pass improved `10`
+  - attack (`n=108`): `PASS`, energy improved `18`, degraded `0`, all-pass improved `18`
+  - holdout (`n=108`): `PASS`, energy improved `52`, degraded `0`, all-pass improved `52`
+  - bundle decision: `PASS` (`3/3` blocks), non-energy degraded total `0` in all blocks
+
 ## 2026-03-03 - Stability fail taxonomy v1 + energy diagnostic split
 
 - Extended stability stress runner diagnostics:

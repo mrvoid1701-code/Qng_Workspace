@@ -69,6 +69,11 @@ help:
 	@echo "  make qm_g18_promotion_holdout"
 	@echo "  make stability_v1_stress"
 	@echo "  make stability_v1_taxonomy"
+	@echo "  make stability_energy_v2_full"
+	@echo "  make stability_energy_promotion_primary"
+	@echo "  make stability_energy_promotion_attack"
+	@echo "  make stability_energy_promotion_holdout"
+	@echo "  make stability_energy_promotion_bundle"
 
 gr_official_check:
 	$(PYTHON) scripts/tools/gr_one_command.py official-check --dataset-id $(DS) --seed $(SEED) --phi-scale $(PHI)
@@ -279,3 +284,37 @@ stability_v1_stress:
 
 stability_v1_taxonomy:
 	$(PYTHON) scripts/tools/analyze_stability_v1_failures_v1.py --summary-csv 05_validation/evidence/artifacts/stability-v1/summary.csv --out-dir 05_validation/evidence/artifacts/stability-v1-failure-taxonomy-v1
+
+stability_v2_prereg_primary:
+	$(PYTHON) scripts/tools/run_stability_stress_v1.py --dataset-id STABILITY-PRIMARY --seed 3401 --out-dir 05_validation/evidence/artifacts/stability-v1-prereg-v2/primary_s3401 --no-strict-exit
+
+stability_v2_prereg_attack:
+	$(PYTHON) scripts/tools/run_stability_stress_v1.py --dataset-id STABILITY-ATTACK --seed-list 3401,4401 --out-dir 05_validation/evidence/artifacts/stability-v1-prereg-v2/attack_s3401_4401 --no-strict-exit
+
+stability_v2_prereg_holdout:
+	$(PYTHON) scripts/tools/run_stability_stress_v1.py --dataset-id STABILITY-HOLDOUT --seed-list 3401 --n-nodes-list 30,42 --steps-list 80 --out-dir 05_validation/evidence/artifacts/stability-v1-prereg-v2/holdout_n30_42_s3401 --no-strict-exit
+
+stability_energy_candidate_v2_primary:
+	$(PYTHON) scripts/tools/run_stability_energy_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/stability-v1-prereg-v2/primary_s3401/summary.csv --strict-datasets STABILITY-PRIMARY --out-dir 05_validation/evidence/artifacts/stability-energy-covariant-v2/primary_s3401 --energy-threshold 0.90 --eval-id stability-energy-covariant-primary-v2
+
+stability_energy_candidate_v2_attack:
+	$(PYTHON) scripts/tools/run_stability_energy_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/stability-v1-prereg-v2/attack_s3401_4401/summary.csv --strict-datasets STABILITY-ATTACK --out-dir 05_validation/evidence/artifacts/stability-energy-covariant-v2/attack_s3401_4401 --energy-threshold 0.90 --eval-id stability-energy-covariant-attack-v2
+
+stability_energy_candidate_v2_holdout:
+	$(PYTHON) scripts/tools/run_stability_energy_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/stability-v1-prereg-v2/holdout_n30_42_s3401/summary.csv --strict-datasets STABILITY-HOLDOUT --out-dir 05_validation/evidence/artifacts/stability-energy-covariant-v2/holdout_n30_42_s3401 --energy-threshold 0.90 --eval-id stability-energy-covariant-holdout-v2
+
+stability_energy_promotion_primary:
+	$(PYTHON) scripts/tools/evaluate_stability_energy_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/stability-energy-covariant-v2/primary_s3401/summary.csv --strict-datasets STABILITY-PRIMARY --out-dir 05_validation/evidence/artifacts/stability-energy-promotion-eval-v1/primary_s3401 --eval-id stability-energy-promotion-primary-v1 --require-zero-degraded --require-non-energy-stable --require-energy-uplift
+
+stability_energy_promotion_attack:
+	$(PYTHON) scripts/tools/evaluate_stability_energy_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/stability-energy-covariant-v2/attack_s3401_4401/summary.csv --strict-datasets STABILITY-ATTACK --out-dir 05_validation/evidence/artifacts/stability-energy-promotion-eval-v1/attack_s3401_4401 --eval-id stability-energy-promotion-attack-v1 --require-zero-degraded --require-non-energy-stable --require-energy-uplift
+
+stability_energy_promotion_holdout:
+	$(PYTHON) scripts/tools/evaluate_stability_energy_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/stability-energy-covariant-v2/holdout_n30_42_s3401/summary.csv --strict-datasets STABILITY-HOLDOUT --out-dir 05_validation/evidence/artifacts/stability-energy-promotion-eval-v1/holdout_n30_42_s3401 --eval-id stability-energy-promotion-holdout-v1 --require-zero-degraded --require-non-energy-stable --require-energy-uplift
+
+stability_energy_promotion_bundle:
+	$(PYTHON) scripts/tools/summarize_stability_energy_promotion_v1.py --report-jsons 05_validation/evidence/artifacts/stability-energy-promotion-eval-v1/primary_s3401/report.json,05_validation/evidence/artifacts/stability-energy-promotion-eval-v1/attack_s3401_4401/report.json,05_validation/evidence/artifacts/stability-energy-promotion-eval-v1/holdout_n30_42_s3401/report.json --out-dir 05_validation/evidence/artifacts/stability-energy-promotion-eval-v1 --eval-id stability-energy-promotion-bundle-v1
+
+stability_energy_v2_full: stability_v2_prereg_primary stability_v2_prereg_attack stability_v2_prereg_holdout stability_energy_candidate_v2_primary stability_energy_candidate_v2_attack stability_energy_candidate_v2_holdout stability_energy_promotion_primary stability_energy_promotion_attack stability_energy_promotion_holdout stability_energy_promotion_bundle
+
+.PHONY: stability_v2_prereg_primary stability_v2_prereg_attack stability_v2_prereg_holdout stability_energy_candidate_v2_primary stability_energy_candidate_v2_attack stability_energy_candidate_v2_holdout stability_energy_promotion_primary stability_energy_promotion_attack stability_energy_promotion_holdout stability_energy_promotion_bundle stability_energy_v2_full

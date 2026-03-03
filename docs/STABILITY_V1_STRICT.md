@@ -74,3 +74,12 @@ Every improvement must include:
 Candidate-v2 prereg anchor:
 
 - `05_validation/pre-registrations/qng-stability-energy-covariant-v2.md`
+- run record: `05_validation/pre-registrations/qng-stability-energy-covariant-v2-run-record-2026-03-03.md`
+
+Candidate-v2 tooling/evidence:
+
+- `scripts/tools/run_stability_energy_candidate_eval_v2.py`
+- `scripts/tools/evaluate_stability_energy_promotion_v1.py`
+- `scripts/tools/summarize_stability_energy_promotion_v1.py`
+- `05_validation/evidence/artifacts/stability-energy-covariant-v2/`
+- `05_validation/evidence/artifacts/stability-energy-promotion-eval-v1/`

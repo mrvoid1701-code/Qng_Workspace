@@ -14,7 +14,7 @@ from __future__ import annotations
 
 import argparse
 import csv
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import datetime, timezone
 import hashlib
 import json
@@ -81,12 +81,28 @@ def parse_grid(text: str) -> list[float]:
     return out
 
 
+def parse_int_grid(text: str) -> list[int]:
+    out: list[int] = []
+    for item in text.split(","):
+        t = item.strip()
+        if not t:
+            continue
+        out.append(int(t))
+    if not out:
+        raise ValueError("empty integer grid")
+    return out
+
+
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Run QNG-v1-strict stability stress sweep.")
     p.add_argument("--out-dir", default=str(DEFAULT_OUT_DIR))
+    p.add_argument("--dataset-id", default="STABILITY-GRID")
     p.add_argument("--n-nodes", type=int, default=36)
+    p.add_argument("--n-nodes-list", default="")
     p.add_argument("--steps", type=int, default=60)
+    p.add_argument("--steps-list", default="")
     p.add_argument("--seed", type=int, default=3401)
+    p.add_argument("--seed-list", default="")
 
     p.add_argument("--edge-prob-grid", default="0.08,0.18,0.32")
     p.add_argument("--chi-scale-grid", default="0.50,1.00,1.50")
@@ -392,7 +408,7 @@ def f6(x: float) -> str:
     return f"{x:.6f}"
 
 
-def make_case_grid(args: argparse.Namespace) -> list[CaseConfig]:
+def make_case_grid(args: argparse.Namespace, base_seed: int, case_prefix: str = "") -> list[CaseConfig]:
     edge_probs = parse_grid(args.edge_prob_grid)
     chi_scales = parse_grid(args.chi_scale_grid)
     noise_levels = parse_grid(args.noise_grid)
@@ -405,7 +421,7 @@ def make_case_grid(args: argparse.Namespace) -> list[CaseConfig]:
             for nz in noise_levels:
                 for ph in phi_shocks:
                     idx += 1
-                    case_id = f"C{idx:03d}"
+                    case_id = f"{case_prefix}C{idx:03d}" if case_prefix else f"C{idx:03d}"
                     cases.append(
                         CaseConfig(
                             case_id=case_id,
@@ -413,7 +429,7 @@ def make_case_grid(args: argparse.Namespace) -> list[CaseConfig]:
                             chi_scale=cs,
                             noise_level=nz,
                             phi_shock=ph,
-                            case_seed=args.seed + 1009 * idx,
+                            case_seed=base_seed + 1009 * idx,
                         )
                     )
     return cases
@@ -430,7 +446,7 @@ def init_state(n: int, chi_scale: float, phi_shock: float, rng: random.Random) -
     return sigma, chi, phi
 
 
-def run_case(cfg: StressConfig, case: CaseConfig) -> dict[str, Any]:
+def run_case(cfg: StressConfig, case: CaseConfig, dataset_id: str) -> dict[str, Any]:
     rng = random.Random(case.case_seed)
     adj = build_graph_erdos(cfg.n_nodes, case.edge_prob, rng)
     sigma, chi, phi = init_state(cfg.n_nodes, case.chi_scale, case.phi_shock, rng)
@@ -528,7 +544,7 @@ def run_case(cfg: StressConfig, case: CaseConfig) -> dict[str, Any]:
 
     return {
         "case_id": case.case_id,
-        "dataset_id": "STABILITY-GRID",
+        "dataset_id": dataset_id,
         "dt": "1.0",
         "case_seed": case.case_seed,
         "edge_prob": f6(case.edge_prob),
@@ -582,7 +598,7 @@ def main() -> int:
     out_dir = Path(args.out_dir).resolve()
     ensure_dir(out_dir)
 
-    cfg = StressConfig(
+    cfg_base = StressConfig(
         n_nodes=args.n_nodes,
         steps=args.steps,
         seed=args.seed,
@@ -608,13 +624,40 @@ def main() -> int:
         nonlocal_delta_max=args.nonlocal_delta_max,
     )
 
-    cases = make_case_grid(args)
-    rows = [run_case(cfg, c) for c in cases]
+    seed_list = [args.seed]
+    if args.seed_list.strip():
+        seed_list = parse_int_grid(args.seed_list)
+
+    n_nodes_list = [args.n_nodes]
+    if args.n_nodes_list.strip():
+        n_nodes_list = parse_int_grid(args.n_nodes_list)
+
+    steps_list = [args.steps]
+    if args.steps_list.strip():
+        steps_list = parse_int_grid(args.steps_list)
+
+    combo_total = len(seed_list) * len(n_nodes_list) * len(steps_list)
+    rows: list[dict[str, Any]] = []
+    combo_idx = 0
+    for n_nodes in n_nodes_list:
+        for steps in steps_list:
+            for base_seed in seed_list:
+                combo_idx += 1
+                case_prefix = "" if combo_total == 1 else f"B{combo_idx:02d}_"
+                cfg = replace(cfg_base, n_nodes=n_nodes, steps=steps, seed=base_seed)
+                cases = make_case_grid(args, base_seed=base_seed, case_prefix=case_prefix)
+                for c in cases:
+                    row = run_case(cfg, c, dataset_id=args.dataset_id)
+                    row["grid_seed"] = str(base_seed)
+                    row["combo_id"] = f"B{combo_idx:02d}"
+                    rows.append(row)
 
     summary_csv = out_dir / "summary.csv"
     summary_fields = [
         "case_id",
         "dataset_id",
+        "combo_id",
+        "grid_seed",
         "dt",
         "case_seed",
         "edge_prob",
@@ -708,12 +751,12 @@ def main() -> int:
         "",
         "## Locked Gate Thresholds",
         "",
-        f"- `max_abs_chi <= {cfg.chi_runaway_max}`",
-        f"- `metric_cond_max_seen <= {cfg.metric_cond_max}`",
-        f"- `|delta_E/E| <= {cfg.energy_rel_max}`",
-        f"- `max_residual <= {cfg.residual_max}`",
-        f"- `max |delta_alpha/alpha| <= {cfg.alpha_rel_drift_max}` for `|chi| >= {cfg.chi_active_min}`",
-        f"- `max_nonlocal_delta <= {cfg.nonlocal_delta_max}`",
+        f"- `max_abs_chi <= {cfg_base.chi_runaway_max}`",
+        f"- `metric_cond_max_seen <= {cfg_base.metric_cond_max}`",
+        f"- `|delta_E/E| <= {cfg_base.energy_rel_max}`",
+        f"- `max_residual <= {cfg_base.residual_max}`",
+        f"- `max |delta_alpha/alpha| <= {cfg_base.alpha_rel_drift_max}` for `|chi| >= {cfg_base.chi_active_min}`",
+        f"- `max_nonlocal_delta <= {cfg_base.nonlocal_delta_max}`",
         "",
         "## Gate Pass Rates",
         "",
@@ -733,12 +776,15 @@ def main() -> int:
         "cases_total": total,
         "cases_pass": pass_total,
         "cases_fail": fail_total,
-        "config": cfg.__dict__,
+        "config": cfg_base.__dict__,
         "grids": {
             "edge_prob_grid": parse_grid(args.edge_prob_grid),
             "chi_scale_grid": parse_grid(args.chi_scale_grid),
             "noise_grid": parse_grid(args.noise_grid),
             "phi_shock_grid": parse_grid(args.phi_shock_grid),
+            "seed_list": seed_list,
+            "n_nodes_list": n_nodes_list,
+            "steps_list": steps_list,
         },
         "references": {
             "prereg_doc": DEFAULT_PREREG.as_posix() if DEFAULT_PREREG.exists() else "",
@@ -769,6 +815,10 @@ def main() -> int:
         f"cases_total={total}",
         f"all_pass={pass_total}/{total}",
         f"all_fail={fail_total}/{total}",
+        f"dataset_id={args.dataset_id}",
+        f"seed_list={','.join(str(s) for s in seed_list)}",
+        f"n_nodes_list={','.join(str(v) for v in n_nodes_list)}",
+        f"steps_list={','.join(str(v) for v in steps_list)}",
     ]
     (out_dir / "run-log.txt").write_text("\n".join(run_log) + "\n", encoding="utf-8")
 
