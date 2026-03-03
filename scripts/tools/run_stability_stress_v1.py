@@ -166,6 +166,12 @@ def mean(vals: list[float]) -> float:
     return sum(vals) / len(vals) if vals else 0.0
 
 
+def slope_per_100(start: float, end: float, n_steps: int) -> float:
+    if n_steps <= 0:
+        return 0.0
+    return (end - start) / n_steps * 100.0
+
+
 def build_graph_erdos(n: int, edge_prob: float, rng: random.Random) -> list[list[int]]:
     adj: list[list[int]] = [[] for _ in range(n)]
     for i in range(n):
@@ -264,7 +270,7 @@ def one_step(
     cfg: StressConfig,
     rng: random.Random,
     noise_level: float,
-) -> tuple[list[float], list[float], list[float], float, float]:
+) -> tuple[list[float], list[float], list[float], float, float, float, int, float]:
     n = len(sigma)
     k_eq = mean([float(len(nbrs)) for nbrs in adj]) if adj else 1.0
 
@@ -273,6 +279,9 @@ def one_step(
     phi_new = [0.0] * n
     max_residual = 0.0
     alpha_rel_drift = 0.0
+    grad_sq_total = 0.0
+    active_count = 0
+    max_abs_phi_step = 0.0
 
     for i in range(n):
         comp = sigma_components(i, sigma, chi, phi, adj, cfg, k_eq)
@@ -287,6 +296,11 @@ def one_step(
 
         grad_chi = cfg.k_chi * chi[i] + cfg.k_mix * (sigma_i - sigma_neigh)
         grad_phi = cfg.k_phi * math.sin(angle_diff(phi[i], phi_neigh))
+        grad_sq_total += (
+            cfg.alpha_sigma * (grad_sigma * grad_sigma)
+            + cfg.alpha_chi * (grad_chi * grad_chi)
+            + cfg.alpha_phi * (grad_phi * grad_phi)
+        )
 
         eta_chi = rng.gauss(0.0, noise_level)
         eta_phi = rng.gauss(0.0, 0.5 * noise_level)
@@ -307,17 +321,28 @@ def one_step(
         r_chi = chi_next - (chi[i] - cfg.alpha_chi * grad_chi + eta_chi)
         r_phi = angle_diff(phi_next, phi_expected)
         max_residual = max(max_residual, abs(r_sigma), abs(r_chi), abs(r_phi))
+        max_abs_phi_step = max(max_abs_phi_step, abs(phi_next))
 
         # alpha drift check from tau_i = alpha_tau * |chi_i|, robust to tiny chi.
         denom = max(abs(chi[i]), cfg.tau_floor)
         if abs(chi[i]) >= cfg.chi_active_min:
+            active_count += 1
             alpha_eff = comp["tau_i"] / denom
             alpha_rel_drift = max(
                 alpha_rel_drift,
                 abs(alpha_eff - cfg.alpha_tau) / max(cfg.alpha_tau, 1e-12),
             )
 
-    return sig_new, chi_new, phi_new, max_residual, alpha_rel_drift
+    return (
+        sig_new,
+        chi_new,
+        phi_new,
+        max_residual,
+        alpha_rel_drift,
+        grad_sq_total,
+        active_count,
+        max_abs_phi_step,
+    )
 
 
 def metric_diagnostics(sigma: list[float], cfg: StressConfig) -> tuple[float, float, float]:
@@ -350,8 +375,8 @@ def no_signalling_check(
 
     base_rng = random.Random(123456)
     pert_rng = random.Random(123456)
-    sig_a, _, _, _, _ = one_step(sigma, chi, phi, adj, cfg, base_rng, noise_level=0.0)
-    sig_b, _, _, _, _ = one_step(pert_sigma, pert_chi, pert_phi, adj, cfg, pert_rng, noise_level=0.0)
+    sig_a, _, _, _, _, _, _, _ = one_step(sigma, chi, phi, adj, cfg, base_rng, noise_level=0.0)
+    sig_b, _, _, _, _, _, _, _ = one_step(pert_sigma, pert_chi, pert_phi, adj, cfg, pert_rng, noise_level=0.0)
 
     local = {src}
     local.update(adj[src])
@@ -411,17 +436,24 @@ def run_case(cfg: StressConfig, case: CaseConfig) -> dict[str, Any]:
     sigma, chi, phi = init_state(cfg.n_nodes, case.chi_scale, case.phi_shock, rng)
 
     e0 = potential_energy(sigma, chi, phi, adj, cfg)
+    energy_series = [e0]
+    e_noether_series = [e0]
+    cumulative_dissipation = 0.0
     max_residual = 0.0
     max_alpha_rel = 0.0
     min_sigma_seen = min(sigma)
     max_sigma_seen = max(sigma)
+    max_abs_sigma_seen = max(abs(v) for v in sigma)
     max_abs_chi_seen = max(abs(v) for v in chi)
+    max_abs_phi_seen = max(abs(v) for v in phi)
     metric_cond_max = 0.0
     min_metric_seen = float("inf")
     max_metric_seen = -float("inf")
+    active_samples = 0
+    total_samples = cfg.n_nodes * cfg.steps
 
     for _ in range(cfg.steps):
-        sigma, chi, phi, res, alpha_rel = one_step(
+        sigma, chi, phi, res, alpha_rel, grad_sq_total, active_count, max_abs_phi_step = one_step(
             sigma=sigma,
             chi=chi,
             phi=phi,
@@ -432,16 +464,44 @@ def run_case(cfg: StressConfig, case: CaseConfig) -> dict[str, Any]:
         )
         max_residual = max(max_residual, res)
         max_alpha_rel = max(max_alpha_rel, alpha_rel)
+        cumulative_dissipation += grad_sq_total
+        active_samples += active_count
         min_sigma_seen = min(min_sigma_seen, min(sigma))
         max_sigma_seen = max(max_sigma_seen, max(sigma))
+        max_abs_sigma_seen = max(max_abs_sigma_seen, max(abs(v) for v in sigma))
         max_abs_chi_seen = max(max_abs_chi_seen, max(abs(v) for v in chi))
+        max_abs_phi_seen = max(max_abs_phi_seen, max_abs_phi_step)
         min_m, max_m, cond = metric_diagnostics(sigma, cfg)
         min_metric_seen = min(min_metric_seen, min_m)
         max_metric_seen = max(max_metric_seen, max_m)
         metric_cond_max = max(metric_cond_max, cond)
+        e_now = potential_energy(sigma, chi, phi, adj, cfg)
+        energy_series.append(e_now)
+        e_noether_series.append(e_now + cumulative_dissipation)
 
-    e1 = potential_energy(sigma, chi, phi, adj, cfg)
+    e1 = energy_series[-1]
     dE_rel = abs(e1 - e0) / max(abs(e0), 1e-12)
+    e_noether0 = e_noether_series[0]
+    e_noether1 = e_noether_series[-1]
+    e_noether_rel = abs(e_noether1 - e_noether0) / max(abs(e_noether0), 1e-12)
+    e_noether_rel_range = (
+        max(abs(v - e_noether0) for v in e_noether_series) / max(abs(e_noether0), 1e-12)
+    )
+
+    split = max(1, cfg.steps // 2)
+    gate_slope_per100 = slope_per_100(energy_series[0], energy_series[-1], cfg.steps)
+    gate_slope_early_per100 = slope_per_100(energy_series[0], energy_series[split], split)
+    gate_slope_late_per100 = slope_per_100(
+        energy_series[split], energy_series[-1], max(cfg.steps - split, 1)
+    )
+    noether_slope_per100 = slope_per_100(e_noether_series[0], e_noether_series[-1], cfg.steps)
+    noether_slope_early_per100 = slope_per_100(e_noether_series[0], e_noether_series[split], split)
+    noether_slope_late_per100 = slope_per_100(
+        e_noether_series[split], e_noether_series[-1], max(cfg.steps - split, 1)
+    )
+
+    active_ratio = active_samples / max(total_samples, 1)
+    active_regime_flag = active_ratio > 0.0
     nonlocal_delta = no_signalling_check(adj, sigma, chi, phi, cfg)
 
     gate_sigma_bounds = (min_sigma_seen >= -1e-12) and (max_sigma_seen <= 1.0 + 1e-12)
@@ -468,6 +528,8 @@ def run_case(cfg: StressConfig, case: CaseConfig) -> dict[str, Any]:
 
     return {
         "case_id": case.case_id,
+        "dataset_id": "STABILITY-GRID",
+        "dt": "1.0",
         "case_seed": case.case_seed,
         "edge_prob": f6(case.edge_prob),
         "chi_scale": f6(case.chi_scale),
@@ -478,14 +540,30 @@ def run_case(cfg: StressConfig, case: CaseConfig) -> dict[str, Any]:
         "energy_start": f6(e0),
         "energy_end": f6(e1),
         "delta_energy_rel": f6(dE_rel),
+        "energy_gate_slope_per100": f6(gate_slope_per100),
+        "energy_gate_slope_early_per100": f6(gate_slope_early_per100),
+        "energy_gate_slope_late_per100": f6(gate_slope_late_per100),
+        "energy_noether_start": f6(e_noether0),
+        "energy_noether_end": f6(e_noether1),
+        "energy_noether_rel": f6(e_noether_rel),
+        "energy_noether_rel_range": f6(e_noether_rel_range),
+        "energy_noether_slope_per100": f6(noether_slope_per100),
+        "energy_noether_slope_early_per100": f6(noether_slope_early_per100),
+        "energy_noether_slope_late_per100": f6(noether_slope_late_per100),
         "max_residual": f6(max_residual),
         "max_alpha_rel_drift": f6(max_alpha_rel),
         "min_sigma_seen": f6(min_sigma_seen),
         "max_sigma_seen": f6(max_sigma_seen),
+        "max_abs_sigma_seen": f6(max_abs_sigma_seen),
         "max_abs_chi_seen": f6(max_abs_chi_seen),
+        "max_abs_phi_seen": f6(max_abs_phi_seen),
+        "active_ratio": f6(active_ratio),
+        "active_regime_flag": "true" if active_regime_flag else "false",
         "min_metric_diag": f6(min_metric_seen),
         "max_metric_diag": f6(max_metric_seen),
         "metric_cond_max_seen": f6(metric_cond_max),
+        "edge_changes": "0",
+        "neighbor_changes": "0",
         "max_nonlocal_delta": f6(nonlocal_delta),
         "gate_sigma_bounds": "pass" if gate_sigma_bounds else "fail",
         "gate_metric_positive": "pass" if gate_metric_positive else "fail",
@@ -536,6 +614,8 @@ def main() -> int:
     summary_csv = out_dir / "summary.csv"
     summary_fields = [
         "case_id",
+        "dataset_id",
+        "dt",
         "case_seed",
         "edge_prob",
         "chi_scale",
@@ -546,14 +626,30 @@ def main() -> int:
         "energy_start",
         "energy_end",
         "delta_energy_rel",
+        "energy_gate_slope_per100",
+        "energy_gate_slope_early_per100",
+        "energy_gate_slope_late_per100",
+        "energy_noether_start",
+        "energy_noether_end",
+        "energy_noether_rel",
+        "energy_noether_rel_range",
+        "energy_noether_slope_per100",
+        "energy_noether_slope_early_per100",
+        "energy_noether_slope_late_per100",
         "max_residual",
         "max_alpha_rel_drift",
         "min_sigma_seen",
         "max_sigma_seen",
+        "max_abs_sigma_seen",
         "max_abs_chi_seen",
+        "max_abs_phi_seen",
+        "active_ratio",
+        "active_regime_flag",
         "min_metric_diag",
         "max_metric_diag",
         "metric_cond_max_seen",
+        "edge_changes",
+        "neighbor_changes",
         "max_nonlocal_delta",
         "gate_sigma_bounds",
         "gate_metric_positive",
@@ -597,6 +693,8 @@ def main() -> int:
     now_utc = datetime.now(timezone.utc).isoformat()
     pass_total = sum(1 for r in rows if r["all_pass"] == "pass")
     fail_total = total - pass_total
+    avg_gate_rel = mean([float(r["delta_energy_rel"]) for r in rows])
+    avg_noether_rel = mean([float(r["energy_noether_rel"]) for r in rows])
 
     report_lines = [
         "# QNG Stability Stress Report (v1)",
@@ -605,6 +703,8 @@ def main() -> int:
         f"- cases_total: `{total}`",
         f"- all_pass: `{pass_total}/{total}`",
         f"- all_fail: `{fail_total}/{total}`",
+        f"- mean gate energy drift (`|delta_E/E|`): `{f6(avg_gate_rel)}`",
+        f"- mean Noether-like drift (`|delta_E_noether/E_noether|`): `{f6(avg_noether_rel)}`",
         "",
         "## Locked Gate Thresholds",
         "",

@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-03-03 - Stability fail taxonomy v1 + energy diagnostic split
+
+- Extended stability stress runner diagnostics:
+  - `scripts/tools/run_stability_stress_v1.py`
+  - added per-case drift slopes (`global/early/late`) per 100 steps
+  - added Noether-like energy track (`energy_noether_*`) for comparison vs gate energy
+  - added active-regime and max-amplitude diagnostics (`Sigma/chi/phi`)
+  - added static topology diagnostics (`edge_changes`, `neighbor_changes`)
+- Added stability failure taxonomy tool:
+  - `scripts/tools/analyze_stability_v1_failures_v1.py`
+- Added make target:
+  - `stability_v1_taxonomy`
+- Added prereg for candidate energy-gate governance:
+  - `05_validation/pre-registrations/qng-stability-energy-covariant-v2.md`
+- Updated reproducibility:
+  - `docs/REPRODUCIBILITY.md` (section 45)
+
 ## 2026-03-03 - Stability term lane bootstrap (QNG-v1-strict)
 
 - Added strict stability governance contract:

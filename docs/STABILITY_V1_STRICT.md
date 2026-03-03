@@ -37,6 +37,15 @@ The lock is separate from GR/QM official gate governance and does not modify GR/
   - `gate_summary.csv`
   - `report.md`
   - `manifest.json`
+
+Taxonomy package:
+
+- `05_validation/evidence/artifacts/stability-v1-failure-taxonomy-v1/`
+  - `fail_cases.csv`
+  - `pass_cases.csv`
+  - `pattern_summary.csv`
+  - `feature_correlations.csv`
+  - `report.md`
   - `run-log.txt`
 
 ## Stability Invariants (Hard Gates)
@@ -61,3 +70,7 @@ Every improvement must include:
 1. mathematical statement (equation-level),
 2. prereg test protocol,
 3. explicit FAIL criterion.
+
+Candidate-v2 prereg anchor:
+
+- `05_validation/pre-registrations/qng-stability-energy-covariant-v2.md`

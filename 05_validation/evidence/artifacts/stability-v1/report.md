@@ -1,9 +1,11 @@
 # QNG Stability Stress Report (v1)
 
-- generated_utc: `2026-03-03T07:19:18.867523+00:00`
+- generated_utc: `2026-03-03T07:28:22.018135+00:00`
 - cases_total: `54`
 - all_pass: `44/54`
 - all_fail: `10/54`
+- mean gate energy drift (`|delta_E/E|`): `0.877558`
+- mean Noether-like drift (`|delta_E_noether/E_noether|`): `0.063329`
 
 ## Locked Gate Thresholds
 

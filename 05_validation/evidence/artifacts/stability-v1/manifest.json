@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-03-03T07:19:18.867523+00:00",
+  "generated_utc": "2026-03-03T07:28:22.018135+00:00",
   "policy_id": "qng-stability-v1-strict",
   "cases_total": 54,
   "cases_pass": 44,
@@ -65,6 +65,6 @@
     "prereg_doc": "27392f8baeef8d39afa2ef7a8761af745b50a2eac869c18195b272134406f183",
     "action_doc": "a2c0ca95958fc1afbcf1a869b0590cc265283018de76bd2d024f7e449a085ade",
     "update_doc": "2d59d53fc9fb3b8656b3eea42e1e176e63079ea8d656f6ab385198e63b6e1abf",
-    "freeze_doc": "082166f5f06bd4118d2baeadf46649df25957f7382fad41d273f1a2de5160445"
+    "freeze_doc": "dc1546bc4e7475f22e9b27059bc059186b651c16733a86b9c008a4bac474c00d"
   }
 }

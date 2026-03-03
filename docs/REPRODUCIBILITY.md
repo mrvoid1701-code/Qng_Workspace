@@ -1003,3 +1003,25 @@ Outputs:
 - `05_validation/evidence/artifacts/stability-v1/report.md`
 - `05_validation/evidence/artifacts/stability-v1/manifest.json`
 - `05_validation/evidence/artifacts/stability-v1/run-log.txt`
+
+## 45) Stability fail taxonomy (v1 strict)
+
+Run taxonomy on strict sweep summary:
+
+```bash
+make stability_v1_taxonomy
+```
+
+Direct Python fallback:
+
+```bash
+python scripts/tools/analyze_stability_v1_failures_v1.py --summary-csv 05_validation/evidence/artifacts/stability-v1/summary.csv --out-dir 05_validation/evidence/artifacts/stability-v1-failure-taxonomy-v1
+```
+
+Outputs:
+
+- `05_validation/evidence/artifacts/stability-v1-failure-taxonomy-v1/fail_cases.csv`
+- `05_validation/evidence/artifacts/stability-v1-failure-taxonomy-v1/pass_cases.csv`
+- `05_validation/evidence/artifacts/stability-v1-failure-taxonomy-v1/pattern_summary.csv`
+- `05_validation/evidence/artifacts/stability-v1-failure-taxonomy-v1/feature_correlations.csv`
+- `05_validation/evidence/artifacts/stability-v1-failure-taxonomy-v1/report.md`
