@@ -1,0 +1,102 @@
+{
+  "generated_utc": "2026-03-03T08:46:24.926477+00:00",
+  "policy_id": "qng-stability-v1-strict",
+  "cases_total": 5400,
+  "cases_pass": 4532,
+  "cases_fail": 868,
+  "config": {
+    "n_nodes": 36,
+    "steps": 60,
+    "seed": 3401,
+    "alpha_sigma": 0.12,
+    "alpha_chi": 0.06,
+    "alpha_phi": 0.05,
+    "alpha_tau": 0.08,
+    "chi_ref": 1.0,
+    "k_closure": 2.2,
+    "k_smooth": 0.9,
+    "k_chi": 0.45,
+    "k_mix": 0.12,
+    "k_phi": 0.25,
+    "metric_beta": 0.5,
+    "tau_floor": 0.001,
+    "chi_active_min": 0.05,
+    "dt_local_beta": 0.4,
+    "chi_runaway_max": 6.0,
+    "metric_cond_max": 3.0,
+    "energy_rel_max": 0.9,
+    "residual_max": 0.6,
+    "alpha_rel_drift_max": 0.05,
+    "nonlocal_delta_max": 1e-09
+  },
+  "grids": {
+    "edge_prob_grid": [
+      0.08,
+      0.18,
+      0.32
+    ],
+    "chi_scale_grid": [
+      0.5,
+      1.0,
+      1.5
+    ],
+    "noise_grid": [
+      0.0,
+      0.01,
+      0.03
+    ],
+    "phi_shock_grid": [
+      0.0,
+      0.4
+    ],
+    "seed_list": [
+      3401,
+      3402,
+      3403,
+      3404,
+      3405,
+      3406,
+      3407,
+      3408,
+      3409,
+      3410,
+      3411,
+      3412,
+      3413,
+      3414,
+      3415,
+      3416,
+      3417,
+      3418,
+      3419,
+      3420
+    ],
+    "n_nodes_list": [
+      24,
+      30,
+      36,
+      42,
+      48
+    ],
+    "steps_list": [
+      60
+    ]
+  },
+  "references": {
+    "prereg_doc": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/pre-registrations/qng-stability-v1-strict.md",
+    "action_doc": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/03_math/derivations/qng-stability-action-v1.md",
+    "update_doc": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/03_math/derivations/qng-stability-update-v1.md",
+    "freeze_doc": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/docs/STABILITY_V1_STRICT.md"
+  },
+  "artifacts": {
+    "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v2/raw/summary.csv",
+    "gate_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v2/raw/gate_summary.csv",
+    "report_md": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v2/raw/report.md"
+  },
+  "reference_hashes": {
+    "prereg_doc": "27392f8baeef8d39afa2ef7a8761af745b50a2eac869c18195b272134406f183",
+    "action_doc": "a2c0ca95958fc1afbcf1a869b0590cc265283018de76bd2d024f7e449a085ade",
+    "update_doc": "2d59d53fc9fb3b8656b3eea42e1e176e63079ea8d656f6ab385198e63b6e1abf",
+    "freeze_doc": "8375003e5ce68173dd5ccac0fb861cc38529b051b78f392e8713213fdf6d43f7"
+  }
+}

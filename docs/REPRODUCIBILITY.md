@@ -424,6 +424,33 @@ Main outputs:
 - `05_validation/evidence/artifacts/stability-convergence-v1/report.md`
 - `05_validation/evidence/artifacts/stability-convergence-v1/report.json`
 
+## 49) Stability convergence gate v2 (bulk/full + scaling + cross-seed)
+
+Frozen prereg:
+
+- `05_validation/pre-registrations/qng-stability-convergence-v2.md`
+
+Run (20 seeds):
+
+```bash
+python scripts/tools/run_stability_stress_v1.py --dataset-id STABILITY-CONVERGENCE-V2 --seed-list 3401,3402,3403,3404,3405,3406,3407,3408,3409,3410,3411,3412,3413,3414,3415,3416,3417,3418,3419,3420 --n-nodes-list 24,30,36,42,48 --steps-list 60 --out-dir 05_validation/evidence/artifacts/stability-convergence-v2/raw --no-strict-exit
+python scripts/tools/run_stability_convergence_gate_v2.py --summary-csv 05_validation/evidence/artifacts/stability-convergence-v2/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v2 --step-tol 0.002 --full-step-fraction-min 0.75 --bulk-step-fraction-min 0.85 --overall-improvement-min 0.005 --support-worsen-factor-max 1.25 --rho-full-max -0.60 --rho-bulk-max -0.80 --full-seed-pass-fraction-min 0.85 --bulk-seed-pass-fraction-min 0.85
+```
+
+Or:
+
+```bash
+make stability_convergence_v2
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/stability-convergence-v2/seed_checks.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v2/level_stats.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v2/step_checks.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v2/report.md`
+- `05_validation/evidence/artifacts/stability-convergence-v2/report.json`
+
 Primary candidate eval:
 
 ```bash

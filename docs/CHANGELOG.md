@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-03-03 - Stability convergence v2 (bulk/full + scaling + cross-seed)
+
+- Added convergence-v2 prereg:
+  - `05_validation/pre-registrations/qng-stability-convergence-v2.md`
+- Added convergence-v2 runner:
+  - `scripts/tools/run_stability_convergence_gate_v2.py`
+- Added Make targets:
+  - `stability_convergence_v2_run`
+  - `stability_convergence_v2_gate`
+  - `stability_convergence_v2`
+- Added reproducibility section:
+  - `docs/REPRODUCIBILITY.md` (section 49)
+- Added run record:
+  - `05_validation/pre-registrations/qng-stability-convergence-v2-run-record-2026-03-03.md`
+- Executed evidence package:
+  - `05_validation/evidence/artifacts/stability-convergence-v2/`
+- Result:
+  - decision `FAIL` (full_seed_pass_fraction `0.90` pass, bulk_seed_pass_fraction `0.50` fail, rho_full_median `-0.90` pass, rho_bulk_median `-0.75` fail)
+  - no threshold updates after result (anti post-hoc preserved)
+
 ## 2026-03-03 - Stability freeze v2 + Noether alignment sketch + convergence gate v1
 
 - Added one-page freeze contract:

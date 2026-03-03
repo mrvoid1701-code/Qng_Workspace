@@ -97,3 +97,5 @@ Convergence contract:
 
 - `05_validation/pre-registrations/qng-stability-convergence-v1.md`
 - `05_validation/pre-registrations/qng-stability-convergence-v1-run-record-2026-03-03.md`
+- `05_validation/pre-registrations/qng-stability-convergence-v2.md`
+- `05_validation/pre-registrations/qng-stability-convergence-v2-run-record-2026-03-03.md`

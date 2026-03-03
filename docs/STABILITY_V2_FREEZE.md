@@ -40,6 +40,7 @@ Observed (current evidence):
 1. Candidate-v2 and official mapping improved energy/all-pass counts with `degraded=0`.
 2. Regression guard decision is `PASS` on frozen official-v2 blocks.
 3. Convergence gate v1 decision is `PASS` on locked refinement protocol.
+4. Convergence gate v2 (bulk/full + scaling + cross-seed) executed with decision `FAIL` under locked v2 thresholds; no retuning applied.
 
 Open (explicitly not closed yet):
 
