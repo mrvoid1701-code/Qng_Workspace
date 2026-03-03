@@ -20,7 +20,7 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 | G14 | Covariant conservation (`âˆ‡_Î¼ T^{Î¼Î½}=0`) | `scripts/run_qng_covariant_cons_v1.py` |
 | G15 | PPN parameters (`Î³`, `Î²`) + Shapiro-delay checks (`G15b-v1` legacy radial-shell, `G15b-v2` official potential-quantile) | `scripts/run_qng_ppn_v1.py` |
 | G16 | Discrete action functional and Euler-Lagrange closure | `scripts/run_qng_action_v1.py` |
-| G17 | Canonical quantization on graph (QM bridge) | `scripts/run_qng_qm_bridge_v1.py` |
+| G17 | Canonical quantization on graph (QM bridge; `G17-v2` official, `G17-v1` legacy diagnostic) | `scripts/run_qng_qm_bridge_v1.py` |
 | G18 | Quantum information and emergent geometry diagnostics | `scripts/run_qng_qm_info_v1.py` |
 | G19 | Unruh thermal vacuum diagnostics | `scripts/run_qng_unruh_thermal_v1.py` |
 | G20 | Semiclassical back-reaction loop closure | `scripts/run_qng_semiclassical_v1.py` |
@@ -62,6 +62,14 @@ Gate map for the core GR/QM chain and metric hardening sequence.
   - v2: `docs/GR_STAGE2_OFFICIAL_SWITCH.md`
   - v3: `docs/GR_STAGE2_G11_V3_OFFICIAL_SWITCH.md`
   - v4: `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md`
+- QM Stage-1 official decision policy (governance-layer mapping on frozen runs):
+  - `G17` official uses candidate-v2 decision status
+  - `G17-v1` remains legacy diagnostic-only
+  - `G18/G19/G20` remain inherited unchanged
+  - runner: `scripts/tools/run_qm_stage1_official_v2.py`
+  - effective tag: `qm-stage1-g17-v2-official`
+- QM Stage-1 official switch record:
+  - `docs/QM_STAGE1_G17_V2_OFFICIAL_SWITCH.md`
 - QM decision criteria are tracked in a separate lane: `docs/QM_LANE_POLICY.md`.
 - QM-Stage-1 prereg source: `05_validation/pre-registrations/qm-stage1-prereg-v1.md`.
 

@@ -815,3 +815,28 @@ Run post-candidate QM-GR coupling smoke:
 ```bash
 python scripts/tools/run_qm_gr_coupling_audit_v1.py --mode smoke --datasets DS-002,DS-003,DS-006 --out-dir 05_validation/evidence/artifacts/qm-gr-coupling-audit-post-g17v2-smoke-v1 --gr-baseline-json 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json --gr-summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv
 ```
+
+## 37) QM Stage-1 official switch apply (G17-v2 governance)
+
+Apply official policy packages from frozen candidate-v2 summaries:
+
+```bash
+python scripts/tools/run_qm_stage1_official_v2.py --source-summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v2/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v2/primary_ds002_003_006_s3401_3600 --policy-id qm-stage1-official-v2 --effective-tag qm-stage1-g17-v2-official --source-policy-id qm-g17-candidate-v2-hybrid
+python scripts/tools/run_qm_stage1_official_v2.py --source-summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v2/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v2/attack_seed500_ds002_003_006_s3601_4100 --policy-id qm-stage1-official-v2-attack-seed500 --effective-tag qm-stage1-g17-v2-official --source-policy-id qm-g17-candidate-v2-hybrid
+python scripts/tools/run_qm_stage1_official_v2.py --source-summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v2/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v2/attack_holdout_ds004_008_s3401_3600 --policy-id qm-stage1-official-v2-attack-holdout --effective-tag qm-stage1-g17-v2-official --source-policy-id qm-g17-candidate-v2-hybrid
+```
+
+Equivalent one-command targets:
+
+```bash
+make qm_stage1_official_apply_primary
+make qm_stage1_official_apply_attack
+make qm_stage1_official_apply_holdout
+```
+
+Key outputs (per block):
+
+- `summary.csv`
+- `dataset_summary.csv`
+- `report.md`
+- `official_manifest.json`

@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-03-03 - QM Stage-1 official switch to G17-v2 policy
+
+- Governance switch frozen with tags:
+  - `pre-qm-stage1-g17-v2-official`
+  - `qm-stage1-g17-v2-official`
+- Added official policy applier:
+  - `scripts/tools/run_qm_stage1_official_v2.py`
+- Added one-command targets for official package apply:
+  - `qm_stage1_official_apply_primary`
+  - `qm_stage1_official_apply_attack`
+  - `qm_stage1_official_apply_holdout`
+- Added official switch record and policy references:
+  - `docs/QM_STAGE1_G17_V2_OFFICIAL_SWITCH.md`
+  - `docs/GATES.md`
+  - `docs/QM_LANE_POLICY.md`
+  - `docs/ROADMAP.md`
+  - `docs/REPRODUCIBILITY.md`
+- Generated official governance packages:
+  - `05_validation/evidence/artifacts/qm-stage1-official-v2/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v2/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v2/attack_holdout_ds004_008_s3401_3600/`
+
 ## 2026-03-02 - QM G17-v2 candidate full prereg blocks (primary + attack + holdout)
 
 - elapsed wall-clock runtime for this full batch (primary + attack + holdout + eval + coupling smoke): `~5 hours` on 2026-03-02.

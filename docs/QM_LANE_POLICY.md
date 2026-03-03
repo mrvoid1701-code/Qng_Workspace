@@ -50,3 +50,23 @@ Runners:
 - QM lane promotion criteria must be preregistered independently.
 - Any GR promotion decision must reference GR-only lane artifacts.
 - Any QM promotion decision must reference QM-only lane artifacts.
+
+## QM Stage-1 Official Policy (v2)
+
+Effective tag:
+
+- `qm-stage1-g17-v2-official`
+
+Official mapping:
+
+1. `G17` official uses `G17-v2` decision status from frozen candidate summaries.
+2. `G17-v1` remains legacy diagnostic-only.
+3. `G18/G19/G20` remain inherited unchanged from source summaries.
+
+Governance applier:
+
+- `scripts/tools/run_qm_stage1_official_v2.py`
+
+Switch record:
+
+- `docs/QM_STAGE1_G17_V2_OFFICIAL_SWITCH.md`
