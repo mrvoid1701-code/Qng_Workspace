@@ -953,3 +953,24 @@ Outputs per package:
 - `report.md`
 - `manifest.json`
 - `run-log.txt`
+
+## 43) QM Stage-1 freeze verification (official-v3 + guard + smoke)
+
+Run official guard:
+
+```bash
+make qm_stage1_regression_guard
+```
+
+Run fast smoke:
+
+```bash
+python scripts/tools/run_qm_lane_check_v1.py --dataset-id DS-003 --seed 3520 --out-dir 07_exports/repro/qm_stage1_freeze_smoke_ds003_s3520
+```
+
+Expected:
+
+- regression guard decision `PASS` in:
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/latest_check/regression_report.json`
+- smoke `all_pass_qm_lane=pass` in:
+  - `07_exports/repro/qm_stage1_freeze_smoke_ds003_s3520/summary.csv`

@@ -85,3 +85,15 @@ Regression guard:
 Reference doc:
 
 - `docs/QM_STAGE1_BASELINE_GUARD.md`
+
+## Stage Map
+
+Current official stage:
+
+- `QM-Stage-1` (frozen): `qm-stage1-g18-v2-official`
+- freeze contract: `docs/QM_STAGE1_FREEZE.md`
+
+Next stage:
+
+- `QM-Stage-2` is not official yet (candidate/prereg lane only).
+- promotion requires prereg protocol + non-degradation + coupling-audit revalidation.

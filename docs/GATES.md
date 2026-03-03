@@ -72,6 +72,8 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 - QM Stage-1 official switch records:
   - `docs/QM_STAGE1_G17_V2_OFFICIAL_SWITCH.md` (historical, v2)
   - `docs/QM_STAGE1_G18_V2_OFFICIAL_SWITCH.md` (current, v3)
+- `QM-Stage-1` freeze contract:
+  - `docs/QM_STAGE1_FREEZE.md`
 - QM decision criteria are tracked in a separate lane: `docs/QM_LANE_POLICY.md`.
 - QM-Stage-1 prereg source: `05_validation/pre-registrations/qm-stage1-prereg-v1.md`.
 

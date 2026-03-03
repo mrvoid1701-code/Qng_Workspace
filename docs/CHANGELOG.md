@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-03-03 - QM Stage-1 freeze verification + full coupling audit v2 rerun
+
+- Executed full QM-GR coupling audit v2 packages (chunked + resume-safe):
+  - `05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/holdout_ds004_008_s3401_3600/`
+- Rerun readout:
+  - primary: `600/600` G20 pass, GR guard pre/post chunk checks all `PASS`
+  - attack: `1500/1500` G20 pass, GR guard pre/post chunk checks all `PASS`
+  - holdout: `400/400` G20 pass, GR guard pre/post chunk checks all `PASS`
+  - total: `2500/2500` G20 pass
+- Refreshed QM Stage-1 regression guard latest check:
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/latest_check/`
+  - decision: `PASS` (primary/attack/holdout, no profile drift, no pass-rate degradation)
+- Added QM Stage-1 freeze contract:
+  - `docs/QM_STAGE1_FREEZE.md`
+  - linked in `docs/GATES.md` and `docs/QM_LANE_POLICY.md`
+- Added freeze verification commands:
+  - `docs/REPRODUCIBILITY.md` (section 43)
+- Runtime note:
+  - full coupling audit v2 rerun duration was about `2h05` wall-clock in this environment.
+
 ## 2026-03-03 - QM-GR coupling audit v2 (chunked/resumable, timeout-safe)
 
 - Added chunked/resumable audit runner:
