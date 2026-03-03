@@ -451,6 +451,36 @@ Main outputs:
 - `05_validation/evidence/artifacts/stability-convergence-v2/report.md`
 - `05_validation/evidence/artifacts/stability-convergence-v2/report.json`
 
+## 50) Stability convergence v2 bulk-fail taxonomy + diagnostic sweep (non-promotion)
+
+Purpose:
+
+- classify bulk FAIL seeds from v2 without threshold changes
+- run sensitivity diagnostics for bulk mask strategy only
+
+Run:
+
+```bash
+python scripts/tools/analyze_stability_convergence_v2_failures_v1.py --report-json 05_validation/evidence/artifacts/stability-convergence-v2/report.json --seed-checks-csv 05_validation/evidence/artifacts/stability-convergence-v2/seed_checks.csv --level-stats-csv 05_validation/evidence/artifacts/stability-convergence-v2/level_stats.csv --step-checks-csv 05_validation/evidence/artifacts/stability-convergence-v2/step_checks.csv --raw-summary-csv 05_validation/evidence/artifacts/stability-convergence-v2/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v2-failure-taxonomy-v1
+python scripts/tools/run_stability_convergence_v2_diagnostic_sweep_v1.py --raw-summary-csv 05_validation/evidence/artifacts/stability-convergence-v2/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v2-diagnostic-sweep-v1 --mask-quantiles 0.00,0.25,0.50,0.75 --bulk-levels 30,36,42 --min-profiles-per-level 5
+```
+
+Or:
+
+```bash
+make stability_convergence_v2_analysis
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/stability-convergence-v2-failure-taxonomy-v1/bulk_fail_seeds.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v2-failure-taxonomy-v1/bulk_vs_full_delta.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v2-failure-taxonomy-v1/pattern_summary.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v2-failure-taxonomy-v1/report.md`
+- `05_validation/evidence/artifacts/stability-convergence-v2-diagnostic-sweep-v1/bulk_rho_sweep.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v2-diagnostic-sweep-v1/bulk_rho_heatmap.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v2-diagnostic-sweep-v1/report.md`
+
 Primary candidate eval:
 
 ```bash

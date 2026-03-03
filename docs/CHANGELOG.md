@@ -1,5 +1,28 @@
 # Changelog
 
+## 2026-03-03 - Stability convergence v2 bulk-fail taxonomy + diagnostic sweep + v3 prereg lock
+
+- Added bulk-fail taxonomy tool:
+  - `scripts/tools/analyze_stability_convergence_v2_failures_v1.py`
+- Added diagnostic-only sweep tool:
+  - `scripts/tools/run_stability_convergence_v2_diagnostic_sweep_v1.py`
+- Added Make targets:
+  - `stability_convergence_v2_taxonomy`
+  - `stability_convergence_v2_diagnostic_sweep`
+  - `stability_convergence_v2_analysis`
+- Added reproducibility section:
+  - `docs/REPRODUCIBILITY.md` (section 50)
+- Added evidence packages:
+  - `05_validation/evidence/artifacts/stability-convergence-v2-failure-taxonomy-v1/`
+  - `05_validation/evidence/artifacts/stability-convergence-v2-diagnostic-sweep-v1/`
+- Added locked prereg (candidate-only):
+  - `05_validation/pre-registrations/qng-stability-convergence-v3.md`
+- Result snapshot:
+  - v2 remains `FAIL` (no threshold changes)
+  - bulk fail seeds: `10/20`
+  - fail modes: `8` bulk-only + `2` full-and-bulk
+  - diagnostic sweep is marked non-promotion/anti post-hoc
+
 ## 2026-03-03 - Stability convergence v2 (bulk/full + scaling + cross-seed)
 
 - Added convergence-v2 prereg:

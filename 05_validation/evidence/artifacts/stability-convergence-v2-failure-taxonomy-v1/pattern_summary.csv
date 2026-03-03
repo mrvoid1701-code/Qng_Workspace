@@ -1,0 +1,3 @@
+pattern,count
+bulk_fail_small_positive_step_delta,8
+bulk_fail_no_step_violation,2

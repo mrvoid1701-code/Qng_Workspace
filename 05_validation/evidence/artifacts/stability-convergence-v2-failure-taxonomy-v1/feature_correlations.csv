@@ -1,0 +1,7 @@
+feature,corr_with_bulk_fail,abs_corr,fail_mean,pass_mean,delta_fail_minus_pass
+mean_active_ratio,-0.455271,0.455271,0.854199,0.856081,-0.001883
+mean_delta_energy_rel,-0.347423,0.347423,0.872219,0.873626,-0.001407
+mean_metric_cond,-0.203441,0.203441,1.035588,1.035669,-0.000081
+drift_fail_rate,-0.069178,0.069178,0.158889,0.162593,-0.003704
+mean_residual,0.037261,0.037261,0.008927,0.008922,0.000006
+mean_energy_noether_rel,0.004419,0.004419,0.062649,0.062632,0.000017
