@@ -922,3 +922,34 @@ Outputs:
 - `05_validation/evidence/artifacts/qm-g18-promotion-eval-v1/primary_ds002_003_006_s3401_3600/report.json`
 - `05_validation/evidence/artifacts/qm-g18-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100/report.json`
 - `05_validation/evidence/artifacts/qm-g18-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600/report.json`
+
+## 42) QM-GR coupling audit v2 (chunked + resumable)
+
+Chunked commands (resume-safe, low-artifact mode):
+
+```bash
+make qm_gr_coupling_audit_primary_chunked
+make qm_gr_coupling_audit_attack_chunked
+make qm_gr_coupling_audit_holdout_chunked
+```
+
+Direct runner example:
+
+```bash
+python scripts/tools/run_qm_gr_coupling_audit_v2.py --ds-list DS-002,DS-003,DS-006 --seed-min 3401 --seed-max 3600 --chunk-size 25 --resume --out-dir 05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/primary_ds002_003_006_s3401_3600 --no-write-artifacts --no-plots
+```
+
+Resume behavior:
+
+- reads existing `summary.csv`
+- skips completed `(dataset_id, seed)` profiles when `--resume` is set
+- writes `summary.csv` atomically after each chunk
+
+Outputs per package:
+
+- `summary.csv`
+- `dataset_summary.csv`
+- `chunk_checks.csv`
+- `report.md`
+- `manifest.json`
+- `run-log.txt`

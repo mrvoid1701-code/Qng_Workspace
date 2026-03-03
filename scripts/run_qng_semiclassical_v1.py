@@ -301,6 +301,8 @@ def parse_args():
     p.add_argument("--dataset-id", default="DS-002")
     p.add_argument("--seed",       type=int,   default=3401)
     p.add_argument("--out-dir",    default=str(DEFAULT_OUT_DIR))
+    p.add_argument("--write-artifacts", action=argparse.BooleanOptionalAction, default=True)
+    p.add_argument("--plots", action=argparse.BooleanOptionalAction, default=True)
     p.add_argument("--n-modes",    type=int,   default=N_MODES)
     p.add_argument("--n-iter",     type=int,   default=N_ITER_POW)
     p.add_argument("--lambda-back",type=float, default=LAMBDA_BACK)
@@ -434,23 +436,7 @@ def main() -> int:
     log(f"  The GR ↔ QM loop closes at first order (λ = {args.lambda_back}).")
 
     # ── Artifacts ─────────────────────────────────────────────────────────────
-    vert_csv = out_dir / "backreaction_vertices.csv"
-    write_csv(vert_csv,
-              ["vertex","x","y","degree","alpha0","eps_vac0","f_field","alpha1","eps_vac1","residual"],
-              [{"vertex":i,"x":fmt(coords[i][0]),"y":fmt(coords[i][1]),
-                "degree":degrees[i],"alpha0":fmt(alpha0[i]),
-                "eps_vac0":fmt(eps_vac0[i]),"f_field":fmt(f_field[i]),
-                "alpha1":fmt(alpha1[i]),"eps_vac1":fmt(eps_vac1[i]),
-                "residual":fmt(residuals[i])} for i in range(n)])
-
-    modes_csv = out_dir / "backreaction_modes.csv"
-    write_csv(modes_csv,
-              ["mode_k","mu_k","omega_k0","f_avg_k","delta_omega_k","omega_k1"],
-              [{"mode_k":k+1,"mu_k":fmt(mu_act[k]),"omega_k0":fmt(omegas[k]),
-                "f_avg_k":fmt(d_omega[k]/(args.lambda_back/2*omegas[k]) if omegas[k]>0 else 0),
-                "delta_omega_k":fmt(d_omega[k]),"omega_k1":fmt(omega1[k])}
-               for k in range(K_eff)])
-
+    artifact_files: list[Path] = []
     mc_csv = out_dir / "metric_checks_semi.csv"
     write_csv(mc_csv, ["gate_id","metric","value","threshold","status"], [
         {"gate_id":"G20a","metric":"energy_conservation_err",
@@ -468,8 +454,32 @@ def main() -> int:
         {"gate_id":"FINAL","metric":"decision","value":decision,
          "threshold":"G20a&G20b&G20c&G20d","status":decision},
     ])
+    artifact_files.append(mc_csv)
 
-    plot_semi(out_dir/"semiclassical-plot.png", coords, eps_vac0, residuals)
+    if args.write_artifacts:
+        vert_csv = out_dir / "backreaction_vertices.csv"
+        write_csv(vert_csv,
+                  ["vertex","x","y","degree","alpha0","eps_vac0","f_field","alpha1","eps_vac1","residual"],
+                  [{"vertex":i,"x":fmt(coords[i][0]),"y":fmt(coords[i][1]),
+                    "degree":degrees[i],"alpha0":fmt(alpha0[i]),
+                    "eps_vac0":fmt(eps_vac0[i]),"f_field":fmt(f_field[i]),
+                    "alpha1":fmt(alpha1[i]),"eps_vac1":fmt(eps_vac1[i]),
+                    "residual":fmt(residuals[i])} for i in range(n)])
+        artifact_files.append(vert_csv)
+
+        modes_csv = out_dir / "backreaction_modes.csv"
+        write_csv(modes_csv,
+                  ["mode_k","mu_k","omega_k0","f_avg_k","delta_omega_k","omega_k1"],
+                  [{"mode_k":k+1,"mu_k":fmt(mu_act[k]),"omega_k0":fmt(omegas[k]),
+                    "f_avg_k":fmt(d_omega[k]/(args.lambda_back/2*omegas[k]) if omegas[k]>0 else 0),
+                    "delta_omega_k":fmt(d_omega[k]),"omega_k1":fmt(omega1[k])}
+                   for k in range(K_eff)])
+        artifact_files.append(modes_csv)
+
+        if args.plots:
+            plot_path = out_dir / "semiclassical-plot.png"
+            plot_semi(plot_path, coords, eps_vac0, residuals)
+            artifact_files.append(plot_path)
 
     config = {
         "script": "run_qng_semiclassical_v1.py",
@@ -490,13 +500,16 @@ def main() -> int:
         "run_utc": datetime.utcnow().isoformat()+"Z",
         "elapsed_s": round(elapsed, 3),
         "decision": decision,
+        "write_artifacts": bool(args.write_artifacts),
+        "plots": bool(args.plots),
     }
-    (out_dir/"config_semi.json").write_text(json.dumps(config, indent=2), encoding="utf-8")
-    artifact_files = [vert_csv, modes_csv, mc_csv,
-                      out_dir/"semiclassical-plot.png", out_dir/"config_semi.json"]
-    (out_dir/"artifact-hashes-semi.json").write_text(
-        json.dumps({p.name: sha256_of(p) for p in artifact_files if p.exists()}, indent=2),
-        encoding="utf-8")
+    if args.write_artifacts:
+        cfg_path = out_dir / "config_semi.json"
+        cfg_path.write_text(json.dumps(config, indent=2), encoding="utf-8")
+        artifact_files.append(cfg_path)
+        (out_dir/"artifact-hashes-semi.json").write_text(
+            json.dumps({p.name: sha256_of(p) for p in artifact_files if p.exists()}, indent=2),
+            encoding="utf-8")
     (out_dir/"run-log-semi.txt").write_text("\n".join(log_lines), encoding="utf-8")
     log(f"\nArtifacts written to: {out_dir}")
     (out_dir/"run-log-semi.txt").write_text("\n".join(log_lines), encoding="utf-8")

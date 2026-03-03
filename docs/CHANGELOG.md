@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-03-03 - QM-GR coupling audit v2 (chunked/resumable, timeout-safe)
+
+- Added chunked/resumable audit runner:
+  - `scripts/tools/run_qm_gr_coupling_audit_v2.py`
+- Added low-artifact execution support in G20 runner:
+  - `scripts/run_qng_semiclassical_v1.py`
+  - new flags: `--write-artifacts/--no-write-artifacts`, `--plots/--no-plots`
+- Added Makefile targets:
+  - `qm_gr_coupling_audit_primary_chunked`
+  - `qm_gr_coupling_audit_attack_chunked`
+  - `qm_gr_coupling_audit_holdout_chunked`
+- Updated reproducibility docs:
+  - `docs/REPRODUCIBILITY.md` (section 42)
+- Generated resumable evidence demo package:
+  - `05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/resume_demo_ds002_003_006_s3401_3404/`
+  - resumed from `6` to `12` profiles with `--resume`
+  - final: `g20_pass=12/12`, `gr_guard_pre_all_pass=true`, `gr_guard_post_all_pass=true`
+
 ## 2026-03-03 - QM Stage-1 official-v3 apply + baseline guard + taxonomy v2
 
 - Applied official-v3 governance packages:

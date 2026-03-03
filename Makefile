@@ -3,7 +3,7 @@ DS ?= DS-003
 SEED ?= 3520
 PHI ?= 0.08
 
-.PHONY: help gr_official_check gr_baseline_guard gr_sweep_phi gr_stage2_smoke gr_stage2_prereg gr_stage3_smoke gr_stage3_prereg gr_stage3_attack_seed500 gr_stage3_attack_holdout gr_stage3_taxonomy gr_stage3_eval gr_stage3_candidate_v2_primary gr_stage3_candidate_v2_attack gr_stage3_candidate_v2_holdout gr_stage3_official_apply gr_stage3_official_attack_apply gr_stage3_official_holdout_apply gr_stage3_candidate_v3_primary gr_stage3_candidate_v3_attack gr_stage3_candidate_v3_holdout gr_stage3_rerun_600 gr_stage3_official_rerun_apply gr_stage3_baseline_build gr_stage3_baseline_guard gr_stage3_official_taxonomy qm_lane_check qm_stage1_smoke qm_stage1_prereg qm_stage1_eval qm_gr_coupling_audit_smoke qm_gr_coupling_audit qm_g17_diag_ds003 qm_stage1_ds003_mini qm_g17_candidate_v2_ds003_mini qm_g17_candidate_v2_primary qm_g17_promotion_primary qm_stage1_official_apply_primary qm_stage1_official_apply_attack qm_stage1_official_apply_holdout qm_stage1_official_v2_apply_primary qm_stage1_official_v2_apply_attack qm_stage1_official_v2_apply_holdout qm_stage1_baseline_build qm_stage1_regression_guard qm_stage1_taxonomy qm_stage1_g18_taxonomy qm_g18_candidate_v2_primary qm_g18_candidate_v2_attack qm_g18_candidate_v2_holdout qm_g18_promotion_primary qm_g18_promotion_attack qm_g18_promotion_holdout gr_stage2_taxonomy gr_stage2_candidate_primary gr_stage2_candidate_v2_primary gr_stage2_official_apply gr_stage2_baseline_build gr_stage2_baseline_guard gr_stage2_g11_taxonomy_v2 gr_stage2_g11_taxonomy_v3 gr_stage2_g11_v3_primary
+.PHONY: help gr_official_check gr_baseline_guard gr_sweep_phi gr_stage2_smoke gr_stage2_prereg gr_stage3_smoke gr_stage3_prereg gr_stage3_attack_seed500 gr_stage3_attack_holdout gr_stage3_taxonomy gr_stage3_eval gr_stage3_candidate_v2_primary gr_stage3_candidate_v2_attack gr_stage3_candidate_v2_holdout gr_stage3_official_apply gr_stage3_official_attack_apply gr_stage3_official_holdout_apply gr_stage3_candidate_v3_primary gr_stage3_candidate_v3_attack gr_stage3_candidate_v3_holdout gr_stage3_rerun_600 gr_stage3_official_rerun_apply gr_stage3_baseline_build gr_stage3_baseline_guard gr_stage3_official_taxonomy qm_lane_check qm_stage1_smoke qm_stage1_prereg qm_stage1_eval qm_gr_coupling_audit_smoke qm_gr_coupling_audit qm_gr_coupling_audit_primary_chunked qm_gr_coupling_audit_attack_chunked qm_gr_coupling_audit_holdout_chunked qm_g17_diag_ds003 qm_stage1_ds003_mini qm_g17_candidate_v2_ds003_mini qm_g17_candidate_v2_primary qm_g17_promotion_primary qm_stage1_official_apply_primary qm_stage1_official_apply_attack qm_stage1_official_apply_holdout qm_stage1_official_v2_apply_primary qm_stage1_official_v2_apply_attack qm_stage1_official_v2_apply_holdout qm_stage1_baseline_build qm_stage1_regression_guard qm_stage1_taxonomy qm_stage1_g18_taxonomy qm_g18_candidate_v2_primary qm_g18_candidate_v2_attack qm_g18_candidate_v2_holdout qm_g18_promotion_primary qm_g18_promotion_attack qm_g18_promotion_holdout gr_stage2_taxonomy gr_stage2_candidate_primary gr_stage2_candidate_v2_primary gr_stage2_official_apply gr_stage2_baseline_build gr_stage2_baseline_guard gr_stage2_g11_taxonomy_v2 gr_stage2_g11_taxonomy_v3 gr_stage2_g11_v3_primary
 
 help:
 	@echo "Targets:"
@@ -46,6 +46,9 @@ help:
 	@echo "  make qm_stage1_eval"
 	@echo "  make qm_gr_coupling_audit_smoke"
 	@echo "  make qm_gr_coupling_audit"
+	@echo "  make qm_gr_coupling_audit_primary_chunked"
+	@echo "  make qm_gr_coupling_audit_attack_chunked"
+	@echo "  make qm_gr_coupling_audit_holdout_chunked"
 	@echo "  make qm_g17_diag_ds003"
 	@echo "  make qm_stage1_ds003_mini"
 	@echo "  make qm_g17_candidate_v2_ds003_mini"
@@ -193,6 +196,15 @@ qm_gr_coupling_audit_smoke:
 
 qm_gr_coupling_audit:
 	$(PYTHON) scripts/tools/run_qm_gr_coupling_audit_v1.py --mode audit --datasets DS-002,DS-003,DS-006 --seed-start 3401 --seed-end 3600 --out-dir 05_validation/evidence/artifacts/qm-gr-coupling-audit-v1 --gr-baseline-json 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json --gr-summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv
+
+qm_gr_coupling_audit_primary_chunked:
+	$(PYTHON) scripts/tools/run_qm_gr_coupling_audit_v2.py --ds-list DS-002,DS-003,DS-006 --seed-min 3401 --seed-max 3600 --chunk-size 25 --resume --out-dir 05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/primary_ds002_003_006_s3401_3600 --gr-baseline-json 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json --gr-summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv --no-write-artifacts --no-plots
+
+qm_gr_coupling_audit_attack_chunked:
+	$(PYTHON) scripts/tools/run_qm_gr_coupling_audit_v2.py --ds-list DS-002,DS-003,DS-006 --seed-min 3601 --seed-max 4100 --chunk-size 25 --resume --out-dir 05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/attack_seed500_ds002_003_006_s3601_4100 --gr-baseline-json 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json --gr-summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv --no-write-artifacts --no-plots
+
+qm_gr_coupling_audit_holdout_chunked:
+	$(PYTHON) scripts/tools/run_qm_gr_coupling_audit_v2.py --ds-list DS-004,DS-008 --seed-min 3401 --seed-max 3600 --chunk-size 25 --resume --out-dir 05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/holdout_ds004_008_s3401_3600 --gr-baseline-json 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json --gr-summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv --no-write-artifacts --no-plots
 
 qm_g17_diag_ds003:
 	$(PYTHON) scripts/tools/run_g17_diagnosis_v1.py --dataset-id DS-003 --seed-start 3401 --seed-end 3430 --out-dir 05_validation/evidence/artifacts/g17-diagnosis-ds003-v1
