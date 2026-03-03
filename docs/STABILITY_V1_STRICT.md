@@ -83,3 +83,7 @@ Candidate-v2 tooling/evidence:
 - `scripts/tools/summarize_stability_energy_promotion_v1.py`
 - `05_validation/evidence/artifacts/stability-energy-covariant-v2/`
 - `05_validation/evidence/artifacts/stability-energy-promotion-eval-v1/`
+
+Official switch record:
+
+- `docs/STABILITY_ENERGY_V2_OFFICIAL_SWITCH.md`

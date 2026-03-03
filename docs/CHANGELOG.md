@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-03-03 - Stability governance switch prep (energy v2 official policy)
+
+- Added official policy apply runner:
+  - `scripts/tools/run_stability_official_v2.py`
+- Added switch record:
+  - `docs/STABILITY_ENERGY_V2_OFFICIAL_SWITCH.md`
+- Updated gate map with stability official policy section:
+  - `docs/GATES.md`
+- Added apply targets:
+  - `stability_official_apply_primary`
+  - `stability_official_apply_attack`
+  - `stability_official_apply_holdout`
+
 ## 2026-03-03 - Stability energy candidate-v2 prereg execution (primary + attack + holdout)
 
 - Extended stability runner for prereg block support (tooling-only):

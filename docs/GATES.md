@@ -76,4 +76,13 @@ Gate map for the core GR/QM chain and metric hardening sequence.
   - `docs/QM_STAGE1_FREEZE.md`
 - QM decision criteria are tracked in a separate lane: `docs/QM_LANE_POLICY.md`.
 - QM-Stage-1 prereg source: `05_validation/pre-registrations/qm-stage1-prereg-v1.md`.
+- Stability lane official decision policy:
+  - legacy energy gate: `gate_energy_drift_v1`
+  - official energy gate: `gate_energy_drift_v2` (mapped as `gate_energy_drift`)
+  - legacy all-pass: `all_pass_v1`
+  - official all-pass: `all_pass_v2` (mapped as `all_pass_stability`)
+  - runner: `scripts/tools/run_stability_official_v2.py`
+  - effective tag: `stability-energy-v2-official`
+- Stability official switch record:
+  - `docs/STABILITY_ENERGY_V2_OFFICIAL_SWITCH.md`
 
