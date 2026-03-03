@@ -642,40 +642,37 @@ Main outputs:
 - `05_validation/evidence/artifacts/stability-dual-attributes-v1/seed_dual_attributes.csv`
 - `05_validation/evidence/artifacts/stability-dual-attributes-v1/report.md`
 
-## 57) Stability dual-channel governance + v6 prereg (candidate skeleton)
+## 57) Stability dual-channel governance + v6 candidate run
 
 Governance doc:
 
 - `docs/STABILITY_DUAL_CHANNELS.md`
 
-Candidate prereg (not executed yet):
+Candidate prereg:
 
 - `05_validation/pre-registrations/qng-stability-convergence-v6.md`
 
-Primary candidate eval:
+Run:
 
 ```bash
-python scripts/tools/run_gr_stage2_g11_g12_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage2-prereg-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-g12-candidate-eval-v2/primary_ds002_003_006_s3401_3600
-python scripts/tools/evaluate_gr_stage2_g11_g12_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-g11-g12-candidate-eval-v2/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v2/primary_ds002_003_006_s3401_3600 --eval-id gr-stage2-g11-g12-primary-v2 --strict-datasets DS-002,DS-003,DS-006
+python scripts/tools/run_stability_stress_v1.py --dataset-id STABILITY-CONVERGENCE-V6 --seed-list 3401,3402,3403,3404,3405,3406,3407,3408,3409,3410,3411,3412,3413,3414,3415,3416,3417,3418,3419,3420 --n-nodes-list 24,28,32,36,40,44,48 --steps-list 60 --out-dir 05_validation/evidence/artifacts/stability-convergence-v6/raw --no-strict-exit
+python scripts/tools/run_stability_convergence_gate_v6.py --summary-csv 05_validation/evidence/artifacts/stability-convergence-v6/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v6 --prereg-doc 05_validation/pre-registrations/qng-stability-convergence-v6.md --full-metric-field delta_energy_rel --bulk-metric-field delta_energy_rel --bulk-core-size-min 6 --bulk-core-ratio-min 0.10 --bulk-min-profiles-per-level 5 --bootstrap-reps 2000 --ci-alpha 0.05 --no-strict-exit
 ```
 
-Attack A (seed block):
+Or:
 
 ```bash
-python scripts/tools/run_gr_stage2_g11_g12_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage2-attack-seed500-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-g12-candidate-eval-v2/attack_seed500_ds002_003_006_s3601_4100
-python scripts/tools/evaluate_gr_stage2_g11_g12_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-g11-g12-candidate-eval-v2/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v2/attack_seed500_ds002_003_006_s3601_4100 --eval-id gr-stage2-g11-g12-attack-seed500-v2 --strict-datasets DS-002,DS-003,DS-006
+make stability_convergence_v6
 ```
 
-Attack B (holdout datasets):
+Main outputs:
 
-```bash
-python scripts/tools/run_gr_stage2_g11_g12_candidate_eval_v2.py --source-summary-csv 05_validation/evidence/artifacts/gr-stage2-attack-holdout-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-g12-candidate-eval-v2/attack_holdout_ds004_008_s3401_3600
-python scripts/tools/evaluate_gr_stage2_g11_g12_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage2-g11-g12-candidate-eval-v2/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v2/attack_holdout_ds004_008_s3401_3600 --eval-id gr-stage2-g11-g12-attack-holdout-v2 --strict-datasets DS-004,DS-008
-```
-
-Decision summary:
-
-- `05_validation/evidence/artifacts/gr-stage2-g11-g12-promotion-eval-v2/promotion_decision.md`
+- `05_validation/evidence/artifacts/stability-convergence-v6/raw/summary.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v6/seed_checks.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v6/level_stats.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v6/report.md`
+- `05_validation/evidence/artifacts/stability-convergence-v6/report.json`
+- `05_validation/pre-registrations/qng-stability-convergence-v6-run-record-2026-03-03.md`
 
 ## 17) GR Stage-2 official policy application (G11a-v4 switch)
 

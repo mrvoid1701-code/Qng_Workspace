@@ -1,7 +1,7 @@
 # QNG Stability Convergence Contract v6 (Candidate)
 
 Date locked: 2026-03-03  
-Status: LOCKED (candidate-only, not executed in this commit)
+Status: LOCKED (candidate run executed; governance switch pending)
 
 ## Purpose
 

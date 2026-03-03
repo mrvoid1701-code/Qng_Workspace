@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-03-03 - Stability convergence v6 candidate run (dual-channel gate)
+
+- Added v6 gate runner:
+  - `scripts/tools/run_stability_convergence_gate_v6.py`
+  - dual-channel decision: `S2 structural hard-pass` + `S1 energetic median-slope CI`
+- Added Make targets:
+  - `stability_convergence_v6_run`
+  - `stability_convergence_v6_gate`
+  - `stability_convergence_v6`
+- Executed evidence package:
+  - `05_validation/evidence/artifacts/stability-convergence-v6/`
+- Added run record:
+  - `05_validation/pre-registrations/qng-stability-convergence-v6-run-record-2026-03-03.md`
+- Result:
+  - decision `PASS` (`S2 pass_fraction=1.0`, `S1 full/bulk CI upper < 0`)
+- Process note:
+  - cumulative dual-channel stabilization cycle duration recorded as `~5 hours`
+- No physics threshold/formula changes in this update.
+
 ## 2026-03-03 - Stability dual-channel governance lock + v6 prereg skeleton
 
 - Added dual-channel governance doc:
