@@ -1,0 +1,41 @@
+{
+  "generated_utc": "2026-03-03T13:33:58.827720+00:00",
+  "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v4/raw/summary.csv",
+  "prereg_doc": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/pre-registrations/qng-stability-convergence-v4.md",
+  "seed_count": 20,
+  "levels_full": [
+    24,
+    30,
+    36,
+    42,
+    48
+  ],
+  "levels_bulk": [
+    30,
+    36,
+    42
+  ],
+  "full_metric_field": "delta_energy_rel",
+  "bulk_metric_field": "delta_energy_rel",
+  "bulk_core_size_min": 6,
+  "bulk_core_ratio_min": 0.1,
+  "bulk_bootstrap_reps": 400,
+  "bulk_ci_alpha": 0.05,
+  "insufficient_bulk_support_seed_count": 0,
+  "checks": {
+    "full_seed_pass_fraction": 0.9,
+    "full_seed_pass_fraction_min": 0.85,
+    "bulk_seed_pass_fraction": 0.15,
+    "bulk_seed_pass_fraction_min": 0.85,
+    "bulk_ci_pass_fraction": 0.15,
+    "rho_full_median": -0.9,
+    "rho_full_max": -0.6,
+    "tau_bulk_median": -0.666667,
+    "tau_bulk_ci_high_median": 0.333333,
+    "full_seed_pass_fraction_ok": true,
+    "bulk_seed_pass_fraction_ok": false,
+    "rho_full_median_ok": true,
+    "tau_bulk_ci_high_median_ok": false
+  },
+  "decision": "FAIL"
+}

@@ -298,11 +298,18 @@ def connected_component_from_anchor(
     return sorted(seen)
 
 
-def central_core_component_nodes(adj: list[list[int]], sigma: list[float]) -> tuple[list[int], float]:
+def core_stable_nodes(sigma: list[float]) -> tuple[list[int], float]:
     if not sigma:
         return [], 0.0
     mu = mean(sigma)
-    allowed = {i for i, s in enumerate(sigma) if s >= mu}
+    nodes = [i for i, s in enumerate(sigma) if s >= mu]
+    ratio = len(nodes) / max(len(sigma), 1)
+    return nodes, ratio
+
+
+def central_core_component_nodes(adj: list[list[int]], sigma: list[float]) -> tuple[list[int], float]:
+    nodes, _ = core_stable_nodes(sigma)
+    allowed = set(nodes)
     if not allowed:
         return [], 0.0
     anchor = max(range(len(sigma)), key=lambda i: sigma[i])
@@ -556,6 +563,8 @@ def run_case(cfg: StressConfig, case: CaseConfig, dataset_id: str) -> dict[str, 
 
     core_nodes, core_cc_ratio = central_core_component_nodes(adj, sigma)
     core_cc_size = len(core_nodes)
+    core_stable, core_stable_ratio = core_stable_nodes(sigma)
+    core_stable_size = len(core_stable)
     core_adj_0, core_sigma_0, core_chi_0, core_phi_0 = induced_subgraph_states(adj, sigma0, chi0, phi0, core_nodes)
     core_adj_1, core_sigma_1, core_chi_1, core_phi_1 = induced_subgraph_states(adj, sigma, chi, phi, core_nodes)
     if core_cc_size > 0:
@@ -631,6 +640,8 @@ def run_case(cfg: StressConfig, case: CaseConfig, dataset_id: str) -> dict[str, 
         "delta_energy_rel_core_cc": f6(dE_core_rel),
         "core_cc_size": str(core_cc_size),
         "core_cc_ratio": f6(core_cc_ratio),
+        "core_stable_size": str(core_stable_size),
+        "core_stable_ratio": f6(core_stable_ratio),
         "energy_gate_slope_per100": f6(gate_slope_per100),
         "energy_gate_slope_early_per100": f6(gate_slope_early_per100),
         "energy_gate_slope_late_per100": f6(gate_slope_late_per100),
@@ -749,6 +760,8 @@ def main() -> int:
         "delta_energy_rel_core_cc",
         "core_cc_size",
         "core_cc_ratio",
+        "core_stable_size",
+        "core_stable_ratio",
         "energy_gate_slope_per100",
         "energy_gate_slope_early_per100",
         "energy_gate_slope_late_per100",

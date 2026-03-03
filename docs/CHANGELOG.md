@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-03-03 - Stability convergence v4 candidate run (robust bulk trend estimator)
+
+- Added prereg:
+  - `05_validation/pre-registrations/qng-stability-convergence-v4.md`
+- Added robust bulk gate runner:
+  - `scripts/tools/run_stability_convergence_gate_v4.py`
+  - bulk trend policy: `Kendall tau + bootstrap CI`, pass if `tau_ci_high < 0`
+- Extended stress summaries with core-stable support fields:
+  - `core_stable_size`
+  - `core_stable_ratio`
+- Added Make targets:
+  - `stability_convergence_v4_run`
+  - `stability_convergence_v4_gate`
+  - `stability_convergence_v4`
+- Executed evidence package:
+  - `05_validation/evidence/artifacts/stability-convergence-v4/`
+- Added run record:
+  - `05_validation/pre-registrations/qng-stability-convergence-v4-run-record-2026-03-03.md`
+- Result:
+  - decision `FAIL` (`bulk_seed_pass_fraction=0.15`, `tau_bulk_ci_high_median=0.333333`)
+  - no threshold changes; no promotion/freeze
+
 ## 2026-03-03 - Stability convergence v3b candidate run (connected central component bulk metric)
 
 - Extended stress runner outputs with connected-core diagnostics:
