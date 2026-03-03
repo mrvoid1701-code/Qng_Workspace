@@ -717,6 +717,39 @@ Main outputs:
 - `05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/promotion_report.md`
 - `05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/promotion_report.json`
 
+## 59) Stability convergence v6 baseline + regression guard + telemetry
+
+Build frozen baselines (primary/attack/holdout):
+
+```bash
+python scripts/tools/build_stability_convergence_v6_baseline_v1.py --block primary --seed-checks-csv 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/primary_s3401_3420/v6_candidate/seed_checks.csv --report-json 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/primary_s3401_3420/v6_candidate/report.json --out-json 05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/stability_convergence_v6_baseline_primary.json --baseline-id stability-convergence-v6-baseline-primary-v1 --effective-tag stability-convergence-v6-official
+python scripts/tools/build_stability_convergence_v6_baseline_v1.py --block attack --seed-checks-csv 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/attack_seed3601_3620/v6_candidate/seed_checks.csv --report-json 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/attack_seed3601_3620/v6_candidate/report.json --out-json 05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/stability_convergence_v6_baseline_attack.json --baseline-id stability-convergence-v6-baseline-attack-v1 --effective-tag stability-convergence-v6-official
+python scripts/tools/build_stability_convergence_v6_baseline_v1.py --block holdout --seed-checks-csv 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/holdout_regime_shift_s3501_3520/v6_candidate/seed_checks.csv --report-json 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/holdout_regime_shift_s3501_3520/v6_candidate/report.json --out-json 05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/stability_convergence_v6_baseline_holdout.json --baseline-id stability-convergence-v6-baseline-holdout-v1 --effective-tag stability-convergence-v6-official
+```
+
+Run regression guard (non-degradation + profile-set checks + pass-stays-pass):
+
+```bash
+python scripts/tools/run_stability_convergence_v6_regression_guard_v1.py --baseline-primary-json 05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/stability_convergence_v6_baseline_primary.json --baseline-attack-json 05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/stability_convergence_v6_baseline_attack.json --baseline-holdout-json 05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/stability_convergence_v6_baseline_holdout.json --seed-checks-primary-csv 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/primary_s3401_3420/v6_candidate/seed_checks.csv --seed-checks-attack-csv 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/attack_seed3601_3620/v6_candidate/seed_checks.csv --seed-checks-holdout-csv 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/holdout_regime_shift_s3501_3520/v6_candidate/seed_checks.csv --report-primary-json 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/primary_s3401_3420/v6_candidate/report.json --report-attack-json 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/attack_seed3601_3620/v6_candidate/report.json --report-holdout-json 05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/holdout_regime_shift_s3501_3520/v6_candidate/report.json --out-dir 05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/latest_check
+```
+
+Or:
+
+```bash
+make stability_convergence_v6_baseline_build
+make stability_convergence_v6_regression_guard
+make stability_convergence_v6_telemetry
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/stability_convergence_v6_baseline_primary.json`
+- `05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/stability_convergence_v6_baseline_attack.json`
+- `05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/stability_convergence_v6_baseline_holdout.json`
+- `05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/latest_check/regression_report.md`
+- `05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/latest_check/regression_report.json`
+- `05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/latest_check/telemetry.csv`
+
 ## 17) GR Stage-2 official policy application (G11a-v4 switch)
 
 Apply official Stage-2 mapping on frozen official-v3 summary profiles:

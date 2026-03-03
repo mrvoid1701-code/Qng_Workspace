@@ -1,5 +1,28 @@
 # Changelog
 
+## 2026-03-03 - Stability convergence v6 baseline+guard + telemetry + lock-in
+
+- Added baseline builder:
+  - `scripts/tools/build_stability_convergence_v6_baseline_v1.py`
+- Added regression guard:
+  - `scripts/tools/run_stability_convergence_v6_regression_guard_v1.py`
+- Added Make targets:
+  - `stability_convergence_v6_baseline_build`
+  - `stability_convergence_v6_regression_guard`
+  - `stability_convergence_v6_telemetry`
+- Built baseline artifacts:
+  - `05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/stability_convergence_v6_baseline_primary.json`
+  - `05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/stability_convergence_v6_baseline_attack.json`
+  - `05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/stability_convergence_v6_baseline_holdout.json`
+- Ran latest guard:
+  - `05_validation/evidence/artifacts/stability-convergence-v6-regression-baseline-v1/latest_check/`
+  - decision: `PASS` (no degradation, no missing/extra, pass stays pass)
+- Added telemetry (yellow-flag, non-blocking):
+  - metric: positive slope seed fractions (`full`, `bulk`) per block
+  - output: `latest_check/telemetry.csv`
+- Added lock-in scope doc:
+  - `docs/STABILITY_CONVERGENCE_V6_LOCK_IN.md`
+
 ## 2026-03-03 - Stability convergence v6 official governance switch
 
 - Added official switch record:

@@ -86,6 +86,8 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 - Stability convergence lane official decision policy:
   - official convergence gate: `scripts/tools/run_stability_convergence_gate_v6.py`
   - legacy comparator (diagnostic only): `v5-like` (`run_stability_convergence_gate_v4.py` + v5 frozen constants)
+  - baseline builder: `scripts/tools/build_stability_convergence_v6_baseline_v1.py`
+  - regression guard: `scripts/tools/run_stability_convergence_v6_regression_guard_v1.py`
   - effective tag: `stability-convergence-v6-official`
 - Stability official switch record:
   - `docs/STABILITY_ENERGY_V2_OFFICIAL_SWITCH.md`
@@ -93,6 +95,7 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 - Stability freeze/contract docs:
   - `docs/STABILITY_V2_FREEZE.md`
   - `docs/STABILITY_DUAL_CHANNELS.md`
+  - `docs/STABILITY_CONVERGENCE_V6_LOCK_IN.md`
   - `05_validation/pre-registrations/qng-stability-convergence-v1.md`
   - `05_validation/pre-registrations/qng-stability-convergence-v2.md`
 

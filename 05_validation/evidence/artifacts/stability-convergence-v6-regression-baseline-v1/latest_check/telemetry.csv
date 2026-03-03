@@ -1,0 +1,4 @@
+block_id,positive_full_slope_seed_fraction,positive_bulk_slope_seed_fraction,alarm_threshold_full,alarm_threshold_bulk,alarm_full,alarm_bulk,alarm_policy
+primary,0.0,0.05,0.05,0.1,false,false,non_blocking
+attack,0.0,0.15,0.05,0.2,false,false,non_blocking
+holdout,0.05,0.2,0.1,0.25,false,false,non_blocking
