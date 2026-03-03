@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-03-03 - QM Stage-1 G18 failure taxonomy (v1)
+
+- Added strict G18 taxonomy analyzer:
+  - `scripts/tools/analyze_qm_stage1_g18_failures_v1.py`
+- Added make target:
+  - `qm_stage1_g18_taxonomy`
+- Generated taxonomy package:
+  - `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/g18_fail_cases.csv`
+  - `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/g18_pass_cases.csv`
+  - `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/pattern_summary_g18_subgates.csv`
+  - `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/regime_summary.csv`
+  - `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/feature_correlations.csv`
+  - `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/report.md`
+- Readout (`n=2500`):
+  - `G18` fail profiles: `250`
+  - dominant failing subgate: `G18d`
+  - top fail signature: `G18D` (`249` cases)
+
 ## 2026-03-03 - QM Stage-1 failure taxonomy (post G17-v2 official)
 
 - Added QM Stage-1 taxonomy analyzer:

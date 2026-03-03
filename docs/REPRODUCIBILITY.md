@@ -878,3 +878,20 @@ Outputs:
 - `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/pattern_summary.csv`
 - `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/feature_correlations.csv`
 - `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v1/report.md`
+
+## 40) QM Stage-1 G18 failure taxonomy (strict subgate focus)
+
+Run strict G18 taxonomy:
+
+```bash
+make qm_stage1_g18_taxonomy
+```
+
+Outputs:
+
+- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/g18_fail_cases.csv`
+- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/g18_pass_cases.csv`
+- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/pattern_summary_g18_subgates.csv`
+- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/regime_summary.csv`
+- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/feature_correlations.csv`
+- `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/report.md`
