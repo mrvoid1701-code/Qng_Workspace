@@ -1,7 +1,7 @@
 # Stability Dual Channels
 
 Date: 2026-03-03  
-Status: governance lock (diagnostic + candidate-policy framing)
+Status: governance lock (active with official convergence policy v6)
 
 ## Scope
 
@@ -59,3 +59,5 @@ A global convergence verdict is valid only if both are explicitly reported.
 - `05_validation/evidence/artifacts/stability-dual-attributes-v1/`
 - `05_validation/evidence/artifacts/stability-convergence-v4/`
 - `05_validation/evidence/artifacts/stability-convergence-v5/`
+- `05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/`
+- `docs/STABILITY_CONVERGENCE_V6_OFFICIAL_SWITCH.md`

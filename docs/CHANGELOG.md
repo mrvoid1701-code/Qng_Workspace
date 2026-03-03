@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-03-03 - Stability convergence v6 official governance switch
+
+- Added official switch record:
+  - `docs/STABILITY_CONVERGENCE_V6_OFFICIAL_SWITCH.md`
+- Updated gate map to include official convergence policy:
+  - `docs/GATES.md`
+- Updated dual-channel governance doc references:
+  - `docs/STABILITY_DUAL_CHANNELS.md`
+- Governance anchors:
+  - pre-tag: `pre-stability-convergence-v6-official`
+  - post-tag: `stability-convergence-v6-official`
+- Switch type: policy/docs only (no formula changes, no threshold tuning, no reruns).
+
 ## 2026-03-03 - Stability convergence v6 promotion audit (primary + attack + shifted holdout)
 
 - Added promotion evaluator:

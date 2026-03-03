@@ -83,8 +83,13 @@ Gate map for the core GR/QM chain and metric hardening sequence.
   - official all-pass: `all_pass_v2` (mapped as `all_pass_stability`)
   - runner: `scripts/tools/run_stability_official_v2.py`
   - effective tag: `stability-energy-v2-official`
+- Stability convergence lane official decision policy:
+  - official convergence gate: `scripts/tools/run_stability_convergence_gate_v6.py`
+  - legacy comparator (diagnostic only): `v5-like` (`run_stability_convergence_gate_v4.py` + v5 frozen constants)
+  - effective tag: `stability-convergence-v6-official`
 - Stability official switch record:
   - `docs/STABILITY_ENERGY_V2_OFFICIAL_SWITCH.md`
+  - `docs/STABILITY_CONVERGENCE_V6_OFFICIAL_SWITCH.md`
 - Stability freeze/contract docs:
   - `docs/STABILITY_V2_FREEZE.md`
   - `docs/STABILITY_DUAL_CHANNELS.md`
