@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-03-03 - Stability convergence v5 candidate run (expanded levels)
+
+- Added prereg:
+  - `05_validation/pre-registrations/qng-stability-convergence-v5.md`
+- Added run record:
+  - `05_validation/pre-registrations/qng-stability-convergence-v5-run-record-2026-03-03.md`
+- Added Make targets:
+  - `stability_convergence_v5_run`
+  - `stability_convergence_v5_gate`
+  - `stability_convergence_v5`
+- Executed evidence package:
+  - `05_validation/evidence/artifacts/stability-convergence-v5/`
+- Result:
+  - decision `FAIL` (`full_seed_pass_fraction=0.45`, `bulk_seed_pass_fraction=0.00`)
+  - no threshold changes; no promotion/freeze
+
+## 2026-03-03 - Stability convergence v4 failure taxonomy (diagnostic)
+
+- Added taxonomy tool:
+  - `scripts/tools/analyze_stability_convergence_v4_failures_v1.py`
+- Added Make target:
+  - `stability_convergence_v4_taxonomy`
+- Executed diagnostic package:
+  - `05_validation/evidence/artifacts/stability-convergence-v4-failure-taxonomy-v1/`
+- Diagnostic summary:
+  - fail driver dominated by `ci_not_excluding_zero`
+  - ties/support-collapse did not dominate failures in v4
+
 ## 2026-03-03 - Stability convergence v4 candidate run (robust bulk trend estimator)
 
 - Added prereg:

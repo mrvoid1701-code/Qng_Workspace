@@ -571,6 +571,57 @@ Main outputs:
 - `05_validation/evidence/artifacts/stability-convergence-v4/report.json`
 - `05_validation/pre-registrations/qng-stability-convergence-v4-run-record-2026-03-03.md`
 
+## 54) Stability convergence v4 failure taxonomy (diagnostic only)
+
+Run:
+
+```bash
+python scripts/tools/analyze_stability_convergence_v4_failures_v1.py --seed-checks-csv 05_validation/evidence/artifacts/stability-convergence-v4/seed_checks.csv --level-stats-csv 05_validation/evidence/artifacts/stability-convergence-v4/level_stats.csv --raw-summary-csv 05_validation/evidence/artifacts/stability-convergence-v4/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v4-failure-taxonomy-v1
+```
+
+Or:
+
+```bash
+make stability_convergence_v4_taxonomy
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/stability-convergence-v4-failure-taxonomy-v1/v4_fail_seeds.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v4-failure-taxonomy-v1/tau_distribution.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v4-failure-taxonomy-v1/ci_width_audit.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v4-failure-taxonomy-v1/support_collapse_summary.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v4-failure-taxonomy-v1/report.md`
+
+## 55) Stability convergence gate v5 (expanded levels)
+
+Locked prereg:
+
+- `05_validation/pre-registrations/qng-stability-convergence-v5.md`
+
+Run:
+
+```bash
+python scripts/tools/run_stability_stress_v1.py --dataset-id STABILITY-CONVERGENCE-V5 --seed-list 3401,3402,3403,3404,3405,3406,3407,3408,3409,3410,3411,3412,3413,3414,3415,3416,3417,3418,3419,3420 --n-nodes-list 24,28,32,36,40,44,48 --steps-list 60 --out-dir 05_validation/evidence/artifacts/stability-convergence-v5/raw --no-strict-exit
+python scripts/tools/run_stability_convergence_gate_v4.py --summary-csv 05_validation/evidence/artifacts/stability-convergence-v5/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v5 --prereg-doc 05_validation/pre-registrations/qng-stability-convergence-v5.md --full-metric-field delta_energy_rel --bulk-metric-field delta_energy_rel --step-tol 0.002 --full-step-fraction-min 0.75 --bulk-step-fraction-min 0.85 --overall-improvement-min 0.005 --support-worsen-factor-max 1.25 --rho-full-max -0.60 --full-seed-pass-fraction-min 0.85 --bulk-seed-pass-fraction-min 0.85 --bulk-min-profiles-per-level 5 --bulk-core-size-min 6 --bulk-core-ratio-min 0.10 --bulk-bootstrap-reps 400 --bulk-ci-alpha 0.05 --no-strict-exit
+```
+
+Or:
+
+```bash
+make stability_convergence_v5
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/stability-convergence-v5/raw/summary.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v5/seed_checks.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v5/level_stats.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v5/step_checks.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v5/report.md`
+- `05_validation/evidence/artifacts/stability-convergence-v5/report.json`
+- `05_validation/pre-registrations/qng-stability-convergence-v5-run-record-2026-03-03.md`
+
 Primary candidate eval:
 
 ```bash
