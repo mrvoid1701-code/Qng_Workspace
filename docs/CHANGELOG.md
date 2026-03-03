@@ -1,5 +1,37 @@
 # Changelog
 
+## 2026-03-03 - QM G18d candidate-v2 hybrid prereg run (primary + attack + holdout)
+
+- Added prereg record:
+  - `05_validation/pre-registrations/qm-g18-candidate-v2.md`
+- Added candidate runner:
+  - `scripts/tools/run_qm_g18_candidate_eval_v2.py`
+- Added promotion evaluator:
+  - `scripts/tools/evaluate_qm_g18_promotion_v1.py`
+- Added make targets:
+  - `qm_g18_candidate_v2_primary`
+  - `qm_g18_candidate_v2_attack`
+  - `qm_g18_candidate_v2_holdout`
+  - `qm_g18_promotion_primary`
+  - `qm_g18_promotion_attack`
+  - `qm_g18_promotion_holdout`
+- Executed candidate + eval blocks:
+  - `05_validation/evidence/artifacts/qm-g18-candidate-v2/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-g18-candidate-v2/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/qm-g18-candidate-v2/attack_holdout_ds004_008_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-g18-promotion-eval-v1/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-g18-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/qm-g18-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600/`
+- Primary (`DS-002/003/006`, seeds `3401..3600`):
+  - `G18 551/600 -> 564/600`, `QM lane 513/600 -> 526/600`, `degraded=0`, decision `PASS`
+- Attack (`DS-002/003/006`, seeds `3601..4100`):
+  - `G18 1339/1500 -> 1395/1500`, `QM lane 1255/1500 -> 1311/1500`, `degraded=0`, decision `PASS`
+- Holdout (`DS-004/008`, seeds `3401..3600`):
+  - `G18 360/400 -> 372/400`, `QM lane 360/400 -> 372/400`, `degraded=0`, decision `PASS`
+- DS-003 uplift check (required) passed in primary and attack.
+- Process duration note:
+  - end-to-end candidate+evaluation workflow took about `5 hours` wall-clock in this environment.
+
 ## 2026-03-03 - QM Stage-1 G18 failure taxonomy (v1)
 
 - Added strict G18 taxonomy analyzer:

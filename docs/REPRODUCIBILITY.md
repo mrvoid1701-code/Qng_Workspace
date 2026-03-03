@@ -895,3 +895,30 @@ Outputs:
 - `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/regime_summary.csv`
 - `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/feature_correlations.csv`
 - `05_validation/evidence/artifacts/qm-stage1-g18-failure-taxonomy-v1/report.md`
+
+## 41) QM G18d candidate-v2 prereg blocks + promotion eval
+
+Run candidate blocks:
+
+```bash
+make qm_g18_candidate_v2_primary
+make qm_g18_candidate_v2_attack
+make qm_g18_candidate_v2_holdout
+```
+
+Run promotion eval:
+
+```bash
+make qm_g18_promotion_primary
+make qm_g18_promotion_attack
+make qm_g18_promotion_holdout
+```
+
+Outputs:
+
+- `05_validation/evidence/artifacts/qm-g18-candidate-v2/primary_ds002_003_006_s3401_3600/`
+- `05_validation/evidence/artifacts/qm-g18-candidate-v2/attack_seed500_ds002_003_006_s3601_4100/`
+- `05_validation/evidence/artifacts/qm-g18-candidate-v2/attack_holdout_ds004_008_s3401_3600/`
+- `05_validation/evidence/artifacts/qm-g18-promotion-eval-v1/primary_ds002_003_006_s3401_3600/report.json`
+- `05_validation/evidence/artifacts/qm-g18-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100/report.json`
+- `05_validation/evidence/artifacts/qm-g18-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600/report.json`
