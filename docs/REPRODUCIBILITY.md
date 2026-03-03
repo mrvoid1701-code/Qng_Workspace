@@ -458,6 +458,10 @@ Purpose:
 - classify bulk FAIL seeds from v2 without threshold changes
 - run sensitivity diagnostics for bulk mask strategy only
 
+Locked diagnostic prereg:
+
+- `05_validation/pre-registrations/stability-convergence-v2-diagnostic-sweep.md`
+
 Run:
 
 ```bash
@@ -475,6 +479,7 @@ Main outputs:
 
 - `05_validation/evidence/artifacts/stability-convergence-v2-failure-taxonomy-v1/bulk_fail_seeds.csv`
 - `05_validation/evidence/artifacts/stability-convergence-v2-failure-taxonomy-v1/bulk_vs_full_delta.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v2-failure-taxonomy-v1/bulk_fail_profile_levels.csv`
 - `05_validation/evidence/artifacts/stability-convergence-v2-failure-taxonomy-v1/pattern_summary.csv`
 - `05_validation/evidence/artifacts/stability-convergence-v2-failure-taxonomy-v1/report.md`
 - `05_validation/evidence/artifacts/stability-convergence-v2-diagnostic-sweep-v1/bulk_rho_sweep.csv`

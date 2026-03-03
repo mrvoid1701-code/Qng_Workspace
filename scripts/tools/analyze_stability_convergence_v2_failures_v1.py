@@ -5,6 +5,7 @@ Analyze stability convergence-v2 failures (bulk-focused taxonomy).
 Outputs:
 - bulk_fail_seeds.csv
 - bulk_vs_full_delta.csv
+- bulk_fail_profile_levels.csv
 - feature_correlations.csv
 - pattern_summary.csv
 - report.md
@@ -117,6 +118,7 @@ def main() -> int:
     bulk_fail_rows: list[dict[str, Any]] = []
     full_vs_bulk_rows: list[dict[str, Any]] = []
     fail_seeds: set[str] = set()
+    seed_meta: dict[str, dict[str, Any]] = {}
     for r in seed_rows:
         seed = str(r.get("seed", "")).strip()
         full_pass = str(r.get("full_pass", "")).strip().lower() == "true"
@@ -145,6 +147,7 @@ def main() -> int:
                 "pass"
             ),
         }
+        seed_meta[seed] = row
         full_vs_bulk_rows.append(row)
         if not bulk_pass:
             fail_seeds.add(seed)
@@ -200,6 +203,61 @@ def main() -> int:
             "rho_full",
             "rho_bulk",
             "delta_rho_bulk_minus_full",
+        ],
+    )
+
+    # Seed x level table to localize bulk fail by scale band
+    levels = sorted({int(str(r.get("n_nodes", "0"))) for r in level_rows})
+    coarse_level = min(levels) if levels else 24
+    fine_level = max(levels) if levels else 48
+    bulk_levels = {x for x in levels if x not in {coarse_level, fine_level}}
+    level_rows_out: list[dict[str, Any]] = []
+    for r in sorted(level_rows, key=lambda x: (int(str(x.get("seed", "0"))), int(str(x.get("n_nodes", "0"))))):
+        seed = str(r.get("seed", "")).strip()
+        n_nodes = int(str(r.get("n_nodes", "0")))
+        meta = seed_meta.get(seed, {})
+        if n_nodes == coarse_level:
+            band = "coarse"
+        elif n_nodes == fine_level:
+            band = "fine"
+        elif n_nodes in bulk_levels:
+            band = "bulk"
+        else:
+            band = "other"
+        level_rows_out.append(
+            {
+                "seed": seed,
+                "n_nodes": n_nodes,
+                "level_band": band,
+                "is_bulk_level": "true" if n_nodes in bulk_levels else "false",
+                "bulk_rho": meta.get("rho_bulk", ""),
+                "bulk_step_fraction": meta.get("bulk_step_fraction", ""),
+                "bulk_pass": meta.get("bulk_pass", ""),
+                "full_pass": meta.get("full_pass", ""),
+                "fail_mode": meta.get("fail_mode", ""),
+                "is_bulk_fail_seed": "true" if seed in fail_seeds else "false",
+                "bulk_metric_median": r.get("metric_median", ""),
+                "bulk_metric_p95": r.get("metric_p95", ""),
+                "n_profiles": r.get("n_profiles", ""),
+            }
+        )
+    write_csv(
+        out_dir / "bulk_fail_profile_levels.csv",
+        level_rows_out,
+        [
+            "seed",
+            "n_nodes",
+            "level_band",
+            "is_bulk_level",
+            "bulk_rho",
+            "bulk_step_fraction",
+            "bulk_pass",
+            "full_pass",
+            "fail_mode",
+            "is_bulk_fail_seed",
+            "bulk_metric_median",
+            "bulk_metric_p95",
+            "n_profiles",
         ],
     )
 
@@ -275,8 +333,10 @@ def main() -> int:
         ["feature", "corr_with_bulk_fail", "abs_corr", "fail_mean", "pass_mean", "delta_fail_minus_pass"],
     )
 
-    # Pattern summary from step failure shapes
+    # Pattern summary from step failure shapes and transition localization
     pattern_counter: Counter[str] = Counter()
+    bulk_transition_counter: Counter[str] = Counter()
+    full_transition_counter: Counter[str] = Counter()
     for r in bulk_fail_rows:
         seed = str(r["seed"])
         srows = step_by_seed.get(seed, [])
@@ -289,45 +349,29 @@ def main() -> int:
             pattern_counter["bulk_fail_large_positive_step_delta"] += 1
         else:
             pattern_counter["bulk_fail_small_positive_step_delta"] += 1
+        for fs in fail_steps:
+            bulk_transition_counter[f"{fs.get('n_from','?')}->{fs.get('n_to','?')}"] += 1
+    for r in step_rows:
+        seed = str(r.get("seed", "")).strip()
+        if seed not in fail_seeds:
+            continue
+        if str(r.get("scope", "")).strip().lower() != "full":
+            continue
+        if str(r.get("step_pass", "")).strip().lower() == "true":
+            continue
+        full_transition_counter[f"{r.get('n_from','?')}->{r.get('n_to','?')}"] += 1
     pattern_rows = [{"pattern": k, "count": v} for k, v in pattern_counter.most_common()]
     write_csv(out_dir / "pattern_summary.csv", pattern_rows, ["pattern", "count"])
 
-    # Top 3 cause hypotheses from strongest correlations
-    top = corr_rows[:6]
-    cause_lines: list[str] = []
-    used = 0
-    for r in top:
-        feat = str(r["feature"])
-        d = to_float(r.get("delta_fail_minus_pass", "0.0"), 0.0)
-        if feat == "low_signal_rate":
-            cause_lines.append(
-                f"- low-signal concentration in failing seeds (delta fail-pass `{d:.3f}`) suggests bulk trend fragility in weak-support regime."
-            )
-            used += 1
-        elif feat == "sparse_rate":
-            cause_lines.append(
-                f"- sparse graph share is higher in failing seeds (delta fail-pass `{d:.3f}`), consistent with noisier bulk ordering."
-            )
-            used += 1
-        elif feat == "phi_shock_rate":
-            cause_lines.append(
-                f"- phase-shock proxy is elevated in failing seeds (delta fail-pass `{d:.3f}`), indicating mixing-like instability in bulk trend."
-            )
-            used += 1
-        elif feat in {"mean_residual", "near_residual_cap_rate"}:
-            cause_lines.append(
-                f"- residual-related metrics rise in failing seeds (delta fail-pass `{d:.3f}`), implying numerical/stochastic contamination of bulk slope."
-            )
-            used += 1
-        elif feat in {"mean_metric_cond", "near_cond_cap_rate"}:
-            cause_lines.append(
-                f"- conditioning-related metrics rise in failing seeds (delta fail-pass `{d:.3f}`), suggesting operator sensitivity in bulk subset."
-            )
-            used += 1
-        if used >= 3:
-            break
-    while len(cause_lines) < 3:
-        cause_lines.append("- additional cause requires richer per-node observables (multi-peak and topology-local diagnostics not present in v2 summary).")
+    # Top 3 cause hypotheses from direct fail structure (not tuned metrics)
+    fail_mode_counter = Counter([str(r["fail_mode"]) for r in full_vs_bulk_rows])
+    bulk_only = fail_mode_counter.get("bulk_only_fail", 0)
+    full_and_bulk = fail_mode_counter.get("full_and_bulk_fail", 0)
+    cause_lines: list[str] = [
+        f"- dominant fail class is bulk-specific (`bulk_only_fail={bulk_only}` vs `full_and_bulk_fail={full_and_bulk}`), indicating the failure concentrates in bulk scoring rather than full-scale convergence.",
+        f"- bulk transition failures concentrate on `{dict(bulk_transition_counter)}`; this localizes where the monotonic trend breaks inside bulk levels.",
+        f"- only `{full_and_bulk}` seeds fail both full and bulk, so global continuum trend is mostly intact while bulk-level estimator remains fragile.",
+    ]
 
     generated = datetime.now(timezone.utc).isoformat()
     lines = [
@@ -336,15 +380,25 @@ def main() -> int:
         f"- generated_utc: `{generated}`",
         f"- source_report: `{report_json.as_posix()}`",
         f"- source_seed_checks: `{seed_checks_csv.as_posix()}`",
+        f"- source_level_stats: `{level_stats_csv.as_posix()}`",
+        f"- source_step_checks: `{step_checks_csv.as_posix()}`",
         f"- source_raw_summary: `{raw_summary_csv.as_posix()}`",
         f"- convergence_decision: `{report.get('decision', '')}`",
         f"- seed_count: `{len(seed_rows)}`",
         f"- bulk_fail_seed_count: `{len(fail_seeds)}`",
         "",
+        "## Bulk Fail Definition",
+        "",
+        "- a seed is `bulk fail` iff `bulk_pass=false` in `seed_checks.csv`.",
+        f"- bulk levels are `{sorted(list(bulk_levels))}` and full levels are `{levels}`.",
+        "- fail localization uses `step_checks.csv` transitions and `level_stats.csv` medians.",
+        "",
         "## Dominant Fail Mode",
         "",
         f"- bulk_vs_full median delta step fraction (`full-bulk`): `{median([to_float(r.get('delta_step_fraction_full_minus_bulk','0.0')) for r in full_vs_bulk_rows]):.6f}`",
         f"- fail-mode distribution: `{dict(Counter([str(r['fail_mode']) for r in full_vs_bulk_rows]))}`",
+        f"- failing transitions (bulk scope): `{dict(bulk_transition_counter)}`",
+        f"- failing transitions (full scope, fail seeds): `{dict(full_transition_counter)}`",
         "",
         "## Top 3 Hypothesized Causes",
         "",
@@ -363,6 +417,7 @@ def main() -> int:
 
     print(f"bulk_fail_seeds_csv: {out_dir / 'bulk_fail_seeds.csv'}")
     print(f"bulk_vs_full_delta_csv: {out_dir / 'bulk_vs_full_delta.csv'}")
+    print(f"bulk_fail_profile_levels_csv: {out_dir / 'bulk_fail_profile_levels.csv'}")
     print(f"feature_correlations_csv: {out_dir / 'feature_correlations.csv'}")
     print(f"pattern_summary_csv: {out_dir / 'pattern_summary.csv'}")
     print(f"report_md: {out_dir / 'report.md'}")

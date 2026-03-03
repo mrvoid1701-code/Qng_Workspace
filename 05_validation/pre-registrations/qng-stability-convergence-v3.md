@@ -8,6 +8,18 @@ Status: LOCKED (candidate-only, not executed in this commit)
 v2 failed on bulk convergence while full convergence passed.  
 v3 introduces a conceptual bulk definition change (core-stable bulk), without relaxing numeric thresholds.
 
+## Single Conceptual Change (Locked)
+
+Only one conceptual change is allowed in v3:
+
+- bulk eligibility is defined by a QNG core-stability mask (`active_regime_flag`, `gate_sigma_bounds`, `gate_metric_positive`).
+
+Explicitly out-of-scope for v3:
+
+- no connected-component switch
+- no robust-regression estimator change
+- no threshold relaxation
+
 ## Fixed Protocol
 
 Source runner:

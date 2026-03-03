@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-03-03 - Stability convergence v2 taxonomy hardening (bulk definition + level map)
+
+- Updated taxonomy tool:
+  - `scripts/tools/analyze_stability_convergence_v2_failures_v1.py`
+  - added explicit bulk-fail definition in report
+  - added scale-localized output:
+    - `bulk_fail_profile_levels.csv` (`seed x level x bulk_rho x bulk_metric`)
+  - added transition localization (coarse/bulk/fine via step transitions)
+- Added locked diagnostic prereg:
+  - `05_validation/pre-registrations/stability-convergence-v2-diagnostic-sweep.md`
+- Tightened v3 prereg governance:
+  - `05_validation/pre-registrations/qng-stability-convergence-v3.md`
+  - explicit single conceptual change only (`core-stable` Sigma-mask bulk)
+- Updated reproducibility docs:
+  - `docs/REPRODUCIBILITY.md` (section 50)
+
 ## 2026-03-03 - Stability convergence v2 bulk-fail taxonomy + diagnostic sweep + v3 prereg lock
 
 - Added bulk-fail taxonomy tool:
