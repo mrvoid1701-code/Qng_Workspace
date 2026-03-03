@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-03-03 - Stability convergence v3b candidate run (connected central component bulk metric)
+
+- Extended stress runner outputs with connected-core diagnostics:
+  - `delta_energy_rel_core_cc`
+  - `energy_core_cc_start`
+  - `energy_core_cc_end`
+  - `core_cc_size`
+  - `core_cc_ratio`
+- Added prereg:
+  - `05_validation/pre-registrations/qng-stability-convergence-v3b.md`
+- Added run record:
+  - `05_validation/pre-registrations/qng-stability-convergence-v3b-run-record-2026-03-03.md`
+- Added Make targets:
+  - `stability_convergence_v3b_run`
+  - `stability_convergence_v3b_gate`
+  - `stability_convergence_v3b`
+- Executed evidence package:
+  - `05_validation/evidence/artifacts/stability-convergence-v3b/`
+- Result:
+  - decision `FAIL` (`bulk_seed_pass_fraction=0.45`, `rho_bulk_median=-0.50`)
+  - no threshold changes; no promotion/freeze
+
 ## 2026-03-03 - Stability convergence v3 runner + execution (Sigma-mask core-stable bulk)
 
 - Added v3 gate runner:

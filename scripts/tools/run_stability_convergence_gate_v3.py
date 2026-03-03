@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-Run stability convergence gate v3:
+Run stability convergence gate v3/v3b:
 - full convergence scores (unchanged vs v2)
 - core-stable bulk convergence using Sigma-mask eligibility
+- optional bulk metric field override (v3b lane)
 - scaling-law trend checks
 - cross-seed aggregation
 """
@@ -36,9 +37,11 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Run stability convergence gate v3.")
     p.add_argument("--summary-csv", default=str(DEFAULT_SUMMARY))
     p.add_argument("--out-dir", default=str(DEFAULT_OUT_DIR))
+    p.add_argument("--prereg-doc", default=str(DEFAULT_PREREG))
     p.add_argument("--seed-field", default="grid_seed")
     p.add_argument("--n-nodes-field", default="n_nodes")
-    p.add_argument("--metric-field", default="delta_energy_rel")
+    p.add_argument("--full-metric-field", default="delta_energy_rel")
+    p.add_argument("--bulk-metric-field", default="delta_energy_rel")
     p.add_argument("--support-field", default="energy_noether_rel")
     p.add_argument("--step-tol", type=float, default=0.002)
     p.add_argument("--full-step-fraction-min", type=float, default=0.75)
@@ -171,6 +174,7 @@ def main() -> int:
     args = parse_args()
     summary_csv = Path(args.summary_csv).resolve()
     out_dir = Path(args.out_dir).resolve()
+    prereg_doc = Path(args.prereg_doc).resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
     if not summary_csv.exists():
         raise FileNotFoundError(f"summary missing: {summary_csv}")
@@ -225,14 +229,14 @@ def main() -> int:
 
         for n in levels:
             sub = per_seed_level.get((seed, n), [])
-            mvals = [to_float(r.get(args.metric_field, "")) for r in sub]
-            mvals = [v for v in mvals if v is not None]
+            full_mvals = [to_float(r.get(args.full_metric_field, "")) for r in sub]
+            full_mvals = [v for v in full_mvals if v is not None]
             svals = [to_float(r.get(args.support_field, "")) for r in sub]
             svals = [v for v in svals if v is not None]
-            if not mvals or not svals:
+            if not full_mvals or not svals:
                 ok_seed = False
                 break
-            med_map_full[n] = median(mvals)
+            med_map_full[n] = median(full_mvals)
             support_p95_map[n] = percentile(svals, 0.95)
 
             eligible = [
@@ -241,23 +245,23 @@ def main() -> int:
                 and is_pass_flag(r.get(args.bulk_flag_sigma, ""))
                 and is_pass_flag(r.get(args.bulk_flag_metric, ""))
             ]
-            eligible_mvals = [to_float(r.get(args.metric_field, "")) for r in eligible]
-            eligible_mvals = [v for v in eligible_mvals if v is not None]
+            eligible_bulk_mvals = [to_float(r.get(args.bulk_metric_field, "")) for r in eligible]
+            eligible_bulk_mvals = [v for v in eligible_bulk_mvals if v is not None]
             if n in bulk_levels:
-                if len(eligible_mvals) < args.bulk_min_profiles_per_level:
+                if len(eligible_bulk_mvals) < args.bulk_min_profiles_per_level:
                     bulk_support_ok = False
                 else:
-                    med_map_bulk[n] = median(eligible_mvals)
+                    med_map_bulk[n] = median(eligible_bulk_mvals)
 
             level_rows.append(
                 {
                     "seed": seed,
                     "n_nodes": n,
                     "n_profiles": len(sub),
-                    "n_profiles_bulk_eligible": len(eligible_mvals),
-                    "metric_mean": f"{average(mvals):.6f}",
+                    "n_profiles_bulk_eligible": len(eligible_bulk_mvals),
+                    "metric_mean": f"{average(full_mvals):.6f}",
                     "metric_median": f"{med_map_full[n]:.6f}",
-                    "metric_p95": f"{percentile(mvals, 0.95):.6f}",
+                    "metric_p95": f"{percentile(full_mvals, 0.95):.6f}",
                     "bulk_metric_median_eligible": f"{med_map_bulk[n]:.6f}" if n in med_map_bulk else "",
                     "support_mean": f"{average(svals):.6f}",
                     "support_median": f"{median(svals):.6f}",
@@ -390,11 +394,13 @@ def main() -> int:
     report = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "summary_csv": summary_csv.as_posix(),
-        "prereg_doc": DEFAULT_PREREG.as_posix() if DEFAULT_PREREG.exists() else "",
+        "prereg_doc": prereg_doc.as_posix() if prereg_doc.exists() else "",
         "seed_count": n_seeds,
         "levels_full": levels,
         "levels_bulk": bulk_levels,
         "bulk_min_profiles_per_level": args.bulk_min_profiles_per_level,
+        "full_metric_field": args.full_metric_field,
+        "bulk_metric_field": args.bulk_metric_field,
         "bulk_flag_fields": {
             "active": args.bulk_flag_active,
             "sigma": args.bulk_flag_sigma,
@@ -431,6 +437,8 @@ def main() -> int:
         "## Core-Stable Bulk Policy",
         "",
         f"- bulk levels: `{bulk_levels}`",
+        f"- full metric field: `{args.full_metric_field}`",
+        f"- bulk metric field: `{args.bulk_metric_field}`",
         f"- eligibility flags: `{args.bulk_flag_active}`, `{args.bulk_flag_sigma}`, `{args.bulk_flag_metric}`",
         f"- min profiles per bulk level: `{args.bulk_min_profiles_per_level}`",
         f"- insufficient bulk support seed count: `{insufficient_bulk_count}`",

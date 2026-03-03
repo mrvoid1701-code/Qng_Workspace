@@ -278,6 +278,59 @@ def potential_energy(
     return total
 
 
+def connected_component_from_anchor(
+    adj: list[list[int]],
+    allowed: set[int],
+    anchor: int,
+) -> list[int]:
+    if not allowed:
+        return []
+    if anchor not in allowed:
+        anchor = next(iter(allowed))
+    seen = {anchor}
+    q = [anchor]
+    while q:
+        i = q.pop()
+        for j in adj[i]:
+            if j in allowed and j not in seen:
+                seen.add(j)
+                q.append(j)
+    return sorted(seen)
+
+
+def central_core_component_nodes(adj: list[list[int]], sigma: list[float]) -> tuple[list[int], float]:
+    if not sigma:
+        return [], 0.0
+    mu = mean(sigma)
+    allowed = {i for i, s in enumerate(sigma) if s >= mu}
+    if not allowed:
+        return [], 0.0
+    anchor = max(range(len(sigma)), key=lambda i: sigma[i])
+    comp = connected_component_from_anchor(adj, allowed, anchor)
+    ratio = len(comp) / max(len(sigma), 1)
+    return comp, ratio
+
+
+def induced_subgraph_states(
+    adj: list[list[int]],
+    sigma: list[float],
+    chi: list[float],
+    phi: list[float],
+    nodes: list[int],
+) -> tuple[list[list[int]], list[float], list[float], list[float]]:
+    if not nodes:
+        return [], [], [], []
+    idx_map = {old: new for new, old in enumerate(nodes)}
+    sub_adj: list[list[int]] = []
+    for old in nodes:
+        nbrs = [idx_map[j] for j in adj[old] if j in idx_map]
+        sub_adj.append(nbrs)
+    sub_sigma = [sigma[i] for i in nodes]
+    sub_chi = [chi[i] for i in nodes]
+    sub_phi = [phi[i] for i in nodes]
+    return sub_adj, sub_sigma, sub_chi, sub_phi
+
+
 def one_step(
     sigma: list[float],
     chi: list[float],
@@ -450,6 +503,9 @@ def run_case(cfg: StressConfig, case: CaseConfig, dataset_id: str) -> dict[str, 
     rng = random.Random(case.case_seed)
     adj = build_graph_erdos(cfg.n_nodes, case.edge_prob, rng)
     sigma, chi, phi = init_state(cfg.n_nodes, case.chi_scale, case.phi_shock, rng)
+    sigma0 = list(sigma)
+    chi0 = list(chi)
+    phi0 = list(phi)
 
     e0 = potential_energy(sigma, chi, phi, adj, cfg)
     energy_series = [e0]
@@ -497,6 +553,20 @@ def run_case(cfg: StressConfig, case: CaseConfig, dataset_id: str) -> dict[str, 
 
     e1 = energy_series[-1]
     dE_rel = abs(e1 - e0) / max(abs(e0), 1e-12)
+
+    core_nodes, core_cc_ratio = central_core_component_nodes(adj, sigma)
+    core_cc_size = len(core_nodes)
+    core_adj_0, core_sigma_0, core_chi_0, core_phi_0 = induced_subgraph_states(adj, sigma0, chi0, phi0, core_nodes)
+    core_adj_1, core_sigma_1, core_chi_1, core_phi_1 = induced_subgraph_states(adj, sigma, chi, phi, core_nodes)
+    if core_cc_size > 0:
+        e_core0 = potential_energy(core_sigma_0, core_chi_0, core_phi_0, core_adj_0, cfg)
+        e_core1 = potential_energy(core_sigma_1, core_chi_1, core_phi_1, core_adj_1, cfg)
+        dE_core_rel = abs(e_core1 - e_core0) / max(abs(e_core0), 1e-12)
+    else:
+        e_core0 = 0.0
+        e_core1 = 0.0
+        dE_core_rel = 0.0
+
     e_noether0 = e_noether_series[0]
     e_noether1 = e_noether_series[-1]
     e_noether_rel = abs(e_noether1 - e_noether0) / max(abs(e_noether0), 1e-12)
@@ -556,6 +626,11 @@ def run_case(cfg: StressConfig, case: CaseConfig, dataset_id: str) -> dict[str, 
         "energy_start": f6(e0),
         "energy_end": f6(e1),
         "delta_energy_rel": f6(dE_rel),
+        "energy_core_cc_start": f6(e_core0),
+        "energy_core_cc_end": f6(e_core1),
+        "delta_energy_rel_core_cc": f6(dE_core_rel),
+        "core_cc_size": str(core_cc_size),
+        "core_cc_ratio": f6(core_cc_ratio),
         "energy_gate_slope_per100": f6(gate_slope_per100),
         "energy_gate_slope_early_per100": f6(gate_slope_early_per100),
         "energy_gate_slope_late_per100": f6(gate_slope_late_per100),
@@ -669,6 +744,11 @@ def main() -> int:
         "energy_start",
         "energy_end",
         "delta_energy_rel",
+        "energy_core_cc_start",
+        "energy_core_cc_end",
+        "delta_energy_rel_core_cc",
+        "core_cc_size",
+        "core_cc_ratio",
         "energy_gate_slope_per100",
         "energy_gate_slope_early_per100",
         "energy_gate_slope_late_per100",

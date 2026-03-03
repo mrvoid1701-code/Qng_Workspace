@@ -513,6 +513,35 @@ Main outputs:
 - `05_validation/evidence/artifacts/stability-convergence-v3/report.json`
 - `05_validation/pre-registrations/qng-stability-convergence-v3-run-record-2026-03-03.md`
 
+## 52) Stability convergence gate v3b (connected central component bulk metric)
+
+Locked prereg:
+
+- `05_validation/pre-registrations/qng-stability-convergence-v3b.md`
+
+Run:
+
+```bash
+python scripts/tools/run_stability_stress_v1.py --dataset-id STABILITY-CONVERGENCE-V3B --seed-list 3401,3402,3403,3404,3405,3406,3407,3408,3409,3410,3411,3412,3413,3414,3415,3416,3417,3418,3419,3420 --n-nodes-list 24,30,36,42,48 --steps-list 60 --out-dir 05_validation/evidence/artifacts/stability-convergence-v3b/raw --no-strict-exit
+python scripts/tools/run_stability_convergence_gate_v3.py --summary-csv 05_validation/evidence/artifacts/stability-convergence-v3b/raw/summary.csv --out-dir 05_validation/evidence/artifacts/stability-convergence-v3b --prereg-doc 05_validation/pre-registrations/qng-stability-convergence-v3b.md --full-metric-field delta_energy_rel --bulk-metric-field delta_energy_rel_core_cc --step-tol 0.002 --full-step-fraction-min 0.75 --bulk-step-fraction-min 0.85 --overall-improvement-min 0.005 --support-worsen-factor-max 1.25 --rho-full-max -0.60 --rho-bulk-max -0.80 --full-seed-pass-fraction-min 0.85 --bulk-seed-pass-fraction-min 0.85 --bulk-min-profiles-per-level 5 --no-strict-exit
+```
+
+Or:
+
+```bash
+make stability_convergence_v3b
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/stability-convergence-v3b/raw/summary.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v3b/seed_checks.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v3b/level_stats.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v3b/step_checks.csv`
+- `05_validation/evidence/artifacts/stability-convergence-v3b/report.md`
+- `05_validation/evidence/artifacts/stability-convergence-v3b/report.json`
+- `05_validation/pre-registrations/qng-stability-convergence-v3b-run-record-2026-03-03.md`
+
 Primary candidate eval:
 
 ```bash
