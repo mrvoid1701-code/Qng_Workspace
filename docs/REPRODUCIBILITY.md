@@ -1495,3 +1495,18 @@ Result/paper notes:
 
 - `07_exports/results/RESULT_GR_STAGE3_FAIL_CLOSURE_V1.md`
 - `06_writing/paper-gr-stage3-fail-closure-note-v1-en.md`
+
+## 48) GR Stage-3 G11 neighborhood quickcheck (diagnostic-only)
+
+Run local seed-neighborhood analysis around remaining fail anchors:
+
+```bash
+python scripts/tools/analyze_gr_stage3_g11_fail_neighborhood_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-g11-neighborhood-v1 --window 5
+```
+
+Outputs:
+
+- `05_validation/evidence/artifacts/gr-stage3-g11-neighborhood-v1/fail_seed_neighborhood.csv`
+- `05_validation/evidence/artifacts/gr-stage3-g11-neighborhood-v1/neighborhood_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage3-g11-neighborhood-v1/report.md`
+- `07_exports/results/RESULT_GR_G11_NEIGHBORHOOD_V1.md`

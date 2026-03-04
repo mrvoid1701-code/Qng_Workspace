@@ -1,0 +1,4 @@
+dataset_id,fail_seed_anchor,window,neighbors_n,stage3_fail_in_window,stage3_fail_rate,g11a_fail_in_window,g11b_fail_in_window,isolated_fail_flag
+DS-002,3436,5,11,1,0.090909,1,1,true
+DS-003,3491,5,11,1,0.090909,1,0,true
+DS-006,3436,5,11,1,0.090909,1,0,true

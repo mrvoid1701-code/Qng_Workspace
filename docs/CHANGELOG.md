@@ -1,5 +1,28 @@
 # Changelog
 
+## 2026-03-04 - GR Stage-3 G11 neighborhood quickcheck + theory work plan pack
+
+- Added diagnostic runner:
+  - `scripts/tools/analyze_gr_stage3_g11_fail_neighborhood_v1.py`
+- Executed quickcheck package:
+  - `05_validation/evidence/artifacts/gr-stage3-g11-neighborhood-v1/`
+  - outputs: `fail_seed_neighborhood.csv`, `neighborhood_summary.csv`, `report.md`
+- Readout:
+  - remaining 3 fail anchors are isolated in `+/-5` seed windows (`1/11` fail per anchor window)
+  - no local fail clustering detected around anchors
+- Added result export:
+  - `07_exports/results/RESULT_GR_G11_NEIGHBORHOOD_V1.md`
+- Added theory execution plan (while away):
+  - `docs/THEORY_WORK_PLAN_WHILE_AWAY_V1.md`
+- Added short status note (EN):
+  - `06_writing/paper-qng-stability-gr-qm-status-note-v1-en.md`
+- Updated reproducibility index:
+  - `docs/REPRODUCIBILITY.md` (new section 48)
+- Scope guard:
+  - diagnostic/docs only
+  - no threshold changes
+  - no formula changes
+
 ## 2026-03-04 - GR Stage-3 fail-closure diagnostics package (3/600 strict scope)
 
 - Added strict diagnostic package on official Stage-3 rerun:
