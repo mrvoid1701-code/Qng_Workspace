@@ -26,6 +26,7 @@
 - Docs:
   - `docs/REPRODUCIBILITY.md` updated with sections 49 and 50
   - `docs/GR_STAGE3_KNOWN_LIMITATIONS.md` updated with neighborhood isolation note
+  - `docs/ROADMAP.md` updated with coupling-bundle and Stage-2 taxonomy priorities
 - Result/export notes:
   - `07_exports/results/RESULT_GR_QM_COUPLING_CHECKPOINT_V1.md`
   - `06_writing/paper-qng-gr-qm-coupling-backbone-status-v2-en.md`

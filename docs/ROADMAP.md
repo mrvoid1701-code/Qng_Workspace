@@ -20,9 +20,10 @@ QNG workspace is in a reproducibility-hardening phase:
 6. Track remaining Stage-3 official fail classes (`3/600`, all `G11`) via preregistered estimator hardening (no threshold tuning).
 7. Keep QM lane criteria separate from GR promotion criteria while Stage-2/Stage-3 official baselines remain frozen.
 8. Maintain `QM-Stage-1` official policy freeze (`qm-stage1-g18-v2-official`) and track remaining QM-lane fail classes with coupling audit checks.
-9. Keep `QM-Stage-2` in prereg-only lane (`docs/QM_STAGE2_PREREG.md`) using frozen block protocol + coupling stability checks before any governance switch.
-10. Harden the stability-term theory lane (`qng-stability-v1-strict`) with locked action/update definitions and preregistered stress invariants.
-11. Close stability fail taxonomy (`stability-v1`) and evaluate candidate energy observables under preregistered non-degradation policy.
+9. Keep `QM-Stage-2` in prereg-only lane (`docs/QM_STAGE2_PREREG.md`) with strict failure taxonomy (`qm-stage2-failure-taxonomy-v1`) and single-gate candidate focus (`G17` first).
+10. Maintain coupling backbone evidence package (`qm-gr-coupling-audit-v2/bundle-v1`) as fixed pass reference (`2500/2500`, GR guard pre/post pass) while iterating QM candidates.
+11. Harden the stability-term theory lane (`qng-stability-v1-strict`) with locked action/update definitions and preregistered stress invariants.
+12. Close stability fail taxonomy (`stability-v1`) and evaluate candidate energy observables under preregistered non-degradation policy.
 
 ## Non-Goals for Housekeeping Passes
 
