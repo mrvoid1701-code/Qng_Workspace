@@ -1,5 +1,26 @@
 # Changelog
 
+## 2026-03-04 - QM Stage-1 G17b strict failure taxonomy v1
+
+- Added targeted taxonomy tool:
+  - `scripts/tools/analyze_qm_stage1_g17b_failures_v1.py`
+- Added Make target:
+  - `qm_stage1_g17b_taxonomy`
+- Generated taxonomy package:
+  - `05_validation/evidence/artifacts/qm-stage1-g17b-failure-taxonomy-v1/`
+  - outputs: `g17b_fail_cases.csv`, `g17b_pass_cases.csv`, `pattern_summary.csv`, `feature_correlations.csv`, `report.md`
+- Key findings on official-v5 scope (`2500` profiles):
+  - `G17b` fail count: `115` (`4.60%`)
+  - fail concentration: `DS-006` (`115/700`), other datasets `0`
+  - dominant class: `isolated_near_threshold` (`107/115`)
+  - coupled co-fails are minority (`7/115`)
+- Export note:
+  - `07_exports/results/RESULT_QM_STAGE1_G17B_TAXONOMY_V1.md`
+- Scope guard:
+  - tooling + diagnostics only
+  - no threshold changes
+  - no formula changes
+
 ## 2026-03-04 - QM Stage-1 G18-v3 candidate promotion + official-v5 switch
 
 - Added candidate evaluator:
