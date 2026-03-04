@@ -1,0 +1,28 @@
+{
+  "eval_id": "qm-stage2-holdout_ds004_008_s3401_3600-v1",
+  "generated_utc": "2026-03-04T07:48:43.037759Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage2-prereg-v1/holdout_ds004_008_s3401_3600/qm_lane/summary.csv",
+  "datasets": [
+    "DS-004",
+    "DS-008"
+  ],
+  "profiles": 400,
+  "totals": {
+    "g17_pass": 356,
+    "g18_pass": 360,
+    "g19_pass": 400,
+    "g20_pass": 400,
+    "qm_lane_pass": 322,
+    "rc_fail_profiles": 78,
+    "all_pass_rate": 0.805
+  },
+  "criteria": {
+    "require_zero_rc": true,
+    "min_all_pass_rate": 0.0
+  },
+  "checks": {
+    "zero_rc_failures": false,
+    "min_all_pass_rate": true
+  },
+  "decision": "HOLD"
+}

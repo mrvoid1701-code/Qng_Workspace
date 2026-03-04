@@ -44,6 +44,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--strict-prereg", action=argparse.BooleanOptionalAction, default=False)
     p.add_argument("--execute", action=argparse.BooleanOptionalAction, default=False)
     p.add_argument("--with-coupling-audit", action=argparse.BooleanOptionalAction, default=True)
+    p.add_argument("--resume-qm-lane", action=argparse.BooleanOptionalAction, default=True)
     p.add_argument("--chunk-size", type=int, default=25)
     p.add_argument("--resume-coupling", action=argparse.BooleanOptionalAction, default=True)
     p.add_argument("--write-artifacts", action=argparse.BooleanOptionalAction, default=False)
@@ -116,6 +117,7 @@ def plan_commands(args: argparse.Namespace, blocks: list[Block], out_dir: Path) 
                     str(b.seed_end),
                     "--out-dir",
                     str(qm_out),
+                    "--resume" if args.resume_qm_lane else "",
                 ],
             }
         )
@@ -211,6 +213,7 @@ def main() -> int:
     log("=" * 80)
     log(f"QM-Stage-2 prereg orchestration v1 | mode={args.mode}")
     log(f"execute={str(args.execute).lower()} with_coupling_audit={str(args.with_coupling_audit).lower()}")
+    log(f"resume_qm_lane={str(args.resume_qm_lane).lower()} resume_coupling={str(args.resume_coupling).lower()}")
     log(f"out_dir={out_dir}")
     log("=" * 80)
 
@@ -337,6 +340,7 @@ def main() -> int:
         "execute": bool(args.execute),
         "strict_prereg": bool(args.strict_prereg),
         "with_coupling_audit": bool(args.with_coupling_audit),
+        "resume_qm_lane": bool(args.resume_qm_lane),
         "chunk_size": args.chunk_size,
         "resume_coupling": bool(args.resume_coupling),
         "write_artifacts": bool(args.write_artifacts),
@@ -382,4 +386,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

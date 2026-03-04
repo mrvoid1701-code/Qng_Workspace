@@ -58,6 +58,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--seed-start", type=int, default=DEFAULT_SEED_START)
     p.add_argument("--seed-end", type=int, default=DEFAULT_SEED_END)
     p.add_argument("--out-dir", default="")
+    p.add_argument("--resume", action="store_true")
     p.add_argument("--strict-prereg", action=argparse.BooleanOptionalAction, default=False)
     p.add_argument("--strict-exit", action=argparse.BooleanOptionalAction, default=False)
     return p.parse_args()
@@ -175,6 +176,42 @@ def main() -> int:
     for idx, p in enumerate(profiles, start=1):
         tag = f"{p.dataset_id.lower()}_seed{p.seed}"
         profile_out = run_root / tag
+        summary_csv = profile_out / "summary.csv"
+
+        if args.resume and summary_csv.exists():
+            q = read_summary_row(summary_csv)
+            rc_fail_count = sum(
+                1
+                for key in ("g17_rc", "g18_rc", "g19_rc", "g20_rc")
+                if int(str(q.get(key, "1"))) != 0
+            )
+            row = {
+                "dataset_id": p.dataset_id,
+                "seed": p.seed,
+                "run_root": profile_out.resolve().relative_to(ROOT.resolve()).as_posix(),
+                "mode": args.mode,
+                "g17_status": normalize_status(q.get("g17_status", "")),
+                "g18_status": normalize_status(q.get("g18_status", "")),
+                "g19_status": normalize_status(q.get("g19_status", "")),
+                "g20_status": normalize_status(q.get("g20_status", "")),
+                "g17_rc": int(str(q.get("g17_rc", "1"))),
+                "g18_rc": int(str(q.get("g18_rc", "1"))),
+                "g19_rc": int(str(q.get("g19_rc", "1"))),
+                "g20_rc": int(str(q.get("g20_rc", "1"))),
+                "rc_fail_count": rc_fail_count,
+                "all_pass_qm_lane": normalize_status(q.get("all_pass_qm_lane", "")),
+                "runner_rc": 0,
+            }
+            rows.append(row)
+            log(
+                f"[{idx}/{len(profiles)}] {tag}"
+                " (resume-hit)"
+                f" all_pass={row['all_pass_qm_lane']}"
+                f" g17={row['g17_status']} g18={row['g18_status']}"
+                f" g19={row['g19_status']} g20={row['g20_status']}"
+            )
+            continue
+
         cmd = [
             sys.executable,
             str(TOOLS / "run_qm_lane_check_v1.py"),
@@ -187,7 +224,6 @@ def main() -> int:
         ]
         log(f"[{idx}/{len(profiles)}] {tag}")
         rc, tail = run_cmd(cmd, ROOT)
-        summary_csv = profile_out / "summary.csv"
         if not summary_csv.exists():
             raise RuntimeError(f"profile summary missing: {summary_csv}")
 
@@ -270,6 +306,7 @@ def main() -> int:
         "seed_end": args.seed_end if args.mode == "prereg" else DEFAULT_SEED_START,
         "profiles": n,
         "strict_prereg": bool(args.strict_prereg),
+        "resume": bool(args.resume),
         "runner": "run_qm_stage1_prereg_v1.py",
         "notes": [
             "Runs G17..G20 via run_qm_lane_check_v1.py per dataset/seed profile.",

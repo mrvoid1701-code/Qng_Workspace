@@ -1461,7 +1461,7 @@ Direct runner:
 
 ```bash
 python scripts/tools/run_qm_stage2_prereg_v1.py --mode smoke --execute --with-coupling-audit --chunk-size 25 --resume-coupling --no-write-artifacts --no-plots
-python scripts/tools/run_qm_stage2_prereg_v1.py --mode prereg --strict-prereg --execute --with-coupling-audit --chunk-size 25 --resume-coupling --no-write-artifacts --no-plots
+python scripts/tools/run_qm_stage2_prereg_v1.py --mode prereg --strict-prereg --execute --with-coupling-audit --resume-qm-lane --chunk-size 25 --resume-coupling --no-write-artifacts --no-plots
 ```
 
 Outputs:

@@ -44,6 +44,7 @@ Official switch remains a separate governance commit.
 Runner:
 
 - `scripts/tools/run_qm_stage2_prereg_v1.py`
+- resumable flags: `--resume-qm-lane`, `--resume-coupling`
 
 Smoke:
 
@@ -76,4 +77,3 @@ Artifacts:
 1. This prereg layer is orchestration-only.
 2. No threshold/formula tuning is allowed here.
 3. Any gate-definition change must be candidate-first and evaluated with degraded=`0`.
-

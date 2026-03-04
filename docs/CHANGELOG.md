@@ -1,5 +1,32 @@
 # Changelog
 
+## 2026-03-04 - QM Stage-2 prereg full execution + resume hardening
+
+- Added resume support for long QM prereg batches:
+  - `scripts/tools/run_qm_stage1_prereg_v1.py`
+  - new flag: `--resume` (skips profiles with existing per-profile summary)
+- Extended Stage-2 orchestration runner:
+  - `scripts/tools/run_qm_stage2_prereg_v1.py`
+  - new flag: `--resume-qm-lane` (default enabled)
+  - manifest now records resume behavior
+- Completed full Stage-2 prereg package:
+  - `05_validation/evidence/artifacts/qm-stage2-prereg-v1/`
+  - blocks finished:
+    - primary `DS-002/003/006`, seeds `3401..3600`
+    - attack `DS-002/003/006`, seeds `3601..4100`
+    - holdout `DS-004/008`, seeds `3401..3600`
+- QM lane readout:
+  - primary: `411/600`
+  - attack: `1017/1500`
+  - holdout: `322/400`
+  - block decisions: `HOLD` (all three)
+- Coupling readout:
+  - primary: `600/600` G20 pass, GR guard pre/post `PASS`
+  - attack: `1500/1500` G20 pass, GR guard pre/post `PASS`
+  - holdout: `400/400` G20 pass, GR guard pre/post `PASS`
+- Final Stage-2 prereg package decision:
+  - `HOLD` (as expected at candidate lane; no threshold/formula changes)
+
 ## 2026-03-03 - Public visibility refresh + QM Stage-2 prereg orchestration bootstrap
 
 - Added Stage-1 bridge note:

@@ -1,11 +1,11 @@
 # QM Stage-2 Prereg Report (v1)
 
-- mode: `smoke`
-- generated_utc: `2026-03-03T21:19:16.283752Z`
+- mode: `prereg`
+- generated_utc: `2026-03-04T08:07:12.792730Z`
 - execute: `true`
 - with_coupling_audit: `true`
 - blocks: `3`
-- combined_pass_blocks: `1/3`
+- combined_pass_blocks: `0/3`
 - decision: `HOLD`
 
 ## Notes
