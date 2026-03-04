@@ -30,6 +30,8 @@
 - Result/export notes:
   - `07_exports/results/RESULT_GR_QM_COUPLING_CHECKPOINT_V1.md`
   - `06_writing/paper-qng-gr-qm-coupling-backbone-status-v2-en.md`
+- Added focused prereg scaffold for next QM Stage-2 step:
+  - `05_validation/pre-registrations/qm-stage2-g17-candidate-v1.md`
 - Scope guard:
   - tooling + evidence refresh only
   - no threshold changes
