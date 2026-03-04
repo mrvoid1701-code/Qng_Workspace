@@ -1,5 +1,5 @@
 QNG Gate Suite — Full Health Report
-Generated: 2026-03-04T15:41:48.153284Z
+Generated: 2026-03-04T17:07:22.719614Z
 Dataset: DS-002  Seed: 3401
 
 Gate   Label                                    Decision   Time
