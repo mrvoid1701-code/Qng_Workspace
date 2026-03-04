@@ -1,6 +1,6 @@
 # QM Stage-1 Regression Guard Report (v1)
 
-- generated_utc: `2026-03-03T07:00:21.276075Z`
+- generated_utc: `2026-03-04T08:40:02.993490Z`
 - decision: `PASS`
 
 ## Block Summary

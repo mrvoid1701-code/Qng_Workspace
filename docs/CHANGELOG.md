@@ -1,5 +1,39 @@
 # Changelog
 
+## 2026-03-04 - Coupling v2 bundle + QM Stage-2 strict taxonomy + GR/QM guard rechecks
+
+- Re-ran QM-GR coupling audit v2 chunked runners with `--resume` for all three blocks:
+  - `primary_ds002_003_006_s3401_3600`
+  - `attack_seed500_ds002_003_006_s3601_4100`
+  - `holdout_ds004_008_s3401_3600`
+- Coupling status re-confirmed:
+  - completed profiles: `2500/2500`
+  - G20 pass: `2500/2500`
+  - GR guard pre/post: `PASS` on all blocks
+- Added coupling bundle aggregator:
+  - script: `scripts/tools/bundle_qm_gr_coupling_audit_v2.py`
+  - Make target: `qm_gr_coupling_audit_bundle`
+  - output package: `05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/bundle-v1/`
+- Added QM Stage-2 strict failure taxonomy:
+  - script: `scripts/tools/analyze_qm_stage2_failures_v1.py`
+  - Make target: `qm_stage2_taxonomy`
+  - output package: `05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-v1/`
+- Rechecked guards/taxonomy:
+  - `gr-stage3-regression-baseline-v1/latest_check` refreshed
+  - `qm-stage1-regression-baseline-v1/latest_check` refreshed
+  - `qm-stage1-failure-taxonomy-v1` refreshed
+  - `gr-stage3-official-v3-failure-taxonomy-v1` refreshed
+- Docs:
+  - `docs/REPRODUCIBILITY.md` updated with sections 49 and 50
+  - `docs/GR_STAGE3_KNOWN_LIMITATIONS.md` updated with neighborhood isolation note
+- Result/export notes:
+  - `07_exports/results/RESULT_GR_QM_COUPLING_CHECKPOINT_V1.md`
+  - `06_writing/paper-qng-gr-qm-coupling-backbone-status-v2-en.md`
+- Scope guard:
+  - tooling + evidence refresh only
+  - no threshold changes
+  - no formula changes
+
 ## 2026-03-04 - GR Stage-3 G11 neighborhood quickcheck + theory work plan pack
 
 - Added diagnostic runner:

@@ -1,6 +1,6 @@
 # GR Stage-3 Failure Taxonomy (v1)
 
-- generated_utc: `2026-03-02T13:54:51.907906Z`
+- generated_utc: `2026-03-04T08:41:04.419970Z`
 - source_summary: `C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv`
 - profiles_total: `600`
 - strict_fail_scope: `3` (only `stage3_status=fail` rows classified)

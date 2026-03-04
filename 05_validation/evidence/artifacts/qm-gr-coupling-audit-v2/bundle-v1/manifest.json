@@ -1,0 +1,44 @@
+{
+  "generated_utc": "2026-03-04T08:44:22.129145+00:00",
+  "bundle_id": "qm-gr-coupling-audit-v2-bundle",
+  "overall_decision": "PASS",
+  "totals": {
+    "blocks": 3,
+    "profiles_total_expected": 2500,
+    "profiles_completed": 2500,
+    "profiles_missing": 0,
+    "g20_pass": 2500,
+    "g20_rc_fail_profiles": 0,
+    "gr_guard_pre_all_pass": true,
+    "gr_guard_post_all_pass": true,
+    "chunk_decisions_all_pass": true
+  },
+  "artifacts": {
+    "block_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/bundle-v1/block_summary.csv",
+    "dataset_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/bundle-v1/dataset_summary.csv",
+    "report_md": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/bundle-v1/report.md",
+    "source_blocks": {
+      "primary_ds002_003_006_s3401_3600": {
+        "manifest_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/primary_ds002_003_006_s3401_3600/manifest.json",
+        "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/primary_ds002_003_006_s3401_3600/summary.csv",
+        "dataset_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/primary_ds002_003_006_s3401_3600/dataset_summary.csv",
+        "chunk_checks_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/primary_ds002_003_006_s3401_3600/chunk_checks.csv",
+        "report_md": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/primary_ds002_003_006_s3401_3600/report.md"
+      },
+      "attack_seed500_ds002_003_006_s3601_4100": {
+        "manifest_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/attack_seed500_ds002_003_006_s3601_4100/manifest.json",
+        "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/attack_seed500_ds002_003_006_s3601_4100/summary.csv",
+        "dataset_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/attack_seed500_ds002_003_006_s3601_4100/dataset_summary.csv",
+        "chunk_checks_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/attack_seed500_ds002_003_006_s3601_4100/chunk_checks.csv",
+        "report_md": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/attack_seed500_ds002_003_006_s3601_4100/report.md"
+      },
+      "holdout_ds004_008_s3401_3600": {
+        "manifest_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/holdout_ds004_008_s3401_3600/manifest.json",
+        "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/holdout_ds004_008_s3401_3600/summary.csv",
+        "dataset_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/holdout_ds004_008_s3401_3600/dataset_summary.csv",
+        "chunk_checks_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/holdout_ds004_008_s3401_3600/chunk_checks.csv",
+        "report_md": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/holdout_ds004_008_s3401_3600/report.md"
+      }
+    }
+  }
+}

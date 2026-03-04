@@ -1,6 +1,6 @@
 # QM-GR Coupling Audit Report (v2)
 
-- generated_utc: `2026-03-03T05:06:27.647060Z`
+- generated_utc: `2026-03-04T08:39:44.287885Z`
 - out_dir: `C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/attack_seed500_ds002_003_006_s3601_4100`
 - profiles_total_expected: `1500`
 - profiles_completed: `1500`

@@ -1510,3 +1510,39 @@ Outputs:
 - `05_validation/evidence/artifacts/gr-stage3-g11-neighborhood-v1/neighborhood_summary.csv`
 - `05_validation/evidence/artifacts/gr-stage3-g11-neighborhood-v1/report.md`
 - `07_exports/results/RESULT_GR_G11_NEIGHBORHOOD_V1.md`
+
+## 49) QM-GR coupling audit v2 bundle (primary + attack + holdout)
+
+Build combined coupling summary from completed chunked blocks:
+
+```bash
+python scripts/tools/bundle_qm_gr_coupling_audit_v2.py \
+  --block-dirs 05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/primary_ds002_003_006_s3401_3600,05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/attack_seed500_ds002_003_006_s3601_4100,05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/holdout_ds004_008_s3401_3600 \
+  --out-dir 05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/bundle-v1 \
+  --bundle-id qm-gr-coupling-audit-v2-bundle
+```
+
+Outputs:
+
+- `05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/bundle-v1/block_summary.csv`
+- `05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/bundle-v1/dataset_summary.csv`
+- `05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/bundle-v1/report.md`
+- `05_validation/evidence/artifacts/qm-gr-coupling-audit-v2/bundle-v1/manifest.json`
+
+## 50) QM Stage-2 failure taxonomy (strict, post-prereg)
+
+Run taxonomy from Stage-2 prereg `qm_lane` summaries:
+
+```bash
+python scripts/tools/analyze_qm_stage2_failures_v1.py \
+  --summary-csvs 05_validation/evidence/artifacts/qm-stage2-prereg-v1/primary_ds002_003_006_s3401_3600/qm_lane/summary.csv,05_validation/evidence/artifacts/qm-stage2-prereg-v1/attack_ds002_003_006_s3601_4100/qm_lane/summary.csv,05_validation/evidence/artifacts/qm-stage2-prereg-v1/holdout_ds004_008_s3401_3600/qm_lane/summary.csv \
+  --out-dir 05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-v1
+```
+
+Outputs:
+
+- `05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-v1/qm_fail_cases.csv`
+- `05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-v1/qm_pass_cases.csv`
+- `05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-v1/pattern_summary.csv`
+- `05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-v1/feature_correlations.csv`
+- `05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-v1/report.md`

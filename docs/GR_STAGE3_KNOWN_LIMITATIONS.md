@@ -20,12 +20,20 @@ This note captures remaining known limitations after the official Stage-3 v3 gov
 Source taxonomy package:
 
 - `05_validation/evidence/artifacts/gr-stage3-official-v3-failure-taxonomy-v1/`
+- neighborhood diagnostic package:
+  - `05_validation/evidence/artifacts/gr-stage3-g11-neighborhood-v1/`
 
 Class split:
 
 - `g11b_slope_instability`: `1`
 - `weak_corr_multi_peak`: `1`
 - `weak_corr_sparse_graph`: `1`
+
+Local neighborhood readout (`+/-5` seeds, same dataset):
+
+- all three fail anchors are isolated (`1/11` fail in each neighborhood window)
+- no local fail clustering detected around the three anchors
+- interpretation: edge-case signatures remain, not broad local instability
 
 ## Governance Notes
 
