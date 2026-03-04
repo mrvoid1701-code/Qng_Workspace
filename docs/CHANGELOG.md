@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-03-04 - GR Stage-3 fail-closure diagnostics package (3/600 strict scope)
+
+- Added strict diagnostic package on official Stage-3 rerun:
+  - runner: `scripts/tools/analyze_stage3_failures_v1.py`
+  - source: `05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv`
+  - output: `05_validation/evidence/artifacts/gr-stage3-official-v3-fail-closure-v1/`
+- Added nearest-pass neighbor comparison table:
+  - `05_validation/evidence/artifacts/gr-stage3-official-v3-fail-closure-v1/nearest_pass_neighbors.csv`
+- Added export result note:
+  - `07_exports/results/RESULT_GR_STAGE3_FAIL_CLOSURE_V1.md`
+- Added mini-paper note (EN):
+  - `06_writing/paper-gr-stage3-fail-closure-note-v1-en.md`
+- Added prereg scaffold for next candidate cycle:
+  - `05_validation/pre-registrations/gr-stage3-g11-fail-closure-v5.md`
+- Readout:
+  - official remains `597/600`
+  - strict fail scope: `3` (`G11` only)
+  - class split: `g11b_slope_instability`, `weak_corr_multi_peak`, `weak_corr_sparse_graph` (1 each)
+- Scope guard:
+  - no threshold changes
+  - no formula changes
+
 ## 2026-03-04 - QM Stage-2 prereg full execution + resume hardening
 
 - Added resume support for long QM prereg batches:

@@ -1473,3 +1473,25 @@ Outputs:
   - `05_validation/evidence/artifacts/qm-stage2-prereg-v1/<block_id>/qm_lane/`
   - `05_validation/evidence/artifacts/qm-stage2-prereg-v1/<block_id>/eval/`
   - `05_validation/evidence/artifacts/qm-stage2-prereg-v1/<block_id>/coupling_audit/`
+
+## 47) GR Stage-3 strict fail-closure diagnostics (official-v3 rerun source)
+
+Run strict taxonomy on the official Stage-3 rerun package:
+
+```bash
+python scripts/tools/analyze_stage3_failures_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-official-v3-fail-closure-v1 --top-k 10
+```
+
+Core outputs:
+
+- `05_validation/evidence/artifacts/gr-stage3-official-v3-fail-closure-v1/fail_profiles.csv`
+- `05_validation/evidence/artifacts/gr-stage3-official-v3-fail-closure-v1/class_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage3-official-v3-fail-closure-v1/pattern_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage3-official-v3-fail-closure-v1/feature_correlations.csv`
+- `05_validation/evidence/artifacts/gr-stage3-official-v3-fail-closure-v1/dataset_fail_summary.csv`
+- `05_validation/evidence/artifacts/gr-stage3-official-v3-fail-closure-v1/report.md`
+
+Result/paper notes:
+
+- `07_exports/results/RESULT_GR_STAGE3_FAIL_CLOSURE_V1.md`
+- `06_writing/paper-gr-stage3-fail-closure-note-v1-en.md`
