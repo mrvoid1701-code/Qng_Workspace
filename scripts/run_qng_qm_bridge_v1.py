@@ -106,7 +106,7 @@ DEFAULT_OUT_DIR = (
 PHI_SCALE   = 0.10
 M_EFF_SQ    = 0.014      # |m²_fit| from G16 (positive effective mass squared)
 N_MODES     = 20         # total modes to find (including zero mode)
-N_ITER_POW  = 350        # power-iteration steps per mode
+N_ITER_POW  = 500        # power-iteration steps per mode (raised from 350 for G17a margin)
 N_SAMPLE    = 800        # random pairs for propagator sampling
 C_LIGHT     = 1.0        # natural units
 

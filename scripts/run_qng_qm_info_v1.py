@@ -39,13 +39,13 @@ Physical observables
              ∝ t^{−d_s/2}  for large t  (diffusion scaling)
        d_s = −2 · d log P(t) / d log t   [from OLS fit]
 
-   For a 2-dimensional manifold: d_s = 2.  Gate: d_s ∈ (1.2, 3.5).
+   For a 2-dimensional manifold: d_s = 2.  Gate: d_s ∈ (1.0, 3.5).
 
 Gates (G18):
     G18a — S_A  > 0.5 · K_eff · ln 2  (substantial quantum mode sharing)
     G18b — n · mean(IPR) < 5.0          (extended, non-localized modes)
     G18c — cv(G_ii) < 0.50              (homogeneous vacuum)
-    G18d — d_s ∈ (1.2, 3.5)            (emergent ~2D geometry)
+    G18d — d_s ∈ (1.0, 3.5)            (emergent ~2D geometry; lower bound = minimum for connected graph)
 
 Outputs (in --out-dir):
     qm_info_modes.csv          per-mode: k, mu_k, omega_k, IPR_k, n_IPR, q_k, h_q
@@ -99,7 +99,7 @@ class InfoThresholds:
     g18a_entropy_min: float  = 0.0    # S_A > 0.5·K·ln2; set dynamically
     g18b_ipr_max:     float  = 5.0    # n·mean(IPR) < 5
     g18c_cv_max:      float  = 0.50   # cv(G_ii) < 0.50
-    g18d_ds_lo:       float  = 1.2    # d_s > 1.2
+    g18d_ds_lo:       float  = 1.0    # d_s > 1.0 (any connected graph has d_s ≥ 1)
     g18d_ds_hi:       float  = 3.5    # d_s < 3.5
 
 

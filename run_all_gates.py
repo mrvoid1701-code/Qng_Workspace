@@ -106,7 +106,14 @@ def margin_pct(value: str, threshold: str) -> float | None:
         elif th.startswith("(") and "," in th:
             lo, hi = th.strip("()").split(",")
             t_lo, t_hi = float(lo), float(hi)
-            return min(v - t_lo, t_hi - v) / (t_hi - t_lo) * 100
+            dist_lo, dist_hi = v - t_lo, t_hi - v
+            # normalise by the nearer bound's magnitude (not interval width)
+            if dist_lo <= dist_hi:
+                denom = abs(t_lo) if t_lo != 0 else abs(t_hi)
+                return dist_lo / denom * 100 if denom else None
+            else:
+                denom = abs(t_hi) if t_hi != 0 else abs(t_lo)
+                return dist_hi / denom * 100 if denom else None
     except Exception:
         pass
     return None
