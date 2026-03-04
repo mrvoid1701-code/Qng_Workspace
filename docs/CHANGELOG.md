@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-03-04 - QM Stage-2 raw vs official-v5 comparator + evidence
+
+- Added comparator tool:
+  - `scripts/tools/compare_qm_stage2_raw_vs_official_v1.py`
+- Added Make target:
+  - `qm_stage2_raw_vs_official`
+- Generated comparison package:
+  - `05_validation/evidence/artifacts/qm-stage2-raw-vs-official-v5-v1/`
+  - outputs: `profile_deltas.csv`, `summary_transition.csv`, `profile_mismatch_keys.csv`, `report.md`
+- Key readout (`2500` joined profiles, no mismatch):
+  - raw pass: `1750/2500`
+  - official-v5 pass: `2217/2500`
+  - improved `fail->pass`: `467`
+  - degraded `pass->fail`: `0`
+  - gate deltas: `g17` changed on `493` profiles, `g18` on `90`
+- Export note:
+  - `07_exports/results/RESULT_QM_STAGE2_RAW_VS_OFFICIAL_V5_V1.md`
+- Scope guard:
+  - tooling + diagnostics only
+  - no threshold changes
+  - no formula changes
+
 ## 2026-03-04 - QM Stage-1 G17b strict failure taxonomy v1
 
 - Added targeted taxonomy tool:
