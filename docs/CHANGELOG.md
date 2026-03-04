@@ -38,6 +38,10 @@
   - coupled co-fails are minority (`7/115`)
 - Export note:
   - `07_exports/results/RESULT_QM_STAGE1_G17B_TAXONOMY_V1.md`
+- Added prereg scaffold for next candidate lane:
+  - `05_validation/pre-registrations/qm-stage2-g17b-candidate-v4.md`
+- Roadmap update:
+  - `docs/ROADMAP.md` priority item for `G17b` candidate lane
 - Scope guard:
   - tooling + diagnostics only
   - no threshold changes

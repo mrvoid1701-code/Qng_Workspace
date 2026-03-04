@@ -24,6 +24,7 @@ QNG workspace is in a reproducibility-hardening phase:
 10. Maintain coupling backbone evidence package (`qm-gr-coupling-audit-v2/bundle-v1`) as fixed pass reference (`2500/2500`, GR guard pre/post pass) while iterating QM candidates.
 11. Harden the stability-term theory lane (`qng-stability-v1-strict`) with locked action/update definitions and preregistered stress invariants.
 12. Close stability fail taxonomy (`stability-v1`) and evaluate candidate energy observables under preregistered non-degradation policy.
+13. Execute targeted `G17b` candidate lane from `qm-stage1-g17b-failure-taxonomy-v1` findings using prereg scaffold `qm-stage2-g17b-candidate-v4` (no threshold tuning, degraded=0 required).
 
 ## Non-Goals for Housekeeping Passes
 
