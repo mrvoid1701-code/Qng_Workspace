@@ -1,6 +1,6 @@
 # GR Status In 60 Seconds
 
-Date: 2026-03-02
+Date: 2026-03-04
 Status owner: QNG GR/PPN lane
 Freeze contract: `docs/GR_STAGE1_FREEZE.md`
 
@@ -28,9 +28,9 @@ The GR-like chain is currently defined by gates `G10..G16`:
 - `GR-Stage-2 official policy`: `G11a-v4 + G12d-v2` governance mapping
   - effective tag: `gr-stage2-g11-v4-official`
   - source decision: `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md`
-- `GR-Stage-3 official policy`: `G11/G12` candidate-v3 governance mapping
-  - effective tag: `gr-stage3-g11g12-v3-official`
-  - source decision: `docs/GR_STAGE3_G11G12_V3_OFFICIAL_SWITCH.md`
+- `GR-Stage-3 official policy`: `G11/G12` candidate-v5 governance mapping
+  - effective tag: `gr-stage3-g11-v5-official`
+  - source decision: `docs/GR_STAGE3_G11_V5_OFFICIAL_SWITCH.md`
 
 ## Baseline Used For Guard
 
@@ -79,21 +79,20 @@ Frozen metadata:
 - `weak_rank_corr`: `2`
 - Source: `05_validation/evidence/artifacts/gr-stage2-g11-candidate-v4/primary_ds002_003_006_s3401_3600/summary.csv`.
 
-6. Stage-3 official-v3 mapping closure
-- primary: `592/600 -> 597/600` (`degraded=0`)
-- attack seed500: `1433/1500 -> 1452/1500` (`degraded=0`)
-- holdout: `398/400 -> 398/400` (`degraded=0`)
-- Source: `05_validation/evidence/artifacts/gr-stage3-g11-g12-promotion-eval-v2/report.md`.
+6. Stage-3 official-v5 mapping closure
+- primary: `597/600 -> 600/600` (`degraded=0`)
+- attack seed500: `1433/1500 -> 1459/1500` (`degraded=0`)
+- holdout: `398/400 -> 400/400` (`degraded=0`)
+- Source: `05_validation/evidence/artifacts/gr-stage3-g11-promotion-eval-v5/`.
 
 ## Current Readout
 
 - GR guard against official baseline: `PASS`
-- GR Stage-3 official policy: active (`gr-stage3-g11g12-v3-official`)
+- GR Stage-3 official policy: active (`gr-stage3-g11-v5-official`)
 - Stage-3 guard against official baseline: `PASS`
-- Stage-3 remaining official primary fails: `3/600`
-  - `G11`: `3`
+- Stage-3 remaining official primary fails: `0/600`
+  - `G11`: `0`
   - `G12`: `0`
-  - dominant classes: `g11b_slope_instability`, `weak_corr_multi_peak`, `weak_corr_sparse_graph`
 - Latest run artifact:
   - `05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/regression_report.json`
-  - `05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/latest_check/regression_report.json`
+  - `05_validation/evidence/artifacts/gr-stage3-regression-baseline-v2/latest_check/regression_report.json`

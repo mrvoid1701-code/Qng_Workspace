@@ -1,0 +1,23 @@
+{
+  "generated_utc": "2026-03-04T09:12:39.518702Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage3-official-v2-attack-seed500-v1/summary.csv",
+  "policy": "stage3-g11-candidate-v5",
+  "constants": {
+    "g11_corr_min": 0.2,
+    "g11_high_signal_q80": 0.8,
+    "g11_high_signal_q75": 0.75,
+    "g11_basin_quantile": 0.15,
+    "g11_basin_high_signal_quantile": 0.5,
+    "g11_trim_fraction": 0.1,
+    "g11_smooth_alpha": 0.5,
+    "g11_smooth_iters": 1,
+    "g11_multi_peak_ratio_thr": 0.98,
+    "g11_multi_peak_dist_thr": 0.1,
+    "g11_sparse_mean_degree_max": 8.5
+  },
+  "notes": [
+    "Baseline comparison is official-v3 Stage-3 summary.",
+    "No gate thresholds/formulas modified.",
+    "v5 remains candidate-only until explicit governance switch."
+  ]
+}

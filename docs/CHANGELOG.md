@@ -1,5 +1,51 @@
 # Changelog
 
+## 2026-03-04 - GR Stage-3 v5 switch + QM Stage-1 v4 switch + stability stress pack
+
+- Added candidate evaluators:
+  - `scripts/tools/run_gr_stage3_g11_candidate_eval_v5.py`
+  - `scripts/tools/run_qm_g17_candidate_eval_v3.py`
+- Added QM governance applier:
+  - `scripts/tools/run_qm_stage1_official_v4.py`
+- Executed GR Stage-3 v5 promotion package:
+  - `05_validation/evidence/artifacts/gr-stage3-g11-candidate-v5/`
+  - `05_validation/evidence/artifacts/gr-stage3-g11-promotion-eval-v5/`
+  - official apply outputs:
+    - `05_validation/evidence/artifacts/gr-stage3-official-v5/`
+    - `05_validation/evidence/artifacts/gr-stage3-official-v5-attack-seed500-v1/`
+    - `05_validation/evidence/artifacts/gr-stage3-official-v5-attack-holdout-v1/`
+- Executed QM Stage-1 G17-v3 promotion package:
+  - `05_validation/evidence/artifacts/qm-g17-candidate-v3/`
+  - `05_validation/evidence/artifacts/qm-g17-v3-promotion-eval-v1/`
+  - official apply outputs:
+    - `05_validation/evidence/artifacts/qm-stage1-official-v4/primary_ds002_003_006_s3401_3600/`
+    - `05_validation/evidence/artifacts/qm-stage1-official-v4/attack_seed500_ds002_003_006_s3601_4100/`
+    - `05_validation/evidence/artifacts/qm-stage1-official-v4/attack_holdout_ds004_008_s3401_3600/`
+- Refreshed guards/baselines:
+  - `05_validation/evidence/artifacts/gr-stage3-regression-baseline-v2/` (`PASS`)
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v2/` (`PASS`)
+- Added post-switch QM Stage-1 taxonomy package:
+  - `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v2/`
+- Added requested stability pack outputs:
+  - `05_validation/evidence/artifacts/stability-dual-sweep-v1/`
+  - `05_validation/evidence/artifacts/stability-phase-diagram-chi-sigma-v1/`
+  - `05_validation/evidence/artifacts/stability-scaling-test-v1/`
+  - `05_validation/evidence/artifacts/stability-perturbation-torture-v1/`
+  - `05_validation/evidence/artifacts/stability-long-emergence-v1/`
+- Added helper script:
+  - `scripts/tools/analyze_stability_phase_diagram_chi_sigma_v1.py`
+- Added switch records:
+  - `docs/GR_STAGE3_G11_V5_OFFICIAL_SWITCH.md`
+  - `docs/QM_STAGE1_G17_V3_OFFICIAL_SWITCH.md`
+- Added exports:
+  - `07_exports/results/RESULT_GR_QM_STABILITY_SPRINT_V2.md`
+  - `06_writing/paper-qng-gr-qm-stability-sprint-v2-en.md`
+- Runtime note:
+  - full coupling audit block (2500 profiles, bundled in `qm-gr-coupling-audit-v2`) was a long run (`~5h` wall-clock).
+- Scope guard:
+  - no threshold changes
+  - no formula changes
+
 ## 2026-03-04 - Coupling v2 bundle + QM Stage-2 strict taxonomy + GR/QM guard rechecks
 
 - Re-ran QM-GR coupling audit v2 chunked runners with `--resume` for all three blocks:

@@ -1546,3 +1546,74 @@ Outputs:
 - `05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-v1/pattern_summary.csv`
 - `05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-v1/feature_correlations.csv`
 - `05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-v1/report.md`
+
+## 51) GR Stage-3 G11-v5 official switch package
+
+Run candidate + promotion + official apply:
+
+```bash
+make gr_stage3_candidate_v5_primary
+make gr_stage3_candidate_v5_attack
+make gr_stage3_candidate_v5_holdout
+make gr_stage3_official_v5_apply
+```
+
+Run Stage-3 baseline/guard refresh:
+
+```bash
+python scripts/tools/build_gr_stage3_baseline_v1.py --summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v5/summary.csv --out-json 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v2/gr_stage3_baseline_official.json --baseline-id gr-stage3-official-baseline-v2 --effective-tag gr-stage3-g11-v5-official
+python scripts/tools/run_gr_stage3_regression_guard_v1.py --baseline-json 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v2/gr_stage3_baseline_official.json --summary-csv 05_validation/evidence/artifacts/gr-stage3-official-v5/summary.csv --out-dir 05_validation/evidence/artifacts/gr-stage3-regression-baseline-v2/latest_check
+```
+
+Switch record:
+
+- `docs/GR_STAGE3_G11_V5_OFFICIAL_SWITCH.md`
+
+## 52) QM Stage-1 G17-v3 official switch package
+
+Run candidate + promotion + official apply:
+
+```bash
+make qm_g17_candidate_v3_primary
+make qm_g17_candidate_v3_attack
+make qm_g17_candidate_v3_holdout
+make qm_stage1_official_v4_apply
+```
+
+Run baseline/guard/taxonomy refresh:
+
+```bash
+make qm_stage1_baseline_build_v2
+make qm_stage1_regression_guard_v2
+make qm_stage1_taxonomy_v2
+```
+
+Switch record:
+
+- `docs/QM_STAGE1_G17_V3_OFFICIAL_SWITCH.md`
+
+## 53) Requested stability stress pack (dual sweep + phase + scaling + torture + long run)
+
+Run all five packs:
+
+```bash
+make stability_requested_pack_v1
+```
+
+Or run individually:
+
+```bash
+make stability_dual_sweep_v1
+make stability_phase_diagram_chi_sigma_v1
+make stability_scaling_test_v1
+make stability_perturbation_torture_v1
+make stability_long_emergence_v1
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/stability-dual-sweep-v1/`
+- `05_validation/evidence/artifacts/stability-phase-diagram-chi-sigma-v1/`
+- `05_validation/evidence/artifacts/stability-scaling-test-v1/`
+- `05_validation/evidence/artifacts/stability-perturbation-torture-v1/`
+- `05_validation/evidence/artifacts/stability-long-emergence-v1/`

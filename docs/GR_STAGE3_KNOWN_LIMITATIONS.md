@@ -1,42 +1,34 @@
-# GR Stage-3 Known Limitations (Official v3)
+# GR Stage-3 Known Limitations (Official v5)
 
-Date: 2026-03-02  
-Effective tag: `gr-stage3-g11g12-v3-official`
+Date: 2026-03-04  
+Effective tag: `gr-stage3-g11-v5-official`
 
 ## Scope
 
-This note captures remaining known limitations after the official Stage-3 v3 governance switch and full 600-profile rerun confirmation.
+This note captures current limitations after the Stage-3 v5 governance switch.
 
 ## Current Official Readout
 
-- Source package: `05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/`
-- Profiles: `600`
-- Official Stage-3 pass: `597/600`
-- Remaining fails: `3/600` (all in `G11`)
-- `G12`: `600/600` on official v3 rerun
+- Source package: `05_validation/evidence/artifacts/gr-stage3-official-v5/`
+- Profiles (primary): `600`
+- Official Stage-3 pass (primary): `600/600`
+- Remaining primary fails: `0/600`
 
-## Remaining Fail Classes (Strict Fail Scope)
+## Current Limitation Area
 
-Source taxonomy package:
+Primary closure is complete, but non-primary tails still exist:
 
-- `05_validation/evidence/artifacts/gr-stage3-official-v3-failure-taxonomy-v1/`
-- neighborhood diagnostic package:
-  - `05_validation/evidence/artifacts/gr-stage3-g11-neighborhood-v1/`
+- attack block (`DS-002/003/006`, seeds `3601..4100`): `1459/1500`
+- holdout block (`DS-004/008`, seeds `3401..3600`): `400/400`
 
-Class split:
+Interpretation:
 
-- `g11b_slope_instability`: `1`
-- `weak_corr_multi_peak`: `1`
-- `weak_corr_sparse_graph`: `1`
-
-Local neighborhood readout (`+/-5` seeds, same dataset):
-
-- all three fail anchors are isolated (`1/11` fail in each neighborhood window)
-- no local fail clustering detected around the three anchors
-- interpretation: edge-case signatures remain, not broad local instability
+- no remaining fail class in primary Stage-3 official package;
+- tail sensitivity is now concentrated in attack distribution, not in primary closure.
 
 ## Governance Notes
 
 - No gate formula changes and no threshold edits were applied.
-- Official v3 switch was governance-layer mapping over frozen runs (`G11/G12` from candidate-v3, `G7/G8/G9` inherited).
-- Regression guard after rerun is `PASS` with zero mismatches.
+- Official v5 switch is governance-layer mapping over frozen runs.
+- Regression guard for official-v5 baseline is `PASS`:
+  - `05_validation/evidence/artifacts/gr-stage3-regression-baseline-v2/latest_check/regression_report.json`

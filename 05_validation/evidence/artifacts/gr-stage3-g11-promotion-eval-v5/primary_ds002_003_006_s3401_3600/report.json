@@ -1,0 +1,73 @@
+{
+  "eval_id": "gr-stage3-g11-primary-v5",
+  "generated_utc": "2026-03-04T09:18:32.608390Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage3-g11-candidate-v5/primary_ds002_003_006_s3401_3600/summary.csv",
+  "datasets": [
+    "DS-002",
+    "DS-003",
+    "DS-006"
+  ],
+  "criteria": {
+    "require_zero_degraded": true,
+    "require_net_uplift": false,
+    "require_per_dataset_nondegrade": true
+  },
+  "g11": {
+    "totals": {
+      "n": 600,
+      "v2_pass": 597,
+      "v3_pass": 600,
+      "v2_fail": 3,
+      "v3_fail": 0,
+      "improved": 3,
+      "degraded": 0,
+      "uplift_pp": 0.5,
+      "failcase_uplift_pp": 100.0
+    },
+    "checks": {
+      "zero_degraded": true,
+      "net_uplift_failcases": true,
+      "per_dataset_nondegrade": true
+    },
+    "decision": true
+  },
+  "g12": {
+    "totals": {
+      "n": 600,
+      "v2_pass": 600,
+      "v3_pass": 600,
+      "v2_fail": 0,
+      "v3_fail": 0,
+      "improved": 0,
+      "degraded": 0,
+      "uplift_pp": 0.0,
+      "failcase_uplift_pp": 0.0
+    },
+    "checks": {
+      "zero_degraded": true,
+      "net_uplift_failcases": true,
+      "per_dataset_nondegrade": true
+    },
+    "decision": true
+  },
+  "stage3": {
+    "totals": {
+      "n": 600,
+      "v2_pass": 597,
+      "v3_pass": 600,
+      "v2_fail": 3,
+      "v3_fail": 0,
+      "improved": 3,
+      "degraded": 0,
+      "uplift_pp": 0.5,
+      "failcase_uplift_pp": 100.0
+    },
+    "checks": {
+      "zero_degraded": true,
+      "net_uplift_failcases": true,
+      "per_dataset_nondegrade": true
+    },
+    "decision": true
+  },
+  "overall_decision": "PASS"
+}

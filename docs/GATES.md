@@ -50,28 +50,30 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 - `GR-Stage-2` prereg expansion lane (strong-field + 3+1 + tensor): `docs/GR_STAGE2_PREREG.md`.
 - `GR-Stage-3` prereg extension lane (adds geometry + conservation checks): `docs/GR_STAGE3_PREREG.md`.
 - Stage-3 official decision policy (governance-layer mapping on frozen runs):
-  - `G11` official uses candidate-v3 decision status
-  - `G12` official uses candidate-v3 decision status
+  - `G11` official uses candidate-v5 decision status
+  - `G12` official uses candidate-v5 decision status
   - `G7/G8/G9` remain inherited unchanged
   - runner: `scripts/tools/run_gr_stage3_official_v3.py`
-  - effective tag: `gr-stage3-g11g12-v3-official`
+  - effective tag: `gr-stage3-g11-v5-official`
 - Stage-3 official switch record:
   - `docs/GR_STAGE3_OFFICIAL_SWITCH.md` (v2, historical)
-  - `docs/GR_STAGE3_G11G12_V3_OFFICIAL_SWITCH.md` (v3, current)
+  - `docs/GR_STAGE3_G11G12_V3_OFFICIAL_SWITCH.md` (v3, historical)
+  - `docs/GR_STAGE3_G11_V5_OFFICIAL_SWITCH.md` (v5, current)
 - Stage-2 official switch records:
   - v2: `docs/GR_STAGE2_OFFICIAL_SWITCH.md`
   - v3: `docs/GR_STAGE2_G11_V3_OFFICIAL_SWITCH.md`
   - v4: `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md`
 - QM Stage-1 official decision policy (governance-layer mapping on frozen runs):
-  - `G17` official remains inherited from prior official-v2 governance output
+  - `G17` official uses candidate-v3 decision status
   - `G18` official uses candidate-v2 decision status (`G18d-v2`)
   - `G17-v1` and `G18-v1` remain legacy diagnostic-only
   - `G19/G20` remain inherited unchanged
-  - runner: `scripts/tools/run_qm_stage1_official_v3.py`
-  - effective tag: `qm-stage1-g18-v2-official`
+  - runner: `scripts/tools/run_qm_stage1_official_v4.py`
+  - effective tag: `qm-stage1-g17-v3-official`
 - QM Stage-1 official switch records:
   - `docs/QM_STAGE1_G17_V2_OFFICIAL_SWITCH.md` (historical, v2)
-  - `docs/QM_STAGE1_G18_V2_OFFICIAL_SWITCH.md` (current, v3)
+  - `docs/QM_STAGE1_G18_V2_OFFICIAL_SWITCH.md` (historical, v3)
+  - `docs/QM_STAGE1_G17_V3_OFFICIAL_SWITCH.md` (current, v4)
 - `QM-Stage-1` freeze contract:
   - `docs/QM_STAGE1_FREEZE.md`
 - `QM-Stage-2` prereg lane (candidate-only, not official):

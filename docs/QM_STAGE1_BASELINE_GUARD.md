@@ -1,10 +1,10 @@
-# QM Stage-1 Baseline + Regression Guard (v1)
+# QM Stage-1 Baseline + Regression Guard (v2)
 
 This document defines the QM Stage-1 baseline/guard workflow, analogous to GR baseline guards.
 
 ## Scope
 
-- Lane: QM Stage-1 official (`qm-stage1-g18-v2-official`)
+- Lane: QM Stage-1 official (`qm-stage1-g17-v3-official`)
 - Blocks:
   - primary (`DS-002/003/006`, seeds `3401..3600`)
   - attack (`DS-002/003/006`, seeds `3601..4100`)
@@ -13,18 +13,18 @@ This document defines the QM Stage-1 baseline/guard workflow, analogous to GR ba
 ## Baseline Inputs
 
 - Official summaries:
-  - `05_validation/evidence/artifacts/qm-stage1-official-v3/*/summary.csv`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v4/*/summary.csv`
 - Promotion artifacts:
-  - `05_validation/evidence/artifacts/qm-g18-promotion-eval-v1/*/report.json`
+  - `05_validation/evidence/artifacts/qm-g17-v3-promotion-eval-v1/*/report.json`
 - Numeric metric source summaries (for descriptive min/median/p95 stats):
-  - `05_validation/evidence/artifacts/qm-g18-candidate-v2/*/summary.csv`
+  - `05_validation/evidence/artifacts/qm-g17-candidate-v3/*/summary.csv`
 
 ## Build Baselines
 
 One command:
 
 ```bash
-make qm_stage1_baseline_build
+make qm_stage1_baseline_build_v2
 ```
 
 Equivalent direct builder calls:
@@ -37,9 +37,9 @@ python scripts/tools/build_qm_stage1_baseline_v1.py --block holdout
 
 Generated baseline JSONs:
 
-- `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_primary.json`
-- `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_attack.json`
-- `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/qm_stage1_baseline_holdout.json`
+- `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v2/qm_stage1_baseline_primary.json`
+- `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v2/qm_stage1_baseline_attack.json`
+- `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v2/qm_stage1_baseline_holdout.json`
 
 Each baseline stores:
 
@@ -53,13 +53,13 @@ Each baseline stores:
 One command:
 
 ```bash
-make qm_stage1_regression_guard
+make qm_stage1_regression_guard_v2
 ```
 
 Equivalent direct guard call:
 
 ```bash
-python scripts/tools/run_qm_stage1_regression_guard_v1.py --out-dir 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/latest_check
+python scripts/tools/run_qm_stage1_regression_guard_v1.py --out-dir 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v2/latest_check
 ```
 
 ## Guard Decision Rules
@@ -77,6 +77,8 @@ Guard returns `PASS` only if all three blocks (`primary`, `attack`, `holdout`) p
 Under:
 
 - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/latest_check/`
+  - historical v1 path: `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/latest_check/`
+  - current v2 path: `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v2/latest_check/`
 
 Files:
 

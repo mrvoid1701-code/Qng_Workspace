@@ -1,0 +1,12 @@
+{
+  "generated_utc": "2026-03-04T09:25:02.640916Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage3-g11-candidate-v5/attack_holdout_ds004_008_s3401_3600/summary.csv",
+  "policy_id": "gr-stage3-official-v5-attack-holdout-v1",
+  "effective_tag": "gr-stage3-g11-v5-official",
+  "source_policy_id": "gr-stage3-g11-candidate-v5",
+  "notes": [
+    "Stage-3 official v3 uses candidate-v3 decision mapping for G11/G12.",
+    "G7/G8/G9 statuses are inherited unchanged from source summary.",
+    "No gate formulas or thresholds are modified."
+  ]
+}

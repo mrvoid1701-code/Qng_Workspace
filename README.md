@@ -4,8 +4,8 @@ Research workspace for **Quantum Node Gravity (QNG)** validation, reproducibilit
 
 ## Current Snapshot
 
-- `GR` lane: Stage-3 official policy frozen (`gr-stage3-g11g12-v3-official`)
-- `QM` lane: Stage-1 official freeze active (`qm-stage1-freeze-2026-03-03`)
+- `GR` lane: Stage-3 official policy frozen (`gr-stage3-g11-v5-official`)
+- `QM` lane: Stage-1 official policy active (`qm-stage1-g17-v3-official`)
 - `Stability` lane: convergence v6 official + baseline/guard active (`stability-convergence-v6-official`)
 - `QM<->GR` coupling audit v2: full primary/attack/holdout package available
 

@@ -16,10 +16,10 @@ QNG workspace is in a reproducibility-hardening phase:
 2. Replace placeholder holdout residual rows with publication-grade values where still pending.
 3. Extend public-ready export bundles in `07_exports/` from locked evidence.
 4. Keep run manifests and keepfiles policy aligned when adding new gates/runners.
-5. Keep Stage-3 official baseline/guard frozen (`gr-stage3-g11g12-v3-official`) and enforce non-regression checks on reruns.
-6. Track remaining Stage-3 official fail classes (`3/600`, all `G11`) via preregistered estimator hardening (no threshold tuning).
+5. Keep Stage-3 official baseline/guard frozen (`gr-stage3-g11-v5-official`) and enforce non-regression checks on reruns.
+6. Preserve Stage-3 primary closure (`600/600`) while monitoring attack/holdout tails under preregistered estimator hardening (no threshold tuning).
 7. Keep QM lane criteria separate from GR promotion criteria while Stage-2/Stage-3 official baselines remain frozen.
-8. Maintain `QM-Stage-1` official policy freeze (`qm-stage1-g18-v2-official`) and track remaining QM-lane fail classes with coupling audit checks.
+8. Maintain `QM-Stage-1` official policy freeze (`qm-stage1-g17-v3-official`) and track remaining QM-lane fail classes with coupling audit checks.
 9. Keep `QM-Stage-2` in prereg-only lane (`docs/QM_STAGE2_PREREG.md`) with strict failure taxonomy (`qm-stage2-failure-taxonomy-v1`) and single-gate candidate focus (`G17` first, prereg scaffold: `qm-stage2-g17-candidate-v1`).
 10. Maintain coupling backbone evidence package (`qm-gr-coupling-audit-v2/bundle-v1`) as fixed pass reference (`2500/2500`, GR guard pre/post pass) while iterating QM candidates.
 11. Harden the stability-term theory lane (`qng-stability-v1-strict`) with locked action/update definitions and preregistered stress invariants.
