@@ -1,18 +1,18 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
-QNG Master Gate Runner — runs all G10–G20 gates in sequence and
+QNG Master Gate Runner - runs all G10-G20 gates in sequence and
 produces a single consolidated health report.
 
 Usage:
     python run_all_gates.py                        # DS-002, seed 3401
     python run_all_gates.py --dataset-id DS-003    # alternate dataset
-    python run_all_gates.py --fast                 # skip slow gates (G17–G20)
+    python run_all_gates.py --fast                 # skip slow gates (G17-G20)
     python run_all_gates.py --gate G17             # run single gate
 
 Output:
-    gates_summary.csv      — per-gate: status, key metric, value, threshold, margin%
-    gates_summary.txt      — human-readable table
-    gates_all_pass.flag    — created iff ALL gates pass (CI sentinel)
+    gates_summary.csv      - per-gate: status, key metric, value, threshold, margin%
+    gates_summary.txt      - human-readable table
+    gates_all_pass.flag    - created iff ALL gates pass (CI sentinel)
 """
 
 from __future__ import annotations
@@ -30,7 +30,7 @@ ROOT    = Path(__file__).resolve().parent
 SCRIPTS = ROOT / "scripts"
 ARTS    = ROOT / "05_validation" / "evidence" / "artifacts"
 
-# ── Gate registry ─────────────────────────────────────────────────────────────
+# Gate registry
 GATES = [
     dict(id="G10", script="run_qng_covariant_metric_v1.py",
          art_dir="qng-covariant-metric-v1",
@@ -51,15 +51,15 @@ GATES = [
     dict(id="G14", script="run_qng_covariant_cons_v1.py",
          art_dir="qng-covariant-cons-v1",
          metric_csv="metric_checks_cov_cons.csv",
-         label="Covariant conservation ∇T=0"),
+         label="Covariant conservation nabla(T)=0"),
     dict(id="G15", script="run_qng_ppn_v1.py",
          art_dir="qng-ppn-v1",
          metric_csv="metric_checks_ppn.csv",
-         label="PPN parameters (γ, β, Shapiro)"),
+         label="PPN parameters (gamma, beta, Shapiro)"),
     dict(id="G16", script="run_qng_action_v1.py",
          art_dir="qng-action-v1",
          metric_csv="metric_checks_action.csv",
-         label="Action functional S[g,σ]"),
+         label="Action functional S[g,sigma]"),
     dict(id="G17", script="run_qng_qm_bridge_v1.py",
          art_dir="qng-qm-bridge-v1",
          metric_csv="metric_checks_qm.csv",
@@ -75,13 +75,13 @@ GATES = [
     dict(id="G20", script="run_qng_semiclassical_v1.py",
          art_dir="qng-semiclassical-v1",
          metric_csv="metric_checks_semi.csv",
-         label="Semiclassical back-reaction (GR↔QM)"),
+         label="Semiclassical back-reaction (GR<->QM)"),
 ]
 
 SLOW_GATES = {"G17", "G18", "G19", "G20"}   # eigenmodes: ~3-5s each
 
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
+# Helpers
 def read_metric_csv(path: Path) -> list[dict]:
     if not path.exists():
         return []
@@ -168,54 +168,53 @@ def gate_health(rows: list[dict]) -> list[dict]:
             threshold=row.get("threshold", "?"),
             status=row.get("status", "?"),
             margin_pct=f"{m:.1f}" if m is not None else "n/a",
-            alert="⚠" if (m is not None and m < 15.0) else "",
+            alert="WARN" if (m is not None and m < 15.0) else "",
         ))
     return out
 
 
 def print_summary(results: list[dict], elapsed_total: float) -> None:
     print()
-    print("╔" + "═"*68 + "╗")
-    print("║  QNG GATE SUITE — SUMMARY                                        ║")
-    print("╠" + "═"*68 + "╣")
     all_pass = all(r["decision"] == "pass" for r in results)
+    print("+" + "-"*68 + "+")
+    print("|  QNG GATE SUITE - SUMMARY                                        |")
+    print("+" + "-"*68 + "+")
+
     for r in results:
-        icon = "✓" if r["decision"] == "pass" else "✗"
+        icon = "OK" if r["decision"] == "pass" else "FAIL"
         t = f"{r['elapsed']:.1f}s" if r["ran"] else "---"
         label = r["label"][:38].ljust(38)
-        print(f"║  {icon} {r['gate_id']}  {label}  {t:>6}  ║")
+        print(f"|  {icon:<4} {r['gate_id']}  {label}  {t:>6}  |")
+    print("+" + "-"*68 + "+")
 
-    print("╠" + "═"*68 + "╣")
-    status = "ALL PASS ✓" if all_pass else "SOME FAIL ✗"
+    status = "ALL PASS" if all_pass else "SOME FAIL"
     n_pass = sum(1 for r in results if r["decision"] == "pass")
-    print(f"║  {status}   {n_pass}/{len(results)} gates   total {elapsed_total:.1f}s"
-          .ljust(69) + "║")
-    print("╚" + "═"*68 + "╝")
+    line = f"  {status}   {n_pass}/{len(results)} gates   total {elapsed_total:.1f}s".ljust(69)
+    print(f"|{line}|")
+    print("+" + "-"*68 + "+")
 
-    # Fragile metrics
     fragile = []
     for r in results:
         for h in gate_health(r["rows"]):
             try:
                 m = float(h["margin_pct"])
                 if m < 20.0:
-                    fragile.append((r["gate_id"], h["sub_gate"], h["metric"],
-                                    h["value"], h["threshold"], h["margin_pct"]))
+                    fragile.append((r["gate_id"], h["sub_gate"], h["metric"], h["value"], h["threshold"], h["margin_pct"]))
             except ValueError:
                 pass
     if fragile:
-        print(f"\n  ⚠  FRAGILE METRICS (margin < 20%):")
+        print("\n  WARN  FRAGILE METRICS (margin < 20%):")
         for gid, sg, metric, val, thr, mp in fragile:
             print(f"     {gid}/{sg}  {metric:<30} val={val}  thr={thr}  margin={mp}%")
 
 
-# ── Main ──────────────────────────────────────────────────────────────────────
+# Main
 def main() -> int:
-    p = argparse.ArgumentParser(description="QNG master gate runner G10–G20.")
+    p = argparse.ArgumentParser(description="QNG master gate runner G10-G20.")
     p.add_argument("--dataset-id", default="DS-002")
     p.add_argument("--seed",       type=int, default=3401)
     p.add_argument("--fast",       action="store_true",
-                   help="Skip slow gates (G17–G20, ~3-5s each)")
+                   help="Skip slow gates (G17-G20, ~3-5s each)")
     p.add_argument("--gate",       help="Run only this gate (e.g. G17)")
     p.add_argument("--no-run",     action="store_true",
                    help="Read existing artifacts without re-running scripts")
@@ -253,16 +252,16 @@ def main() -> int:
         else:
             r = run_gate(gate, args.dataset_id, args.seed)
 
-        icon = "✓" if r["decision"] == "pass" else "✗"
+        icon = "OK" if r["decision"] == "pass" else "FAIL"
         print(f" {icon} ({r['elapsed']:.1f}s)")
         results.append(r)
 
     elapsed_total = time.time() - t_total_0
 
-    # ── Print summary ─────────────────────────────────────────────────────────
+    # Print summary
     print_summary(results, elapsed_total)
 
-    # ── Write gates_summary.csv ───────────────────────────────────────────────
+    # Write gates_summary.csv
     out_rows = []
     for r in results:
         for h in gate_health(r["rows"]):
@@ -287,9 +286,9 @@ def main() -> int:
             w.writerows(out_rows)
         print(f"\n  Gates summary written to: {csv_path}")
 
-    # ── Write human-readable text ─────────────────────────────────────────────
+    # Write human-readable text
     txt_lines = [
-        "QNG Gate Suite — Full Health Report",
+        "QNG Gate Suite - Full Health Report",
         f"Generated: {datetime.utcnow().isoformat()}Z",
         f"Dataset: {args.dataset_id}  Seed: {args.seed}",
         "",
@@ -313,7 +312,7 @@ def main() -> int:
 
     (ROOT / "gates_summary.txt").write_text("\n".join(txt_lines), encoding="utf-8")
 
-    # ── CI sentinel ───────────────────────────────────────────────────────────
+    # CI sentinel
     flag = ROOT / "gates_all_pass.flag"
     all_pass = all(r["decision"] == "pass" for r in results)
     if all_pass:
@@ -326,3 +325,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+

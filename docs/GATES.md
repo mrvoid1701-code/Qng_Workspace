@@ -17,8 +17,8 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 | G11 | Complete Einstein-equation closure checks | `scripts/run_qng_einstein_eq_v1.py` |
 | G12 | Known GR solutions sanity (de Sitter + Schwarzschild forms) | `scripts/run_qng_gr_solutions_v1.py` |
 | G13 | Covariant metric-wave dynamics | `scripts/run_qng_covariant_wave_v1.py` |
-| G14 | Covariant conservation (`âˆ‡_Î¼ T^{Î¼Î½}=0`) | `scripts/run_qng_covariant_cons_v1.py` |
-| G15 | PPN parameters (`Î³`, `Î²`) + Shapiro-delay checks (`G15b-v1` legacy radial-shell, `G15b-v2` official potential-quantile) | `scripts/run_qng_ppn_v1.py` |
+| G14 | Covariant conservation (`nabla_mu T^{mu nu}=0`) | `scripts/run_qng_covariant_cons_v1.py` |
+| G15 | PPN parameters (`gamma`, `beta`) + Shapiro-delay checks (`G15b-v1` legacy radial-shell, `G15b-v2` official potential-quantile) | `scripts/run_qng_ppn_v1.py` |
 | G16 | Discrete action functional and Euler-Lagrange closure | `scripts/run_qng_action_v1.py` |
 | G17 | Canonical quantization on graph (QM bridge; `G17-v2` official, `G17-v1` legacy diagnostic) | `scripts/run_qng_qm_bridge_v1.py` |
 | G18 | Quantum information and emergent geometry diagnostics | `scripts/run_qng_qm_info_v1.py` |
@@ -64,17 +64,18 @@ Gate map for the core GR/QM chain and metric hardening sequence.
   - v3: `docs/GR_STAGE2_G11_V3_OFFICIAL_SWITCH.md`
   - v4: `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md`
 - QM Stage-1 official decision policy (governance-layer mapping on frozen runs):
-  - `G17` official remains inherited from prior official-v4 policy (`G17-v3`)
-  - `G18` official uses candidate-v3 decision status (`G18d-v3`)
+  - `G17` official uses candidate-v4 decision status (`G17b-v4`)
+  - `G18` official remains inherited from prior official-v5 policy (`G18d-v3`)
   - `G17-v1` and `G18-v1` remain legacy diagnostic-only
   - `G19/G20` remain inherited unchanged
-  - runner: `scripts/tools/run_qm_stage1_official_v3.py` (policy id `qm-stage1-official-v5`)
-  - effective tag: `qm-stage1-g18-v3-official`
+  - runner: `scripts/tools/run_qm_stage1_official_v4.py` (policy id `qm-stage1-official-v6`)
+  - effective tag: `qm-stage1-g17b-v4-official`
 - QM Stage-1 official switch records:
   - `docs/QM_STAGE1_G17_V2_OFFICIAL_SWITCH.md` (historical, v2)
   - `docs/QM_STAGE1_G18_V2_OFFICIAL_SWITCH.md` (historical, v3)
   - `docs/QM_STAGE1_G17_V3_OFFICIAL_SWITCH.md` (historical, v4)
-  - `docs/QM_STAGE1_G18_V3_OFFICIAL_SWITCH.md` (current, v5)
+  - `docs/QM_STAGE1_G18_V3_OFFICIAL_SWITCH.md` (historical, v5)
+  - `docs/QM_STAGE1_G17B_V4_OFFICIAL_SWITCH.md` (current, v6)
 - `QM-Stage-1` freeze contract:
   - `docs/QM_STAGE1_FREEZE.md`
 - `QM-Stage-2` prereg lane (candidate-only, not official):

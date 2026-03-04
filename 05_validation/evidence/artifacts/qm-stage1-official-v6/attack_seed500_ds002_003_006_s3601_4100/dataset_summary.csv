@@ -1,0 +1,4 @@
+dataset_id,n_profiles,g17_legacy_pass,g17_official_pass,g18_official_pass,qm_lane_legacy_pass,qm_lane_official_pass,improved_g17,degraded_g17,improved_qm_lane,degraded_qm_lane
+DS-002,500,499,499,472,471,471,0,0,0,0
+DS-003,500,498,498,445,444,444,0,0,0,0
+DS-006,500,419,495,483,401,472,76,0,71,0

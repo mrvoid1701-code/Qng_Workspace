@@ -1,0 +1,16 @@
+block_id,field,baseline_pass_rate,observed_pass_rate,delta_pp,degraded
+primary,g17_status,0.993333,0.993333,0.0,false
+primary,g18_status,0.946667,0.946667,0.0,false
+primary,g19_status,0.993333,0.993333,0.0,false
+primary,g20_status,1.0,1.0,0.0,false
+primary,all_pass_qm_lane,0.933333,0.933333,0.0,false
+attack,g17_status,0.994667,0.994667,0.0,false
+attack,g18_status,0.933333,0.933333,0.0,false
+attack,g19_status,0.995333,0.995333,0.0,false
+attack,g20_status,1.0,1.0,0.0,false
+attack,all_pass_qm_lane,0.924667,0.924667,0.0,false
+holdout,g17_status,1.0,1.0,0.0,false
+holdout,g18_status,0.93,0.93,0.0,false
+holdout,g19_status,1.0,1.0,0.0,false
+holdout,g20_status,1.0,1.0,0.0,false
+holdout,all_pass_qm_lane,0.93,0.93,0.0,false
