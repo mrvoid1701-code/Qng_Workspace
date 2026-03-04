@@ -71,6 +71,12 @@ help:
 	@echo "  make qm_g18_promotion_primary"
 	@echo "  make qm_g18_promotion_attack"
 	@echo "  make qm_g18_promotion_holdout"
+	@echo "  make qm_g18_candidate_v3_primary"
+	@echo "  make qm_g18_candidate_v3_attack"
+	@echo "  make qm_g18_candidate_v3_holdout"
+	@echo "  make qm_stage1_official_v5_apply"
+	@echo "  make qm_stage1_baseline_build_v3"
+	@echo "  make qm_stage1_regression_guard_v3"
 	@echo "  make stability_v1_stress"
 	@echo "  make stability_v1_taxonomy"
 	@echo "  make stability_energy_v2_full"
@@ -318,6 +324,33 @@ qm_g18_promotion_attack:
 
 qm_g18_promotion_holdout:
 	$(PYTHON) scripts/tools/evaluate_qm_g18_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v2/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600 --eval-id qm-g18-attack-holdout-v2 --strict-datasets DS-004,DS-008 --require-zero-degraded --require-per-dataset-nondegrade --no-require-net-uplift --no-require-uplift-datasets
+
+qm_g18_candidate_v3_primary:
+	$(PYTHON) scripts/tools/run_qm_g18_candidate_eval_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v4/primary_ds002_003_006_s3401_3600/summary.csv --candidate-summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v3/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18-candidate-v3/primary_ds002_003_006_s3401_3600
+	$(PYTHON) scripts/tools/evaluate_qm_g18_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v3/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18-v3-promotion-eval-v1/primary_ds002_003_006_s3401_3600 --eval-id qm-g18-primary-v3 --strict-datasets DS-002,DS-003,DS-006 --require-zero-degraded --require-per-dataset-nondegrade --require-net-uplift --require-uplift-datasets --uplift-datasets DS-003
+
+qm_g18_candidate_v3_attack:
+	$(PYTHON) scripts/tools/run_qm_g18_candidate_eval_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v4/attack_seed500_ds002_003_006_s3601_4100/summary.csv --candidate-summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v3/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18-candidate-v3/attack_seed500_ds002_003_006_s3601_4100
+	$(PYTHON) scripts/tools/evaluate_qm_g18_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v3/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18-v3-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100 --eval-id qm-g18-attack-seed500-v3 --strict-datasets DS-002,DS-003,DS-006 --require-zero-degraded --require-per-dataset-nondegrade --require-net-uplift --require-uplift-datasets --uplift-datasets DS-003
+
+qm_g18_candidate_v3_holdout:
+	$(PYTHON) scripts/tools/run_qm_g18_candidate_eval_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v4/attack_holdout_ds004_008_s3401_3600/summary.csv --candidate-summary-csv 05_validation/evidence/artifacts/qm-g17-candidate-v3/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18-candidate-v3/attack_holdout_ds004_008_s3401_3600
+	$(PYTHON) scripts/tools/evaluate_qm_g18_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v3/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18-v3-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600 --eval-id qm-g18-attack-holdout-v3 --strict-datasets DS-004,DS-008 --require-zero-degraded --require-per-dataset-nondegrade --no-require-net-uplift --no-require-uplift-datasets
+
+qm_stage1_official_v5_apply:
+	$(PYTHON) scripts/tools/run_qm_stage1_official_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v3/primary_ds002_003_006_s3401_3600/summary.csv --reference-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v4/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v5/primary_ds002_003_006_s3401_3600 --policy-id qm-stage1-official-v5 --effective-tag qm-stage1-g18-v3-official --source-policy-id qm-g18-candidate-v3-local-ds-generalized --reference-policy-id qm-stage1-official-v4
+	$(PYTHON) scripts/tools/run_qm_stage1_official_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v3/attack_seed500_ds002_003_006_s3601_4100/summary.csv --reference-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v4/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v5/attack_seed500_ds002_003_006_s3601_4100 --policy-id qm-stage1-official-v5-attack-seed500 --effective-tag qm-stage1-g18-v3-official --source-policy-id qm-g18-candidate-v3-local-ds-generalized --reference-policy-id qm-stage1-official-v4
+	$(PYTHON) scripts/tools/run_qm_stage1_official_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v3/attack_holdout_ds004_008_s3401_3600/summary.csv --reference-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v4/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v5/attack_holdout_ds004_008_s3401_3600 --policy-id qm-stage1-official-v5-attack-holdout --effective-tag qm-stage1-g18-v3-official --source-policy-id qm-g18-candidate-v3-local-ds-generalized --reference-policy-id qm-stage1-official-v4
+
+qm_stage1_baseline_build_v3:
+	$(PYTHON) scripts/tools/build_qm_stage1_baseline_v1.py --block primary --summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v5/primary_ds002_003_006_s3401_3600/summary.csv --metrics-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v3/primary_ds002_003_006_s3401_3600/summary.csv --promotion-report-json 05_validation/evidence/artifacts/qm-g18-v3-promotion-eval-v1/primary_ds002_003_006_s3401_3600/report.json --out-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v3/qm_stage1_baseline_primary.json --baseline-id qm-stage1-baseline-primary-v3 --effective-tag qm-stage1-g18-v3-official
+	$(PYTHON) scripts/tools/build_qm_stage1_baseline_v1.py --block attack --summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v5/attack_seed500_ds002_003_006_s3601_4100/summary.csv --metrics-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v3/attack_seed500_ds002_003_006_s3601_4100/summary.csv --promotion-report-json 05_validation/evidence/artifacts/qm-g18-v3-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100/report.json --out-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v3/qm_stage1_baseline_attack.json --baseline-id qm-stage1-baseline-attack-v3 --effective-tag qm-stage1-g18-v3-official
+	$(PYTHON) scripts/tools/build_qm_stage1_baseline_v1.py --block holdout --summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v5/attack_holdout_ds004_008_s3401_3600/summary.csv --metrics-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v3/attack_holdout_ds004_008_s3401_3600/summary.csv --promotion-report-json 05_validation/evidence/artifacts/qm-g18-v3-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600/report.json --out-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v3/qm_stage1_baseline_holdout.json --baseline-id qm-stage1-baseline-holdout-v3 --effective-tag qm-stage1-g18-v3-official
+
+qm_stage1_regression_guard_v3:
+	$(PYTHON) scripts/tools/run_qm_stage1_regression_guard_v1.py --baseline-primary-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v3/qm_stage1_baseline_primary.json --baseline-attack-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v3/qm_stage1_baseline_attack.json --baseline-holdout-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v3/qm_stage1_baseline_holdout.json --summary-primary-csv 05_validation/evidence/artifacts/qm-stage1-official-v5/primary_ds002_003_006_s3401_3600/summary.csv --summary-attack-csv 05_validation/evidence/artifacts/qm-stage1-official-v5/attack_seed500_ds002_003_006_s3601_4100/summary.csv --summary-holdout-csv 05_validation/evidence/artifacts/qm-stage1-official-v5/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v3/latest_check
+
+.PHONY: qm_g18_candidate_v3_primary qm_g18_candidate_v3_attack qm_g18_candidate_v3_holdout qm_stage1_official_v5_apply qm_stage1_baseline_build_v3 qm_stage1_regression_guard_v3
 
 stability_v1_stress:
 	$(PYTHON) scripts/tools/run_stability_stress_v1.py --out-dir 05_validation/evidence/artifacts/stability-v1

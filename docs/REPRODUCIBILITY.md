@@ -1617,3 +1617,36 @@ Main outputs:
 - `05_validation/evidence/artifacts/stability-scaling-test-v1/`
 - `05_validation/evidence/artifacts/stability-perturbation-torture-v1/`
 - `05_validation/evidence/artifacts/stability-long-emergence-v1/`
+
+## 54) QM Stage-1 G18-v3 promotion + official-v5 apply
+
+Run G18-v3 candidate + promotion:
+
+```bash
+make qm_g18_candidate_v3_primary
+make qm_g18_candidate_v3_attack
+make qm_g18_candidate_v3_holdout
+```
+
+Apply official-v5 mapping:
+
+```bash
+make qm_stage1_official_v5_apply
+```
+
+Refresh baseline/guard:
+
+```bash
+make qm_stage1_baseline_build_v3
+make qm_stage1_regression_guard_v3
+```
+
+Optional post-switch taxonomy:
+
+```bash
+python scripts/tools/analyze_qm_stage1_failures_v1.py \
+  --summary-csvs 05_validation/evidence/artifacts/qm-stage1-official-v5/primary_ds002_003_006_s3401_3600/summary.csv,05_validation/evidence/artifacts/qm-stage1-official-v5/attack_seed500_ds002_003_006_s3601_4100/summary.csv,05_validation/evidence/artifacts/qm-stage1-official-v5/attack_holdout_ds004_008_s3401_3600/summary.csv \
+  --metrics-summary-csvs 05_validation/evidence/artifacts/qm-g18-candidate-v3/primary_ds002_003_006_s3401_3600/summary.csv,05_validation/evidence/artifacts/qm-g18-candidate-v3/attack_seed500_ds002_003_006_s3601_4100/summary.csv,05_validation/evidence/artifacts/qm-g18-candidate-v3/attack_holdout_ds004_008_s3401_3600/summary.csv \
+  --promotion-report-jsons 05_validation/evidence/artifacts/qm-g18-v3-promotion-eval-v1/primary_ds002_003_006_s3401_3600/report.json,05_validation/evidence/artifacts/qm-g18-v3-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100/report.json,05_validation/evidence/artifacts/qm-g18-v3-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600/report.json \
+  --out-dir 05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v3
+```

@@ -1,10 +1,10 @@
-# QM Stage-1 Baseline + Regression Guard (v2)
+# QM Stage-1 Baseline + Regression Guard (v3)
 
 This document defines the QM Stage-1 baseline/guard workflow, analogous to GR baseline guards.
 
 ## Scope
 
-- Lane: QM Stage-1 official (`qm-stage1-g17-v3-official`)
+- Lane: QM Stage-1 official (`qm-stage1-g18-v3-official`)
 - Blocks:
   - primary (`DS-002/003/006`, seeds `3401..3600`)
   - attack (`DS-002/003/006`, seeds `3601..4100`)
@@ -13,11 +13,11 @@ This document defines the QM Stage-1 baseline/guard workflow, analogous to GR ba
 ## Baseline Inputs
 
 - Official summaries:
-  - `05_validation/evidence/artifacts/qm-stage1-official-v4/*/summary.csv`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v5/*/summary.csv`
 - Promotion artifacts:
-  - `05_validation/evidence/artifacts/qm-g17-v3-promotion-eval-v1/*/report.json`
+  - `05_validation/evidence/artifacts/qm-g18-v3-promotion-eval-v1/*/report.json`
 - Numeric metric source summaries (for descriptive min/median/p95 stats):
-  - `05_validation/evidence/artifacts/qm-g17-candidate-v3/*/summary.csv`
+  - `05_validation/evidence/artifacts/qm-g18-candidate-v3/*/summary.csv`
 
 ## Build Baselines
 
@@ -78,7 +78,8 @@ Under:
 
 - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/latest_check/`
   - historical v1 path: `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v1/latest_check/`
-  - current v2 path: `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v2/latest_check/`
+  - historical v2 path: `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v2/latest_check/`
+  - current v3 path: `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v3/latest_check/`
 
 Files:
 

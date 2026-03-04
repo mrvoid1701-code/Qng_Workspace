@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-03-04 - QM Stage-1 G18-v3 candidate promotion + official-v5 switch
+
+- Added candidate evaluator:
+  - `scripts/tools/run_qm_g18_candidate_eval_v3.py`
+- Executed G18-v3 promotion package:
+  - `05_validation/evidence/artifacts/qm-g18-candidate-v3/`
+  - `05_validation/evidence/artifacts/qm-g18-v3-promotion-eval-v1/`
+- Promotion readout (`degraded=0` on all blocks):
+  - primary lane: `513/600 -> 529/600`
+  - attack lane: `1255/1500 -> 1316/1500`
+  - holdout lane: `360/400 -> 372/400`
+- Applied official QM Stage-1 v5 mapping:
+  - `05_validation/evidence/artifacts/qm-stage1-official-v5/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v5/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v5/attack_holdout_ds004_008_s3401_3600/`
+- Refreshed baseline/guard:
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v3/` (`PASS`)
+- Added post-switch taxonomy:
+  - `05_validation/evidence/artifacts/qm-stage1-failure-taxonomy-v3/`
+  - fail profiles improved: `372/2500 -> 283/2500`
+- Added switch/result notes:
+  - `docs/QM_STAGE1_G18_V3_OFFICIAL_SWITCH.md`
+  - `07_exports/results/RESULT_QM_STAGE1_G18_V3_SWITCH_V1.md`
+  - `06_writing/paper-qm-stage1-g18-v3-switch-note-v1-en.md`
+- Scope guard:
+  - no threshold changes
+  - no formula changes
+
 ## 2026-03-04 - GR Stage-3 v5 switch + QM Stage-1 v4 switch + stability stress pack
 
 - Added candidate evaluators:

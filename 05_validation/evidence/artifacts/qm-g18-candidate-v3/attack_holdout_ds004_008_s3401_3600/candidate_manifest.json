@@ -1,0 +1,20 @@
+{
+  "generated_utc": "2026-03-04T09:45:51.841687Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v4/attack_holdout_ds004_008_s3401_3600/summary.csv",
+  "candidate_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-g17-candidate-v3/attack_holdout_ds004_008_s3401_3600/summary.csv",
+  "profiles": 400,
+  "policy_id": "qm-g18-candidate-v3-local-ds-generalized",
+  "mix_ratio_threshold": 0.9,
+  "mix_distance_threshold": 0.25,
+  "basin_quantile": 0.15,
+  "local_walks": 80,
+  "local_steps": 12,
+  "local_t_lo": 4,
+  "local_t_hi": 10,
+  "ds_lo_default": 1.2,
+  "ds_hi_default": 3.5,
+  "notes": [
+    "No edits to core G18 formulas/thresholds.",
+    "Candidate is governance-layer generalized local-ds recovery."
+  ]
+}

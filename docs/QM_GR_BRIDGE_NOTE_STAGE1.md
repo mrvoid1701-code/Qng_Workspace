@@ -14,8 +14,8 @@ The coupling point is `G20`, where semiclassical terms are evaluated while prese
 
 ## 2) What Is Frozen
 
-- GR official policy: `gr-stage3-g11g12-v3-official`
-- QM official policy: `qm-stage1-g18-v2-official`
+- GR official policy: `gr-stage3-g11-v5-official`
+- QM official policy: `qm-stage1-g18-v3-official`
 - Stability convergence official policy: `stability-convergence-v6-official`
 
 Reference contracts:
@@ -66,7 +66,7 @@ These are Stage-2+ objectives and remain candidate/prereg work.
 ## 6) Minimal Reproduce
 
 ```bash
-make qm_stage1_regression_guard
+make qm_stage1_regression_guard_v3
 make qm_gr_coupling_audit_primary_chunked
 make qm_gr_coupling_audit_attack_chunked
 make qm_gr_coupling_audit_holdout_chunked
@@ -84,4 +84,3 @@ Use `QM Stage-2` as a separate prereg lane:
 
 - prereg doc: `docs/QM_STAGE2_PREREG.md`
 - orchestration runner: `scripts/tools/run_qm_stage2_prereg_v1.py`
-

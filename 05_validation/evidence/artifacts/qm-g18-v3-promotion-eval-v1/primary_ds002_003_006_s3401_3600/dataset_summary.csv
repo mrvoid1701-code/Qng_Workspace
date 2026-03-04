@@ -1,0 +1,7 @@
+scope,dataset_id,n,v1_pass,v2_pass,improved,degraded,uplift_pp,failcase_uplift_pp,nondegrade_pass,uplift_pass
+G18,DS-002,200,178,183,5,0,2.500000,22.727273,true,true
+G18,DS-003,200,179,187,8,0,4.000000,38.095238,true,true
+G18,DS-006,200,194,198,4,0,2.000000,66.666667,true,true
+QM_LANE,DS-002,200,177,182,5,0,2.500000,21.739130,true,true
+QM_LANE,DS-003,200,179,187,8,0,4.000000,38.095238,true,true
+QM_LANE,DS-006,200,157,160,3,0,1.500000,6.976744,true,true
