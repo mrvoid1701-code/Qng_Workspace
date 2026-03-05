@@ -1,10 +1,6 @@
-# Parameter Stability - QNG Trajectory Suite
+# Parameter Stability - QNG Trajectory REAL
 
-- CV threshold: `0.35`
-
-| Metric | Samples | Mean | StdDev | CV | Min | Max | Status |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| tau_fit (per mission) | 6 | 2.612120e-09 | 2.935490e-11 | 0.011238 | 2.568425e-09 | 2.659521e-09 | pass |
-
-- Mean directionality agreement: `0.944444`
-- Sign consistency across missions: `1.000000`
+- cv_tau (per mission, n>=2): `0.000000`
+- cv_tau (leave-out bootstrap): `0.155017`
+- sign_consistency: `0.666667`
+- directionality: `0.750000`
