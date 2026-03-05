@@ -1,0 +1,4 @@
+transition,count,rate
+fail->fail,4,0.001600
+fail->pass,746,0.298400
+pass->pass,1750,0.700000

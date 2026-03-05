@@ -1,5 +1,40 @@
 # Changelog
 
+## 2026-03-05 - QM Stage-1 G17b-v6 promotion + official-v12 switch + baseline guard v10
+
+- Added candidate evaluator:
+  - `scripts/tools/run_qm_g17b_candidate_eval_v6.py`
+- Added Make targets for:
+  - `qm_g17b_candidate_v6_*`, `qm_g17b_v6_promotion_*`
+  - `qm_stage1_official_v12_apply`
+  - `qm_stage1_baseline_build_v10`, `qm_stage1_regression_guard_v10`
+  - `qm_stage2_raw_vs_official_v12`, `qm_stage2_taxonomy_post_v12`
+- Executed candidate + promotion packages:
+  - `05_validation/evidence/artifacts/qm-g17b-candidate-v6/`
+  - `05_validation/evidence/artifacts/qm-g17b-v6-promotion-eval-v1/`
+- Promotion readout (`degraded=0` on all blocks):
+  - primary lane: `QM lane 597/600 -> 600/600`
+  - attack lane: `QM lane 1492/1500 -> 1496/1500`
+  - holdout lane: `QM lane 400/400 -> 400/400`
+- Applied official QM Stage-1 v12 mapping:
+  - `05_validation/evidence/artifacts/qm-stage1-official-v12/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v12/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v12/attack_holdout_ds004_008_s3401_3600/`
+- Refreshed baseline/guard:
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v10/` (`PASS`)
+- Stage-2 projection refresh (`raw vs official-v12`):
+  - pass: `2496/2500`
+  - improved `fail->pass`: `746`
+  - degraded `pass->fail`: `0`
+  - residual fail: `4` (`G19=3`, `G18=1`, `G17=0`, `G20=0`)
+- Added docs/results:
+  - `docs/QM_STAGE1_G17B_V6_OFFICIAL_SWITCH.md`
+  - `07_exports/results/RESULT_QM_STAGE1_G17B_V6_SWITCH_V1.md`
+  - `06_writing/paper-qm-stage1-g17b-v6-switch-note-v1-en.md`
+- Scope guard:
+  - no threshold changes
+  - no formula changes
+
 ## 2026-03-05 - QM Stage-1 G18-v7 + G19-v2 promotion + official-v11 switch + baseline guard v9
 
 - Added candidate/eval scripts:

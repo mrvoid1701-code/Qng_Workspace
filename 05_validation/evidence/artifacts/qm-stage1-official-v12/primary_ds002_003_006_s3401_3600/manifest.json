@@ -1,0 +1,14 @@
+{
+  "generated_utc": "2026-03-05T22:23:03.335517Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-g17b-candidate-v6/primary_ds002_003_006_s3401_3600/summary.csv",
+  "reference_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v11/primary_ds002_003_006_s3401_3600/summary.csv",
+  "policy_id": "qm-stage1-official-v12",
+  "effective_tag": "qm-stage1-g17b-v6-official",
+  "source_policy_id": "qm-g17b-candidate-v6-high-signal-median",
+  "reference_policy_id": "qm-stage1-official-v11",
+  "notes": [
+    "QM Stage-1 official v4 uses G17 candidate-v3 generalized local-gap mapping.",
+    "G18/G19/G20 are inherited unchanged from official-v3/reference summaries.",
+    "No gate formulas or thresholds are modified."
+  ]
+}
