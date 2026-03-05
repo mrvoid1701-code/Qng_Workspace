@@ -1,0 +1,19 @@
+{
+  "generated_utc": "2026-03-05T08:50:33.863486Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v9/attack_seed500_ds002_003_006_s3601_4100/summary.csv",
+  "profiles": 1500,
+  "policy_id": "qm-g17a-candidate-v4-multiwindow",
+  "basin_quantiles": [
+    0.1,
+    0.15,
+    0.22
+  ],
+  "mix_ratio_threshold": 0.9,
+  "mix_distance_threshold": 0.25,
+  "local_gap_max_modes": 12,
+  "local_gap_iters": 300,
+  "notes": [
+    "Candidate-only G17a multi-window local-gap recovery on g17a-only fail profiles.",
+    "No threshold/formula edits in core gate scripts."
+  ]
+}

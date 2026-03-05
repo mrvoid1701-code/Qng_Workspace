@@ -1,6 +1,6 @@
 # QM Lane Policy (Separated From GR Decisions)
 
-Date: 2026-03-04
+Date: 2026-03-05
 
 ## Separation Rule
 
@@ -51,30 +51,31 @@ Runners:
 - Any GR promotion decision must reference GR-only lane artifacts.
 - Any QM promotion decision must reference QM-only lane artifacts.
 
-## QM Stage-1 Official Policy (v9)
+## QM Stage-1 Official Policy (v10)
 
 Effective tag:
 
-- `qm-stage1-g18-v6-official`
+- `qm-stage1-g17a-v4-official`
 
 Official mapping:
 
-1. `G17` official remains inherited from prior `v6` governance outputs (`G17b-v4` policy).
-2. `G18` official follows candidate-v6 decision outputs (`G18d-v6` multi-scale basin + multi-window peak-envelope policy).
+1. `G17` official follows `G17a-v4` candidate decision outputs on top of prior `G17b-v4` hardening.
+2. `G18` official remains inherited from candidate-v6 decision outputs (`G18d-v6` multi-scale basin + multi-window peak-envelope policy).
 3. `G17-v1` and `G18-v1` remain legacy diagnostic-only.
 4. `G19/G20` remain inherited unchanged from source summaries.
 
 Governance applier:
 
-- `scripts/tools/run_qm_stage1_official_v3.py` (policy id `qm-stage1-official-v9`)
+- `scripts/tools/run_qm_stage1_official_v4.py` (policy id `qm-stage1-official-v10`)
 
 Switch record:
 
 - `docs/QM_STAGE1_G18_V4_OFFICIAL_SWITCH.md`
 - `docs/QM_STAGE1_G18_V5_OFFICIAL_SWITCH.md`
 - `docs/QM_STAGE1_G18_V6_OFFICIAL_SWITCH.md`
+- `docs/QM_STAGE1_G17A_V4_OFFICIAL_SWITCH.md`
 
-## QM Stage-1 Baseline + Guard (v7)
+## QM Stage-1 Baseline + Guard (v8)
 
 Baseline builder:
 
@@ -92,7 +93,7 @@ Reference doc:
 
 Current official stage:
 
-- `QM-Stage-1` (frozen): `qm-stage1-g18-v6-official`
+- `QM-Stage-1` (frozen): `qm-stage1-g17a-v4-official`
 - freeze contract: `docs/QM_STAGE1_FREEZE.md`
 
 Next stage:
