@@ -4,6 +4,8 @@
 
 - Added post-v6 taxonomy tool:
   - `scripts/tools/analyze_qm_stage2_post_v6_failures_v1.py`
+- Added prereg scaffold for next candidate lane:
+  - `05_validation/pre-registrations/qm-stage2-g18-candidate-v4.md`
 - Added Make targets:
   - `qm_stage2_raw_vs_official_v6`
   - `qm_stage2_taxonomy_post_v6`
