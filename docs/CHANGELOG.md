@@ -1,5 +1,43 @@
 # Changelog
 
+## 2026-03-05 - QM Stage-1 G18-v7 + G19-v2 promotion + official-v11 switch + baseline guard v9
+
+- Added candidate/eval scripts:
+  - `scripts/tools/run_qm_g19_candidate_eval_v2.py`
+  - `scripts/tools/evaluate_qm_g19_promotion_v1.py`
+- Added Make targets for:
+  - `qm_g19_candidate_v2_*`, `qm_g19_v2_promotion_*`
+  - `qm_g18_candidate_v7_*`, `qm_g18_v7_promotion_*`
+  - `qm_stage1_official_v11_apply`
+  - `qm_stage1_baseline_build_v9`, `qm_stage1_regression_guard_v9`
+  - `qm_stage2_raw_vs_official_v11`, `qm_stage2_taxonomy_post_v11`
+- Executed promotion packages:
+  - `05_validation/evidence/artifacts/qm-g19-candidate-v2/`
+  - `05_validation/evidence/artifacts/qm-g19-v2-promotion-eval-v1/`
+  - `05_validation/evidence/artifacts/qm-g18-candidate-v7/`
+  - `05_validation/evidence/artifacts/qm-g18-v7-promotion-eval-v1/`
+- Promotion readout (`degraded=0` on all blocks):
+  - G19-v2 lane uplift: primary `+4`, attack `+4`, holdout `+0`
+  - G18-v7 lane uplift (post G19-v2): primary `+2`, attack `+9`, holdout `+0`
+- Applied official QM Stage-1 v11 mapping:
+  - `05_validation/evidence/artifacts/qm-stage1-official-v11/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v11/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v11/attack_holdout_ds004_008_s3401_3600/`
+- Refreshed baseline/guard:
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v9/` (`PASS`)
+- Stage-2 projection refresh (`raw vs official-v11`):
+  - pass: `2489/2500`
+  - improved `fail->pass`: `739`
+  - degraded `pass->fail`: `0`
+  - residual fail: `11` (`G17=7`, `G19=3`, `G18=1`, `G20=0`)
+- Added docs/results:
+  - `docs/QM_STAGE1_G18_V7_G19_V2_OFFICIAL_SWITCH.md`
+  - `07_exports/results/RESULT_QM_STAGE1_G18V7_G19V2_SWITCH_V1.md`
+  - `06_writing/paper-qm-stage1-g18-v7-g19-v2-switch-note-v1-en.md`
+- Scope guard:
+  - no threshold changes
+  - no formula changes
+
 ## 2026-03-05 - QM Stage-1 G17a-v4 promotion + official-v10 switch + baseline guard v8
 
 - Added candidate evaluator:

@@ -10,18 +10,19 @@ Release type: internal freeze
 
 Frozen official policy:
 
-- `G17 official`: `G17a-v4` + inherited `G17b-v4`
-- `G18 official`: `G18-v6` (`G18d-v6` multi-scale basin + multi-window peak-envelope decision layer)
+- `G17 official`: inherited `G17a-v4 + G17b-v4`
+- `G18 official`: `G18-v7` (`G18d-v7` expanded multi-scale/multi-window decision layer)
+- `G19 official`: `G19-v2` (`G19d-v2` high-signal slope envelope)
 - `G17-v1` and `G18-v1`: legacy diagnostic-only
-- `G19/G20`: inherited unchanged in official-v10 policy outputs
+- `G20`: inherited unchanged in official-v11 policy outputs
 
 ## Guarantees
 
 This freeze guarantees:
 
-1. Reproducible official QM Stage-1 outputs via the frozen `official-v10` policy.
+1. Reproducible official QM Stage-1 outputs via the frozen `official-v11` policy.
 2. Baseline + regression guard coverage with `PASS` on:
-   - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v8/latest_check/`
+   - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v9/latest_check/`
 3. QM-GR coupling audit v2 operational stability:
    - primary (`600/600`) PASS
    - attack (`1500/1500`) PASS
@@ -62,9 +63,10 @@ Any change to `QM-Stage-1` official policy must run as candidate lane first, wit
   - `docs/QM_STAGE1_G18_V5_OFFICIAL_SWITCH.md`
   - `docs/QM_STAGE1_G18_V6_OFFICIAL_SWITCH.md`
   - `docs/QM_STAGE1_G17A_V4_OFFICIAL_SWITCH.md`
+  - `docs/QM_STAGE1_G18_V7_G19_V2_OFFICIAL_SWITCH.md`
 - baseline guard doc: `docs/QM_STAGE1_BASELINE_GUARD.md`
 - reproducibility commands: `docs/REPRODUCIBILITY.md`
 
 ## Release Tag
 
-Internal freeze tag: `qm-stage1-g17a-v4-official`
+Internal freeze tag: `qm-stage1-g18-v7-g19-v2-official`

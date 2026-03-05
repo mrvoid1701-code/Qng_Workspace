@@ -19,12 +19,12 @@ QNG workspace is in a reproducibility-hardening phase:
 5. Keep Stage-3 official baseline/guard frozen (`gr-stage3-g11-v5-official`) and enforce non-regression checks on reruns.
 6. Preserve Stage-3 primary closure (`600/600`) while monitoring attack/holdout tails under preregistered estimator hardening (no threshold tuning).
 7. Keep QM lane criteria separate from GR promotion criteria while Stage-2/Stage-3 official baselines remain frozen.
-8. Maintain `QM-Stage-1` official policy freeze (`qm-stage1-g17a-v4-official`) and track remaining QM-lane fail classes with coupling audit checks.
-9. Keep `QM-Stage-2` in prereg-only lane (`docs/QM_STAGE2_PREREG.md`) with strict post-v10 failure taxonomy (`qm-stage2-failure-taxonomy-post-v10-v1`) and targeted closure on residual fail tails (`G18/G19/G17b`).
+8. Maintain `QM-Stage-1` official policy freeze (`qm-stage1-g18-v7-g19-v2-official`) and track remaining QM-lane fail classes with coupling audit checks.
+9. Keep `QM-Stage-2` in prereg-only lane (`docs/QM_STAGE2_PREREG.md`) with strict post-v11 failure taxonomy (`qm-stage2-failure-taxonomy-post-v11-v1`) and targeted closure on residual fail tails (`G17b` dominant; minor `G19`/`G18b` tails).
 10. Maintain coupling backbone evidence package (`qm-gr-coupling-audit-v2/bundle-v1`) as fixed pass reference (`2500/2500`, GR guard pre/post pass) while iterating QM candidates.
 11. Harden the stability-term theory lane (`qng-stability-v1-strict`) with locked action/update definitions and preregistered stress invariants.
 12. Close stability fail taxonomy (`stability-v1`) and evaluate candidate energy observables under preregistered non-degradation policy.
-13. Execute residual Stage-2 closure lane from post-v10 findings (no threshold tuning, degraded=0 required), prioritizing `G18` fail taxonomy then `G19`, then `G17b`.
+13. Execute residual Stage-2 closure lane from post-v11 findings (no threshold tuning, degraded=0 required), prioritizing `G17b` closure, then `G19`, then `G18b`.
 
 ## Non-Goals for Housekeeping Passes
 
