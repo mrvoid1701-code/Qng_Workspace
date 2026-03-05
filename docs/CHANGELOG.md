@@ -1,5 +1,30 @@
 # Changelog
 
+## 2026-03-04 - QM Stage-2 post-v6 comparison + failure taxonomy
+
+- Added post-v6 taxonomy tool:
+  - `scripts/tools/analyze_qm_stage2_post_v6_failures_v1.py`
+- Added Make targets:
+  - `qm_stage2_raw_vs_official_v6`
+  - `qm_stage2_taxonomy_post_v6`
+- Generated post-v6 evidence packages:
+  - `05_validation/evidence/artifacts/qm-stage2-raw-vs-official-v6-v1/`
+  - `05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-post-v6-v1/`
+- Key readout (`2500` profiles):
+  - raw pass: `1750/2500`
+  - official-v6 projected pass: `2319/2500`
+  - improved `fail->pass`: `569`
+  - degraded `pass->fail`: `0`
+- Remaining dominant failing gate (post-v6):
+  - `G18` (`160/2500`)
+  - `G17` reduced to `12/2500`
+  - `G19` remains low (`11/2500`)
+  - `G20` stable (`0/2500` fails)
+- Scope guard:
+  - tooling + diagnostics only
+  - no threshold changes
+  - no formula changes
+
 ## 2026-03-04 - QM Stage-1 G17b-v4 promotion + official-v6 switch + baseline guard v4
 
 - Added candidate evaluator:

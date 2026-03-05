@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Compare QM Stage-2 prereg raw summaries vs QM Stage-1 official-v5 summaries.
+Compare QM Stage-2 prereg raw summaries vs QM Stage-1 official summaries.
 
 Purpose:
 - quantify raw->official policy uplift/degrade at profile and dataset level
@@ -36,7 +36,7 @@ GATES = ("g17_status", "g18_status", "g19_status", "g20_status")
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="Compare QM Stage-2 raw prereg vs official-v5 summaries.")
+    p = argparse.ArgumentParser(description="Compare QM Stage-2 raw prereg vs official summaries.")
     p.add_argument("--raw-summary-csvs", default=",".join(str(p) for p in DEFAULT_RAW_CSVS))
     p.add_argument("--official-summary-csvs", default=",".join(str(p) for p in DEFAULT_OFFICIAL_CSVS))
     p.add_argument("--out-dir", default=str(DEFAULT_OUT_DIR))
@@ -253,7 +253,7 @@ def main() -> int:
     degraded_all = trans_counter.get("pass->fail", 0)
 
     lines: list[str] = []
-    lines.append("# QM Stage-2 Raw vs Official-v5 Comparison (v1)")
+    lines.append("# QM Stage-2 Raw vs Official Comparison (v1)")
     lines.append("")
     lines.append(f"- generated_utc: `{datetime.now(timezone.utc).isoformat()}`")
     lines.append(f"- profiles_joined: `{total}`")
