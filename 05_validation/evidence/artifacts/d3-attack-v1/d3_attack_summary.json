@@ -1,0 +1,143 @@
+{
+  "test_id": "d3-attack-v1",
+  "timestamp_utc": "2026-03-05T10:47:14Z",
+  "attack_seed": 9999,
+  "dataset_seed": 3401,
+  "n_nodes": 280,
+  "samples": 72,
+  "hypothesis": "D3 este o tautologie: trece pentru orice câmp scalar neted, nu doar pentru Sigma QNG. Dacă C1-C4 trec D3, gate-ul nu e discriminant fizic.",
+  "results": [
+    {
+      "field_id": "BASELINE_QNG",
+      "variant": "uncoupled",
+      "description": "Sigma QNG original (referință)",
+      "anchors_used": 72,
+      "median_cos_sim": "0.9968",
+      "p10_cos_sim": "0.9740",
+      "median_cos_sim_shuffled": "-0.2431",
+      "d3_pass": "True",
+      "d4_pass": "True"
+    },
+    {
+      "field_id": "BASELINE_QNG",
+      "variant": "coupled",
+      "description": "Sigma QNG original (referință)",
+      "anchors_used": 72,
+      "median_cos_sim": "0.9970",
+      "p10_cos_sim": "0.9743",
+      "median_cos_sim_shuffled": "-0.2289",
+      "d3_pass": "True",
+      "d4_pass": "True"
+    },
+    {
+      "field_id": "C1_RAND_GAUSS",
+      "variant": "uncoupled",
+      "description": "Random Gaussian mixture (centre random)",
+      "anchors_used": 72,
+      "median_cos_sim": "0.9973",
+      "p10_cos_sim": "0.9694",
+      "median_cos_sim_shuffled": "-0.0580",
+      "d3_pass": "True",
+      "d4_pass": "True"
+    },
+    {
+      "field_id": "C1_RAND_GAUSS",
+      "variant": "coupled",
+      "description": "Random Gaussian mixture (centre random)",
+      "anchors_used": 72,
+      "median_cos_sim": "0.9972",
+      "p10_cos_sim": "0.9684",
+      "median_cos_sim_shuffled": "0.0686",
+      "d3_pass": "True",
+      "d4_pass": "True"
+    },
+    {
+      "field_id": "C2_LINEAR",
+      "variant": "uncoupled",
+      "description": "Linear gradient (câmp liniar simplu)",
+      "anchors_used": 72,
+      "median_cos_sim": "0.9960",
+      "p10_cos_sim": "0.9652",
+      "median_cos_sim_shuffled": "0.2109",
+      "d3_pass": "True",
+      "d4_pass": "True"
+    },
+    {
+      "field_id": "C2_LINEAR",
+      "variant": "coupled",
+      "description": "Linear gradient (câmp liniar simplu)",
+      "anchors_used": 72,
+      "median_cos_sim": "0.9960",
+      "p10_cos_sim": "0.9622",
+      "median_cos_sim_shuffled": "0.2696",
+      "d3_pass": "True",
+      "d4_pass": "True"
+    },
+    {
+      "field_id": "C3_SINUS",
+      "variant": "uncoupled",
+      "description": "Sinusoidal periodic",
+      "anchors_used": 72,
+      "median_cos_sim": "0.9983",
+      "p10_cos_sim": "0.9825",
+      "median_cos_sim_shuffled": "-0.0114",
+      "d3_pass": "True",
+      "d4_pass": "True"
+    },
+    {
+      "field_id": "C3_SINUS",
+      "variant": "coupled",
+      "description": "Sinusoidal periodic",
+      "anchors_used": 72,
+      "median_cos_sim": "0.9969",
+      "p10_cos_sim": "0.9826",
+      "median_cos_sim_shuffled": "0.0963",
+      "d3_pass": "True",
+      "d4_pass": "True"
+    },
+    {
+      "field_id": "C4_QUADRATIC",
+      "variant": "uncoupled",
+      "description": "Quadratic bowl (paraboloid)",
+      "anchors_used": 72,
+      "median_cos_sim": "0.9952",
+      "p10_cos_sim": "0.9764",
+      "median_cos_sim_shuffled": "-0.3200",
+      "d3_pass": "True",
+      "d4_pass": "True"
+    },
+    {
+      "field_id": "C4_QUADRATIC",
+      "variant": "coupled",
+      "description": "Quadratic bowl (paraboloid)",
+      "anchors_used": 72,
+      "median_cos_sim": "0.9953",
+      "p10_cos_sim": "0.9784",
+      "median_cos_sim_shuffled": "-0.3808",
+      "d3_pass": "True",
+      "d4_pass": "True"
+    },
+    {
+      "field_id": "C5_PURE_NOISE",
+      "variant": "uncoupled",
+      "description": "Pure Gaussian noise (fără structură)",
+      "anchors_used": 72,
+      "median_cos_sim": "0.9943",
+      "p10_cos_sim": "0.9755",
+      "median_cos_sim_shuffled": "0.0950",
+      "d3_pass": "True",
+      "d4_pass": "True"
+    },
+    {
+      "field_id": "C5_PURE_NOISE",
+      "variant": "coupled",
+      "description": "Pure Gaussian noise (fără structură)",
+      "anchors_used": 72,
+      "median_cos_sim": "0.9948",
+      "p10_cos_sim": "0.9668",
+      "median_cos_sim_shuffled": "-0.0406",
+      "d3_pass": "True",
+      "d4_pass": "True"
+    }
+  ]
+}
