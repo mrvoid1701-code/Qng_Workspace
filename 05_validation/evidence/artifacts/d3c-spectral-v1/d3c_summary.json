@@ -1,0 +1,82 @@
+{
+  "test_id": "d3c-spectral-v1",
+  "timestamp_utc": "2026-03-05T11:03:20Z",
+  "seeds": {
+    "attack": 9999,
+    "dataset": 3401
+  },
+  "hypothesis_confirmed": "D3c distinge smooth de noise dar NU QNG de alte câmpuri netede",
+  "dirichlet_ratio_noise_over_qng": 11.647805311267799,
+  "spectral_ratio_K10_qng": 0.8902126928588893,
+  "spectral_ratio_K10_noise": 0.04320985564076999,
+  "dirichlet_rows": [
+    {
+      "field_id": "BASELINE_QNG",
+      "E_norm": "0.2810"
+    },
+    {
+      "field_id": "C1_RAND_GAUSS",
+      "E_norm": "0.2090"
+    },
+    {
+      "field_id": "C2_LINEAR",
+      "E_norm": "0.0797"
+    },
+    {
+      "field_id": "C3_SINUS",
+      "E_norm": "0.2532"
+    },
+    {
+      "field_id": "C4_QUADRATIC",
+      "E_norm": "0.3125"
+    },
+    {
+      "field_id": "C5_PURE_NOISE",
+      "E_norm": "3.2730"
+    }
+  ],
+  "spectral_rows": [
+    {
+      "field_id": "BASELINE_QNG",
+      "spectral_ratio_K5": "0.4430",
+      "spectral_ratio_K10": "0.8902",
+      "spectral_ratio_K20": "0.9587",
+      "spectral_ratio_K40": "0.9745"
+    },
+    {
+      "field_id": "C1_RAND_GAUSS",
+      "spectral_ratio_K5": "0.6071",
+      "spectral_ratio_K10": "0.9417",
+      "spectral_ratio_K20": "0.9673",
+      "spectral_ratio_K40": "0.9829"
+    },
+    {
+      "field_id": "C2_LINEAR",
+      "spectral_ratio_K5": "0.9730",
+      "spectral_ratio_K10": "0.9818",
+      "spectral_ratio_K20": "0.9922",
+      "spectral_ratio_K40": "0.9945"
+    },
+    {
+      "field_id": "C3_SINUS",
+      "spectral_ratio_K5": "0.5513",
+      "spectral_ratio_K10": "0.8962",
+      "spectral_ratio_K20": "0.9601",
+      "spectral_ratio_K40": "0.9825"
+    },
+    {
+      "field_id": "C4_QUADRATIC",
+      "spectral_ratio_K5": "0.5685",
+      "spectral_ratio_K10": "0.8949",
+      "spectral_ratio_K20": "0.9457",
+      "spectral_ratio_K40": "0.9691"
+    },
+    {
+      "field_id": "C5_PURE_NOISE",
+      "spectral_ratio_K5": "0.0104",
+      "spectral_ratio_K10": "0.0432",
+      "spectral_ratio_K20": "0.0529",
+      "spectral_ratio_K40": "0.1070"
+    }
+  ]
+}
