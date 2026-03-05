@@ -1,0 +1,32 @@
+{
+  "test_id": "d4b-rotation-sigma-real-v1",
+  "timestamp_utc": "2026-03-05T11:52:18Z",
+  "theory_params": {
+    "lambda_chi": 0.28,
+    "chi_ref": 1.0
+  },
+  "n_points": 3391,
+  "n_galaxies": 175,
+  "models": {
+    "M0_null": {
+      "chi2": 1025645.5071745124,
+      "chi2_per_n": 302.461075545418,
+      "k": 0
+    },
+    "M1_MOND": {
+      "chi2": 320222.51914868713,
+      "chi2_per_n": 94.43306374187176,
+      "k": 1,
+      "g_dag_m_s2": 4.2613545485568474e-11
+    },
+    "M4_QNG_S1": {
+      "chi2": 767111.8145099626,
+      "chi2_per_n": 226.2199394013455,
+      "k": 2,
+      "tau_km2_s2": 7886.426592797783,
+      "chi_norm": 1.4084875346260388
+    }
+  },
+  "mond_wins": true,
+  "delta_chi2_qng_minus_mond": 446889.29536127544
+}
