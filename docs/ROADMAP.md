@@ -19,8 +19,8 @@ QNG workspace is in a reproducibility-hardening phase:
 5. Keep Stage-3 official baseline/guard frozen (`gr-stage3-g11-v5-official`) and enforce non-regression checks on reruns.
 6. Preserve Stage-3 primary closure (`600/600`) while monitoring attack/holdout tails under preregistered estimator hardening (no threshold tuning).
 7. Keep QM lane criteria separate from GR promotion criteria while Stage-2/Stage-3 official baselines remain frozen.
-8. Maintain `QM-Stage-1` official policy freeze (`qm-stage1-g18-v5-official`) and track remaining QM-lane fail classes with coupling audit checks.
-9. Keep `QM-Stage-2` in prereg-only lane (`docs/QM_STAGE2_PREREG.md`) with strict post-v8 failure taxonomy (`qm-stage2-failure-taxonomy-post-v8-v1`) and targeted closure on residual fail tails (`G18` dominant, `G17/G19` secondary).
+8. Maintain `QM-Stage-1` official policy freeze (`qm-stage1-g18-v6-official`) and track remaining QM-lane fail classes with coupling audit checks.
+9. Keep `QM-Stage-2` in prereg-only lane (`docs/QM_STAGE2_PREREG.md`) with strict post-v9 failure taxonomy (`qm-stage2-failure-taxonomy-post-v9-v1`) and targeted closure on residual fail tails (`G18/G17/G19` near-balanced).
 10. Maintain coupling backbone evidence package (`qm-gr-coupling-audit-v2/bundle-v1`) as fixed pass reference (`2500/2500`, GR guard pre/post pass) while iterating QM candidates.
 11. Harden the stability-term theory lane (`qng-stability-v1-strict`) with locked action/update definitions and preregistered stress invariants.
 12. Close stability fail taxonomy (`stability-v1`) and evaluate candidate energy observables under preregistered non-degradation policy.
