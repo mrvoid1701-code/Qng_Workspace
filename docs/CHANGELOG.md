@@ -1,5 +1,38 @@
 # Changelog
 
+## 2026-03-05 - QM Stage-1 G19-v4 promotion + official-v14 switch + baseline guard v12
+
+- Added candidate evaluator:
+  - `scripts/tools/run_qm_g19_candidate_eval_v4.py` (hybrid local-window recovery)
+- Added Make targets for:
+  - `qm_g19_candidate_v4_*`, `qm_g19_v4_promotion_*`
+  - `qm_stage1_official_v14_apply`
+  - `qm_stage1_baseline_build_v12`, `qm_stage1_regression_guard_v12`
+  - `qm_stage2_raw_vs_official_v14`, `qm_stage2_taxonomy_post_v14`
+- Executed candidate + promotion packages:
+  - `05_validation/evidence/artifacts/qm-g19-candidate-v4/`
+  - `05_validation/evidence/artifacts/qm-g19-v4-promotion-eval-v1/`
+- Promotion readout (`degraded=0` on all blocks):
+  - G19-v4 lane uplift: primary `+0`, attack `+3`, holdout `+0`
+- Applied official QM Stage-1 v14 mapping:
+  - `05_validation/evidence/artifacts/qm-stage1-official-v14/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v14/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v14/attack_holdout_ds004_008_s3401_3600/`
+- Refreshed baseline/guard:
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v12/` (`PASS`)
+- Stage-2 projection refresh (`raw vs official-v14`):
+  - pass: `2500/2500`
+  - improved `fail->pass`: `750`
+  - degraded `pass->fail`: `0`
+  - residual fail: `0` (`G19=0`, `G18=0`, `G17=0`, `G20=0`)
+- Added docs/results:
+  - `docs/QM_STAGE1_G19_V4_OFFICIAL_SWITCH.md`
+  - `07_exports/results/RESULT_QM_STAGE1_G19V4_SWITCH_V1.md`
+  - `06_writing/paper-qm-stage1-g19-v4-switch-note-v1-en.md`
+- Scope guard:
+  - no threshold changes
+  - no formula changes
+
 ## 2026-03-05 - QM Stage-1 G18b-v8 promotion + official-v13 switch + baseline guard v11
 
 - Added candidate evaluators:

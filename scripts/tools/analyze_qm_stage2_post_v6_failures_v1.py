@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Analyze QM Stage-2 failures after applying QM Stage-1 official-v6 policy mapping.
+Analyze QM Stage-2 failures after applying a QM Stage-1 official policy mapping.
 
 Inputs:
-- profile_deltas.csv from compare_qm_stage2_raw_vs_official_v1.py (official-v6 run)
+- profile_deltas.csv from compare_qm_stage2_raw_vs_official_v1.py
 
 Outputs:
 - qm_fail_cases.csv
@@ -25,17 +25,18 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 ART = ROOT / "05_validation" / "evidence" / "artifacts"
-DEFAULT_PROFILE_DELTAS = ART / "qm-stage2-raw-vs-official-v6-v1" / "profile_deltas.csv"
-DEFAULT_OUT_DIR = ART / "qm-stage2-failure-taxonomy-post-v6-v1"
+DEFAULT_PROFILE_DELTAS = ART / "qm-stage2-raw-vs-official-v14-v1" / "profile_deltas.csv"
+DEFAULT_OUT_DIR = ART / "qm-stage2-failure-taxonomy-post-v14-v1"
 
 GATE_FIELDS = ["g17_status_official", "g18_status_official", "g19_status_official", "g20_status_official"]
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="Analyze QM Stage-2 post-v6 failure taxonomy.")
+    p = argparse.ArgumentParser(description="Analyze QM Stage-2 post-official failure taxonomy.")
     p.add_argument("--profile-deltas-csv", default=str(DEFAULT_PROFILE_DELTAS))
     p.add_argument("--out-dir", default=str(DEFAULT_OUT_DIR))
     p.add_argument("--top-k", type=int, default=10)
+    p.add_argument("--official-label", default="official-policy")
     return p.parse_args()
 
 
@@ -203,7 +204,7 @@ def main() -> int:
     dominant_gate = gate_counter.most_common(1)[0][0] if gate_counter else "none"
 
     lines: list[str] = []
-    lines.append("# QM Stage-2 Failure Taxonomy Post-v6 (v1)")
+    lines.append("# QM Stage-2 Failure Taxonomy (v1)")
     lines.append("")
     lines.append(f"- generated_utc: `{datetime.now(timezone.utc).isoformat()}`")
     lines.append(f"- source_profile_deltas_csv: `{profile_deltas.as_posix()}`")
@@ -213,7 +214,7 @@ def main() -> int:
     lines.append(f"- fail_rate_official: `{(len(fail_cases) / len(combined)):.6f}`")
     lines.append(f"- dominant_failing_gate: `{dominant_gate}`")
     lines.append("")
-    lines.append("## Transition Counts (raw -> official-v6)")
+    lines.append(f"## Transition Counts (raw -> {args.official_label})")
     lines.append("")
     for row in sorted(transition_rows, key=lambda x: x["count"], reverse=True):
         lines.append(f"- `{row['transition']}`: `{row['count']}`")
@@ -227,7 +228,7 @@ def main() -> int:
     lines.append("")
     lines.append("## Top 3 Hypothesized Mechanisms (diagnostic only)")
     lines.append("")
-    lines.append(f"- Remaining failures are dominated by `{dominant_gate}` under official-v6 mapping.")
+    lines.append(f"- Remaining failures are dominated by `{dominant_gate}` under {args.official_label} mapping.")
     lines.append("- Gate-coupled signatures indicate hard-regime estimator fragility, not broad lane collapse.")
     lines.append("- Zero `pass->fail` transitions indicate policy uplift without degradation side-effects.")
     lines.append("")
@@ -246,4 +247,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
