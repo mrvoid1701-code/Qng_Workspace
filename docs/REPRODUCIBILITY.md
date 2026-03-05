@@ -1706,3 +1706,45 @@ Main outputs:
 - `05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-post-v6-v1/qm_fail_cases.csv`
 - `05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-post-v6-v1/pattern_summary.csv`
 - `05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-post-v6-v1/report.md`
+
+## 57) QM Stage-1 G18-v4 candidate + official-v7 apply
+
+Candidate generation:
+
+```bash
+python scripts/tools/run_qm_g18_candidate_eval_v4.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v6/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18-candidate-v4/primary_ds002_003_006_s3401_3600
+python scripts/tools/run_qm_g18_candidate_eval_v4.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v6/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18-candidate-v4/attack_seed500_ds002_003_006_s3601_4100
+python scripts/tools/run_qm_g18_candidate_eval_v4.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v6/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18-candidate-v4/attack_holdout_ds004_008_s3401_3600
+```
+
+Promotion evaluation:
+
+```bash
+python scripts/tools/evaluate_qm_g18_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v4/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18-v4-promotion-eval-v1/primary_ds002_003_006_s3401_3600 --eval-id qm-g18-primary-v4 --strict-datasets DS-002,DS-003,DS-006 --require-zero-degraded --require-per-dataset-nondegrade --require-net-uplift --no-require-uplift-datasets
+python scripts/tools/evaluate_qm_g18_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v4/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18-v4-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100 --eval-id qm-g18-attack-seed500-v4 --strict-datasets DS-002,DS-003,DS-006 --require-zero-degraded --require-per-dataset-nondegrade --require-net-uplift --no-require-uplift-datasets
+python scripts/tools/evaluate_qm_g18_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v4/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18-v4-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600 --eval-id qm-g18-attack-holdout-v4 --strict-datasets DS-004,DS-008 --require-zero-degraded --require-per-dataset-nondegrade --no-require-net-uplift --no-require-uplift-datasets
+```
+
+Official-v7 apply:
+
+```bash
+python scripts/tools/run_qm_stage1_official_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v4/primary_ds002_003_006_s3401_3600/summary.csv --reference-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v6/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v7/primary_ds002_003_006_s3401_3600 --policy-id qm-stage1-official-v7 --effective-tag qm-stage1-g18-v4-official --source-policy-id qm-g18-candidate-v4-local-ds-peak-envelope --reference-policy-id qm-stage1-official-v6
+python scripts/tools/run_qm_stage1_official_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v4/attack_seed500_ds002_003_006_s3601_4100/summary.csv --reference-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v6/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v7/attack_seed500_ds002_003_006_s3601_4100 --policy-id qm-stage1-official-v7-attack-seed500 --effective-tag qm-stage1-g18-v4-official --source-policy-id qm-g18-candidate-v4-local-ds-peak-envelope --reference-policy-id qm-stage1-official-v6
+python scripts/tools/run_qm_stage1_official_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v4/attack_holdout_ds004_008_s3401_3600/summary.csv --reference-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v6/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v7/attack_holdout_ds004_008_s3401_3600 --policy-id qm-stage1-official-v7-attack-holdout --effective-tag qm-stage1-g18-v4-official --source-policy-id qm-g18-candidate-v4-local-ds-peak-envelope --reference-policy-id qm-stage1-official-v6
+```
+
+Baseline + guard refresh:
+
+```bash
+python scripts/tools/build_qm_stage1_baseline_v1.py --block primary --summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v7/primary_ds002_003_006_s3401_3600/summary.csv --metrics-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v4/primary_ds002_003_006_s3401_3600/summary.csv --promotion-report-json 05_validation/evidence/artifacts/qm-g18-v4-promotion-eval-v1/primary_ds002_003_006_s3401_3600/report.json --out-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v5/qm_stage1_baseline_primary.json --baseline-id qm-stage1-baseline-primary-v5 --effective-tag qm-stage1-g18-v4-official
+python scripts/tools/build_qm_stage1_baseline_v1.py --block attack --summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v7/attack_seed500_ds002_003_006_s3601_4100/summary.csv --metrics-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v4/attack_seed500_ds002_003_006_s3601_4100/summary.csv --promotion-report-json 05_validation/evidence/artifacts/qm-g18-v4-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100/report.json --out-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v5/qm_stage1_baseline_attack.json --baseline-id qm-stage1-baseline-attack-v5 --effective-tag qm-stage1-g18-v4-official
+python scripts/tools/build_qm_stage1_baseline_v1.py --block holdout --summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v7/attack_holdout_ds004_008_s3401_3600/summary.csv --metrics-summary-csv 05_validation/evidence/artifacts/qm-g18-candidate-v4/attack_holdout_ds004_008_s3401_3600/summary.csv --promotion-report-json 05_validation/evidence/artifacts/qm-g18-v4-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600/report.json --out-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v5/qm_stage1_baseline_holdout.json --baseline-id qm-stage1-baseline-holdout-v5 --effective-tag qm-stage1-g18-v4-official
+python scripts/tools/run_qm_stage1_regression_guard_v1.py --baseline-primary-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v5/qm_stage1_baseline_primary.json --baseline-attack-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v5/qm_stage1_baseline_attack.json --baseline-holdout-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v5/qm_stage1_baseline_holdout.json --summary-primary-csv 05_validation/evidence/artifacts/qm-stage1-official-v7/primary_ds002_003_006_s3401_3600/summary.csv --summary-attack-csv 05_validation/evidence/artifacts/qm-stage1-official-v7/attack_seed500_ds002_003_006_s3601_4100/summary.csv --summary-holdout-csv 05_validation/evidence/artifacts/qm-stage1-official-v7/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v5/latest_check
+```
+
+## 58) QM Stage-2 post-v7 comparison + taxonomy
+
+```bash
+python scripts/tools/compare_qm_stage2_raw_vs_official_v1.py --raw-summary-csvs 05_validation/evidence/artifacts/qm-stage2-prereg-v1/primary_ds002_003_006_s3401_3600/qm_lane/summary.csv,05_validation/evidence/artifacts/qm-stage2-prereg-v1/attack_ds002_003_006_s3601_4100/qm_lane/summary.csv,05_validation/evidence/artifacts/qm-stage2-prereg-v1/holdout_ds004_008_s3401_3600/qm_lane/summary.csv --official-summary-csvs 05_validation/evidence/artifacts/qm-stage1-official-v7/primary_ds002_003_006_s3401_3600/summary.csv,05_validation/evidence/artifacts/qm-stage1-official-v7/attack_seed500_ds002_003_006_s3601_4100/summary.csv,05_validation/evidence/artifacts/qm-stage1-official-v7/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage2-raw-vs-official-v7-v1
+python scripts/tools/analyze_qm_stage2_post_v6_failures_v1.py --profile-deltas-csv 05_validation/evidence/artifacts/qm-stage2-raw-vs-official-v7-v1/profile_deltas.csv --out-dir 05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-post-v7-v1
+```

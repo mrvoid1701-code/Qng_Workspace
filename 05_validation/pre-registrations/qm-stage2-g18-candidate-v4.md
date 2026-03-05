@@ -1,7 +1,7 @@
 # QM Stage-2 G18 Candidate (v4) - Pre-registration
 
 Date: 2026-03-04  
-Status: candidate-only lane (no official switch in this prereg)
+Status: PROMOTED -> official policy as of 2026-03-05 (`qm-stage1-g18-v4-official`)
 
 ## Motivation
 
@@ -62,3 +62,22 @@ For each block (primary/attack/holdout):
 
 - No threshold edits after observing results.
 - Any estimator-definition change requires prereg revision (`v5`).
+
+## Completion Snapshot (2026-03-05)
+
+Evaluation outputs:
+
+- `05_validation/evidence/artifacts/qm-g18-v4-promotion-eval-v1/primary_ds002_003_006_s3401_3600/report.json`
+- `05_validation/evidence/artifacts/qm-g18-v4-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100/report.json`
+- `05_validation/evidence/artifacts/qm-g18-v4-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600/report.json`
+
+Readout:
+
+- primary: `PASS`, improved `+28` on `G18`, degraded `0`
+- attack: `PASS`, improved `+101` on `G18`, degraded `0`
+- holdout: `PASS`, improved `+22` on `G18`, degraded `0`
+
+Governance apply:
+
+- `05_validation/evidence/artifacts/qm-stage1-official-v7/*`
+- switch note: `docs/QM_STAGE1_G18_V4_OFFICIAL_SWITCH.md`

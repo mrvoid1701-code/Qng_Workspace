@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-03-05T07:54:30.167588Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-g18-candidate-v4/primary_ds002_003_006_s3401_3600/summary.csv",
+  "reference_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v6/primary_ds002_003_006_s3401_3600/summary.csv",
+  "policy_id": "qm-stage1-official-v7",
+  "effective_tag": "qm-stage1-g18-v4-official",
+  "source_policy_id": "qm-g18-candidate-v4-local-ds-peak-envelope",
+  "reference_policy_id": "qm-stage1-official-v6",
+  "notes": [
+    "QM Stage-1 official v3 uses G18 candidate-v2 decision mapping.",
+    "G17 remains inherited from official-v2 governance summaries.",
+    "G19/G20 statuses are inherited unchanged from source summary.",
+    "No gate formulas or thresholds are modified."
+  ]
+}

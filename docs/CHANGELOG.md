@@ -1,5 +1,66 @@
 # Changelog
 
+## 2026-03-05 - QM Stage-1 G18-v4 promotion + official-v7 switch + baseline guard v5
+
+- Added candidate evaluator:
+  - `scripts/tools/run_qm_g18_candidate_eval_v4.py`
+- Added Make targets:
+  - `qm_g18_candidate_v4_primary`
+  - `qm_g18_candidate_v4_attack`
+  - `qm_g18_candidate_v4_holdout`
+  - `qm_g18_v4_promotion_primary`
+  - `qm_g18_v4_promotion_attack`
+  - `qm_g18_v4_promotion_holdout`
+  - `qm_stage1_official_v7_apply`
+  - `qm_stage1_baseline_build_v5`
+  - `qm_stage1_regression_guard_v5`
+- Executed candidate + promotion packages:
+  - `05_validation/evidence/artifacts/qm-g18-candidate-v4/`
+  - `05_validation/evidence/artifacts/qm-g18-v4-promotion-eval-v1/`
+- Promotion readout (`degraded=0` on all blocks):
+  - primary lane: `G18 551/600 -> 579/600`, `QM lane 560/600 -> 571/600`
+  - attack lane: `G18 1339/1500 -> 1440/1500`, `QM lane 1387/1500 -> 1426/1500`
+  - holdout lane: `G18 360/400 -> 382/400`, `QM lane 372/400 -> 382/400`
+- Applied official QM Stage-1 v7 mapping:
+  - `05_validation/evidence/artifacts/qm-stage1-official-v7/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v7/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v7/attack_holdout_ds004_008_s3401_3600/`
+- Refreshed baseline/guard:
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v5/` (`PASS`)
+- Added docs/results:
+  - `docs/QM_STAGE1_G18_V4_OFFICIAL_SWITCH.md`
+  - `docs/QM_STAGE1_BASELINE_GUARD.md` (v5)
+  - `07_exports/results/RESULT_QM_STAGE1_G18_V4_SWITCH_V1.md`
+  - `06_writing/paper-qm-stage1-g18-v4-switch-note-v1-en.md`
+- Scope guard:
+  - no threshold changes
+  - no formula changes
+
+## 2026-03-05 - QM Stage-2 post-v7 comparison + taxonomy refresh
+
+- Added Make targets:
+  - `qm_stage2_raw_vs_official_v7`
+  - `qm_stage2_taxonomy_post_v7`
+- Generated post-v7 evidence packages:
+  - `05_validation/evidence/artifacts/qm-stage2-raw-vs-official-v7-v1/`
+  - `05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-post-v7-v1/`
+- Key readout (`2500` profiles):
+  - raw pass: `1750/2500`
+  - official-v7 projected pass: `2379/2500`
+  - improved `fail->pass`: `629`
+  - degraded `pass->fail`: `0`
+- Remaining dominant failing gate (post-v7):
+  - `G18` (`99/2500`)
+  - `G17` (`12/2500`)
+  - `G19` (`11/2500`)
+  - `G20` (`0/2500`)
+- Added next prereg scaffold:
+  - `05_validation/pre-registrations/qm-stage2-g18-candidate-v5.md`
+- Scope guard:
+  - tooling + diagnostics only
+  - no threshold changes
+  - no formula changes
+
 ## 2026-03-04 - QM Stage-2 post-v6 comparison + failure taxonomy
 
 - Added post-v6 taxonomy tool:
