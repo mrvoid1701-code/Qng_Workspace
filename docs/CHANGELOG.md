@@ -1,5 +1,35 @@
 # Changelog
 
+## 2026-03-05 - QM Stage-1 G18-v5 promotion + official-v8 switch + baseline guard v6
+
+- Added candidate evaluator:
+  - `scripts/tools/run_qm_g18_candidate_eval_v5.py`
+- Executed candidate + promotion packages:
+  - `05_validation/evidence/artifacts/qm-g18-candidate-v5/`
+  - `05_validation/evidence/artifacts/qm-g18-v5-promotion-eval-v1/`
+- Promotion readout (`degraded=0` on all blocks):
+  - primary lane: `G18 579/600 -> 592/600`, `QM lane 571/600 -> 584/600`
+  - attack lane: `G18 1440/1500 -> 1467/1500`, `QM lane 1426/1500 -> 1453/1500`
+  - holdout lane: `G18 382/400 -> 396/400`, `QM lane 382/400 -> 396/400`
+- Applied official QM Stage-1 v8 mapping:
+  - `05_validation/evidence/artifacts/qm-stage1-official-v8/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v8/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v8/attack_holdout_ds004_008_s3401_3600/`
+- Refreshed baseline/guard:
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v6/` (`PASS`)
+- Stage-2 projection refresh (`raw vs official-v8`):
+  - pass: `2433/2500`
+  - improved `fail->pass`: `683`
+  - degraded `pass->fail`: `0`
+  - residual fail: `67` (`G18=45`, `G17=12`, `G19=11`, `G20=0`)
+- Added docs/results:
+  - `docs/QM_STAGE1_G18_V5_OFFICIAL_SWITCH.md`
+  - `07_exports/results/RESULT_QM_STAGE1_G18_V5_SWITCH_V1.md`
+  - `06_writing/paper-qm-stage1-g18-v5-switch-note-v1-en.md`
+- Scope guard:
+  - no threshold changes
+  - no formula changes
+
 ## 2026-03-05 - QM Stage-1 G18-v4 promotion + official-v7 switch + baseline guard v5
 
 - Added candidate evaluator:

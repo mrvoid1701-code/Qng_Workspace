@@ -65,18 +65,19 @@ Gate map for the core GR/QM chain and metric hardening sequence.
   - v4: `docs/GR_STAGE2_G11_V4_OFFICIAL_SWITCH.md`
 - QM Stage-1 official decision policy (governance-layer mapping on frozen runs):
   - `G17` official remains inherited from prior official-v6 policy (`G17b-v4`)
-  - `G18` official uses candidate-v4 decision status (`G18d-v4`, peak-envelope local-ds)
+  - `G18` official uses candidate-v5 decision status (`G18d-v5`, multi-window local-ds peak-envelope)
   - `G17-v1` and `G18-v1` remain legacy diagnostic-only
   - `G19/G20` remain inherited unchanged
-  - runner: `scripts/tools/run_qm_stage1_official_v3.py` (policy id `qm-stage1-official-v7`)
-  - effective tag: `qm-stage1-g18-v4-official`
+  - runner: `scripts/tools/run_qm_stage1_official_v3.py` (policy id `qm-stage1-official-v8`)
+  - effective tag: `qm-stage1-g18-v5-official`
 - QM Stage-1 official switch records:
   - `docs/QM_STAGE1_G17_V2_OFFICIAL_SWITCH.md` (historical, v2)
   - `docs/QM_STAGE1_G18_V2_OFFICIAL_SWITCH.md` (historical, v3)
   - `docs/QM_STAGE1_G17_V3_OFFICIAL_SWITCH.md` (historical, v4)
   - `docs/QM_STAGE1_G18_V3_OFFICIAL_SWITCH.md` (historical, v5)
   - `docs/QM_STAGE1_G17B_V4_OFFICIAL_SWITCH.md` (historical, v6)
-  - `docs/QM_STAGE1_G18_V4_OFFICIAL_SWITCH.md` (current, v7)
+  - `docs/QM_STAGE1_G18_V4_OFFICIAL_SWITCH.md` (historical, v7)
+  - `docs/QM_STAGE1_G18_V5_OFFICIAL_SWITCH.md` (current, v8)
 - `QM-Stage-1` freeze contract:
   - `docs/QM_STAGE1_FREEZE.md`
 - `QM-Stage-2` prereg lane (candidate-only, not official):
