@@ -1902,3 +1902,37 @@ python scripts/tools/run_qm_stage1_official_v4.py --source-summary-csv 05_valida
 python scripts/tools/run_qm_stage1_official_v4.py --source-summary-csv 05_validation/evidence/artifacts/qm-g17b-candidate-v6/attack_seed500_ds002_003_006_s3601_4100/summary.csv --reference-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v11/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v12/attack_seed500_ds002_003_006_s3601_4100 --policy-id qm-stage1-official-v12-attack-seed500 --effective-tag qm-stage1-g17b-v6-official --source-policy-id qm-g17b-candidate-v6-high-signal-median --reference-policy-id qm-stage1-official-v11
 python scripts/tools/run_qm_stage1_official_v4.py --source-summary-csv 05_validation/evidence/artifacts/qm-g17b-candidate-v6/attack_holdout_ds004_008_s3401_3600/summary.csv --reference-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v11/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v12/attack_holdout_ds004_008_s3401_3600 --policy-id qm-stage1-official-v12-attack-holdout --effective-tag qm-stage1-g17b-v6-official --source-policy-id qm-g17b-candidate-v6-high-signal-median --reference-policy-id qm-stage1-official-v11
 ```
+
+## 64) QM Stage-1 G18b-v8 candidate + official-v13 apply
+
+G19-v3 diagnostic (hold):
+
+```bash
+python scripts/tools/run_qm_g19_candidate_eval_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v12/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g19-candidate-v3/primary_ds002_003_006_s3401_3600
+python scripts/tools/run_qm_g19_candidate_eval_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v12/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g19-candidate-v3/attack_seed500_ds002_003_006_s3601_4100
+python scripts/tools/run_qm_g19_candidate_eval_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v12/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g19-candidate-v3/attack_holdout_ds004_008_s3401_3600
+```
+
+G18b-v8 candidate runs:
+
+```bash
+python scripts/tools/run_qm_g18b_candidate_eval_v8.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v12/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18b-candidate-v8/primary_ds002_003_006_s3401_3600
+python scripts/tools/run_qm_g18b_candidate_eval_v8.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v12/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18b-candidate-v8/attack_seed500_ds002_003_006_s3601_4100
+python scripts/tools/run_qm_g18b_candidate_eval_v8.py --source-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v12/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18b-candidate-v8/attack_holdout_ds004_008_s3401_3600
+```
+
+G18b-v8 promotion:
+
+```bash
+python scripts/tools/evaluate_qm_g18_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g18b-candidate-v8/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18b-v8-promotion-eval-v1/primary_ds002_003_006_s3401_3600 --eval-id qm-g18b-primary-v8 --strict-datasets DS-002,DS-003,DS-006 --require-zero-degraded --require-per-dataset-nondegrade --no-require-net-uplift --no-require-uplift-datasets
+python scripts/tools/evaluate_qm_g18_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g18b-candidate-v8/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18b-v8-promotion-eval-v1/attack_seed500_ds002_003_006_s3601_4100 --eval-id qm-g18b-attack-seed500-v8 --strict-datasets DS-002,DS-003,DS-006 --require-zero-degraded --require-per-dataset-nondegrade --require-net-uplift --require-uplift-datasets --uplift-datasets DS-003
+python scripts/tools/evaluate_qm_g18_promotion_v1.py --summary-csv 05_validation/evidence/artifacts/qm-g18b-candidate-v8/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-g18b-v8-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600 --eval-id qm-g18b-attack-holdout-v8 --strict-datasets DS-004,DS-008 --require-zero-degraded --require-per-dataset-nondegrade --no-require-net-uplift --no-require-uplift-datasets
+```
+
+Official-v13 apply:
+
+```bash
+python scripts/tools/run_qm_stage1_official_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-g18b-candidate-v8/primary_ds002_003_006_s3401_3600/summary.csv --reference-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v12/primary_ds002_003_006_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v13/primary_ds002_003_006_s3401_3600 --policy-id qm-stage1-official-v13 --effective-tag qm-stage1-g18b-v8-official --source-policy-id qm-g18b-candidate-v8-trimmed-n-ipr --reference-policy-id qm-stage1-official-v12
+python scripts/tools/run_qm_stage1_official_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-g18b-candidate-v8/attack_seed500_ds002_003_006_s3601_4100/summary.csv --reference-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v12/attack_seed500_ds002_003_006_s3601_4100/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v13/attack_seed500_ds002_003_006_s3601_4100 --policy-id qm-stage1-official-v13-attack-seed500 --effective-tag qm-stage1-g18b-v8-official --source-policy-id qm-g18b-candidate-v8-trimmed-n-ipr --reference-policy-id qm-stage1-official-v12
+python scripts/tools/run_qm_stage1_official_v3.py --source-summary-csv 05_validation/evidence/artifacts/qm-g18b-candidate-v8/attack_holdout_ds004_008_s3401_3600/summary.csv --reference-summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v12/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-official-v13/attack_holdout_ds004_008_s3401_3600 --policy-id qm-stage1-official-v13-attack-holdout --effective-tag qm-stage1-g18b-v8-official --source-policy-id qm-g18b-candidate-v8-trimmed-n-ipr --reference-policy-id qm-stage1-official-v12
+```

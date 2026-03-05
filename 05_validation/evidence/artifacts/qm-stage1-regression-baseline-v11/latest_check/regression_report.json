@@ -1,0 +1,52 @@
+{
+  "generated_utc": "2026-03-05T23:12:48.228826Z",
+  "decision": "PASS",
+  "blocks": [
+    {
+      "block_id": "primary",
+      "baseline_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-regression-baseline-v11/qm_stage1_baseline_primary.json",
+      "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v13/primary_ds002_003_006_s3401_3600/summary.csv",
+      "profiles_expected": 600,
+      "profiles_observed": 600,
+      "profiles_missing": 0,
+      "profiles_extra": 0,
+      "official_fields_checked": 5,
+      "official_fields_degraded": 0,
+      "status_mismatches": 0,
+      "decision": "PASS"
+    },
+    {
+      "block_id": "attack",
+      "baseline_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-regression-baseline-v11/qm_stage1_baseline_attack.json",
+      "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v13/attack_seed500_ds002_003_006_s3601_4100/summary.csv",
+      "profiles_expected": 1500,
+      "profiles_observed": 1500,
+      "profiles_missing": 0,
+      "profiles_extra": 0,
+      "official_fields_checked": 5,
+      "official_fields_degraded": 0,
+      "status_mismatches": 0,
+      "decision": "PASS"
+    },
+    {
+      "block_id": "holdout",
+      "baseline_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-regression-baseline-v11/qm_stage1_baseline_holdout.json",
+      "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v13/attack_holdout_ds004_008_s3401_3600/summary.csv",
+      "profiles_expected": 400,
+      "profiles_observed": 400,
+      "profiles_missing": 0,
+      "profiles_extra": 0,
+      "official_fields_checked": 5,
+      "official_fields_degraded": 0,
+      "status_mismatches": 0,
+      "decision": "PASS"
+    }
+  ],
+  "fail_reasons": [],
+  "artifacts": {
+    "pass_rate_checks_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-regression-baseline-v11/latest_check/pass_rate_checks.csv",
+    "profile_diffs_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-regression-baseline-v11/latest_check/profile_diffs.csv",
+    "status_mismatches_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-regression-baseline-v11/latest_check/status_mismatches.csv",
+    "block_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-regression-baseline-v11/latest_check/block_summary.csv"
+  }
+}

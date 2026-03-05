@@ -1,5 +1,42 @@
 # Changelog
 
+## 2026-03-05 - QM Stage-1 G18b-v8 promotion + official-v13 switch + baseline guard v11
+
+- Added candidate evaluators:
+  - `scripts/tools/run_qm_g19_candidate_eval_v3.py` (diagnostic hold lane)
+  - `scripts/tools/run_qm_g18b_candidate_eval_v8.py` (official promotion lane)
+- Added Make targets for:
+  - `qm_g19_candidate_v3_*`, `qm_g19_v3_promotion_*`
+  - `qm_g18b_candidate_v8_*`, `qm_g18b_v8_promotion_*`
+  - `qm_stage1_official_v13_apply`
+  - `qm_stage1_baseline_build_v11`, `qm_stage1_regression_guard_v11`
+  - `qm_stage2_raw_vs_official_v13`, `qm_stage2_taxonomy_post_v13`
+- Executed candidate + promotion packages:
+  - `05_validation/evidence/artifacts/qm-g19-candidate-v3/` (no uplift, degraded=0)
+  - `05_validation/evidence/artifacts/qm-g19-v3-promotion-eval-v1/` (`HOLD`)
+  - `05_validation/evidence/artifacts/qm-g18b-candidate-v8/`
+  - `05_validation/evidence/artifacts/qm-g18b-v8-promotion-eval-v1/`
+- Promotion readout (`degraded=0` on all blocks):
+  - G18b-v8 lane uplift: primary `+0`, attack `+1`, holdout `+0`
+- Applied official QM Stage-1 v13 mapping:
+  - `05_validation/evidence/artifacts/qm-stage1-official-v13/primary_ds002_003_006_s3401_3600/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v13/attack_seed500_ds002_003_006_s3601_4100/`
+  - `05_validation/evidence/artifacts/qm-stage1-official-v13/attack_holdout_ds004_008_s3401_3600/`
+- Refreshed baseline/guard:
+  - `05_validation/evidence/artifacts/qm-stage1-regression-baseline-v11/` (`PASS`)
+- Stage-2 projection refresh (`raw vs official-v13`):
+  - pass: `2497/2500`
+  - improved `fail->pass`: `747`
+  - degraded `pass->fail`: `0`
+  - residual fail: `3` (`G19=3`, `G18=0`, `G17=0`, `G20=0`)
+- Added docs/results:
+  - `docs/QM_STAGE1_G18B_V8_OFFICIAL_SWITCH.md`
+  - `07_exports/results/RESULT_QM_STAGE1_G18B_V8_SWITCH_V1.md`
+  - `06_writing/paper-qm-stage1-g18b-v8-switch-note-v1-en.md`
+- Scope guard:
+  - no threshold changes
+  - no formula changes
+
 ## 2026-03-05 - QM Stage-1 G17b-v6 promotion + official-v12 switch + baseline guard v10
 
 - Added candidate evaluator:
