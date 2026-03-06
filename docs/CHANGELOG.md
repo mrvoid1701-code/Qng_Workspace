@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-03-06 - D4 candidate lane v4 (objective fix + boundary expansion + low-accel outer candidate)
+
+- Added v4 candidate runner:
+  - `scripts/run_d4_stage2_dual_kernel_candidates_v4.py`
+  - coefficient fit objective moved to direct `chi2` in `v` space
+- Added v4 evaluator:
+  - `scripts/tools/evaluate_d4_stage2_dual_kernel_candidates_v4.py`
+- Added v4 prereg:
+  - `05_validation/pre-registrations/d4-stage2-dual-kernel-v4-candidates.md`
+- Added Make targets:
+  - `d4_stage2_candidates_v4_run`
+  - `d4_stage2_candidates_v4_eval`
+  - `d4_stage2_candidates_v4_pack`
+- Updated reproducibility docs:
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-06 - D4 candidate lane v3 (two formulas, multi-split strict prereg)
 
 - Added candidate runner:

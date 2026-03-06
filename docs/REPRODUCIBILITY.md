@@ -2072,6 +2072,37 @@ Main outputs:
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v3-candidates/evaluation-v1/evaluation_report.json`
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v3-candidates/evaluation-v1/candidate_decisions.csv`
 
+## 66d) D4 Stage-2 candidate formulas v4 (chi2-in-v fit + low-accel outer focus)
+
+Run:
+
+```bash
+make d4_stage2_candidates_v4_run
+```
+
+Evaluate:
+
+```bash
+make d4_stage2_candidates_v4_eval
+```
+
+Or full pack:
+
+```bash
+make d4_stage2_candidates_v4_pack
+```
+
+Locked prereg:
+
+- `05_validation/pre-registrations/d4-stage2-dual-kernel-v4-candidates.md`
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v4-candidates/per_seed_candidate_summary.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v4-candidates/aggregate_summary.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v4-candidates/evaluation-v1/evaluation_report.json`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v4-candidates/evaluation-v1/candidate_decisions.csv`
+
 ## 67) QNG foundation EL-consistency (stability core v1/v2)
 
 Run v2 (official comparator):
