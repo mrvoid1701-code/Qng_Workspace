@@ -1,0 +1,13 @@
+{
+  "test_id": "d8-straton-flyby-v1",
+  "timestamp_utc": "2026-03-06T20:23:15.368716+00:00",
+  "C_straton_s_inv": 6.992e-14,
+  "pioneer_n": 3,
+  "pioneer_pass": 2,
+  "anderson_n": 4,
+  "anderson_explained": false,
+  "anderson_reason": "Straton predicts \u0394v<0 (~0.01 mm/s), Anderson anomalies are \u0394v>0 (~1-13 mm/s). Different physics required.",
+  "nulls_n": 3,
+  "nulls_consistent": 3,
+  "verdict": "Pioneer reproduced; Anderson unexplained; modern nulls consistent"
+}
