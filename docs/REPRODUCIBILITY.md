@@ -1993,3 +1993,24 @@ Main outputs:
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/model_comparison.csv`
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/report.md`
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/evaluation-v1/evaluation_report.json`
+
+## 67) QNG foundation EL-consistency (stability core v1)
+
+Run:
+
+```bash
+python scripts/run_qng_el_consistency_v1.py --out-dir 05_validation/evidence/artifacts/qng-foundation-stability-v1
+```
+
+Or:
+
+```bash
+make qng_foundation_stability_v1
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/qng-foundation-stability-v1/profile_residuals.csv`
+- `05_validation/evidence/artifacts/qng-foundation-stability-v1/summary.csv`
+- `05_validation/evidence/artifacts/qng-foundation-stability-v1/report.md`
+- `05_validation/evidence/artifacts/qng-foundation-stability-v1/manifest.json`

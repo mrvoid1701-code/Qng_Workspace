@@ -141,6 +141,8 @@ help:
 	@echo "  make stability_convergence_v6_regression_guard"
 	@echo "  make stability_convergence_v6_telemetry"
 	@echo "  make stability_convergence_v6_extended_eval"
+	@echo "  make qng_foundation_stability_v1"
+	@echo "  make qng_foundation_stability_v1_nonstrict"
 	@echo "  make d4_stage2_dual_kernel_run"
 	@echo "  make d4_stage2_dual_kernel_eval"
 	@echo "  make d4_stage2_dual_kernel_pack"
@@ -673,6 +675,14 @@ stability_long_emergence_v1:
 	$(PYTHON) scripts/tools/run_stability_stress_v1.py --dataset-id STABILITY-LONG-EMERGENCE-V1 --seed-list 3701,3702,3703 --n-nodes-list 42 --steps-list 300 --edge-prob-grid 0.12,0.25 --chi-scale-grid 1.00,1.50 --noise-grid 0.00,0.02 --phi-shock-grid 0.00,0.40 --out-dir 05_validation/evidence/artifacts/stability-long-emergence-v1 --no-strict-exit
 
 stability_requested_pack_v1: stability_dual_sweep_v1 stability_phase_diagram_chi_sigma_v1 stability_scaling_test_v1 stability_perturbation_torture_v1 stability_long_emergence_v1
+
+.PHONY: qng_foundation_stability_v1 qng_foundation_stability_v1_nonstrict
+
+qng_foundation_stability_v1:
+	$(PYTHON) scripts/run_qng_el_consistency_v1.py --out-dir 05_validation/evidence/artifacts/qng-foundation-stability-v1
+
+qng_foundation_stability_v1_nonstrict:
+	$(PYTHON) scripts/run_qng_el_consistency_v1.py --out-dir 05_validation/evidence/artifacts/qng-foundation-stability-v1 --no-strict-exit
 
 .PHONY: qm_g18_candidate_v5_primary qm_g18_candidate_v5_attack qm_g18_candidate_v5_holdout qm_g18_v5_promotion_primary qm_g18_v5_promotion_attack qm_g18_v5_promotion_holdout qm_stage1_official_v8_apply qm_stage1_baseline_build_v6 qm_stage1_regression_guard_v6 qm_stage2_raw_vs_official_v8 qm_stage2_taxonomy_post_v8
 
