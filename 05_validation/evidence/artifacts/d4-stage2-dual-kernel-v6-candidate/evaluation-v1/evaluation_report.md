@@ -1,6 +1,6 @@
 # D4 Stage-2 Candidate Evaluation v5
 
-- generated_utc: `2026-03-06T16:02:52.301868+00:00`
+- generated_utc: `2026-03-06T16:18:06.343098+00:00`
 - governance_lock_pass: `True`
 - global_decision: `HOLD`
 

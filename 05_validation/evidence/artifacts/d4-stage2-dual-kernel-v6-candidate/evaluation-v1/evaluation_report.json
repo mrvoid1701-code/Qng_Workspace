@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-03-06T16:02:52.301868+00:00",
+  "generated_utc": "2026-03-06T16:18:06.343098+00:00",
   "per_seed_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/d4-stage2-dual-kernel-v6-candidate/per_seed_candidate_summary.csv",
   "manifest_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/d4-stage2-dual-kernel-v6-candidate/manifest.json",
   "criteria": {
@@ -69,6 +69,7 @@
     "max_generalization_gap_pp": 20.0,
     "max_holdout_delta_aic_dual_minus_mond": 0.0,
     "max_holdout_delta_bic_dual_minus_mond": 0.0,
+    "aic_bic_source": "recomputed_from_holdout_chi2_per_n_and_n_points_holdout",
     "candidate_pass_rule": "all split seeds must PASS with full seed coverage"
   },
   "lock_checks": {

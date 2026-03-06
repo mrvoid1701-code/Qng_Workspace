@@ -594,7 +594,8 @@ def main() -> int:
             generalization_gap = abs(train_improve_vs_null_pct - holdout_improve_vs_null_pct)
 
             k_coef = len(best_coeffs)
-            k_params = 2 + k_coef  # tau, alpha, coefficients
+            # v6 searches (tau, alpha, mix) and then fits nonnegative coefficients.
+            k_params = 3 + k_coef
             holdout_delta_aic = (best_holdout_chi2 + 2 * k_params) - (holdout_mond_chi2 + 2 * 1)
             holdout_delta_bic = (best_holdout_chi2 + k_params * math.log(max(1, len(holdout_points)))) - (
                 holdout_mond_chi2 + 1 * math.log(max(1, len(holdout_points)))

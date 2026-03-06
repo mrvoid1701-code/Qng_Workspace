@@ -7,6 +7,7 @@ import argparse
 import csv
 from datetime import datetime, timezone
 import json
+import math
 from pathlib import Path
 from typing import Any
 
@@ -110,6 +111,21 @@ def f6(x: float) -> str:
     return f"{x:.6f}"
 
 
+def infer_k_coef(candidate: str) -> int:
+    c = str(candidate)
+    if c in {"outer_lowaccel_single", "outer_single_mix_v6"}:
+        return 1
+    if c in {"outer_lowaccel_focus"}:
+        return 2
+    # Conservative fallback for unknown candidates.
+    return 1
+
+
+def infer_search_dof(row: dict[str, str]) -> int:
+    # v6 adds a selected mix hyperparameter; v5 did not.
+    return 3 if str(row.get("best_mix", "")).strip() != "" else 2
+
+
 def main() -> int:
     args = parse_args()
     per_seed_path = Path(args.per_seed_csv).resolve()
@@ -207,11 +223,20 @@ def main() -> int:
 
     evaluated_rows: list[dict[str, Any]] = []
     for r in rows:
+        n_hold = int(float(r.get("n_points_holdout", "0")))
+        holdout_dual_per_n = float(r["holdout_chi2_per_n_dual"])
+        holdout_mond_per_n = float(r["holdout_chi2_per_n_mond"])
+        holdout_dual_chi2 = holdout_dual_per_n * n_hold
+        holdout_mond_chi2 = holdout_mond_per_n * n_hold
+        k_params = infer_search_dof(r) + infer_k_coef(str(r["candidate"]))
+        daic = (holdout_dual_chi2 + 2.0 * k_params) - (holdout_mond_chi2 + 2.0 * 1.0)
+        dbic = (holdout_dual_chi2 + k_params * math.log(max(1, n_hold))) - (
+            holdout_mond_chi2 + 1.0 * math.log(max(1, n_hold))
+        )
+
         holdout_improve = float(r["holdout_improve_vs_null_pct"])
         holdout_mond_worse = float(r["holdout_mond_worse_pct"])
         gen_gap = float(r["generalization_gap_pp"])
-        daic = float(r["holdout_delta_aic_dual_minus_mond"])
-        dbic = float(r["holdout_delta_bic_dual_minus_mond"])
         checks = {
             "holdout_improve_vs_null": holdout_improve >= float(args.min_holdout_improve_vs_null_pct),
             "holdout_not_worse_than_mond": holdout_mond_worse <= float(args.max_holdout_mond_worse_pct),
@@ -232,6 +257,10 @@ def main() -> int:
                 "check_holdout_bic_not_worse_than_mond": "pass"
                 if checks["holdout_bic_not_worse_than_mond"]
                 else "fail",
+                "n_points_holdout_int": str(n_hold),
+                "k_params_used_aic_bic": str(k_params),
+                "recomputed_holdout_delta_aic_dual_minus_mond": f6(daic),
+                "recomputed_holdout_delta_bic_dual_minus_mond": f6(dbic),
                 "seed_decision": decision,
             }
         )
@@ -312,6 +341,7 @@ def main() -> int:
             "max_generalization_gap_pp": float(args.max_generalization_gap_pp),
             "max_holdout_delta_aic_dual_minus_mond": float(args.max_holdout_delta_aic_dual_minus_mond),
             "max_holdout_delta_bic_dual_minus_mond": float(args.max_holdout_delta_bic_dual_minus_mond),
+            "aic_bic_source": "recomputed_from_holdout_chi2_per_n_and_n_points_holdout",
             "candidate_pass_rule": "all split seeds must PASS with full seed coverage",
         },
         "lock_checks": lock_checks,

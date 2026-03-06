@@ -362,10 +362,18 @@ def main() -> int:
         sum(1 for x in active_rows if x["single_component_only"] == "true") / max(1, len(active_rows))
     )
 
-    collapse_likely = (
+    collinearity_collapse = (
         high_corr_rate >= 0.50 and any_boundary_rate >= 0.50 and single_component_rate >= 0.80
     )
-    decision = "IDENTIFIABILITY_COLLAPSE_LIKELY" if collapse_likely else "NO_STRONG_COLLAPSE_SIGNAL"
+    boundary_pressure_collapse = (
+        any_boundary_rate >= 0.90 and single_component_rate >= 0.90
+    )
+    if collinearity_collapse:
+        decision = "IDENTIFIABILITY_COLLAPSE_LIKELY"
+    elif boundary_pressure_collapse:
+        decision = "BOUNDARY_PRESSURE_COLLAPSE_LIKELY"
+    else:
+        decision = "NO_STRONG_COLLAPSE_SIGNAL"
 
     manifest = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
@@ -392,6 +400,8 @@ def main() -> int:
             "inf_cond_count": inf_cond,
             "any_boundary_hit_rate": any_boundary_rate,
             "single_component_only_rate": single_component_rate,
+            "collinearity_collapse_flag": collinearity_collapse,
+            "boundary_pressure_collapse_flag": boundary_pressure_collapse,
             "decision": decision,
         },
         "artifacts": {
@@ -426,9 +436,13 @@ def main() -> int:
         "## Interpretation",
         "",
     ]
-    if collapse_likely:
+    if collinearity_collapse:
         lines.append(
             "- signal is consistent with identifiability collapse (high collinearity + boundary pressure + component sparsity)"
+        )
+    elif boundary_pressure_collapse:
+        lines.append(
+            "- signal is consistent with boundary-pressure collapse (grid-edge lock + single-component lock) even without extreme collinearity"
         )
     else:
         lines.append("- no strong collapse signature under current heuristic; inspect surfaces directly")

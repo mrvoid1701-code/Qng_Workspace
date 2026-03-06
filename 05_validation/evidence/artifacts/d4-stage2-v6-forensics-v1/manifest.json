@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-03-06T15:22:15.432371+00:00",
+  "generated_utc": "2026-03-06T16:50:28.796380+00:00",
   "dataset_id": "DS-006",
   "dataset_csv": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\data\\rotation\\rotation_ds006_rotmod.csv",
   "split_seeds": [
@@ -63,7 +63,9 @@
     "inf_cond_count": 0,
     "any_boundary_hit_rate": 1.0,
     "single_component_only_rate": 1.0,
-    "decision": "NO_STRONG_COLLAPSE_SIGNAL"
+    "collinearity_collapse_flag": false,
+    "boundary_pressure_collapse_flag": true,
+    "decision": "BOUNDARY_PRESSURE_COLLAPSE_LIKELY"
   },
   "artifacts": {
     "objective_surface_csv": "objective_surface.csv",

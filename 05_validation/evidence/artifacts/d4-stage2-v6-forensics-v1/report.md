@@ -1,8 +1,8 @@
 # D4 v6 Forensics v1
 
 - exploratory only: no promotion, no threshold changes
-- generated_utc: `2026-03-06T15:22:15.432371+00:00`
-- decision: `NO_STRONG_COLLAPSE_SIGNAL`
+- generated_utc: `2026-03-06T16:50:28.796380+00:00`
+- decision: `BOUNDARY_PRESSURE_COLLAPSE_LIKELY`
 
 ## Core Signals
 
@@ -17,7 +17,7 @@
 
 ## Interpretation
 
-- no strong collapse signature under current heuristic; inspect surfaces directly
+- signal is consistent with boundary-pressure collapse (grid-edge lock + single-component lock) even without extreme collinearity
 
 ## Artifacts
 
