@@ -2008,6 +2008,12 @@ Evaluate:
 make d4_stage2_dual_kernel_v2_eval
 ```
 
+Note:
+
+- evaluator v2 validates prereg metadata locks (test-id, split, constants, grids)
+- default is strict CI behavior (`HOLD` -> non-zero exit)
+- exploratory local run can use `--no-strict-exit` directly on the evaluator script
+
 Or full package:
 
 ```bash

@@ -47,6 +47,12 @@ python scripts/tools/evaluate_d4_stage2_dual_kernel_v2.py `
   --max-holdout-delta-bic-dual-minus-mond 0
 ```
 
+Evaluator governance lock behavior (mandatory):
+
+1. validates metadata lock fields from summary (`test_id`, dataset, split seed/fraction, fixed constants, tau/alpha grids),
+2. if any lock check fails, decision becomes `HOLD`,
+3. default `--strict-exit` returns non-zero exit code on `HOLD` for CI safety.
+
 ## Decision Rule
 
 `PASS` only if all checks pass:

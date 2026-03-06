@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-03-06 - Follow-up hardening from review (EL note correction + D4 v2 lock checks + strict exit)
+
+- Corrected P0-2 formal note wording/proof scope:
+  - `03_math/derivations/qng-stability-el-equivalence-v1.md`
+  - replaced incorrect implicit-proximal exactness claim with exact explicit Euler / linearized variational surrogate statement
+- Hardened D4 strict evaluator governance:
+  - `scripts/tools/evaluate_d4_stage2_dual_kernel_v2.py`
+  - validates locked metadata (`test_id`, dataset, split seed/fraction, fixed constants, tau/alpha grids)
+  - `HOLD` now returns non-zero by default (`--strict-exit`, with optional `--no-strict-exit`)
+- Updated prereg/repro docs:
+  - `05_validation/pre-registrations/d4-stage2-dual-kernel-v2-strict-vs-mond.md`
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-06 - Stability P0 formal lane (EL equivalence + theorems + convergence rate) + D4 strict-vs-MOND prereg v2
 
 - Added formal derivation notes:

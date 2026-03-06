@@ -1,8 +1,8 @@
-# QNG Stability - Formal EL Equivalence (v1)
+# QNG Stability - Formal EL Equivalence (v1, corrected)
 
 - Date: 2026-03-06
 - Status: formal theorem-lane note (no formula changes)
-- Scope: prove that the implemented one-step update is a discrete EL/proximal step for a lagged local action
+- Scope: prove that the implemented one-step update is an explicit projected Euler-EL step (first-order variational discretization)
 - Related implementation: `scripts/tools/run_stability_stress_v1.py::one_step`
 
 ## 1) Setup
@@ -29,7 +29,7 @@ phi_neigh_i^t   = <phi^t>_Adj(i)  (circular mean)
 
 where `Sigma_hat_i^t` is the same multiplicative closure term used in the runner.
 
-## 2) Lagged Local Action
+## 2) Lagged Local Potential
 
 Define the lagged per-node potential:
 
@@ -42,33 +42,15 @@ V_i^t(Sigma_i, chi_i, phi_i) =
   + k_phi * (1 - cos(phi_i - phi_neigh_i^t))
 ```
 
-and the incremental functional:
+with all lagged quantities (`Sigma_hat_i^t`, neighbor means) frozen from `X^t`.
+
+The corresponding gradient flow is:
 
 ```text
-J_t(X) =
-  Sum_i [
-    (Sigma_i - Sigma_i^t)^2 / (2*alpha_Sigma)
-    + (chi_i   - chi_i^t)^2   / (2*alpha_chi)
-    + dS1(phi_i, phi_i^t)^2   / (2*alpha_phi)
-    + V_i^t(Sigma_i, chi_i, phi_i)
-  ]
+dot X = - grad V^t(X),   where V^t = Sum_i V_i^t.
 ```
 
-`dS1` is geodesic distance on the circle.
-
-This is the standard minimizing-movement / proximal-EL form for one explicit step with lagged coefficients.
-
-## 3) Nodewise Stationarity
-
-For each node `i`, stationarity of `J_t` gives:
-
-```text
-0 = (Sigma_i - Sigma_i^t)/alpha_Sigma + dV_i^t/dSigma_i
-0 = (chi_i   - chi_i^t)  /alpha_chi   + dV_i^t/dchi_i
-0 = grad_phi geodesic term + dV_i^t/dphi_i
-```
-
-with gradients:
+Nodewise gradients evaluated at `X^t`:
 
 ```text
 dV_i^t/dSigma_i =
@@ -84,15 +66,24 @@ dV_i^t/dphi_i =
   k_phi * sin(phi_i - phi_neigh_i^t)
 ```
 
-Therefore the unconstrained explicit step is:
+## 3) Explicit Euler-EL Step (What Code Implements)
+
+The implemented deterministic core is:
 
 ```text
 Sigma_i^+ = Sigma_i^t - alpha_Sigma * grad_Sigma_i^t
-chi_i^+   = chi_i^t   - alpha_chi   * grad_chi_i^t + eta_chi,i^t
-phi_i^+   = phi_i^t   - alpha_phi   * grad_phi_i^t + eta_phi,i^t
+chi_i^+   = chi_i^t   - alpha_chi   * grad_chi_i^t
+phi_i^+   = phi_i^t   - alpha_phi   * grad_phi_i^t
 ```
 
-and the implemented constrained step is:
+then additive noise is applied in `chi,phi` channels:
+
+```text
+chi_i^+ <- chi_i^+ + eta_chi,i^t
+phi_i^+ <- phi_i^+ + eta_phi,i^t
+```
+
+then projection/retraction:
 
 ```text
 Sigma_i^{t+1} = clip01(Sigma_i^+)
@@ -100,21 +91,51 @@ chi_i^{t+1}   = chi_i^+
 phi_i^{t+1}   = wrap(phi_i^+)
 ```
 
-which is exactly projected proximal-EL on `[0,1] x R x S1`.
+So code is exactly a projected explicit Euler step for the lagged EL gradient flow.
 
-## 4) Proposition (Exact Equivalence for the Implemented Lane)
+## 4) Equivalent Variational Surrogate (Linearized Proximal Form)
 
-For fixed adjacency, fixed constants, and fixed RNG draws `(eta_chi, eta_phi)` at step `t`:
+Define the first-order surrogate around `X^t`:
 
 ```text
-one_step(X^t) == ProjectedProximalELStep(J_t; X^t)
+J_t^lin(X; X^t) =
+  Sum_i [
+    (Sigma_i - Sigma_i^t)^2 / (2*alpha_Sigma)
+    + (chi_i   - chi_i^t)^2 / (2*alpha_chi)
+    + dS1(phi_i, phi_i^t)^2 / (2*alpha_phi)
+    + <grad V_i^t(X^t), X_i - X_i^t>
+  ]
 ```
 
-where `J_t` is the lagged local action above.
+Its minimizer is explicit and equals:
 
-So the implemented update is formally variational in the discrete/proximal sense for the frozen lagged action.
+```text
+X^{t+1,unproj} = X^t - A grad V^t(X^t)
+```
 
-## 5) Relation to the Full Non-Lagged Action
+with `A = diag(alpha_Sigma, alpha_chi, alpha_phi)` (per channel), then projected to `[0,1] x R x S1`.
+
+Hence:
+
+```text
+one_step deterministic core == argmin_X J_t^lin(X; X^t) followed by clip/wrap
+```
+
+This is the correct exact statement.
+
+## 5) Important Correction About Fully Proximal `J_t`
+
+If one instead minimizes:
+
+```text
+J_t(X) = prox_term + V^t(X)
+```
+
+with bilinear `k_mix * chi_i * Sigma_i` coupling, stationarity is generally an implicit coupled system. That map is not identical to the explicit code step unless further linearization/splitting assumptions are added.
+
+Therefore this note does **not** claim exact equality with the fully implicit proximal map.
+
+## 6) Relation to the Full Non-Lagged Action
 
 If one differentiates a fully coupled same-time action where
 `Sigma_hat_i` and neighbor means are treated as functions of all node variables,
@@ -126,11 +147,11 @@ Hence:
 U_full_EL = U_lagged_EL + Delta_full
 ```
 
-This note proves exact equivalence for `U_lagged_EL` (the implemented lane), and keeps `Delta_full` as a separate theorem-lane object.
+This note proves exact equivalence for the explicit lagged linearized EL step (implemented lane), and keeps `Delta_full` as separate theorem-lane content.
 
-## 6) Audit Implication
+## 7) Audit Implication
 
-This removes "numeric-only" ambiguity:
+This removes "numeric-only" ambiguity without over-claiming:
 
 1. the checker is a numerical verification layer,
 2. this note is the formal statement of what object is being verified,
