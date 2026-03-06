@@ -1,0 +1,76 @@
+{
+  "generated_utc": "2026-03-06T15:22:15.432371+00:00",
+  "dataset_id": "DS-006",
+  "dataset_csv": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\data\\rotation\\rotation_ds006_rotmod.csv",
+  "split_seeds": [
+    3401,
+    3402,
+    3403,
+    3404,
+    3405
+  ],
+  "train_frac": 0.7,
+  "fixed_theory_constants": {
+    "s1_lambda": 0.28,
+    "s2_const": 0.355,
+    "r0_kpc": 1.0,
+    "r_tail_kpc": 4.0,
+    "focus_gamma": 2.0
+  },
+  "grids": {
+    "tau_grid": [
+      0.02,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      1.0,
+      2.0,
+      3.0,
+      5.0,
+      8.0,
+      12.0,
+      20.0,
+      30.0,
+      50.0
+    ],
+    "alpha_grid": [
+      0.02,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      0.7,
+      1.0,
+      1.3
+    ]
+  },
+  "candidates": [
+    "outer_lowaccel_single",
+    "outer_lowaccel_focus"
+  ],
+  "inputs": {
+    "per_seed_summary_csv": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\05_validation\\evidence\\artifacts\\d4-stage2-dual-kernel-v5-candidates\\per_seed_candidate_summary.csv"
+  },
+  "summary": {
+    "high_abs_corr_rate_ge_0p98": 0.0,
+    "median_abs_corr": 0.810953,
+    "p90_abs_corr": 0.866746,
+    "median_cond_xtx": 53.661583,
+    "p90_cond_xtx": 76.701276,
+    "inf_cond_count": 0,
+    "any_boundary_hit_rate": 1.0,
+    "single_component_only_rate": 1.0,
+    "decision": "NO_STRONG_COLLAPSE_SIGNAL"
+  },
+  "artifacts": {
+    "objective_surface_csv": "objective_surface.csv",
+    "identifiability_surface_csv": "identifiability_surface.csv",
+    "boundary_hits_csv": "boundary_hits.csv",
+    "boundary_hit_summary_csv": "boundary_hit_summary.csv",
+    "active_components_csv": "active_components.csv",
+    "report_md": "report.md"
+  }
+}

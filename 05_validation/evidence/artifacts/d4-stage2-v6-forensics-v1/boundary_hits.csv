@@ -1,0 +1,11 @@
+split_seed,candidate,best_tau_kpc,best_alpha,tau_on_boundary,alpha_on_boundary,any_boundary_hit
+3401,outer_lowaccel_single,0.020000,0.020000,true,true,true
+3401,outer_lowaccel_focus,0.020000,0.020000,true,true,true
+3402,outer_lowaccel_single,0.020000,0.020000,true,true,true
+3402,outer_lowaccel_focus,50.000000,0.020000,true,true,true
+3403,outer_lowaccel_single,0.020000,0.020000,true,true,true
+3403,outer_lowaccel_focus,0.020000,0.020000,true,true,true
+3404,outer_lowaccel_single,0.020000,0.020000,true,true,true
+3404,outer_lowaccel_focus,50.000000,0.020000,true,true,true
+3405,outer_lowaccel_single,0.020000,0.020000,true,true,true
+3405,outer_lowaccel_focus,50.000000,0.020000,true,true,true

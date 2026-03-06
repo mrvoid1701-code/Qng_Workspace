@@ -412,6 +412,53 @@ Main outputs:
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v5-candidates/evaluation-v1/evaluation_report.json`
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v5-candidates/evaluation-v1/candidate_decisions.csv`
 
+## 91) D4 Stage-2 v6 forensics (exploratory only)
+
+Run:
+
+```bash
+make d4_stage2_v6_forensics
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/d4-stage2-v6-forensics-v1/objective_surface.csv`
+- `05_validation/evidence/artifacts/d4-stage2-v6-forensics-v1/identifiability_surface.csv`
+- `05_validation/evidence/artifacts/d4-stage2-v6-forensics-v1/boundary_hits.csv`
+- `05_validation/evidence/artifacts/d4-stage2-v6-forensics-v1/active_components.csv`
+- `05_validation/evidence/artifacts/d4-stage2-v6-forensics-v1/report.md`
+
+## 92) D4 Stage-2 single-candidate v6 (strict)
+
+Frozen prereg:
+
+- `05_validation/pre-registrations/d4-stage2-dual-kernel-v6-candidate.md`
+
+Run:
+
+```bash
+make d4_stage2_candidate_v6_run
+```
+
+Evaluate:
+
+```bash
+make d4_stage2_candidate_v6_eval
+```
+
+Run + evaluate:
+
+```bash
+make d4_stage2_candidate_v6_pack
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v6-candidate/per_seed_candidate_summary.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v6-candidate/aggregate_summary.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v6-candidate/evaluation-v1/evaluation_report.json`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v6-candidate/evaluation-v1/candidate_decisions.csv`
+
 Build baselines + run guard:
 
 ```bash

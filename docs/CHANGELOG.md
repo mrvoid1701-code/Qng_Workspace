@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-03-06 - D4 v6 forensics + single-candidate v6 prereg lane
+
+- Added freeze marker for v5 baseline:
+  - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v5-candidates/BASELINE_FREEZE.md`
+- Added exploratory v6 forensics script:
+  - `scripts/tools/analyze_d4_stage2_v6_forensics_v1.py`
+  - outputs objective maps, identifiability diagnostics, boundary-hit and active-component summaries
+- Added v6 single-candidate runner:
+  - `scripts/run_d4_stage2_dual_kernel_candidate_v6.py`
+  - reduced-DOF formula: single amplitude + locked mix grid
+- Hardened shared evaluator with optional mix-grid lock:
+  - `scripts/tools/evaluate_d4_stage2_dual_kernel_candidates_v5.py`
+- Added prereg:
+  - `05_validation/pre-registrations/d4-stage2-dual-kernel-v6-candidate.md`
+- Added Make targets:
+  - `d4_stage2_v6_forensics`
+  - `d4_stage2_candidate_v6_run`
+  - `d4_stage2_candidate_v6_eval`
+  - `d4_stage2_candidate_v6_pack`
+- Updated reproducibility docs:
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-06 - D4 candidate lane v5 (low-grid extension + low-accel outer-focused fit)
 
 - Added v5 candidate runner:

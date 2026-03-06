@@ -1,0 +1,2 @@
+candidate,n_splits,n_pass,n_hold,pass_fraction,complete_seed_coverage,decision
+outer_single_mix_v6,5,0,5,0.000000,true,HOLD

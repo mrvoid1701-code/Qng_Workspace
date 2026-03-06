@@ -89,6 +89,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--expected-focus-gamma", type=float, default=2.0)
     p.add_argument("--expected-tau-grid", default="0.02,0.05,0.1,0.2,0.3,0.5,1,2,3,5,8,12,20,30,50")
     p.add_argument("--expected-alpha-grid", default="0.02,0.05,0.1,0.2,0.3,0.5,0.7,1.0,1.3")
+    p.add_argument("--expected-mix-grid", default="")
     p.add_argument("--expected-candidates", default="outer_lowaccel_single,outer_lowaccel_focus")
 
     p.add_argument("--min-holdout-improve-vs-null-pct", type=float, default=10.0)
@@ -131,6 +132,7 @@ def main() -> int:
     expected_seed_set = set(expected_seed_list)
     expected_tau = parse_list(args.expected_tau_grid)
     expected_alpha = parse_list(args.expected_alpha_grid)
+    expected_mix = parse_list(args.expected_mix_grid) if str(args.expected_mix_grid).strip() else []
     expected_candidates = parse_str_list(args.expected_candidates)
     expected_candidate_set = set(expected_candidates)
 
@@ -190,6 +192,11 @@ def main() -> int:
         "lock_grid_selection_objective": str(obs_fit.get("grid_selection_objective", "")) == "train_focus_chi2",
         "lock_tau_grid": list_almost_equal([float(x) for x in obs_search.get("tau_grid", [])], expected_tau),
         "lock_alpha_grid": list_almost_equal([float(x) for x in obs_search.get("alpha_grid", [])], expected_alpha),
+        "lock_mix_grid": (
+            True
+            if not expected_mix
+            else list_almost_equal([float(x) for x in obs_search.get("mix_grid", [])], expected_mix)
+        ),
         "lock_candidates_manifest": obs_candidate_set == expected_candidate_set,
         "lock_candidates_csv": csv_candidates == expected_candidate_set,
         "lock_pairs_unique": no_duplicate_pairs,
@@ -298,6 +305,7 @@ def main() -> int:
             "expected_focus_gamma": float(args.expected_focus_gamma),
             "expected_tau_grid": expected_tau,
             "expected_alpha_grid": expected_alpha,
+            "expected_mix_grid": expected_mix,
             "expected_candidates": expected_candidates,
             "min_holdout_improve_vs_null_pct": float(args.min_holdout_improve_vs_null_pct),
             "max_holdout_mond_worse_pct": float(args.max_holdout_mond_worse_pct),
