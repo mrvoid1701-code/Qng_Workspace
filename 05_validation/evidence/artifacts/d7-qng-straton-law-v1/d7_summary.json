@@ -1,0 +1,51 @@
+{
+  "test_id": "d7-qng-straton-law-v1",
+  "timestamp_utc": "2026-03-06T18:57:50Z",
+  "T3_formula": "sqrt(g_bar*g_dag)*exp(-g_bar/g_dag)  [straton suppression]",
+  "T3_physics": {
+    "chi→0": "→ sqrt(g_bar*a0) [deep MOND, curba plata]",
+    "chi→∞": "→ 0 [Newtonian limit restaurat]"
+  },
+  "a0_si": 1.2e-10,
+  "n_points": 3391,
+  "n_galaxies": 175,
+  "models": {
+    "M0_null": {
+      "chi2_per_n": 302.461075545418
+    },
+    "M8a_T3": {
+      "chi2_per_n": 84.21886136316246,
+      "k": 0.5704044165662533
+    },
+    "M8b_T3T2": {
+      "chi2_per_n": 84.2188613631624,
+      "k1": 0.5704044173316988,
+      "k2": 0.0
+    },
+    "M8c_gdag": {
+      "chi2_per_n": 80.2757670604246,
+      "k": 0.8556063720432359,
+      "g_dag_si": 7.010766803039159e-11,
+      "g_dag_over_a0": 0.5842305669199299
+    },
+    "M8d_nuQNG": {
+      "chi2_per_n": 92.82680532063003,
+      "k": 0.20660453458872421,
+      "eps": 0.0001
+    },
+    "M1_MOND": {
+      "chi2_per_n": 94.43306374187193,
+      "g_dag_si": 4.261354303519418e-11
+    }
+  },
+  "best_model": "M8c",
+  "conclusion": "beats_mond",
+  "improve_vs_null_pct": 73.45914117521866,
+  "factor_vs_mond": 0.850081146152945,
+  "galaxies_beats_mond": 109,
+  "straton_lag_canale": {
+    "H0_c_OmL": 5.693409124178738e-10,
+    "cv_c2_RH": 3.987686325340247e-10,
+    "delta_c_H0": 2.898898250162022e-12
+  }
+}
