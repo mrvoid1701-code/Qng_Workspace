@@ -1971,3 +1971,25 @@ python scripts/tools/build_qm_stage1_baseline_v1.py --block attack --summary-csv
 python scripts/tools/build_qm_stage1_baseline_v1.py --block holdout --summary-csv 05_validation/evidence/artifacts/qm-stage1-official-v14/attack_holdout_ds004_008_s3401_3600/summary.csv --metrics-summary-csv 05_validation/evidence/artifacts/qm-g19-candidate-v4/attack_holdout_ds004_008_s3401_3600/summary.csv --promotion-report-json 05_validation/evidence/artifacts/qm-g19-v4-promotion-eval-v1/attack_holdout_ds004_008_s3401_3600/report.json --out-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v12/qm_stage1_baseline_holdout.json --baseline-id qm-stage1-baseline-holdout-v12 --effective-tag qm-stage1-g19-v4-official
 python scripts/tools/run_qm_stage1_regression_guard_v1.py --baseline-primary-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v12/qm_stage1_baseline_primary.json --baseline-attack-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v12/qm_stage1_baseline_attack.json --baseline-holdout-json 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v12/qm_stage1_baseline_holdout.json --summary-primary-csv 05_validation/evidence/artifacts/qm-stage1-official-v14/primary_ds002_003_006_s3401_3600/summary.csv --summary-attack-csv 05_validation/evidence/artifacts/qm-stage1-official-v14/attack_seed500_ds002_003_006_s3601_4100/summary.csv --summary-holdout-csv 05_validation/evidence/artifacts/qm-stage1-official-v14/attack_holdout_ds004_008_s3401_3600/summary.csv --out-dir 05_validation/evidence/artifacts/qm-stage1-regression-baseline-v12/latest_check
 ```
+
+## 66) D4 Stage-2 dual-kernel real-data run (anti post-hoc)
+
+Run (fixed split + fixed grids):
+
+```bash
+python scripts/run_d4_stage2_dual_kernel_v1.py --dataset-id DS-006 --dataset-csv data/rotation/rotation_ds006_rotmod.csv --seed 3401 --train-frac 0.70 --s1-lambda 0.28 --s2-const 0.355 --r0-kpc 1.0 --tau-grid 0.5,1,2,3,5,8,12,20,30,50 --alpha-grid 0.3,0.5,0.7,1.0,1.3 --outdir 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1 --write-artifacts --no-plots
+```
+
+Evaluate with locked criteria:
+
+```bash
+python scripts/tools/evaluate_d4_stage2_dual_kernel_v1.py --summary-json 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/d4_stage2_dual_kernel_summary.json --out-dir 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/evaluation-v1 --min-holdout-improve-vs-null-pct 10 --max-holdout-mond-worse-pct 20 --max-generalization-gap-pp 25
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/d4_stage2_dual_kernel_summary.json`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/grid_search_results.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/model_comparison.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/report.md`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/evaluation-v1/evaluation_report.json`
