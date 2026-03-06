@@ -38,6 +38,7 @@ Per step, compute:
 
 - `U_current`: output of `scripts/tools/run_stability_stress_v1.py::one_step`
 - `U_EL`: output of independent EL predictor in checker script
+  (local primitive math in checker: local `sigma_components`, local clip/wrap/angle ops)
 
 with identical step inputs and identical RNG state.
 

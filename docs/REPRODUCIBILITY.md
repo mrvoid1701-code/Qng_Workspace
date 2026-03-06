@@ -1994,23 +1994,31 @@ Main outputs:
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/report.md`
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/evaluation-v1/evaluation_report.json`
 
-## 67) QNG foundation EL-consistency (stability core v2)
+## 67) QNG foundation EL-consistency (stability core v1/v2)
 
-Run:
+Run v2 (official comparator):
 
 ```bash
-python scripts/run_qng_el_consistency_v1.py --out-dir 05_validation/evidence/artifacts/qng-foundation-stability-v2
+python scripts/run_qng_el_consistency_v1.py --comparator-mode v2 --prereg-doc 05_validation/pre-registrations/qng-foundation-stability-tests-v2.md --out-dir 05_validation/evidence/artifacts/qng-foundation-stability-v2
 ```
 
-Or:
+Run v1 (legacy reproducibility mode):
 
 ```bash
+python scripts/run_qng_el_consistency_v1.py --comparator-mode v1 --prereg-doc 05_validation/pre-registrations/qng-foundation-stability-tests-v1.md --out-dir 05_validation/evidence/artifacts/qng-foundation-stability-v1
+```
+
+Or via Make targets:
+
+```bash
+make qng_foundation_stability_v1
 make qng_foundation_stability_v2
 ```
 
 Non-strict exploratory run (separate folder, no overwrite of prereg evidence):
 
 ```bash
+make qng_foundation_stability_v1_nonstrict
 make qng_foundation_stability_v2_nonstrict
 ```
 

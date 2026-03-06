@@ -1,7 +1,8 @@
 {
-  "generated_utc": "2026-03-06T00:22:31.996890+00:00",
+  "generated_utc": "2026-03-06T00:44:57.733682+00:00",
   "test_id": "qng-foundation-stability-tests-v1",
   "policy_id": "qng-foundation-stability-tests-v1",
+  "comparator_mode": "v1",
   "blocks": [
     {
       "dataset_id": "STABILITY-PRIMARY",
@@ -64,15 +65,15 @@
     "phi_max_max": 1e-10
   },
   "artifacts": {
-    "profile_residuals_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qng-foundation-stability-v1/profile_residuals.csv",
-    "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qng-foundation-stability-v1/summary.csv",
-    "report_md": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qng-foundation-stability-v1/report.md"
+    "profile_residuals_csv": "05_validation/evidence/artifacts/qng-foundation-stability-v1/profile_residuals.csv",
+    "summary_csv": "05_validation/evidence/artifacts/qng-foundation-stability-v1/summary.csv",
+    "report_md": "05_validation/evidence/artifacts/qng-foundation-stability-v1/report.md"
   },
   "references": {
-    "prereg_doc": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/pre-registrations/qng-foundation-stability-tests-v1.md",
-    "foundation_doc": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/03_math/derivations/qng-foundation-stability-v1.md",
-    "action_doc": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/03_math/derivations/qng-stability-action-v1.md",
-    "update_doc": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/03_math/derivations/qng-stability-update-v1.md"
+    "prereg_doc": "05_validation/pre-registrations/qng-foundation-stability-tests-v1.md",
+    "foundation_doc": "03_math/derivations/qng-foundation-stability-v1.md",
+    "action_doc": "03_math/derivations/qng-stability-action-v1.md",
+    "update_doc": "03_math/derivations/qng-stability-update-v1.md"
   },
   "reference_hashes": {
     "prereg_doc": "c5fea02f0841a1bf3bb0c27f4061cb5424c14b7531305e71b270253563dcb872",

@@ -1,6 +1,7 @@
-# QNG EL Consistency Report (v1)
+# QNG EL Consistency Report (v2)
 
-- generated_utc: `2026-03-06T00:34:32.766997+00:00`
+- generated_utc: `2026-03-06T00:44:42.903652+00:00`
+- comparator_mode: `v2`
 - profiles_total: `432`
 - profiles_pass: `432`
 - profiles_fail: `0`
@@ -24,7 +25,7 @@
 
 ## Interpretation
 
-- This checker measures residual `R = U_current - U_EL` using two independent one-step implementations.
-- `global_abs_*` uses per-node-step joint residual `max(|R_sigma|, |R_chi|, |R_phi|)` (not channel concatenation).
-- Non-zero Sigma residual is dominated by bounded projection (`clip`) needed to enforce `Sigma in [0,1]`.
-- chi/phi residuals are expected near machine-zero when implementations are consistent.
+- `v2` mode: residual `R = U_current - U_EL` using two one-step implementations.
+- `v1` mode: legacy self-check behavior (kept for historical reproducibility).
+- `v2` global metric uses joint residual `max(|R_sigma|, |R_chi|, |R_phi|)`.
+- `v1` global metric preserves legacy concatenation behavior.

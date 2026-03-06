@@ -141,6 +141,8 @@ help:
 	@echo "  make stability_convergence_v6_regression_guard"
 	@echo "  make stability_convergence_v6_telemetry"
 	@echo "  make stability_convergence_v6_extended_eval"
+	@echo "  make qng_foundation_stability_v1"
+	@echo "  make qng_foundation_stability_v1_nonstrict"
 	@echo "  make qng_foundation_stability_v2"
 	@echo "  make qng_foundation_stability_v2_nonstrict"
 	@echo "  make d4_stage2_dual_kernel_run"
@@ -679,14 +681,16 @@ stability_requested_pack_v1: stability_dual_sweep_v1 stability_phase_diagram_chi
 .PHONY: qng_foundation_stability_v1 qng_foundation_stability_v1_nonstrict qng_foundation_stability_v2 qng_foundation_stability_v2_nonstrict
 
 qng_foundation_stability_v1:
-	$(PYTHON) scripts/run_qng_el_consistency_v1.py --out-dir 05_validation/evidence/artifacts/qng-foundation-stability-v2
+	$(PYTHON) scripts/run_qng_el_consistency_v1.py --comparator-mode v1 --prereg-doc 05_validation/pre-registrations/qng-foundation-stability-tests-v1.md --out-dir 05_validation/evidence/artifacts/qng-foundation-stability-v1
 
 qng_foundation_stability_v1_nonstrict:
-	$(PYTHON) scripts/run_qng_el_consistency_v1.py --out-dir 05_validation/evidence/artifacts/qng-foundation-stability-v2-nonstrict --no-strict-exit
+	$(PYTHON) scripts/run_qng_el_consistency_v1.py --comparator-mode v1 --prereg-doc 05_validation/pre-registrations/qng-foundation-stability-tests-v1.md --out-dir 05_validation/evidence/artifacts/qng-foundation-stability-v1-nonstrict --no-strict-exit
 
-qng_foundation_stability_v2: qng_foundation_stability_v1
+qng_foundation_stability_v2:
+	$(PYTHON) scripts/run_qng_el_consistency_v1.py --comparator-mode v2 --prereg-doc 05_validation/pre-registrations/qng-foundation-stability-tests-v2.md --out-dir 05_validation/evidence/artifacts/qng-foundation-stability-v2
 
-qng_foundation_stability_v2_nonstrict: qng_foundation_stability_v1_nonstrict
+qng_foundation_stability_v2_nonstrict:
+	$(PYTHON) scripts/run_qng_el_consistency_v1.py --comparator-mode v2 --prereg-doc 05_validation/pre-registrations/qng-foundation-stability-tests-v2.md --out-dir 05_validation/evidence/artifacts/qng-foundation-stability-v2-nonstrict --no-strict-exit
 
 .PHONY: qm_g18_candidate_v5_primary qm_g18_candidate_v5_attack qm_g18_candidate_v5_holdout qm_g18_v5_promotion_primary qm_g18_v5_promotion_attack qm_g18_v5_promotion_holdout qm_stage1_official_v8_apply qm_stage1_baseline_build_v6 qm_stage1_regression_guard_v6 qm_stage2_raw_vs_official_v8 qm_stage2_taxonomy_post_v8
 

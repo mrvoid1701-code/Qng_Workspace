@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-QNG Foundation Stability EL-consistency checker (v1).
+QNG Foundation Stability EL-consistency checker (v2-capable).
 
 Purpose:
 - Validate that the implemented stability update is consistent with the
-  discrete Euler-Lagrange proxy update used in the frozen v1 lane.
+  discrete Euler-Lagrange proxy update in the frozen foundation lane.
 - Report residual statistics (median, p90, max) for Sigma/chi/phi.
 
 Inputs:
@@ -19,8 +19,8 @@ Outputs:
 - manifest.json
 - run-log.txt
 
-Artifacts are written under:
-  05_validation/evidence/artifacts/qng-foundation-stability-v1/
+Default artifacts are written under:
+  05_validation/evidence/artifacts/qng-foundation-stability-v2/
 """
 
 from __future__ import annotations
@@ -45,19 +45,15 @@ from scripts.tools.run_stability_stress_v1 import (
     CaseConfig,
     StressConfig,
     build_graph_erdos,
-    circular_mean,
-    clip01,
     init_state,
     one_step,
-    sigma_components,
-    angle_diff,
-    wrap_angle,
 )
 
 
 ROOT = REPO_ROOT
 DEFAULT_OUT_DIR = ROOT / "05_validation" / "evidence" / "artifacts" / "qng-foundation-stability-v2"
-DEFAULT_PREREG_DOC = ROOT / "05_validation" / "pre-registrations" / "qng-foundation-stability-tests-v2.md"
+DEFAULT_PREREG_DOC_V1 = ROOT / "05_validation" / "pre-registrations" / "qng-foundation-stability-tests-v1.md"
+DEFAULT_PREREG_DOC_V2 = ROOT / "05_validation" / "pre-registrations" / "qng-foundation-stability-tests-v2.md"
 DEFAULT_FOUNDATION_DOC = ROOT / "03_math" / "derivations" / "qng-foundation-stability-v1.md"
 DEFAULT_ACTION_DOC = ROOT / "03_math" / "derivations" / "qng-stability-action-v1.md"
 DEFAULT_UPDATE_DOC = ROOT / "03_math" / "derivations" / "qng-stability-update-v1.md"
@@ -184,6 +180,74 @@ def as_repo_rel(path: Path) -> str:
         return path.resolve().as_posix()
 
 
+def clip01_local(x: float) -> float:
+    if x < 0.0:
+        return 0.0
+    if x > 1.0:
+        return 1.0
+    return x
+
+
+def wrap_angle_local(x: float) -> float:
+    y = (x + math.pi) % (2.0 * math.pi) - math.pi
+    if y <= -math.pi:
+        return y + 2.0 * math.pi
+    return y
+
+
+def angle_diff_local(a: float, b: float) -> float:
+    return wrap_angle_local(a - b)
+
+
+def neighbors_mean_local(vals: list[float], neighbors: list[int], fallback: float) -> float:
+    if not neighbors:
+        return fallback
+    return sum(vals[j] for j in neighbors) / len(neighbors)
+
+
+def circular_mean_local(phi_vals: list[float], neighbors: list[int], fallback: float) -> float:
+    if not neighbors:
+        return fallback
+    s = 0.0
+    c = 0.0
+    for j in neighbors:
+        s += math.sin(phi_vals[j])
+        c += math.cos(phi_vals[j])
+    if abs(s) < 1e-16 and abs(c) < 1e-16:
+        return fallback
+    return math.atan2(s, c)
+
+
+def sigma_components_local(
+    i: int,
+    sigma: list[float],
+    chi: list[float],
+    phi: list[float],
+    adj: list[list[int]],
+    cfg: StressConfig,
+    k_eq: float,
+) -> dict[str, float]:
+    deg_i = float(len(adj[i]))
+    chi_i = chi[i]
+    chi_neigh = neighbors_mean_local(chi, adj[i], chi_i)
+    phi_neigh = circular_mean_local(phi, adj[i], phi[i])
+
+    tau_i = max(cfg.tau_floor, cfg.alpha_tau * max(abs(chi_i), cfg.tau_floor))
+    delta_t_local = 1.0 + cfg.dt_local_beta * abs(chi_i - chi_neigh)
+
+    sigma_chi = math.exp(-abs(chi_i - cfg.chi_ref) / max(cfg.chi_ref, 1e-12))
+    sigma_struct = math.exp(-abs(deg_i - k_eq) / max(k_eq, 1e-12))
+    sigma_temp = math.exp(-abs(delta_t_local - tau_i) / max(tau_i, 1e-12))
+    sigma_phi = 0.5 * (1.0 + math.cos(angle_diff_local(phi[i], phi_neigh)))
+    sigma_hat = clip01_local(sigma_chi * sigma_struct * sigma_temp * sigma_phi)
+    sigma_neigh = neighbors_mean_local(sigma, adj[i], sigma[i])
+
+    return {
+        "sigma_hat": sigma_hat,
+        "sigma_neigh": sigma_neigh,
+    }
+
+
 def make_cases(
     edge_prob_grid: list[float],
     chi_scale_grid: list[float],
@@ -229,18 +293,18 @@ def one_step_el_pred(
     phi_new = [0.0] * n
 
     for i in range(n):
-        comp = sigma_components(i, sigma, chi, phi, adj, cfg, k_eq)
+        comp = sigma_components_local(i, sigma, chi, phi, adj, cfg, k_eq)
         sigma_i = sigma[i]
         sigma_neigh = comp["sigma_neigh"]
         sigma_hat = comp["sigma_hat"]
-        phi_neigh = circular_mean(phi, adj[i], phi[i])
+        phi_neigh = circular_mean_local(phi, adj[i], phi[i])
 
         grad_sigma = cfg.k_closure * (sigma_i - sigma_hat)
         grad_sigma += cfg.k_smooth * (sigma_i - sigma_neigh)
         grad_sigma += cfg.k_mix * chi[i]
 
         grad_chi = cfg.k_chi * chi[i] + cfg.k_mix * (sigma_i - sigma_neigh)
-        grad_phi = cfg.k_phi * math.sin(angle_diff(phi[i], phi_neigh))
+        grad_phi = cfg.k_phi * math.sin(angle_diff_local(phi[i], phi_neigh))
 
         eta_chi = rng.gauss(0.0, noise_level)
         eta_phi = rng.gauss(0.0, 0.5 * noise_level)
@@ -249,9 +313,9 @@ def one_step_el_pred(
         chi_prop = chi[i] - cfg.alpha_chi * grad_chi + eta_chi
         phi_prop = phi[i] - cfg.alpha_phi * grad_phi + eta_phi
 
-        sigma_next = clip01(sigma_prop)
+        sigma_next = clip01_local(sigma_prop)
         chi_next = chi_prop
-        phi_next = wrap_angle(phi_prop)
+        phi_next = wrap_angle_local(phi_prop)
 
         sig_new[i] = sigma_next
         chi_new[i] = chi_next
@@ -260,11 +324,69 @@ def one_step_el_pred(
     return sig_new, chi_new, phi_new
 
 
+def one_step_self_residual_v1(
+    sigma: list[float],
+    chi: list[float],
+    phi: list[float],
+    adj: list[list[int]],
+    cfg: StressConfig,
+    rng: random.Random,
+    noise_level: float,
+) -> tuple[list[float], list[float], list[float], list[float], list[float], list[float]]:
+    """
+    Legacy v1 checker behavior: self-referential residual.
+    """
+    n = len(sigma)
+    k_eq = mean([float(len(nbrs)) for nbrs in adj]) if adj else 1.0
+
+    sig_new = [0.0] * n
+    chi_new = [0.0] * n
+    phi_new = [0.0] * n
+    rs_all: list[float] = []
+    rc_all: list[float] = []
+    rp_all: list[float] = []
+
+    for i in range(n):
+        comp = sigma_components_local(i, sigma, chi, phi, adj, cfg, k_eq)
+        sigma_i = sigma[i]
+        sigma_neigh = comp["sigma_neigh"]
+        sigma_hat = comp["sigma_hat"]
+        phi_neigh = circular_mean_local(phi, adj[i], phi[i])
+
+        grad_sigma = cfg.k_closure * (sigma_i - sigma_hat)
+        grad_sigma += cfg.k_smooth * (sigma_i - sigma_neigh)
+        grad_sigma += cfg.k_mix * chi[i]
+        grad_chi = cfg.k_chi * chi[i] + cfg.k_mix * (sigma_i - sigma_neigh)
+        grad_phi = cfg.k_phi * math.sin(angle_diff_local(phi[i], phi_neigh))
+
+        eta_chi = rng.gauss(0.0, noise_level)
+        eta_phi = rng.gauss(0.0, 0.5 * noise_level)
+
+        sigma_prop = sigma_i - cfg.alpha_sigma * grad_sigma
+        chi_prop = chi[i] - cfg.alpha_chi * grad_chi + eta_chi
+        phi_prop = phi[i] - cfg.alpha_phi * grad_phi + eta_phi
+
+        sigma_next = clip01_local(sigma_prop)
+        chi_next = chi_prop
+        phi_next = wrap_angle_local(phi_prop)
+
+        sig_new[i] = sigma_next
+        chi_new[i] = chi_next
+        phi_new[i] = phi_next
+
+        rs_all.append(abs(sigma_next - sigma_prop))
+        rc_all.append(abs(chi_next - chi_prop))
+        rp_all.append(abs(angle_diff_local(phi_next, phi_prop)))
+
+    return sig_new, chi_new, phi_new, rs_all, rc_all, rp_all
+
+
 def run_profile(
     cfg: StressConfig,
     dataset_id: str,
     seed: int,
     case: CaseConfig,
+    comparator_mode: str,
     sigma_median_max: float,
     sigma_p90_max: float,
     sigma_max_max: float,
@@ -282,39 +404,54 @@ def run_profile(
     all_phi: list[float] = []
     all_joint: list[float] = []
     for _ in range(cfg.steps):
-        rng_state = rng.getstate()
-        sigma_cur, chi_cur, phi_cur, _, _, _, _, _ = one_step(
-            sigma=sigma,
-            chi=chi,
-            phi=phi,
-            adj=adj,
-            cfg=cfg,
-            rng=rng,
-            noise_level=case.noise_level,
-        )
-        rng.setstate(rng_state)
-        sigma_el, chi_el, phi_el = one_step_el_pred(
-            sigma=sigma,
-            chi=chi,
-            phi=phi,
-            adj=adj,
-            cfg=cfg,
-            rng=rng,
-            noise_level=case.noise_level,
-        )
+        if comparator_mode == "v1":
+            sigma, chi, phi, rs, rc, rp = one_step_self_residual_v1(
+                sigma=sigma,
+                chi=chi,
+                phi=phi,
+                adj=adj,
+                cfg=cfg,
+                rng=rng,
+                noise_level=case.noise_level,
+            )
+            all_sigma.extend(rs)
+            all_chi.extend(rc)
+            all_phi.extend(rp)
+            all_joint.extend(rs + rc + rp)
+        else:
+            rng_state = rng.getstate()
+            sigma_cur, chi_cur, phi_cur, _, _, _, _, _ = one_step(
+                sigma=sigma,
+                chi=chi,
+                phi=phi,
+                adj=adj,
+                cfg=cfg,
+                rng=rng,
+                noise_level=case.noise_level,
+            )
+            rng.setstate(rng_state)
+            sigma_el, chi_el, phi_el = one_step_el_pred(
+                sigma=sigma,
+                chi=chi,
+                phi=phi,
+                adj=adj,
+                cfg=cfg,
+                rng=rng,
+                noise_level=case.noise_level,
+            )
 
-        rs = [abs(a - b) for a, b in zip(sigma_cur, sigma_el)]
-        rc = [abs(a - b) for a, b in zip(chi_cur, chi_el)]
-        rp = [abs(angle_diff(a, b)) for a, b in zip(phi_cur, phi_el)]
-        rj = [max(rs[i], rc[i], rp[i]) for i in range(len(rs))]
+            rs = [abs(a - b) for a, b in zip(sigma_cur, sigma_el)]
+            rc = [abs(a - b) for a, b in zip(chi_cur, chi_el)]
+            rp = [abs(angle_diff_local(a, b)) for a, b in zip(phi_cur, phi_el)]
+            rj = [max(rs[i], rc[i], rp[i]) for i in range(len(rs))]
 
-        all_sigma.extend(rs)
-        all_chi.extend(rc)
-        all_phi.extend(rp)
-        all_joint.extend(rj)
+            all_sigma.extend(rs)
+            all_chi.extend(rc)
+            all_phi.extend(rp)
+            all_joint.extend(rj)
 
-        # Advance reference state with current implementation.
-        sigma, chi, phi = sigma_cur, chi_cur, phi_cur
+            # Advance reference state with current implementation.
+            sigma, chi, phi = sigma_cur, chi_cur, phi_cur
 
     sigma_med = percentile(all_sigma, 0.50)
     sigma_p90 = percentile(all_sigma, 0.90)
@@ -348,6 +485,7 @@ def run_profile(
 
     return {
         "dataset_id": dataset_id,
+        "comparator_mode": comparator_mode,
         "seed": seed,
         "n_nodes": cfg.n_nodes,
         "steps": cfg.steps,
@@ -380,8 +518,10 @@ def run_profile(
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="Run QNG EL consistency checker (v1).")
+    p = argparse.ArgumentParser(description="Run QNG EL consistency checker (v2).")
     p.add_argument("--out-dir", default=str(DEFAULT_OUT_DIR))
+    p.add_argument("--comparator-mode", choices=["v1", "v2"], default="v2")
+    p.add_argument("--prereg-doc", default="")
     p.add_argument(
         "--block-specs",
         default=(
@@ -420,7 +560,7 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--alpha-rel-drift-max", type=float, default=0.05)
     p.add_argument("--nonlocal-delta-max", type=float, default=1e-9)
 
-    # EL consistency thresholds (locked in prereg v1)
+    # EL consistency thresholds (locked in prereg v2)
     p.add_argument("--sigma-median-max", type=float, default=0.020)
     p.add_argument("--sigma-p90-max", type=float, default=0.030)
     p.add_argument("--sigma-max-max", type=float, default=0.060)
@@ -492,6 +632,11 @@ def main() -> int:
     args = parse_args()
     out_dir = Path(args.out_dir).resolve()
     ensure_dir(out_dir)
+    mode_tag = args.comparator_mode
+    if args.prereg_doc.strip():
+        prereg_doc = Path(args.prereg_doc).resolve()
+    else:
+        prereg_doc = DEFAULT_PREREG_DOC_V1 if mode_tag == "v1" else DEFAULT_PREREG_DOC_V2
 
     blocks = parse_block_specs(args.block_specs)
     edge_prob_grid = parse_float_grid(args.edge_prob_grid)
@@ -521,6 +666,7 @@ def main() -> int:
                         dataset_id=dataset_id,
                         seed=seed,
                         case=case,
+                        comparator_mode=args.comparator_mode,
                         sigma_median_max=args.sigma_median_max,
                         sigma_p90_max=args.sigma_p90_max,
                         sigma_max_max=args.sigma_max_max,
@@ -533,6 +679,7 @@ def main() -> int:
 
     profile_fields = [
         "dataset_id",
+        "comparator_mode",
         "seed",
         "n_nodes",
         "steps",
@@ -594,9 +741,10 @@ def main() -> int:
     all_pass = sum(1 for r in profile_rows if r["all_pass"] == "pass")
     all_fail = all_total - all_pass
     report_lines = [
-        "# QNG EL Consistency Report (v1)",
+        f"# QNG EL Consistency Report ({mode_tag})",
         "",
         f"- generated_utc: `{datetime.now(timezone.utc).isoformat()}`",
+        f"- comparator_mode: `{mode_tag}`",
         f"- profiles_total: `{all_total}`",
         f"- profiles_pass: `{all_pass}`",
         f"- profiles_fail: `{all_fail}`",
@@ -623,13 +771,13 @@ def main() -> int:
     report_lines.extend(
         [
             "",
-        "## Interpretation",
-        "",
-        "- This checker measures residual `R = U_current - U_EL` using two independent one-step implementations.",
-        "- `global_abs_*` uses per-node-step joint residual `max(|R_sigma|, |R_chi|, |R_phi|)` (not channel concatenation).",
-        "- Non-zero Sigma residual is dominated by bounded projection (`clip`) needed to enforce `Sigma in [0,1]`.",
-        "- chi/phi residuals are expected near machine-zero when implementations are consistent.",
-    ]
+            "## Interpretation",
+            "",
+            "- `v2` mode: residual `R = U_current - U_EL` using two one-step implementations.",
+            "- `v1` mode: legacy self-check behavior (kept for historical reproducibility).",
+            "- `v2` global metric uses joint residual `max(|R_sigma|, |R_chi|, |R_phi|)`.",
+            "- `v1` global metric preserves legacy concatenation behavior.",
+        ]
     )
     report_md = out_dir / "report.md"
     report_md.write_text("\n".join(report_lines) + "\n", encoding="utf-8")
@@ -637,8 +785,9 @@ def main() -> int:
     now_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
         "generated_utc": now_utc,
-        "test_id": "qng-foundation-stability-tests-v2",
-        "policy_id": "qng-foundation-stability-tests-v2",
+        "test_id": f"qng-foundation-stability-tests-{mode_tag}",
+        "policy_id": f"qng-foundation-stability-tests-{mode_tag}",
+        "comparator_mode": mode_tag,
         "blocks": blocks,
         "grids": {
             "edge_prob_grid": edge_prob_grid,
@@ -661,7 +810,7 @@ def main() -> int:
             "report_md": as_repo_rel(report_md),
         },
         "references": {
-            "prereg_doc": as_repo_rel(DEFAULT_PREREG_DOC) if DEFAULT_PREREG_DOC.exists() else "",
+            "prereg_doc": as_repo_rel(prereg_doc) if prereg_doc.exists() else "",
             "foundation_doc": as_repo_rel(DEFAULT_FOUNDATION_DOC) if DEFAULT_FOUNDATION_DOC.exists() else "",
             "action_doc": as_repo_rel(DEFAULT_ACTION_DOC) if DEFAULT_ACTION_DOC.exists() else "",
             "update_doc": as_repo_rel(DEFAULT_UPDATE_DOC) if DEFAULT_UPDATE_DOC.exists() else "",
@@ -683,8 +832,9 @@ def main() -> int:
     manifest_json.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
     run_log = [
-        "qng-el-consistency-v2",
+        f"qng-el-consistency-{mode_tag}",
         f"generated_utc={now_utc}",
+        f"comparator_mode={mode_tag}",
         f"out_dir={out_dir.as_posix()}",
         f"profiles_total={all_total}",
         f"profiles_pass={all_pass}",

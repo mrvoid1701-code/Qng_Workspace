@@ -1,7 +1,8 @@
 {
-  "generated_utc": "2026-03-06T00:34:32.766997+00:00",
+  "generated_utc": "2026-03-06T00:44:42.903652+00:00",
   "test_id": "qng-foundation-stability-tests-v2",
   "policy_id": "qng-foundation-stability-tests-v2",
+  "comparator_mode": "v2",
   "blocks": [
     {
       "dataset_id": "STABILITY-PRIMARY",
@@ -75,7 +76,7 @@
     "update_doc": "03_math/derivations/qng-stability-update-v1.md"
   },
   "reference_hashes": {
-    "prereg_doc": "068713310bc53e56111b90460b66bb953c5bb66477838e2841f297f0eb08bc81",
+    "prereg_doc": "934c94b3950576178e42be858b19845c2d82017c0f8af514ff2b08bbce60ff09",
     "foundation_doc": "107df77c749746f7a9220760c5ff6e357fddbf3513a992cb2b469956bc1e302d",
     "action_doc": "a2c0ca95958fc1afbcf1a869b0590cc265283018de76bd2d024f7e449a085ade",
     "update_doc": "2d59d53fc9fb3b8656b3eea42e1e176e63079ea8d656f6ab385198e63b6e1abf"
