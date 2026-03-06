@@ -1,0 +1,3 @@
+candidate,n_splits,avg_holdout_chi2_per_n_dual,avg_holdout_chi2_per_n_mond,avg_holdout_improve_vs_null_pct,avg_holdout_mond_worse_pct,avg_holdout_delta_aic_dual_minus_mond,avg_holdout_delta_bic_dual_minus_mond,avg_generalization_gap_pp
+outer_lowaccel_focus,5,163.846205,77.572728,34.621684,149.751170,84879.782216,84894.430145,13.465838
+outer_lowaccel_single,5,163.846188,77.572728,34.621690,149.751144,84877.766324,84887.531610,13.465838

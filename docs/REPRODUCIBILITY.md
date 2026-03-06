@@ -379,6 +379,37 @@ python scripts/tools/run_stability_official_v2.py --source-summary-csv 05_valida
 python scripts/tools/run_stability_official_v2.py --source-summary-csv 05_validation/evidence/artifacts/stability-energy-covariant-v2/holdout_n30_42_s3401/summary.csv --out-dir 05_validation/evidence/artifacts/stability-official-v2/holdout_n30_42_s3401 --policy-id stability-official-v2-holdout --effective-tag stability-energy-v2-official
 ```
 
+## 90) D4 Stage-2 dual-kernel candidates v5
+
+Frozen prereg:
+
+- `05_validation/pre-registrations/d4-stage2-dual-kernel-v5-candidates.md`
+
+Run:
+
+```bash
+make d4_stage2_candidates_v5_run
+```
+
+Evaluate:
+
+```bash
+make d4_stage2_candidates_v5_eval
+```
+
+Run + evaluate:
+
+```bash
+make d4_stage2_candidates_v5_pack
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v5-candidates/per_seed_candidate_summary.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v5-candidates/aggregate_summary.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v5-candidates/evaluation-v1/evaluation_report.json`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v5-candidates/evaluation-v1/candidate_decisions.csv`
+
 Build baselines + run guard:
 
 ```bash

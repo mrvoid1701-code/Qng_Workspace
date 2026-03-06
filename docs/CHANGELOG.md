@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-03-06 - D4 candidate lane v5 (low-grid extension + low-accel outer-focused fit)
+
+- Added v5 candidate runner:
+  - `scripts/run_d4_stage2_dual_kernel_candidates_v5.py`
+  - keeps direct `chi2` fit in `v` space
+  - extends tau/alpha search lower than v4
+  - uses minimal candidate set to reduce parameter redundancy
+- Added v5 evaluator:
+  - `scripts/tools/evaluate_d4_stage2_dual_kernel_candidates_v5.py`
+- Added v5 prereg:
+  - `05_validation/pre-registrations/d4-stage2-dual-kernel-v5-candidates.md`
+- Added Make targets:
+  - `d4_stage2_candidates_v5_run`
+  - `d4_stage2_candidates_v5_eval`
+  - `d4_stage2_candidates_v5_pack`
+- Updated reproducibility docs:
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-06 - D4 candidate lane v4 (objective fix + boundary expansion + low-accel outer candidate)
 
 - Added v4 candidate runner:
