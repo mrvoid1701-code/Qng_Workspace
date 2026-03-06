@@ -58,6 +58,7 @@ Fit objective lock:
 chi2_focus = sum_i w_i * ((v_obs_i - v_pred_i)/v_err_i)^2
 w_i = 1 + gamma * (r_i/(r_i+r_tail)) * 1/sqrt(1 + g_bar_i/a0)
 gamma = 2.0 (locked)
+grid selection objective = argmin_{tau,alpha} chi2_focus(train)
 ```
 
 Constraints:
@@ -93,6 +94,7 @@ Evaluate:
 ```powershell
 python scripts/tools/evaluate_d4_stage2_dual_kernel_candidates_v5.py `
   --per-seed-csv 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v5-candidates/per_seed_candidate_summary.csv `
+  --manifest-json 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v5-candidates/manifest.json `
   --out-dir 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v5-candidates/evaluation-v1 `
   --min-holdout-improve-vs-null-pct 10 `
   --max-holdout-mond-worse-pct 0 `
@@ -103,8 +105,8 @@ python scripts/tools/evaluate_d4_stage2_dual_kernel_candidates_v5.py `
 
 ## Promotion Rule
 
-Candidate `PASS` only if all split seeds pass strict checks (`N/N`).
-Global `PASS` only if at least one candidate is `PASS`.
+Candidate `PASS` only if all split seeds pass strict checks (`N/N`) and seed coverage is complete.
+Global `PASS` only if at least one candidate is `PASS` and governance lock checks are all `PASS`.
 
 ## Lock Rule
 
@@ -114,4 +116,6 @@ No edits after seeing results to:
 2. constants,
 3. grids,
 4. candidate formulas,
-5. evaluator thresholds.
+5. dataset lock (`dataset_csv_rel`, `dataset_sha256`),
+6. evaluator lock metadata checks,
+7. evaluator thresholds.

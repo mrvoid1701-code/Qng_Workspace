@@ -5,10 +5,13 @@
 - Added v5 candidate runner:
   - `scripts/run_d4_stage2_dual_kernel_candidates_v5.py`
   - keeps direct `chi2` fit in `v` space
+  - uses `chi2_focus(train)` also for `(tau, alpha)` grid selection lock
   - extends tau/alpha search lower than v4
   - uses minimal candidate set to reduce parameter redundancy
+  - writes dataset provenance locks (`dataset_csv_rel`, `dataset_sha256`) in manifest and per-seed summary
 - Added v5 evaluator:
   - `scripts/tools/evaluate_d4_stage2_dual_kernel_candidates_v5.py`
+  - enforces prereg lock checks before decision (test-id, dataset lock, split seeds, constants, grids, candidates, coverage)
 - Added v5 prereg:
   - `05_validation/pre-registrations/d4-stage2-dual-kernel-v5-candidates.md`
 - Added Make targets:

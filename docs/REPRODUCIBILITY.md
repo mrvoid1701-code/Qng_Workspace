@@ -397,6 +397,8 @@ Evaluate:
 make d4_stage2_candidates_v5_eval
 ```
 
+`v5` evaluator enforces prereg locks from `manifest.json` (test-id, dataset hash/relpath, seeds, grids, candidates).
+
 Run + evaluate:
 
 ```bash

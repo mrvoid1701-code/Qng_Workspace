@@ -15,6 +15,7 @@ import argparse
 import csv
 from dataclasses import dataclass
 from datetime import datetime, timezone
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -409,22 +410,8 @@ def fit_nonneg_chi2_v(
     p = len(cols)
     k = [0.0] * p
 
-    focus_w: list[float] = []
-    for r in rows:
-        outer = r["r"] / max(r["r"] + r_tail_kpc, 1e-12)
-        lowacc = 1.0 / math.sqrt(1.0 + (r["bt"] / max(r["r"], 1e-12)) / max(a0_internal, 1e-30))
-        focus_w.append(1.0 + max(focus_gamma, 0.0) * outer * lowacc)
-
     def obj(v: list[float]) -> float:
-        total = 0.0
-        for i, r in enumerate(rows):
-            pred_v2 = r["bt"]
-            for j, c in enumerate(cols):
-                pred_v2 += v[j] * c[i]
-            pred_v = math.sqrt(max(pred_v2, 0.0))
-            d = (r["v"] - pred_v) / r["ve"]
-            total += focus_w[i] * d * d
-        return total
+        return chi2_focus_candidate(rows, v, cols, focus_gamma, r_tail_kpc, a0_internal)
 
     prev = obj(k)
     for _ in range(max_outer_iter):
@@ -471,11 +458,52 @@ def write_csv(path: Path, rows: list[dict[str, Any]], fields: list[str]) -> None
         w.writerows(rows)
 
 
+def sha256_file(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        while True:
+            chunk = f.read(1024 * 1024)
+            if not chunk:
+                break
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def focus_weight(row: dict[str, float], focus_gamma: float, r_tail_kpc: float, a0_internal: float) -> float:
+    outer = row["r"] / max(row["r"] + r_tail_kpc, 1e-12)
+    lowacc = 1.0 / math.sqrt(1.0 + (row["bt"] / max(row["r"], 1e-12)) / max(a0_internal, 1e-30))
+    return 1.0 + max(focus_gamma, 0.0) * outer * lowacc
+
+
+def chi2_focus_candidate(
+    rows: list[dict[str, float]],
+    coeffs: list[float],
+    cols: list[list[float]],
+    focus_gamma: float,
+    r_tail_kpc: float,
+    a0_internal: float,
+) -> float:
+    total = 0.0
+    for i, r in enumerate(rows):
+        pred_v2 = r["bt"]
+        for j, c in enumerate(cols):
+            pred_v2 += coeffs[j] * c[i]
+        pred_v = math.sqrt(max(pred_v2, 0.0))
+        d = (r["v"] - pred_v) / r["ve"]
+        total += focus_weight(r, focus_gamma, r_tail_kpc, a0_internal) * d * d
+    return total
+
+
 def main() -> int:
     args = parse_args()
     dataset_path = Path(args.dataset_csv).resolve()
     out_dir = Path(args.outdir).resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        dataset_csv_rel = dataset_path.relative_to(ROOT).as_posix()
+    except ValueError:
+        dataset_csv_rel = dataset_path.name
+    dataset_sha256 = sha256_file(dataset_path)
 
     split_seeds = parse_int_list(args.split_seeds)
     tau_grid = parse_list(args.tau_grid)
@@ -500,6 +528,7 @@ def main() -> int:
         holdout_null_chi2 = chi2_null(holdout_points)
 
         for candidate in candidates:
+            best_train_focus_chi2 = float("inf")
             best_train_chi2 = float("inf")
             best_holdout_chi2 = float("inf")
             best_tau = tau_grid[0]
@@ -546,16 +575,27 @@ def main() -> int:
                         a0_internal=A0_INTERNAL,
                     )
 
+                    train_focus_chi2 = chi2_focus_candidate(
+                        train_rows,
+                        coeffs,
+                        train_cols,
+                        focus_gamma=float(args.focus_gamma),
+                        r_tail_kpc=float(args.r_tail_kpc),
+                        a0_internal=A0_INTERNAL,
+                    )
                     train_chi2 = chi2_candidate(train_rows, coeffs, train_cols)
                     holdout_chi2 = chi2_candidate(holdout_rows, coeffs, holdout_cols)
 
-                    if train_chi2 < best_train_chi2:
+                    # Selection is locked to focused train objective from prereg.
+                    if train_focus_chi2 < best_train_focus_chi2:
+                        best_train_focus_chi2 = train_focus_chi2
                         best_train_chi2 = train_chi2
                         best_holdout_chi2 = holdout_chi2
                         best_tau = tau
                         best_alpha = alpha
                         best_coeffs = coeffs
 
+            train_focus_dual_per_n = safe_rate(best_train_focus_chi2, len(train_points))
             train_dual_per_n = safe_rate(best_train_chi2, len(train_points))
             holdout_dual_per_n = safe_rate(best_holdout_chi2, len(holdout_points))
             train_null_per_n = safe_rate(train_null_chi2, len(train_points))
@@ -581,6 +621,10 @@ def main() -> int:
             )
 
             row = {
+                "test_id": str(args.test_id),
+                "dataset_id": str(args.dataset_id),
+                "dataset_csv_rel": dataset_csv_rel,
+                "dataset_sha256": dataset_sha256,
                 "split_seed": str(split_seed),
                 "candidate": candidate,
                 "n_points_train": str(len(train_points)),
@@ -590,6 +634,7 @@ def main() -> int:
                 "best_k1": f6(best_coeffs[0] if len(best_coeffs) > 0 else 0.0),
                 "best_k2": f6(best_coeffs[1] if len(best_coeffs) > 1 else 0.0),
                 "best_k3": f6(best_coeffs[2] if len(best_coeffs) > 2 else 0.0),
+                "train_focus_chi2_per_n_dual": f6(train_focus_dual_per_n),
                 "train_chi2_per_n_dual": f6(train_dual_per_n),
                 "train_chi2_per_n_mond": f6(train_mond_per_n),
                 "train_chi2_per_n_null": f6(train_null_per_n),
@@ -606,6 +651,10 @@ def main() -> int:
             per_seed_rows.append(row)
 
     per_seed_fields = [
+        "test_id",
+        "dataset_id",
+        "dataset_csv_rel",
+        "dataset_sha256",
         "split_seed",
         "candidate",
         "n_points_train",
@@ -615,6 +664,7 @@ def main() -> int:
         "best_k1",
         "best_k2",
         "best_k3",
+        "train_focus_chi2_per_n_dual",
         "train_chi2_per_n_dual",
         "train_chi2_per_n_mond",
         "train_chi2_per_n_null",
@@ -643,6 +693,7 @@ def main() -> int:
             {
                 "candidate": candidate,
                 "n_splits": str(n),
+                "avg_train_focus_chi2_per_n_dual": f6(avg("train_focus_chi2_per_n_dual")),
                 "avg_holdout_chi2_per_n_dual": f6(avg("holdout_chi2_per_n_dual")),
                 "avg_holdout_chi2_per_n_mond": f6(avg("holdout_chi2_per_n_mond")),
                 "avg_holdout_improve_vs_null_pct": f6(avg("holdout_improve_vs_null_pct")),
@@ -655,6 +706,7 @@ def main() -> int:
     agg_fields = [
         "candidate",
         "n_splits",
+        "avg_train_focus_chi2_per_n_dual",
         "avg_holdout_chi2_per_n_dual",
         "avg_holdout_chi2_per_n_mond",
         "avg_holdout_improve_vs_null_pct",
@@ -669,7 +721,8 @@ def main() -> int:
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "test_id": str(args.test_id),
         "dataset_id": str(args.dataset_id),
-        "dataset_csv": str(dataset_path),
+        "dataset_csv_rel": dataset_csv_rel,
+        "dataset_sha256": dataset_sha256,
         "split_seeds": split_seeds,
         "train_frac": float(args.train_frac),
         "fixed_theory_constants": {
@@ -686,6 +739,7 @@ def main() -> int:
             "space": "velocity chi2",
             "focus_gamma": float(args.focus_gamma),
             "focus_formula": "1 + gamma * (r/(r+r_tail)) * 1/sqrt(1+gbar/a0)",
+            "grid_selection_objective": "train_focus_chi2",
         },
         "candidates": candidates,
         "artifacts": {

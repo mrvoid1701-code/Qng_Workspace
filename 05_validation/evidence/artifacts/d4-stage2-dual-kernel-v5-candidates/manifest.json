@@ -1,8 +1,9 @@
 {
-  "generated_utc": "2026-03-06T02:19:59.502192+00:00",
+  "generated_utc": "2026-03-06T14:28:50.775895+00:00",
   "test_id": "d4-stage2-dual-kernel-v5-candidates",
   "dataset_id": "DS-006",
-  "dataset_csv": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\data\\rotation\\rotation_ds006_rotmod.csv",
+  "dataset_csv_rel": "data/rotation/rotation_ds006_rotmod.csv",
+  "dataset_sha256": "1067802fb376629095ab4a0f8d8358eadd0dda488f046305659ac966d1ab556c",
   "split_seeds": [
     3401,
     3402,
@@ -50,7 +51,8 @@
   "fit_objective": {
     "space": "velocity chi2",
     "focus_gamma": 2.0,
-    "focus_formula": "1 + gamma * (r/(r+r_tail)) * 1/sqrt(1+gbar/a0)"
+    "focus_formula": "1 + gamma * (r/(r+r_tail)) * 1/sqrt(1+gbar/a0)",
+    "grid_selection_objective": "train_focus_chi2"
   },
   "candidates": [
     "outer_lowaccel_single",
