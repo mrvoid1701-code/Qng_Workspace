@@ -2041,6 +2041,37 @@ Main outputs:
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/forensics-v1/worst_galaxies.csv`
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/forensics-v1/report.md`
 
+## 66c) D4 Stage-2 candidate formulas v3 (multi-split strict lane)
+
+Run:
+
+```bash
+make d4_stage2_candidates_v3_run
+```
+
+Evaluate:
+
+```bash
+make d4_stage2_candidates_v3_eval
+```
+
+Or full pack:
+
+```bash
+make d4_stage2_candidates_v3_pack
+```
+
+Locked prereg:
+
+- `05_validation/pre-registrations/d4-stage2-dual-kernel-v3-candidates.md`
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v3-candidates/per_seed_candidate_summary.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v3-candidates/aggregate_summary.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v3-candidates/evaluation-v1/evaluation_report.json`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v3-candidates/evaluation-v1/candidate_decisions.csv`
+
 ## 67) QNG foundation EL-consistency (stability core v1/v2)
 
 Run v2 (official comparator):

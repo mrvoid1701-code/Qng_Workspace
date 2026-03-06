@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-03-06 - D4 candidate lane v3 (two formulas, multi-split strict prereg)
+
+- Added candidate runner:
+  - `scripts/run_d4_stage2_dual_kernel_candidates_v3.py`
+- Added strict multi-split evaluator:
+  - `scripts/tools/evaluate_d4_stage2_dual_kernel_candidates_v3.py`
+- Added prereg:
+  - `05_validation/pre-registrations/d4-stage2-dual-kernel-v3-candidates.md`
+- Added Make targets:
+  - `d4_stage2_candidates_v3_run`
+  - `d4_stage2_candidates_v3_eval`
+  - `d4_stage2_candidates_v3_pack`
+- Updated reproducibility docs:
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-06 - D4 forensics v1 (strict-v2 failure segmentation)
 
 - Added analysis script:

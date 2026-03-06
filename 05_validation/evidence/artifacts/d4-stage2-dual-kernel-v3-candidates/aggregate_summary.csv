@@ -1,0 +1,3 @@
+candidate,n_splits,avg_holdout_chi2_per_n_dual,avg_holdout_chi2_per_n_mond,avg_holdout_improve_vs_null_pct,avg_holdout_mond_worse_pct,avg_holdout_delta_aic_dual_minus_mond,avg_holdout_delta_bic_dual_minus_mond,avg_generalization_gap_pp
+cross_bridge,5,224.663511,77.572728,9.471335,271.167020,145492.145838,145511.676409,3.918395
+outer_tail,5,211.327868,77.572728,14.938301,248.527383,132417.239259,132436.769831,5.582683
