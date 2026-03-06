@@ -23,6 +23,7 @@ import argparse
 import csv
 from dataclasses import dataclass
 from datetime import datetime
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -66,6 +67,24 @@ def parse_list(raw: str) -> list[float]:
             continue
         out.append(float(t))
     return out
+
+
+def sha256_file(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        while True:
+            chunk = f.read(1024 * 1024)
+            if not chunk:
+                break
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def as_repo_rel(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(ROOT.resolve()).as_posix()
+    except Exception:
+        return path.resolve().as_posix()
 
 
 def parse_args() -> argparse.Namespace:
@@ -381,7 +400,8 @@ def main() -> int:
 
     tau_grid = parse_list(args.tau_grid)
     alpha_grid = parse_list(args.alpha_grid)
-    galaxies = read_data(Path(args.dataset_csv).resolve())
+    dataset_path = Path(args.dataset_csv).resolve()
+    galaxies = read_data(dataset_path)
     galaxy_ids = sorted(galaxies.keys())
     train_ids, holdout_ids = train_holdout_split(galaxy_ids, args.seed, args.train_frac)
 
@@ -498,7 +518,9 @@ def main() -> int:
         "test_id": str(args.test_id),
         "timestamp_utc": datetime.utcnow().isoformat(timespec="seconds") + "Z",
         "dataset_id": args.dataset_id,
-        "dataset_csv": str(Path(args.dataset_csv).resolve()),
+        "dataset_csv": str(dataset_path),
+        "dataset_csv_rel": as_repo_rel(dataset_path),
+        "dataset_sha256": sha256_file(dataset_path),
         "split_seed": int(args.seed),
         "train_frac": float(args.train_frac),
         "n_galaxies_total": len(galaxy_ids),

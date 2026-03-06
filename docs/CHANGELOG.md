@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-03-06 - Follow-up review fixes (D4 dataset hash lock + v2 strict artifact run)
+
+- Hardened D4 strict evaluator dataset lock:
+  - `scripts/tools/evaluate_d4_stage2_dual_kernel_v2.py`
+  - added lock checks for:
+    - `dataset_csv_rel`
+    - `dataset_sha256`
+- Hardened D4 runner metadata output:
+  - `scripts/run_d4_stage2_dual_kernel_v1.py`
+  - summary now includes:
+    - `dataset_csv_rel`
+    - `dataset_sha256`
+- Updated prereg + repro docs:
+  - `05_validation/pre-registrations/d4-stage2-dual-kernel-v2-strict-vs-mond.md`
+  - `docs/REPRODUCIBILITY.md`
+- Executed strict v2 lane run and evaluation package:
+  - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/d4_stage2_dual_kernel_summary.json`
+  - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/evaluation-v2/evaluation_report.json`
+- Observed strict decision on v2 package: `HOLD` (expected under strict-vs-MOND criteria).
+
 ## 2026-03-06 - Follow-up hardening from review (EL note correction + D4 v2 lock checks + strict exit)
 
 - Corrected P0-2 formal note wording/proof scope:

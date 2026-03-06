@@ -50,8 +50,11 @@ python scripts/tools/evaluate_d4_stage2_dual_kernel_v2.py `
 Evaluator governance lock behavior (mandatory):
 
 1. validates metadata lock fields from summary (`test_id`, dataset, split seed/fraction, fixed constants, tau/alpha grids),
-2. if any lock check fails, decision becomes `HOLD`,
-3. default `--strict-exit` returns non-zero exit code on `HOLD` for CI safety.
+2. validates dataset identity by both:
+   - `dataset_csv_rel = data/rotation/rotation_ds006_rotmod.csv`
+   - `dataset_sha256 = 1067802fb376629095ab4a0f8d8358eadd0dda488f046305659ac966d1ab556c`
+3. if any lock check fails, decision becomes `HOLD`,
+4. default `--strict-exit` returns non-zero exit code on `HOLD` for CI safety.
 
 ## Decision Rule
 

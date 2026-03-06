@@ -41,6 +41,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--expected-test-id", default="d4-stage2-dual-kernel-v2-strict-vs-mond")
     p.add_argument("--expected-dataset-id", default="DS-006")
     p.add_argument("--expected-dataset-csv-name", default="rotation_ds006_rotmod.csv")
+    p.add_argument("--expected-dataset-csv-rel", default="data/rotation/rotation_ds006_rotmod.csv")
+    p.add_argument("--expected-dataset-sha256", default="1067802fb376629095ab4a0f8d8358eadd0dda488f046305659ac966d1ab556c")
     p.add_argument("--expected-split-seed", type=int, default=3401)
     p.add_argument("--expected-train-frac", type=float, default=0.70)
     p.add_argument("--expected-s1-lambda", type=float, default=0.28)
@@ -114,6 +116,8 @@ def main() -> int:
     observed_test_id = str(summary.get("test_id", ""))
     observed_dataset_id = str(summary.get("dataset_id", ""))
     observed_dataset_csv = str(summary.get("dataset_csv", ""))
+    observed_dataset_csv_rel = str(summary.get("dataset_csv_rel", "")).replace("\\", "/")
+    observed_dataset_sha256 = str(summary.get("dataset_sha256", "")).lower()
     observed_split_seed = int(summary.get("split_seed", -1))
     observed_train_frac = float(summary.get("train_frac", -1.0))
     fixed_consts = summary.get("fixed_theory_constants", {})
@@ -128,6 +132,8 @@ def main() -> int:
         "lock_test_id": observed_test_id == str(args.expected_test_id),
         "lock_dataset_id": observed_dataset_id == str(args.expected_dataset_id),
         "lock_dataset_csv_name": Path(observed_dataset_csv).name == str(args.expected_dataset_csv_name),
+        "lock_dataset_csv_rel": observed_dataset_csv_rel == str(args.expected_dataset_csv_rel),
+        "lock_dataset_sha256": observed_dataset_sha256 == str(args.expected_dataset_sha256).lower(),
         "lock_split_seed": observed_split_seed == int(args.expected_split_seed),
         "lock_train_frac": abs(observed_train_frac - float(args.expected_train_frac)) <= 1e-12,
         "lock_s1_lambda": abs(observed_s1_lambda - float(args.expected_s1_lambda)) <= 1e-12,
@@ -155,6 +161,8 @@ def main() -> int:
             "expected_test_id": str(args.expected_test_id),
             "expected_dataset_id": str(args.expected_dataset_id),
             "expected_dataset_csv_name": str(args.expected_dataset_csv_name),
+            "expected_dataset_csv_rel": str(args.expected_dataset_csv_rel),
+            "expected_dataset_sha256": str(args.expected_dataset_sha256).lower(),
             "expected_split_seed": int(args.expected_split_seed),
             "expected_train_frac": float(args.expected_train_frac),
             "expected_s1_lambda": float(args.expected_s1_lambda),
@@ -173,6 +181,8 @@ def main() -> int:
             "test_id": observed_test_id,
             "dataset_id": observed_dataset_id,
             "dataset_csv_name": Path(observed_dataset_csv).name,
+            "dataset_csv_rel": observed_dataset_csv_rel,
+            "dataset_sha256": observed_dataset_sha256,
             "split_seed": observed_split_seed,
             "train_frac": observed_train_frac,
             "s1_lambda": observed_s1_lambda,
@@ -222,6 +232,8 @@ def main() -> int:
         f"- lock_test_id: `{checks['lock_test_id']}`",
         f"- lock_dataset_id: `{checks['lock_dataset_id']}`",
         f"- lock_dataset_csv_name: `{checks['lock_dataset_csv_name']}`",
+        f"- lock_dataset_csv_rel: `{checks['lock_dataset_csv_rel']}`",
+        f"- lock_dataset_sha256: `{checks['lock_dataset_sha256']}`",
         f"- lock_split_seed: `{checks['lock_split_seed']}`",
         f"- lock_train_frac: `{checks['lock_train_frac']}`",
         f"- lock_s1_lambda: `{checks['lock_s1_lambda']}`",

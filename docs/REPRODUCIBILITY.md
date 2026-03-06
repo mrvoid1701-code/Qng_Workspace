@@ -2011,6 +2011,7 @@ make d4_stage2_dual_kernel_v2_eval
 Note:
 
 - evaluator v2 validates prereg metadata locks (test-id, split, constants, grids)
+- evaluator v2 also validates dataset identity (`dataset_csv_rel` + `dataset_sha256`)
 - default is strict CI behavior (`HOLD` -> non-zero exit)
 - exploratory local run can use `--no-strict-exit` directly on the evaluator script
 
