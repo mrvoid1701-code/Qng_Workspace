@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-03-06 - Stability P0 formal lane (EL equivalence + theorems + convergence rate) + D4 strict-vs-MOND prereg v2
+
+- Added formal derivation notes:
+  - `03_math/derivations/qng-stability-el-equivalence-v1.md`
+  - `03_math/derivations/qng-stability-theorems-v1.md`
+  - `03_math/derivations/qng-discrete-continuum-rate-v1.md`
+- Added status tracker:
+  - `docs/STABILITY_P0_FORMAL_STATUS_V1.md`
+- Added strict D4 prereg vs MOND:
+  - `05_validation/pre-registrations/d4-stage2-dual-kernel-v2-strict-vs-mond.md`
+- Added strict evaluator tooling:
+  - `scripts/tools/evaluate_d4_stage2_dual_kernel_v2.py`
+- Updated dual-kernel runner metadata support (no physics changes):
+  - `scripts/run_d4_stage2_dual_kernel_v1.py` now accepts `--test-id`
+- Added Make targets:
+  - `d4_stage2_dual_kernel_v2_run`
+  - `d4_stage2_dual_kernel_v2_eval`
+  - `d4_stage2_dual_kernel_v2_pack`
+- Updated reproducibility doc with v2 strict commands:
+  - `docs/REPRODUCIBILITY.md`
+- Scope guard:
+  - no GR/QM gate threshold changes
+  - no physics formula changes
+
 ## 2026-03-05 - QM Stage-1 G19-v4 promotion + official-v14 switch + baseline guard v12
 
 - Added candidate evaluator:

@@ -70,6 +70,7 @@ def parse_list(raw: str) -> list[float]:
 
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="D4 Stage-2 dual-kernel real-data runner (v1).")
+    p.add_argument("--test-id", default="d4-stage2-dual-kernel-v1")
     p.add_argument("--dataset-csv", default=str(DEFAULT_DATA))
     p.add_argument("--dataset-id", default="DS-006")
     p.add_argument("--seed", type=int, default=3401, help="split seed for galaxy train/holdout")
@@ -494,7 +495,7 @@ def main() -> int:
     }
 
     summary = {
-        "test_id": "d4-stage2-dual-kernel-v1",
+        "test_id": str(args.test_id),
         "timestamp_utc": datetime.utcnow().isoformat(timespec="seconds") + "Z",
         "dataset_id": args.dataset_id,
         "dataset_csv": str(Path(args.dataset_csv).resolve()),
@@ -636,7 +637,7 @@ def main() -> int:
         )
 
         report_lines = [
-            "# D4 Stage-2 Dual-Kernel Report (v1)",
+            f"# D4 Stage-2 Dual-Kernel Report ({args.test_id})",
             "",
             f"- generated_utc: `{summary['timestamp_utc']}`",
             f"- dataset_id: `{args.dataset_id}`",
@@ -675,4 +676,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

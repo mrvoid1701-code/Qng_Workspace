@@ -148,6 +148,9 @@ help:
 	@echo "  make d4_stage2_dual_kernel_run"
 	@echo "  make d4_stage2_dual_kernel_eval"
 	@echo "  make d4_stage2_dual_kernel_pack"
+	@echo "  make d4_stage2_dual_kernel_v2_run"
+	@echo "  make d4_stage2_dual_kernel_v2_eval"
+	@echo "  make d4_stage2_dual_kernel_v2_pack"
 
 gr_official_check:
 	$(PYTHON) scripts/tools/gr_one_command.py official-check --dataset-id $(DS) --seed $(SEED) --phi-scale $(PHI)
@@ -1028,7 +1031,7 @@ qm_stage2_raw_vs_official_v14:
 qm_stage2_taxonomy_post_v14:
 	$(PYTHON) scripts/tools/analyze_qm_stage2_post_v6_failures_v1.py --profile-deltas-csv 05_validation/evidence/artifacts/qm-stage2-raw-vs-official-v14-v1/profile_deltas.csv --out-dir 05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-post-v14-v1 --official-label official-v14
 
-.PHONY: d4_stage2_dual_kernel_run d4_stage2_dual_kernel_eval d4_stage2_dual_kernel_pack
+.PHONY: d4_stage2_dual_kernel_run d4_stage2_dual_kernel_eval d4_stage2_dual_kernel_pack d4_stage2_dual_kernel_v2_run d4_stage2_dual_kernel_v2_eval d4_stage2_dual_kernel_v2_pack
 
 d4_stage2_dual_kernel_run:
 	$(PYTHON) scripts/run_d4_stage2_dual_kernel_v1.py --dataset-id DS-006 --dataset-csv data/rotation/rotation_ds006_rotmod.csv --seed 3401 --train-frac 0.70 --s1-lambda 0.28 --s2-const 0.355 --r0-kpc 1.0 --tau-grid 0.5,1,2,3,5,8,12,20,30,50 --alpha-grid 0.3,0.5,0.7,1.0,1.3 --outdir 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1 --write-artifacts --no-plots
@@ -1037,3 +1040,11 @@ d4_stage2_dual_kernel_eval:
 	$(PYTHON) scripts/tools/evaluate_d4_stage2_dual_kernel_v1.py --summary-json 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/d4_stage2_dual_kernel_summary.json --out-dir 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/evaluation-v1 --min-holdout-improve-vs-null-pct 10 --max-holdout-mond-worse-pct 20 --max-generalization-gap-pp 25
 
 d4_stage2_dual_kernel_pack: d4_stage2_dual_kernel_run d4_stage2_dual_kernel_eval
+
+d4_stage2_dual_kernel_v2_run:
+	$(PYTHON) scripts/run_d4_stage2_dual_kernel_v1.py --test-id d4-stage2-dual-kernel-v2-strict-vs-mond --dataset-id DS-006 --dataset-csv data/rotation/rotation_ds006_rotmod.csv --seed 3401 --train-frac 0.70 --s1-lambda 0.28 --s2-const 0.355 --r0-kpc 1.0 --tau-grid 0.5,1,2,3,5,8,12,20,30,50 --alpha-grid 0.3,0.5,0.7,1.0,1.3 --outdir 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond --write-artifacts --no-plots
+
+d4_stage2_dual_kernel_v2_eval:
+	$(PYTHON) scripts/tools/evaluate_d4_stage2_dual_kernel_v2.py --summary-json 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/d4_stage2_dual_kernel_summary.json --out-dir 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/evaluation-v2 --min-holdout-improve-vs-null-pct 10 --max-holdout-mond-worse-pct 0 --max-train-mond-worse-pct 5 --max-generalization-gap-pp 20 --max-holdout-delta-aic-dual-minus-mond 0 --max-holdout-delta-bic-dual-minus-mond 0
+
+d4_stage2_dual_kernel_v2_pack: d4_stage2_dual_kernel_v2_run d4_stage2_dual_kernel_v2_eval
