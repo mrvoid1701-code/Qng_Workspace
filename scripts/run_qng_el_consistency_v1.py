@@ -48,6 +48,7 @@ from scripts.tools.run_stability_stress_v1 import (
     circular_mean,
     clip01,
     init_state,
+    one_step,
     sigma_components,
     angle_diff,
     wrap_angle,
@@ -55,8 +56,8 @@ from scripts.tools.run_stability_stress_v1 import (
 
 
 ROOT = REPO_ROOT
-DEFAULT_OUT_DIR = ROOT / "05_validation" / "evidence" / "artifacts" / "qng-foundation-stability-v1"
-DEFAULT_PREREG_DOC = ROOT / "05_validation" / "pre-registrations" / "qng-foundation-stability-tests-v1.md"
+DEFAULT_OUT_DIR = ROOT / "05_validation" / "evidence" / "artifacts" / "qng-foundation-stability-v2"
+DEFAULT_PREREG_DOC = ROOT / "05_validation" / "pre-registrations" / "qng-foundation-stability-tests-v2.md"
 DEFAULT_FOUNDATION_DOC = ROOT / "03_math" / "derivations" / "qng-foundation-stability-v1.md"
 DEFAULT_ACTION_DOC = ROOT / "03_math" / "derivations" / "qng-stability-action-v1.md"
 DEFAULT_UPDATE_DOC = ROOT / "03_math" / "derivations" / "qng-stability-update-v1.md"
@@ -176,6 +177,13 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+def as_repo_rel(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(ROOT.resolve()).as_posix()
+    except Exception:
+        return path.resolve().as_posix()
+
+
 def make_cases(
     edge_prob_grid: list[float],
     chi_scale_grid: list[float],
@@ -204,7 +212,7 @@ def make_cases(
     return out
 
 
-def one_step_with_residuals(
+def one_step_el_pred(
     sigma: list[float],
     chi: list[float],
     phi: list[float],
@@ -212,17 +220,13 @@ def one_step_with_residuals(
     cfg: StressConfig,
     rng: random.Random,
     noise_level: float,
-) -> tuple[list[float], list[float], list[float], list[float], list[float], list[float]]:
+) -> tuple[list[float], list[float], list[float]]:
     n = len(sigma)
     k_eq = mean([float(len(nbrs)) for nbrs in adj]) if adj else 1.0
 
     sig_new = [0.0] * n
     chi_new = [0.0] * n
     phi_new = [0.0] * n
-
-    abs_r_sigma: list[float] = []
-    abs_r_chi: list[float] = []
-    abs_r_phi: list[float] = []
 
     for i in range(n):
         comp = sigma_components(i, sigma, chi, phi, adj, cfg, k_eq)
@@ -253,17 +257,7 @@ def one_step_with_residuals(
         chi_new[i] = chi_next
         phi_new[i] = phi_next
 
-        # R = U_current - U_EL(unprojected)
-        # chi residual is numerical (expected near zero), sigma residual captures clip projection.
-        r_sigma = sigma_next - sigma_prop
-        r_chi = chi_next - chi_prop
-        r_phi = angle_diff(phi_next, phi_prop)
-
-        abs_r_sigma.append(abs(r_sigma))
-        abs_r_chi.append(abs(r_chi))
-        abs_r_phi.append(abs(r_phi))
-
-    return sig_new, chi_new, phi_new, abs_r_sigma, abs_r_chi, abs_r_phi
+    return sig_new, chi_new, phi_new
 
 
 def run_profile(
@@ -286,8 +280,10 @@ def run_profile(
     all_sigma: list[float] = []
     all_chi: list[float] = []
     all_phi: list[float] = []
+    all_joint: list[float] = []
     for _ in range(cfg.steps):
-        sigma, chi, phi, rs, rc, rp = one_step_with_residuals(
+        rng_state = rng.getstate()
+        sigma_cur, chi_cur, phi_cur, _, _, _, _, _ = one_step(
             sigma=sigma,
             chi=chi,
             phi=phi,
@@ -296,19 +292,40 @@ def run_profile(
             rng=rng,
             noise_level=case.noise_level,
         )
+        rng.setstate(rng_state)
+        sigma_el, chi_el, phi_el = one_step_el_pred(
+            sigma=sigma,
+            chi=chi,
+            phi=phi,
+            adj=adj,
+            cfg=cfg,
+            rng=rng,
+            noise_level=case.noise_level,
+        )
+
+        rs = [abs(a - b) for a, b in zip(sigma_cur, sigma_el)]
+        rc = [abs(a - b) for a, b in zip(chi_cur, chi_el)]
+        rp = [abs(angle_diff(a, b)) for a, b in zip(phi_cur, phi_el)]
+        rj = [max(rs[i], rc[i], rp[i]) for i in range(len(rs))]
+
         all_sigma.extend(rs)
         all_chi.extend(rc)
         all_phi.extend(rp)
+        all_joint.extend(rj)
 
-    all_global = all_sigma + all_chi + all_phi
+        # Advance reference state with current implementation.
+        sigma, chi, phi = sigma_cur, chi_cur, phi_cur
+
     sigma_med = percentile(all_sigma, 0.50)
     sigma_p90 = percentile(all_sigma, 0.90)
     sigma_max = max(all_sigma) if all_sigma else 0.0
+    chi_p90 = percentile(all_chi, 0.90)
     chi_max = max(all_chi) if all_chi else 0.0
+    phi_p90 = percentile(all_phi, 0.90)
     phi_max = max(all_phi) if all_phi else 0.0
-    global_med = percentile(all_global, 0.50)
-    global_p90 = percentile(all_global, 0.90)
-    global_max = max(all_global) if all_global else 0.0
+    global_med = percentile(all_joint, 0.50)
+    global_p90 = percentile(all_joint, 0.90)
+    global_max = max(all_joint) if all_joint else 0.0
 
     gate_sigma_median = sigma_med <= sigma_median_max
     gate_sigma_p90 = sigma_p90 <= sigma_p90_max
@@ -344,7 +361,9 @@ def run_profile(
         "sigma_abs_median": f6(sigma_med),
         "sigma_abs_p90": f6(sigma_p90),
         "sigma_abs_max": f6(sigma_max),
+        "chi_abs_p90": f6(chi_p90),
         "chi_abs_max": f6(chi_max),
+        "phi_abs_p90": f6(phi_p90),
         "phi_abs_max": f6(phi_max),
         "global_abs_median": f6(global_med),
         "global_abs_p90": f6(global_p90),
@@ -527,7 +546,9 @@ def main() -> int:
         "sigma_abs_median",
         "sigma_abs_p90",
         "sigma_abs_max",
+        "chi_abs_p90",
         "chi_abs_max",
+        "phi_abs_p90",
         "phi_abs_max",
         "global_abs_median",
         "global_abs_p90",
@@ -602,12 +623,13 @@ def main() -> int:
     report_lines.extend(
         [
             "",
-            "## Interpretation",
-            "",
-            "- This checker measures residual `R = U_current - U_EL(unprojected)` under the frozen v1 proxy EL update.",
-            "- Non-zero Sigma residual is dominated by bounded projection (`clip`) needed to enforce `Sigma in [0,1]`.",
-            "- chi/phi residuals are expected near machine-zero in the implemented explicit update.",
-        ]
+        "## Interpretation",
+        "",
+        "- This checker measures residual `R = U_current - U_EL` using two independent one-step implementations.",
+        "- `global_abs_*` uses per-node-step joint residual `max(|R_sigma|, |R_chi|, |R_phi|)` (not channel concatenation).",
+        "- Non-zero Sigma residual is dominated by bounded projection (`clip`) needed to enforce `Sigma in [0,1]`.",
+        "- chi/phi residuals are expected near machine-zero when implementations are consistent.",
+    ]
     )
     report_md = out_dir / "report.md"
     report_md.write_text("\n".join(report_lines) + "\n", encoding="utf-8")
@@ -615,8 +637,8 @@ def main() -> int:
     now_utc = datetime.now(timezone.utc).isoformat()
     manifest = {
         "generated_utc": now_utc,
-        "test_id": "qng-foundation-stability-tests-v1",
-        "policy_id": "qng-foundation-stability-tests-v1",
+        "test_id": "qng-foundation-stability-tests-v2",
+        "policy_id": "qng-foundation-stability-tests-v2",
         "blocks": blocks,
         "grids": {
             "edge_prob_grid": edge_prob_grid,
@@ -634,15 +656,15 @@ def main() -> int:
             "phi_max_max": args.phi_max_max,
         },
         "artifacts": {
-            "profile_residuals_csv": profile_csv.as_posix(),
-            "summary_csv": summary_csv.as_posix(),
-            "report_md": report_md.as_posix(),
+            "profile_residuals_csv": as_repo_rel(profile_csv),
+            "summary_csv": as_repo_rel(summary_csv),
+            "report_md": as_repo_rel(report_md),
         },
         "references": {
-            "prereg_doc": DEFAULT_PREREG_DOC.as_posix() if DEFAULT_PREREG_DOC.exists() else "",
-            "foundation_doc": DEFAULT_FOUNDATION_DOC.as_posix() if DEFAULT_FOUNDATION_DOC.exists() else "",
-            "action_doc": DEFAULT_ACTION_DOC.as_posix() if DEFAULT_ACTION_DOC.exists() else "",
-            "update_doc": DEFAULT_UPDATE_DOC.as_posix() if DEFAULT_UPDATE_DOC.exists() else "",
+            "prereg_doc": as_repo_rel(DEFAULT_PREREG_DOC) if DEFAULT_PREREG_DOC.exists() else "",
+            "foundation_doc": as_repo_rel(DEFAULT_FOUNDATION_DOC) if DEFAULT_FOUNDATION_DOC.exists() else "",
+            "action_doc": as_repo_rel(DEFAULT_ACTION_DOC) if DEFAULT_ACTION_DOC.exists() else "",
+            "update_doc": as_repo_rel(DEFAULT_UPDATE_DOC) if DEFAULT_UPDATE_DOC.exists() else "",
         },
     }
     ref_hashes: dict[str, str] = {}
@@ -650,6 +672,8 @@ def main() -> int:
         if not value:
             continue
         p = Path(value)
+        if not p.is_absolute():
+            p = ROOT / p
         if p.exists():
             ref_hashes[key] = sha256_file(p)
     if ref_hashes:
@@ -659,7 +683,7 @@ def main() -> int:
     manifest_json.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
     run_log = [
-        "qng-el-consistency-v1",
+        "qng-el-consistency-v2",
         f"generated_utc={now_utc}",
         f"out_dir={out_dir.as_posix()}",
         f"profiles_total={all_total}",

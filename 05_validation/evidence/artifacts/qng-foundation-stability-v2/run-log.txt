@@ -1,0 +1,11 @@
+qng-el-consistency-v2
+generated_utc=2026-03-06T00:34:32.766997+00:00
+out_dir=C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qng-foundation-stability-v2
+profiles_total=432
+profiles_pass=432
+profiles_fail=0
+block_specs=STABILITY-PRIMARY:3401-3403:36:60;STABILITY-ATTACK:4401-4403:36:60;STABILITY-HOLDOUT:3501-3502:42:80
+edge_prob_grid=0.08,0.18,0.32
+chi_scale_grid=0.50,1.00,1.50
+noise_grid=0.00,0.01,0.03
+phi_shock_grid=0.00,0.40

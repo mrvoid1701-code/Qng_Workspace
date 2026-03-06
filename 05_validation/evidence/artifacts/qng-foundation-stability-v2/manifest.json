@@ -1,0 +1,83 @@
+{
+  "generated_utc": "2026-03-06T00:34:32.766997+00:00",
+  "test_id": "qng-foundation-stability-tests-v2",
+  "policy_id": "qng-foundation-stability-tests-v2",
+  "blocks": [
+    {
+      "dataset_id": "STABILITY-PRIMARY",
+      "seeds": [
+        3401,
+        3402,
+        3403
+      ],
+      "n_nodes": 36,
+      "steps": 60
+    },
+    {
+      "dataset_id": "STABILITY-ATTACK",
+      "seeds": [
+        4401,
+        4402,
+        4403
+      ],
+      "n_nodes": 36,
+      "steps": 60
+    },
+    {
+      "dataset_id": "STABILITY-HOLDOUT",
+      "seeds": [
+        3501,
+        3502
+      ],
+      "n_nodes": 42,
+      "steps": 80
+    }
+  ],
+  "grids": {
+    "edge_prob_grid": [
+      0.08,
+      0.18,
+      0.32
+    ],
+    "chi_scale_grid": [
+      0.5,
+      1.0,
+      1.5
+    ],
+    "noise_grid": [
+      0.0,
+      0.01,
+      0.03
+    ],
+    "phi_shock_grid": [
+      0.0,
+      0.4
+    ]
+  },
+  "thresholds": {
+    "sigma_median_max": 0.02,
+    "sigma_p90_max": 0.03,
+    "sigma_max_max": 0.06,
+    "global_p90_max": 0.03,
+    "global_max_max": 0.06,
+    "chi_max_max": 1e-10,
+    "phi_max_max": 1e-10
+  },
+  "artifacts": {
+    "profile_residuals_csv": "05_validation/evidence/artifacts/qng-foundation-stability-v2/profile_residuals.csv",
+    "summary_csv": "05_validation/evidence/artifacts/qng-foundation-stability-v2/summary.csv",
+    "report_md": "05_validation/evidence/artifacts/qng-foundation-stability-v2/report.md"
+  },
+  "references": {
+    "prereg_doc": "05_validation/pre-registrations/qng-foundation-stability-tests-v2.md",
+    "foundation_doc": "03_math/derivations/qng-foundation-stability-v1.md",
+    "action_doc": "03_math/derivations/qng-stability-action-v1.md",
+    "update_doc": "03_math/derivations/qng-stability-update-v1.md"
+  },
+  "reference_hashes": {
+    "prereg_doc": "068713310bc53e56111b90460b66bb953c5bb66477838e2841f297f0eb08bc81",
+    "foundation_doc": "107df77c749746f7a9220760c5ff6e357fddbf3513a992cb2b469956bc1e302d",
+    "action_doc": "a2c0ca95958fc1afbcf1a869b0590cc265283018de76bd2d024f7e449a085ade",
+    "update_doc": "2d59d53fc9fb3b8656b3eea42e1e176e63079ea8d656f6ab385198e63b6e1abf"
+  }
+}

@@ -1994,23 +1994,29 @@ Main outputs:
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/report.md`
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/evaluation-v1/evaluation_report.json`
 
-## 67) QNG foundation EL-consistency (stability core v1)
+## 67) QNG foundation EL-consistency (stability core v2)
 
 Run:
 
 ```bash
-python scripts/run_qng_el_consistency_v1.py --out-dir 05_validation/evidence/artifacts/qng-foundation-stability-v1
+python scripts/run_qng_el_consistency_v1.py --out-dir 05_validation/evidence/artifacts/qng-foundation-stability-v2
 ```
 
 Or:
 
 ```bash
-make qng_foundation_stability_v1
+make qng_foundation_stability_v2
+```
+
+Non-strict exploratory run (separate folder, no overwrite of prereg evidence):
+
+```bash
+make qng_foundation_stability_v2_nonstrict
 ```
 
 Main outputs:
 
-- `05_validation/evidence/artifacts/qng-foundation-stability-v1/profile_residuals.csv`
-- `05_validation/evidence/artifacts/qng-foundation-stability-v1/summary.csv`
-- `05_validation/evidence/artifacts/qng-foundation-stability-v1/report.md`
-- `05_validation/evidence/artifacts/qng-foundation-stability-v1/manifest.json`
+- `05_validation/evidence/artifacts/qng-foundation-stability-v2/profile_residuals.csv`
+- `05_validation/evidence/artifacts/qng-foundation-stability-v2/summary.csv`
+- `05_validation/evidence/artifacts/qng-foundation-stability-v2/report.md`
+- `05_validation/evidence/artifacts/qng-foundation-stability-v2/manifest.json`
