@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-03-06 - D4 forensics v1 (strict-v2 failure segmentation)
+
+- Added analysis script:
+  - `scripts/tools/analyze_d4_stage2_forensics_v1.py`
+- Added Make target:
+  - `d4_stage2_forensics_v1`
+- Added reproducibility docs for forensics outputs:
+  - `docs/REPRODUCIBILITY.md`
+- Forensics outputs (generated from strict-v2 package):
+  - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/forensics-v1/point_residuals.csv`
+  - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/forensics-v1/segment_summary.csv`
+  - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/forensics-v1/worst_galaxies.csv`
+  - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/forensics-v1/report.md`
+
 ## 2026-03-06 - Follow-up review fixes (D4 dataset hash lock + v2 strict artifact run)
 
 - Hardened D4 strict evaluator dataset lock:

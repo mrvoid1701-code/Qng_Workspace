@@ -2021,6 +2021,12 @@ Or full package:
 make d4_stage2_dual_kernel_v2_pack
 ```
 
+Forensics (where dual loses vs MOND by regime):
+
+```bash
+make d4_stage2_forensics_v1
+```
+
 Locked prereg:
 
 - `05_validation/pre-registrations/d4-stage2-dual-kernel-v2-strict-vs-mond.md`
@@ -2030,6 +2036,10 @@ Main outputs:
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/d4_stage2_dual_kernel_summary.json`
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/evaluation-v2/evaluation_report.json`
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/evaluation-v2/evaluation_report.md`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/forensics-v1/point_residuals.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/forensics-v1/segment_summary.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/forensics-v1/worst_galaxies.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v2-strict-vs-mond/forensics-v1/report.md`
 
 ## 67) QNG foundation EL-consistency (stability core v1/v2)
 
