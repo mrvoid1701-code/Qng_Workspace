@@ -1,5 +1,33 @@
 # Changelog
 
+## 2026-03-06 - D4 v7 regularized lane (exploratory + strict single-candidate scaffold)
+
+- Added shared v7 regularized helper module:
+  - `scripts/tools/_d4_v7_regularized.py`
+- Added exploratory v7 runner:
+  - `scripts/run_d4_stage2_dual_kernel_v7_exp.py`
+  - fixed formula: `v_pred^2 = bt + k1*H1 + k2*Outer` (`k1,k2>=0`)
+  - objective: `chi2_focus + lambda_s*R_smooth + lambda_e*R_edge`
+- Added v7 setup selector:
+  - `scripts/tools/select_d4_stage2_v7_config_v1.py`
+  - outputs selected config + strict prereg lock document
+- Added strict v7 runner:
+  - `scripts/run_d4_stage2_dual_kernel_v7_strict.py`
+  - candidate id: `outer_dual_reg_v7`
+- Extended strict evaluator for v7 compatibility:
+  - `scripts/tools/evaluate_d4_stage2_dual_kernel_candidates_v5.py`
+  - supports `outer_dual_reg_v7` AIC/BIC parameter count
+  - supports configurable grid-selection-objective lock
+  - optional lock checks for selected `lambda_s`/`lambda_e`
+- Added Make targets:
+  - `d4_stage2_v7_exp_run`
+  - `d4_stage2_v7_select`
+  - `d4_stage2_v7_strict_run`
+  - `d4_stage2_v7_strict_eval`
+  - `d4_stage2_v7_strict_pack`
+- Updated reproducibility docs:
+  - `docs/REPRODUCIBILITY.md`
+
 ## 2026-03-06 - D4 v6 forensics + single-candidate v6 prereg lane
 
 - Added freeze marker for v5 baseline:

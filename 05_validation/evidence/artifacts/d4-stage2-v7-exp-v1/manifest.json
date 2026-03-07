@@ -1,0 +1,68 @@
+{
+  "generated_utc": "2026-03-07T01:58:31.300128+00:00",
+  "test_id": "d4-stage2-v7-exp-v1",
+  "dataset_id": "DS-006",
+  "dataset_csv": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\data\\rotation\\rotation_ds006_rotmod.csv",
+  "split_seeds": [
+    3401,
+    3402,
+    3403,
+    3404,
+    3405
+  ],
+  "train_frac": 0.7,
+  "fixed_theory_constants": {
+    "s1_lambda": 0.28,
+    "s2_const": 0.355,
+    "r0_kpc": 1.0,
+    "r_tail_kpc": 4.0,
+    "focus_gamma": 2.0
+  },
+  "search_space": {
+    "tau_grid": [
+      0.02,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      1.0,
+      2.0,
+      3.0,
+      5.0,
+      8.0,
+      12.0,
+      20.0,
+      30.0,
+      50.0
+    ],
+    "alpha_grid": [
+      0.02,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      0.7,
+      1.0,
+      1.3
+    ],
+    "lambda_s_grid": [
+      0.0,
+      0.1,
+      0.3,
+      1.0
+    ],
+    "lambda_e_grid": [
+      0.0,
+      0.1,
+      0.3
+    ]
+  },
+  "formula": "v_pred^2 = bt + k1*H1 + k2*Outer, k1,k2>=0",
+  "artifacts": {
+    "per_seed_lambda_summary_csv": "per_seed_lambda_summary.csv",
+    "aggregate_lambda_summary_csv": "aggregate_lambda_summary.csv",
+    "report_md": "report.md"
+  }
+}

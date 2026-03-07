@@ -459,6 +459,49 @@ Main outputs:
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v6-candidate/evaluation-v1/evaluation_report.json`
 - `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v6-candidate/evaluation-v1/candidate_decisions.csv`
 
+## 93) D4 Stage-2 v7 (regularized exploratory -> strict single candidate)
+
+Exploratory-only sweep (no promotion decision):
+
+```bash
+make d4_stage2_v7_exp_run
+```
+
+Select one fixed setup for strict lane (writes selected config + strict prereg lock):
+
+```bash
+make d4_stage2_v7_select
+```
+
+Run strict lane with locked v7 setup:
+
+```bash
+make d4_stage2_v7_strict_run
+```
+
+Evaluate strict lane with unchanged thresholds and governance locks:
+
+```bash
+make d4_stage2_v7_strict_eval
+```
+
+One command (exp + select + strict + eval):
+
+```bash
+make d4_stage2_v7_strict_pack
+```
+
+Main outputs:
+
+- `05_validation/evidence/artifacts/d4-stage2-v7-exp-v1/per_seed_lambda_summary.csv`
+- `05_validation/evidence/artifacts/d4-stage2-v7-exp-v1/aggregate_lambda_summary.csv`
+- `05_validation/evidence/artifacts/d4-stage2-v7-exp-v1/selected_config.json`
+- `05_validation/pre-registrations/d4-stage2-dual-kernel-v7-strict.md`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v7-strict/per_seed_candidate_summary.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v7-strict/aggregate_summary.csv`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v7-strict/evaluation-v1/evaluation_report.json`
+- `05_validation/evidence/artifacts/d4-stage2-dual-kernel-v7-strict/evaluation-v1/candidate_decisions.csv`
+
 Build baselines + run guard:
 
 ```bash

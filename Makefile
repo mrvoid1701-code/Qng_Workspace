@@ -165,6 +165,11 @@ help:
 	@echo "  make d4_stage2_candidate_v6_run"
 	@echo "  make d4_stage2_candidate_v6_eval"
 	@echo "  make d4_stage2_candidate_v6_pack"
+	@echo "  make d4_stage2_v7_exp_run"
+	@echo "  make d4_stage2_v7_select"
+	@echo "  make d4_stage2_v7_strict_run"
+	@echo "  make d4_stage2_v7_strict_eval"
+	@echo "  make d4_stage2_v7_strict_pack"
 
 gr_official_check:
 	$(PYTHON) scripts/tools/gr_one_command.py official-check --dataset-id $(DS) --seed $(SEED) --phi-scale $(PHI)
@@ -1045,7 +1050,7 @@ qm_stage2_raw_vs_official_v14:
 qm_stage2_taxonomy_post_v14:
 	$(PYTHON) scripts/tools/analyze_qm_stage2_post_v6_failures_v1.py --profile-deltas-csv 05_validation/evidence/artifacts/qm-stage2-raw-vs-official-v14-v1/profile_deltas.csv --out-dir 05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-post-v14-v1 --official-label official-v14
 
-.PHONY: d4_stage2_dual_kernel_run d4_stage2_dual_kernel_eval d4_stage2_dual_kernel_pack d4_stage2_dual_kernel_v2_run d4_stage2_dual_kernel_v2_eval d4_stage2_dual_kernel_v2_pack d4_stage2_forensics_v1 d4_stage2_candidates_v3_run d4_stage2_candidates_v3_eval d4_stage2_candidates_v3_pack d4_stage2_candidates_v4_run d4_stage2_candidates_v4_eval d4_stage2_candidates_v4_pack d4_stage2_candidates_v5_run d4_stage2_candidates_v5_eval d4_stage2_candidates_v5_pack d4_stage2_v6_forensics d4_stage2_candidate_v6_run d4_stage2_candidate_v6_eval d4_stage2_candidate_v6_pack
+.PHONY: d4_stage2_dual_kernel_run d4_stage2_dual_kernel_eval d4_stage2_dual_kernel_pack d4_stage2_dual_kernel_v2_run d4_stage2_dual_kernel_v2_eval d4_stage2_dual_kernel_v2_pack d4_stage2_forensics_v1 d4_stage2_candidates_v3_run d4_stage2_candidates_v3_eval d4_stage2_candidates_v3_pack d4_stage2_candidates_v4_run d4_stage2_candidates_v4_eval d4_stage2_candidates_v4_pack d4_stage2_candidates_v5_run d4_stage2_candidates_v5_eval d4_stage2_candidates_v5_pack d4_stage2_v6_forensics d4_stage2_candidate_v6_run d4_stage2_candidate_v6_eval d4_stage2_candidate_v6_pack d4_stage2_v7_exp_run d4_stage2_v7_select d4_stage2_v7_strict_run d4_stage2_v7_strict_eval d4_stage2_v7_strict_pack
 
 d4_stage2_dual_kernel_run:
 	$(PYTHON) scripts/run_d4_stage2_dual_kernel_v1.py --dataset-id DS-006 --dataset-csv data/rotation/rotation_ds006_rotmod.csv --seed 3401 --train-frac 0.70 --s1-lambda 0.28 --s2-const 0.355 --r0-kpc 1.0 --tau-grid 0.5,1,2,3,5,8,12,20,30,50 --alpha-grid 0.3,0.5,0.7,1.0,1.3 --outdir 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1 --write-artifacts --no-plots
@@ -1100,3 +1105,17 @@ d4_stage2_candidate_v6_eval:
 	$(PYTHON) scripts/tools/evaluate_d4_stage2_dual_kernel_candidates_v5.py --per-seed-csv 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v6-candidate/per_seed_candidate_summary.csv --manifest-json 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v6-candidate/manifest.json --out-dir 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v6-candidate/evaluation-v1 --expected-test-id d4-stage2-dual-kernel-v6-candidate --expected-candidates outer_single_mix_v6 --expected-mix-grid 0.0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0 --min-holdout-improve-vs-null-pct 10 --max-holdout-mond-worse-pct 0 --max-generalization-gap-pp 20 --max-holdout-delta-aic-dual-minus-mond 0 --max-holdout-delta-bic-dual-minus-mond 0
 
 d4_stage2_candidate_v6_pack: d4_stage2_candidate_v6_run d4_stage2_candidate_v6_eval
+
+d4_stage2_v7_exp_run:
+	$(PYTHON) scripts/run_d4_stage2_dual_kernel_v7_exp.py --test-id d4-stage2-v7-exp-v1 --dataset-id DS-006 --dataset-csv data/rotation/rotation_ds006_rotmod.csv --split-seeds 3401,3402,3403,3404,3405 --train-frac 0.70 --s1-lambda 0.28 --s2-const 0.355 --r0-kpc 1.0 --r-tail-kpc 4.0 --tau-grid 0.02,0.05,0.1,0.2,0.3,0.5,1,2,3,5,8,12,20,30,50 --alpha-grid 0.02,0.05,0.1,0.2,0.3,0.5,0.7,1.0,1.3 --lambda-s-grid 0,0.1,0.3,1.0 --lambda-e-grid 0,0.1,0.3 --focus-gamma 2.0 --outdir 05_validation/evidence/artifacts/d4-stage2-v7-exp-v1 --write-artifacts --no-plots
+
+d4_stage2_v7_select:
+	$(PYTHON) scripts/tools/select_d4_stage2_v7_config_v1.py --aggregate-csv 05_validation/evidence/artifacts/d4-stage2-v7-exp-v1/aggregate_lambda_summary.csv --out-dir 05_validation/evidence/artifacts/d4-stage2-v7-exp-v1 --prereg-md 05_validation/pre-registrations/d4-stage2-dual-kernel-v7-strict.md --dataset-id DS-006 --dataset-csv-rel data/rotation/rotation_ds006_rotmod.csv --split-seeds 3401,3402,3403,3404,3405 --train-frac 0.70 --s1-lambda 0.28 --s2-const 0.355 --r0-kpc 1.0 --r-tail-kpc 4.0 --focus-gamma 2.0 --tau-grid 0.02,0.05,0.1,0.2,0.3,0.5,1,2,3,5,8,12,20,30,50 --alpha-grid 0.02,0.05,0.1,0.2,0.3,0.5,0.7,1.0,1.3
+
+d4_stage2_v7_strict_run:
+	$(PYTHON) scripts/run_d4_stage2_dual_kernel_v7_strict.py --test-id d4-stage2-dual-kernel-v7-strict --dataset-id DS-006 --dataset-csv data/rotation/rotation_ds006_rotmod.csv --split-seeds 3401,3402,3403,3404,3405 --train-frac 0.70 --s1-lambda 0.28 --s2-const 0.355 --r0-kpc 1.0 --r-tail-kpc 4.0 --tau-grid 0.02,0.05,0.1,0.2,0.3,0.5,1,2,3,5,8,12,20,30,50 --alpha-grid 0.02,0.05,0.1,0.2,0.3,0.5,0.7,1.0,1.3 --focus-gamma 2.0 --selected-config-json 05_validation/evidence/artifacts/d4-stage2-v7-exp-v1/selected_config.json --candidate outer_dual_reg_v7 --outdir 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v7-strict --write-artifacts --no-plots
+
+d4_stage2_v7_strict_eval:
+	$(PYTHON) scripts/tools/evaluate_d4_stage2_dual_kernel_candidates_v5.py --per-seed-csv 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v7-strict/per_seed_candidate_summary.csv --manifest-json 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v7-strict/manifest.json --out-dir 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v7-strict/evaluation-v1 --expected-test-id d4-stage2-dual-kernel-v7-strict --expected-candidates outer_dual_reg_v7 --expected-grid-selection-objective train_focus_plus_regularizers --min-holdout-improve-vs-null-pct 10 --max-holdout-mond-worse-pct 0 --max-generalization-gap-pp 20 --max-holdout-delta-aic-dual-minus-mond 0 --max-holdout-delta-bic-dual-minus-mond 0 --no-strict-exit
+
+d4_stage2_v7_strict_pack: d4_stage2_v7_exp_run d4_stage2_v7_select d4_stage2_v7_strict_run d4_stage2_v7_strict_eval

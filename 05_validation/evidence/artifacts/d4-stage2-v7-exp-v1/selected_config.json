@@ -1,0 +1,23 @@
+{
+  "generated_utc": "2026-03-07T01:58:31.454514+00:00",
+  "selection_source_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/d4-stage2-v7-exp-v1/aggregate_lambda_summary.csv",
+  "criterion": [
+    "min avg_holdout_mond_worse_pct",
+    "min avg_boundary_hit_rate",
+    "min avg_single_component_only_rate",
+    "min avg_holdout_chi2_per_n_dual"
+  ],
+  "selected_lambda_s": 0.0,
+  "selected_lambda_e": 0.1,
+  "selected_row": {
+    "lambda_s": "0.000000",
+    "lambda_e": "0.100000",
+    "n_splits": "5",
+    "avg_holdout_mond_worse_pct": "149.751170",
+    "avg_holdout_chi2_per_n_dual": "163.846205",
+    "avg_holdout_chi2_per_n_mond": "77.572728",
+    "avg_train_objective_j_per_n": "391.187324",
+    "avg_boundary_hit_rate": "1.000000",
+    "avg_single_component_only_rate": "0.000000"
+  }
+}

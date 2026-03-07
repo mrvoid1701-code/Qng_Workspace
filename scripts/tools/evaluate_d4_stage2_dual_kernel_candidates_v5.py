@@ -88,6 +88,9 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--expected-r0-kpc", type=float, default=1.0)
     p.add_argument("--expected-r-tail-kpc", type=float, default=4.0)
     p.add_argument("--expected-focus-gamma", type=float, default=2.0)
+    p.add_argument("--expected-grid-selection-objective", default="train_focus_chi2")
+    p.add_argument("--expected-lambda-s", type=float, default=float("nan"))
+    p.add_argument("--expected-lambda-e", type=float, default=float("nan"))
     p.add_argument("--expected-tau-grid", default="0.02,0.05,0.1,0.2,0.3,0.5,1,2,3,5,8,12,20,30,50")
     p.add_argument("--expected-alpha-grid", default="0.02,0.05,0.1,0.2,0.3,0.5,0.7,1.0,1.3")
     p.add_argument("--expected-mix-grid", default="")
@@ -115,7 +118,7 @@ def infer_k_coef(candidate: str) -> int:
     c = str(candidate)
     if c in {"outer_lowaccel_single", "outer_single_mix_v6"}:
         return 1
-    if c in {"outer_lowaccel_focus"}:
+    if c in {"outer_lowaccel_focus", "outer_dual_reg_v7"}:
         return 2
     # Conservative fallback for unknown candidates.
     return 1
@@ -157,7 +160,12 @@ def main() -> int:
     obs_consts = manifest.get("fixed_theory_constants", {})
     obs_search = manifest.get("search_space", {})
     obs_fit = manifest.get("fit_objective", {})
-    obs_candidates = [str(x) for x in manifest.get("candidates", [])]
+    raw_candidates = manifest.get("candidates", [])
+    if raw_candidates:
+        obs_candidates = [str(x) for x in raw_candidates]
+    else:
+        single_candidate = str(manifest.get("candidate", "")).strip()
+        obs_candidates = [single_candidate] if single_candidate else []
     obs_candidate_set = set(obs_candidates)
 
     csv_seed_set = {int(r["split_seed"]) for r in rows}
@@ -186,6 +194,8 @@ def main() -> int:
             row_lock_ok = False
             break
 
+    obs_focus_gamma = obs_fit.get("focus_gamma", obs_consts.get("focus_gamma", float("nan")))
+
     lock_checks = {
         "lock_test_id": str(manifest.get("test_id", "")) == str(args.expected_test_id),
         "lock_dataset_id": str(manifest.get("dataset_id", "")) == str(args.expected_dataset_id),
@@ -203,9 +213,19 @@ def main() -> int:
         "lock_r0_kpc": abs(float(obs_consts.get("r0_kpc", float("nan"))) - float(args.expected_r0_kpc)) <= 1e-12,
         "lock_r_tail_kpc": abs(float(obs_consts.get("r_tail_kpc", float("nan"))) - float(args.expected_r_tail_kpc))
         <= 1e-12,
-        "lock_focus_gamma": abs(float(obs_fit.get("focus_gamma", float("nan"))) - float(args.expected_focus_gamma))
-        <= 1e-12,
-        "lock_grid_selection_objective": str(obs_fit.get("grid_selection_objective", "")) == "train_focus_chi2",
+        "lock_focus_gamma": abs(float(obs_focus_gamma) - float(args.expected_focus_gamma)) <= 1e-12,
+        "lock_grid_selection_objective": str(obs_fit.get("grid_selection_objective", ""))
+        == str(args.expected_grid_selection_objective),
+        "lock_lambda_s": (
+            True
+            if math.isnan(float(args.expected_lambda_s))
+            else abs(float(obs_consts.get("lambda_s", float("nan"))) - float(args.expected_lambda_s)) <= 1e-12
+        ),
+        "lock_lambda_e": (
+            True
+            if math.isnan(float(args.expected_lambda_e))
+            else abs(float(obs_consts.get("lambda_e", float("nan"))) - float(args.expected_lambda_e)) <= 1e-12
+        ),
         "lock_tau_grid": list_almost_equal([float(x) for x in obs_search.get("tau_grid", [])], expected_tau),
         "lock_alpha_grid": list_almost_equal([float(x) for x in obs_search.get("alpha_grid", [])], expected_alpha),
         "lock_mix_grid": (

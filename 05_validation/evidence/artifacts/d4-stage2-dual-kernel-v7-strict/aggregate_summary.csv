@@ -1,0 +1,2 @@
+candidate,n_splits,lambda_s,lambda_e,avg_holdout_chi2_per_n_dual,avg_holdout_chi2_per_n_mond,avg_holdout_mond_worse_pct,avg_boundary_hit_rate,avg_single_component_only_rate
+outer_dual_reg_v7,5,0.000000,0.100000,163.846205,77.572728,149.751170,1.000000,0.000000
