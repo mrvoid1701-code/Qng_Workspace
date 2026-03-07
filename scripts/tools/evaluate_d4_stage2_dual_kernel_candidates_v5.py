@@ -118,15 +118,23 @@ def infer_k_coef(candidate: str) -> int:
     c = str(candidate)
     if c in {"outer_lowaccel_single", "outer_single_mix_v6"}:
         return 1
-    if c in {"outer_lowaccel_focus", "outer_dual_reg_v7"}:
+    if c in {"outer_lowaccel_focus", "outer_dual_reg_v7", "winner_v1_m8c"}:
         return 2
     # Conservative fallback for unknown candidates.
     return 1
 
 
 def infer_search_dof(row: dict[str, str]) -> int:
-    # v6 adds a selected mix hyperparameter; v5 did not.
-    return 3 if str(row.get("best_mix", "")).strip() != "" else 2
+    # v6/v7-style search uses tau+alpha, and v6 also uses mix.
+    # Direct-fit lanes (e.g., winner_v1_m8c) may have no grid-search DOF.
+    has_mix = str(row.get("best_mix", "")).strip() != ""
+    has_tau = str(row.get("best_tau_kpc", "")).strip() not in {"", "nan", "NaN"}
+    has_alpha = str(row.get("best_alpha", "")).strip() not in {"", "nan", "NaN"}
+    if has_mix:
+        return 3
+    if has_tau or has_alpha:
+        return 2
+    return 0
 
 
 def main() -> int:
