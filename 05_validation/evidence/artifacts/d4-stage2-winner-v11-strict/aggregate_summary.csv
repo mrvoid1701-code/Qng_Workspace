@@ -1,0 +1,2 @@
+candidate,n_splits,avg_train_improve_vs_null_pct,avg_holdout_improve_vs_null_pct,avg_holdout_chi2_per_n_dual,avg_holdout_chi2_per_n_mond,avg_holdout_mond_worse_pct,avg_boundary_hit_rate,avg_single_component_only_rate
+winner_v1_m8c,5,70.339894,73.829885,66.482481,77.572728,-11.176626,0.000000,0.000000

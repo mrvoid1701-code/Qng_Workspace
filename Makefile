@@ -183,6 +183,10 @@ help:
 	@echo "  make d4_stage2_winner_v10_eval"
 	@echo "  make d4_stage2_winner_v10_compare_v9"
 	@echo "  make d4_stage2_winner_v10_pack"
+	@echo "  make d4_stage2_winner_v11_run"
+	@echo "  make d4_stage2_winner_v11_eval"
+	@echo "  make d4_stage2_winner_v11_compare_v10"
+	@echo "  make d4_stage2_winner_v11_pack"
 
 gr_official_check:
 	$(PYTHON) scripts/tools/gr_one_command.py official-check --dataset-id $(DS) --seed $(SEED) --phi-scale $(PHI)
@@ -1063,7 +1067,7 @@ qm_stage2_raw_vs_official_v14:
 qm_stage2_taxonomy_post_v14:
 	$(PYTHON) scripts/tools/analyze_qm_stage2_post_v6_failures_v1.py --profile-deltas-csv 05_validation/evidence/artifacts/qm-stage2-raw-vs-official-v14-v1/profile_deltas.csv --out-dir 05_validation/evidence/artifacts/qm-stage2-failure-taxonomy-post-v14-v1 --official-label official-v14
 
-.PHONY: d4_stage2_dual_kernel_run d4_stage2_dual_kernel_eval d4_stage2_dual_kernel_pack d4_stage2_dual_kernel_v2_run d4_stage2_dual_kernel_v2_eval d4_stage2_dual_kernel_v2_pack d4_stage2_forensics_v1 d4_stage2_candidates_v3_run d4_stage2_candidates_v3_eval d4_stage2_candidates_v3_pack d4_stage2_candidates_v4_run d4_stage2_candidates_v4_eval d4_stage2_candidates_v4_pack d4_stage2_candidates_v5_run d4_stage2_candidates_v5_eval d4_stage2_candidates_v5_pack d4_stage2_v6_forensics d4_stage2_candidate_v6_run d4_stage2_candidate_v6_eval d4_stage2_candidate_v6_pack d4_stage2_v7_exp_run d4_stage2_v7_select d4_stage2_v7_strict_run d4_stage2_v7_strict_eval d4_stage2_v7_strict_pack d4_stage2_winner_v8_run d4_stage2_winner_v8_equiv d4_stage2_winner_v8_eval d4_stage2_winner_v8_pack d4_stage2_winner_v9_run d4_stage2_winner_v9_equiv d4_stage2_winner_v9_eval d4_stage2_winner_v9_forensics_3403 d4_stage2_winner_v9_pack d4_stage2_winner_v10_run d4_stage2_winner_v10_eval d4_stage2_winner_v10_compare_v9 d4_stage2_winner_v10_pack
+.PHONY: d4_stage2_dual_kernel_run d4_stage2_dual_kernel_eval d4_stage2_dual_kernel_pack d4_stage2_dual_kernel_v2_run d4_stage2_dual_kernel_v2_eval d4_stage2_dual_kernel_v2_pack d4_stage2_forensics_v1 d4_stage2_candidates_v3_run d4_stage2_candidates_v3_eval d4_stage2_candidates_v3_pack d4_stage2_candidates_v4_run d4_stage2_candidates_v4_eval d4_stage2_candidates_v4_pack d4_stage2_candidates_v5_run d4_stage2_candidates_v5_eval d4_stage2_candidates_v5_pack d4_stage2_v6_forensics d4_stage2_candidate_v6_run d4_stage2_candidate_v6_eval d4_stage2_candidate_v6_pack d4_stage2_v7_exp_run d4_stage2_v7_select d4_stage2_v7_strict_run d4_stage2_v7_strict_eval d4_stage2_v7_strict_pack d4_stage2_winner_v8_run d4_stage2_winner_v8_equiv d4_stage2_winner_v8_eval d4_stage2_winner_v8_pack d4_stage2_winner_v9_run d4_stage2_winner_v9_equiv d4_stage2_winner_v9_eval d4_stage2_winner_v9_forensics_3403 d4_stage2_winner_v9_pack d4_stage2_winner_v10_run d4_stage2_winner_v10_eval d4_stage2_winner_v10_compare_v9 d4_stage2_winner_v10_pack d4_stage2_winner_v11_run d4_stage2_winner_v11_eval d4_stage2_winner_v11_compare_v10 d4_stage2_winner_v11_pack
 
 d4_stage2_dual_kernel_run:
 	$(PYTHON) scripts/run_d4_stage2_dual_kernel_v1.py --dataset-id DS-006 --dataset-csv data/rotation/rotation_ds006_rotmod.csv --seed 3401 --train-frac 0.70 --s1-lambda 0.28 --s2-const 0.355 --r0-kpc 1.0 --tau-grid 0.5,1,2,3,5,8,12,20,30,50 --alpha-grid 0.3,0.5,0.7,1.0,1.3 --outdir 05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1 --write-artifacts --no-plots
@@ -1168,3 +1172,14 @@ d4_stage2_winner_v10_compare_v9:
 	$(PYTHON) scripts/tools/compare_d4_stage2_winner_v9_v10_v1.py --v9-csv 05_validation/evidence/artifacts/d4-stage2-winner-v9-strict/evaluation-v1/per_seed_evaluation.csv --v10-csv 05_validation/evidence/artifacts/d4-stage2-winner-v10-strict/evaluation-v1/per_seed_evaluation.csv --out-dir 05_validation/evidence/artifacts/d4-stage2-winner-v10-strict/comparison-v9-v10-v1
 
 d4_stage2_winner_v10_pack: d4_stage2_winner_v10_run d4_stage2_winner_v10_eval d4_stage2_winner_v10_compare_v9
+
+d4_stage2_winner_v11_run:
+	$(PYTHON) scripts/run_d4_stage2_winner_v11_strict.py --test-id d4-stage2-winner-v11-strict --dataset-id DS-006 --dataset-csv data/rotation/rotation_ds006_rotmod.csv --split-seeds 3401,3402,3403,3404,3405 --train-frac 0.70 --s1-lambda 0.28 --s2-const 0.355 --r0-kpc 1.0 --r-tail-kpc 4.0 --tau-grid 0.02,0.05,0.1,0.2,0.3,0.5,1,2,3,5,8,12,20,30,50 --alpha-grid 0.02,0.05,0.1,0.2,0.3,0.5,0.7,1.0,1.3 --focus-gamma 2.0 --candidate winner_v1_m8c --outdir 05_validation/evidence/artifacts/d4-stage2-winner-v11-strict --write-artifacts --no-plots
+
+d4_stage2_winner_v11_eval:
+	$(PYTHON) scripts/tools/evaluate_d4_stage2_dual_kernel_candidates_v5.py --per-seed-csv 05_validation/evidence/artifacts/d4-stage2-winner-v11-strict/per_seed_candidate_summary.csv --manifest-json 05_validation/evidence/artifacts/d4-stage2-winner-v11-strict/manifest.json --out-dir 05_validation/evidence/artifacts/d4-stage2-winner-v11-strict/evaluation-v1 --expected-test-id d4-stage2-winner-v11-strict --expected-candidates winner_v1_m8c --expected-grid-selection-objective winner_v1_weighted_lowacc_outer_galaxy_robust --min-holdout-improve-vs-null-pct 10 --max-holdout-mond-worse-pct 0 --max-generalization-gap-pp 20 --max-holdout-delta-aic-dual-minus-mond 0 --max-holdout-delta-bic-dual-minus-mond 0
+
+d4_stage2_winner_v11_compare_v10:
+	$(PYTHON) scripts/tools/compare_d4_stage2_winner_v10_v11_v1.py --v10-csv 05_validation/evidence/artifacts/d4-stage2-winner-v10-strict/evaluation-v1/per_seed_evaluation.csv --v11-csv 05_validation/evidence/artifacts/d4-stage2-winner-v11-strict/evaluation-v1/per_seed_evaluation.csv --out-dir 05_validation/evidence/artifacts/d4-stage2-winner-v11-strict/comparison-v10-v11-v1
+
+d4_stage2_winner_v11_pack: d4_stage2_winner_v11_run d4_stage2_winner_v11_eval d4_stage2_winner_v11_compare_v10
