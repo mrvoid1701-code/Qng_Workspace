@@ -1,13 +1,15 @@
-# QNG — Next Steps (2026-03-04)
+# QNG — Next Steps (2026-03-07)
 
 ## Prioritate 1 — QM Stage 2 freeze
-- [ ] G17b candidate v4: evaluare → switch oficial
-- [ ] QM Stage 2 freeze (echivalent "qm stage1 freeze v1")
+- [x] G17b candidate v4: evaluare → switch oficial (done 2026-03-04, official-v14 activ)
+- [ ] QM Stage 2 freeze (prereg rulează, ~acasă)
 
-## Prioritate 2 — Validare cross-dataset G17–G20
-- [ ] `python run_all_gates.py --dataset-id DS-003`
-- [ ] `python run_all_gates.py --dataset-id DS-006`
-- [ ] Toate gate-urile G17–G20 PASS pe cele 3 dataset-uri
+## Prioritate 2 — Validare cross-dataset G17–G20 ✓ DONE (2026-03-07)
+- [x] `python run_all_gates.py --dataset-id DS-003` — 10/11 (G15 FAIL, G17-G20 ✓)
+- [x] `python run_all_gates.py --dataset-id DS-006` — 11/11 ALL PASS
+- [x] Toate gate-urile G17–G20 PASS pe cele 3 dataset-uri
+- See: `docs/CROSS_DATASET_VALIDATION_V1.md`
+- Known: DS-003 G15b Shapiro 1.944 < 2.0 (structural, GR gate only, nu blochează QM)
 
 ## Prioritate 3 — Primul paper (arXiv preprint)
 Structură:
