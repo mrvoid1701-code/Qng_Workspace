@@ -346,6 +346,7 @@ def main() -> int:
     )
     report = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "evaluator_id": "evaluate_d4_stage2_dual_kernel_candidates_v5",
         "per_seed_csv": per_seed_path.as_posix(),
         "manifest_json": manifest_path.as_posix(),
         "criteria": {
@@ -380,9 +381,11 @@ def main() -> int:
     (out_dir / "evaluation_report.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
 
     lines = [
-        "# D4 Stage-2 Candidate Evaluation v5",
+        "# D4 Stage-2 Candidate Evaluation (Strict)",
         "",
         f"- generated_utc: `{report['generated_utc']}`",
+        f"- evaluator_id: `{report['evaluator_id']}`",
+        f"- evaluated_test_id: `{args.expected_test_id}`",
         f"- governance_lock_pass: `{governance_lock_pass}`",
         f"- global_decision: `{global_decision}`",
         "",
