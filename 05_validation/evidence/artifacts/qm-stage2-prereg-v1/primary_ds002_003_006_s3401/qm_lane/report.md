@@ -1,14 +1,14 @@
 # QM-Stage-1 Prereg Report (v1)
 
 - mode: `prereg`
-- generated_utc: `2026-03-03T21:17:51.791311Z`
+- generated_utc: `2026-03-07T20:08:20.279591Z`
 - profiles: `3`
-- g17_pass: `2/3`
+- g17_pass: `3/3`
 - g18_pass: `3/3`
 - g19_pass: `3/3`
 - g20_pass: `3/3`
-- all_pass_qm_lane: `2/3`
-- rc_fail_profiles: `1`
+- all_pass_qm_lane: `3/3`
+- rc_fail_profiles: `0`
 
 ## Notes
 

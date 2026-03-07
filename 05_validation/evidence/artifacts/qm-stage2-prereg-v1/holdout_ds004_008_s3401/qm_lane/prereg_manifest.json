@@ -1,6 +1,6 @@
 {
   "mode": "prereg",
-  "generated_utc": "2026-03-03T21:19:10.480657Z",
+  "generated_utc": "2026-03-07T20:09:31.556509Z",
   "datasets": [
     "DS-004",
     "DS-008"
@@ -9,6 +9,7 @@
   "seed_end": 3401,
   "profiles": 2,
   "strict_prereg": false,
+  "resume": true,
   "runner": "run_qm_stage1_prereg_v1.py",
   "notes": [
     "Runs G17..G20 via run_qm_lane_check_v1.py per dataset/seed profile.",

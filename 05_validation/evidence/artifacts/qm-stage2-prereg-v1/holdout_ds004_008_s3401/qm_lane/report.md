@@ -1,7 +1,7 @@
 # QM-Stage-1 Prereg Report (v1)
 
 - mode: `prereg`
-- generated_utc: `2026-03-03T21:19:10.480657Z`
+- generated_utc: `2026-03-07T20:09:31.556183Z`
 - profiles: `2`
 - g17_pass: `2/2`
 - g18_pass: `2/2`

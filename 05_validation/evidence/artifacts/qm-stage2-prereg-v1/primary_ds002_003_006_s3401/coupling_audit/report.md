@@ -1,7 +1,7 @@
 # QM-GR Coupling Audit Report (v2)
 
-- generated_utc: `2026-03-03T21:18:01.013673Z`
-- out_dir: `C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage2-prereg-v1/primary_ds002_003_006_s3401/coupling_audit`
+- generated_utc: `2026-03-07T20:08:20.512735Z`
+- out_dir: `/home/user/Qng_Workspace/05_validation/evidence/artifacts/qm-stage2-prereg-v1/primary_ds002_003_006_s3401/coupling_audit`
 - profiles_total_expected: `3`
 - profiles_completed: `3`
 - profiles_missing: `0`

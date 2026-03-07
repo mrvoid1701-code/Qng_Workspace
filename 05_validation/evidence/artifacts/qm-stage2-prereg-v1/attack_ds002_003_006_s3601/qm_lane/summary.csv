@@ -1,4 +1,4 @@
 dataset_id,seed,run_root,mode,g17_status,g18_status,g19_status,g20_status,g17_rc,g18_rc,g19_rc,g20_rc,rc_fail_count,all_pass_qm_lane,runner_rc
 DS-002,3601,05_validation/evidence/artifacts/qm-stage2-prereg-v1/attack_ds002_003_006_s3601/qm_lane/runs/ds-002_seed3601,prereg,pass,pass,pass,pass,0,0,0,0,0,pass,0
 DS-003,3601,05_validation/evidence/artifacts/qm-stage2-prereg-v1/attack_ds002_003_006_s3601/qm_lane/runs/ds-003_seed3601,prereg,pass,pass,pass,pass,0,0,0,0,0,pass,0
-DS-006,3601,05_validation/evidence/artifacts/qm-stage2-prereg-v1/attack_ds002_003_006_s3601/qm_lane/runs/ds-006_seed3601,prereg,fail,pass,pass,pass,1,0,0,0,1,fail,0
+DS-006,3601,05_validation/evidence/artifacts/qm-stage2-prereg-v1/attack_ds002_003_006_s3601/qm_lane/runs/ds-006_seed3601,prereg,pass,pass,pass,pass,0,0,0,0,0,pass,0
