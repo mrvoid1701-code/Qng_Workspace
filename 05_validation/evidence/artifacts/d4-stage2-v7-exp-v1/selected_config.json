@@ -1,5 +1,5 @@
 {
-  "generated_utc": "2026-03-07T01:58:31.454514+00:00",
+  "generated_utc": "2026-03-07T15:47:01.460286+00:00",
   "selection_source_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/d4-stage2-v7-exp-v1/aggregate_lambda_summary.csv",
   "criterion": [
     "min avg_holdout_mond_worse_pct",
