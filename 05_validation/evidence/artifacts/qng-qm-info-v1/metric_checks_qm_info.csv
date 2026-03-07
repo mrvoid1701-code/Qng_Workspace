@@ -1,6 +1,6 @@
 gate_id,metric,value,threshold,status
-G18a,binary_entropy_SA,13.130097,>6.584898,pass
-G18b,n_times_mean_IPR,3.962257,<5.0,pass
-G18c,cv_G_diag,0.258589,<0.5,pass
-G18d,spectral_dimension_ds,1.283920,"(1.0,3.5)",pass
+G18a,binary_entropy_SA,13.144363,>6.584898,pass
+G18b,n_times_mean_IPR,3.571908,<5.0,pass
+G18c,cv_G_diag,0.246837,<0.5,pass
+G18d,spectral_dimension_ds,1.416952,"(1.0,3.5)",pass
 FINAL,decision,pass,G18a&G18b&G18c&G18d,pass
