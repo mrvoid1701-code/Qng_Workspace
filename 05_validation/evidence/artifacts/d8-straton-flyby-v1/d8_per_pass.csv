@@ -1,0 +1,17 @@
+pass_id,class,category,r_perigee_km,v_inf_km_s,dv_pred_mms,dv_obs_mms,dv_sigma_mms,consistent,detectable
+GALILEO_1,flyby,Anderson2008,7338.036,8.949,-0.0022204215105853737,3.92,0.08,False,False
+GALILEO_2,flyby,control,6681.236,8.877,-0.0025628027937952247,-4.6,1.0,False,False
+NEAR_1,flyby,Anderson2008,6910.621,6.851,-0.004408840424420146,13.46,0.13,False,False
+CASSINI_1,flyby,control,7551.136,16.01,-0.00037167312064723926,-2.0,1.0,True,False
+ROSETTA_1,flyby,Anderson2008,8332.439,3.863,-0.010027330501156504,1.8,0.03,False,False
+MESSENGER_1,control,Anderson2008,8725.526,4.056,-0.009016145203987833,0.02,0.01,True,False
+ROSETTA_2,control,control,11685.0,9.5,-0.0009278840557957268,0.0,1.0,True,False
+EPOXI_1,control,control,21943.0,3.6,-0.004295392647410727,0.0,1.0,True,False
+EPOXI_2,control,control,49828.0,3.6,-0.0008545340420513783,0.0,1.0,True,False
+ROSETTA_3,control,control,8862.0,9.4,-0.001487523835754235,0.0,1.0,True,False
+EPOXI_3,control,control,1336675.0,1.5,-0.0,0.0,1.0,True,False
+EPOXI_4,control,control,1325441.0,1.1,-0.0,0.0,1.0,True,False
+EPOXI_5,control,control,36860.0,3.5,-0.0019117521869221673,0.0,1.0,True,False
+JUNO_1,flyby,null_modern,6944.725,10.389,-0.0016159216448784672,0.0,1.0,True,False
+BEPICOLOMBO_1,flyby,null_modern,19064.126,3.984,-0.004192453378464125,0.0,1.0,True,False
+SOLAR_ORBITER_1,flyby,null_modern,6836.905,10.606,-0.001561631512477469,0.0,1.0,True,False
