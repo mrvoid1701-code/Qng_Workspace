@@ -1,0 +1,27 @@
+{
+  "generated_utc": "2026-03-07T16:47:04.560289+00:00",
+  "dataset_id": "DS-006",
+  "dataset_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/data/rotation/rotation_ds006_rotmod.csv",
+  "seed": 3403,
+  "train_frac": 0.7,
+  "winner_formula_id": "WINNER_V1_M8C",
+  "fit_params": {
+    "k": 0.887357662028446,
+    "g_dag_internal": 2409.0184615384615,
+    "g_dag_mond_internal": 1599.4583090343945
+  },
+  "train": {
+    "chi2_per_n_winner": 50.985510648042855,
+    "chi2_per_n_mond": 63.64538393768521,
+    "chi2_per_n_null": 307.16419275287365,
+    "improve_vs_null_pct": 83.40121933123147
+  },
+  "holdout": {
+    "chi2_per_n_winner": 169.10011468625234,
+    "chi2_per_n_mond": 189.58142407835575,
+    "chi2_per_n_null": 289.58065311618026,
+    "improve_vs_null_pct": 41.605175322810986,
+    "mond_worse_pct": -10.803436830202466
+  },
+  "generalization_gap_pp": 41.79604400842049
+}

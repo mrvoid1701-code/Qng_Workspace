@@ -198,6 +198,7 @@ def main() -> int:
             "holdout_chi2_per_n_dual": f6(holdout_m8c_per_n),
             "holdout_chi2_per_n_mond": f6(holdout_mond_per_n),
             "holdout_chi2_per_n_null": f6(holdout_null_per_n),
+            "train_improve_vs_null_pct": f6(train_improve_vs_null_pct),
             "holdout_improve_vs_null_pct": f6(holdout_improve_vs_null_pct),
             "holdout_mond_worse_pct": f6(holdout_mond_worse_pct),
             "train_mond_worse_pct": f6(train_mond_worse_pct),
@@ -215,6 +216,12 @@ def main() -> int:
     agg = {
         "candidate": str(args.candidate),
         "n_splits": str(n),
+        "avg_train_improve_vs_null_pct": f6(
+            sum(float(r["train_improve_vs_null_pct"]) for r in per_seed_rows) / max(1, n)
+        ),
+        "avg_holdout_improve_vs_null_pct": f6(
+            sum(float(r["holdout_improve_vs_null_pct"]) for r in per_seed_rows) / max(1, n)
+        ),
         "avg_holdout_chi2_per_n_dual": f6(
             sum(float(r["holdout_chi2_per_n_dual"]) for r in per_seed_rows) / max(1, n)
         ),
@@ -298,6 +305,8 @@ def main() -> int:
         f"- generated_utc: `{manifest['generated_utc']}`",
         f"- winner_formula_id: `{WINNER_FORMULA_ID}`",
         f"- candidate: `{args.candidate}`",
+        f"- avg_train_improve_vs_null_pct: `{agg['avg_train_improve_vs_null_pct']}`",
+        f"- avg_holdout_improve_vs_null_pct: `{agg['avg_holdout_improve_vs_null_pct']}`",
         f"- avg_holdout_chi2_per_n_dual: `{agg['avg_holdout_chi2_per_n_dual']}`",
         f"- avg_holdout_chi2_per_n_mond: `{agg['avg_holdout_chi2_per_n_mond']}`",
         f"- avg_holdout_mond_worse_pct: `{agg['avg_holdout_mond_worse_pct']}`",

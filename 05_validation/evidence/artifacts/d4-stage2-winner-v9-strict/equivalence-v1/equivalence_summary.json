@@ -1,0 +1,12 @@
+{
+  "generated_utc": "2026-03-07T16:46:57.103432+00:00",
+  "dataset_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/data/rotation/rotation_ds006_rotmod.csv",
+  "per_seed_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/d4-stage2-winner-v9-strict/per_seed_candidate_summary.csv",
+  "candidate": "winner_v1_m8c",
+  "tol": 0.0001,
+  "max_abs_delta_train_chi2_per_n": 4.932000052804142e-07,
+  "max_abs_delta_holdout_chi2_per_n": 5.445570729989413e-05,
+  "max_abs_delta_k": 4.4615859606800257e-07,
+  "max_abs_delta_gdag": 4.61538775198278e-07,
+  "equivalence_pass": true
+}
