@@ -1,0 +1,105 @@
+{
+  "generated_utc": "2026-03-07T16:58:40.363379+00:00",
+  "test_id": "d4-stage2-winner-v10-strict",
+  "dataset_id": "DS-006",
+  "dataset_csv_rel": "data/rotation/rotation_ds006_rotmod.csv",
+  "dataset_sha256": "1067802fb376629095ab4a0f8d8358eadd0dda488f046305659ac966d1ab556c",
+  "split_seeds": [
+    3401,
+    3402,
+    3403,
+    3404,
+    3405
+  ],
+  "train_frac": 0.7,
+  "fixed_theory_constants": {
+    "s1_lambda": 0.28,
+    "s2_const": 0.355,
+    "r0_kpc": 1.0,
+    "r_tail_kpc": 4.0,
+    "focus_gamma": 2.0,
+    "a0_internal_km2_s2_kpc": 3702.84,
+    "a0_si_m_s2": 1.2e-10,
+    "winner_formula_id": "WINNER_V1_M8C"
+  },
+  "search_space": {
+    "tau_grid": [
+      0.02,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      1.0,
+      2.0,
+      3.0,
+      5.0,
+      8.0,
+      12.0,
+      20.0,
+      30.0,
+      50.0
+    ],
+    "alpha_grid": [
+      0.02,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      0.7,
+      1.0,
+      1.3
+    ],
+    "mix_grid": [],
+    "winner_fit_gdag_grid_over_a0": {
+      "min": 0.1,
+      "max": 5.0,
+      "count": 60,
+      "refine_count": 40
+    },
+    "winner_fit_k_bounds": {
+      "min": 0.05,
+      "max": 8.0
+    }
+  },
+  "fit_objective": {
+    "space": "weighted velocity chi2 (train only)",
+    "grid_selection_objective": "winner_v1_weighted_lowacc_outer",
+    "weight_formula": "1 + focus_gamma * (r/(r+r_tail_kpc)) * 1/sqrt(1 + g_bar/a0)",
+    "baseline_mond": "MOND_RAR_train_fit_per_split"
+  },
+  "candidates": [
+    "winner_v1_m8c"
+  ],
+  "winner_formula": {
+    "id": "WINNER_V1_M8C",
+    "equation": "v_pred^2 = bt + r * k * sqrt(g_bar * g_dag) * exp(-g_bar/g_dag)",
+    "units": {
+      "v": "km/s",
+      "r": "kpc",
+      "bt": "km^2/s^2",
+      "g_bar": "km^2/s^2/kpc",
+      "g_dag": "km^2/s^2/kpc"
+    },
+    "fit_parameters": [
+      "k",
+      "g_dag"
+    ],
+    "fit_bounds": {
+      "k": [
+        0.05,
+        8.0
+      ],
+      "g_dag_over_a0": [
+        0.1,
+        5.0
+      ]
+    }
+  },
+  "artifacts": {
+    "per_seed_candidate_summary_csv": "per_seed_candidate_summary.csv",
+    "aggregate_summary_csv": "aggregate_summary.csv",
+    "report_md": "report.md"
+  }
+}
