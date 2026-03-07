@@ -1,6 +1,9 @@
 # D4 Winner V9 vs V10 Comparison
 
-- generated_utc: `2026-03-07T16:58:52.768360+00:00`
+- generated_utc: `2026-03-07T17:07:24.220752+00:00`
+- coverage_ok: `True`
+- missing_in_v10: `[]`
+- missing_in_v9: `[]`
 - seeds_compared: `5`
 - mean_delta_gap_pp_v10_minus_v9: `0.023348`
 - mean_delta_holdout_mond_worse_pct_v10_minus_v9: `0.103733`

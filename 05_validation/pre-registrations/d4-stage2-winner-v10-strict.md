@@ -3,7 +3,7 @@
 ## Scope
 
 - Lane: `d4-stage2-winner-v10-strict`
-- Goal: improve train→holdout stability on strict seeds with one conceptual change only.
+- Goal: improve train->holdout stability on strict seeds with one conceptual change only.
 - Formula remains frozen: `WINNER_V1_M8C`.
 
 ## Single Allowed Change (v10)
@@ -14,7 +14,7 @@ Fit objective on train is reweighted toward low-acceleration outer regime:
 
 Training objective used for parameter fit:
 
-`J_train = Σ_i w_i * ((v_obs_i - v_pred_i)/σ_i)^2`
+`J_train = sum_i w_i * ((v_obs_i - v_pred_i)/sigma_i)^2`
 
 All strict evaluation metrics remain unchanged (standard unweighted chi2/N and same thresholds).
 

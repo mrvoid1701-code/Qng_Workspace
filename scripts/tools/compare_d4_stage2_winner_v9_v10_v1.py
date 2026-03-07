@@ -44,6 +44,7 @@ def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Compare per-seed strict evaluation between D4 winner v9 and v10.")
     p.add_argument("--v9-csv", default=str(DEFAULT_V9))
     p.add_argument("--v10-csv", default=str(DEFAULT_V10))
+    p.add_argument("--strict-coverage", action=argparse.BooleanOptionalAction, default=True)
     p.add_argument("--out-dir", default=str(DEFAULT_OUT))
     return p.parse_args()
 
@@ -76,7 +77,12 @@ def main() -> int:
     v10_rows = read_csv(v10_path)
     v9_by_seed = {int(r["split_seed"]): r for r in v9_rows}
     v10_by_seed = {int(r["split_seed"]): r for r in v10_rows}
-    seeds = sorted(set(v9_by_seed.keys()) & set(v10_by_seed.keys()))
+    v9_seed_set = set(v9_by_seed.keys())
+    v10_seed_set = set(v10_by_seed.keys())
+    seeds = sorted(v9_seed_set & v10_seed_set)
+    missing_in_v10 = sorted(v9_seed_set - v10_seed_set)
+    missing_in_v9 = sorted(v10_seed_set - v9_seed_set)
+    coverage_ok = (len(missing_in_v10) == 0 and len(missing_in_v9) == 0 and len(seeds) > 0)
 
     cmp_rows: list[dict[str, str]] = []
     for seed in seeds:
@@ -119,6 +125,10 @@ def main() -> int:
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "v9_csv": v9_path.as_posix(),
         "v10_csv": v10_path.as_posix(),
+        "strict_coverage": bool(args.strict_coverage),
+        "coverage_ok": coverage_ok,
+        "missing_in_v10": missing_in_v10,
+        "missing_in_v9": missing_in_v9,
         "n_seeds_compared": len(cmp_rows),
         "mean_delta_gap_pp_v10_minus_v9": mean_of("delta_gap_pp_v10_minus_v9"),
         "mean_delta_holdout_mond_worse_pct_v10_minus_v9": mean_of("delta_holdout_mond_worse_pct_v10_minus_v9"),
@@ -131,6 +141,9 @@ def main() -> int:
         "# D4 Winner V9 vs V10 Comparison",
         "",
         f"- generated_utc: `{summary['generated_utc']}`",
+        f"- coverage_ok: `{summary['coverage_ok']}`",
+        f"- missing_in_v10: `{summary['missing_in_v10']}`",
+        f"- missing_in_v9: `{summary['missing_in_v9']}`",
         f"- seeds_compared: `{summary['n_seeds_compared']}`",
         f"- mean_delta_gap_pp_v10_minus_v9: `{f6(summary['mean_delta_gap_pp_v10_minus_v9'])}`",
         f"- mean_delta_holdout_mond_worse_pct_v10_minus_v9: `{f6(summary['mean_delta_holdout_mond_worse_pct_v10_minus_v9'])}`",
@@ -158,6 +171,8 @@ def main() -> int:
 
     print(f"seed_comparison_csv: {(out_dir / 'seed_comparison.csv').as_posix()}")
     print(f"summary_json: {(out_dir / 'summary.json').as_posix()}")
+    if bool(args.strict_coverage) and not coverage_ok:
+        return 2
     return 0
 
 

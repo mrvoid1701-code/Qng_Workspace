@@ -1,6 +1,6 @@
 # D4 Stage-2 Candidate Evaluation (Strict)
 
-- generated_utc: `2026-03-07T16:58:40.438265+00:00`
+- generated_utc: `2026-03-07T17:07:24.108424+00:00`
 - evaluator_id: `evaluate_d4_stage2_dual_kernel_candidates_v5`
 - evaluated_test_id: `d4-stage2-winner-v10-strict`
 - governance_lock_pass: `True`

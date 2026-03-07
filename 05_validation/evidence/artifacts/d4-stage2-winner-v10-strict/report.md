@@ -1,6 +1,6 @@
 # D4 Winner V10 Strict Report
 
-- generated_utc: `2026-03-07T16:58:40.363379+00:00`
+- generated_utc: `2026-03-07T17:07:10.263162+00:00`
 - winner_formula_id: `WINNER_V1_M8C`
 - candidate: `winner_v1_m8c`
 - train objective (single v10 change): `winner_v1_weighted_lowacc_outer`
