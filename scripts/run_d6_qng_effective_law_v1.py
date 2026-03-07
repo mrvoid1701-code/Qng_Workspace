@@ -499,10 +499,10 @@ def main() -> int:
     r_needed  = delta_e * (3e8)**2 / A0_SI
     print(f"  r_char pt a_straton=a0: {r_needed/KPC_TO_M:.1f} kpc")
     print(f"  → r_char ≈ {r_needed/KPC_TO_M:.0f} kpc ≈ scala Hubble? Nu e o scala galacticii.")
-    print(f"  → Alt canal: a0 = sqrt(δ × H0 × c) cu δ=0.07, H0=70 km/s/Mpc")
+    print(f"  → Alt canal dimensional-consistent: a0 = δ × H0 × c, cu δ=0.07, H0=70 km/s/Mpc")
     H0 = 70.0 * 1e3 / (3.086e22)  # s^-1
-    a0_cosmo = math.sqrt(0.07 * H0 * 3e8)
-    print(f"    a0_cosmo = sqrt(0.07 * H0 * c) = {a0_cosmo:.3e} m/s² (vs MOND {A0_SI:.3e})")
+    a0_cosmo = 0.07 * H0 * 3e8
+    print(f"    a0_cosmo = 0.07 * H0 * c = {a0_cosmo:.3e} m/s² (vs MOND {A0_SI:.3e})")
     print()
 
     # ------------------------------------------------------------------
@@ -543,7 +543,7 @@ def main() -> int:
         "rar_bins": rar_data,
         "straton_lag": {
             "delta_e0_e0": delta_e,
-            "a0_cosmo_formula": "sqrt(delta * H0 * c)",
+            "a0_cosmo_formula": "delta * H0 * c",
             "a0_cosmo_si": a0_cosmo,
             "a0_mond_si": A0_SI,
             "ratio": a0_cosmo / A0_SI,

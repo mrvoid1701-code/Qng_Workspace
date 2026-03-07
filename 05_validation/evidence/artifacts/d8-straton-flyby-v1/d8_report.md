@@ -1,6 +1,6 @@
 # D8 — QNG Straton Flyby Test
 
-**Data:** 2026-03-06  
+**Data:** 2026-03-07  
 **C_straton:** 6.992e-14 s⁻¹ (calibrat pe Pioneer P10+P11)  
 
 ## Model

@@ -1,6 +1,6 @@
 {
   "test_id": "things-test-v1",
-  "timestamp_utc": "2026-03-07T02:27:12+00:00",
+  "timestamp_utc": "2026-03-07T13:41:17+00:00",
   "reference": "de Blok et al. 2008, AJ 136 2648 (arXiv:0810.2100)",
   "data_source": "ds006_rotmod.csv (SPARC subset coincident cu THINGS)",
   "n_things_total": 19,
@@ -42,14 +42,14 @@
       "chi2": 165315.36,
       "chi2_per_n": 325.4239,
       "k": 1,
-      "g_dag_m_s2": 0.0
+      "g_dag_m_s2": 3.5267345053676354e-11
     },
     "M8c_QNG": {
       "chi2": 134592.33,
       "chi2_per_n": 264.9455,
       "k": 2,
       "k_param": 0.9961,
-      "g_dag_m_s2": 0.0
+      "g_dag_m_s2": 5.541471256850527e-11
     }
   },
   "cv_results": {
@@ -72,6 +72,6 @@
     "m8c_cv_chi2_per_n": 278.9425,
     "ratio_m8c_over_mond": 0.8467,
     "m8c_wins": true,
-    "conclusion": "M8c (QNG straton) BATE MOND pe sub-setul THINGS — validare independenta"
+    "conclusion": "M8c (QNG straton) BATE MOND pe sub-setul THINGS disponibil in ds006 (subset check, nu validare independenta completa)"
   }
 }

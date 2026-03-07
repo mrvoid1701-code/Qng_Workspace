@@ -21,7 +21,7 @@ D9 raspunde: **5-fold cross-validation cu parametri ingheti pe test.**
 | Aspect | Detaliu |
 |--------|---------|
 | Dataset | SPARC rotmod DS006 — 175 galaxii, 3391 puncte |
-| Metoda | 5-fold cross-validation stratificat |
+| Metoda | 5-fold cross-validation (shuffle+modulo pe galaxii; non-stratified) |
 | Seed | 42 (fix, reproductibil) |
 | Fit pe | TRAIN (140 gal) |
 | Evaluat pe | TEST (35 gal, parametri INGHETATI) |

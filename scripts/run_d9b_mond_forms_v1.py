@@ -287,6 +287,23 @@ def run_crossval(gals: dict) -> dict:
     print(f"  M8c vs MOND_best: ratio={ratio_vs_best:.4f}, "
           f"imbunatatire={improve_vs_best:.2f}%")
 
+    # Unweighted fold means (for direct comparability with D9 legacy metric).
+    mean_m8c_unweighted = sum(f["m8c"]["test_chi2_per_n"] for f in fold_results) / N_FOLDS
+    mond_means_unweighted = {}
+    best_form_unweighted = None
+    best_chi2_unweighted = float("inf")
+    for form_name in MOND_FORMS:
+        mn_u = sum(f["mond_forms"][form_name]["test_chi2_per_n"] for f in fold_results) / N_FOLDS
+        mond_means_unweighted[form_name] = mn_u
+        if mn_u < best_chi2_unweighted:
+            best_chi2_unweighted = mn_u
+            best_form_unweighted = form_name
+    ratio_vs_best_unweighted = mean_m8c_unweighted / max(best_chi2_unweighted, 1e-15)
+    improve_vs_best_unweighted = (1.0 - ratio_vs_best_unweighted) * 100.0
+
+    print(f"  (Unweighted folds) best MOND: {best_form_unweighted} "
+          f"ratio={ratio_vs_best_unweighted:.4f}, improve={improve_vs_best_unweighted:.2f}%")
+
     beats_best = ratio_vs_best < 1.0
     if beats_best and improve_vs_best > 5.0:
         verdict = "STRONG_PASS"
@@ -303,10 +320,16 @@ def run_crossval(gals: dict) -> dict:
             "n_galaxies":     len(gals),
             "mean_m8c_test":  mean_m8c,
             "mond_means":     mond_means,
+            "mean_m8c_test_unweighted": mean_m8c_unweighted,
+            "mond_means_unweighted": mond_means_unweighted,
             "best_mond_form": best_form,
             "best_mond_chi2": best_chi2,
             "ratio_m8c_over_best_mond": ratio_vs_best,
             "improve_pct_vs_best_mond": improve_vs_best,
+            "best_mond_form_unweighted": best_form_unweighted,
+            "best_mond_chi2_unweighted": best_chi2_unweighted,
+            "ratio_m8c_over_best_mond_unweighted": ratio_vs_best_unweighted,
+            "improve_pct_vs_best_mond_unweighted": improve_vs_best_unweighted,
             "m8c_beats_best_mond": beats_best,
             "verdict":        verdict,
             "seed":           SEED,
@@ -335,7 +358,7 @@ def main():
         "test_id":       "d9b-mond-forms-v1",
         "timestamp_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "dataset":       "SPARC rotmod DS006",
-        "method":        f"{N_FOLDS}-fold CV, frozen params pe test",
+        "method":        f"{N_FOLDS}-fold CV, frozen params pe test (summary weighted by n_test_pts; unweighted also reported)",
         "mond_forms":    list(MOND_FORMS.keys()),
         "a0_si":         A0_SI,
         "results":       results,

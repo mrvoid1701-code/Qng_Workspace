@@ -1,8 +1,8 @@
 {
   "test_id": "d9b-mond-forms-v1",
-  "timestamp_utc": "2026-03-07T01:15:21Z",
+  "timestamp_utc": "2026-03-07T13:43:03Z",
   "dataset": "SPARC rotmod DS006",
-  "method": "5-fold CV, frozen params pe test",
+  "method": "5-fold CV, frozen params pe test (summary weighted by n_test_pts; unweighted also reported)",
   "mond_forms": [
     "RAR",
     "Simple",
@@ -115,7 +115,7 @@
           "Simple": {
             "gdag_over_a0": 0.11117676214559145,
             "train_chi2_per_n": 169.38293087633983,
-            "test_chi2_per_n": 63.77498814273809,
+            "test_chi2_per_n": 63.774988142738096,
             "ratio_m8c_over_mond": 0.671494556029805,
             "m8c_beats": true
           },
@@ -170,8 +170,8 @@
           "Gamma": {
             "gdag_over_a0": 0.18418667605992525,
             "train_chi2_per_n": 122.31430460533107,
-            "test_chi2_per_n": 112.62329164674706,
-            "ratio_m8c_over_mond": 0.6210777477630217,
+            "test_chi2_per_n": 112.62329164674705,
+            "ratio_m8c_over_mond": 0.6210777477630218,
             "m8c_beats": true
           }
         }
@@ -228,10 +228,21 @@
         "Standard": 113.61340947548872,
         "Gamma": 133.10938713417497
       },
+      "mean_m8c_test_unweighted": 89.68559326152904,
+      "mond_means_unweighted": {
+        "RAR": 104.89941769704902,
+        "Simple": 164.46571139572364,
+        "Standard": 116.94569985452522,
+        "Gamma": 136.1899323232364
+      },
       "best_mond_form": "RAR",
       "best_mond_chi2": 101.80326228259437,
       "ratio_m8c_over_best_mond": 0.8540280156024606,
       "improve_pct_vs_best_mond": 14.597198439753944,
+      "best_mond_form_unweighted": "RAR",
+      "best_mond_chi2_unweighted": 104.89941769704902,
+      "ratio_m8c_over_best_mond_unweighted": 0.8549675034473717,
+      "improve_pct_vs_best_mond_unweighted": 14.50324965526283,
       "m8c_beats_best_mond": true,
       "verdict": "STRONG_PASS",
       "seed": 42

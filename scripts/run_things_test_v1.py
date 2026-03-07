@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-THINGS Test v1 — test independent pe sub-eșantionul THINGS din ds006
+THINGS Test v1 — subset-check THINGS pe sub-eșantionul THINGS din ds006
 
 Galaxii: 13 din cele 19 THINGS (de Blok et al. 2008, AJ 136 2648)
   prezente in ds006/SPARC: DDO154, IC2574, NGC2366, NGC2403, NGC2841,
   NGC2903, NGC2976, NGC3198, NGC3521, NGC5055, NGC6946, NGC7331, NGC7793
 
-Scop: validare independenta a rezultatelor D9b pe un set extern (nu SPARC generic).
-  THINGS are propriile date HI + Hα, independente metodologic.
+Scop: verificare de consistenta pe sub-setul THINGS disponibil in ds006.
+  Nu este o validare complet independenta: foloseste acelasi pachet ds006 si lipsesc 6/19 galaxii THINGS.
 
 Modele comparate:
   M0: Null (Newtonian)     — v = sqrt(bt),                        0 params
@@ -413,23 +413,15 @@ def main() -> int:
             "ratio_m8c_over_mond": round(ratio, 4),
             "m8c_wins": m8c_wins,
             "conclusion": (
-                "M8c (QNG straton) BATE MOND pe sub-setul THINGS — validare independenta"
+                "M8c (QNG straton) BATE MOND pe sub-setul THINGS disponibil in ds006 (subset check, nu validare independenta completa)"
                 if m8c_wins else
-                "M8c (QNG straton) pierde fata de MOND pe sub-setul THINGS"
+                "M8c (QNG straton) pierde fata de MOND pe sub-setul THINGS disponibil in ds006 (subset check)"
             ),
         },
     }
 
-    # Fix serializare float mic
-    def fix_floats(obj):
-        if isinstance(obj, dict):
-            return {k: fix_floats(v) for k, v in obj.items()}
-        if isinstance(obj, float):
-            return round(obj, 8)
-        return obj
-
     (OUT_DIR / "things_summary.json").write_text(
-        json.dumps(fix_floats(summary), indent=2, ensure_ascii=False),
+        json.dumps(summary, indent=2, ensure_ascii=False),
         encoding="utf-8"
     )
 

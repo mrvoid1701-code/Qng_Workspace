@@ -143,6 +143,7 @@ def main():
 
     flyby_rows = load_flyby()
     flyby_results = []
+    eps_zero = 1e-9
     n_anderson = 0   # anomalii Anderson pozitive cu σ<0.2 mm/s
     n_nulls    = 0   # flyby moderne cu null (σ~1 mm/s)
     n_nulls_ok = 0
@@ -165,7 +166,7 @@ def main():
         if dv_obs != 0 and dv_sig < 0.2:
             category = "Anderson2008"
             n_anderson += 1
-        elif dv_obs == 0 and dv_sig >= 0.5 and cls == "flyby":
+        elif abs(dv_obs) <= eps_zero and dv_sig >= 0.5 and cls == "flyby":
             category = "null_modern"
             n_nulls += 1
             if consistent: n_nulls_ok += 1
@@ -225,8 +226,23 @@ def main():
 
     # CSV per-pass
     with (OUT_DIR / "d8_per_pass.csv").open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=list(flyby_results[0].keys()))
-        w.writeheader(); w.writerows(flyby_results)
+        default_fields = [
+            "pass_id",
+            "class",
+            "category",
+            "r_perigee_km",
+            "v_inf_km_s",
+            "dv_pred_mms",
+            "dv_obs_mms",
+            "dv_sigma_mms",
+            "consistent",
+            "detectable",
+        ]
+        fields = list(flyby_results[0].keys()) if flyby_results else default_fields
+        w = csv.DictWriter(f, fieldnames=fields)
+        w.writeheader()
+        if flyby_results:
+            w.writerows(flyby_results)
 
     # Report MD
     report = "\n".join([
@@ -280,7 +296,7 @@ def main():
         "(**fără** VPC) produce Δv > 0 cu formula δv/v = 2ωR/c × (cosδ_in − cosδ_out),",
         "atunci QNG unifică Pioneer + flyby. Altfel, flyby anomalii au altă origine.",
     ])
-    (OUT_DIR / "d8_report.md").write_text(report)
+    (OUT_DIR / "d8_report.md").write_text(report, encoding="utf-8")
 
     print(f"\nSalvat în {OUT_DIR}")
 

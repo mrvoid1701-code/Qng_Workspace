@@ -252,11 +252,18 @@ def run_crossval(gals: dict) -> dict:
     sorted_ratios = sorted(ratios)
     median_ratio  = sorted_ratios[N_FOLDS // 2]
 
-    # Mean test chi2/N
+    # Mean test chi2/N (legacy: unweighted over folds)
     mean_m8c  = sum(f["test_chi2_per_n_m8c"]  for f in fold_results) / N_FOLDS
     mean_mond = sum(f["test_chi2_per_n_mond"]  for f in fold_results) / N_FOLDS
 
     improve_pct = (1.0 - mean_ratio) * 100.0
+
+    # Point-weighted aggregates for comparability with D9b.
+    total_test_pts = sum(f["n_test_pts"] for f in fold_results)
+    weighted_m8c = sum(f["test_chi2_per_n_m8c"] * f["n_test_pts"] for f in fold_results) / max(total_test_pts, 1)
+    weighted_mond = sum(f["test_chi2_per_n_mond"] * f["n_test_pts"] for f in fold_results) / max(total_test_pts, 1)
+    weighted_ratio = weighted_m8c / max(weighted_mond, 1e-15)
+    weighted_improve_pct = (1.0 - weighted_ratio) * 100.0
 
     # Criteriu
     if beats_count >= 4 and mean_ratio < 0.95:
@@ -280,6 +287,10 @@ def run_crossval(gals: dict) -> dict:
             "improve_pct_vs_mond": improve_pct,
             "mean_test_chi2_m8c":  mean_m8c,
             "mean_test_chi2_mond": mean_mond,
+            "mean_test_chi2_m8c_weighted": weighted_m8c,
+            "mean_test_chi2_mond_weighted": weighted_mond,
+            "mean_ratio_m8c_over_mond_weighted": weighted_ratio,
+            "improve_pct_vs_mond_weighted": weighted_improve_pct,
             "verdict": verdict,
             "seed": SEED,
         },
@@ -318,6 +329,8 @@ def main():
     print(f"  Imbunatatire medie:     {s['improve_pct_vs_mond']:.2f}%")
     print(f"  Mean TEST chi2/N M8c:   {s['mean_test_chi2_m8c']:.4f}")
     print(f"  Mean TEST chi2/N MOND:  {s['mean_test_chi2_mond']:.4f}")
+    print(f"  Weighted ratio M8c/MOND:{s['mean_ratio_m8c_over_mond_weighted']:.4f}")
+    print(f"  Weighted improve:       {s['improve_pct_vs_mond_weighted']:.2f}%")
     print(f"  VERDICT: {s['verdict']}")
 
     # Salveaza JSON
@@ -325,7 +338,7 @@ def main():
         "test_id":    "d9-cross-validation-v1",
         "timestamp_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "dataset":    "SPARC rotmod (DS006)",
-        "method":     f"{N_FOLDS}-fold cross-validation, frozen parameters",
+        "method":     f"{N_FOLDS}-fold cross-validation (shuffle+modulo split, non-stratified), frozen parameters",
         "a0_si":      A0_SI,
         "results":    results,
     }

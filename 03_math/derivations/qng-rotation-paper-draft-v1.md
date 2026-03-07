@@ -16,7 +16,7 @@ derivată din geometria rețelei cubice discrete a grafului QNG, fără parametr
 adăugați. Pe datele SPARC (175 galaxii, 3391 puncte), modelul M8c bate MOND cu
 ΔAIC = −48,004, cu o singură predictie testabilă unică: supresia accelerației
 reziduale în galaxii dense (χ > 3) unde MOND supraestimează. Validarea pe 5-fold
-cross-validation confirmă generalizarea (M8c/MOND = 0.969 pe holdout).
+cross-validation confirmă generalizarea (D9 unweighted: M8c/MOND = 0.879; D9b weighted vs best MOND form: 0.854).
 
 ---
 
@@ -144,15 +144,16 @@ Parametrii fitați pe 4/5 din date, evaluați pe 1/5 nevăzut:
 
 | Fold | N_hold | MOND | M8c | M8c/MOND |
 |------|--------|------|-----|----------|
-| 1 | 515 | 30.84 | 36.86 | 1.195 |
-| 2 | 768 | 62.24 | **44.41** | **0.714** |
-| 3 | 699 | 242.54 | **214.34** | **0.884** |
-| 4 | 790 | 104.63 | **99.13** | **0.947** |
-| 5 | 619 | 32.09 | 35.39 | 1.103 |
-| **Mean** | | **94.5** | **86.0** | **0.969** |
+| 1 | 797 | 56.15 | **47.75** | **0.850** |
+| 2 | 665 | 95.39 | **65.30** | **0.685** |
+| 3 | 638 | **40.65** | 42.82 | 1.054 |
+| 4 | 664 | 74.00 | **69.95** | **0.945** |
+| 5 | 627 | 258.31 | **222.60** | **0.862** |
+| **Mean (D9 unweighted)** | | **104.90** | **89.69** | **0.879** |
 
-M8c bate MOND în 3/5 fold-uri și pe medie (−3.1%). Parametrul `g†` este
-stabil în 4/5 fold-uri la `6.22×10⁻¹¹ m/s²` (±5% față de valoarea derivată teoretic).
+M8c bate MOND în 4/5 fold-uri și pe media unweighted (+12.1%).
+Pe agregare weighted (D9b, comparabil pe puncte), raportul M8c/best-MOND este **0.854**.
+Parametrul `g†` rămâne stabil între fold-uri (`g†/a0 ∈ [0.546, 0.671]`), aproape de scara teoretică.
 
 ### 4.3 Predicția unică: supresia la χ > 1
 

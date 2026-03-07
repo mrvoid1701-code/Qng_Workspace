@@ -1,8 +1,8 @@
 {
   "test_id": "d9-cross-validation-v1",
-  "timestamp_utc": "2026-03-07T00:48:15Z",
+  "timestamp_utc": "2026-03-07T13:43:01Z",
   "dataset": "SPARC rotmod (DS006)",
-  "method": "5-fold cross-validation, frozen parameters",
+  "method": "5-fold cross-validation (shuffle+modulo split, non-stratified), frozen parameters",
   "a0_si": 1.2e-10,
   "results": {
     "fold_results": [
@@ -97,6 +97,10 @@
       "improve_pct_vs_mond": 12.087742146680803,
       "mean_test_chi2_m8c": 89.68559326152904,
       "mean_test_chi2_mond": 104.89941769704902,
+      "mean_test_chi2_m8c_weighted": 86.9428380690609,
+      "mean_test_chi2_mond_weighted": 101.80326228259437,
+      "mean_ratio_m8c_over_mond_weighted": 0.8540280156024606,
+      "improve_pct_vs_mond_weighted": 14.597198439753944,
       "verdict": "STRONG_PASS",
       "seed": 42
     }
