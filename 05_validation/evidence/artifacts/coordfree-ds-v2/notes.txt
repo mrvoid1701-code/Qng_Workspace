@@ -1,0 +1,15 @@
+Experiment: Coordinate-Free Spectral Dimension v2
+Parametri: N_WALKS=100, N_STEPS=16, T_LO=5, T_HI=12, SEED=3401
+
+Grafuri:
+  A)  4D Hypercubic Lattice (L=4, n=256, k=8, PBC)
+       → d_s=4 garantat teoretic (difuzie pe Z^4)
+  A2) 4D Lattice + 10% noise
+       → d_s~3.5-3.8 (quantum UV dimensional reduction)
+  B2) Barabasi-Albert m=4 (k_avg~8)
+       → d_s~3.0-3.5 (scale-free)
+  C)  Multi-scale ER (local p_high + global p_low)
+       → d_s variabil cu parametri
+
+Concluzie: 4D Lattice + noise e cel mai bun candidat pentru
+un principiu de conectivitate care genereaza spontan d_s~4.
