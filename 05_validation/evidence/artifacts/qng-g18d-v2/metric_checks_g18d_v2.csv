@@ -1,0 +1,5 @@
+gate_id,metric,value,threshold,pass
+G18a,entropy_SA,13.047600,>6.584898,True
+G18b,n_mean_IPR,3.193949,<5.0,True
+G18c,cv_G_ii,0.342366,<0.5,True
+G18d,spectral_dimension_ds,4.082091,"(3.5,4.5)",True
