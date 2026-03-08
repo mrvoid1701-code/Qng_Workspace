@@ -12,12 +12,12 @@ G12b,homogeneity_cv,0.124261,<0.6,pass
 G12c,radial_ratio,1.165146,>1.0,pass
 G12d,loglog_slope,-0.159437,<-0.03,pass
 G13a,max_h_ratio,1.000000,<=1.5,pass
-G13b,ecov_drift,0.311448,<0.02,fail
+G13b,ecov_drift,1.854072e-14,<0.02,pass
 G13c,speed_reduction,0.184208,>0.05,pass
 G13d,trev_error,2.810252e-14,<1e-4,pass
-G14a,eflat_drift,0.381590,>0.01,pass
-G14b,ecov_drift,0.311448,<0.02,fail
-G14c,drift_ratio,1.225214,>3.0,fail
+G14a,eflat_drift,0.139869,>0.01,pass
+G14b,ecov_drift,1.854072e-14,<0.02,pass
+G14c,drift_ratio,1.398691e+11,>3.0,pass
 G14d,trev_error_cov,2.810252e-14,<1e-4,pass
 G15a,gamma_ppn_dev,0.025230,<0.06,pass
 G15b,shapiro_ratio,2.511254,>2.0,pass

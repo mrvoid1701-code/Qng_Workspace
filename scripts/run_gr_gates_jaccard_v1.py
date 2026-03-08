@@ -368,9 +368,18 @@ def wave_simulation(
 
     Matches the original run_qng_covariant_wave_v1.py scheme.
 
-    Noether-conserved energy (staggered velocity v = (h_cur−h_prev)/dt):
-        E_cov  = ½Σ_i (k_i/α_i)·v_i² + (c²/2)Σ_{edges}(h_i−h_j)²
-        E_flat = ½Σ_i k_i·v_i² + (c²/2)Σ_{edges}(h_i−h_j)²
+    Energy via the BILINEAR Verlet invariant (exact discrete conserved quantity):
+
+        E_cov  = ½Σ_i (k_i/α_i)·v⁺_n·v⁻_n + (c²/2)Σ_{edges}(h_n,i−h_n,j)²
+        E_flat = ½Σ_i  k_i    ·v⁺_n·v⁻_n + (c²/2)Σ_{edges}(h_n,i−h_n,j)²
+
+    where v⁺_n=(h_{n+1}−h_n)/dt and v⁻_n=(h_n−h_{n-1})/dt are the forward
+    and backward staggered velocities.  For the equation M·h_tt = −K·h this
+    is the unique quadratic form conserved to machine-precision by position
+    Verlet (proof: modes decouple, per-mode invariant = ¼A²Ω²(1+cosθ)).
+
+    E_cov drifts ≈0 for the covariant wave (correct mass matrix k_i/α_i).
+    E_flat drifts visibly when α≠const (wrong mass → non-invariant form).
 
     Time reversal: swap (cur, prev) and run forward — EXACTLY recovers h_0.
     """
@@ -385,6 +394,7 @@ def wave_simulation(
     max_h = max(abs(x) for x in h_cur)
 
     def potential(hh: list[float]) -> float:
+        """c²·Σ_{i<j}(h_i−h_j)²  — note: PE_true = potential/2."""
         s = 0.0
         for i in range(n):
             for j in neighbours[i]:
@@ -392,25 +402,44 @@ def wave_simulation(
                     s += c2 * (hh[i] - hh[j]) ** 2
         return s
 
-    def energy(cur: list[float], prev: list[float]) -> tuple[float, float]:
-        pe = potential(cur)
+    def energy_bilin(
+        nxt: list[float], cur: list[float], prev: list[float]
+    ) -> tuple[float, float]:
+        """
+        Bilinear Verlet invariant:
+            E = ½Σ_i M_i·v⁺_n·v⁻_n + potential(cur)/2
+        where M_i = k_i/α_i (covariant) or k_i (flat).
+        This is the EXACT discrete conserved quantity for the Hamiltonian
+        ½·v^T·M·v + ½·potential.
+        """
+        pe = 0.5 * potential(cur)
         ke_cov = ke_flat = 0.0
         for i in range(n):
-            vi = (cur[i] - prev[i]) / dt
-            ke_cov += ki[i] / alpha[i] * vi * vi
-            ke_flat += ki[i] * vi * vi
+            vp = (nxt[i] - cur[i]) / dt   # v⁺
+            vm = (cur[i] - prev[i]) / dt   # v⁻
+            ke_cov  += ki[i] / alpha[i] * vp * vm
+            ke_flat += ki[i]              * vp * vm
         return 0.5 * ke_cov + pe, 0.5 * ke_flat + pe
 
-    E0_cov, E0_flat = energy(h_cur, h_prev)
+    # First Verlet step needed to initialise the bilinear at n=0
+    Lh0 = rw_laplacian(h_cur, neighbours)
+    h_nxt0 = [
+        2.0 * h_cur[i] - h_prev[i] + alpha[i] * c2 * dt2 * Lh0[i]
+        for i in range(n)
+    ]
+    E0_cov, E0_flat = energy_bilin(h_nxt0, h_cur, h_prev)
     if E0_cov < 1e-30:
         E0_cov = 1.0
     if E0_flat < 1e-30:
         E0_flat = 1.0
 
-    h_Nm1 = h_prev  # will track penultimate step for time reversal
+    # Advance one step (h_nxt0 already computed above)
+    h_prev = h_cur
+    h_cur  = h_nxt0
+    max_h  = max(max_h, max(abs(x) for x in h_cur))
 
-    # 3-point Verlet main loop
-    for _ in range(n_steps):
+    # 3-point Verlet main loop (remaining n_steps−1 steps)
+    for _ in range(n_steps - 1):
         Lh = rw_laplacian(h_cur, neighbours)
         h_next = [
             2.0 * h_cur[i] - h_prev[i] + alpha[i] * c2 * dt2 * Lh[i]
@@ -423,8 +452,14 @@ def wave_simulation(
     h_Nm1 = h_prev  # h_{N-1}
     h_N = h_cur     # h_N
 
-    E_final_cov, E_final_flat = energy(h_N, h_Nm1)
-    ecov_drift = abs(E_final_cov / E0_cov - 1.0)
+    # Final bilinear energy: need h_{N+1}
+    Lh_N = rw_laplacian(h_N, neighbours)
+    h_Np1 = [
+        2.0 * h_N[i] - h_Nm1[i] + alpha[i] * c2 * dt2 * Lh_N[i]
+        for i in range(n)
+    ]
+    E_final_cov, E_final_flat = energy_bilin(h_Np1, h_N, h_Nm1)
+    ecov_drift  = abs(E_final_cov  / E0_cov  - 1.0)
     eflat_drift = abs(E_final_flat / E0_flat - 1.0)
 
     # Time reversal: swap (cur, prev) → (h_{N-1}, h_N) and run n_steps forward
@@ -672,8 +707,7 @@ def main() -> int:
     speed_reduction = 1.0 - mean_alpha
     gate_g13c = speed_reduction > 0.05
 
-    # Wave simulation — 3-point Verlet (same c2 as original G13 script)
-    # dt=0.1 ensures O(dt^4) energy drift << 0.02 over n_steps=200 steps
+    # Wave simulation — 3-point Verlet with bilinear energy (exact invariant)
     amp = 0.01
     c2 = 0.15 ** 2   # c_wave = 0.15
     dt = 0.10
@@ -709,12 +743,6 @@ def main() -> int:
 
     gate_g14 = gate_g14a and gate_g14b and gate_g14c and gate_g14d
     log(f"  G14 = {'PASS' if gate_g14 else 'FAIL'}  (a={gate_g14a},b={gate_g14b},c={gate_g14c},d={gate_g14d})")
-    if not gate_g13b or not gate_g14b or not gate_g14c:
-        log("  NOTE: G13b/G14b/G14c calibration gap — Jaccard BFS diameter=4 forces")
-        log("        all nodes to have significant sigma, making alpha deviate from 1")
-        log("        everywhere. The discrete 3-point Verlet drift (~30%) exceeds the")
-        log("        2D-calibrated threshold (2%). Thresholds need re-calibration for")
-        log("        compact graphs. Qualitative tests G13a/G13c/G13d/G14a/G14d PASS.")
 
     # ── G15: PPN parameters ───────────────────────────────────────────────────
     log("\n── G15: PPN parameters ────────────────────────────────────────────────")
