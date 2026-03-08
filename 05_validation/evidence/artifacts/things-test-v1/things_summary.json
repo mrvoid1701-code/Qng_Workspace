@@ -1,6 +1,6 @@
 {
   "test_id": "things-test-v1",
-  "timestamp_utc": "2026-03-07T13:41:17+00:00",
+  "timestamp_utc": "2026-03-08T13:55:10+00:00",
   "reference": "de Blok et al. 2008, AJ 136 2648 (arXiv:0810.2100)",
   "data_source": "ds006_rotmod.csv (SPARC subset coincident cu THINGS)",
   "n_things_total": 19,

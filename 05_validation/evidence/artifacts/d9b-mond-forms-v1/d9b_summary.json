@@ -1,6 +1,6 @@
 {
   "test_id": "d9b-mond-forms-v1",
-  "timestamp_utc": "2026-03-07T13:43:03Z",
+  "timestamp_utc": "2026-03-08T13:55:04Z",
   "dataset": "SPARC rotmod DS006",
   "method": "5-fold CV, frozen params pe test (summary weighted by n_test_pts; unweighted also reported)",
   "mond_forms": [
@@ -115,7 +115,7 @@
           "Simple": {
             "gdag_over_a0": 0.11117676214559145,
             "train_chi2_per_n": 169.38293087633983,
-            "test_chi2_per_n": 63.774988142738096,
+            "test_chi2_per_n": 63.77498814273809,
             "ratio_m8c_over_mond": 0.671494556029805,
             "m8c_beats": true
           },
@@ -170,8 +170,8 @@
           "Gamma": {
             "gdag_over_a0": 0.18418667605992525,
             "train_chi2_per_n": 122.31430460533107,
-            "test_chi2_per_n": 112.62329164674705,
-            "ratio_m8c_over_mond": 0.6210777477630218,
+            "test_chi2_per_n": 112.62329164674706,
+            "ratio_m8c_over_mond": 0.6210777477630217,
             "m8c_beats": true
           }
         }
