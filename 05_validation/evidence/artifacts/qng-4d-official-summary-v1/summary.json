@@ -1,0 +1,18 @@
+{
+  "summary_id": "qng-4d-official-summary-v1",
+  "generated_at_utc": "2026-03-08T14:31:24.092571+00:00",
+  "lane": "4d",
+  "gate_count": 9,
+  "metric_count": 35,
+  "all_pass": true,
+  "g18d": {
+    "value": "4.082091",
+    "threshold": "(3.5,4.5)"
+  },
+  "inputs": {
+    "gr_gates_csv": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\05_validation\\evidence\\artifacts\\qng-gr-jaccard-v1\\gr_gates_jaccard.csv",
+    "gr_detail_csv": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\05_validation\\evidence\\artifacts\\qng-gr-jaccard-v1\\gr_gates_jaccard_detail.csv",
+    "g17_csv": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\05_validation\\evidence\\artifacts\\qng-g17-v2\\metric_checks_g17_v2.csv",
+    "g18_csv": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\05_validation\\evidence\\artifacts\\qng-g18d-v2\\metric_checks_g18d_v2.csv"
+  }
+}

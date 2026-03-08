@@ -1198,3 +1198,14 @@ d4_stage2_winner_v12_compare_v11:
 	$(PYTHON) scripts/tools/compare_d4_stage2_winner_v11_v12_v1.py --v11-csv 05_validation/evidence/artifacts/d4-stage2-winner-v11-strict/evaluation-v1/per_seed_evaluation.csv --v12-csv 05_validation/evidence/artifacts/d4-stage2-winner-v12-strict/evaluation-v1/per_seed_evaluation.csv --out-dir 05_validation/evidence/artifacts/d4-stage2-winner-v12-strict/comparison-v11-v12-v1
 
 d4_stage2_winner_v12_pack: d4_stage2_winner_v12_run d4_stage2_winner_v12_eval d4_stage2_winner_v12_compare_v11
+
+.PHONY: qng_coordfree_final_refresh qng_4d_official_summary qng_compare_2d_4d
+
+qng_coordfree_final_refresh:
+	$(PYTHON) scripts/run_coordfree_ds_final.py
+
+qng_4d_official_summary:
+	$(PYTHON) scripts/tools/build_qng_4d_official_summary_v1.py
+
+qng_compare_2d_4d: qng_4d_official_summary
+	$(PYTHON) scripts/tools/compare_qng_2d_vs_4d_v1.py

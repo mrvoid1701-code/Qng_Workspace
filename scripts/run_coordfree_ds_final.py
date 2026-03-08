@@ -303,9 +303,10 @@ def main():
 
     print("╠══════════════════════════════════════════════════════════════════════════╣")
 
-    winner = max(candidates, key=lambda c: c.score)
+    winner_by_score = max(candidates, key=lambda c: c.score)
+    integration_candidate = next(c for c in candidates if c.code == "C4")
     print(f"║  {'CASTIGATOR':<30} {'':>8} {'':>8} {'':>8} {'':>8}  ║")
-    print(f"║  → {winner.code}: {winner.name:<54}  ║")
+    print(f"║  → {winner_by_score.code}: {winner_by_score.name:<54}  ║")
     print("╚══════════════════════════════════════════════════════════════════════════╝")
 
     # ── Analiza per candidat ──────────────────────────────────────────────────
@@ -355,9 +356,10 @@ def main():
     print("RECOMANDARE FINALA PENTRU QNG")
     print("═" * 70)
     print()
-    print(f"  Castigator: [{winner.code}] {winner.name}")
-    print(f"  d_s = {winner.ds_main:.3f}  (dist de 4.0 = {abs(winner.ds_main-4.):.3f})")
-    print(f"  r²  = {winner.r2_main:.4f}")
+    print(f"  Castigator score: [{winner_by_score.code}] {winner_by_score.name}")
+    print(f"  d_s = {winner_by_score.ds_main:.3f}  (dist de 4.0 = {abs(winner_by_score.ds_main-4.):.3f})")
+    print(f"  r²  = {winner_by_score.r2_main:.4f}")
+    print(f"  Candidat integrare: [{integration_candidate.code}] {integration_candidate.name}")
     print()
     print("  MOTIVATIE:")
     print("  C4 (Jaccard Informational) e singurul candidat care:")
@@ -397,8 +399,12 @@ def main():
 
     rec = out_dir / "recommendation.txt"
     with rec.open("w", encoding="utf-8") as f:
-        f.write(f"Winner: {winner.code} — {winner.name}\n")
-        f.write(f"d_s = {winner.ds_main:.4f}, r² = {winner.r2_main:.4f}, score = {winner.score:.1f}\n\n")
+        f.write(f"Winner by score: {winner_by_score.code} — {winner_by_score.name}\n")
+        f.write(
+            f"d_s = {winner_by_score.ds_main:.4f}, r² = {winner_by_score.r2_main:.4f}, "
+            f"score = {winner_by_score.score:.1f}\n\n"
+        )
+        f.write(f"Integration candidate: {integration_candidate.code} — {integration_candidate.name}\n")
         f.write("Integration: replace build_dataset_graph() with build_jaccard(n=280, k_init=8, k_conn=8)\n")
         f.write("Expected G18d result: d_s ≈ 4.0 with lazy RW\n")
 

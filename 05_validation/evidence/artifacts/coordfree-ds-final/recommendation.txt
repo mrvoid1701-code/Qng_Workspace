@@ -1,5 +1,6 @@
-Winner: C3 — Random Regular k=6
+Winner by score: C3 — Random Regular k=6
 d_s = 4.0450, r² = 0.9961, score = 92.1
 
+Integration candidate: C4 — Jaccard Informational(8,8)
 Integration: replace build_dataset_graph() with build_jaccard(n=280, k_init=8, k_conn=8)
 Expected G18d result: d_s ≈ 4.0 with lazy RW
