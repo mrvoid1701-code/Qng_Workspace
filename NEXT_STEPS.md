@@ -36,17 +36,18 @@ Plan integrare (in ordine):
 - [x] G10-G12 (ADM, Ricci, Schwarzschild): PASS pe Jaccard (2026-03-09)
 - [x] G13-G15 (conservare, PPN, Shapiro): PASS pe Jaccard, G15b=2.51>2.0 ✓
 - [x] G16 (actiune variationala): PASS pe Jaccard — frac_neg_hess=1.000 (perect!)
-- [ ] run_all_gates.py: switch oficial la graf Jaccard + lazy RW
+- [x] run_all_gates.py: grup "jaccard" adaugat → 3/3 PASS (2026-03-09)
 
 **Risc inițial:** GR gates calibrate pe grafuri 2D — re-calibrare probabila.
 **REZULTAT:** 7/7 PASS fără re-calibrare! Teoria e robustă față de tipul grafului.
 **Strategie:** mai intai G17-G18 (robuste spectral), apoi G10-G16. ✓ DONE.
 
 ## Prioritate 5 — Bulletproofing (după paper draft)
-- [ ] Cross-seed sweep larg pe G17a (spectral gap sensibil la seed)
-- [ ] Justificare analitică G18d: d_s ∈ (3.5, 4.5) vs (1.0, 3.5) vechi
-- [ ] Stabilitate Jaccard: sweep pe k_init, k_conn, seed → confirmare robustete d_s
+- [x] Cross-seed sweep d_s: 50/50 PASS (100%), mean=4.128±0.125, r²=0.997 (2026-03-09)
+- [ ] Sweep pe parametrii grafului: k_init, k_conn, N_nodes → confirmare robustete
+- [ ] Justificare analitică G18d: de ce Jaccard → d_s=4 (conexiune cu CDT/LQG)
 - [ ] G21 candidat: consistență termodinamică (S ≥ 0, T > 0 global)
+- [ ] G19/G20 v2 pe Jaccard (port din k-NN → Jaccard; thermal vacuum + back-reaction)
 
 ## Ordine recomandată
 QM Stage 2 freeze → Paper draft (cu sectiune 4D) → Integrare graf Jaccard → Bulletproofing
@@ -65,9 +66,10 @@ QM Stage 2 freeze → Paper draft (cu sectiune 4D) → Integrare graf Jaccard �
 ### Ce urmează imediat
 1. **[DONE ✓]** `run_gr_gates_jaccard_v1.py` → 7/7 PASS pe Jaccard (2026-03-09)
 2. **[DONE ✓]** `run_qng_g17_v2.py` pe Jaccard → 4/4 PASS, μ₁=0.291 (2026-03-09)
-3. **[ACUM]** Switch `run_all_gates.py` oficial la Jaccard + lazy RW
-4. **[DUPĂ]** Paper draft — §X Emergent 4D Dimensionality
-5. **[FINAL]** QM Stage-2 freeze formal + G21 termodinamic
+3. **[DONE ✓]** `run_all.py --group jaccard` → 3/3 PASS (G10-G18, 2026-03-09)
+4. **[DONE ✓]** Multi-seed sweep d_s: 50/50 PASS (100%), mean=4.128±0.125 (2026-03-09)
+5. **[DUPĂ]** Paper draft — §X Emergent 4D Dimensionality
+6. **[FINAL]** G19/G20 v2 pe Jaccard + G21 termodinamic
 
 ### Pașii care BLOCHEAZĂ paper-ul
 - GR gates trebuie să treacă pe Jaccard (altfel paper-ul nu poate afirma că teoria e independentă de embedding)

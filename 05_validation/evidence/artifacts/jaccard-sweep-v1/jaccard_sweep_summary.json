@@ -1,0 +1,28 @@
+{
+  "version": "jaccard-sweep-v1",
+  "run_utc": "2026-03-09T04:11:42.423703",
+  "config": {
+    "n_nodes": 280,
+    "k_init": 8,
+    "k_conn": 8,
+    "n_seeds": 50,
+    "seed_start": 1000
+  },
+  "threshold": {
+    "ds_lo": 3.5,
+    "ds_hi": 4.5
+  },
+  "results": {
+    "n_seeds": 50,
+    "n_pass": 50,
+    "frac_pass": 1.0,
+    "ds_mean": 4.1278,
+    "ds_std": 0.1249,
+    "ds_min": 3.828,
+    "ds_max": 4.4456,
+    "ds_uv_mean": 2.8499,
+    "ds_ir_mean": 4.3358,
+    "r2_mean": 0.997,
+    "decision": "ROBUST"
+  }
+}

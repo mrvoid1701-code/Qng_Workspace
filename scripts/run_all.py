@@ -115,11 +115,18 @@ GROUPS: dict[str, list[str]] = {
     "gr-guard": [
         "run_qng_gr_regression_guard_v1.py",
     ],
+    # Jaccard Informational Graph — toate gate-urile G10-G18 pe graf coord-free
+    "jaccard": [
+        "run_gr_gates_jaccard_v1.py",   # G10-G16
+        "run_qng_g17_v2.py",            # G17 (QM bridge, geodesic distance)
+        "run_qng_g18d_v2.py",           # G18a-G18d (d_s=4.0, threshold 3.5-4.5)
+    ],
 }
 
 # Ordinea recomandată pentru --group all
 ALL_ORDER = [
     "gates",
+    "jaccard",
     "gr-guard",
     "metric",
     "curl",
