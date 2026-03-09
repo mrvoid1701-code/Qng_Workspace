@@ -51,7 +51,10 @@ Plan integrare (in ordine):
   - Notă: `01_notes/jaccard-phase-diagram-v1.md`
 - [ ] Justificare analitică G18d: de ce Jaccard → d_s=4 (conexiune cu CDT/LQG)
 - [ ] G21 candidat: consistență termodinamică (S ≥ 0, T > 0 global)
-- [ ] G19/G20 v2 pe Jaccard (port din k-NN → Jaccard; thermal vacuum + back-reaction)
+- [x] G19/G20 v2 pe Jaccard: PASS (2026-03-09)
+  - G19: `run_qng_g19_jaccard_v1.py` — 4/4 PASS (G19d cu BFS hop distance)
+  - G20: `run_qng_g20_jaccard_v1.py` — 4/4 PASS (back-reaction, E_0 conservat la 3e-16)
+  - `scripts/run_all.py --group jaccard` → **5/5 PASS** (G10-G20 complet pe Jaccard, 15.5s)
 
 ## Ordine recomandată
 QM Stage 2 freeze → Paper draft (cu sectiune 4D) → Integrare graf Jaccard → Bulletproofing
@@ -72,8 +75,8 @@ QM Stage 2 freeze → Paper draft (cu sectiune 4D) → Integrare graf Jaccard �
 2. **[DONE ✓]** `run_qng_g17_v2.py` pe Jaccard → 4/4 PASS, μ₁=0.291 (2026-03-09)
 3. **[DONE ✓]** `run_all.py --group jaccard` → 3/3 PASS (G10-G18, 2026-03-09)
 4. **[DONE ✓]** Multi-seed sweep d_s: 50/50 PASS (100%), mean=4.128±0.125 (2026-03-09)
-5. **[DUPĂ]** Paper draft — §X Emergent 4D Dimensionality
-6. **[FINAL]** G19/G20 v2 pe Jaccard + G21 termodinamic
+5. **[DONE ✓]** G19/G20 pe Jaccard → 5/5 PASS (G10-G20 complet, 2026-03-09)
+6. **[URMĂTOR]** Paper draft — full QNG paper (toate gate-urile PASS pe Jaccard)
 
 ### Pașii care BLOCHEAZĂ paper-ul
 - GR gates trebuie să treacă pe Jaccard (altfel paper-ul nu poate afirma că teoria e independentă de embedding)
