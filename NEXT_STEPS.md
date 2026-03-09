@@ -50,11 +50,12 @@ Plan integrare (in ordine):
   - Canonical (N=280, k=8) bine centrat în banda d_s∈(3.5,4.5)
   - Notă: `01_notes/jaccard-phase-diagram-v1.md`
 - [ ] Justificare analitică G18d: de ce Jaccard → d_s=4 (conexiune cu CDT/LQG)
-- [ ] G21 candidat: consistență termodinamică (S ≥ 0, T > 0 global)
+- [x] G21 candidat: consistență termodinamică (S ≥ 0, T > 0 global) — 4/4 PASS (2026-03-09)
 - [x] G19/G20 v2 pe Jaccard: PASS (2026-03-09)
   - G19: `run_qng_g19_jaccard_v1.py` — 4/4 PASS (G19d cu BFS hop distance)
   - G20: `run_qng_g20_jaccard_v1.py` — 4/4 PASS (back-reaction, E_0 conservat la 3e-16)
-  - `scripts/run_all.py --group jaccard` → **5/5 PASS** (G10-G20 complet pe Jaccard, 15.5s)
+  - G21: `run_qng_g21_thermo_v1.py` — 4/4 PASS (S>0, C_V>0, F=U-TS, S(2T)/S(T)=5542, 2026-03-09)
+  - `scripts/run_all.py --group jaccard` → **6/6 PASS** (G10-G21 complet pe Jaccard, 22.9s)
 
 ## Ordine recomandată
 QM Stage 2 freeze → Paper draft (cu sectiune 4D) → Integrare graf Jaccard → Bulletproofing
@@ -65,7 +66,7 @@ QM Stage 2 freeze → Paper draft (cu sectiune 4D) → Integrare graf Jaccard �
 
 ### Ce e gata (toate PASS)
 - GR gates G10–G16: 600/600 primary + 1500/1500 attack + 400/400 holdout (oficial, frozen)
-- QM gates G17–G20: 2500/2500 (primar + attack + holdout, oficial, frozen)
+- QM gates G17–G21: G17-G20 frozen (2500/2500); G21 nou adăugat (4/4 PASS pe Jaccard)
 - Stabilitate: convergence v6 oficial, dual-channel, regression guard verde
 - Cross-dataset: DS-002 11/11 ✓, DS-003 10/11 ✓ (G15 structural, non-blocking), DS-006 11/11 ✓
 - d_s = 4.082 emergent din Jaccard graph (G18d v2 PASS)

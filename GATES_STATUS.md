@@ -39,6 +39,10 @@
 | G20 | | | cv_eps_vac | 0.414 | >0.05 | 728% | ✓ |
 | G20 | | | dE0_rel | 0.00426 | (1e-5, 0.3) | 41500% | ✓ |
 | G20 | | | max_residual | 0.026 | <0.20 | 87% | ✓ |
+| G21 | Thermodynamics | run_qng_g21_thermo_v1.py | S_total | 2.36e-6 | >1e-8 | 23500% | ✓ |
+| G21 | | | C_V | 4.08e-5 | >1e-12 | ∞ | ✓ |
+| G21 | | | id_error | 1.31e-16 | <1e-8 | ∞ | ✓ |
+| G21 | | | S_ratio_2T | 5542 | >1.5 | 369333% | ✓ |
 
 ---
 
@@ -54,7 +58,7 @@
 
 ## Physics Summary
 
-The gate chain G10→G20 traces the full QNG derivation:
+The gate chain G10→G21 traces the full QNG derivation:
 
 | Gates | Physics layer | Key result |
 |-------|--------------|------------|
@@ -66,6 +70,7 @@ The gate chain G10→G20 traces the full QNG derivation:
 | G18 | Quantum information | Entanglement entropy S_A=13.1 bits; spectral dim d_s≈1.28 |
 | G19 | Unruh effect | T_Unruh varies across graph; Bose-Einstein vs Maxwell-Boltzmann ratio=778 |
 | G20 | Back-reaction | Semiclassical α¹ = α⁰·(1+λf); δE₀/E₀ = λ/2·cv² verified analytically |
+| G21 | Thermodynamics | S≥0, C_V>0, F=U−TS (err=1.3e-16), S(2T)/S(T)=5542 — sistem termodinamic stabil |
 
 ---
 

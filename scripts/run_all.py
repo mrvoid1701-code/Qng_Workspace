@@ -115,13 +115,14 @@ GROUPS: dict[str, list[str]] = {
     "gr-guard": [
         "run_qng_gr_regression_guard_v1.py",
     ],
-    # Jaccard Informational Graph — toate gate-urile G10-G20 pe graf coord-free
+    # Jaccard Informational Graph — toate gate-urile G10-G21 pe graf coord-free
     "jaccard": [
         "run_gr_gates_jaccard_v1.py",   # G10-G16
         "run_qng_g17_v2.py",            # G17 (QM bridge, geodesic distance)
         "run_qng_g18d_v2.py",           # G18a-G18d (d_s=4.0, threshold 3.5-4.5)
         "run_qng_g19_jaccard_v1.py",    # G19 Unruh thermal (BFS hop distance)
         "run_qng_g20_jaccard_v1.py",    # G20 Semiclassical back-reaction
+        "run_qng_g21_thermo_v1.py",     # G21 Thermodynamic consistency (S≥0, C_V>0, F=U-TS)
     ],
 }
 
