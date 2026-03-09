@@ -44,7 +44,11 @@ Plan integrare (in ordine):
 
 ## Prioritate 5 — Bulletproofing (după paper draft)
 - [x] Cross-seed sweep d_s: 50/50 PASS (100%), mean=4.128±0.125, r²=0.997 (2026-03-09)
-- [ ] Sweep pe parametrii grafului: k_init, k_conn, N_nodes → confirmare robustete
+- [x] Sweep parametri (N×k): diagramă de fază completă (2026-03-09)
+  - 28 celule (7 N × 4 k), mediat pe 3 seed-uri, r²>0.982 în toate
+  - k=8: 6/7 PASS (N≥150); k=6 subsaturat (d_s<3.5); k≥10 suprasaturat (d_s>4.5)
+  - Canonical (N=280, k=8) bine centrat în banda d_s∈(3.5,4.5)
+  - Notă: `01_notes/jaccard-phase-diagram-v1.md`
 - [ ] Justificare analitică G18d: de ce Jaccard → d_s=4 (conexiune cu CDT/LQG)
 - [ ] G21 candidat: consistență termodinamică (S ≥ 0, T > 0 global)
 - [ ] G19/G20 v2 pe Jaccard (port din k-NN → Jaccard; thermal vacuum + back-reaction)
