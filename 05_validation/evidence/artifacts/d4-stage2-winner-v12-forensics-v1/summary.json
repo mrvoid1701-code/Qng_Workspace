@@ -1,0 +1,20 @@
+{
+  "analysis_id": "d4-stage2-winner-v12-forensics-v1",
+  "generated_utc": "2026-03-10T06:37:17.852406+00:00",
+  "dataset_id": "DS-006",
+  "seeds": [
+    3401,
+    3403,
+    3404
+  ],
+  "top_patterns": [
+    {
+      "group": "radial",
+      "bin": "outer",
+      "n_seed_bins": "3",
+      "mean_winner_over_mond": "1.075168",
+      "max_winner_over_mond": "1.365793",
+      "worse_than_mond_count": "2"
+    }
+  ]
+}

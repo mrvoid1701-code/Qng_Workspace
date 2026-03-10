@@ -1,0 +1,7 @@
+group,bin,n_seed_bins,mean_winner_over_mond,max_winner_over_mond,worse_than_mond_count
+accel,low_accel,3,0.852854,1.064293,1
+accel,mid_accel,3,0.969029,1.342626,1
+accel,high_accel,3,0.985713,0.996540,0
+radial,inner,3,0.926801,1.021305,1
+radial,mid,3,0.722101,0.959890,0
+radial,outer,3,1.075168,1.365793,2
