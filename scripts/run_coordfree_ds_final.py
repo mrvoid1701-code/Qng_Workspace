@@ -24,6 +24,7 @@ from __future__ import annotations
 import itertools
 import math
 import random
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -33,6 +34,11 @@ N_WALKS = 150
 N_STEPS = 22
 T_LO    = 5
 T_HI    = 14
+INTEGRATION_POLICY = "informational_c4"  # options: informational_c4 | winner_by_score
+
+if hasattr(sys.stdout, "reconfigure"):
+    # Keep script runnable on Windows cp1252 consoles that cannot print box-drawing glyphs.
+    sys.stdout.reconfigure(errors="replace")
 
 
 # ── Utilitare ─────────────────────────────────────────────────────────────────
@@ -304,7 +310,17 @@ def main():
     print("╠══════════════════════════════════════════════════════════════════════════╣")
 
     winner_by_score = max(candidates, key=lambda c: c.score)
-    integration_candidate = next(c for c in candidates if c.code == "C4")
+    if INTEGRATION_POLICY == "winner_by_score":
+        integration_candidate = winner_by_score
+        integration_policy_note = "score-aligned policy (integration follows winner-by-score)"
+    elif INTEGRATION_POLICY == "informational_c4":
+        integration_candidate = next(c for c in candidates if c.code == "C4")
+        integration_policy_note = (
+            "physics policy override: informational-principle lane uses C4 "
+            "even if winner-by-score differs"
+        )
+    else:
+        raise ValueError(f"Unknown INTEGRATION_POLICY: {INTEGRATION_POLICY}")
     print(f"║  {'CASTIGATOR':<30} {'':>8} {'':>8} {'':>8} {'':>8}  ║")
     print(f"║  → {winner_by_score.code}: {winner_by_score.name:<54}  ║")
     print("╚══════════════════════════════════════════════════════════════════════════╝")
@@ -360,6 +376,7 @@ def main():
     print(f"  d_s = {winner_by_score.ds_main:.3f}  (dist de 4.0 = {abs(winner_by_score.ds_main-4.):.3f})")
     print(f"  r²  = {winner_by_score.r2_main:.4f}")
     print(f"  Candidat integrare: [{integration_candidate.code}] {integration_candidate.name}")
+    print(f"  Integration policy: {INTEGRATION_POLICY} ({integration_policy_note})")
     print()
     print("  MOTIVATIE:")
     print("  C4 (Jaccard Informational) e singurul candidat care:")
@@ -405,6 +422,8 @@ def main():
             f"score = {winner_by_score.score:.1f}\n\n"
         )
         f.write(f"Integration candidate: {integration_candidate.code} — {integration_candidate.name}\n")
+        f.write(f"Integration policy: {INTEGRATION_POLICY}\n")
+        f.write(f"Policy note: {integration_policy_note}\n")
         f.write("Integration: replace build_dataset_graph() with build_jaccard(n=280, k_init=8, k_conn=8)\n")
         f.write("Expected G18d result: d_s ≈ 4.0 with lazy RW\n")
 

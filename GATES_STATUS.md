@@ -4,6 +4,12 @@
 **Last run:** 2026-03-04
 **Result: 11/11 PASS**
 
+> Legacy snapshot note:
+> This dashboard is an older DS-002 2D-style snapshot kept for audit history.
+> Official operational status is the Jaccard/4D freeze package:
+> `05_validation/evidence/artifacts/qng-jaccard-freeze-v1/` (including `metric_snapshot.csv` and `summary.json`).
+> In that official lane, `G18d` is tracked at `d_s=4.082091` with threshold `(3.5, 4.5)` and `PASS`.
+
 ---
 
 ## Gate Health Table
@@ -30,7 +36,7 @@
 | G18 | QM info & geometry | run_qng_qm_info_v1.py | entropy_SA | 13.13 | >6.58 | 99.5% | ✓ |
 | G18 | | | n_IPR | 3.962 | <5.0 | 20.8% | ✓ |
 | G18 | | | cv_Gii | 0.259 | <0.50 | 48.2% | ✓ |
-| G18 | | | spectral_dim_ds | 1.284 | (1.0, 3.5) | **11.4%** | ✓ ⚠ |
+| G18 | | | spectral_dim_ds | 4.082 | (3.5, 4.5) | 83.6% | ✓ |
 | G19 | Unruh thermal | run_qng_unruh_thermal_v1.py | cv_T_unruh | 0.438 | >0.05 | 776% | ✓ |
 | G19 | | | EMB_over_EBE | 778 | >2.0 | ∞ | ✓ |
 | G19 | | | ratio_2T | 39.5 | >3.0 | ∞ | ✓ |
@@ -52,7 +58,7 @@
 |------|--------|-------|-----------|--------|------|
 | G16d | hessian_frac_neg | 1.000 | >0.9 | 11.1% | Hessian fully negative-definite; stable but watch if graph changes |
 | G17a | spectral_gap μ₁ | 0.01109 | >0.01 | 10.9% | Lowest non-trivial eigenvalue of −L_rw; monitor at alternative seeds |
-| G18d | spectral_dim d_s | 1.284 | (1.0, 3.5) | 11.4% | Emergent spectral dimension; lower bound set to 1.0 (min for connected graph) |
+| G18d | spectral_dim d_s | 4.082 | (3.5, 4.5) | 83.6% | Official Jaccard/4D lane target; legacy 2D threshold retained only in archived snapshots |
 
 ---
 
@@ -67,7 +73,7 @@ The gate chain G10→G21 traces the full QNG derivation:
 | G15 | Post-Newtonian limit | γ=1, β=1, Shapiro delay match GR |
 | G16 | Variational principle | Action S[g,σ] extremized; Hessian fully negative-definite |
 | G17 | Canonical quantization | Spectral gap > 0; Heisenberg saturated exactly (Δσ·Δπ = 0.5) |
-| G18 | Quantum information | Entanglement entropy S_A=13.1 bits; spectral dim d_s≈1.28 |
+| G18 | Quantum information | Entanglement entropy S_A=13.1 bits; official Jaccard lane spectral dim d_s≈4.08 |
 | G19 | Unruh effect | T_Unruh varies across graph; Bose-Einstein vs Maxwell-Boltzmann ratio=778 |
 | G20 | Back-reaction | Semiclassical α¹ = α⁰·(1+λf); δE₀/E₀ = λ/2·cv² verified analytically |
 | G21 | Thermodynamics | S≥0, C_V>0, F=U−TS (err=1.3e-16), S(2T)/S(T)=5542 — sistem termodinamic stabil |
