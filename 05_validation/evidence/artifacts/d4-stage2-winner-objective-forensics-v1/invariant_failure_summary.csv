@@ -1,0 +1,6 @@
+split_seed,lanes_seen,pass_count,hold_count,always_pass,always_hold,mean_generalization_gap_pp,failed_checks_union
+3401,3,1,2,false,false,19.204090,check_generalization_gap_ok
+3402,3,3,0,true,false,8.105292,
+3403,3,0,3,false,true,35.031049,check_generalization_gap_ok
+3404,3,1,2,false,false,12.422645,"check_holdout_aic_not_worse_than_mond,check_holdout_bic_not_worse_than_mond,check_holdout_not_worse_than_mond"
+3405,3,3,0,true,false,5.273467,

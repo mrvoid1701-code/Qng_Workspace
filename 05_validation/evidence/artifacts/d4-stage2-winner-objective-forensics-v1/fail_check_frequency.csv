@@ -1,0 +1,5 @@
+check_id,count
+check_generalization_gap_ok,5
+check_holdout_aic_not_worse_than_mond,2
+check_holdout_bic_not_worse_than_mond,2
+check_holdout_not_worse_than_mond,2

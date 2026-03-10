@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-03-10 - D4 winner objective forensics v1 (v10/v11/v12 structural gap audit)
+
+- Added cross-lane forensics script:
+  - `scripts/tools/analyze_d4_stage2_winner_objective_forensics_v1.py`
+  - compares strict lane outputs (`v10`, `v11`, `v12`) at seed level
+  - classifies persistent failure seeds and dominant failing checks
+- Added Make target:
+  - `d4_stage2_winner_objective_forensics_v1`
+- Added evidence package:
+  - `05_validation/evidence/artifacts/d4-stage2-winner-objective-forensics-v1/`
+  - includes `lane_summary.csv`, `seed_matrix.csv`, `invariant_failure_summary.csv`, `fail_check_frequency.csv`, `report.md`, `summary.json`
+- Key outcome:
+  - best lane by strict pass count remains `v10` (`4/5`)
+  - seed `3403` is persistent HOLD across `v10/v11/v12`
+  - dominant fail check remains `check_generalization_gap_ok`
+
 ## 2026-03-06 - D4 v7 regularized lane (exploratory + strict single-candidate scaffold)
 
 - Added shared v7 regularized helper module:

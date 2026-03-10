@@ -1,0 +1,16 @@
+{
+  "analysis_id": "d4-stage2-winner-objective-forensics-v1",
+  "generated_utc": "2026-03-10T07:06:20.966870+00:00",
+  "lanes": [
+    "v10",
+    "v11",
+    "v12"
+  ],
+  "best_lane": "v10",
+  "best_lane_pass_count": 4,
+  "best_lane_n_seeds": 5,
+  "persistent_hold_seeds": [
+    "3403"
+  ],
+  "top_fail_check": "check_generalization_gap_ok"
+}
