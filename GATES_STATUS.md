@@ -101,3 +101,26 @@ Superseded scripts moved to `scripts/_archive/`:
 - `run_qng_metric_gr_bridge_v1–v2.py` — bridge prototypes
 - `run_qng_conservation_v1.py`, `run_qng_einstein_v1.py`, etc. — early drafts
 - `run_qng_t_*.py` — standalone test experiments (T-001 to T-053 series)
+
+---
+
+## Governance Freeze Update (2026-03-10)
+
+Jaccard lane operational freeze is now active via:
+
+- `05_validation/evidence/artifacts/qng-jaccard-freeze-v1/summary.json`
+- `05_validation/evidence/artifacts/qng-jaccard-freeze-v1/manifest.json`
+- `05_validation/evidence/artifacts/qng-jaccard-freeze-v1/latest_check/regression_report.json`
+
+Operational commands:
+
+```bash
+make qng_jaccard_freeze_v1
+make qng_jaccard_regression_guard_v1
+```
+
+Current frozen status:
+
+- Gates included: `G10..G21`
+- Snapshot decision: `ALL PASS`
+- Guard decision: `PASS` (`missing=0`, `degraded=0`)
