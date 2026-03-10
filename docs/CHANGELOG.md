@@ -11,6 +11,11 @@
 - Added evidence package:
   - `05_validation/evidence/artifacts/d4-stage2-winner-objective-forensics-v1/`
   - includes `lane_summary.csv`, `seed_matrix.csv`, `invariant_failure_summary.csv`, `fail_check_frequency.csv`, `report.md`, `summary.json`
+- Added split-shift diagnostic package:
+  - `scripts/tools/analyze_d4_stage2_split_shift_v1.py`
+  - Make target: `d4_stage2_split_shift_v1`
+  - output: `05_validation/evidence/artifacts/d4-stage2-split-shift-v1/`
+  - finding: simple global shift score is weakly correlated with the v10 generalization gap (`corr=-0.146404`), so seed `3403` HOLD is not explained by broad split mismatch alone
 - Key outcome:
   - best lane by strict pass count remains `v10` (`4/5`)
   - seed `3403` is persistent HOLD across `v10/v11/v12`

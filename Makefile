@@ -1205,6 +1205,9 @@ d4_stage2_winner_v12_forensics_v1:
 d4_stage2_winner_objective_forensics_v1:
 	$(PYTHON) scripts/tools/analyze_d4_stage2_winner_objective_forensics_v1.py --out-dir 05_validation/evidence/artifacts/d4-stage2-winner-objective-forensics-v1
 
+d4_stage2_split_shift_v1:
+	$(PYTHON) scripts/tools/analyze_d4_stage2_split_shift_v1.py --dataset-id DS-006 --dataset-csv data/rotation/rotation_ds006_rotmod.csv --split-seeds 3401,3402,3403,3404,3405 --train-frac 0.70 --r-tail-kpc 4.0 --eval-csv 05_validation/evidence/artifacts/d4-stage2-winner-v10-strict/evaluation-v1/per_seed_evaluation.csv --out-dir 05_validation/evidence/artifacts/d4-stage2-split-shift-v1
+
 .PHONY: qng_coordfree_final_refresh qng_4d_official_summary qng_compare_2d_4d
 
 qng_coordfree_final_refresh:
