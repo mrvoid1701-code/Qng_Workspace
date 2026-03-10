@@ -1,6 +1,6 @@
 gate_id,metric,value,threshold,status
 G21a,S_total,2.358617e-06,>1e-08,pass
 G21b,C_V,4.080823e-05,>1e-12,pass
-G21c,id_error,1.313584e-16,<1e-08,pass
+G21c,id_error,4.378614e-17,<1e-08,pass
 G21d,S_ratio_2T,5542.159000,>1.5,pass
 FINAL,decision,pass,G21a&G21b&G21c&G21d,pass

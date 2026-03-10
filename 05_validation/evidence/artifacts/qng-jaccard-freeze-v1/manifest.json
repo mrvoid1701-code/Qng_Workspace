@@ -1,0 +1,66 @@
+{
+  "freeze_id": "qng-jaccard-freeze-v1",
+  "generated_at_utc": "2026-03-10T06:23:20.589900+00:00",
+  "inputs": [
+    {
+      "name": "gr_gates",
+      "path": "05_validation\\evidence\\artifacts\\qng-gr-jaccard-v1\\gr_gates_jaccard.csv",
+      "sha256": "cf522b2a692629c510b03a0606990e6dfac3c18625b8030c1df8c4d161378d91",
+      "size_bytes": 83
+    },
+    {
+      "name": "gr_detail",
+      "path": "05_validation\\evidence\\artifacts\\qng-gr-jaccard-v1\\gr_gates_jaccard_detail.csv",
+      "sha256": "3bad3f0b528ee986652c2774ebd857db257cd5a28def4dd739e70f588309de68",
+      "size_bytes": 1098
+    },
+    {
+      "name": "g17",
+      "path": "05_validation\\evidence\\artifacts\\qng-g17-v2\\metric_checks_g17_v2.csv",
+      "sha256": "fb5dee8cb6d2bbc581d7d752fc7e944092058e9e6893589ff12aad8ce7a7d850",
+      "size_bytes": 219
+    },
+    {
+      "name": "g18",
+      "path": "05_validation\\evidence\\artifacts\\qng-g18d-v2\\metric_checks_g18d_v2.csv",
+      "sha256": "60867e0a912aedfc30d868b711f1f33481ed3295385537342f0e968dd1685d1c",
+      "size_bytes": 202
+    },
+    {
+      "name": "g19",
+      "path": "05_validation\\evidence\\artifacts\\qng-g19-jaccard-v1\\metric_checks_g19_jaccard.csv",
+      "sha256": "d27ed6bdca8fbb1578dcaa19cb8ee8bf8813ef6c2f79a2fa60b4281cdb084505",
+      "size_bytes": 255
+    },
+    {
+      "name": "g20",
+      "path": "05_validation\\evidence\\artifacts\\qng-g20-jaccard-v1\\metric_checks_g20_jaccard.csv",
+      "sha256": "b25651b1db55d14bc76d171769ca0d44d6202e2799c79c90e74f9391ad22c8d4",
+      "size_bytes": 273
+    },
+    {
+      "name": "g21",
+      "path": "05_validation\\evidence\\artifacts\\qng-g21-thermo-v1\\metric_checks_g21.csv",
+      "sha256": "cf76cc4b037ec7d56dfe80515050d8cfbca17d3a388862851f1fc7ad1f31ee99",
+      "size_bytes": 238
+    }
+  ],
+  "outputs": [
+    {
+      "path": "05_validation\\evidence\\artifacts\\qng-jaccard-freeze-v1\\gate_status_snapshot.csv",
+      "sha256": "91952519ac41a1537349cdfc66a1932a7871ba26e4a5d34419c77b23de9e8dca",
+      "size_bytes": 1638
+    },
+    {
+      "path": "05_validation\\evidence\\artifacts\\qng-jaccard-freeze-v1\\metric_snapshot.csv",
+      "sha256": "8554452e6ddcc84d951f3de9600be5220549d2a9aab47a67585ab375fe055ae2",
+      "size_bytes": 8203
+    },
+    {
+      "path": "05_validation\\evidence\\artifacts\\qng-jaccard-freeze-v1\\summary.json",
+      "sha256": "b0c53c24bac257c5234c064e45ad638a7986aea31d0c292478d55db7a47b2959",
+      "size_bytes": 192
+    }
+  ],
+  "script": "scripts\\tools\\build_qng_jaccard_freeze_v1.py"
+}

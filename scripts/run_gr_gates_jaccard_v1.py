@@ -504,7 +504,11 @@ def main() -> int:
 
     log_lines: list[str] = []
     def log(msg: str = "") -> None:
-        print(msg)
+        try:
+            print(msg)
+        except UnicodeEncodeError:
+            # Keep runs portable on Windows consoles with legacy code pages.
+            print(str(msg).encode("ascii", "replace").decode("ascii"))
         log_lines.append(msg)
 
     t0 = time.time()

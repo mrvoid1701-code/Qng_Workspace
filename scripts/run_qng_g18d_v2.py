@@ -288,7 +288,11 @@ def main() -> int:
 
     log_lines: list[str] = []
     def log(msg=""):
-        print(msg); log_lines.append(msg)
+        try:
+            print(msg)
+        except UnicodeEncodeError:
+            print(str(msg).encode("ascii", "replace").decode("ascii"))
+        log_lines.append(msg)
 
     t0 = time.time()
     log("=" * 70)

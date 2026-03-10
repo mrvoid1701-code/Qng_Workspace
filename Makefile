@@ -1209,3 +1209,12 @@ qng_4d_official_summary:
 
 qng_compare_2d_4d: qng_4d_official_summary
 	$(PYTHON) scripts/tools/compare_qng_2d_vs_4d_v1.py
+
+.PHONY: qng_jaccard_freeze_v1 qng_jaccard_regression_guard_v1
+
+qng_jaccard_freeze_v1:
+	$(PYTHON) scripts/run_all.py --group jaccard
+	$(PYTHON) scripts/tools/build_qng_jaccard_freeze_v1.py
+
+qng_jaccard_regression_guard_v1:
+	$(PYTHON) scripts/tools/run_qng_jaccard_regression_guard_v1.py

@@ -242,7 +242,11 @@ def main() -> int:
     out_dir = Path(args.out_dir); out_dir.mkdir(parents=True, exist_ok=True)
     lines = []
     def log(msg=""):
-        print(msg); lines.append(msg)
+        try:
+            print(msg)
+        except UnicodeEncodeError:
+            print(str(msg).encode("ascii", "replace").decode("ascii"))
+        lines.append(msg)
 
     t0 = time.time()
     log("=" * 70)

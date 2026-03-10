@@ -1,0 +1,13 @@
+gate_id,decision,source
+G10,pass,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-gr-jaccard-v1\gr_gates_jaccard.csv
+G11,pass,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-gr-jaccard-v1\gr_gates_jaccard.csv
+G12,pass,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-gr-jaccard-v1\gr_gates_jaccard.csv
+G13,pass,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-gr-jaccard-v1\gr_gates_jaccard.csv
+G14,pass,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-gr-jaccard-v1\gr_gates_jaccard.csv
+G15,pass,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-gr-jaccard-v1\gr_gates_jaccard.csv
+G16,pass,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-gr-jaccard-v1\gr_gates_jaccard.csv
+G17,pass,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-g17-v2\metric_checks_g17_v2.csv
+G18,pass,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-g18d-v2\metric_checks_g18d_v2.csv
+G19,pass,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-g19-jaccard-v1\metric_checks_g19_jaccard.csv
+G20,pass,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-g20-jaccard-v1\metric_checks_g20_jaccard.csv
+G21,pass,C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\qng-g21-thermo-v1\metric_checks_g21.csv
