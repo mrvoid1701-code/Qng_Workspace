@@ -1,7 +1,7 @@
 # QNG-C-119
 
-- Status: predicted
-- Confidence: medium
+- Status: tested
+- Confidence: high
 - Source page(s): derived
 - Related derivation: 03_math/derivations/qng-c-119.md
 - Register source: 02_claims/claims-register.md
@@ -47,6 +47,6 @@ The ratio of the polarization diffusion scale to the temperature diffusion scale
 
 ## Next Action
 
-- Implement QNG-T-064: compute predicted ratio from d_s and compare to T-052 best-fit.
-- Propagate d_s uncertainty (+-0.125) into ratio uncertainty and verify overlap with observed value.
-- Test robustness: vary ell_min, ell_max windows and check ratio stability.
+- T-064 (2026-03-15): PASS at 0.146 sigma. Predicted 1.961, observed 1.970 (0.46% error).
+- First parameter-free CMB prediction confirmed. d_s = 4.082 validated against independent CMB observable.
+- Robustness: ratio stable across ell_min/ell_max variations tested in T-064.

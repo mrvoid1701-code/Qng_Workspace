@@ -1,6 +1,6 @@
 # QNG-C-121
 
-- Status: predicted
+- Status: tested
 - Confidence: medium
 - Source page(s): derived
 - Related derivation: 03_math/derivations/qng-c-121.md

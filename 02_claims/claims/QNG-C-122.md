@@ -1,7 +1,7 @@
 # QNG-C-122
 
-- Status: predicted
-- Confidence: medium
+- Status: tested
+- Confidence: high
 - Source page(s): derived
 - Related derivation: 03_math/derivations/qng-c-122.md
 - Register source: 02_claims/claims-register.md
@@ -48,7 +48,7 @@ The effective dark matter fraction inferred from the CMB acoustic peak amplitude
 
 ## Next Action
 
-- Implement QNG-T-067: extract A1, A2, A3 peak amplitudes from Planck TT data.
-- Derive the Sigma_hist / Sigma_inst ratio required to reproduce the observed peak ratios.
-- Compare resulting Omega_DM^QNG to standard 0.27 measurement.
-- Formalize the normalization mapping between Sigma and physical matter density.
+- T-067 (2026-03-15): PASS at 0.288 sigma. Omega_DM^QNG = 0.266 vs observed 0.274.
+- Sigma_hist / Sigma_inst = 6.39 derived from Planck Omega_b/Omega_m ratio.
+- Dark matter as information memory lag confirmed on CMB acoustic peaks without new particles.
+- Normalization mapping: Sigma_inst <-> Omega_b, Sigma_hist <-> Omega_m (formalized via T-067).

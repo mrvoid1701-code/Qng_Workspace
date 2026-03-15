@@ -1,7 +1,7 @@
 # QNG-C-123
 
-- Status: predicted
-- Confidence: medium
+- Status: tested
+- Confidence: high
 - Source page(s): derived
 - Related derivation: 03_math/derivations/qng-c-123.md
 - Register source: 02_claims/claims-register.md
@@ -44,15 +44,15 @@ The CMB power spectrum (TT, TE, EE) across all multipoles 30 <= ell <= 2500 is r
 
 ## Evidence / Notes
 
-- Extends and formalizes C-105 (CMB = relaxation surface, PREDICTED LOW) to a quantitative, falsifiable model.
-- T-052 already passes with delta_chi2 = -22.317; this test adds the oscillation term and cross-spectrum consistency.
-- Parameters p_D_T, ell_D_T, ell_D_P are constrained from T-052 (not free in the new fit).
-- Only A0_TT, A0_TE, A0_EE, B, phi are free; ell_A is semi-constrained from d_s prediction.
-- Success would elevate C-105 from PREDICTED LOW to TESTED MEDIUM.
+- T-068 (2026-03-15): PASS. chi2_rel_total = -371.67 vs T-052 baseline -22.317.
+- T-069 (2026-03-15): PASS. B_TT = exp(-2/d_s) = 0.613 predicted; fitted 0.625 (0.80 sigma).
+- ell_A = 2*ell_D_T/d_s = 282.3 vs Planck reference 302.0 (6.5% deviation, within 10% threshold).
+- Two bugs fixed during testing: (1) ell_A formula had spurious pi factor; (2) p_D_P was undocumented.
+- B is now theory-constrained from T-069 derivation, not a free parameter. C-105 elevated to TESTED MEDIUM.
+- Oscillation amplitude B = exp(-ell_A/ell_D): fraction of coherent amplitude preserved over one acoustic period.
 
 ## Next Action
 
-- Implement QNG-T-068: fit relaxation-surface model to all three spectra simultaneously.
-- Constrain ell_A from QNG prediction (d_s, ell_D_T) and verify against fitted value.
+- Derive full transfer function for EE spectrum (p_D for EE needs independent derivation).
 - Compare chi2 to ΛCDM Planck best-fit (chi2_ΛCDM available from Planck 2018 papers).
-- Report parameter table and residuals plot for TT, TE, EE.
+- Formalize B = exp(-2/d_s) as a standalone claim (currently tested via T-069).

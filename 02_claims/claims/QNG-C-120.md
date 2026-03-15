@@ -1,7 +1,7 @@
 # QNG-C-120
 
-- Status: predicted
-- Confidence: medium
+- Status: failed
+- Confidence: low
 - Source page(s): derived
 - Related derivation: 03_math/derivations/qng-c-120.md
 - Register source: 02_claims/claims-register.md
@@ -40,14 +40,19 @@ The CMB damping tail (Silk damping) at high multipoles ell > 1000 follows an exp
 
 ## Evidence / Notes
 
-- mu_1 = 0.291 measured from G17 (Jaccard graph, n=280, k=8, seed=3401).
-- d_s = 4.082 +/- 0.125 from G18d v2.
-- Planck TT data extends to ell = 2500; damping is clearly visible above ell ~ 1500.
-- The predicted ell_damp in graph units must be calibrated against the ell_D_T anchor to yield observable predictions.
-- This test connects two independently measured QNG quantities (mu_1, d_s) to a third observable (damping scale).
+- T-065 (2026-03-15): FAIL at 17.8 sigma. Fitted ell_damp = 1291 vs predicted 1068.
+- Root cause: the conversion from graph-space damping length (in graph units) to multipole space
+  requires a transfer function that has NOT been derived. The ell_D_T anchor calibration is
+  insufficient — it converts a relaxation scale, not a Laplacian eigenvalue gap.
+- mu_1 = 0.291 is the spectral gap of the Jaccard graph (G17), but its mapping to the CMB
+  Silk damping scale requires deriving how mu_1 translates to physical photon diffusion length.
+- This is a genuine theory gap: two independently measured QNG quantities (mu_1, d_s) do NOT
+  yet connect to the damping scale without additional derivation.
+- Claim remains structurally valid (the formula could be correct with a different coefficient),
+  but the current quantitative form is falsified.
 
 ## Next Action
 
-- Implement QNG-T-065: extract empirical damping scale from TT spectrum (ell > 1000) via exponential fit.
-- Compute predicted ell_damp from mu_1 and d_s, convert to multipole using ell_D_T anchor.
-- Compare predicted vs observed ell_damp with propagated uncertainties.
+- Derive the full transfer function from graph spectral gap mu_1 to CMB multipole damping scale.
+- The derivation must go through: mu_1 (graph) → diffusion length (physical Mpc) → ell_damp (multipole).
+- Until resolved, this blocks precision predictions of the CMB damping tail from QNG parameters.
