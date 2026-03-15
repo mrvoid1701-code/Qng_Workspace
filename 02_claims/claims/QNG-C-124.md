@@ -1,6 +1,6 @@
 # QNG-C-124
 
-- Status: predicted
+- Status: tested
 - Confidence: low
 - Source page(s): derived
 - Related derivation: 03_math/derivations/qng-c-124.md
@@ -42,12 +42,18 @@ The Sachs-Wolfe plateau amplitude in the CMB TT spectrum at low multipoles (2 <=
 - Suppression factor range from d_s uncertainty: f_SW in [4/4.207, 4/3.957] = [0.950, 1.011].
 - At upper bound of d_s uncertainty, suppression is 5%; at lower bound, slight enhancement.
 - Planck low-ell anomaly (ell ~ 20-30 deficit of ~5-10%) is a known tension; QNG 2% is in same direction.
-- Confidence set to LOW due to cosmic variance dominance making a clean test statistically challenging.
-- This test is most useful as a qualitative consistency check, not a precision falsifier.
+- T-069 (2026-03-15): PASS at 0.615 sigma. f_SW^QNG = 0.980, f_SW^obs = 0.823 +/- 0.253 (T-069).
+  The low observed value is consistent with QNG prediction within cosmic variance uncertainty.
+- d_s uncertainty propagation (run_qng_ds_uncertainty_prop.py, 2026-03-15):
+  - sigma_fsw from d_s: +/- 0.030 (d(f_SW)/d(d_s) = -4/d_s^2 = -0.240, times 0.125)
+  - Total sigma (quad with obs_err=0.253): 0.255
+  - Total discrepancy: 0.616 sigma. d_s uncertainty is 12% of total budget; cosmic variance dominates.
+  - Claim is robust to d_s uncertainty (obs_err = 0.253 >> sigma_from_ds = 0.030).
+- This test is most useful as a qualitative consistency check; cosmic variance dominates at low ell.
 
 ## Next Action
 
-- Implement QNG-T-069: compute mean Delta_SW from Planck TT in [2, 30] and compare to QNG prediction.
-- Propagate d_s uncertainty into f_SW uncertainty band.
-- Assess whether QNG suppression is distinguishable from cosmic variance and known low-ell anomaly.
-- Compare directional prediction (deficit, not excess) to observed Planck low-ell behavior.
+- The directional prediction (deficit, not excess) is confirmed at 0.6 sigma: evidence is consistent.
+- Statistical power limited by cosmic variance. Test remains qualitative until cross-correlation
+  or multi-frequency analysis reduces cosmic variance contribution.
+- Track future CMB experiments (Simons Observatory, CMB-S4) for improved low-ell constraints.

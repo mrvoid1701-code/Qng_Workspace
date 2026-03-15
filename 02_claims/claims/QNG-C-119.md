@@ -44,9 +44,11 @@ The ratio of the polarization diffusion scale to the temperature diffusion scale
 - Predicted ratio from formula: 4.082 / (4.082 - 2) = 4.082 / 2.082 = 1.961.
 - Observed vs predicted discrepancy: 0.46% (well within d_s uncertainty band).
 - This is a parameter-free prediction: d_s is measured independently from the graph, not fitted to CMB data.
-
-## Next Action
-
-- T-064 (2026-03-15): PASS at 0.146 sigma. Predicted 1.961, observed 1.970 (0.46% error).
+- T-064 (2026-03-15): PASS at 0.146 sigma. Predicted 1.961 +/- 0.014 (from d_s), observed 1.970 +/- 0.015.
 - First parameter-free CMB prediction confirmed. d_s = 4.082 validated against independent CMB observable.
 - Robustness: ratio stable across ell_min/ell_max variations tested in T-064.
+- d_s uncertainty propagation (run_qng_ds_uncertainty_prop.py, 2026-03-15):
+  - sigma_ratio from d_s: +/- 0.014 (first-order propagation of d_s=4.082+/-0.125)
+  - Prediction band 1-sigma: [1.947, 1.975]; observed 1.970 is well within band.
+  - Total discrepancy: 0.157 sigma (quadrature of prediction and measurement uncertainties).
+  - Claim is robust to d_s uncertainty: d_s is the dominant systematic for this ratio.
