@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-066",
+  "claim_id": "QNG-C-121",
+  "claim_statement": "The CMB primordial spectral index n_s is encoded in the TT slope parameter p_D_T = 1.119 via n_s = 1 - (p_D_T - 1) * 2 / d_s, predicting n_s ~ 0.942, within the Planck 2018 constraint n_s = 0.9649 +/- 0.0042.",
+  "priority": "P2",
+  "status": "queued-p2",
+  "derivation_path": "03_math/derivations/qng-c-121.md",
+  "formula_anchor": "n_s = 1 - (p_D_T - 1) * 2 / d_s",
+  "dataset": "Planck CMB TT power spectrum + T-052 best-fit + G18d v2",
+  "method": "1) Apply the QNG spectral-tilt formula to compute n_s^QNG from p_D_T and d_s. 2) Propagate uncertainties from d_s (+-0.125) and fitting uncertainty of p_D_T. 3) Compare to Planck 2018 n_s = 0.9649 +/- 0.0042. 4) If discrepancy > 2-sigma, attempt refined mapping using the full transfer function derivation.",
+  "pass_condition": "n_s^QNG within 3-sigma of Planck 2018 n_s = 0.9649 (accounting for theoretical uncertainty in the mapping formula).",
+  "fail_condition": "n_s^QNG deviates from 0.9649 by more than 5-sigma after propagating all uncertainties.",
+  "parameters": {
+    "p_D_T": 1.119,
+    "d_s": 4.082,
+    "d_s_uncertainty": 0.125,
+    "n_s_qng_predicted": 0.942,
+    "n_s_planck": 0.9649,
+    "n_s_planck_sigma": 0.0042,
+    "formula": "1 - (p_D_T - 1) * 2 / d_s",
+    "note": "Exact formula coefficient requires transfer function derivation; tolerance is 3-sigma."
+  },
+  "inputs": [
+    "data/cmb/planck/qng_v3_unified_best_fit.txt",
+    "05_validation/evidence/artifacts/qng-g18d-v2/"
+  ],
+  "commands": [
+    "python scripts/run_qng_t_066_spectral_index.py --p-dt 1.119 --d-s 4.082 --d-s-err 0.125 --n-s-planck 0.9649 --n-s-planck-err 0.0042 --out-dir 05_validation/evidence/artifacts/qng-t-066"
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-066/ns-comparison.csv",
+    "05_validation/evidence/artifacts/qng-t-066/summary.md",
+    "05_validation/evidence/artifacts/qng-t-066/run-log.txt"
+  ],
+  "decision": {
+    "result": "queued",
+    "note": "Awaiting implementation and derivation of exact mapping formula.",
+    "reviewer": null,
+    "date": null
+  },
+  "reproducibility": {
+    "seed": null,
+    "code_version": "local-workspace-2026-03-15",
+    "environment": "Python stdlib runner"
+  }
+}

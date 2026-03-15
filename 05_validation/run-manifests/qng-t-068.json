@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-068",
+  "claim_id": "QNG-C-123",
+  "claim_statement": "The QNG relaxation-surface model C_ell^QNG = A0 * ell^(-p_D) * exp(-J*ell/ell_D) * [1 + B*cos(2*pi*ell/ell_A + phi)] fits TT+TE+EE simultaneously with chi2_rel < baseline, formalizing C-105.",
+  "priority": "P1",
+  "status": "queued-p1",
+  "derivation_path": "03_math/derivations/qng-c-123.md",
+  "formula_anchor": "C_ell^QNG = A0 * ell^(-p_D) * exp(-J*ell/ell_D) * [1 + B*cos(2*pi*ell/ell_A + phi)]",
+  "dataset": "Planck CMB TT + TE + EE power spectra (R3.01, ell 30-2500)",
+  "method": "1) Fix theory-constrained parameters: p_D_T=1.119, p_D_P=6.345, ell_D_T=576.144, ell_D_P=1134.984. 2) Predict acoustic scale: ell_A^QNG = 2*pi*ell_D_T / d_s = 2*pi*576.144/4.082 = 887. 3) Free parameters: A0_TT, A0_TE, A0_EE, B, phi. 4) Fit simultaneously to TT, TE, EE using chi2 minimization. 5) Compare total chi2_rel to T-052 baseline (-22.317) and to ΛCDM. 6) Check: ell_A_fitted vs ell_A_predicted; phase consistency across spectra.",
+  "pass_condition": "chi2_rel_total < -22.317 (beats T-052 baseline) AND ell_A_fitted within 10% of ell_A_predicted AND B < 0.5 (relaxation-dominated).",
+  "fail_condition": "chi2_rel_total > 0 (worse than baseline) OR ell_A deviates > 30% from prediction OR B > 1.0.",
+  "parameters": {
+    "ell_min": 30,
+    "ell_max": 2500,
+    "p_D_T": 1.119,
+    "p_D_P": 6.345,
+    "ell_D_T": 576.144,
+    "ell_D_P": 1134.984,
+    "d_s": 4.082,
+    "ell_A_predicted": 887.0,
+    "free_params": ["A0_TT", "A0_TE", "A0_EE", "B", "phi"],
+    "baseline_chi2_rel": -22.317414
+  },
+  "inputs": [
+    "data/cmb/planck/COM_PowerSpect_CMB-TT-full_R3.01.txt",
+    "data/cmb/planck/COM_PowerSpect_CMB-TE-full_R3.01.txt",
+    "data/cmb/planck/COM_PowerSpect_CMB-EE-full_R3.01.txt",
+    "data/cmb/planck/qng_v3_unified_best_fit.txt"
+  ],
+  "commands": [
+    "python scripts/run_qng_t_068_relaxation_surface.py --tt-file data/cmb/planck/COM_PowerSpect_CMB-TT-full_R3.01.txt --te-file data/cmb/planck/COM_PowerSpect_CMB-TE-full_R3.01.txt --ee-file data/cmb/planck/COM_PowerSpect_CMB-EE-full_R3.01.txt --best-fit data/cmb/planck/qng_v3_unified_best_fit.txt --d-s 4.082 --out-dir 05_validation/evidence/artifacts/qng-t-068"
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-068/fit-parameters.csv",
+    "05_validation/evidence/artifacts/qng-t-068/chi2-comparison.csv",
+    "05_validation/evidence/artifacts/qng-t-068/tt-fit.png",
+    "05_validation/evidence/artifacts/qng-t-068/te-fit.png",
+    "05_validation/evidence/artifacts/qng-t-068/ee-fit.png",
+    "05_validation/evidence/artifacts/qng-t-068/residuals.png",
+    "05_validation/evidence/artifacts/qng-t-068/summary.md",
+    "05_validation/evidence/artifacts/qng-t-068/run-log.txt"
+  ],
+  "decision": {
+    "result": "queued",
+    "note": "Highest priority CMB test. Success elevates C-105 from PREDICTED LOW to TESTED MEDIUM.",
+    "reviewer": null,
+    "date": null
+  },
+  "reproducibility": {
+    "seed": null,
+    "code_version": "local-workspace-2026-03-15",
+    "environment": "Python stdlib runner"
+  }
+}

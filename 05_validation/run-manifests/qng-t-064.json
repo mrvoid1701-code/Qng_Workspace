@@ -1,0 +1,46 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-064",
+  "claim_id": "QNG-C-119",
+  "claim_statement": "The ratio ell_D_P / ell_D_T equals d_s / (d_s - 2), predicted to be 1.961 from d_s = 4.082, consistent with observed ratio 1.970 from T-052.",
+  "priority": "P1",
+  "status": "queued-p1",
+  "derivation_path": "03_math/derivations/qng-c-119.md",
+  "formula_anchor": "ell_D_P / ell_D_T = d_s / (d_s - 2)",
+  "dataset": "Planck CMB TT/EE power spectra + Jaccard graph G18d v2",
+  "method": "Compute predicted ratio from d_s = 4.082 +/- 0.125. Compare to empirical ratio from T-052 best-fit parameters. Propagate d_s uncertainty. Assess discrepancy in sigma units.",
+  "pass_condition": "Predicted ratio within 2-sigma of observed ratio 1.970, using propagated d_s uncertainty as sigma.",
+  "fail_condition": "Predicted ratio deviates from 1.970 by more than 2-sigma after propagating d_s uncertainty.",
+  "parameters": {
+    "d_s": 4.082,
+    "d_s_uncertainty": 0.125,
+    "ell_D_T_observed": 576.144,
+    "ell_D_P_observed": 1134.984,
+    "ratio_observed": 1.9700,
+    "ratio_predicted": 1.9610,
+    "formula": "d_s / (d_s - 2)"
+  },
+  "inputs": [
+    "data/cmb/planck/qng_v3_unified_best_fit.txt",
+    "05_validation/evidence/artifacts/qng-g18d-v2/"
+  ],
+  "commands": [
+    "python scripts/run_qng_t_064_ell_ratio.py --d-s 4.082 --d-s-err 0.125 --ell-dt 576.144 --ell-dp 1134.984 --out-dir 05_validation/evidence/artifacts/qng-t-064"
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-064/ratio-comparison.csv",
+    "05_validation/evidence/artifacts/qng-t-064/summary.md",
+    "05_validation/evidence/artifacts/qng-t-064/run-log.txt"
+  ],
+  "decision": {
+    "result": "queued",
+    "note": "Awaiting implementation of run_qng_t_064_ell_ratio.py.",
+    "reviewer": null,
+    "date": null
+  },
+  "reproducibility": {
+    "seed": null,
+    "code_version": "local-workspace-2026-03-15",
+    "environment": "Python stdlib runner"
+  }
+}
