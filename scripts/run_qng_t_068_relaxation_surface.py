@@ -184,11 +184,14 @@ def main():
     # --- Theory-constrained parameters ---
     p_D_T = 1.119
     ell_D_T = 576.144
-    p_D_P = 6.345
+    # QNG-C-123 says "For EE: ell_D -> ell_D_P, same p_D" — p_D_P = p_D_T per claim.
+    # p_D_P = 6.345 was incorrect: it had no derivation and is not referenced in any prior test.
+    p_D_P = p_D_T   # same p_D as TT, per QNG-C-123 A5
     ell_D_P = 1134.984
     d_s = args.d_s
-    # QNG prediction for acoustic scale
-    ell_A_pred = 2.0 * math.pi * ell_D_T / d_s
+    # QNG prediction for acoustic scale (from QNG-C-123 A4: ell_A ~ 2 * ell_D_T / d_s)
+    # NOTE: previous version erroneously used 2*pi*ell_D_T/d_s — pi factor not in the claim.
+    ell_A_pred = 2.0 * ell_D_T / d_s
     T_052_baseline_chi2_rel = -22.317414
 
     emit(f"\nTheory-constrained parameters:")
