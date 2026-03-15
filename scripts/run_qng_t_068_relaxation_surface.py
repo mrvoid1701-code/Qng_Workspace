@@ -135,27 +135,30 @@ def fit_spectrum(ells, dls, errs, p_D, ell_D, ell_A, label, emit_fn):
                 best_J = J_try
 
     # Step 2: fit B and phi with A0, J fixed
+    # NOTE: grid must not stop at boundary — extend to 0.9, constraint B < 0.5 applied at pass/fail
     best_B, best_phi = 0.0, 0.0
-    chi2_no_osc = best_chi2
-    for B_try in [0.05, 0.1, 0.15, 0.2, 0.3, 0.4]:
-        for phi_try in [i * math.pi / 4 for i in range(8)]:
+    B_grid = [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.6, 0.7, 0.8, 0.9]
+    for B_try in B_grid:
+        for phi_try in [i * math.pi / 6 for i in range(12)]:
             c2 = chi2_spectrum(fe, fd, ferr, best_A0, p_D, ell_D, best_J, B_try, ell_A, phi_try)
             if c2 < best_chi2:
                 best_chi2 = c2
                 best_B = B_try
                 best_phi = phi_try
+    B_at_boundary = (best_B >= max(B_grid))
 
     # Baseline chi2 (no oscillation, same A0 J)
     chi2_base = chi2_baseline(fe, fd, ferr, best_A0, p_D, ell_D, best_J)
     n_pts = len(fe)
     chi2_rel = (best_chi2 - chi2_base) / n_pts
 
+    boundary_warn = "  *** WARNING: B hit grid boundary — true optimum may exceed 0.9 ***" if B_at_boundary else ""
     emit_fn(f"  {label}: n={n_pts} A0={best_A0:.3e} J={best_J:.3f} B={best_B:.3f} "
-            f"phi={best_phi:.2f} chi2_rel={chi2_rel:.4f}")
+            f"phi={best_phi:.2f} chi2_rel={chi2_rel:.4f}{boundary_warn}")
     return {
         "label": label, "A0": best_A0, "J": best_J, "B": best_B, "phi": best_phi,
         "chi2": best_chi2, "chi2_base": chi2_base, "chi2_rel": chi2_rel, "n_pts": n_pts,
-        "p_D": p_D, "ell_D": ell_D
+        "p_D": p_D, "ell_D": ell_D, "B_at_boundary": B_at_boundary
     }
 
 
@@ -217,46 +220,62 @@ def main():
 
     results = [r for r in [res_TT, res_TE, res_EE] if r is not None]
 
-    # --- Combined chi2_rel ---
+    # --- Per-spectrum chi2_rel (already normalised by n_pts inside fit_spectrum) ---
+    emit(f"\n{'='*60}")
+    emit("Per-spectrum chi2_rel (each normalised by its own n_pts):")
+    for r in results:
+        flag = "  *** B at boundary ***" if r.get("B_at_boundary") else ""
+        emit(f"  {r['label']}: chi2_rel={r['chi2_rel']:.4f}  n={r['n_pts']}{flag}")
+
+    # --- Combined chi2_rel: sum of (chi2 - chi2_base) / total_n  ---
+    # This is the raw combined metric but dominated by the largest spectrum.
+    # We also report the AVERAGE of per-spectrum chi2_rel values (equal-weight).
     total_chi2 = sum(r["chi2"] for r in results)
     total_chi2_base = sum(r["chi2_base"] for r in results)
     total_n = sum(r["n_pts"] for r in results)
     chi2_rel_total = (total_chi2 - total_chi2_base) / total_n
+    chi2_rel_mean = sum(r["chi2_rel"] for r in results) / len(results)
 
-    emit(f"\n{'='*60}")
-    emit(f"Combined chi2_rel_total = {chi2_rel_total:.6f}")
-    emit(f"T-052 baseline          = {T_052_baseline_chi2_rel}")
-    emit(f"Improvement             = {chi2_rel_total - T_052_baseline_chi2_rel:+.6f}")
+    emit(f"\nCombined chi2_rel_total (raw, pooled)  = {chi2_rel_total:.6f}")
+    emit(f"Mean per-spectrum chi2_rel (equal wt)  = {chi2_rel_mean:.6f}")
+    emit(f"T-052 baseline                         = {T_052_baseline_chi2_rel}")
 
-    # --- ell_A check ---
-    # The acoustic scale corresponds to the peak spacing in TT
-    # Approximate: from D_ell oscillations, peaks at ell_1~220, spacing ~270
-    # ell_A ~ ell_spacing ~ 280 (from Planck TT peak positions)
-    ell_A_from_peaks = 280.0  # approximate from ell2-ell1 ~ 540-220=320, ell3-ell2~820-540=280
+    # NOTE: If EE chi2_rel dominates, pooled metric is misleading.
+    if res_EE and abs(res_EE["chi2_rel"]) > 10 * abs(res_TT["chi2_rel"] if res_TT else 1):
+        emit("  *** WARNING: EE chi2_rel dominates pooled result — likely caused by")
+        emit("      unsuitable p_D=6.345 power law for EE spectrum shape.")
+        emit("      Use mean per-spectrum chi2_rel for a fair comparison. ***")
+
+    # --- ell_A check (MANDATORY pass criterion) ---
+    # CMB acoustic peak spacing: ell_2 - ell_1 ~ 540-220=320, ell_3 - ell_2 ~ 820-540=280
+    # Standard value from Planck: ell_A ~ 302 (theta_* = 0.5965 deg → ell_A = 180/theta_* ~ 302)
+    ell_A_from_peaks = 302.0
     ell_A_dev = abs(ell_A_pred - ell_A_from_peaks) / ell_A_from_peaks
     emit(f"\nell_A predicted (QNG): {ell_A_pred:.1f}")
-    emit(f"ell_A from TT peaks:   {ell_A_from_peaks:.1f} (ell_peak2 - ell_peak1 ~ 280)")
-    emit(f"Deviation: {ell_A_dev*100:.1f}%  (threshold: 10%)")
+    emit(f"ell_A reference (Planck theta_*): {ell_A_from_peaks:.1f}")
+    emit(f"Deviation: {ell_A_dev*100:.1f}%  (threshold: 10%) [MANDATORY criterion]")
 
     # --- B check ---
     B_vals = [r["B"] for r in results]
     B_max = max(B_vals)
-    emit(f"\nOscillation amplitude B: TT={res_TT['B']:.3f}, "
-         f"TE={res_TE['B'] if res_TE else 'N/A'}, "
-         f"EE={res_EE['B'] if res_EE else 'N/A'}")
+    any_B_at_boundary = any(r.get("B_at_boundary") for r in results)
+    emit(f"\nOscillation amplitude B: " +
+         ", ".join(f"{r['label']}={r['B']:.3f}" for r in results))
     emit(f"Max B = {B_max:.3f}  (threshold: < 0.5)")
+    if any_B_at_boundary:
+        emit("  *** WARNING: B hit grid boundary on at least one spectrum ***")
 
-    # --- Pass/fail ---
+    # --- Pass/fail — ell_A is NOW a hard criterion ---
     crit_chi2 = chi2_rel_total < T_052_baseline_chi2_rel
-    crit_ell_A = ell_A_dev <= 0.10
+    crit_ell_A = ell_A_dev <= 0.10   # MANDATORY
     crit_B = B_max < 0.5
 
     emit(f"\nPass criteria:")
-    emit(f"  chi2_rel < {T_052_baseline_chi2_rel}: {'PASS' if crit_chi2 else 'FAIL'}  ({chi2_rel_total:.4f})")
-    emit(f"  ell_A within 10%: {'PASS' if crit_ell_A else 'FAIL'}  ({ell_A_dev*100:.1f}%)")
+    emit(f"  chi2_rel_total < {T_052_baseline_chi2_rel}: {'PASS' if crit_chi2 else 'FAIL'}  ({chi2_rel_total:.4f})")
+    emit(f"  ell_A within 10% [MANDATORY]: {'PASS' if crit_ell_A else 'FAIL'}  ({ell_A_dev*100:.1f}%)")
     emit(f"  B < 0.5: {'PASS' if crit_B else 'FAIL'}  ({B_max:.3f})")
 
-    passed = crit_chi2 and crit_B  # ell_A is informational (uses rough peak estimate)
+    passed = crit_chi2 and crit_ell_A and crit_B
     result = "PASS" if passed else "FAIL"
     emit(f"\nRESULT: {result}")
 
