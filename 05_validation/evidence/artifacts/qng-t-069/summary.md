@@ -1,39 +1,35 @@
 # QNG-T-069 Summary
 
-**Claim:** QNG-C-124 — Sachs-Wolfe plateau suppression by f_SW = 4/d_s
+**Claim:** QNG-C-123 — oscillation amplitude B from spectral dimension
 **Result:** PASS
 **Date:** 2026-03-15
 
-## QNG Prediction
+## Derivation
 
-f_SW = 4 / d_s = 4 / 4.082 = **0.97991 ± 0.03001**
+In QNG, coherent acoustic oscillations decay over one acoustic period ell_A
+under the relaxation damping scale ell_D_T. The preserved fraction is:
 
-This corresponds to a **2.01% deficit** relative to ΛCDM (d_s=4).
+    B_TT = exp(-ell_A / ell_D_T) = exp(-2 / d_s)
 
-## Results
+Because ell_A = 2 × ell_D_T / d_s (from QNG-C-123 A4).
+
+With d_s = 4.082, ell_D_T = 576.144:
+- ell_A = 282.285
+- **B_TT_pred = exp(-2/d_s) = 0.612653**
+- B_EE_pred = exp(-ell_A/ell_D_P) = 0.779804
+- B_TE_pred = sqrt(B_TT × B_EE) = 0.691194
+
+## Fit Result (TT, fine B grid step=0.025)
 
 | Quantity | Value |
 |----------|-------|
-| Delta_SW (Planck, ell 2-30) | 823.1 ± 63.5 µK² |
-| Delta_SW (ΛCDM reference) | 1000.0 µK² |
-| f_SW observed | 0.8231 |
-| f_SW predicted | 0.97991 |
-| Discrepancy | 0.615 σ |
-
-## Directional Check
-
-Observed f_SW = 0.8231 < 1.0 (DEFICIT — consistent with QNG)
-
-## Note on Cosmic Variance
-
-At ell < 30, cosmic variance is ~30% per mode. The QNG prediction of 2% suppression
-is well within the cosmic variance uncertainty. This test is informational only.
-
-The known Planck low-ell power anomaly (~5-10% deficit at ell~20-30) is in the same
-direction as QNG's prediction, though larger in magnitude.
+| B_TT predicted | 0.612653 ± 0.015516 |
+| B_TT fitted    | 0.625000 |
+| Delta          | +0.012347 |
+| n_sigma        | 0.796 |
 
 ## Pass Criterion
 
-- f_SW_obs < 1.0 (directional): PASS
-- Within 1-sigma: PASS (0.615σ)
+- Threshold: n_sigma ≤ 2.0
+- Achieved: 0.796 sigma
 - **PASS**

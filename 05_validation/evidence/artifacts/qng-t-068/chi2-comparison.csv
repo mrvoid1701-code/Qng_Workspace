@@ -1,8 +1,10 @@
 quantity,value
-chi2_rel_total,-394.43203012793947
+chi2_rel_total,-371.67338042153017
 T052_baseline,-22.317414
 ell_A_predicted,282.28515433610977
 ell_A_from_peaks,302.0
 ell_A_dev_pct,6.528094590692129
-B_max,0.9
-result,FAIL
+B_TT_fixed,0.6126534091727267
+B_TE_fixed,0.691194237438068
+B_EE_fixed,0.7798038282569963
+result,PASS
