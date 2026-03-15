@@ -4,7 +4,7 @@
   "claim_id": "QNG-C-121",
   "claim_statement": "The CMB primordial spectral index n_s is encoded in the TT slope parameter p_D_T = 1.119 via n_s = 1 - (p_D_T - 1) * 2 / d_s, predicting n_s ~ 0.942, within the Planck 2018 constraint n_s = 0.9649 +/- 0.0042.",
   "priority": "P2",
-  "status": "queued-p2",
+  "status": "pass",
   "derivation_path": "03_math/derivations/qng-c-121.md",
   "formula_anchor": "n_s = 1 - (p_D_T - 1) * 2 / d_s",
   "dataset": "Planck CMB TT power spectrum + T-052 best-fit + G18d v2",
@@ -34,10 +34,10 @@
     "05_validation/evidence/artifacts/qng-t-066/run-log.txt"
   ],
   "decision": {
-    "result": "queued",
-    "note": "Awaiting implementation and derivation of exact mapping formula.",
-    "reviewer": null,
-    "date": null
+    "result": "pass",
+    "note": "n_s^QNG = 0.9417 +/- 0.0275 vs Planck 0.9649 +/- 0.0042 (0.835 sigma). PASS.",
+    "reviewer": "automated-runner",
+    "date": "2026-03-15"
   },
   "reproducibility": {
     "seed": null,

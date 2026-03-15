@@ -4,7 +4,7 @@
   "claim_id": "QNG-C-119",
   "claim_statement": "The ratio ell_D_P / ell_D_T equals d_s / (d_s - 2), predicted to be 1.961 from d_s = 4.082, consistent with observed ratio 1.970 from T-052.",
   "priority": "P1",
-  "status": "queued-p1",
+  "status": "pass",
   "derivation_path": "03_math/derivations/qng-c-119.md",
   "formula_anchor": "ell_D_P / ell_D_T = d_s / (d_s - 2)",
   "dataset": "Planck CMB TT/EE power spectra + Jaccard graph G18d v2",
@@ -16,8 +16,8 @@
     "d_s_uncertainty": 0.125,
     "ell_D_T_observed": 576.144,
     "ell_D_P_observed": 1134.984,
-    "ratio_observed": 1.9700,
-    "ratio_predicted": 1.9610,
+    "ratio_observed": 1.97,
+    "ratio_predicted": 1.961,
     "formula": "d_s / (d_s - 2)"
   },
   "inputs": [
@@ -33,10 +33,10 @@
     "05_validation/evidence/artifacts/qng-t-064/run-log.txt"
   ],
   "decision": {
-    "result": "queued",
-    "note": "Awaiting implementation of run_qng_t_064_ell_ratio.py.",
-    "reviewer": null,
-    "date": null
+    "result": "pass",
+    "note": "ell_D_P/ell_D_T = 1.970 vs predicted 1.961 (0.146 sigma). PASS.",
+    "reviewer": "automated-runner",
+    "date": "2026-03-15"
   },
   "reproducibility": {
     "seed": null,

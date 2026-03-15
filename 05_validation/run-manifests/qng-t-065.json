@@ -4,7 +4,7 @@
   "claim_id": "QNG-C-120",
   "claim_statement": "The CMB damping scale ell_damp is determined by mu_1 and d_s via ell_damp = pi * sqrt(d_s/4) / sqrt(mu_1), calibrated to multipole space through the ell_D_T anchor.",
   "priority": "P1",
-  "status": "queued-p1",
+  "status": "fail",
   "derivation_path": "03_math/derivations/qng-c-120.md",
   "formula_anchor": "ell_damp = pi * sqrt(d_s/4) / sqrt(mu_1)",
   "dataset": "Planck CMB TT power spectrum (ell 1000-2500) + G17/G18d results",
@@ -36,10 +36,10 @@
     "05_validation/evidence/artifacts/qng-t-065/run-log.txt"
   ],
   "decision": {
-    "result": "queued",
-    "note": "Awaiting implementation of run_qng_t_065_damping.py.",
-    "reviewer": null,
-    "date": null
+    "result": "fail",
+    "note": "Fitted ell_damp_L=1291 vs predicted 1068 (17.8 sigma). Calibration formula mu_1->ell requires transfer function derivation. FAIL - open theory gap.",
+    "reviewer": "automated-runner",
+    "date": "2026-03-15"
   },
   "reproducibility": {
     "seed": null,
