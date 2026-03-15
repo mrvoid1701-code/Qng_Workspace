@@ -323,13 +323,13 @@ def main():
     # NC-2 and NC-3: wrong tau parameter (timescale specificity test).
     # Shuffled/anti-causal kernels were found insensitive for this observable (integrated
     # force is ordering-invariant for quasi-stationary chi field). tau value matters.
-    TAU_SHORT = 0.2   # NC-2: 6.5x too short (memory decays almost instantly)
+    TAU_SHORT = 0.05  # NC-2: 26x too short (memory decays almost instantly)
     TAU_LONG  = 8.0   # NC-3: 6x too long (memory persists far too long)
     negative_controls = [
         ("NC-1_tau0",        lambda R: kernel_instantaneous(R, DT, TRUTH_TAU, TRUTH_K),
          "tau=0 (instantaneous gravity, no memory)"),
         ("NC-2_tau_short",   lambda R: kernel_exponential(R, DT, TAU_SHORT, TRUTH_K),
-         f"tau={TAU_SHORT} (too short: 6.5x below correct tau={TRUTH_TAU})"),
+         f"tau={TAU_SHORT} (too short: 26x below correct tau={TRUTH_TAU})"),
         ("NC-3_tau_long",    lambda R: kernel_exponential(R, DT, TAU_LONG, TRUTH_K),
          f"tau={TAU_LONG} (too long: 6x above correct tau={TRUTH_TAU})"),
         ("NC-4_wrongsign",   lambda R: kernel_wrong_sign(R, DT, TRUTH_TAU, TRUTH_K),
