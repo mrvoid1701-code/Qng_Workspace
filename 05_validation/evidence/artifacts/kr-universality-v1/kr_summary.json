@@ -1,0 +1,23 @@
+{
+  "test_id": "kr-universality-v1",
+  "timestamp_utc": "2026-03-16T19:56:12.382911+00:00",
+  "K_R_sim": 1.105,
+  "K_R_sim_sigma": 0.08888756943465155,
+  "k_sim": 0.85,
+  "tau_sim": 1.3,
+  "f_conv_s_per_sim": 157284.76779627657,
+  "f_conv_days_per_sim": 1.8204255531976454,
+  "dt_SI_hours": 2.6214127966046092,
+  "K_R_SI_s": 173799.66841488561,
+  "C_straton_P10": 6.426229508196721e-14,
+  "C_straton_P11": 7.370689655172414e-14,
+  "C_straton_comb": 7.283333333333333e-14,
+  "C_ratio_P11_P10": 1.146969563687544,
+  "C_deviation_pct": 14.69695636875441,
+  "tau_P10_s": 269717.36153426144,
+  "tau_P11_s": 36598.56185688145,
+  "tau_ratio_P10_P11": 7.369616396102946,
+  "c_universality_ok": true,
+  "tau_universality_ok": false,
+  "verdict": "C_straton consistent at ~15% between P10 and P11 (D8 model universality: PARTIAL). tau_SI inconsistent by factor 7x (QNG formula a=tau*v*GM/r3 with const tau: FAIL). Pioneer anomaly explained thermally (Turyshev 2012) \u2014 K_R Pioneer anchor may be spurious. K_R_sim well-constrained; dimensional bridge requires system-specific r_char."
+}
