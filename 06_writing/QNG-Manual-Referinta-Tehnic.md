@@ -429,7 +429,139 @@ Forma log-liniară (C-086b3):
 
 ---
 
-## 8. Condițiile de Stabilitate
+## 8. Constanta de Rigiditate a Nodului (K_R)
+
+### 8.1 Definiție și Motivație
+
+**Constanta de Rigiditate a Nodului** este cantitatea care măsoară cât de puternic rezistă un
+nod la deformarea instantanee a câmpului său de stabilitate — adică "memoria inerțială" a
+gravitației în QNG.
+
+Kernelul cauzal exponențial are doi parametri liberi: amplitudinea k și scala de memorie tau.
+Produsul lor formează o singură constantă adimensionalizabilă:
+
+    K_R  =  k * tau / tau_0
+
+unde tau_0 este unitatea de timp de referință a sistemului (tau_0 = 1 în unitățile curente).
+Astfel:
+
+    K_R  =  k * tau  =  0.85 * 1.3  =  1.105   (măsurată în T-029)
+
+**Interpretare fizică:** K_R este "aria" efectivă de sub kernelul cauzal normalizat — suma
+totală a ponderilor de memorie înainte de normalizare Z:
+
+    sum_{r=0}^{inf} k * exp(-r*dt/tau)  =  k / (1 - exp(-dt/tau))  ≈  k*tau/dt   (dt << tau)
+
+K_R captează deci câte "pași de memorie eficienți" influențează starea curentă a nodului.
+
+### 8.2 Relațiile Derivate din K_R
+
+Din K_R se pot exprima toate cantitățile observabile ale teoriei:
+
+**Lungimea de relaxare spațială:**
+
+    L_R = sqrt(K_R) * sigma_kernel = sqrt(1.105) * 0.15 ≈ 0.158
+
+Este raza efectivă în care un nod "simte" istoricul gravitațional al vecinilor.
+
+**Scala de accelerație reziduală (flyby):**
+
+    |a_res| ~ K_R * dt * |v| * |grad^2 Sigma|
+
+Factorul K_R * dt = 1.105 * 0.06 = 0.0663 este coeficientul de lag observabil în flyby.
+
+**Frecvența de coerență a nodului:**
+
+    omega_R = 1 / (K_R * dt) = 1 / 0.0663 ≈ 15.1   [rad / unitate de timp]
+
+Modurile grafului cu omega_k > omega_R sunt suprimate de memorie; cele cu omega_k < omega_R
+sunt amplificate coerentin. Aceasta explică de ce m_eff^2 = 0.014 << 1 — masa efectivă
+este mult sub frecvența de coerență.
+
+**Scala de memorie per unitate de masă (cuplaj straton):**
+
+    tau_i = alpha_tau * chi_i  =>  K_R(i) = k * alpha_tau * chi_i
+
+K_R nu este constantă per nod — variază cu sarcina straton chi_i. Universalitatea se referă
+la **alpha_tau * k** = const, nu la K_R per nod individual.
+
+### 8.3 Testul de Universalitate — Ce Înseamnă "Gold Standard"
+
+**Universalitatea** lui K_R înseamnă că produsul k * alpha_tau este aceeași constantă
+adimensională indiferent de scara fizică a sistemului.
+
+| Sistem | Scara | K_R măsurabil prin | Predicție QNG |
+|--------|-------|-------------------|---------------|
+| N-body laborator (T-029) | ~1 pc simulat | chi2 fit tau, k direct | k*tau = 1.105 |
+| Anomalia flyby (C-086) | ~10^4 km | lag temporal al a_res | tau_flyby = K_R * dt / |v_esc| |
+| Curbe de rotație galactică | ~1-100 kpc | tau_gal din profil v(r) | tau_gal/tau_lab = chi_gal/chi_lab |
+| Cluster de galaxii | ~1-10 Mpc | dispersie sigma(r) cu lag | același K_R |
+| CMB (scale cosmologice) | ~Gpc | P(k) power spectrum | K_R apare în transfer function |
+
+**Predicția centrală testabilă:**
+
+    K_R(laborator) = K_R(galaxii) = K_R(cosmologic)
+
+sau echivalent:
+
+    k * alpha_tau = const   (universală, independentă de scară)
+
+Dacă aceasta este confirmată pe cel puțin 3 scări distincte, K_R devine o **constantă
+fundamentală** a teoriei QNG, analogă constantei lui Newton G dar pentru memoria
+gravitațională.
+
+### 8.4 Cum se Extrage K_R din Date Observaționale
+
+**Metoda 1 — Lag temporal direct (flyby):**
+
+Din ecuația C-086:
+
+    a_res = -tau * (v . grad) grad(Sigma)
+
+Se măsoară a_res (reziduu orbit față de GR pur), se calculează (v.grad)grad(Sigma) din
+modelul gravitațional standard, se obține:
+
+    tau_obs = -a_res / [ (v . grad) grad(Sigma) ]
+    K_R_obs = k_fit * tau_obs
+
+**Metoda 2 — Raportul amplitudinilor cross-class (QNG-C-032):**
+
+    A_i / A_j = K_R(i) / K_R(j) = chi_i / chi_j   (dacă k = const)
+
+Dacă doi pulsari din clase diferite (masă, vârstă) arată raport de amplitudini egal cu
+raportul maselor lor de straton, atunci alpha_tau este universal.
+
+**Metoda 3 — Power spectrum cu transfer function modificată:**
+
+K_R modifică transfer function CMB la scara:
+
+    k_memory = 1 / L_R = 1 / (sqrt(K_R) * sigma_kernel)
+
+Dacă k_memory corespunde unei caracteristici observate în P(k) sau C_l, K_R este
+constrâns cosmologic.
+
+### 8.5 Valoarea Actuală și Incertitudinea
+
+| Parametru | Valoare centrală | Incertitudine | Sursa |
+|-----------|-----------------|---------------|-------|
+| k | 0.85 | ± 0.02 (1σ, T-029) | chi2 fit pe 12 seeds |
+| tau | 1.3 | ± 0.1 (1σ, T-029) | chi2 fit pe 12 seeds |
+| **K_R = k*tau** | **1.105** | **± 0.09** | propagare erori |
+| alpha_tau | TBD | TBD | necesită date cross-class |
+| K_R / K_R(GR pur) | 1.105 / 0 = ∞ | — | GR nu are memorie |
+
+> ⚠️ **Lacună L8 (Nouă):** Valoarea K_R = 1.105 este măsurată exclusiv din simulări
+> N-body cu parametri adimensionali (T-029). Nu există încă o mapare riguroasă la
+> unități fizice SI. Această conversie dimensională este necesară pentru a face
+> predicții observaționale absolute (nu doar relative). Relația:
+>
+>     K_R [SI] = k * tau [s] * G [m^3 kg^-1 s^-2] / c^2 [m^2 s^-2]
+>
+> trebuie derivată din limita continuă a teoriei (vezi Lacuna L4).
+
+---
+
+## 9. Condițiile de Stabilitate
 
 ### 8.1 Condiții Lyapunov Implicite (Verificate Numeric)
 
@@ -445,7 +577,7 @@ Forma log-liniară (C-086b3):
 
 ---
 
-## 9. Implementarea Computațională
+## 10. Implementarea Computațională
 
 ### 9.1 Algoritmul de Integrare (T-029)
 
@@ -495,7 +627,7 @@ SHRINKAGE_K     = 0.4       # shrinkage metric-lock-v3: g_v3 = 0.4*g_conf + 0.6*
 
 ---
 
-## 10. Gate-urile de Validare — Praguri Complete
+## 11. Gate-urile de Validare — Praguri Complete
 
 ### GR Lane
 
@@ -542,7 +674,7 @@ SHRINKAGE_K     = 0.4       # shrinkage metric-lock-v3: g_v3 = 0.4*g_conf + 0.6*
 
 ---
 
-## 11. Lacune și Pașii Următori Necesari pentru Paper
+## 12. Lacune și Pașii Următori Necesari pentru Paper
 
 | # | Lacună | Impact |
 |---|--------|--------|
@@ -553,6 +685,7 @@ SHRINKAGE_K     = 0.4       # shrinkage metric-lock-v3: g_v3 = 0.4*g_conf + 0.6*
 | L5 | Natura zgomotului eta_i (Gaussian vs. non-Gaussian) nejustificată | Mediu |
 | L6 | Derivarea principiului Jaccard din teoria informației incompletă | Important |
 | L7 | Predicții observaționale cuantitative (unde gravitaționale, CMB) lipsesc | **Critic** |
+| L8 | Conversia dimensională K_R [adim] → K_R [SI] nederivaată (blochează predicții absolute) | **Critic** |
 
 ---
 
