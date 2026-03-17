@@ -1,6 +1,6 @@
 gate_id,metric,value,threshold,status
-G20a,energy_conservation_err,0.000000,<0.01,pass
-G20b,cv_eps_vac,0.350634,>0.05,pass
-G20c,dE0_rel,0.003064,"(1e-05,0.3)",pass
-G20d,max_self_consistency_residual,0.012473,<0.2,pass
+G20a,energy_conservation_err,8.285055e-16,<0.01,pass
+G20b,cv_eps_vac,0.381469,>0.05,pass
+G20c,dE0_rel,0.003625,"(1e-05,0.3)",pass
+G20d,max_self_consistency_residual,0.013123,<0.2,pass
 FINAL,decision,pass,G20a&G20b&G20c&G20d,pass
