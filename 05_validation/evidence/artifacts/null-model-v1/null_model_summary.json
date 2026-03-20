@@ -1,0 +1,65 @@
+{
+  "run_utc": "2026-03-20T10:52:48.980965Z",
+  "params": {
+    "N": 280,
+    "K_INIT": 8,
+    "K_CONN": 8,
+    "SEED": 3401,
+    "N_RANDOMIZATIONS": 20,
+    "SWAP_FACTOR": 10
+  },
+  "R0_Jaccard_original": {
+    "ds": 4.282846949114288,
+    "r2": 0.9915704251998091,
+    "clustering": 0.16572356215213355,
+    "jaccard_homophily_mean": 0.19647390738757325
+  },
+  "R1_config_model": {
+    "ds_mean": 4.659650773602531,
+    "ds_std": 0.13215480911463973,
+    "pass_frac": 0.15,
+    "delta_vs_R0": 0.3768038244882437
+  },
+  "R2_ER": {
+    "ds_mean": 4.731642083919367,
+    "ds_std": 0.18456643430807318,
+    "pass_frac": 0.1,
+    "delta_vs_R0": 0.4487951348050796
+  },
+  "R3_Jaccard_diff_seed": {
+    "ds_mean": 4.091947186335441,
+    "ds_std": 0.09544589589230595,
+    "pass_frac": 1.0,
+    "delta_vs_R0": 0.19089976277884713
+  },
+  "R4_k_sweep": {
+    "6": {
+      "ds_mean": 3.709061365413202,
+      "ds_std": 0.07371883470554792,
+      "pass_frac": 1.0
+    },
+    "7": {
+      "ds_mean": 3.8457283092773022,
+      "ds_std": 0.09715537068969794,
+      "pass_frac": 1.0
+    },
+    "8": {
+      "ds_mean": 4.125808115923729,
+      "ds_std": 0.1173383028756208,
+      "pass_frac": 1.0
+    },
+    "9": {
+      "ds_mean": 4.257310434825806,
+      "ds_std": 0.19705798450303966,
+      "pass_frac": 1.0
+    },
+    "10": {
+      "ds_mean": 4.347429333900762,
+      "ds_std": 0.08095349694199215,
+      "pass_frac": 1.0
+    }
+  },
+  "struct_verdict": "CONFIRMAT: structura topologic\u0103 Jaccard e esen\u021bial\u0103",
+  "seed_verdict": "ATEN\u021aIE: d_s variaz\u0103 cu seed-ul contextului ER ini\u021bial",
+  "total_time_s": 9.7
+}
