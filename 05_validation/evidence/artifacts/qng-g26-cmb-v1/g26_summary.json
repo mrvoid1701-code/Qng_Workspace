@@ -1,0 +1,56 @@
+{
+  "gate": "G26",
+  "title": "CMB Planck Observational Gate",
+  "date": "2026-03-20T20:51:19.368160+00:00",
+  "inputs": {
+    "mu1": 0.291,
+    "d_s": 4.082,
+    "d_s_err": 0.125,
+    "ell_D_T": 576.144,
+    "p_D_T": 1.119
+  },
+  "sub_gates": {
+    "G26a": true,
+    "G26b": true,
+    "G26c": true,
+    "G26d": true
+  },
+  "results": {
+    "G26a": {
+      "ell_damp_pred": 1294.8625607114457,
+      "ell_damp_pred_err": 19.8257986390165,
+      "ell_damp_obs": 1290.9,
+      "ell_damp_obs_err": 12.5,
+      "delta": 3.962560711445576,
+      "sigma": 0.1690698902196557,
+      "threshold": 2.0,
+      "pass": true
+    },
+    "G26b": {
+      "ns_pred": 0.9416952474277315,
+      "ns_pred_err": 0.0017854223595133666,
+      "ns_planck": 0.9649,
+      "ns_planck_err": 0.0042,
+      "delta": -0.023204752572268506,
+      "sigma": 0.8333089095973781,
+      "threshold": 3.0,
+      "pass": true
+    },
+    "G26c": {
+      "chi2_baseline": -22.317414,
+      "chi2_t068": -371.67338,
+      "delta_chi2": -349.355966,
+      "pass": true
+    },
+    "G26d": {
+      "ell_A_pred": 282.28515433610977,
+      "ell_A_obs": 298.5,
+      "dev_pct": 5.744136882446048,
+      "threshold_pct": 15.0,
+      "pass": true
+    }
+  },
+  "n_pass": 4,
+  "n_total": 4,
+  "global_pass": true
+}

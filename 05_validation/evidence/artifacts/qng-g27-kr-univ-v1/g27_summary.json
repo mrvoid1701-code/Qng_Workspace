@@ -1,0 +1,56 @@
+{
+  "gate": "G27",
+  "title": "K_R Universality Gate",
+  "date": "2026-03-20T20:52:49.041729+00:00",
+  "k_theory": 0.836719269507167,
+  "mu1_jaccard": 0.291,
+  "sub_gates": {
+    "G27a": true,
+    "G27b": true,
+    "G27c": true,
+    "G27d": true
+  },
+  "results": {
+    "G27a": {
+      "k_cmb": 0.8349125609133617,
+      "k_cmb_err": 0.004781858882665302,
+      "k_theory": 0.836719269507167,
+      "spread_pct": 0.21592769040319051,
+      "threshold_pct": 1.0,
+      "pass": true
+    },
+    "G27b": {
+      "k_gal": 0.8402211241296863,
+      "n_galaxies": 175,
+      "delta_aic": -48023.53903490753,
+      "k_theory": 0.836719269507167,
+      "spread_pct": 0.418522047972183,
+      "threshold_pct": 2.0,
+      "pass": true
+    },
+    "G27c": {
+      "k_sim": 0.85,
+      "k_sim_err": 0.02,
+      "k_theory": 0.836719269507167,
+      "spread_pct": 1.587238513182013,
+      "sigma_pull": 0.664036524641648,
+      "threshold_pct": 5.0,
+      "pass": true
+    },
+    "G27d": {
+      "k_values": {
+        "k_cmb (Gpc CMB)": 0.8349125609133617,
+        "k_gal (kpc SPARC)": 0.8402211241296863,
+        "k_sim (pc N-body)": 0.85,
+        "k_theory (cubic)": 0.836719269507167
+      },
+      "spread_total_pct": 1.8031662035852036,
+      "threshold_pct": 5.0,
+      "pass": true
+    }
+  },
+  "n_pass": 4,
+  "n_total": 4,
+  "global_pass": true,
+  "spread_total_pct": 1.8031662035852036
+}

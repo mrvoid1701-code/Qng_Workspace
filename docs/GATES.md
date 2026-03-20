@@ -30,6 +30,8 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 | G24 | Spectral foliation & time direction: Fiedler vector + 3+1 structure (v1) | `scripts/run_qng_g24_foliation_v1.py` |
 | G24v2 | Temporal gradient foliation: quintile Fiedler → d_s_equatorial=3.07, 3+1 evidence | `scripts/run_qng_g24_v2_foliation_v1.py` |
 | G25 | UV running of spectral dimension: d_s_UV≈3.0 vs d_s_IR≈4.4 (prediction vs CDT/LQG/AS) | `scripts/run_qng_g25_uv_running_v1.py` |
+| G26 | CMB Planck observational gate: ell_damp(0.17σ), n_s(0.83σ), Δχ²_rel=−371, ℓ_A spacing(5.7%) — 4/4 PASS | `scripts/run_qng_g26_cmb_v1.py` |
+| G27 | K_R universality: k=0.835–0.850 pe 18 ordine de mărime (Gpc→pc), spread 1.80% — 4/4 PASS | `scripts/run_qng_g27_kr_universality_v1.py` |
 
 ## Notes
 
