@@ -49,7 +49,7 @@ Plan integrare (in ordine):
   - k=8: 6/7 PASS (N≥150); k=6 subsaturat (d_s<3.5); k≥10 suprasaturat (d_s>4.5)
   - Canonical (N=280, k=8) bine centrat în banda d_s∈(3.5,4.5)
   - Notă: `01_notes/jaccard-phase-diagram-v1.md`
-- [ ] Justificare analitică G18d: de ce Jaccard → d_s=4 (conexiune cu CDT/LQG)
+- [x] Justificare analitică G18d: de ce Jaccard → d_s=4 (conexiune cu CDT/LQG) — DONE (2026-03-20, `03_math/derivations/qng-jaccard-ds4-analytical-v1.md`)
 - [x] G21 candidat: consistență termodinamică (S ≥ 0, T > 0 global) — 4/4 PASS (2026-03-09)
 - [x] G19/G20 v2 pe Jaccard: PASS (2026-03-09)
   - G19: `run_qng_g19_jaccard_v1.py` — 4/4 PASS (G19d cu BFS hop distance)
