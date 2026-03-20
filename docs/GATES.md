@@ -24,6 +24,10 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 | G18 | Quantum information and emergent geometry diagnostics (`G18d-v7 + G18b-v8` official decision layer) | `scripts/run_qng_qm_info_v1.py` |
 | G19 | Unruh thermal vacuum diagnostics (`G19d-v4` official decision layer) | `scripts/run_qng_unruh_thermal_v1.py` |
 | G20 | Semiclassical back-reaction loop closure | `scripts/run_qng_semiclassical_v1.py` |
+| G21 | Thermodynamic consistency (S≥0, C_V>0, F=U-TS, S(2T)/S(T)>1.5) | `scripts/run_qng_g21_thermo_v1.py` |
+| G22 | Directional isotropy: d_s consistent across spectral axes (partial Lorentz test) | `scripts/run_qng_g22_isotropy_v1.py` |
+| G23 | Klein-Gordon scalar matter field: Yukawa decay + spectral gap on Jaccard graph | `scripts/run_qng_g23_klein_gordon_v1.py` |
+| G24 | Spectral foliation & time direction: Fiedler vector + 3+1 structure | `scripts/run_qng_g24_foliation_v1.py` |
 
 ## Notes
 

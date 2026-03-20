@@ -1,0 +1,44 @@
+{
+  "gate": "G24",
+  "version": "v1",
+  "timestamp": "2026-03-20T13:56:10Z",
+  "seed": 3401,
+  "n_nodes": 280,
+  "k_init": 8,
+  "k_conn": 8,
+  "fiedler_lambda2": 0.29119974297398,
+  "pearson_bfs_fiedler": 0.6762210390045773,
+  "spatial_frac": 0.6,
+  "n_spatial_nodes": 168,
+  "d_s_spatial": 3.9036063491364437,
+  "r2_spatial": 0.7396938849715582,
+  "n_levels_total": 10,
+  "n_populated_levels": 8,
+  "level_sizes": [
+    3,
+    5,
+    2,
+    30,
+    80,
+    102,
+    24,
+    16,
+    10,
+    8
+  ],
+  "thresholds": {
+    "g24a_lambda2_min": 1e-05,
+    "g24b_pearson_min": 0.3,
+    "g24c_ds_lo": 2.0,
+    "g24c_ds_hi": 4.3,
+    "g24d_levels_min": 5
+  },
+  "gates": {
+    "g24a": "PASS",
+    "g24b": "PASS",
+    "g24c": "PASS",
+    "g24d": "PASS"
+  },
+  "all_pass": true,
+  "elapsed_s": 0.4
+}

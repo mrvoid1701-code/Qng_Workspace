@@ -1,0 +1,34 @@
+{
+  "gate": "G22",
+  "version": "v1",
+  "timestamp": "2026-03-20T13:57:54Z",
+  "seed": 3401,
+  "n_nodes": 280,
+  "k_init": 8,
+  "k_conn": 8,
+  "n_axes": 4,
+  "d_s_global": 4.750900680953505,
+  "r2_global": 0.7794226640378334,
+  "r2_min_reliable": 0.5,
+  "n_reliable": 6,
+  "reliable_frac": 0.75,
+  "sigma_ds_reliable": 0.4681614080732639,
+  "ds_min_reliable": 3.323805810040153,
+  "ds_max_reliable": 4.629709849742359,
+  "ds_mean_reliable": 3.7650368705891175,
+  "global_dev": 0.9858638103643873,
+  "thresholds": {
+    "g22a_sigma_ds_max": 0.6,
+    "g22b_ds_min": 2.5,
+    "g22c_ds_max": 5.5,
+    "g22d_reliable_frac": 0.5
+  },
+  "gates": {
+    "g22a": "PASS",
+    "g22b": "PASS",
+    "g22c": "PASS",
+    "g22d": "PASS"
+  },
+  "all_pass": true,
+  "elapsed_s": 0.7
+}

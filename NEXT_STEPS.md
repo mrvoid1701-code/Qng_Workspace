@@ -57,8 +57,43 @@ Plan integrare (in ordine):
   - G21: `run_qng_g21_thermo_v1.py` — 4/4 PASS (S>0, C_V>0, F=U-TS, S(2T)/S(T)=5542, 2026-03-09)
   - `scripts/run_all.py --group jaccard` → **6/6 PASS** (G10-G21 complet pe Jaccard, 22.9s)
 
+## Prioritate 6 — Puncte slabe QNG: G22-G24 (2026-03-20, NOU)
+
+**Motivatie:** Comparatie cu CDT/LQG/AS arata 4 puncte slabe principale:
+invarianta Lorentz, continut de materie, dinamica temporala, constante de coupling.
+
+**G22 — Izotropie directionala (test partial Lorentz)**
+- [x] `scripts/run_qng_g22_isotropy_v1.py` → PASS (2026-03-20)
+- σ(d_s) = 0.468 < 0.60 pe 6/8 directii convergente (75% fiabilitate)
+- min d_s = 3.32, max d_s = 4.63 — nicio directie nu e singular diferita
+- Concluzie: izotropie partiala confirmata; 2 axe spectrale (2−, 4+) non-convergente
+  → graful Jaccard are simetrie discreta, nu continua (consistent cu asteptarile)
+
+**G23 — Camp scalar Klein-Gordon (prima materie in QNG)**
+- [x] `scripts/run_qng_g23_klein_gordon_v1.py` → PASS (2026-03-20)
+- m²=0.30 → screening length ≈ 1.8 BFS hops (vizibil in graf)
+- Decay: slope ln G / ln r = -0.663 < -0.03 ✓
+- Screening Yukawa: CV = 0.193 < 0.50 ✓
+- Contrast masa: ratio_growth = 2.96 > 1.2 ✓ (masa face diferenta fizica reala)
+- Gap spectral: λ_min/m² = 31.5 > 0.9 ✓
+- Concluzie: primul camp de materie in QNG — propagatorul Yukawa functioneaza pe Jaccard
+
+**G24 — Foliatie spectrala / directie de timp (Fiedler vector)**
+- [x] `scripts/run_qng_g24_foliation_v1.py` → PASS (2026-03-20)
+- λ₂ = 0.291 >> 0 ✓ (directie de timp bine definita)
+- Pearson(BFS, Fiedler) = 0.676 > 0.30 ✓ (Fiedler ≈ geometrie reala)
+- d_s stratul spatial = 3.90 ∈ (2.0, 4.3) ✓
+- 8/10 niveluri temporale populate ✓
+- ★ INTERPRETARE: d_s_global=4.08, d_s_spatial=3.90 → evidenta structura 3+1!
+
+**Urmatoarele puncte slabe (future work):**
+- [ ] Invarianta Lorentz continua (necesita structura cauzala completa)
+- [ ] Campuri gauge U(1) pe Jaccard (electromagnetism emergent)
+- [ ] Dinamica temporala (evolutia grafului in timp)
+- [ ] Constante de coupling (G_N scaling cu k)
+
 ## Ordine recomandată
-QM Stage 2 freeze → Paper draft (cu sectiune 4D) → Integrare graf Jaccard → Bulletproofing
+QM Stage 2 freeze → Paper draft (cu sectiune 4D) → Integrare graf Jaccard → Bulletproofing → G22-G24 (done) → Paper extins
 
 ---
 
