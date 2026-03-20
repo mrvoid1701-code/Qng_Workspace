@@ -1,71 +1,71 @@
 QNG Gate Suite - Full Health Report
-Generated: 2026-03-07T23:35:45.474874Z
-Dataset: DS-003  Seed: 3401
+Generated: 2026-03-20T13:18:57.951845Z
+Dataset: DS-002  Seed: 3401
 
 Gate   Label                                    Decision   Time
 --------------------------------------------------------------------
-G10    Covariant ADM metric                     pass       0.0s
-G11    Einstein equations                       pass       0.0s
-G12    GR solutions (Schwarzschild)             pass       0.0s
-G13    Covariant wave equation                  pass       0.0s
-G14    Covariant conservation nabla(T)=0        pass       0.0s
-G15    PPN parameters (gamma, beta, Shapiro)    pass       0.0s
-G16    Action functional S[g,sigma]             pass       0.0s
-G17    QM bridge: canonical quantisation        pass       0.0s
-G18    Quantum information & emergent geometry  pass       0.0s
-G19    Unruh thermal vacuum                     pass       0.0s
-G20    Semiclassical back-reaction (GR<->QM)    pass       0.0s
+G10    Covariant ADM metric                     pass       0.3s
+G11    Einstein equations                       pass       0.2s
+G12    GR solutions (Schwarzschild)             pass       0.2s
+G13    Covariant wave equation                  pass       0.4s
+G14    Covariant conservation nabla(T)=0        pass       0.5s
+G15    PPN parameters (gamma, beta, Shapiro)    pass       0.2s
+G16    Action functional S[g,sigma]             pass       0.2s
+G17    QM bridge: canonical quantisation (Jaccard) pass       6.2s
+G18    Quantum information & emergent geometry  pass       4.6s
+G19    Unruh thermal vacuum                     pass       4.5s
+G20    Semiclassical back-reaction (GR<->QM)    pass       4.4s
 
 Sub-gate metrics:
 --------------------------------------------------------------------
   G10/G10a     min_N                          val=0.920000       thr=>0.0                 margin=   n/a%  
   G10/G10b     max_abs_Phi                    val=0.080000       thr=<0.5                 margin=  84.0%  
-  G10/G10c     min_gamma                      val=1.001112       thr=>0.0                 margin=   n/a%  
-  G10/G10d     mean_a_radial                  val=0.012350       thr=>0.0                 margin=   n/a%  
-  G11/G11a     hamiltonian_R2                 val=0.070451       thr=>0.02                margin= 252.3%  
-  G11/G11b     slope_abs_B                    val=2.071820       thr=>0.296971            margin= 597.7%  
-  G11/G11c     bianchi_ratio                  val=0.236768       thr=<1.5                 margin=  84.2%  
+  G10/G10c     min_gamma                      val=1.008195       thr=>0.0                 margin=   n/a%  
+  G10/G10d     mean_a_radial                  val=0.013783       thr=>0.0                 margin=   n/a%  
+  G11/G11a     hamiltonian_R2                 val=0.056991       thr=>0.02                margin= 185.0%  
+  G11/G11b     slope_abs_B                    val=1.804106       thr=>0.259600            margin= 595.0%  
+  G11/G11c     bianchi_ratio                  val=0.287641       thr=<1.5                 margin=  80.8%  
   G11/G11d     max_trace_G                    val=8.881784e-16   thr=<1e-10               margin= 100.0%  
-  G12/G12a     abs_Lambda_dS                  val=2.969706       thr=>0.1                 margin=2869.7%  
-  G12/G12b     homogeneity_cv                 val=0.330020       thr=<0.6                 margin=  45.0%  
-  G12/G12c     radial_ratio                   val=1.279190       thr=>1.0                 margin=  27.9%  
-  G12/G12d     powerlaw_slope                 val=-0.255391      thr=<-0.03               margin= 751.3%  
+  G12/G12a     abs_Lambda_dS                  val=2.595999       thr=>0.1                 margin=2496.0%  
+  G12/G12b     homogeneity_cv                 val=0.345568       thr=<0.6                 margin=  42.4%  
+  G12/G12c     radial_ratio                   val=1.211903       thr=>1.0                 margin=  21.2%  
+  G12/G12d     powerlaw_slope                 val=-0.139654      thr=<-0.03               margin= 365.5%  
   G13/G13a     stability_ratio                val=1.000000       thr=≤1.5                 margin=   n/a%  
-  G13/G13b     E_cov_drift                    val=7.356327e-04   thr=<0.02                margin=  96.3%  
-  G13/G13c     speed_reduction                val=0.125288       thr=>0.05                margin= 150.6%  
-  G13/G13d     time_reversal_err              val=9.540979e-15   thr=<0.0001              margin= 100.0%  
-  G14/G14a     E_flat_drift                   val=0.070678       thr=≥0.01                margin=   n/a%  
-  G14/G14b     E_cov_drift                    val=7.335762e-04   thr=<0.02                margin=  96.3%  
-  G14/G14c     drift_ratio                    val=96.347100      thr=>3.0                 margin=3111.6%  
-  G14/G14d     time_reversal                  val=1.717376e-14   thr=<0.0001              margin= 100.0%  
-  G15/G15a     gamma_dev                      val=0.017696       thr=<0.06                margin=  70.5%  
-  G15/G15b     shapiro_ratio                  val=3.427312       thr=>2.0                 margin=  71.4%  
-  G15/G15b-v2  shapiro_ratio_v2               val=14.264256      thr=>2.0                 margin= 613.2%  
+  G13/G13b     E_cov_drift                    val=0.002911       thr=<0.02                margin=  85.4%  
+  G13/G13c     speed_reduction                val=0.157442       thr=>0.05                margin= 214.9%  
+  G13/G13d     time_reversal_err              val=1.023487e-14   thr=<0.0001              margin= 100.0%  
+  G14/G14a     E_flat_drift                   val=0.090595       thr=≥0.01                margin=   n/a%  
+  G14/G14b     E_cov_drift                    val=8.405627e-04   thr=<0.02                margin=  95.8%  
+  G14/G14c     drift_ratio                    val=107.778425     thr=>3.0                 margin=3492.6%  
+  G14/G14d     time_reversal                  val=2.116363e-14   thr=<0.0001              margin= 100.0%  
+  G15/G15a     gamma_dev                      val=0.022587       thr=<0.06                margin=  62.4%  
+  G15/G15b     shapiro_ratio                  val=2.419454       thr=>2.0                 margin=  21.0%  
+  G15/G15b-v2  shapiro_ratio_v2               val=6.481096       thr=>2.0                 margin= 224.1%  
   G15/G15c     beta_PPN                       val=0.500000       thr=(0.3,0.7)            margin=  28.6%  
-  G15/G15d     EP_ratio                       val=0.101833       thr=<0.15                margin=  32.1%  
-  G16/G16a     closure_rel                    val=1.528621e-14   thr=<0.01                margin= 100.0%  
+  G15/G15d     EP_ratio                       val=0.086167       thr=<0.15                margin=  42.6%  
+  G16/G16a     closure_rel                    val=1.191151e-14   thr=<0.01                margin= 100.0%  
   G16/G16b     hybrid_policy                  val=v2(low-signal) thr=if std(T11)/|mean(T11)|>10 use v2 else v1 margin=   n/a%  
-  G16/G16b-v1  r2_G11_T11                     val=0.111766       thr=>0.05                margin= 123.5%  
-  G16/G16b-v2  std_to_abs_mean_T11            val=21.883689      thr=>10.0 => high_signal branch margin=   n/a%  
-  G16/G16b-v2  r2_selected_branch             val=0.355859       thr=>0.05                margin= 611.7%  
-  G16/G16b-v2  abs_pearson_selected_branch    val=0.596539       thr=>0.2                 margin= 198.3%  
-  G16/G16b-v2  abs_spearman_selected_branch   val=0.630723       thr=>0.2                 margin= 215.4%  
+  G16/G16b-v1  r2_G11_T11                     val=0.136126       thr=>0.05                margin= 172.3%  
+  G16/G16b-v2  std_to_abs_mean_T11            val=15.294555      thr=>10.0 => high_signal branch margin=   n/a%  
+  G16/G16b-v2  r2_selected_branch             val=0.373821       thr=>0.05                margin= 647.6%  
+  G16/G16b-v2  abs_pearson_selected_branch    val=0.611409       thr=>0.2                 margin= 205.7%  
+  G16/G16b-v2  abs_spearman_selected_branch   val=0.622898       thr=>0.2                 margin= 211.4%  
   G16/G16b-v2  branch                         val=high_signal    thr=high_signal|full_signal margin=   n/a%  
-  G16/G16c     m_sq_abs                       val=0.023284       thr=>0.005               margin= 365.7%  
+  G16/G16c     m_sq_abs                       val=0.014020       thr=>0.005               margin= 180.4%  
   G16/G16d     hessian_frac_neg               val=1.000000       thr=>0.9                 margin=  11.1%  WARN
-  G17/G17a     spectral_gap                   val=0.010461       thr=>0.01                margin=   4.6%  WARN
-  G17/G17b     propagator_slope               val=-0.010665      thr=<-0.01               margin=   6.6%  WARN
-  G17/G17c     E0_per_mode                    val=0.173630       thr=(0.05,5.0)           margin= 247.3%  
+  G17/G17a     spectral_gap                   val=0.291199       thr=>0.01                margin=2812.0%  
+  G17/G17b     propagator_slope_vs_geodesic   val=-0.013114      thr=<-0.01               margin=  31.1%  
+  G17/G17c     E0_per_mode                    val=0.326746       thr=(0.05,5.0)           margin= 553.5%  
   G17/G17d     heisenberg_dev                 val=0.000000       thr=<0.01                margin= 100.0%  
-  G18/G18a     binary_entropy_SA              val=13.144363      thr=>6.584898            margin=  99.6%  
-  G18/G18b     n_times_mean_IPR               val=3.571908       thr=<5.0                 margin=  28.6%  
-  G18/G18c     cv_G_diag                      val=0.246837       thr=<0.5                 margin=  50.6%  
-  G18/G18d     spectral_dimension_ds          val=1.416952       thr=(1.0,3.5)            margin=  41.7%  
-  G19/G19a     cv_T_Unruh                     val=0.443650       thr=>0.05                margin= 787.3%  
-  G19/G19b     E_MB_over_E_BE                 val=1007.089461    thr=>2.0                 margin=50254.5%  
-  G19/G19c     E_BE_2T_ratio                  val=44.652123      thr=>3.0                 margin=1388.4%  
-  G19/G19d     dG_thermal_slope               val=-2.144258e-05  thr=<-1e-05              margin= 114.4%  
+  G18/G18a     binary_entropy_SA              val=13.130097      thr=>6.584898            margin=  99.4%  
+  G18/G18b     n_times_mean_IPR               val=3.962257       thr=<5.0                 margin=  20.8%  
+  G18/G18c     cv_G_diag                      val=0.258589       thr=<0.5                 margin=  48.3%  
+  G18/G18d     spectral_dimension_ds          val=1.283920       thr=(1.0,3.5)            margin=  28.4%  
+  G19/G19a     cv_T_Unruh                     val=0.438404       thr=>0.05                margin= 776.8%  
+  G19/G19b     E_MB_over_E_BE                 val=778.373368     thr=>2.0                 margin=38818.7%  
+  G19/G19c     E_BE_2T_ratio                  val=39.474272      thr=>3.0                 margin=1215.8%  
+  G19/G19d     dG_thermal_slope               val=-3.849481e-05  thr=<-1e-05              margin= 284.9%  
   G20/G20a     energy_conservation_err        val=0.000000       thr=<0.01                margin= 100.0%  
-  G20/G20b     cv_eps_vac                     val=0.350634       thr=>0.05                margin= 601.3%  
-  G20/G20c     dE0_rel                        val=0.003064       thr=(1e-05,0.3)          margin=30540.0%  
-  G20/G20d     max_self_consistency_residual  val=0.012473       thr=<0.2                 margin=  93.8%  
+  G20/G20b     cv_eps_vac                     val=0.413501       thr=>0.05                margin= 727.0%  
+  G20/G20c     dE0_rel                        val=0.004259       thr=(1e-05,0.3)          margin=42490.0%  
+  G20/G20d     max_self_consistency_residual  val=0.026486       thr=<0.2                 margin=  86.8%  

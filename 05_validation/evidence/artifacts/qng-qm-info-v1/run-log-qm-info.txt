@@ -1,12 +1,12 @@
 ======================================================================
 QNG Quantum Information & Emergent Geometry (v1) — G18
-Run started: 2026-03-08T13:50:10.454955Z
+Run started: 2026-03-20T13:18:44.505129Z
 ======================================================================
 
 Graph: n=280  mean_degree=9.37
 
 [1] Eigenmode computation: 20 modes × 350 iterations
-  Done in 3.22s
+  Done in 4.20s
   μ_0 (zero mode) = 6.615177e-05  (expect ≈ 0)
   μ_1 (gap)       = 0.010782
   μ_max           = 0.269447
@@ -29,7 +29,7 @@ Graph: n=280  mean_degree=9.37
   Threshold: cv < 0.5
 
 [5] G18d — Spectral dimension d_s (random walk: 80 walks × 280 vertices × 12 steps)
-  Done in 0.065s
+  Done in 0.087s
   P(t= 1) = 0.000000
   P(t= 2) = 0.108214
   P(t= 3) = 0.055268
@@ -46,7 +46,7 @@ Graph: n=280  mean_degree=9.37
     slope = -0.641960  d_s = 1.283920  R² = 0.990739
   Threshold: d_s ∈ (1.0, 3.5)
 
-QNG QM Information completed in 3.31s
+QNG QM Information completed in 4.33s
 decision=pass  G18=True(a=True,b=True,c=True,d=True)
   G18a S_A:        13.130097  threshold=>6.584898
   G18b n·IPR:      3.962257  threshold=<5.0

@@ -2,10 +2,10 @@
   "script": "run_qng_ppn_v1.py",
   "gate_id": "G15",
   "decision": "pass",
-  "elapsed_s": 0.041987,
-  "run_utc": "2026-03-07T23:35:06.806843Z",
+  "elapsed_s": 0.032731,
+  "run_utc": "2026-03-20T13:18:37.954144Z",
   "args": {
-    "dataset_id": "DS-006",
+    "dataset_id": "DS-002",
     "seed": 3401,
     "phi_scale": 0.08,
     "out_dir": "/home/user/Qng_Workspace/05_validation/evidence/artifacts/qng-ppn-v1",
@@ -15,10 +15,10 @@
     "debug_topk": 10
   },
   "extras": {
-    "gamma_dev": 0.017696,
-    "shapiro_ratio": 3.427312,
-    "shapiro_ratio_v2": 14.264256,
+    "gamma_dev": 0.022587,
+    "shapiro_ratio": 2.419454,
+    "shapiro_ratio_v2": 6.481096,
     "mean_beta_ppn": 0.5,
-    "ep_ratio": 0.101833
+    "ep_ratio": 0.086167
   }
 }
