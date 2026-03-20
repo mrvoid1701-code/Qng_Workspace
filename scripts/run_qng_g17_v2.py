@@ -219,6 +219,7 @@ def parse_args():
     p.add_argument("--m-eff-sq", type=float, default=M_EFF_SQ)
     p.add_argument("--out-dir",  default=str(DEFAULT_OUT_DIR))
     p.add_argument("--write-artifacts", action=argparse.BooleanOptionalAction, default=True)
+    p.add_argument("--dataset-id", default="DS-002", help="Ignored (Jaccard graph is self-contained)")
     return p.parse_args()
 
 
