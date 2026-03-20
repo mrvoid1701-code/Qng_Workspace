@@ -27,7 +27,9 @@ Gate map for the core GR/QM chain and metric hardening sequence.
 | G21 | Thermodynamic consistency (S≥0, C_V>0, F=U-TS, S(2T)/S(T)>1.5) | `scripts/run_qng_g21_thermo_v1.py` |
 | G22 | Directional isotropy: d_s consistent across spectral axes (partial Lorentz test) | `scripts/run_qng_g22_isotropy_v1.py` |
 | G23 | Klein-Gordon scalar matter field: Yukawa decay + spectral gap on Jaccard graph | `scripts/run_qng_g23_klein_gordon_v1.py` |
-| G24 | Spectral foliation & time direction: Fiedler vector + 3+1 structure | `scripts/run_qng_g24_foliation_v1.py` |
+| G24 | Spectral foliation & time direction: Fiedler vector + 3+1 structure (v1) | `scripts/run_qng_g24_foliation_v1.py` |
+| G24v2 | Temporal gradient foliation: quintile Fiedler → d_s_equatorial=3.07, 3+1 evidence | `scripts/run_qng_g24_v2_foliation_v1.py` |
+| G25 | UV running of spectral dimension: d_s_UV≈3.0 vs d_s_IR≈4.4 (prediction vs CDT/LQG/AS) | `scripts/run_qng_g25_uv_running_v1.py` |
 
 ## Notes
 
