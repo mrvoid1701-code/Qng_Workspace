@@ -1,0 +1,61 @@
+{
+  "audit": "legitimacy-audit-v1",
+  "date": "2026-03-20T21:17:27.289070+00:00",
+  "gate_audited": "G26",
+  "findings": {
+    "formula_independence": {
+      "status": "RED",
+      "v1_prediction": 1068.0,
+      "v1_sigma_fail": 17.8,
+      "v2_prediction": 1294.9,
+      "v2_sigma_pass": 0.169,
+      "formula_changed_after_seeing_data": true,
+      "commit_message": "fix(c-120): correct Silk damping formula \u2014 17.8\u03c3 FAIL \u2192 0.17\u03c3 PASS",
+      "verdict": "NOT a genuine prediction. Formula was adjusted to match Planck after v1 failed."
+    },
+    "mu1_independence": {
+      "mu1_canonical": 0.291198,
+      "mu1_sweep_mean": 0.289663,
+      "mu1_sweep_std": 0.010589,
+      "mu1_theory": 0.292893,
+      "mu1_needed_for_planck": 0.292789,
+      "n_seeds_within_2sigma": 28,
+      "total_seeds": 30,
+      "ell_damp_from_mean": 1297.8,
+      "ell_damp_from_canonical": 1294.4,
+      "document_says_calibrated_on_planck": true
+    },
+    "ds_independence": {
+      "status": "GREEN",
+      "ds_value": 4.082,
+      "ds_mean_50seeds": 4.128,
+      "ds_std_50seeds": 0.125,
+      "n_pass_50seeds": 50,
+      "freeze_date": "2026-03-10",
+      "g26_date": "2026-03-20",
+      "verdict": "d_s is robust and was frozen before G26."
+    },
+    "ell_D_T_independence": {
+      "status": "YELLOW-RED",
+      "ell_D_T": 576.144,
+      "source": "T-052 best-fit on Planck CMB TT data",
+      "fixed_date": "2026-02-16",
+      "g26_date": "2026-03-20",
+      "derived_from_planck": true,
+      "verdict": "ell_D_T is derived from Planck CMB data, not independent."
+    },
+    "global_verdict": {
+      "g26a_is_genuine_prediction": false,
+      "reasons": [
+        "Formula changed after 17.8-sigma failure (HARKing)",
+        "ell_D_T derived from Planck CMB data (partial circularity)",
+        "One document explicitly says mu1 was 'calibrated on Planck'"
+      ],
+      "what_is_solid": [
+        "d_s ~ 4 from Jaccard graph is robust and independent",
+        "K_R universality across scales (G27) may be cleaner"
+      ],
+      "recommendation": "Pre-register formula and parameters before next test."
+    }
+  }
+}
