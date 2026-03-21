@@ -1,0 +1,106 @@
+{
+  "script": "run_qng_qf_box_v1.py",
+  "timestamp": "2026-03-21T17:25:37.631091Z",
+  "params": {
+    "seed": 3401,
+    "n_nodes": 280,
+    "k_init": 8,
+    "k_conn": 8,
+    "k_cl": 0.5,
+    "k_sm": 0.2,
+    "m_box": 100,
+    "out_dir": "/home/user/Qng_Workspace/05_validation/evidence/artifacts/qng-qf-box-v1",
+    "T_B": 0.027144500000000002,
+    "T_EQ": 4.2719645
+  },
+  "sweep": [
+    {
+      "label": "T=0 (clasic)",
+      "T": 0.0,
+      "mean_Sigma": 0.029702970297029705,
+      "mean_var_Sigma": 0.0,
+      "mean_sigma_Sigma": 0.0,
+      "mean_prob_boundary": 1.0,
+      "cv_box": NaN,
+      "cv_total": NaN,
+      "confined": true,
+      "n_iter": 23
+    },
+    {
+      "label": "T_B=0.0271",
+      "T": 0.027144500000000002,
+      "mean_Sigma": 0.47742134067077574,
+      "mean_var_Sigma": 0.029720855676621496,
+      "mean_sigma_Sigma": 0.17239268456658746,
+      "mean_prob_boundary": 0.011747078117124624,
+      "cv_box": 0.014694589118834912,
+      "cv_total": 0.40526649374130524,
+      "confined": true,
+      "n_iter": 8
+    },
+    {
+      "label": "T=0.5",
+      "T": 0.5,
+      "mean_Sigma": 0.49889515152193775,
+      "mean_var_Sigma": 0.03251125916284671,
+      "mean_sigma_Sigma": 0.1803087719587966,
+      "mean_prob_boundary": 0.014259434481954094,
+      "cv_box": 0.0008530524848115406,
+      "cv_total": 0.40500089839226516,
+      "confined": true,
+      "n_iter": 2
+    },
+    {
+      "label": "T=1.0",
+      "T": 1.0,
+      "mean_Sigma": 0.499449361668873,
+      "mean_var_Sigma": 0.03259196204678507,
+      "mean_sigma_Sigma": 0.18053243630364554,
+      "mean_prob_boundary": 0.014350350576449648,
+      "cv_box": 0.00042744053968863033,
+      "cv_total": 0.4050002255621779,
+      "confined": true,
+      "n_iter": 2
+    },
+    {
+      "label": "T=2.0",
+      "T": 2.0,
+      "mean_Sigma": 0.499725127273142,
+      "mean_var_Sigma": 0.03263234078796735,
+      "mean_sigma_Sigma": 0.18064423714717523,
+      "mean_prob_boundary": 0.014396184050286833,
+      "cv_box": 0.0002139507107244644,
+      "cv_total": 0.4050000565122265,
+      "confined": true,
+      "n_iter": 2
+    },
+    {
+      "label": "T_EQ=4.272 (echip.)",
+      "T": 4.2719645,
+      "mean_Sigma": 0.499871424346706,
+      "mean_var_Sigma": 0.03265382310376959,
+      "mean_sigma_Sigma": 0.18070368845645152,
+      "mean_prob_boundary": 0.014420661456713016,
+      "cv_box": 0.00010022264036870455,
+      "cv_total": 0.405000012400713,
+      "confined": true,
+      "n_iter": 1
+    }
+  ],
+  "detailed_T_B": {
+    "mean_Sigma": 0.47742134067077574,
+    "mean_var": 0.029720855676621496,
+    "mean_sigma": 0.1723973772324321,
+    "mean_P_bnd": 0.011747078117124624,
+    "corr_deg_Sm": -0.9952087017949559,
+    "corr_deg_var": -0.9998721203328025,
+    "box_vs_harm_ratio": 0.5474563111610362
+  },
+  "detailed_T_EQ": {
+    "mean_Sigma": 0.499871424346706,
+    "mean_var": 0.03265382310376959,
+    "mean_sigma": 0.18070368868335143,
+    "mean_P_bnd": 0.014420661456713016
+  },
+  "elapsed_s": 10.856
+}
