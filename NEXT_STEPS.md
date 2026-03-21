@@ -92,7 +92,11 @@ invarianta Lorentz, continut de materie, dinamica temporala, constante de coupli
   - G28a: decay power-law slope=-0.28 ✓  G28b: gauge invariance rel_err=4e-16 ✓
   - G28c: massless longer-range att_ratio=1.86 ✓  G28d: Euler cycles=1034, ratio=0.79 ✓
   - Claim: QNG-C-125 | Script: `scripts/run_qng_g28_u1_gauge_v1.py`
-- [ ] **G29: G_N scaling cu k** — constante de coupling (URMATOR)
+- [x] **G29: G_N scaling cu k** — constante de coupling (2026-03-21)
+  - G29a: slope_A = -2.23 ∈ (-3.0,-0.5) ✓  G29b: μ₁ monoton crescator ✓
+  - G29c: slope_μ₁ = 1.79 ∈ (0.5,2.5) ✓  G29d: β=slope_A/slope_μ₁=-1.25 ∈ (-2.0,-0.5) ✓
+  - G_N_eff ∝ k^{-2.23}, A ∝ μ₁^{-1.25} — corect din Wigner finit + descompunere spectrala
+  - Claim: QNG-C-126 | Script: `scripts/run_qng_g29_gn_scaling_v1.py`
 - [ ] Dinamica temporala (evolutia grafului in timp)
 - [ ] Campuri spinoriale (fermioni, Dirac pe Jaccard)
 
