@@ -150,7 +150,7 @@ g† = (2 - √2) × a₀ = 0.5858 × a₀
 unde a₀ = 1.2×10⁻¹⁰ m/s² (scala de accelerație MOND, Anderson et al.).
 
 ```
-g†_theory = 7.029 × 10⁻¹¹ m/s²  (derivat din iso_target = 1/√2)
+g†_theory = 7.029 × 10⁻¹¹ m/s²  (derivat din c_v = √2−1, geometric; iso = 1/√2 e consecință — vezi qng-gdag-derivation-v2.md)
 g†_fit    = 7.180 × 10⁻¹¹ m/s²  (fit pe 175 galaxii SPARC)
 Deviație  = 2.14%
 ```
@@ -158,7 +158,7 @@ Deviație  = 2.14%
 Aceasta înseamnă că formula M8c are în realitate **zero parametri liberi** la
 nivel de teorie:
 - k este determinat de geometria cubică QNG (~2-4% eroare)
-- g† este determinat din iso_target QNG (~2% eroare)
+- g† este determinat din c_v = √2−1 (geometric) via P1: g† = (1−c_v)·a₀ (~2% eroare)
 
 Parametrii k și g† sunt **predicții** ale teoriei, nu ajustări.
 
