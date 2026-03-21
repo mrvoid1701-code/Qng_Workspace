@@ -1,6 +1,6 @@
 {
   "test_id": "mu1-convergence-v1",
-  "timestamp_utc": "2026-03-16T20:51:29.565491+00:00",
+  "timestamp_utc": "2026-03-21T11:42:18.334886+00:00",
   "mu1_theory": 0.2928932188134524,
   "n_seeds": 30,
   "k_init": 8,

@@ -1,5 +1,5 @@
 {
-  "run_utc": "2026-03-20T10:53:02.344648Z",
+  "run_utc": "2026-03-21T11:38:06.186701Z",
   "params": {
     "K_INIT": 8,
     "K_CONN": 8,
@@ -91,5 +91,5 @@
     "model": "d_s(N) = d_s_inf + A/N"
   },
   "verdict": "NECONCLUDENT: d_s(\u221e) = 4.6476 \u2014 extrapolarea iese din intervalul [3.5,4.5]",
-  "total_time_s": 19.8
+  "total_time_s": 20.4
 }
