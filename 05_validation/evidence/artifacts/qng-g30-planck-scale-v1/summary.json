@@ -1,0 +1,102 @@
+{
+  "gate": "G30",
+  "description": "Planck scale matching from A(k=8)",
+  "timestamp": "2026-03-21T14:17:15Z",
+  "params": {
+    "n_nodes": 280,
+    "k_init": 8,
+    "k_conn": 8,
+    "seed": 3401,
+    "n_power_iter": 30,
+    "reg_mu1": 1e-06,
+    "n_sources": 20,
+    "n_bfs_shells": 8,
+    "n_iter_cg_mu1": 600,
+    "n_iter_cg_amp": 400,
+    "reg_amp": 1e-10
+  },
+  "physical_constants": {
+    "planck_length_m": 1.61626e-35,
+    "bohr_radius_m": 5.29177e-11,
+    "r_apple_m": 0.04,
+    "C4_theory": 0.025330295910584444,
+    "d_spectral": 4.0
+  },
+  "thresholds": {
+    "g30a": {
+      "ratio_min": 0.3,
+      "ratio_max": 3.0
+    },
+    "g30b": {
+      "scale_min_lP": 0.1,
+      "scale_max_lP": 10.0
+    },
+    "g30c": {
+      "log_natom_min": 80.0,
+      "log_natom_max": 120.0
+    },
+    "g30d": {
+      "log_ratio_min": 30.0,
+      "log_ratio_max": 45.0
+    }
+  },
+  "measurements": {
+    "n_edges": 1313,
+    "mu1": 2.6757768892069027,
+    "A_k8": 0.018809540400212398,
+    "slope_A": -2.737797422145369,
+    "r2_A": 0.9996181314420565
+  },
+  "derived": {
+    "R_ratio": 0.7425708908656175,
+    "l_qng_m": 1.8756088125046067e-35,
+    "l_qng_lP": 1.1604623095941287,
+    "hops_per_atom": 2.8213612373326396e+24,
+    "log10_N_atom": 97.80183478111404,
+    "log10_N_apple": 133.31567090693514,
+    "log10_ratio_apple_atom": 35.5138361258211
+  },
+  "gates": {
+    "G30a": {
+      "pass": true,
+      "value": 0.7425708908656175,
+      "value_str": "0.742571",
+      "threshold": "(0.3,3.0)",
+      "theory_note": "R=A/C_4=1 in 4D continuum Planck limit; finite-k correction < factor 3"
+    },
+    "G30b": {
+      "pass": true,
+      "l_qng_m": 1.8756088125046067e-35,
+      "l_qng_lP": 1.1604623095941287,
+      "value_str": "1.160462 * l_P",
+      "threshold": "(0.1,10.0) * l_P",
+      "theory_note": "l_QNG = l_P/(2pi*sqrt(A)), central prediction ~1*l_P"
+    },
+    "G30c": {
+      "pass": true,
+      "log10_N_atom": 97.80183478111404,
+      "value_str": "97.801835",
+      "threshold": "(80.0,120.0)",
+      "theory_note": "N_atom = (a0/l_QNG)^4, expected ~10^98 in 4D spacetime"
+    },
+    "G30d": {
+      "pass": true,
+      "log10_ratio": 35.5138361258211,
+      "value_str": "35.513836",
+      "threshold": "(30.0,45.0)",
+      "theory_note": "ratio = (r_apple/a0)^4 independent of l_QNG, pure d_s=4 scaling"
+    }
+  },
+  "overall": {
+    "pass": true,
+    "n_pass": 4,
+    "n_total": 4,
+    "elapsed_s": 0.7344388961791992
+  },
+  "design_notes": {
+    "matching_condition": "A(k=8) * l_QNG^2 = C_4 * l_P^2  =>  l_QNG = l_P / (2*pi*sqrt(A)); C_4 = 1/(4*pi^2) from Green function of -nabla^2 in R^4",
+    "why_d4": "d_s=4 confirmed by G17v2/G18d (d_s=4.08). Volume scaling N ~ r^4 in 4D spacetime.",
+    "why_k8": "k=8 is canonical QNG (same as G17v2/G28/G29). A(k=8) is the reference scale for Planck matching.",
+    "g30d_independence": "log(N_apple/N_atom) = d_s * log(r_apple/a0) is independent of l_QNG! This is a pure test of d_s=4 scaling, not of the matching formula."
+  }
+}
