@@ -1,0 +1,307 @@
+{
+  "script": "run_qng_qf_kmix_scan_v1.py",
+  "timestamp": "2026-03-21T17:02:44.689470Z",
+  "status": "PASS",
+  "params": {
+    "seed": 3401,
+    "n_nodes": 280,
+    "k_cl": 0.5,
+    "k_sm": 0.2,
+    "k_chi": 0.3,
+    "n_steps": 40,
+    "kmix_max": 0.5
+  },
+  "results": {
+    "k_mix_star_analytic": 0.3872983346207417,
+    "k_mix_star_numeric": 0.38729589713973755,
+    "error_abs": 2.4374810041472017e-06,
+    "error_pct": 0.0006293548890506029,
+    "gate_pass": true,
+    "lambda_L_min": 1.1668202867629567e-14,
+    "lambda_L_max": 17.993505983527008,
+    "k_mix_nominal_pct_of_critical": 25.8
+  },
+  "scan": [
+    {
+      "k_mix": 0.0,
+      "omega_min_num": 0.5477225575051661,
+      "omega_min_ana": 0.7071067811865491,
+      "lambda_min_K": 0.3,
+      "stable": true
+    },
+    {
+      "k_mix": 0.012821,
+      "omega_min_num": 0.5469748822277084,
+      "omega_min_ana": 0.7067192616850998,
+      "lambda_min_K": 0.2991815217880155,
+      "stable": true
+    },
+    {
+      "k_mix": 0.025641,
+      "omega_min_num": 0.544761429132776,
+      "omega_min_ana": 0.7055554261338532,
+      "lambda_min_K": 0.29676501467078453,
+      "stable": true
+    },
+    {
+      "k_mix": 0.038462,
+      "omega_min_num": 0.5411640709747539,
+      "omega_min_ana": 0.7036114222570398,
+      "lambda_min_K": 0.29285855171396846,
+      "stable": true
+    },
+    {
+      "k_mix": 0.051282,
+      "omega_min_num": 0.5362997296249901,
+      "omega_min_ana": 0.7008807583231872,
+      "lambda_min_K": 0.2876173999958374,
+      "stable": true
+    },
+    {
+      "k_mix": 0.064103,
+      "omega_min_num": 0.5303000135685113,
+      "omega_min_ana": 0.6973541933037026,
+      "lambda_min_K": 0.2812181043907632,
+      "stable": true
+    },
+    {
+      "k_mix": 0.076923,
+      "omega_min_num": 0.5232941556446707,
+      "omega_min_ana": 0.6930195770122878,
+      "lambda_min_K": 0.2738367733318689,
+      "stable": true
+    },
+    {
+      "k_mix": 0.089744,
+      "omega_min_num": 0.5153980537203506,
+      "omega_min_ana": 0.6878616336152084,
+      "lambda_min_K": 0.2656351537787255,
+      "stable": true
+    },
+    {
+      "k_mix": 0.102564,
+      "omega_min_num": 0.5067090631034147,
+      "omega_min_ana": 0.6818616791921486,
+      "lambda_min_K": 0.2567540746311403,
+      "stable": true
+    },
+    {
+      "k_mix": 0.115385,
+      "omega_min_num": 0.4973047878214741,
+      "omega_min_ana": 0.6749972605686265,
+      "lambda_min_K": 0.24731205199016137,
+      "stable": true
+    },
+    {
+      "k_mix": 0.128205,
+      "omega_min_num": 0.4872440670727154,
+      "omega_min_ana": 0.6672416980922464,
+      "lambda_min_K": 0.23740678089756076,
+      "stable": true
+    },
+    {
+      "k_mix": 0.141026,
+      "omega_min_num": 0.47656884959008006,
+      "omega_min_ana": 0.6585635088921638,
+      "lambda_min_K": 0.22711786839961237,
+      "stable": true
+    },
+    {
+      "k_mix": 0.153846,
+      "omega_min_num": 0.46530617807606217,
+      "omega_min_ana": 0.6489256787099384,
+      "lambda_min_K": 0.2165098393557521,
+      "stable": true
+    },
+    {
+      "k_mix": 0.166667,
+      "omega_min_num": 0.4534698852608549,
+      "omega_min_ana": 0.6382847385042273,
+      "lambda_min_K": 0.20563493683849293,
+      "stable": true
+    },
+    {
+      "k_mix": 0.179487,
+      "omega_min_num": 0.4410618233592353,
+      "omega_min_ana": 0.6265895849749864,
+      "lambda_min_K": 0.1945355320249733,
+      "stable": true
+    },
+    {
+      "k_mix": 0.192308,
+      "omega_min_num": 0.4280725530955797,
+      "omega_min_ana": 0.6137799591582492,
+      "lambda_min_K": 0.18324611071376787,
+      "stable": true
+    },
+    {
+      "k_mix": 0.205128,
+      "omega_min_num": 0.41448144927713126,
+      "omega_min_ana": 0.5997844597877966,
+      "lambda_min_K": 0.17179487179487116,
+      "stable": true
+    },
+    {
+      "k_mix": 0.217949,
+      "omega_min_num": 0.4002561637254804,
+      "omega_min_ana": 0.5845179106024351,
+      "lambda_min_K": 0.16020499660023857,
+      "stable": true
+    },
+    {
+      "k_mix": 0.230769,
+      "omega_min_num": 0.38535133371486013,
+      "omega_min_ana": 0.567877810008979,
+      "lambda_min_K": 0.1484956503958215,
+      "stable": true
+    },
+    {
+      "k_mix": 0.24359,
+      "omega_min_num": 0.369706330513471,
+      "omega_min_ana": 0.5497394437909765,
+      "lambda_min_K": 0.13668277082173588,
+      "stable": true
+    },
+    {
+      "k_mix": 0.25641,
+      "omega_min_num": 0.35324168637085673,
+      "omega_min_ana": 0.529948992538047,
+      "lambda_min_K": 0.12477968899012673,
+      "stable": true
+    },
+    {
+      "k_mix": 0.269231,
+      "omega_min_num": 0.33585356922337906,
+      "omega_min_ana": 0.5083135282461307,
+      "lambda_min_K": 0.11279761996008306,
+      "stable": true
+    },
+    {
+      "k_mix": 0.282051,
+      "omega_min_num": 0.31740518501865184,
+      "omega_min_ana": 0.4845859892500292,
+      "lambda_min_K": 0.10074605147672461,
+      "stable": true
+    },
+    {
+      "k_mix": 0.294872,
+      "omega_min_num": 0.2977130387448384,
+      "omega_min_ana": 0.45844165237278495,
+      "lambda_min_K": 0.08863305343868566,
+      "stable": true
+    },
+    {
+      "k_mix": 0.307692,
+      "omega_min_num": 0.27652400522272325,
+      "omega_min_ana": 0.42943933908831616,
+      "lambda_min_K": 0.07646552546441668,
+      "stable": true
+    },
+    {
+      "k_mix": 0.320513,
+      "omega_min_num": 0.2534746455963772,
+      "omega_min_ana": 0.39695311178575055,
+      "lambda_min_K": 0.06424939596020902,
+      "stable": true
+    },
+    {
+      "k_mix": 0.333333,
+      "omega_min_num": 0.22801268174449427,
+      "omega_min_ana": 0.36004114991155106,
+      "lambda_min_K": 0.05198978303631603,
+      "stable": true
+    },
+    {
+      "k_mix": 0.346154,
+      "omega_min_num": 0.19922631671772434,
+      "omega_min_ana": 0.3171619712013622,
+      "lambda_min_K": 0.03969112527291101,
+      "stable": true
+    },
+    {
+      "k_mix": 0.358974,
+      "omega_min_num": 0.1654003885857275,
+      "omega_min_ana": 0.26543931885931266,
+      "lambda_min_K": 0.027357288544309653,
+      "stable": true
+    },
+    {
+      "k_mix": 0.371795,
+      "omega_min_num": 0.12244040891780993,
+      "omega_min_ana": 0.19806205514968886,
+      "lambda_min_K": 0.014991653735960508,
+      "stable": true
+    },
+    {
+      "k_mix": 0.384615,
+      "omega_min_num": 0.05096262489026042,
+      "omega_min_ana": 0.08308641921037109,
+      "lambda_min_K": 0.002597189135705391,
+      "stable": true
+    },
+    {
+      "k_mix": 0.397436,
+      "omega_min_num": 0.0,
+      "omega_min_ana": 0.0,
+      "lambda_min_K": -0.009823489530145437,
+      "stable": false
+    },
+    {
+      "k_mix": 0.410256,
+      "omega_min_num": 0.0,
+      "omega_min_ana": 0.0,
+      "lambda_min_K": -0.02226806907044097,
+      "stable": false
+    },
+    {
+      "k_mix": 0.423077,
+      "omega_min_num": 0.0,
+      "omega_min_ana": 0.0,
+      "lambda_min_K": -0.03473449695214386,
+      "stable": false
+    },
+    {
+      "k_mix": 0.435897,
+      "omega_min_num": 0.0,
+      "omega_min_ana": 0.0,
+      "lambda_min_K": -0.04722094609036119,
+      "stable": false
+    },
+    {
+      "k_mix": 0.448718,
+      "omega_min_num": 0.0,
+      "omega_min_ana": 0.0,
+      "lambda_min_K": -0.05972578511722028,
+      "stable": false
+    },
+    {
+      "k_mix": 0.461538,
+      "omega_min_num": 0.0,
+      "omega_min_ana": 0.0,
+      "lambda_min_K": -0.07224755317448461,
+      "stable": false
+    },
+    {
+      "k_mix": 0.474359,
+      "omega_min_num": 0.0,
+      "omega_min_ana": 0.0,
+      "lambda_min_K": -0.08478493845713761,
+      "stable": false
+    },
+    {
+      "k_mix": 0.487179,
+      "omega_min_num": 0.0,
+      "omega_min_ana": 0.0,
+      "lambda_min_K": -0.09733675988052726,
+      "stable": false
+    },
+    {
+      "k_mix": 0.5,
+      "omega_min_num": 0.0,
+      "omega_min_ana": 0.0,
+      "lambda_min_K": -0.10990195135928091,
+      "stable": false
+    }
+  ],
+  "elapsed_s": 0.735
+}
