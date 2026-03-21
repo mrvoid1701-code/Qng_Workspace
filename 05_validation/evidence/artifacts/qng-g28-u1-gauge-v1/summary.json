@@ -1,54 +1,58 @@
 {
   "gate": "G28",
   "version": "v1",
-  "timestamp": "2026-03-21T07:11:23.637077Z",
+  "timestamp": "2026-03-21T07:35:02.720117Z",
   "params": {
     "n_nodes": 280,
     "k_init": 8,
     "k_conn": 8,
-    "seed": 3401,
-    "m_sq_test": 0.3,
+    "seed": 7777,
+    "m_sq_heavy": 3.0,
     "n_sources": 20,
-    "n_iter_cg": 300,
-    "n_bfs_shells": 8,
-    "n_loops_gauge": 200,
-    "loop_length": 6
+    "n_iter_cg": 400
+  },
+  "design_notes": {
+    "G28a_source": "zero-sum dipole (principled for m=0 on finite graph)",
+    "G28a_theory": "G_dipole(r) ~ r^{-(d_s-1)}, slope = -(d_s-1) = -3.082",
+    "G28b_source": "4-cycles found via common-neighbor search (not random walk)",
+    "G28c_mass_heavy": "m2=3.0, xi=1/sqrt(3.0)=0.577 hops (screening complete within 1 hop, xi<<1)",
+    "G28d_Euler": "n_cycles = n_edges - n_nodes + 1 (exact topological identity)"
   },
   "graph": {
     "n_nodes": 280,
-    "n_edges": 1313,
-    "n_cycles": 1034,
-    "cycle_ratio": 0.78751
+    "n_edges": 1302,
+    "n_cycles_Euler": 1023,
+    "cycle_ratio": 0.785714
   },
   "g28a": {
-    "description": "Photon potential power-law decay (slope log-log)",
-    "slope_G0": -0.281244,
-    "r2_G0": 0.892372,
+    "description": "Dipole propagator power-law slope (theory: -(d_s-1) = -3.082)",
+    "slope_G0": -2.567454,
+    "r2_G0": 0.999997,
     "threshold_min": -4.0,
-    "threshold_max": -0.05,
+    "threshold_max": -1.5,
     "result": "PASS"
   },
   "g28b": {
     "description": "U(1) gauge invariance \u2014 holonomy unchanged under A\u2192A+d\u03c6",
+    "n_4cycles_tested": 100,
     "max_delta_F": 0.0,
-    "max_F_ref": 4.453896,
-    "gauge_err_rel": 0.0,
-    "n_loops_tested": 27,
-    "threshold": 0.001,
+    "rel_err": 0.0,
+    "threshold": 1e-08,
     "result": "PASS"
   },
   "g28c": {
-    "description": "Massless photon longer-range: normalized attenuation ratio G0/Gm",
-    "att_G0": 0.630304,
-    "att_Gm": 0.33828217,
-    "att_ratio": 1.8633,
-    "threshold": 1.5,
+    "description": "Massless dipole decays slower than heavy Yukawa dipole",
+    "slope_G0": -2.567454,
+    "slope_Gheavy": -3.492171,
+    "slope_margin": 0.924717,
+    "m_sq_heavy": 3.0,
+    "threshold_margin": 0.5,
     "result": "PASS"
   },
   "g28d": {
-    "description": "Euler gauge structure \u2014 independent cycles exist",
-    "n_cycles": 1034,
-    "cycle_ratio": 0.78751,
+    "description": "Euler gauge DOF structure",
+    "n_cycles": 1023,
+    "cycle_ratio": 0.785714,
     "threshold_min": 0.3,
     "threshold_max": 0.9,
     "result": "PASS"
@@ -60,5 +64,5 @@
     "g28d": "PASS"
   },
   "all_pass": true,
-  "elapsed_s": 0.47
+  "elapsed_s": 0.39
 }
