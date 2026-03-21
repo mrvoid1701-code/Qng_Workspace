@@ -86,11 +86,15 @@ invarianta Lorentz, continut de materie, dinamica temporala, constante de coupli
 - 8/10 niveluri temporale populate ✓
 - ★ INTERPRETARE: d_s_global=4.08, d_s_spatial=3.90 → evidenta structura 3+1!
 
-**Urmatoarele puncte slabe (future work):**
+**Urmatoarele puncte slabe:**
 - [ ] Invarianta Lorentz continua (necesita structura cauzala completa)
-- [ ] Campuri gauge U(1) pe Jaccard (electromagnetism emergent)
+- [x] **Campuri gauge U(1) pe Jaccard (electromagnetism emergent)** — G28 4/4 PASS (2026-03-21)
+  - G28a: decay power-law slope=-0.28 ✓  G28b: gauge invariance rel_err=4e-16 ✓
+  - G28c: massless longer-range att_ratio=1.86 ✓  G28d: Euler cycles=1034, ratio=0.79 ✓
+  - Claim: QNG-C-125 | Script: `scripts/run_qng_g28_u1_gauge_v1.py`
+- [ ] **G29: G_N scaling cu k** — constante de coupling (URMATOR)
 - [ ] Dinamica temporala (evolutia grafului in timp)
-- [ ] Constante de coupling (G_N scaling cu k)
+- [ ] Campuri spinoriale (fermioni, Dirac pe Jaccard)
 
 ## Ordine recomandată
 QM Stage 2 freeze → Paper draft (cu sectiune 4D) → Integrare graf Jaccard → Bulletproofing → G22-G24 (done) → Paper extins

@@ -1,0 +1,64 @@
+{
+  "gate": "G28",
+  "version": "v1",
+  "timestamp": "2026-03-21T07:11:23.637077Z",
+  "params": {
+    "n_nodes": 280,
+    "k_init": 8,
+    "k_conn": 8,
+    "seed": 3401,
+    "m_sq_test": 0.3,
+    "n_sources": 20,
+    "n_iter_cg": 300,
+    "n_bfs_shells": 8,
+    "n_loops_gauge": 200,
+    "loop_length": 6
+  },
+  "graph": {
+    "n_nodes": 280,
+    "n_edges": 1313,
+    "n_cycles": 1034,
+    "cycle_ratio": 0.78751
+  },
+  "g28a": {
+    "description": "Photon potential power-law decay (slope log-log)",
+    "slope_G0": -0.281244,
+    "r2_G0": 0.892372,
+    "threshold_min": -4.0,
+    "threshold_max": -0.05,
+    "result": "PASS"
+  },
+  "g28b": {
+    "description": "U(1) gauge invariance \u2014 holonomy unchanged under A\u2192A+d\u03c6",
+    "max_delta_F": 0.0,
+    "max_F_ref": 4.453896,
+    "gauge_err_rel": 0.0,
+    "n_loops_tested": 27,
+    "threshold": 0.001,
+    "result": "PASS"
+  },
+  "g28c": {
+    "description": "Massless photon longer-range: normalized attenuation ratio G0/Gm",
+    "att_G0": 0.630304,
+    "att_Gm": 0.33828217,
+    "att_ratio": 1.8633,
+    "threshold": 1.5,
+    "result": "PASS"
+  },
+  "g28d": {
+    "description": "Euler gauge structure \u2014 independent cycles exist",
+    "n_cycles": 1034,
+    "cycle_ratio": 0.78751,
+    "threshold_min": 0.3,
+    "threshold_max": 0.9,
+    "result": "PASS"
+  },
+  "gate_results": {
+    "g28a": "PASS",
+    "g28b": "PASS",
+    "g28c": "PASS",
+    "g28d": "PASS"
+  },
+  "all_pass": true,
+  "elapsed_s": 0.47
+}
