@@ -1,0 +1,74 @@
+{
+  "script": "run_qng_q_fields_v1.py",
+  "timestamp": "2026-03-21T16:53:45.760773Z",
+  "status": "PASS",
+  "params": {
+    "seed": 3401,
+    "n_nodes": 280,
+    "k_init": 8,
+    "k_conn": 8,
+    "k_cl": 0.5,
+    "k_sm": 0.2,
+    "k_chi": 0.3,
+    "k_mix": 0.1,
+    "hbar": 1.0
+  },
+  "observables": {
+    "omega_min": 0.508506286846771,
+    "omega_max": 2.025174524242196,
+    "n_positive_modes": 560,
+    "n_zero_modes": 0,
+    "E_0_total": 292.0119422264548,
+    "E_0_per_mode": 0.521449896832955,
+    "zp_sigma_mean": 0.33425707791211323,
+    "zp_sigma_std": 0.023274455193675776,
+    "zp_chi_mean": 0.9193533536631648,
+    "zp_chi_std": 0.0008117655965013076,
+    "cross_corr_mean": -0.030410839265866723,
+    "cross_corr_std": 0.0035338772784359648,
+    "cv_classical": 0.405,
+    "cv_quantum": 0.06963040345788989,
+    "cv_ratio": 0.17192692211824662
+  },
+  "gates": {
+    "Q1_quantum_stability": {
+      "pass": true,
+      "omega_min": 0.508506286846771,
+      "min_eigval_K": 0.2585786437626905,
+      "threshold": 1e-06,
+      "note": "K pozitiv definit \u27fa sistem cuantic stabil"
+    },
+    "Q2_spectral_gap": {
+      "pass": true,
+      "omega_min": 0.508506286846771,
+      "omega_max": 2.025174524242196,
+      "threshold": 0.01
+    },
+    "Q3_zp_bounded": {
+      "pass": true,
+      "zp_sigma_max": 0.3584387588621119,
+      "zp_sigma_mean": 0.33425707791211323,
+      "zp_sigma_std": 0.023274455193675776,
+      "threshold_max": 10.0
+    },
+    "Q4_sigma_chi_entanglement": {
+      "pass": true,
+      "cross_corr_mean": -0.030410839265866723,
+      "cross_corr_std": 0.0035338772784359648,
+      "k_mix": 0.1,
+      "expected_sign": "negativ (k_mix>0, omega_Sigma>omega_chi)",
+      "note": "k_mix \u2260 0 genereaz\u0103 ANTICORELARE cuantic\u0103 \u03a3-\u03c7 (modul jos are componente \u03a3 \u0219i \u03c7 de semne opuse)"
+    },
+    "Q5_cv_quantum": {
+      "pass": true,
+      "cv_classical": 0.405,
+      "cv_quantum": 0.06963040345788989,
+      "cv_ratio": 0.17192692211824662,
+      "threshold_lo": 0.001,
+      "threshold_hi": 1.0,
+      "note": "cv_q = \u03c3(\u27e8(\u03b4\u03a3_i)\u00b2\u27e9) / \u03bc(\u27e8(\u03b4\u03a3_i)\u00b2\u27e9); fluctua\u021biile c\u00e2mpului \u03a3 ar trebui mai uniforme dec\u00e2t \u03b5_vac (cv_ratio < 1)"
+    }
+  },
+  "overall_pass": true,
+  "elapsed_s": 0.163
+}
