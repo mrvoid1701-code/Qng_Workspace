@@ -1,0 +1,103 @@
+{
+  "script": "run_qng_qf_hbar_anchor_v1.py",
+  "timestamp": "2026-03-21T17:07:55.988974Z",
+  "params": {
+    "seed": 3401,
+    "n_nodes": 280,
+    "k_cl": 0.5,
+    "k_sm": 0.2,
+    "k_chi": 0.3,
+    "k_mix": 0.1,
+    "m_eff_sq": 0.014,
+    "eps_pert": 0.01
+  },
+  "graph_spectral": {
+    "lambda_fiedler": 3.110445449382749,
+    "lambda_max": 17.993505983527008,
+    "lambda_mean": 9.657142857142857,
+    "Omega_min_G17": 0.11832159566204163,
+    "Omega_max_G17": 4.243525183562248,
+    "Omega_mean_G17": 3.048369940564144,
+    "E0_graf_per_mode": 1.524184970282072
+  },
+  "qfields": {
+    "omega_min": 0.508506286846771,
+    "omega_max": 2.025174524242196,
+    "mean_omega": 1.04289979366591,
+    "E0_field_per_mode": 1.04289979366591,
+    "zp_mean_h1": 0.33425707791211323,
+    "cv_quantum": 0.06963040345788989
+  },
+  "invariant_result": {
+    "cv_quantum": 0.06963040345788989,
+    "cv_classic": 0.405,
+    "cv_total": 0.4109420799646935,
+    "delta_cv": 0.005942079964693481,
+    "delta_cv_pct": 1.4671802381959211,
+    "pioneer_correction_independent_of_hbar": true
+  },
+  "anchoring_conditions": {
+    "A_equipartition": {
+      "label": "Echipari\u021bie energetic\u0103",
+      "formula": "\u0127_f = mean(\u03a9_G17) / mean(\u03c9_K)",
+      "hbar_field": 2.922974919621742,
+      "note": "mean(\u03a9_G17)=3.0484, mean(\u03c9_K)=1.0429",
+      "zp_sigma_phys": 0.9770250554431574,
+      "zp_std_phys": 0.06803064879897429,
+      "cv_quantum": 0.06963040345788989,
+      "cv_total": 0.4109420799646935,
+      "delta_cv": 0.005942079964693481,
+      "delta_cv_pct": 1.4671802381959211,
+      "E0_per_mode_phys": 3.048369940564144,
+      "valid_perturbativity": false,
+      "valid": true
+    },
+    "B_gap_match": {
+      "label": "Gap spectral egal (G17 \u2194 K)",
+      "formula": "\u0127_f = \u03a9_min_G17 / \u03c9_min_K",
+      "hbar_field": 0.23268462696056236,
+      "note": "\u03a9_min_G17=0.1183, \u03c9_min_K=0.5085",
+      "zp_sigma_phys": 0.0777764834829077,
+      "zp_std_phys": 0.005415607924450771,
+      "cv_quantum": 0.06963040345788989,
+      "cv_total": 0.4109420799646935,
+      "delta_cv": 0.005942079964693481,
+      "delta_cv_pct": 1.4671802381959211,
+      "E0_per_mode_phys": 0.2426667494463997,
+      "valid_perturbativity": true,
+      "valid": true
+    },
+    "C_perturbativity": {
+      "label": "Perturbativitate",
+      "formula": "\u0127_f = \u03b5_pert / \u27e8\u03b4\u03a3\u00b2\u27e9|_{\u0127=1}, \u03b5=0.01",
+      "hbar_field": 0.029917092743296573,
+      "note": "\u27e8\u03b4\u03a3\u00b2\u27e9|{\u0127=1}=0.334257",
+      "zp_sigma_phys": 0.01,
+      "zp_std_phys": 0.0006963040345788988,
+      "cv_quantum": 0.06963040345788989,
+      "cv_total": 0.4109420799646935,
+      "delta_cv": 0.005942079964693481,
+      "delta_cv_pct": 1.4671802381959211,
+      "E0_per_mode_phys": 0.031200529849067887,
+      "valid_perturbativity": true,
+      "valid": true
+    },
+    "D_single_scale": {
+      "label": "Scal\u0103 unic\u0103",
+      "formula": "\u0127_f = \u0127_graf = 1",
+      "hbar_field": 1.0,
+      "note": "ipoteza cea mai simpl\u0103; \u0127_field = \u0127_graf",
+      "zp_sigma_phys": 0.33425707791211323,
+      "zp_std_phys": 0.023274455193675776,
+      "cv_quantum": 0.06963040345788989,
+      "cv_total": 0.4109420799646935,
+      "delta_cv": 0.005942079964693481,
+      "delta_cv_pct": 1.4671802381959211,
+      "E0_per_mode_phys": 1.04289979366591,
+      "valid_perturbativity": false,
+      "valid": true
+    }
+  },
+  "hbar_field_max": 0.7479273185824143,
+  "elapsed_s": 0.167
+}
