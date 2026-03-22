@@ -1,7 +1,7 @@
 {
   "gate": "G26",
   "title": "CMB Planck Observational Gate",
-  "date": "2026-03-20T20:51:19.368160+00:00",
+  "date": "2026-03-22T14:09:48.458987+00:00",
   "inputs": {
     "mu1": 0.291,
     "d_s": 4.082,

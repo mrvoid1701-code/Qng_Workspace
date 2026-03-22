@@ -1,6 +1,6 @@
 # QNG-G26: CMB Planck Observational Gate
 
-**Data:** 2026-03-20
+**Data:** 2026-03-22
 **Verdict:** PASS
 
 ## Sub-gates
