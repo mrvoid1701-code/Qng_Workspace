@@ -144,6 +144,10 @@ GROUPS: dict[str, list[str]] = {
         "run_qng_g41_bao_peak_v1.py",      # G41 BAO peak 162.75±8.4 Mpc vs QNG 150
         "run_qng_g42_schrodinger_v1.py",   # G42 Schrödinger emergent: Born, unitaritate
         "run_qng_g44_null_model_v1.py",    # G44 Null model: Jaccard vs ER/BA/RR >5σ
+        "run_qng_g45_graph_battery_v1.py", # G45 Battery: Jaccard unic cu d_s+γ+cv+μ₁+BAO
+        "run_qng_g46_bh_entropy_v1.py",    # G46 BH entropie: S_EE area law α=0.999≈1.0
+        "run_qng_g47_gamma_convergence_v1.py",  # G47 Convergență γ(N_modes): 2/4 PASS
+        "run_qng_g48_propagator_anatomy_v1.py", # G48 Anatomia propagatorului: artefact r=5, γ_robust=1.78
     ],
 }
 
