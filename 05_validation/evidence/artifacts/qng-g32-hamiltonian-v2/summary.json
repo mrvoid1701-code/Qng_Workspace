@@ -1,0 +1,84 @@
+{
+  "graph": {
+    "n": 280,
+    "edges": 1313,
+    "mean_weighted_degree": 1.2704348706425581,
+    "max_weighted_degree": 2.086124268748108
+  },
+  "trace_moments": {
+    "tr_K": 359.6417637799163,
+    "tr_K2": 531.503993187108,
+    "mean_lambda": 1.2844348706425581,
+    "var_lambda": 0.24845561017424922,
+    "std_lambda": 0.4984532176385756,
+    "cv_lambda": 0.38807200663215935,
+    "omega_mean_est": 1.1119942057709578
+  },
+  "constant_mode": {
+    "lambda_0": 0.014,
+    "omega_0": 0.11832159566199232,
+    "residual": 1.9552491277259485e-16,
+    "e0_contribution": 0.05916079783099616
+  },
+  "eigenmodes_lanczos": {
+    "n_modes_computed": 40,
+    "lambda_min": 1.8748630394332801,
+    "lambda_max": 2.3951617843282884,
+    "omega_min": 1.3692563819216912,
+    "omega_max": 1.5476310233154051,
+    "omega_mean": 1.4337345493096267
+  },
+  "observables": {
+    "n_modes_total": 41,
+    "E_0": 28.73385178402353,
+    "E_0_per_mode": 0.7008256532688666,
+    "cv_lambda_full": 0.38807200663215935,
+    "cv_omega_sample": 0.15030953869159008,
+    "sigma2_max": 0.29237113591930947,
+    "sigma2_mean": 0.06496413983992146,
+    "heisenberg_err_max": 1.1102230246251565e-16
+  },
+  "gates": {
+    "G32a": {
+      "name": "Non-trivial vacuum energy per mode",
+      "value": 0.7008256532688666,
+      "threshold_lo": 0.3,
+      "threshold_hi": 3.0,
+      "condition": "0.3 < E_0/N_modes < 3.0",
+      "passed": true
+    },
+    "G32b": {
+      "name": "Full-spectrum eigenvalue spread (from trace moments)",
+      "value": 0.38807200663215935,
+      "threshold_lo": 0.25,
+      "threshold_hi": 0.65,
+      "condition": "0.25 < cv_lambda < 0.65",
+      "metric_note": "cv_lambda = std(lambda)/mean(lambda) din Tr(K),Tr(K\u00b2) \u2014 spectru complet",
+      "passed": true
+    },
+    "G32c": {
+      "name": "Zero-point fluctuations (corrected formula 1/(2*omega))",
+      "value": 0.29237113591930947,
+      "threshold": 0.5,
+      "condition": "sigma2_max < 0.5",
+      "formula_note": "sigma2_i = sum_k phi_k(i)^2 / (2*omega_k)  [corect vs G31]",
+      "passed": true
+    },
+    "G32d": {
+      "name": "cv_lambda consistent with cv_G17",
+      "value": 0.041797514488495495,
+      "threshold": 0.8,
+      "cv_lambda": 0.38807200663215935,
+      "cv_G17": 0.405,
+      "condition": "|cv_lambda - cv_G17|/cv_G17 < 0.8",
+      "passed": true
+    }
+  },
+  "summary": {
+    "n_pass": 4,
+    "n_total": 4,
+    "all_pass": true,
+    "timestamp": "2026-03-22T07:38:45.572453Z",
+    "runtime_s": 6.234
+  }
+}

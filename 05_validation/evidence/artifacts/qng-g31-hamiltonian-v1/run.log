@@ -1,0 +1,81 @@
+======================================================================
+QNG G31 — Hamiltonian Cuantic Natural (v1)
+Run started: 2026-03-21T18:30:35.104700Z
+======================================================================
+
+Derivare din principii prime — nimic ad-hoc:
+  Actiune -> Lagrangian -> Hamiltonian -> cuantificare canonica
+  K = Laplacian Jaccard ponderat + m²*I  (hbar=1 in unitati naturale)
+  m²_eff = 0.014  (mostenit din G17, singurul parametru extern)
+
+Graf: n=280  k_init=8  k_conn=8  seed=3401
+Moduri: 20  Iteratii: 100
+
+[0] Construire graf Jaccard ponderat
+  Construit in 0.10s
+  Noduri: 280  |  Muchii: 1313
+  Grad ponderat mediu: 1.2704  |  Max: 2.0861
+
+  Diferenta cheie fata de G17/G20:
+    G17/G20: adj = list[list[int]] — ponderi Jaccard aruncate
+    G31:     adj_w = list[list[(j, J_ij)]] — ponderi pastrate explicit
+
+[1] Eigenmode-uri K_m²  (20 moduri × 100 iter)
+  K_m² = Laplacian_Jaccard_ponderat + m²*I
+  Toate eigenvalori >= m² (K pozitiv definit)
+  Calculat in 0.79s  |  20 moduri
+  lambda_min = 2.033542  ->  omega_min = 1.426023
+  lambda_max = 2.376862  ->  omega_max = 1.541708
+  omega_mean = 1.471906
+
+[2] Observable cuantice (starea fundamentala |Psi_0>)
+  E_0          = 14.719057  (zero-point energy totala, 20 moduri)
+  E_0 / N_modes= 0.735953  (energie per mod)
+  cv_natural   = 0.022578  (std(omega)/mean(omega) din spectrul K)
+  cv_G17       = 0.405  (Porter-Thomas din eigenmodes RW)
+  |cv_nat - cv_G17|/cv_G17 = 0.944251
+  sigma²_max   = 0.166913  (fluctuatii max per nod)
+  sigma²_mean  = 0.016508  (fluctuatii medii per nod)
+  Heisenberg   = 0.500000  (trebuie 0.5 exact)
+  Heisenberg_err = 1.110223e-16  (eroare maxima per mod)
+
+[3] Interpretare fizica
+  hbar = 1 (natural: Sigma in [0,1], K dimensionless, actiune dimensionless)
+  omega_min = sqrt(m²) = 0.118322  (masa de repaus — gap spectral)
+  Laplacian ponderat vs RW neponderat:
+    G17 omega_k ~ sqrt(mu_RW + m²)  cu mu_RW in [0, 2] (neponderat)
+    G31 omega_a ~ sqrt(lambda_L + m²) cu lambda_L in [m², lambda_max(K)]
+    Diferenta: G31 foloseste ponderile J_ij explicit — mai mult fizic
+
+======================================================================
+GATES G31
+======================================================================
+
+G31a — Vacuum energy per mod: 0.735953
+       Prag: (0.02, 5.0)  ->  PASS
+
+G31b — cv_natural: 0.022578
+       Prag: (0.2, 0.7)  ->  FAIL
+
+G31c — Confinement sigma²_max: 0.166913
+       Prag: < 0.0625  ->  FAIL
+
+G31d — Consistenta cv: |0.022578 - 0.405| / 0.405 = 0.944251
+       Prag: < 0.5  ->  FAIL
+
+======================================================================
+SUMAR: 1/4 gate-uri trecute
+G31a [PASS]  G31b [FAIL]  G31c [FAIL]  G31d [FAIL]
+======================================================================
+
+*** UNELE GATE-URI PICATE ***
+  G31b: cv_natural in afara intervalului fizic [0.20, 0.70]
+  G31c: fluctuatii zero-point depasesc confinementul in [0,1]
+  G31d: cv_natural inconsistent cu cv_G17 (diferenta > 50%)
+
+Timp total: 0.89s
+
+Artefacte scrise in: /home/user/Qng_Workspace/05_validation/evidence/artifacts/qng-g31-hamiltonian-v1
+  summary.json
+  eigenmodes.csv
+  node_fluctuations.csv

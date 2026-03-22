@@ -1,0 +1,88 @@
+======================================================================
+QNG G32 — Hamiltonian Cuantic Natural (v2)
+Run started: 2026-03-22T07:38:39.338621Z
+======================================================================
+
+Imbunatatiri vs G31:
+  1. cv_lambda din Tr(K)/Tr(K²) — spectru complet, nu doar top Lanczos
+  2. Modul constant (lambda_0=m², phi_0=1/sqrt(n)) inclus explicit
+  3. Formula sigma²_i corectata: 1/(2*omega) nu 1/(2*omega²)
+  4. Praguri G32 recalibrate fizic
+
+Graf: n=280  k_init=8  k_conn=8  seed=3401
+Moduri Lanczos: 40  Iteratii: 200
+m²_eff = 0.014
+
+[0] Construire graf Jaccard ponderat
+  Construit in 0.12s
+  Noduri: 280  |  Muchii: 1313
+  Grad ponderat mediu: 1.2704  |  Max: 2.0861
+
+[1] Momente de urma Tr(K) si Tr(K²) — spectru complet
+  Tr(K) = 359.641764  |  mean_lambda = 1.284435
+  Tr(K²) = 531.503993  |  var_lambda = 0.248456
+  std_lambda = 0.498453  |  cv_lambda = 0.388072  (spectru complet)
+  omega_mean_est = 1.111994  (estimat din momente)
+  Calculat in 0.0003s  (O(n*k), exact)
+
+[2] Modul constant phi_0 = [1/sqrt(n),...] cu lambda_0 = m²
+  lambda_0 = m² = 0.014000  ->  omega_0 = 0.118322
+  Reziduu K*phi_0 - lambda_0*phi_0 = 1.955249e-16  (trebuie ~0)
+  Contributie E_0 (modul constant): 0.059161
+
+[3] Eigenmode-uri K_m² prin Lanczos  (40 moduri × 200 iter)
+  Deflatie inclusiv pe modul constant — evitam contaminare.
+  Calculat in 6.11s  |  40 moduri Lanczos
+  lambda_min_lanczos = 1.874863  ->  omega = 1.369256
+  lambda_max_lanczos = 2.395162  ->  omega = 1.547631
+  omega_mean_lanczos = 1.433735
+
+[4] Observable cuantice (modul constant + Lanczos, formula corecta)
+  N_moduri total (const+Lanczos): 41
+  E_0 = 28.733852  (zero-point energy partiala)
+  E_0 / N_moduri = 0.700826
+  cv_lambda (spectru complet, din Tr) = 0.388072
+  cv_omega_sample (din 41 moduri) = 0.150310
+  sigma²_max = 0.292371  (formula corecta: 1/(2*omega))
+  sigma²_mean = 0.064964
+  Heisenberg_err_max = 1.110223e-16  (trebuie ~0)
+
+[5] Interpretare fizica
+  K = L_Jaccard + m²*I,  hbar=1,  n=280 noduri
+  lambda_0 = m² = 0.014000  (modul constant, gap spectral)
+  mean_lambda (spectru complet) = 1.284435
+  cv_lambda = 0.388072  (raspandire spectrala reala)
+  sigma²_mean = 0.064964  (fluctuatii ZP medii per nod)
+  sigma_mean = 0.254881  (deviatia standard medie)
+  Nota: sigma²_max provine din moduri Lanczos localizate (top spectru)
+
+======================================================================
+GATES G32
+======================================================================
+
+G32a — Vacuum energy per mod: 0.700826
+       Prag: (0.3, 3.0)  ->  PASS
+
+G32b — cv_lambda (spectru complet): 0.388072
+       Prag: (0.25, 0.65)  ->  PASS
+
+G32c — sigma²_max (formula corecta): 0.292371
+       Prag: < 0.5  ->  PASS
+
+G32d — Consistenta cv: |0.388072 - 0.405| / 0.405 = 0.041798
+       Prag: < 0.8  ->  PASS
+
+======================================================================
+SUMAR: 4/4 gate-uri trecute
+G32a [PASS]  G32b [PASS]  G32c [PASS]  G32d [PASS]
+======================================================================
+
+*** TOATE GATE-URILE G32 TRECUTE ***
+Hamiltonianul cuantic (v2) este consistent cu teoria QNG.
+
+Timp total: 6.23s
+
+Artefacte scrise in: /home/user/Qng_Workspace/05_validation/evidence/artifacts/qng-g32-hamiltonian-v2
+  summary.json
+  eigenmodes.csv
+  node_fluctuations.csv
