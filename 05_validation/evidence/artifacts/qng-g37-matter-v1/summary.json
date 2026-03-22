@@ -50,13 +50,26 @@
     "G37d": {
       "passed": true,
       "value": 1.0
+    },
+    "G37e": {
+      "passed": false,
+      "status": "OPEN_PROBLEM",
+      "value_Omega_DE_QNG": 0.0003800173824388599,
+      "value_Omega_Lambda_planck": 0.6847,
+      "delta_rel": 0.9994449870272545,
+      "factor_discrepancy": 1801.7596869010583,
+      "description": "Omega_Lambda absolut: 1 mod constant din n=280 produce E_DE/E_tot << 0.68. Limitare structurala, nu bug numeric. Factor ~1800x sub valoarea Planck 2018. Necesita mecanism teoretic nou pentru amplificarea contributiei DE."
     }
   },
   "summary": {
     "n_pass": 4,
     "n_total": 4,
-    "all_pass": true,
-    "timestamp": "2026-03-22T20:59:59.365561Z",
-    "runtime_s": 9.61
+    "n_total_with_diagnostic": 5,
+    "all_pass_main": true,
+    "open_problems": [
+      "G37e"
+    ],
+    "timestamp": "2026-03-22T21:57:30.687228Z",
+    "runtime_s": 12.43
   }
 }

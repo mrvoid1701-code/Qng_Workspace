@@ -24,6 +24,9 @@ Gates:
   G37b — Fractia barionica Omega_b_QNG in [0.02, 0.12]  (vs 4.9%)
   G37c — Raportul Omega_DM/Omega_b in [2.0, 15.0]        (vs 5.47)
   G37d — Omega_tot = Lambda + DM + b in [0.80, 1.20]     (platitudine)
+  G37e — Omega_Lambda absolut < 50% delta (DIAGNOSTIC, OPEN_PROBLEM)
+         1 mod constant / 280 total => Omega_DE_QNG << 0.6847 (factor ~1800x)
+         Nu este bug numeric — limitare structurala teoretica.
 """
 
 from __future__ import annotations
@@ -408,10 +411,32 @@ def main():
         log(f"\n{label} — {cond}")
         log(f"       Valoare: {fmt(val)}  ->  {st}")
 
+    # G37e — Omega_Lambda absolut (DIAGNOSTIC, OPEN_PROBLEM)
+    # Problema structurala: 1 mod constant din n=280 => E_DE/E_tot << 0.68
+    # Nu este un bug numeric — este o limitare teoretica a identificarii curente.
+    # Factor de discrepanta: 0.6847 / 0.000380 ~ 1800x
+    delta_lambda_rel = abs(Omega_DE_QNG - OMEGA_LAMBDA_OBS) / OMEGA_LAMBDA_OBS
+    g37e_threshold   = 0.50   # orice discrepanta > 50% = FAIL
+    g37e             = delta_lambda_rel < g37e_threshold   # va fi FAIL (~99.9%)
+    g37e_factor      = OMEGA_LAMBDA_OBS / Omega_DE_QNG if Omega_DE_QNG > 0 else float("inf")
+
+    log(f"\nG37e — Omega_Lambda absolut (DIAGNOSTIC, OPEN_PROBLEM)")
+    log(f"       Omega_DE_QNG = {fmt(Omega_DE_QNG)}  vs Planck Omega_Lambda = {OMEGA_LAMBDA_OBS:.4f}")
+    log(f"       Delta relativ = {delta_lambda_rel*100:.1f}%   Factor discrepanta = {g37e_factor:.0f}x")
+    log(f"       Conditie: delta_rel < {g37e_threshold*100:.0f}%  ->  {'PASS' if g37e else 'FAIL'}")
+    log(f"       STATUS: OPEN_PROBLEM")
+    log(f"       CAUZA: Modul constant (1/sqrt(n)) reprezinta 1/{n} din spectru.")
+    log(f"              E_DE = omega_0/2 = sqrt(M_EFF_SQ)/2 = {fmt(math.sqrt(M_EFF_SQ)/2)}")
+    log(f"              E_total ~ n/2 * omega_mean => f_DE ~ 1/n * omega_0/omega_mean << 0.68")
+    log(f"              Necesita un mecanism teoretic nou (ex. condensat de vacuum,")
+    log(f"              degenerare exponentiala) pentru a amplifica contributia DE.")
+
     n_pass = sum([g37a, g37b, g37c, g37d])
-    log(f"\nSUMAR: {n_pass}/4 gate-uri trecute")
+    n_total_diagnostic = 5   # include G37e ca gate diagnostic
+    log(f"\nSUMAR: {n_pass}/4 gate-uri principale trecute  ({n_pass}/{n_total_diagnostic} cu diagnostic G37e)")
     log(f"G37a [{'PASS' if g37a else 'FAIL'}]  G37b [{'PASS' if g37b else 'FAIL'}]  "
-        f"G37c [{'PASS' if g37c else 'FAIL'}]  G37d [{'PASS' if g37d else 'FAIL'}]")
+        f"G37c [{'PASS' if g37c else 'FAIL'}]  G37d [{'PASS' if g37d else 'FAIL'}]  "
+        f"G37e [{'PASS' if g37e else 'FAIL (OPEN_PROBLEM)'}]")
     log(f"Timp total: {time.time()-t0:.1f}s")
 
     # ── Artefacte ──────────────────────────────────────────────────────────────
@@ -463,9 +488,25 @@ def main():
             "G37b": {"passed": g37b, "value": Omega_b_QNG},
             "G37c": {"passed": g37c, "value": ratio_DM_b},
             "G37d": {"passed": g37d, "value": Omega_tot},
+            "G37e": {
+                "passed": g37e,
+                "status": "OPEN_PROBLEM",
+                "value_Omega_DE_QNG": Omega_DE_QNG,
+                "value_Omega_Lambda_planck": OMEGA_LAMBDA_OBS,
+                "delta_rel": delta_lambda_rel,
+                "factor_discrepancy": g37e_factor,
+                "description": (
+                    "Omega_Lambda absolut: 1 mod constant din n=280 produce "
+                    "E_DE/E_tot << 0.68. Limitare structurala, nu bug numeric. "
+                    "Factor ~1800x sub valoarea Planck 2018. "
+                    "Necesita mecanism teoretic nou pentru amplificarea contributiei DE."
+                ),
+            },
         },
         "summary": {
-            "n_pass": n_pass, "n_total": 4, "all_pass": n_pass==4,
+            "n_pass": n_pass, "n_total": 4, "n_total_with_diagnostic": 5,
+            "all_pass_main": n_pass == 4,
+            "open_problems": ["G37e"],
             "timestamp": datetime.utcnow().isoformat()+"Z",
             "runtime_s": round(time.time()-t0, 2),
         }

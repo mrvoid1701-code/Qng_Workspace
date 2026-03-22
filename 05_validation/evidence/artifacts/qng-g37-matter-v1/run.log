@@ -1,6 +1,6 @@
 ======================================================================
 QNG G37 — Definirea Materiei: IPR si Clasificare Moduri
-Run: 2026-03-22T20:59:49.756306Z
+Run: 2026-03-22T21:57:18.256949Z
 ======================================================================
 
 Clasificare:
@@ -18,7 +18,7 @@ Planck 2018: Omega_Lambda=0.685  Omega_DM=0.261  Omega_b=0.049
     E_total_full_est = n/2 * omega_mean = 155.679189
 
 [1] Eigenmoduri (40 top + 40 bottom + 1 constant)...
-    Calculat in 9.5s
+    Calculat in 12.3s
 
 [2] Inverse Participation Ratio (IPR) si clasificare
 
@@ -107,6 +107,17 @@ G37c — Omega_DM/Omega_b in [2.0, 15.0]  (vs Planck 5.32)
 G37d — Omega_tot in [0.80, 1.20]  (platitudine)
        Valoare: 1.000000  ->  PASS
 
-SUMAR: 4/4 gate-uri trecute
-G37a [PASS]  G37b [PASS]  G37c [PASS]  G37d [PASS]
-Timp total: 9.6s
+G37e — Omega_Lambda absolut (DIAGNOSTIC, OPEN_PROBLEM)
+       Omega_DE_QNG = 3.80017e-04  vs Planck Omega_Lambda = 0.6847
+       Delta relativ = 99.9%   Factor discrepanta = 1802x
+       Conditie: delta_rel < 50%  ->  FAIL
+       STATUS: OPEN_PROBLEM
+       CAUZA: Modul constant (1/sqrt(n)) reprezinta 1/280 din spectru.
+              E_DE = omega_0/2 = sqrt(M_EFF_SQ)/2 = 0.059161
+              E_total ~ n/2 * omega_mean => f_DE ~ 1/n * omega_0/omega_mean << 0.68
+              Necesita un mecanism teoretic nou (ex. condensat de vacuum,
+              degenerare exponentiala) pentru a amplifica contributia DE.
+
+SUMAR: 4/4 gate-uri principale trecute  (4/5 cu diagnostic G37e)
+G37a [PASS]  G37b [PASS]  G37c [PASS]  G37d [PASS]  G37e [FAIL (OPEN_PROBLEM)]
+Timp total: 12.4s
