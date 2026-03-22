@@ -27,3 +27,7 @@ jobs:
       - name: Run smoke tests
         run: |
           pytest tests/ -v --tb=short
+
+      - name: Run Jaccard gate group
+        run: |
+          python scripts/run_all.py --group jaccard --no-plots
