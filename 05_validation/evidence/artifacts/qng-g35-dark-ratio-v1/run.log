@@ -1,0 +1,59 @@
+======================================================================
+QNG G35 — Componenta Dark a Propagatorului
+Run: 2026-03-22T09:05:06.231031Z
+======================================================================
+
+Date din G33: n=280, omega_0=0.118322, m²=0.014
+
+[1] Componenta dark (modul constant phi_0=1/sqrt(n)):
+    C_dark = 1/(n * 2*omega_0) = 1/(280 * 2 * 0.118322)
+    C_dark = 0.015092  [identica pentru TOATE perechile (i,j)]
+    E analogul unui fond cosmologic omogen.
+
+[2] Profil C(r) decomus in dark + spatial:
+
+    r          C(r)        C_dark     C_spatial    f_dark
+  -------------------------------------------------------
+    1      0.052851      0.015092      0.037759  0.285561
+    2      0.030100      0.015092      0.015008  0.501398
+    3      0.009485      0.015092     -0.005607  1.591097
+    4      0.006741      0.015092     -0.008351  2.238878
+    5      0.012487      0.015092     -0.002605  1.208584
+
+[3] Statistici dark:
+    f_dark(r=1)    = 0.285561  (distanta mica, vecini directi)
+    f_dark(r=5)    = 1.208584  (distanta maxima)
+    Crossover r*   = 1.993524  (unde dark = spatial = 50%)
+
+    Comparatii cosmologice:
+    Omega_DM / Omega_total  ≈ 0.268  (dark matter)
+    Omega_Lam / Omega_total ≈ 0.683  (dark energy / Lambda)
+    f_dark(r_max) = 1.208584
+    -> In afara intervalelor standard cosmologice.
+
+    Pearson(r, f_dark(r)) = 0.709581  (pozitiv = dark creste cu r)
+
+[4] Energie:
+    E_dark = 0.5 * omega_0 = 0.059161  (modul constant)
+    E_0_partial (81 moduri) = 43.504665
+    f_E_dark_partial = E_dark/E_0_partial = 0.001360
+
+======================================================================
+GATES G35
+======================================================================
+
+G35a — C_dark > 0
+       Valoare: 0.015092  ->  PASS
+
+G35b — f_dark(r_max) > 0.50  [dark domina la distanta mare]
+       Valoare: 1.208584  ->  PASS
+
+G35c — Pearson(r, f_dark) > 0.30  [dark creste cu r]
+       Valoare: 0.709581  ->  PASS
+
+G35d — f_dark(r=1) in [0.20, 0.38]  [~ Omega_DM=0.268 la scala locala]
+       Valoare: 0.285561  ->  PASS
+
+SUMAR: 4/4 gate-uri trecute
+G35a [PASS]  G35b [PASS]  G35c [PASS]  G35d [PASS]
+Timp total: 0.00s

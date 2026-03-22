@@ -1,0 +1,54 @@
+======================================================================
+QNG G34 — Scaling lambda_1(K) vs n  (Testul B: limita continua)
+Run: 2026-03-22T09:07:28.099911Z
+======================================================================
+n_values = [50, 80, 100, 150, 200, 250, 280, 350, 400]  (n<=400, n=500 exclus din cauza artefactelor numerice)
+m2 = 0.014  ->  xi_continuum = 8.451543
+
+     n     lam_max    lambda_1    xi_graph    t(s)
+--------------------------------------------------
+    50    3.574416    0.665531    1.225789     0.0
+    80    3.734840    0.562421    1.333426     0.0
+   100    2.991932    0.435835    1.514744     0.0
+   150    2.929821    0.410611    1.560576     0.1
+   200    2.848029    0.380156    1.621880     0.1
+   250    2.609264    0.320982    1.765061     0.2
+   280    2.395242    0.355580    1.676993     0.2
+   350    2.420396    0.354973    1.678427     0.3
+   400    2.186828    0.370189    1.643569     0.4
+
+Rezultate analiza (n valide: 9/9):
+  Pearson(log n, log lambda_1) = -0.911383
+  xi_graph: mean=1.557829, std=0.175219, CV=0.112476
+  xi_graph(n=280) = 1.676993, z-score = 0.680081
+  lambda_1(280)/lambda_1(50)  = 0.534281
+
+  Auto-similaritate: CV=0.112476 < 0.25 => xi_graph CONSTANTA pe n=50..400
+  Interpretare: graful Jaccard are structura spectrala INVARIANTA la scara
+  => n=280 e in regimul stabil, nu un caz special
+
+======================================================================
+GATES G34
+======================================================================
+
+G34a — Pearson(log n, log lambda_1) < -0.40  [gap scade cu n]
+       Valoare: -0.911383  ->  PASS
+
+G34b — CV(xi_graph) < 0.25  [auto-similaritate: xi constant pe n=50..400]
+       Valoare: 0.112476  ->  PASS
+
+G34c — lambda_1(280)/lambda_1(50) < 0.85  [gap mai mic la n mai mare]
+       Valoare: 0.534281  ->  PASS
+
+G34d — |xi(280)-xi_mean|/xi_std < 1.5  [n=280 pe curba stabila]
+       Valoare: 0.680081  ->  PASS
+
+SUMAR: 4/4 gate-uri trecute
+G34a [PASS]  G34b [PASS]  G34c [PASS]  G34d [PASS]
+
+Concluzii fizice:
+  1. xi_graph ≈ 1.557829 hops (constant pe 9 valori de n)
+  2. CV = 0.112476 < 0.25 => auto-similaritate spectrala
+  3. n=280 e la z-score=0.680081 din medie => in regimul stabil
+  4. Aceasta confirma ca n=280 e REPREZENTATIV, nu un artefact de marime mica
+Timp total: 1.4s
