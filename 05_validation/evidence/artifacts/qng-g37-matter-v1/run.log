@@ -1,0 +1,112 @@
+======================================================================
+QNG G37 — Definirea Materiei: IPR si Clasificare Moduri
+Run: 2026-03-22T09:37:58.512021Z
+======================================================================
+
+Clasificare:
+  DR < 1.5        → delocalizat     → DARK MATTER
+  1.5 <= DR < 4.0 → semi-localizat  → DARK MATTER (halo)
+  DR >= 4.0       → localizat        → MATERIE BARIONICA
+  Modul constant  →                  → DARK ENERGY
+
+Planck 2018: Omega_Lambda=0.685  Omega_DM=0.261  Omega_b=0.049
+             Omega_DM/Omega_b = 5.32
+
+[0] Spectru complet (din momente de urma):
+    Tr(K)=359.641764  mean_lambda=1.284435
+    omega_mean_est=1.111994
+    E_total_full_est = n/2 * omega_mean = 155.679189
+
+[1] Eigenmoduri (40 top + 40 bottom + 1 constant)...
+    Calculat in 12.3s
+
+[2] Inverse Participation Ratio (IPR) si clasificare
+
+  IPR random (vector Gaussian): 0.010714
+  DR_bottom_mean = 1.285636
+  DR_top_mean    = 8.661403
+  DR(top)/DR(bottom) = 6.737059
+
+  Clasificare (81 moduri totale):
+    Dark energy (constant):    1 moduri  E=0.059161
+    Dark matter (DR<4):    59 moduri  E=28.433755
+    Materie barionica (DR>=4):  21 moduri  E=15.011749
+    E_partial_total = 43.504665
+
+  Top 10 moduri dupa DR (cele mai localizate = materie):
+    mod     sursa      lambda        DR           cat
+     41       top    2.395162  49.020220      baryonic
+     42       top    2.336218  44.971838      baryonic
+     43       top    2.314367  28.084027      baryonic
+     57       top    2.076824  23.719741      baryonic
+     48       top    2.177935  15.551377      baryonic
+     44       top    2.244917  13.658303      baryonic
+     45       top    2.242449  13.275788      baryonic
+     46       top    2.221919  12.704049      baryonic
+     54       top    2.102766  12.343916      baryonic
+     55       top    2.081686  9.945391      baryonic
+
+[3] Extrapolarea Omega la spectrul complet
+    E_total_full_est = 155.679189  (din Tr(K), toate cele 280 moduri)
+    E_partial        = 43.504665   (din cele 81 moduri)
+
+  Fractii din moduri partiale (81/280):
+    f_DE (dark energy, partial)  = 0.001360  (vs Omega_Lambda=0.685)
+    f_DM (dark matter, partial)  = 0.653579  (vs Omega_DM=0.261)
+    f_b  (baryonic, partial)     = 0.345061  (vs Omega_b=0.049)
+
+  Extrapolat la spectrul complet (middle modes ~ dark matter):
+    E_middle_est = 112.174524  (199 moduri necomputate)
+    Omega_DE (QNG) = 3.80017e-04  vs Omega_Lambda=0.685  delta=0.684320
+    Omega_DM (QNG) = 0.903193  vs Omega_DM=0.261     delta=0.642493
+    Omega_b  (QNG) = 0.096427  vs Omega_b=0.049       delta=0.047427
+    Omega_tot      = 1.000000
+    Omega_DM/Omega_b = 9.366549  vs observat=5.32
+
+[4] Noduri materie: distributia variancei locale C_ii
+    C_ii: min=0.083515  max=0.416805  mean=0.162467  std=0.056843
+    C_dark_contrib (per nod) = 0.015092
+
+    Prag barionic = mean + 1.5*std = 0.247732
+    Noduri barionice: 28/280 = 10.0%
+    Fractia energiei locale la noduri barionice: 18.4%
+    Comparatie: Omega_b = 4.9%
+
+    Histograma C_ii:
+    [0.05, 0.10):   9  █████████
+    [0.10, 0.15): 147  ███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
+    [0.15, 0.20):  75  ███████████████████████████████████████████████████████████████████████████
+    [0.20, 0.25):  22  ██████████████████████
+    [0.25, 0.30):  12  ████████████
+    [0.30, 0.35):  13  █████████████
+    [0.35, 0.40):   1  █
+    [0.40, 0.45):   1  █
+    [0.45, inf):   0  
+
+[5] Comparatie finala cu Planck 2018
+    Componenta                   QNG      Planck       Delta
+    -------------------------------------------------------
+    Omega_Lambda (DE)     3.80017e-04      0.6847      99.9%
+    Omega_DM                0.903193      0.2607     246.4%
+    Omega_b                 0.096427      0.0490      96.8%
+    Omega_DM/Omega_b        9.366549      5.3204      76.0%
+
+======================================================================
+GATES G37
+======================================================================
+
+G37a — DR(top)/DR(bottom) > 1.5  [top moduri mai localizate]
+       Valoare: 6.737059  ->  PASS
+
+G37b — Omega_b_QNG in [0.02, 0.12]  (vs Planck Omega_b=0.049)
+       Valoare: 0.096427  ->  PASS
+
+G37c — Omega_DM/Omega_b in [2.0, 15.0]  (vs Planck 5.32)
+       Valoare: 9.366549  ->  PASS
+
+G37d — Omega_tot in [0.80, 1.20]  (platitudine)
+       Valoare: 1.000000  ->  PASS
+
+SUMAR: 4/4 gate-uri trecute
+G37a [PASS]  G37b [PASS]  G37c [PASS]  G37d [PASS]
+Timp total: 12.4s

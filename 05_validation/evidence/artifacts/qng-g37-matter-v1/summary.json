@@ -1,0 +1,62 @@
+{
+  "ipr_analysis": {
+    "ipr_random": 0.010714285714285714,
+    "DR_bottom_mean": 1.2856355609082544,
+    "DR_top_mean": 8.661402779749794,
+    "DR_ratio_top_bottom": 6.737059119328366,
+    "n_dark_energy": 1,
+    "n_dark_matter": 59,
+    "n_baryonic_modes": 21
+  },
+  "energy_fractions_partial": {
+    "f_DE": 0.0013598724996555555,
+    "f_DM": 0.6535794493157456,
+    "f_b": 0.3450606781845989
+  },
+  "omega_extrapolated": {
+    "Omega_DE_QNG": 0.0003800173824388599,
+    "Omega_DM_QNG": 0.9031925192049963,
+    "Omega_b_QNG": 0.09642746341256479,
+    "Omega_tot": 1.0,
+    "ratio_DM_b": 9.366548566570586
+  },
+  "planck_comparison": {
+    "Omega_Lambda_planck": 0.6847,
+    "Omega_DM_planck": 0.2607,
+    "Omega_b_planck": 0.049,
+    "ratio_DM_b_planck": 5.320408163265306
+  },
+  "node_analysis": {
+    "C_mean": 0.16246709753770144,
+    "C_std": 0.05684333218821495,
+    "thresh_baryon": 0.24773209582002387,
+    "n_baryon_nodes": 28,
+    "f_baryon_nodes": 0.1,
+    "f_baryon_energy": 0.18381445103329136
+  },
+  "gates": {
+    "G37a": {
+      "passed": true,
+      "value": 6.737059119328366
+    },
+    "G37b": {
+      "passed": true,
+      "value": 0.09642746341256479
+    },
+    "G37c": {
+      "passed": true,
+      "value": 9.366548566570586
+    },
+    "G37d": {
+      "passed": true,
+      "value": 1.0
+    }
+  },
+  "summary": {
+    "n_pass": 4,
+    "n_total": 4,
+    "all_pass": true,
+    "timestamp": "2026-03-22T09:38:10.958298Z",
+    "runtime_s": 12.45
+  }
+}
