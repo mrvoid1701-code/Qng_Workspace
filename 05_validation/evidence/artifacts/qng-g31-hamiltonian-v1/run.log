@@ -1,6 +1,6 @@
 ======================================================================
 QNG G31 — Hamiltonian Cuantic Natural (v1)
-Run started: 2026-03-21T18:30:35.104700Z
+Run started: 2026-03-22T14:19:13.963701Z
 ======================================================================
 
 Derivare din principii prime — nimic ad-hoc:
@@ -9,10 +9,10 @@ Derivare din principii prime — nimic ad-hoc:
   m²_eff = 0.014  (mostenit din G17, singurul parametru extern)
 
 Graf: n=280  k_init=8  k_conn=8  seed=3401
-Moduri: 20  Iteratii: 100
+Moduri: 40  Iteratii: 200
 
 [0] Construire graf Jaccard ponderat
-  Construit in 0.10s
+  Construit in 0.12s
   Noduri: 280  |  Muchii: 1313
   Grad ponderat mediu: 1.2704  |  Max: 2.0861
 
@@ -20,24 +20,24 @@ Moduri: 20  Iteratii: 100
     G17/G20: adj = list[list[int]] — ponderi Jaccard aruncate
     G31:     adj_w = list[list[(j, J_ij)]] — ponderi pastrate explicit
 
-[1] Eigenmode-uri K_m²  (20 moduri × 100 iter)
+[1] Eigenmode-uri K_m²  (40 moduri × 200 iter)
   K_m² = Laplacian_Jaccard_ponderat + m²*I
   Toate eigenvalori >= m² (K pozitiv definit)
-  Calculat in 0.79s  |  20 moduri
-  lambda_min = 2.033542  ->  omega_min = 1.426023
-  lambda_max = 2.376862  ->  omega_max = 1.541708
-  omega_mean = 1.471906
+  Calculat in 4.77s  |  40 moduri
+  lambda_min = 1.874863  ->  omega_min = 1.369256
+  lambda_max = 2.395162  ->  omega_max = 1.547631
+  omega_mean = 1.433735
 
 [2] Observable cuantice (starea fundamentala |Psi_0>)
-  E_0          = 14.719057  (zero-point energy totala, 20 moduri)
-  E_0 / N_modes= 0.735953  (energie per mod)
-  cv_natural   = 0.022578  (std(omega)/mean(omega) din spectrul K)
+  E_0          = 28.674691  (zero-point energy totala, 40 moduri)
+  E_0 / N_modes= 0.716867  (energie per mod)
+  cv_natural   = 0.033011  (std(omega)/mean(omega) din spectrul K)
   cv_G17       = 0.405  (Porter-Thomas din eigenmodes RW)
-  |cv_nat - cv_G17|/cv_G17 = 0.944251
-  sigma²_max   = 0.166913  (fluctuatii max per nod)
-  sigma²_mean  = 0.016508  (fluctuatii medii per nod)
+  |cv_nat - cv_G17|/cv_G17 = 0.918492
+  sigma²_max   = 0.192526  (fluctuatii max per nod)
+  sigma²_mean  = 0.034857  (fluctuatii medii per nod)
   Heisenberg   = 0.500000  (trebuie 0.5 exact)
-  Heisenberg_err = 1.110223e-16  (eroare maxima per mod)
+  Heisenberg_err = 5.551115e-17  (eroare maxima per mod)
 
 [3] Interpretare fizica
   hbar = 1 (natural: Sigma in [0,1], K dimensionless, actiune dimensionless)
@@ -51,16 +51,16 @@ Moduri: 20  Iteratii: 100
 GATES G31
 ======================================================================
 
-G31a — Vacuum energy per mod: 0.735953
+G31a — Vacuum energy per mod: 0.716867
        Prag: (0.02, 5.0)  ->  PASS
 
-G31b — cv_natural: 0.022578
+G31b — cv_natural: 0.033011
        Prag: (0.2, 0.7)  ->  FAIL
 
-G31c — Confinement sigma²_max: 0.166913
+G31c — Confinement sigma²_max: 0.192526
        Prag: < 0.0625  ->  FAIL
 
-G31d — Consistenta cv: |0.022578 - 0.405| / 0.405 = 0.944251
+G31d — Consistenta cv: |0.033011 - 0.405| / 0.405 = 0.918492
        Prag: < 0.5  ->  FAIL
 
 ======================================================================
@@ -73,7 +73,7 @@ G31a [PASS]  G31b [FAIL]  G31c [FAIL]  G31d [FAIL]
   G31c: fluctuatii zero-point depasesc confinementul in [0,1]
   G31d: cv_natural inconsistent cu cv_G17 (diferenta > 50%)
 
-Timp total: 0.89s
+Timp total: 4.89s
 
 Artefacte scrise in: /home/user/Qng_Workspace/05_validation/evidence/artifacts/qng-g31-hamiltonian-v1
   summary.json

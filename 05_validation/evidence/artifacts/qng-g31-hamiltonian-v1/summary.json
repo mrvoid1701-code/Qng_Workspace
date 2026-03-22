@@ -6,28 +6,28 @@
     "max_weighted_degree": 2.086124268748108
   },
   "eigenmodes": {
-    "n_modes_computed": 20,
-    "lambda_min": 2.033541913526502,
-    "lambda_max": 2.3768620835637524,
-    "omega_min": 1.4260231111473973,
-    "omega_max": 1.541707522055903,
-    "omega_mean": 1.4719057448871076
+    "n_modes_computed": 40,
+    "lambda_min": 1.8748630394332801,
+    "lambda_max": 2.395161784328289,
+    "omega_min": 1.3692563819216912,
+    "omega_max": 1.5476310233154054,
+    "omega_mean": 1.433734549309627
   },
   "observables": {
-    "E_0": 14.719057448871075,
-    "E_0_per_mode": 0.7359528724435538,
-    "cv_natural": 0.02257822942490992,
+    "E_0": 28.674690986192537,
+    "E_0_per_mode": 0.7168672746548135,
+    "cv_natural": 0.03301079377467662,
     "cv_G17": 0.405,
-    "cv_relative_diff": 0.9442512853705928,
-    "sigma2_max": 0.1669134828730565,
-    "sigma2_mean": 0.01650829009552441,
+    "cv_relative_diff": 0.9184918672230207,
+    "sigma2_max": 0.19252573391114347,
+    "sigma2_mean": 0.034857059525473154,
     "heisenberg_mean": 0.5,
-    "heisenberg_err_max": 1.1102230246251565e-16
+    "heisenberg_err_max": 5.551115123125783e-17
   },
   "gates": {
     "G31a": {
       "name": "Non-trivial vacuum energy",
-      "value": 0.7359528724435538,
+      "value": 0.7168672746548135,
       "threshold_lo": 0.02,
       "threshold_hi": 5.0,
       "condition": "0.02 < E_0/N_modes < 5.0",
@@ -35,7 +35,7 @@
     },
     "G31b": {
       "name": "Physically reasonable frequency spread",
-      "value": 0.02257822942490992,
+      "value": 0.03301079377467662,
       "threshold_lo": 0.2,
       "threshold_hi": 0.7,
       "condition": "0.2 < cv_natural < 0.7",
@@ -43,16 +43,16 @@
     },
     "G31c": {
       "name": "Zero-point fluctuations confined within [0,1]",
-      "value": 0.1669134828730565,
+      "value": 0.19252573391114347,
       "threshold": 0.0625,
       "condition": "sigma\u00b2_max < 0.0625 (sigma < 0.25)",
       "passed": false
     },
     "G31d": {
       "name": "cv_natural consistent with cv_G17",
-      "value": 0.9442512853705928,
+      "value": 0.9184918672230207,
       "threshold": 0.5,
-      "cv_natural": 0.02257822942490992,
+      "cv_natural": 0.03301079377467662,
       "cv_G17": 0.405,
       "condition": "|cv_natural - cv_G17|/cv_G17 < 0.5",
       "passed": false
@@ -62,7 +62,7 @@
     "n_pass": 1,
     "n_total": 4,
     "all_pass": false,
-    "timestamp": "2026-03-21T18:30:35.999058Z",
-    "runtime_s": 0.894
+    "timestamp": "2026-03-22T14:19:18.855702Z",
+    "runtime_s": 4.892
   }
 }
