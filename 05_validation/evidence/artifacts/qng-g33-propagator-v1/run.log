@@ -1,0 +1,93 @@
+======================================================================
+QNG G33 — Propagatorul Cuantic al Hamiltonianului
+Run started: 2026-03-22T08:49:34.893453Z
+======================================================================
+
+C_ij = <Sigma_i Sigma_j>_0 = sum_a phi_a(i)*phi_a(j) / (2*omega_a)
+
+Graf: n=280  k_init=8  k_conn=8  seed=3401
+Moduri: 40 bottom + 40 top + 1 constant
+m² = 0.014  ->  m = 0.118322
+xi_theory = 1/m = 8.451543 hops
+
+[0] Construire graf Jaccard ponderat
+  Construit in 0.12s
+  Noduri: 280  |  Muchii: 1313  |  Grad mediu ponderat: 1.270435
+
+[1] Modul constant
+  lambda_0 = m² = 0.014000  ->  omega_0 = 0.118322
+  Reziduu K*phi0 - lambda0*phi0 = 1.955249e-16  (trebuie ~0)
+  Contributia la C_ii: 0.015092 per nod (constanta)
+
+[2] Moduri TOP ale lui K  (40 moduri × 200 iter)
+  Calculat in 6.18s  |  40 moduri
+  lambda_max = 2.395162  (cel mai mare, omega = 1.547631)
+  lambda_min_top = 1.874863
+  lam_shift pt bottom iteration: 3.014920
+
+[3] Moduri BOTTOM ale lui K via shift-invert  (40 moduri × 200 iter)
+  A = 3.014920*I - K  ->  moduri top ale lui A = moduri BOTTOM ale lui K
+  Calculat in 14.78s  |  40 moduri
+  lambda_min_bottom = 0.356756  (cel mai mic, omega = 0.597291)
+  lambda_max_bottom = 0.695461
+
+[4] Combinare moduri si calcul propagator
+  N moduri total: 81  (40 bottom + 40 top + 1 constant)
+  E_0 = 43.504665  (partial, 81 moduri din 280)
+  E_0/N_moduri = 0.537095
+  C_ii: min=0.083515  max=0.416805  mean=0.162467
+  sqrt(C_ii_mean) = 0.403072  (fluctuatia medie a campului)
+  Contributia modului constant la C_ii: 0.015092
+  Contributia bottom+top la C_ii (medie): 0.147375
+
+[5] Profilul C(r)  (BFS din 50 noduri sursa)
+  Calculat in 0.06s
+
+  r   |   C(r)_mean   |   C(r)_std   |  N_perechi
+  -------------------------------------------------------
+  r= 1        0.052851      0.035372         444
+  r= 2        0.030100      0.012892        2805
+  r= 3        0.009485      0.006673        8532
+  r= 4        0.006741      0.005961        2166
+  r= 5        0.012487  2.265994e-04           3
+
+[6] Regresia log(C(r)) = a - r/xi  ->  xi = -1/slope
+  Distante folosite: r in [1, 2, 3, 4]
+  Slope b = -0.733261  =>  xi_fit = 1.363772
+  Interceptie a = -2.192122
+  R² = 0.960360
+  xi_theory = 1/m = 8.451543
+  xi_fit / xi_theory = 0.161364
+
+  Pearson(r, C(r)) = -0.850773  (negativ = decadere)
+
+======================================================================
+GATES G33
+======================================================================
+
+G33a — min(C_ii) = 0.083515
+       Prag: > 0.0  ->  PASS
+
+G33b — Pearson(r, C(r)) = -0.850773
+       Prag: < -0.1  ->  PASS
+
+G33c — xi_fit = 1.363772
+       Prag: [0.5, 50.0]  ->  PASS
+
+G33d — Consistenta xi cu gap spectral K:
+       lambda_1_K = 0.356756  (gap spectral Jaccard)
+       xi_graph   = 1/sqrt(lambda_1_K) = 1.674226
+       xi_continuum = 1/m = 8.451543  (masa bara, regim continuu)
+       lambda_1_K/m2 = 25.5  >> 1 → regim 'gap dominat'
+       xi_fit = 1.363772
+       Prag: [0.558075, 5.022679]  (factor ±3 in jurul xi_graph)  ->  PASS
+
+======================================================================
+SUMAR: 4/4 gate-uri trecute
+G33a [PASS]  G33b [PASS]  G33c [PASS]  G33d [PASS]
+======================================================================
+
+*** TOATE GATE-URILE G33 TRECUTE ***
+Propagatorul cuantic este spatial si consistent cu masa QNG.
+
+Timp total: 21.16s

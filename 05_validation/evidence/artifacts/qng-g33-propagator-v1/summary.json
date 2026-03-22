@@ -1,0 +1,108 @@
+{
+  "graph": {
+    "n": 280,
+    "edges": 1313,
+    "mean_deg_w": 1.2704348706425581
+  },
+  "constant_mode": {
+    "lambda_0": 0.014,
+    "omega_0": 0.11832159566199232,
+    "residual": 1.9552491277259485e-16
+  },
+  "top_modes": {
+    "n_modes": 40,
+    "lambda_max": 2.3951617843282884,
+    "lambda_min": 1.8748630394332801,
+    "lam_shift_used": 3.014919873544703
+  },
+  "bottom_modes": {
+    "n_modes": 40,
+    "lambda_min": 0.3567562763523523,
+    "lambda_max": 0.6954608953680317
+  },
+  "propagator_diagonal": {
+    "K_total": 81,
+    "E_0": 43.50466521382048,
+    "E_0_per_mode": 0.5370946322693887,
+    "C_diag_min": 0.08351501324715127,
+    "C_diag_max": 0.41680488867061843,
+    "C_diag_mean": 0.16246709753770147
+  },
+  "C_profile": {
+    "1": {
+      "mean": 0.052850562769637115,
+      "std": 0.035372320610066794,
+      "count": 444
+    },
+    "2": {
+      "mean": 0.030099931396305363,
+      "std": 0.012892146455025962,
+      "count": 2805
+    },
+    "3": {
+      "mean": 0.009485305561178896,
+      "std": 0.0066727912802111615,
+      "count": 8532
+    },
+    "4": {
+      "mean": 0.006740895237977543,
+      "std": 0.0059606857934741565,
+      "count": 2166
+    },
+    "5": {
+      "mean": 0.01248737364119972,
+      "std": 0.0002265994127578204,
+      "count": 3
+    }
+  },
+  "correlation_length": {
+    "xi_theory": 8.451542547285166,
+    "xi_fit": 1.3637716371907138,
+    "R2_fit": 0.9603604433481958,
+    "n_r_points": 4
+  },
+  "pearson_rC": -0.8507731242105838,
+  "gates": {
+    "G33a": {
+      "name": "Propagator pozitiv pe diagonala",
+      "value": 0.08351501324715127,
+      "threshold": 0.0,
+      "condition": "min(C_ii) > 0.0",
+      "passed": true
+    },
+    "G33b": {
+      "name": "Decadere spatiala (Pearson)",
+      "value": -0.8507731242105838,
+      "threshold": -0.1,
+      "condition": "Pearson(r, C(r)) < -0.1",
+      "passed": true
+    },
+    "G33c": {
+      "name": "Lungimea de corelatie sanity [0.5, 50]",
+      "value": 1.3637716371907138,
+      "threshold_lo": 0.5,
+      "threshold_hi": 50.0,
+      "condition": "xi_fit in [0.5, 50.0]",
+      "passed": true
+    },
+    "G33d": {
+      "name": "Consistenta xi_fit cu gap-ul spectral K (lambda_1_K)",
+      "value": 1.3637716371907138,
+      "lambda_1_K": 0.3567562763523523,
+      "xi_graph_theory": 1.6742264116787327,
+      "xi_continuum_theory": 8.451542547285166,
+      "threshold_lo": 0.5580754705595775,
+      "threshold_hi": 5.022679235036198,
+      "condition": "xi_fit in [xi_graph/3, 3*xi_graph] = [0.558075, 5.022679]",
+      "physical_note": "lambda_1_K=0.356756 >> m\u00b2=0.014 \u2192 gap spectral domina; xi_graph=1.674226 (graf) vs xi_continuum=8.451543 (masa bara)",
+      "passed": true
+    }
+  },
+  "summary": {
+    "n_pass": 4,
+    "n_total": 4,
+    "all_pass": true,
+    "timestamp": "2026-03-22T08:49:56.052407Z",
+    "runtime_s": 21.159
+  }
+}
