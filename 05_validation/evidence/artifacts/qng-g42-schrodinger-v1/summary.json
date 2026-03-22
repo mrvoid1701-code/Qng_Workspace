@@ -1,0 +1,56 @@
+{
+  "gate": "G42",
+  "version": "v1",
+  "timestamp": "2026-03-22T12:45:28.455124Z",
+  "description": "Schrodinger equation from QNG fields (\u03a3,\u03c6) via Madelung transform",
+  "derivation": "qng-qm-schrodinger-v1.md",
+  "params": {
+    "n_nodes": 280,
+    "k_init": 8,
+    "k_conn": 8,
+    "seed": 3401,
+    "n_steps": 200,
+    "dt": 0.002,
+    "hbar_eff": 1.0,
+    "mass_eff": 1.0
+  },
+  "graph": {
+    "n_nodes": 280
+  },
+  "g42a": {
+    "description": "Born rule: |\u03a8_i|\u00b2 = \u03a3_i (exact by construction)",
+    "max_born_err": 0.0,
+    "threshold": 1e-10,
+    "result": "PASS"
+  },
+  "g42b": {
+    "description": "Free-particle spreading \u03c3\u00b2(t) ~ t (quantum diffusion)",
+    "pearson_sigma2_t": 0.960463,
+    "threshold_min": 0.9,
+    "n_steps": 200,
+    "result": "PASS"
+  },
+  "g42c": {
+    "description": "Energy conservation under unitary evolution (4th-order Taylor)",
+    "max_energy_drift": 0.0,
+    "E0": 4.0,
+    "threshold": 1e-06,
+    "result": "PASS"
+  },
+  "g42d": {
+    "description": "Bohm quantum potential bounded (no divergences)",
+    "bohm_ratio_max_mean": 5.4242,
+    "Q_max": 6.994376,
+    "Q_mean": 1.289486,
+    "threshold": 10.0,
+    "result": "PASS"
+  },
+  "gate_results": {
+    "g42a": "PASS",
+    "g42b": "PASS",
+    "g42c": "PASS",
+    "g42d": "PASS"
+  },
+  "all_pass": true,
+  "elapsed_s": 0.29
+}
