@@ -1,0 +1,46 @@
+=================================================================
+QNG G41 — Detectie peak BAO din xi(r) eBOSS DR16 LRG
+=================================================================
+
+[QNG predictie]  r_bao_QNG = 150.00 Mpc  (xi_graph din G39)
+[Planck 2018]    r_d       = 147.78 Mpc
+[eBOSS masurat]  r_d_eBOSS = 148.37 Mpc  (Bautista+2021)
+
+[Date LRG xi(r) real-space] — 19 puncte
+  r range: 10.4 — 258.9 Mpc
+  BAO peak expected la: ~155.3 Mpc real-space
+
+[Rezultate fit]
+  A         = 842.732507
+  gamma     = 2.315642
+  B (bump)  = 0.005893
+  r_bao     = 162.750465 +/- 8.413833 Mpc
+  sigma_bao = 10.276970 Mpc
+  R2        = 0.999950
+  chi2/dof  = 0.327029
+
+[Comparatii pozitie peak BAO]
+  r_bao_fit  = 162.75 +/- 8.41 Mpc
+  r_bao_QNG  = 150.00 Mpc  => eroare 8.5%
+  r_d_Planck = 147.78 Mpc  => eroare 10.1%
+  r_d_eBOSS  = 148.37 Mpc  => eroare 9.7%
+
+=================================================================
+GATE RESULTS
+=================================================================
+G41a  Fit R2 > 0.80:                PASS  (R2=0.9999)
+G41b  r_bao in [100,200] Mpc:       PASS  (162.75 Mpc)
+G41c  |r_bao - r_QNG| < 15%:        PASS  (8.5%)
+G41d  |r_bao - r_Planck| < 15%:     PASS  (10.1%)
+
+Total: 4/4 PASS
+
+=================================================================
+POZITIE PEAK BAO — COMPARATIE COMPLETA
+=================================================================
+Sursa                           r_BAO [Mpc]  Eroare vs fit
+----------------------------------------------------------
+QNG (xi_graph_mpc, G39)              150.00           8.5%
+Planck 2018 (r_d)                    147.78          10.1%
+eBOSS DR16 LRG (Bautista+2021)       148.37           9.7%
+Fit xi(r) PL+Gauss [acesta]          162.75            ---

@@ -1,0 +1,52 @@
+{
+  "fit": {
+    "A": 842.7325073458445,
+    "gamma": 2.315642394678781,
+    "B_bump": 0.0058931354440344835,
+    "r_bao_mpc": 162.7504645267274,
+    "r_bao_err_mpc": 8.413832984455524,
+    "sigma_bao_mpc": 10.276970217011845,
+    "R2": 0.9999498430119862,
+    "chi2_dof": 0.32702887903124395,
+    "fit_ok": true
+  },
+  "reference": {
+    "r_bao_qng_mpc": 150.0,
+    "rd_planck_mpc": 147.78,
+    "rd_eboss_mpc": 148.37
+  },
+  "deltas": {
+    "delta_vs_qng_pct": 8.500309684484932,
+    "delta_vs_planck_pct": 10.130237194970496,
+    "delta_vs_eboss_pct": 9.692299337283409
+  },
+  "gates": {
+    "G41a": {
+      "passed": true,
+      "value": 0.9999498430119862,
+      "label": "R2 > 0.80"
+    },
+    "G41b": {
+      "passed": true,
+      "value": 162.7504645267274,
+      "label": "r_bao in [100,200] Mpc"
+    },
+    "G41c": {
+      "passed": true,
+      "value": 0.08500309684484933,
+      "label": "|r_bao - r_QNG| < 15%"
+    },
+    "G41d": {
+      "passed": true,
+      "value": 0.10130237194970496,
+      "label": "|r_bao - r_Planck| < 15%"
+    }
+  },
+  "summary": {
+    "n_pass": 4,
+    "n_total": 4,
+    "all_pass": true,
+    "timestamp": "2026-03-22T10:46:32.697639Z",
+    "runtime_s": 0.008158
+  }
+}
