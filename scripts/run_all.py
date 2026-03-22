@@ -125,6 +125,7 @@ GROUPS: dict[str, list[str]] = {
         "run_qng_g21_thermo_v1.py",     # G21 Thermodynamic consistency (S≥0, C_V>0, F=U-TS)
         "run_qng_g22_isotropy_v1.py",   # G22 Directional isotropy (σ(d_s)<0.5, 2.5<d_s<5.5)
         "run_qng_g23_klein_gordon_v1.py",  # G23 Klein-Gordon scalar matter (Yukawa screening)
+        "run_qng_g24_foliation_v1.py",     # G24 Spectral foliation 3+1 split (d_s_spatial≈3)
     ],
 }
 
