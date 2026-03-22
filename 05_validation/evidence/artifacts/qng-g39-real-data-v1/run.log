@@ -1,0 +1,116 @@
+======================================================================
+QNG G39 — Calibrare BAO & Comparatie C(r) vs 2dFGRS xi(r)
+Run: 2026-03-22T09:52:42.200331Z
+======================================================================
+
+[0] Date observationale 2dFGRS (Hawkins et al. 2003):
+    xi(r) = (r/r0)^(-gamma)
+    r0    = 5.05 h^-1 Mpc = 7.493 Mpc  (h=0.674)
+    gamma = 1.67  (exponent power-law)
+    BAO standard ruler = 150.0 Mpc  (Planck 2018)
+
+    xi(r) la scale relevante:
+    xi(   1 Mpc) = 28.8825
+    xi(   2 Mpc) = 9.0764
+    xi(   5 Mpc) = 1.9650
+    xi(   8 Mpc) = 0.8963
+    xi(  15 Mpc) = 0.3137
+    xi(  30 Mpc) = 0.0986
+    xi( 100 Mpc) = 0.0132
+    xi( 150 Mpc) = 0.0067
+
+[1] Date QNG G33:
+    xi_fit (exp, G33) = 1.363772 hops   R2=0.9604
+    xi_graph (media G34, n=50..400) = 1.557829 hops
+
+    C(r) profil (r=1..4 hops, n>100 perechi):
+
+      r        C(r)         std   n_pairs
+    --------------------------------------
+      1    0.052851    0.035372       444
+      2    0.030100    0.012892      2805
+      3    0.009485    0.006673      8532
+      4    0.006741    0.005961      2166
+
+[2] Fit power-law C(d) = A * d^(-gamma_QNG) in log-log:
+
+    Fit ponderat:   gamma_QNG = 1.865448,  A = 0.082398,  R2 = 0.9124
+    Fit neponderat: gamma_QNG = 1.553148, A = 0.061343, R2 = 0.9343
+
+    2dFGRS observat: gamma = 1.67
+    |gamma_QNG - gamma_obs| / gamma_obs = 11.7%
+
+    Valori fit vs observat:
+
+      r       C_QNG       C_fit    xi_2dF(norm)   reziduu
+    ----------------------------------------------------
+      1    0.052851    0.082398        1.000000  0.000000
+      2    0.030100    0.022613        0.314253  -0.039815
+      3    0.009485    0.010614        0.159664  -0.030853
+      4    0.006741    0.006206        0.098755  -0.023439
+
+[3] Calibrare scala: 1 hop = ? Mpc
+
+    Metoda A — BAO standard ruler:
+    Premisa: xi_graph (lungimea de corelatie a grafului) corespunde
+    scalei caracteristice de clustering in spatiul fizic.
+    xi_graph = 1.557829 hops
+    BAO = 150.0 Mpc
+    alpha_BAO = 150.0 / 1.557829 = 96.287821 Mpc/hop
+
+    Metoda B — Potrivire exponent + amplitudine cu 2dFGRS:
+    La r=1 hop: C_QNG(1) = 0.052851
+    La r=alpha_BAO Mpc: xi_2dFGRS(96.3 Mpc) = 0.014063
+    Factor normalizare: beta = C_QNG(1) / xi_2dFGRS(alpha_BAO) = 3.758194
+
+    Scala calibrata: 1 hop = 96.287821 Mpc
+    Graficul QNG (n=280 noduri) reprezinta un volum de:
+    sqrt(n) * alpha = 1611 Mpc  (estimat 2D)
+    n * alpha^3 = 2.50e+08 Mpc^3  (n voxeli 3D)
+
+[4] Comparatie forma QNG C(r) vs 2dFGRS xi(r) dupa calibrare:
+
+    Normalizam ambele la valoarea la r=1 hop (96.3 Mpc):
+
+     hop d     r_Mpc      C_norm     xi_norm    delta%
+    --------------------------------------------------
+         1      96.3    1.000000    1.000000      0.0%
+         2     192.6    0.569529    0.314253     81.2%
+         3     288.9    0.179474    0.159664     12.4%
+         4     385.2    0.127546    0.098755     29.2%
+
+    chi2/dof = 0.394973
+
+[5] Lungimea de corelatie in unitati fizice:
+    xi_fit  = 1.363772 hops × 96.287821 Mpc/hop = 131.3 Mpc
+    xi_graph= 1.557829 hops × 96.287821 Mpc/hop = 150.0 Mpc
+    2dFGRS r0 = 7.49 Mpc  (scala clustering observat)
+    BAO peak  = 150 Mpc  (standard ruler)
+
+    xi_fit_mpc / BAO_peak = 0.875  (xi ≈ 88% din BAO)
+
+======================================================================
+GATES G39
+======================================================================
+
+G39a — R^2(log-log power-law fit) > 0.85  [C(r) are forma power-law]
+       Valoare: 0.912387  ->  PASS
+
+G39b — |gamma_QNG - 1.67| / 1.67 < 0.30  [exponent la 30% de 2dFGRS]
+       Valoare: 0.117035  ->  PASS
+
+G39c — alpha_BAO in [30, 300] Mpc/hop  [scala fizica rezonabila]
+       Valoare: 96.287821  ->  PASS
+
+G39d — xi_fit * alpha_BAO in [50, 300] Mpc  [lungimea de corelatie in LSS]
+       Valoare: 131.314600  ->  PASS
+
+SUMAR: 4/4 gate-uri trecute
+G39a [PASS]  G39b [PASS]  G39c [PASS]  G39d [PASS]
+
+Concluzii fizice:
+  1. QNG C(r) urmeaza o lege de putere cu gamma=1.865448 vs 2dFGRS gamma=1.67 (delta=11.7%)
+  2. Calibrare: 1 hop ≈ 96 Mpc/hop
+  3. Lungimea de corelatie QNG = 131 Mpc ≈ 88% din scala BAO (150 Mpc)
+  4. Graful n=280 reprezinta ~2.5e+08 Mpc^3 din universul observabil
+Timp total: 0.001s

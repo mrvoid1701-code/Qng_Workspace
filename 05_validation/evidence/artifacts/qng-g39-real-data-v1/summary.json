@@ -1,0 +1,53 @@
+{
+  "qng": {
+    "gamma_QNG": 1.865447937745369,
+    "gamma_QNG_unweighted": 1.5531476555324002,
+    "A_QNG": 0.08239765225141316,
+    "R2_QNG": 0.9123866591445947,
+    "xi_fit_hops": 1.3637716371907138,
+    "xi_graph_hops": 1.5578294126851684
+  },
+  "obs_2dfgrs": {
+    "gamma": 1.67,
+    "r0_h_inv_mpc": 5.05,
+    "r0_mpc": 7.492581602373886,
+    "h": 0.674,
+    "reference": "Hawkins et al. 2003, MNRAS 346, 78, arXiv:astro-ph/0212375"
+  },
+  "calibration": {
+    "alpha_BAO_mpc_per_hop": 96.28782123291086,
+    "BAO_scale_mpc": 150.0,
+    "xi_fit_mpc": 131.3145996043336,
+    "xi_graph_mpc": 150.0,
+    "volume_n_voxels_mpc3": 249960917.784711
+  },
+  "comparison": {
+    "delta_gamma_pct": 11.703469326070003,
+    "chi2_dof": 0.3949732240535693
+  },
+  "gates": {
+    "G39a": {
+      "passed": true,
+      "value": 0.9123866591445947
+    },
+    "G39b": {
+      "passed": true,
+      "value": 0.11703469326070004
+    },
+    "G39c": {
+      "passed": true,
+      "value": 96.28782123291086
+    },
+    "G39d": {
+      "passed": true,
+      "value": 131.3145996043336
+    }
+  },
+  "summary": {
+    "n_pass": 4,
+    "n_total": 4,
+    "all_pass": true,
+    "timestamp": "2026-03-22T09:52:42.200959Z",
+    "runtime_s": 0.001
+  }
+}
