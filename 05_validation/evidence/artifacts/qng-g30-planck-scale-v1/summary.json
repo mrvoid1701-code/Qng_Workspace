@@ -1,7 +1,7 @@
 {
   "gate": "G30",
   "description": "Planck scale matching from A(k=8)",
-  "timestamp": "2026-03-21T14:17:15Z",
+  "timestamp": "2026-03-22T14:18:54Z",
   "params": {
     "n_nodes": 280,
     "k_init": 8,
@@ -91,7 +91,7 @@
     "pass": true,
     "n_pass": 4,
     "n_total": 4,
-    "elapsed_s": 0.7344388961791992
+    "elapsed_s": 0.4699840545654297
   },
   "design_notes": {
     "matching_condition": "A(k=8) * l_QNG^2 = C_4 * l_P^2  =>  l_QNG = l_P / (2*pi*sqrt(A)); C_4 = 1/(4*pi^2) from Green function of -nabla^2 in R^4",
