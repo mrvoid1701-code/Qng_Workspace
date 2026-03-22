@@ -126,6 +126,24 @@ GROUPS: dict[str, list[str]] = {
         "run_qng_g22_isotropy_v1.py",   # G22 Directional isotropy (σ(d_s)<0.5, 2.5<d_s<5.5)
         "run_qng_g23_klein_gordon_v1.py",  # G23 Klein-Gordon scalar matter (Yukawa screening)
         "run_qng_g24_foliation_v1.py",     # G24 Spectral foliation 3+1 split (d_s_spatial≈3)
+        "run_qng_g25_uv_running_v1.py",    # G25 UV running d_s(UV)=3.02 vs d_s(IR)=4.39
+        "run_qng_g26_cmb_v1.py",           # G26 CMB Planck 2018 (ℓ_damp, n_s, χ², BAO)
+        "run_qng_g27_kr_universality_v1.py",  # G27 k_R universal pc→Gpc, spread=1.80%
+        "run_qng_g28_u1_gauge_v1.py",      # G28 U(1) gauge emergent (foton dipol, plachete)
+        "run_qng_g29_gn_scaling_v1.py",    # G29 G_N scaling A(k)∝k^-2.23, r²=0.999
+        "run_qng_g30_planck_scale_v1.py",  # G30 Planck scale: 1 hop ≈ 1.16·ℓ_P
+        "run_qng_g32_hamiltonian_v2.py",   # G32 Hamiltonian cuantic v2 (formula σ² corectată)
+        "run_qng_g33_propagator_v1.py",    # G33 Propagator cuantic C(r), ξ=1.36 hops
+        "run_qng_g34_scaling_v1.py",       # G34 Scaling λ₁(n): auto-similar n=50→400
+        "run_qng_g35_dark_ratio_v1.py",    # G35 Dark ratio f_dark(r=1)=0.286≈Ω_DM
+        "run_qng_g36_entanglement_v1.py",  # G36 Entanglement area law exponent=0.877
+        "run_qng_g37_matter_v1.py",        # G37 Materie IPR: Ω_b=9.6%, DR≥4→barioni
+        "run_qng_g38_omega_b_v1.py",       # G38 Ω_b calibrare DR*=8.88→Ω_b=Planck
+        "run_qng_g39_em_gauge_v1.py",      # G39 EM emergent: Maxwell+gauge pe Jaccard
+        "run_qng_g40_eboss_dr16_v1.py",    # G40 eBOSS DR16 LRG+ELG γ_LRG err=0.8%
+        "run_qng_g41_bao_peak_v1.py",      # G41 BAO peak 162.75±8.4 Mpc vs QNG 150
+        "run_qng_g42_schrodinger_v1.py",   # G42 Schrödinger emergent: Born, unitaritate
+        "run_qng_g44_null_model_v1.py",    # G44 Null model: Jaccard vs ER/BA/RR >5σ
     ],
 }
 
