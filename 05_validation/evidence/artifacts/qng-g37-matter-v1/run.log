@@ -1,6 +1,6 @@
 ======================================================================
 QNG G37 — Definirea Materiei: IPR si Clasificare Moduri
-Run: 2026-03-22T14:21:54.722756Z
+Run: 2026-03-22T20:59:49.756306Z
 ======================================================================
 
 Clasificare:
@@ -18,7 +18,7 @@ Planck 2018: Omega_Lambda=0.685  Omega_DM=0.261  Omega_b=0.049
     E_total_full_est = n/2 * omega_mean = 155.679189
 
 [1] Eigenmoduri (40 top + 40 bottom + 1 constant)...
-    Calculat in 11.9s
+    Calculat in 9.5s
 
 [2] Inverse Participation Ratio (IPR) si clasificare
 
@@ -109,4 +109,4 @@ G37d — Omega_tot in [0.80, 1.20]  (platitudine)
 
 SUMAR: 4/4 gate-uri trecute
 G37a [PASS]  G37b [PASS]  G37c [PASS]  G37d [PASS]
-Timp total: 12.1s
+Timp total: 9.6s

@@ -1,6 +1,6 @@
 ======================================================================
 QNG G38 — Predictia Omega_b: Calibrarea Pragului DR
-Run: 2026-03-22T14:22:30.703270Z
+Run: 2026-03-22T20:59:50.114910Z
 ======================================================================
 WARN: E_total_full_est nu in G37 summary, recalculeaza din partial
 
@@ -93,4 +93,4 @@ Concluzii fizice:
   3. G37 (DR=4.0) -> Omega_b=0.096427, factor 2.0x fata de Planck
   4. Omega_DM/Omega_b la DR=3 = 6.543036 vs Planck 5.33
      DR=3 este pragul natural (3x mai localizat decat random Gaussian)
-Timp total: 0.00s
+Timp total: 0.47s
