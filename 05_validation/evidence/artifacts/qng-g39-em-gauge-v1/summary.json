@@ -1,0 +1,56 @@
+{
+  "gate": "G39",
+  "version": "v1",
+  "timestamp": "2026-03-22T12:25:14.077856Z",
+  "description": "Electromagnetism from vector node fluctuations \u03b4\u03a3_i^\u03bc (Calea 3)",
+  "derivation": "qng-em-vector-gauge-v1.md",
+  "params": {
+    "n_nodes": 280,
+    "k_init": 8,
+    "k_conn": 8,
+    "seed": 3401,
+    "n_sources": 20,
+    "n_iter_cg": 400,
+    "n_dim": 4
+  },
+  "graph": {
+    "n_nodes": 280,
+    "n_edges": 1313
+  },
+  "g39a": {
+    "description": "EM vector propagator power-law slope (theory: -(d_s-1) \u2248 -3.08)",
+    "slope_EM": -2.731497,
+    "r2_EM": 0.998919,
+    "threshold_min": -4.0,
+    "threshold_max": -1.5,
+    "result": "PASS"
+  },
+  "g39b": {
+    "description": "Vector holonomy gauge invariance: F^\u03bc_loop unchanged under A^\u03bc_{ij}\u2192A^\u03bc_{ij}+\u03c6^\u03bc_i-\u03c6^\u03bc_j",
+    "n_4cycles_tested": 100,
+    "max_delta_holonomy": 0.0,
+    "rel_err": 0.0,
+    "threshold": 1e-08,
+    "result": "PASS"
+  },
+  "g39c": {
+    "description": "Maxwell CG residual ||LA-b||_inf/||b||_inf (field equation satisfied)",
+    "maxwell_residual": 0.0,
+    "threshold": 1e-06,
+    "result": "PASS"
+  },
+  "g39d": {
+    "description": "F^{\u03bc\u03bd} antisymmetry: F^{\u03bc\u03bd} + F^{\u03bd\u03bc} = 0 (exact by construction)",
+    "rel_antisym": 0.0,
+    "threshold": 1e-10,
+    "result": "PASS"
+  },
+  "gate_results": {
+    "g39a": "PASS",
+    "g39b": "PASS",
+    "g39c": "PASS",
+    "g39d": "PASS"
+  },
+  "all_pass": true,
+  "elapsed_s": 0.52
+}
