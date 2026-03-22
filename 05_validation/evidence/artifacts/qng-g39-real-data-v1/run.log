@@ -1,6 +1,6 @@
 ======================================================================
 QNG G39 — Calibrare BAO & Comparatie C(r) vs 2dFGRS xi(r)
-Run: 2026-03-22T09:52:42.200331Z
+Run: 2026-03-22T20:37:14.685651Z
 ======================================================================
 
 [0] Date observationale 2dFGRS (Hawkins et al. 2003):
@@ -113,4 +113,4 @@ Concluzii fizice:
   2. Calibrare: 1 hop ≈ 96 Mpc/hop
   3. Lungimea de corelatie QNG = 131 Mpc ≈ 88% din scala BAO (150 Mpc)
   4. Graful n=280 reprezinta ~2.5e+08 Mpc^3 din universul observabil
-Timp total: 0.001s
+Timp total: 0.002s
