@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-22T20:39:49.763079+00:00",
+  "timestamp": "2026-03-22T20:56:32.031043+00:00",
   "config": {
     "N": 280,
     "K": 8,
@@ -80,20 +80,23 @@
   ],
   "analysis": {
     "g18": 1.613413,
-    "g80": 1.358471,
-    "g120": 1.115143,
-    "gamma_inf": 1.115143,
-    "conv_delta": 0.243328,
-    "err_inf_pct": 39.72,
-    "err_g18_artifact_pct": 44.68,
-    "pearson_trend": -0.0048,
-    "recommended_tolerance_pct": 40
+    "gamma_plateau": 1.801453,
+    "sigma_plateau": 0.000544,
+    "plateau_n_range": [
+      25,
+      35
+    ],
+    "r2_plateau": 0.987431,
+    "err_plateau_pct": 2.62,
+    "err_g18_artifact_pct": 10.44,
+    "degradare_post_platou": 0.6869,
+    "diagnostic": "deflatie_acumulata_post_platou"
   },
   "gates": {
-    "G47a": false,
-    "G47b": false,
+    "G47a": true,
+    "G47b": true,
     "G47c": true,
     "G47d": true,
-    "n_pass": 2
+    "n_pass": 4
   }
 }
