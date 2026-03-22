@@ -1,6 +1,6 @@
 # QNG-G27: K_R Universality Gate
 
-**Data:** 2026-03-20
+**Data:** 2026-03-22
 **Verdict:** PASS
 **Spread total:** 1.80% pe 18 ordine de mărime
 

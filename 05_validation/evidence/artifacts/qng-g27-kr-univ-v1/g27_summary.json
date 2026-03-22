@@ -1,7 +1,7 @@
 {
   "gate": "G27",
   "title": "K_R Universality Gate",
-  "date": "2026-03-20T20:52:49.041729+00:00",
+  "date": "2026-03-22T14:10:05.414770+00:00",
   "k_theory": 0.836719269507167,
   "mu1_jaccard": 0.291,
   "sub_gates": {
