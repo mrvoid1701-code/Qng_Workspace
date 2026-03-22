@@ -1,7 +1,7 @@
 {
   "gate": "G25",
   "version": "v1",
-  "timestamp": "2026-03-21T11:42:24Z",
+  "timestamp": "2026-03-22T14:09:14Z",
   "seed": 3401,
   "n_nodes": 280,
   "k_init": 8,
@@ -39,5 +39,5 @@
     "g25d": "PASS"
   },
   "all_pass": true,
-  "elapsed_s": 0.12
+  "elapsed_s": 0.13
 }
