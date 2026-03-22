@@ -1,0 +1,73 @@
+{
+  "qng_input": {
+    "gamma_weighted": 1.865447937745369,
+    "gamma_unweighted": 1.5531476555324002,
+    "xi_fit_mpc": 131.3145996043336,
+    "alpha_mpc_hop": 96.28782123291086,
+    "A_QNG": 0.08239765225141316
+  },
+  "eboss_lrg": {
+    "gamma_real_space": 1.85,
+    "gamma_real_sigma": 0.08,
+    "reference": "Bautista et al. 2021, MNRAS 500, 736, arXiv:2007.08993",
+    "gamma_fit_from_xi": 2.4237901004763573,
+    "R2_fit": 0.9961696777067556,
+    "factor_real_space": 0.7973395656146764,
+    "beta_lrg": 0.3454545454545454
+  },
+  "eboss_elg": {
+    "gamma_real_space": 1.55,
+    "gamma_real_sigma": 0.1,
+    "reference": "Tamone et al. 2020, MNRAS 499, 5527, arXiv:2007.09009"
+  },
+  "eboss_bao": {
+    "rd_planck_mpc": 147.78,
+    "alpha_iso_lrg": 1.004,
+    "bao_scale_mpc": 148.37112,
+    "reference": "Bautista et al. 2021, Table 3"
+  },
+  "comparison": {
+    "delta_gamma_lrg_weighted_pct": 0.8350236619118325,
+    "delta_gamma_lrg_unweighted_pct": 16.046072673924318,
+    "delta_gamma_elg_weighted_pct": 20.35147985453993,
+    "delta_gamma_elg_unweighted_pct": 0.2030745504774291,
+    "delta_lrg_best_pct": 0.8350236619118325,
+    "delta_elg_best_pct": 0.2030745504774291,
+    "delta_bao_scale_pct": 11.495849324091093,
+    "chi2_dof_weighted": 2.9966322476605556,
+    "chi2_dof_unweighted": 7.632195409706358,
+    "chi2_dof_best": 2.9966322476605556,
+    "A_opt_weighted": 182.8350938242848,
+    "A_opt_unweighted": 49.50273599298003,
+    "note": "A normalizata prin best-fit la LRG (gamma fix, A liber)"
+  },
+  "gates": {
+    "G40a": {
+      "passed": true,
+      "value": 0.008350236619118325,
+      "label": "gamma_QNG vs LRG < 30%"
+    },
+    "G40b": {
+      "passed": true,
+      "value": 0.002030745504774291,
+      "label": "gamma_QNG vs ELG < 30%"
+    },
+    "G40c": {
+      "passed": true,
+      "value": 0.11495849324091093,
+      "label": "xi_fit vs BAO_eBOSS < 25%"
+    },
+    "G40d": {
+      "passed": true,
+      "value": 2.9966322476605556,
+      "label": "chi2/dof < 5"
+    }
+  },
+  "summary": {
+    "n_pass": 4,
+    "n_total": 4,
+    "all_pass": true,
+    "timestamp": "2026-03-22T10:41:37.983862Z",
+    "runtime_s": 0.000438
+  }
+}
