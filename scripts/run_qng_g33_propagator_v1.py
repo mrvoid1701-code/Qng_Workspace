@@ -496,7 +496,7 @@ def main() -> int:
     log("\n[6] Regresia log(C(r)) = a - r/xi  ->  xi = -1/slope")
 
     # Filtram r-urile cu C(r) > 0 si suficiente perechi
-    fit_rs  = [r for r in r_values_sorted if C_profile[r] > 1e-15 and C_profile_cnt[r] >= 5]
+    fit_rs  = [r for r in r_values_sorted if C_profile[r] > 1e-15 and C_profile_cnt[r] >= 50]
     fit_lnC = [math.log(C_profile[r]) for r in fit_rs]
 
     xi_fit = float("nan")

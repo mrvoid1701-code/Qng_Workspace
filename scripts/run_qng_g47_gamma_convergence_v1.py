@@ -192,7 +192,7 @@ def build_C_profile(nb, lams, vecs, n_src, seed):
     profile = {}
     for r in sorted(by_r):
         vals = [v for v in by_r[r] if v > 1e-20]
-        if len(vals) >= 5:
+        if len(vals) >= 50:
             profile[r] = (statistics.mean(vals),
                           statistics.stdev(vals) if len(vals) > 1 else 1.0,
                           len(vals))

@@ -1,6 +1,6 @@
 ======================================================================
 QNG G33 — Propagatorul Cuantic al Hamiltonianului
-Run started: 2026-03-22T14:20:03.260246Z
+Run started: 2026-03-22T20:38:47.822633Z
 ======================================================================
 
 C_ij = <Sigma_i Sigma_j>_0 = sum_a phi_a(i)*phi_a(j) / (2*omega_a)
@@ -11,7 +11,7 @@ m² = 0.014  ->  m = 0.118322
 xi_theory = 1/m = 8.451543 hops
 
 [0] Construire graf Jaccard ponderat
-  Construit in 0.11s
+  Construit in 0.10s
   Noduri: 280  |  Muchii: 1313  |  Grad mediu ponderat: 1.270435
 
 [1] Modul constant
@@ -20,14 +20,14 @@ xi_theory = 1/m = 8.451543 hops
   Contributia la C_ii: 0.015092 per nod (constanta)
 
 [2] Moduri TOP ale lui K  (40 moduri × 200 iter)
-  Calculat in 4.99s  |  40 moduri
+  Calculat in 4.97s  |  40 moduri
   lambda_max = 2.395162  (cel mai mare, omega = 1.547631)
   lambda_min_top = 1.874863
   lam_shift pt bottom iteration: 3.014920
 
 [3] Moduri BOTTOM ale lui K via shift-invert  (40 moduri × 200 iter)
   A = 3.014920*I - K  ->  moduri top ale lui A = moduri BOTTOM ale lui K
-  Calculat in 12.04s  |  40 moduri
+  Calculat in 11.87s  |  40 moduri
   lambda_min_bottom = 0.356756  (cel mai mic, omega = 0.597291)
   lambda_max_bottom = 0.695461
 
@@ -90,4 +90,4 @@ G33a [PASS]  G33b [PASS]  G33c [PASS]  G33d [PASS]
 *** TOATE GATE-URILE G33 TRECUTE ***
 Propagatorul cuantic este spatial si consistent cu masa QNG.
 
-Timp total: 17.20s
+Timp total: 17.00s
