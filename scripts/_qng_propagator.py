@@ -115,8 +115,13 @@ def compute_c_profile(adj_w, seed,
                       n_top=25, n_bottom=25,
                       n_iter=N_ITER_DEFAULT,
                       n_bfs_src=40,
-                      m_sq=M_SQ_DEFAULT):
-    """Calculeaza C(r) cu propagator complet (constant + top + bottom cu deflatie)."""
+                      m_sq=M_SQ_DEFAULT,
+                      n_min=50):
+    """Calculeaza C(r) cu propagator complet (constant + top + bottom cu deflatie).
+
+    n_min: numarul minim de perechi pentru un bin r sa fie inclus in profil.
+           Default=50 previne artefacte la r-uri rare (σ≈0 → weight→∞ in fit-uri ponderate).
+    """
     n = len(adj_w)
     rng_obj = random.Random(seed + 88888)
 
@@ -161,10 +166,13 @@ def compute_c_profile(adj_w, seed,
             if d == 0: continue
             c_val = sum(phi[src] * phi[node] / (2.0 * om) for phi, om in modes)
             by_hop.setdefault(d, []).append(c_val)
+    # Filtru robustete: exclude bin-uri cu prea putine perechi
+    if n_min > 1:
+        by_hop = {r: v for r, v in by_hop.items() if len(v) >= n_min}
     return by_hop
 
 
-def fit_powerlaw(by_hop, min_pairs=15):
+def fit_powerlaw(by_hop, min_pairs=50):
     rs, Cs = [], []
     for r in sorted(by_hop):
         vals = by_hop[r]
