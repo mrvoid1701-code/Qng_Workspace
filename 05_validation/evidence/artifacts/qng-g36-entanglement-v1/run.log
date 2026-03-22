@@ -1,11 +1,11 @@
 ======================================================================
 QNG G36 — Entropia de Entanglement (Mutual Information proxy)
-Run: 2026-03-22T09:12:58.205512Z
+Run: 2026-03-22T14:21:24.936586Z
 ======================================================================
 I(A:B) = Σ_{i∈A,j∉A} C_ij² / (C_ii*C_jj)  [proxy entanglement cross-boundary]
 
 [1] Eigenmoduri (40 top + 40 bottom + 1 constant)
-  Calculat in 12.5s  |  lambda_1_K=0.356756
+  Calculat in 10.2s  |  lambda_1_K=0.356756
 
 [2] Precomputa propagatorul C_ij pentru toate nodurile...
   C_diag calculat in 0.00s  (C_rows: la cerere)
@@ -95,4 +95,4 @@ G36d — exponent in [0.55, 0.95]  (area law d_s=4: ~0.75)
 
 SUMAR: 4/4 gate-uri trecute
 G36a [PASS]  G36b [PASS]  G36c [PASS]  G36d [PASS]
-Timp total: 13.0s
+Timp total: 10.7s
