@@ -1,0 +1,52 @@
+{
+  "scan": {
+    "n_thresholds": 23,
+    "DR_range": [
+      1.0,
+      12.0
+    ]
+  },
+  "planck_matching": {
+    "DR_star": 8.877529852511678,
+    "Omega_b_star": 0.049,
+    "ratio_dm_b_star": 19.434377271709167,
+    "DR_range_planck_window": [
+      8.5,
+      12.0
+    ]
+  },
+  "at_G37_threshold": {
+    "DR_thr": 4.0,
+    "Omega_b": 0.09642746329359943,
+    "delta_pct": 96.79074141550903
+  },
+  "monotonicity": {
+    "is_monotone": true,
+    "n_violations": 0
+  },
+  "gates": {
+    "G38a": {
+      "passed": true,
+      "value": 8.877529852511678
+    },
+    "G38b": {
+      "passed": true,
+      "value": 0.0
+    },
+    "G38c": {
+      "passed": true,
+      "value": 6.5430355742944135
+    },
+    "G38d": {
+      "passed": true,
+      "value": 8.877529852511678
+    }
+  },
+  "summary": {
+    "n_pass": 4,
+    "n_total": 4,
+    "all_pass": true,
+    "timestamp": "2026-03-22T09:45:38.002429Z",
+    "runtime_s": 0.002
+  }
+}
