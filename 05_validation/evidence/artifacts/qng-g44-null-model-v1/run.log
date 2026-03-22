@@ -1,0 +1,53 @@
+=================================================================
+QNG G44 — Null Model Test
+=================================================================
+
+[QNG referinta]
+  gamma_weighted   = 1.8654
+  gamma_unweighted = 1.5531
+  R2               = 0.9124
+
+[Rulam null models] N_SEEDS=12 per tip...
+
+  NULL-1: Erdos-Renyi (n=280, target_edges=1313)...
+  gamma = 0.3774 +/- 0.0518  R2=0.7176  n=12
+
+  NULL-2: Barabasi-Albert (n=280, m=4)...
+  gamma = 1.0199 +/- 0.1560  R2=0.9733  n=12
+
+  NULL-3: Regular random (n=280, d=9)...
+  gamma = 0.0027 +/- 0.0071  R2=0.6843  n=12
+
+[Separare statistica QNG vs null models]
+  vs Erdos-Renyi:  28.70 sigma  (w:28.70, uw:22.68)
+  vs Barabasi-Al.: 5.42 sigma  (w:5.42, uw:3.42)
+  vs Regular:      261.99 sigma  (w:261.99, uw:218.07)
+  R2_QNG=0.9124  vs max_R2_null=0.9733  diff=-0.0609
+
+[Proximitate fata de gamma_obs=1.85 (LRG eBOSS)]
+  |gamma_QNG  - 1.85| = 0.0154  (cel mai bun QNG)
+  |gamma_ER   - 1.85| = 1.4726
+  |gamma_BA   - 1.85| = 0.8301
+  |gamma_RR   - 1.85| = 1.8473
+  QNG e cel mai apropiat de gamma_obs: True
+
+=================================================================
+GATE RESULTS
+=================================================================
+G44a  QNG vs ER > 2 sigma:   PASS  (28.70σ)
+G44b  QNG vs BA > 2 sigma:   PASS  (5.42σ)
+G44c  QNG vs RR > 2 sigma:   PASS  (261.99σ)
+G44d  QNG cel mai aproape gamma_obs: PASS  (QNG:0.015 vs null:0.830)
+
+Total: 4/4 PASS
+
+=================================================================
+TABEL COMPARATIV gamma (C(r) power-law)
+=================================================================
+Graf                      gamma      std       R2  sep_sigma
+------------------------------------------------------------
+QNG Jaccard (weighted)   1.8654      ---   0.9124        ---
+QNG Jaccard (unweight)   1.5531      ---   0.9124        ---
+NULL-1 Erdos-Renyi       0.3774   0.0518   0.7176      28.70σ
+NULL-2 Barabasi-Albert   1.0199   0.1560   0.9733       5.42σ
+NULL-3 Regular random    0.0027   0.0071   0.6843     261.99σ
