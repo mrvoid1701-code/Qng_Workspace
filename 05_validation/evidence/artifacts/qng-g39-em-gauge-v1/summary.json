@@ -1,7 +1,7 @@
 {
   "gate": "G39",
   "version": "v1",
-  "timestamp": "2026-03-22T12:25:14.077856Z",
+  "timestamp": "2026-03-22T14:22:48.400331Z",
   "description": "Electromagnetism from vector node fluctuations \u03b4\u03a3_i^\u03bc (Calea 3)",
   "derivation": "qng-em-vector-gauge-v1.md",
   "params": {
@@ -52,5 +52,5 @@
     "g39d": "PASS"
   },
   "all_pass": true,
-  "elapsed_s": 0.52
+  "elapsed_s": 0.71
 }
