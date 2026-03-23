@@ -1,0 +1,51 @@
+{
+  "config": "trajectory-real-pilot-v1",
+  "timestamp_utc": "2026-03-23T08:49:38.990624+00:00",
+  "seed": 20260220,
+  "pilot_passes": [
+    "ROSETTA_1",
+    "NEAR_1"
+  ],
+  "n_pilot": 2,
+  "params": {
+    "tau_best": 0.0001394,
+    "alpha_decl": 0.7
+  },
+  "chi2": {
+    "qng": 437.66280395814545,
+    "base": 12016.213017751481
+  },
+  "gates": {
+    "delta_chi2": -11578.550213793336,
+    "gate_chi2_pass": true,
+    "delta_aic": -11574.550213793336,
+    "gate_aic_pass": true,
+    "delta_bic": -11577.163919432216,
+    "gate_bic_pass": true
+  },
+  "pilot_result": "PASS",
+  "per_pass": [
+    {
+      "pass_id": "NEAR_1",
+      "obs_mm_s": 13.46,
+      "sigma_mm_s": 0.13,
+      "qng_mm_s": 11.52629621547973,
+      "resid_mm_s": -1.9337037845202705,
+      "pull": -14.874644496309772
+    },
+    {
+      "pass_id": "ROSETTA_1",
+      "obs_mm_s": 1.8,
+      "sigma_mm_s": 0.03,
+      "qng_mm_s": 2.5355402012578017,
+      "resid_mm_s": 0.7355402012578016,
+      "pull": 14.710804025156031
+    }
+  ],
+  "controls": {
+    "orientation_shuffle_p": 0.515,
+    "orientation_shuffle_ratio": 10.027400406809525,
+    "segment_shuffle_p": 0.5,
+    "segment_shuffle_ratio": 6.817764724984916
+  }
+}
