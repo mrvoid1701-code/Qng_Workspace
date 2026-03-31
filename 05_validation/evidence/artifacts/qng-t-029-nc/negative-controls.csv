@@ -1,0 +1,49 @@
+nc_id,description,seed,chi2_correct,chi2_nc,ratio,nc_gate_pass
+NC-1_tau0,"tau=0 (instantaneous gravity, no memory)",730,0.215554,120.5476,559.25,True
+NC-1_tau0,"tau=0 (instantaneous gravity, no memory)",731,0.160319,122.6444,765.00,True
+NC-1_tau0,"tau=0 (instantaneous gravity, no memory)",732,0.081131,126.7042,1561.73,True
+NC-1_tau0,"tau=0 (instantaneous gravity, no memory)",733,0.088125,133.7640,1517.89,True
+NC-1_tau0,"tau=0 (instantaneous gravity, no memory)",734,3.848487,123.8425,32.18,True
+NC-1_tau0,"tau=0 (instantaneous gravity, no memory)",735,0.095313,129.4293,1357.95,True
+NC-1_tau0,"tau=0 (instantaneous gravity, no memory)",736,0.175259,130.9604,747.24,True
+NC-1_tau0,"tau=0 (instantaneous gravity, no memory)",737,0.142867,133.5059,934.47,True
+NC-1_tau0,"tau=0 (instantaneous gravity, no memory)",738,0.043785,134.6099,3074.31,True
+NC-1_tau0,"tau=0 (instantaneous gravity, no memory)",739,0.135651,127.7820,941.99,True
+NC-1_tau0,"tau=0 (instantaneous gravity, no memory)",740,0.040000,135.8910,3397.25,True
+NC-1_tau0,"tau=0 (instantaneous gravity, no memory)",741,0.114680,128.7874,1123.02,True
+NC-2_tau_short,tau=0.2 (too short: 6.5x below correct tau=1.3),730,0.215554,0.7777,3.61,False
+NC-2_tau_short,tau=0.2 (too short: 6.5x below correct tau=1.3),731,0.160319,0.8216,5.12,True
+NC-2_tau_short,tau=0.2 (too short: 6.5x below correct tau=1.3),732,0.081131,7.4681,92.05,True
+NC-2_tau_short,tau=0.2 (too short: 6.5x below correct tau=1.3),733,0.088125,5.5885,63.42,True
+NC-2_tau_short,tau=0.2 (too short: 6.5x below correct tau=1.3),734,3.848487,9.1518,2.38,False
+NC-2_tau_short,tau=0.2 (too short: 6.5x below correct tau=1.3),735,0.095313,7.3876,77.51,True
+NC-2_tau_short,tau=0.2 (too short: 6.5x below correct tau=1.3),736,0.175259,6.9318,39.55,True
+NC-2_tau_short,tau=0.2 (too short: 6.5x below correct tau=1.3),737,0.142867,7.0694,49.48,True
+NC-2_tau_short,tau=0.2 (too short: 6.5x below correct tau=1.3),738,0.043785,3.5152,80.28,True
+NC-2_tau_short,tau=0.2 (too short: 6.5x below correct tau=1.3),739,0.135651,5.3660,39.56,True
+NC-2_tau_short,tau=0.2 (too short: 6.5x below correct tau=1.3),740,0.040000,2.3982,59.95,True
+NC-2_tau_short,tau=0.2 (too short: 6.5x below correct tau=1.3),741,0.114680,7.7998,68.01,True
+NC-3_tau_long,tau=8.0 (too long: 6x above correct tau=1.3),730,0.215554,0.2526,1.17,False
+NC-3_tau_long,tau=8.0 (too long: 6x above correct tau=1.3),731,0.160319,0.2121,1.32,False
+NC-3_tau_long,tau=8.0 (too long: 6x above correct tau=1.3),732,0.081131,0.1909,2.35,False
+NC-3_tau_long,tau=8.0 (too long: 6x above correct tau=1.3),733,0.088125,0.2574,2.92,False
+NC-3_tau_long,tau=8.0 (too long: 6x above correct tau=1.3),734,3.848487,4.3384,1.13,False
+NC-3_tau_long,tau=8.0 (too long: 6x above correct tau=1.3),735,0.095313,0.1744,1.83,False
+NC-3_tau_long,tau=8.0 (too long: 6x above correct tau=1.3),736,0.175259,0.3819,2.18,False
+NC-3_tau_long,tau=8.0 (too long: 6x above correct tau=1.3),737,0.142867,0.2537,1.78,False
+NC-3_tau_long,tau=8.0 (too long: 6x above correct tau=1.3),738,0.043785,0.1257,2.87,False
+NC-3_tau_long,tau=8.0 (too long: 6x above correct tau=1.3),739,0.135651,0.2555,1.88,False
+NC-3_tau_long,tau=8.0 (too long: 6x above correct tau=1.3),740,0.040000,0.0602,1.50,False
+NC-3_tau_long,tau=8.0 (too long: 6x above correct tau=1.3),741,0.114680,0.2534,2.21,False
+NC-4_wrongsign,Negative kernel (anti-gravity memory),730,0.215554,132.1671,613.15,True
+NC-4_wrongsign,Negative kernel (anti-gravity memory),731,0.160319,127.3098,794.10,True
+NC-4_wrongsign,Negative kernel (anti-gravity memory),732,0.081131,137.1941,1691.03,True
+NC-4_wrongsign,Negative kernel (anti-gravity memory),733,0.088125,130.0221,1475.43,True
+NC-4_wrongsign,Negative kernel (anti-gravity memory),734,3.848487,118.9206,30.90,True
+NC-4_wrongsign,Negative kernel (anti-gravity memory),735,0.095313,135.0636,1417.06,True
+NC-4_wrongsign,Negative kernel (anti-gravity memory),736,0.175259,134.3905,766.81,True
+NC-4_wrongsign,Negative kernel (anti-gravity memory),737,0.142867,131.1788,918.19,True
+NC-4_wrongsign,Negative kernel (anti-gravity memory),738,0.043785,136.4883,3117.21,True
+NC-4_wrongsign,Negative kernel (anti-gravity memory),739,0.135651,131.7127,970.97,True
+NC-4_wrongsign,Negative kernel (anti-gravity memory),740,0.040000,137.0081,3425.17,True
+NC-4_wrongsign,Negative kernel (anti-gravity memory),741,0.114680,132.6575,1156.77,True

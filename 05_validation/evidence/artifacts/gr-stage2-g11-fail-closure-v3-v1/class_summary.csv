@@ -1,0 +1,5 @@
+fail_class,count,rate_pct
+rank_monotonic_pearson_collapse,3,50.000
+g11b_slope_fail,1,16.667
+multi_peak_weak_rank,1,16.667
+weak_rank_corr,1,16.667

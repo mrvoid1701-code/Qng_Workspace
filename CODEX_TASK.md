@@ -320,3 +320,203 @@ Teste propuse (din roadmap QNG):
 | T-SIG-002 | ⏳ Pending numeric (TASK-C) |
 | T-SIG-004 | ⏳ Pending analytic (TASK-D) |
 | Sensitivity scan | ⏳ Pending (TASK-E) |
+
+---
+
+---
+
+# Taskuri noi adăugate — 2026-03-02T20:30 UTC
+
+> Adăugate de Claude Sonnet 4.6 după sesiunea de governance switch G17-v2 (2026-03-02).
+> Scop: reducere runtime pentru block-urile mari (attack-seed500 = 1500 profile, holdout = 400 profile) **fără nicio modificare a logicii științifice sau a gate-urilor**.
+
+---
+
+## TASK-H — Runtime improvements pentru runner-ele QM mari
+
+**Adăugat:** 2026-03-02T20:30 UTC
+**Prioritate:** MEDIE (nu blochează știința, dar reduce semnificativ timpul de rulare)
+**Restricție critică:** Nicio modificare la formule, threshold-uri sau logica de gate. Doar infrastructură de execuție.
+
+### Context
+
+Runner-ul `run_qm_stage1_prereg_v1.py` (și `run_qm_g17_candidate_eval_v2.py`) rulează un loop secvențial `for p in profiles` care cheamă `run_qm_lane_check_v1.py` prin subprocess per profil. La 1500 profile (attack-seed500) fiecare profil durează ~1–3s → total 25–75 min. Cele 4 sub-taskuri de mai jos pot tăia runtime-ul cu 50–80%.
+
+### Sub-task H1 — Multiprocessing pe profile loop
+
+**Fișiere de modificat:**
+- `scripts/tools/run_qm_stage1_prereg_v1.py` (loop principal la linia ~185: `for idx, p in enumerate(profiles, start=1)`)
+- `scripts/tools/run_qm_g17_candidate_eval_v2.py` (idem)
+
+**Ce trebuie făcut:**
+
+Înlocuiește loop-ul secvențial cu `concurrent.futures.ProcessPoolExecutor`:
+
+```python
+import concurrent.futures
+
+def run_profile(args_tuple):
+    """Worker function (top-level, picklable)."""
+    p, out_dir, root, tools, idx, total = args_tuple
+    tag = f"{p.dataset_id.lower()}_seed{p.seed}"
+    profile_out = out_dir / "runs" / tag
+    cmd = [sys.executable, str(tools / "run_qm_lane_check_v1.py"),
+           "--dataset-id", p.dataset_id, "--seed", str(p.seed),
+           "--out-dir", str(profile_out)]
+    rc, tail = run_cmd(cmd, root)
+    return (idx, p, profile_out, rc, tail)
+
+# În main():
+max_workers = min(os.cpu_count() or 4, 8)  # cap la 8 pentru memorie
+with concurrent.futures.ProcessPoolExecutor(max_workers=max_workers) as executor:
+    futures = {
+        executor.submit(run_profile, (p, out_dir, ROOT, TOOLS, idx, len(profiles))): (idx, p)
+        for idx, p in enumerate(profiles, start=1)
+    }
+    rows = []
+    for future in concurrent.futures.as_completed(futures):
+        idx, p, profile_out, rc, tail = future.result()
+        # ... restul logicii de citire summary.csv și construire row
+```
+
+**Reguli:**
+- Adaugă `--workers N` argument opțional (default: `min(cpu_count, 8)`).
+- Logging-ul paralel: colectează rezultatele și loghează în ordine după `idx` (sortare după `idx` înainte de a scrie în log).
+- Nu elimina logica de strict-prereg sau strict-exit.
+- Toate verificările de `summary.csv` rămân identice — doar dispatch-ul devine paralel.
+
+---
+
+### Sub-task H2 — `--no-write-artifacts` și `--no-plots` default pe attack/holdout
+
+**Fișiere de modificat:**
+- `scripts/tools/run_qm_stage1_prereg_v1.py`
+- `scripts/tools/run_qm_g17_candidate_eval_v2.py`
+- `scripts/tools/run_qm_lane_check_v1.py` (adaugă flag pass-through)
+
+**Ce trebuie făcut:**
+
+1. În `run_qm_stage1_prereg_v1.py` și `run_qm_g17_candidate_eval_v2.py`, adaugă argumentele:
+   ```
+   --no-write-artifacts  (default: False în modul smoke/primary, True în modul attack/holdout)
+   --no-plots            (default: False în smoke, True în attack/holdout)
+   ```
+
+2. Logica de default:
+   ```python
+   # Dacă utilizatorul nu specifică explicit, aplică default-uri după mode:
+   if args.mode in ("attack", "holdout") and not args_explicitly_set("no_write_artifacts"):
+       args.no_write_artifacts = True
+   if args.mode in ("attack", "holdout") and not args_explicitly_set("no_plots"):
+       args.no_plots = True
+   ```
+
+3. Pass-through la `run_qm_lane_check_v1.py`:
+   ```python
+   cmd = [..., "--no-write-artifacts"] if args.no_write_artifacts else [...]
+   cmd += ["--no-plots"] if args.no_plots else []
+   ```
+
+4. În `run_qm_lane_check_v1.py`, adaugă `--no-write-artifacts` și `--no-plots` și pass-through-ează-le la fiecare gate script (G17..G20) dacă script-ul respectiv acceptă flag-ul (verifică cu `--help` probe, similar cu mecanismul din `run_all.py`).
+
+**Restricție:** Nu modifica gate scripts individuale (G17/G18/G19/G20). Dacă un script nu acceptă flag-ul, pur și simplu nu-l transmiți.
+
+---
+
+### Sub-task H3 — Cache pentru graph/Laplacian/spectrum
+
+**Fișiere de modificat:**
+- `scripts/tools/run_qng_qm_bridge_v1.py` (G17)
+- `scripts/tools/run_qng_qm_info_v1.py` (G18)
+- `scripts/tools/run_qng_unruh_thermal_v1.py` (G19)
+- `scripts/tools/run_qng_semiclassical_v1.py` (G20)
+
+**Ce trebuie făcut:**
+
+Adaugă cache de sesiune (în memorie, nu pe disc) pentru datele care se repetă la seed-uri multiple cu același dataset:
+
+```python
+import functools
+
+@functools.lru_cache(maxsize=32)
+def _load_graph_cached(dataset_path: str) -> tuple:
+    """Încarcă și construiește graful; cacheuit după cale."""
+    # ... logica existentă de construcție graf
+    return (nodes, edges, sigma_array)  # tuple = hashable = cacheable
+
+@functools.lru_cache(maxsize=32)
+def _compute_laplacian_cached(dataset_path: str) -> tuple:
+    """Laplacian + eigenvalori; cacheuit după cale."""
+    # ...
+```
+
+**Important:** Cache-ul `lru_cache` este per-proces, deci funcționează corect în modul secvențial sau cu multiprocessing (fiecare worker are propriul cache). Nu folosi variabile globale mutabile ca cache.
+
+**Restricție:** Nu modifica formulele sau criteriile de gate. Doar funcțiile de încărcare/construcție date care sunt pure (același input → același output).
+
+---
+
+### Sub-task H4 — Early exit per profil (opțional, cu flag explicit)
+
+**Fișiere de modificat:**
+- `scripts/tools/run_qm_lane_check_v1.py`
+
+**Ce trebuie făcut:**
+
+Adaugă `--early-exit-on-fail` flag (default: False). Când este activat:
+
+```python
+# Dacă G17 fail → skip G18/G19/G20 și marchează profilul ca fail
+if args.early_exit_on_fail:
+    if gate_result["status"] == "fail" and gate.gate_id == "G17":
+        # marchează G18/G19/G20 ca "skipped"
+        # scrie summary cu status="fail", skip_reason="early_exit_g17_fail"
+        break
+```
+
+**Restricție critică:** `--early-exit-on-fail` trebuie să fie `False` by default. Nu schimba comportamentul implicit — logic-ul existent rămâne identic dacă flag-ul nu este setat. Governance interzice early exit fără flag explicit.
+
+Runner-ele superioare pot activa flag-ul în modul attack/holdout:
+```bash
+# Exemplu comandă cu early exit (runtime ~40% mai scurt pe attack blocks)
+python run_qm_stage1_prereg_v1.py --mode attack --early-exit-on-fail ...
+```
+
+---
+
+### Verificare post-implementare (obligatorie pentru Codex)
+
+Rulează smoke după fiecare sub-task și compară cu baseline:
+
+```bash
+# Smoke test H1 (multiprocessing)
+python scripts/tools/run_qm_stage1_prereg_v1.py --mode smoke --datasets DS-002,DS-003,DS-006 \
+  --out-dir 05_validation/evidence/artifacts/qm-stage1-smoke-h1-mp
+
+# Rezultat așteptat: identic cu qm-stage1-smoke-v1 (aceleași pass/fail)
+python scripts/tools/evaluate_qm_stage1_prereg_v1.py \
+  --summary-csv 05_validation/evidence/artifacts/qm-stage1-smoke-h1-mp/summary.csv \
+  --out-dir 05_validation/evidence/artifacts/qm-stage1-smoke-h1-mp-eval \
+  --eval-id qm-smoke-h1-mp --require-zero-rc --min-all-pass-rate 0.0
+```
+
+Smoke-ul trebuie să producă **0 degraded** față de rularea secvențială originală. Dacă există diferențe, sub-task-ul H1 nu este corect implementat.
+
+---
+
+### Ce NU trebuie modificat
+
+- Nicio formulă sau threshold în `run_qng_qm_bridge_v1.py`, `run_qng_qm_info_v1.py`, `run_qng_unruh_thermal_v1.py`, `run_qng_semiclassical_v1.py`
+- Logica de promotion evaluation din `evaluate_qm_g17_promotion_v1.py`
+- Pre-registration documents (`05_validation/pre-registrations/`)
+- GR gate scripts sau runner-ele GR
+
+### Livrabile
+
+- `scripts/tools/run_qm_stage1_prereg_v1.py` (H1, H2)
+- `scripts/tools/run_qm_g17_candidate_eval_v2.py` (H1, H2)
+- `scripts/tools/run_qm_lane_check_v1.py` (H2, H4)
+- `scripts/tools/run_qng_qm_bridge_v1.py` (H3, dacă aplicabil)
+- `scripts/tools/run_qng_qm_info_v1.py` (H3, dacă aplicabil)
+- `scripts/tools/run_qng_unruh_thermal_v1.py` (H3, dacă aplicabil)
+- `scripts/tools/run_qng_semiclassical_v1.py` (H3, dacă aplicabil)

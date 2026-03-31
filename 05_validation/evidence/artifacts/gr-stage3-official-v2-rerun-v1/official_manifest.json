@@ -1,0 +1,12 @@
+{
+  "generated_utc": "2026-03-02T12:46:21.375351Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage3-g11-g12-candidate-v2/rerun_ds002_003_006_s3401_3600/summary.csv",
+  "policy_id": "gr-stage3-official-v2-rerun-v1",
+  "effective_tag": "gr-stage3-g11g12-v2-official",
+  "source_policy_id": "gr-stage3-g11-g12-candidate-v2",
+  "notes": [
+    "Stage-3 official v2 uses candidate-v2 decision mapping for G11/G12.",
+    "G7/G8/G9 statuses are inherited unchanged from source summary.",
+    "No gate formulas or thresholds are modified."
+  ]
+}

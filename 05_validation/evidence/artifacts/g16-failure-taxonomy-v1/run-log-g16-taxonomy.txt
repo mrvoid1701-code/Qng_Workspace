@@ -1,0 +1,65 @@
+========================================================================
+G16 failure taxonomy v1
+start_utc=2026-03-01T23:13:57.488424Z
+profiles=60
+========================================================================
+[1/60] ds-002_seed3401_phi0p08
+[2/60] ds-002_seed3402_phi0p08
+[3/60] ds-002_seed3403_phi0p08
+[4/60] ds-002_seed3404_phi0p08
+[5/60] ds-002_seed3405_phi0p08
+[6/60] ds-002_seed3406_phi0p08
+[7/60] ds-002_seed3407_phi0p08
+[8/60] ds-002_seed3408_phi0p08
+[9/60] ds-002_seed3409_phi0p08
+[10/60] ds-002_seed3410_phi0p08
+[11/60] ds-002_seed3411_phi0p08
+[12/60] ds-002_seed3412_phi0p08
+[13/60] ds-002_seed3413_phi0p08
+[14/60] ds-002_seed3414_phi0p08
+[15/60] ds-002_seed3415_phi0p08
+[16/60] ds-002_seed3416_phi0p08
+[17/60] ds-002_seed3417_phi0p08
+[18/60] ds-002_seed3418_phi0p08
+[19/60] ds-002_seed3419_phi0p08
+[20/60] ds-002_seed3420_phi0p08
+[21/60] ds-003_seed3401_phi0p08
+[22/60] ds-003_seed3402_phi0p08
+[23/60] ds-003_seed3403_phi0p08
+[24/60] ds-003_seed3404_phi0p08
+[25/60] ds-003_seed3405_phi0p08
+[26/60] ds-003_seed3406_phi0p08
+[27/60] ds-003_seed3407_phi0p08
+[28/60] ds-003_seed3408_phi0p08
+[29/60] ds-003_seed3409_phi0p08
+[30/60] ds-003_seed3410_phi0p08
+[31/60] ds-003_seed3411_phi0p08
+[32/60] ds-003_seed3412_phi0p08
+[33/60] ds-003_seed3413_phi0p08
+[34/60] ds-003_seed3414_phi0p08
+[35/60] ds-003_seed3415_phi0p08
+[36/60] ds-003_seed3416_phi0p08
+[37/60] ds-003_seed3417_phi0p08
+[38/60] ds-003_seed3418_phi0p08
+[39/60] ds-003_seed3419_phi0p08
+[40/60] ds-003_seed3420_phi0p08
+[41/60] ds-006_seed3401_phi0p08
+[42/60] ds-006_seed3402_phi0p08
+[43/60] ds-006_seed3403_phi0p08
+[44/60] ds-006_seed3404_phi0p08
+[45/60] ds-006_seed3405_phi0p08
+[46/60] ds-006_seed3406_phi0p08
+[47/60] ds-006_seed3407_phi0p08
+[48/60] ds-006_seed3408_phi0p08
+[49/60] ds-006_seed3409_phi0p08
+[50/60] ds-006_seed3410_phi0p08
+[51/60] ds-006_seed3411_phi0p08
+[52/60] ds-006_seed3412_phi0p08
+[53/60] ds-006_seed3413_phi0p08
+[54/60] ds-006_seed3414_phi0p08
+[55/60] ds-006_seed3415_phi0p08
+[56/60] ds-006_seed3416_phi0p08
+[57/60] ds-006_seed3417_phi0p08
+[58/60] ds-006_seed3418_phi0p08
+[59/60] ds-006_seed3419_phi0p08
+[60/60] ds-006_seed3420_phi0p08

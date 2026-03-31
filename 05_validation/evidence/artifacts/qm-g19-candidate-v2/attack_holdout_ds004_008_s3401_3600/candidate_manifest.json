@@ -1,0 +1,15 @@
+{
+  "generated_utc": "2026-03-05T09:04:56.001979Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v10/attack_holdout_ds004_008_s3401_3600/summary.csv",
+  "profiles": 400,
+  "policy_id": "qm-g19-candidate-v2-high-signal-envelope",
+  "high_signal_quantiles": [
+    0.2,
+    0.3
+  ],
+  "min_support": 80,
+  "notes": [
+    "Candidate-only G19d high-signal slope envelope recovery.",
+    "No edits to core G19 formulas/thresholds."
+  ]
+}

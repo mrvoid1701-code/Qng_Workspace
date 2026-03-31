@@ -1,0 +1,10 @@
+name,d_s,r2,graph_info
+"REF  2D k-NN",1.6865,0.9884,"n=280, k_avg=9.4, k_max=15, lcc=1.000"
+"A    4D Lattice L=4",3.0910,0.9988,"n=256, k_avg=6.0, k_max=8, lcc=1.000"
+"A2   4D Lattice+15%noise",3.7218,0.9966,"n=256, k_avg=6.0, k_max=10, lcc=1.000"
+"A3   4D Lattice+30%noise",3.8804,0.9974,"n=256, k_avg=6.0, k_max=12, lcc=1.000"
+"C    Random Regular k=8",4.5485,0.9974,"n=280, k_avg=8.0, k_max=8, lcc=1.000"
+"D    BA m=4",4.5739,0.9986,"n=280, k_avg=7.9, k_max=57, lcc=1.000"
+"E    Causal-Random",3.4015,0.9948,"n=280, k_avg=8.6, k_max=17, lcc=1.000"
+"F    Multi-scale ER",3.6806,0.9918,"n=280, k_avg=15.9, k_max=25, lcc=1.000"
+"ANALITIC 4D L=4",3.8335,0.9999,"n=256 exact eigenvalues"

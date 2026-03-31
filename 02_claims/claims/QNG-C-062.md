@@ -40,14 +40,27 @@ N-body simulations incorporating stability-field memory kernels should reproduce
 
 ## Evidence / Notes
 
-- Provides a computational test of QNG at cosmological scales.
-- Enables direct comparison with standard ΛCDM simulation results.
-- Conceptually consistent with delayed-response gravitational modeling.
-- Empirical validation depends on quantitative agreement with observed structure formation.
+- T-029 (2026-03-15): PASS — causal exponential kernel (tau=1.3, k=0.85) reduces chi2
+  by 671 units (12 seeds, delta_chi2 = -671.49 vs baseline). Memory kernel improves
+  cluster-position agreement with truth trajectory by ~100-3400x over instantaneous model.
+- T-029-NC (2026-03-15): Partial negative controls. 4 NCs tested; 2/4 pass:
+  - NC-1 (tau=0, no memory): PASS — mean ratio 1334x. Memory is essential.
+  - NC-4 (wrong sign): PASS — mean ratio 1365x. Causal sign is essential.
+  - NC-2 (tau=0.2, too short): FAIL — chi2 observable inconsistent (2 seeds fail gate).
+  - NC-3 (tau=8.0, too long): FAIL — longer tau also reaches similar equilibrium positions.
+  Methodological finding: the equilibrium chi2 metric is insensitive to tau specificity.
+  NC-2/NC-3 failures reveal that cluster equilibrium positions do not discriminate tau
+  within a factor ~6x. A trajectory-based chi2 (all timesteps, not just final) is needed
+  to constrain tau. This is a documented limitation of the current observable.
+- Evidence level: Bronze-plus — positive result confirmed, memory and correct sign are
+  both necessary (NC-1, NC-4 strong at 1000-1400x ratio). Tau specificity not yet
+  demonstrated with the equilibrium observable.
 
 ## Next Action
 
-- Implement N-body simulations with stability-memory kernels.
-- Compare simulation outputs with observational data and ΛCDM baselines.
-- Identify distinguishing structural signatures predicted by QNG.
-- Constrain kernel parameters using simulation results.
+- Implement trajectory-based chi2 (compare full simulation history, not just equilibrium)
+  to discriminate tau values in NC-2/NC-3 controls.
+- Run T-029-NC v2 with trajectory-chi2 observable: expect NC-2 (tau=0.2) and NC-3
+  (tau=8.0) to fail to replicate the tau=1.3 trajectory shape.
+- Extend to 3D spatial simulation with cosmological initial conditions for cosmological
+  structure comparison (current test is 2D, small-scale cluster dynamics).

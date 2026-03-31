@@ -1,0 +1,9 @@
+cause_class,count,rate_pct
+weak_corr_multi_peak,6,20.000
+weak_corr_sparse_graph,6,20.000
+slope_instability_binning_edge,5,16.667
+coupled_weakcorr_slope,4,13.333
+slope_instability_low_signal,4,13.333
+slope_instability,2,6.667
+weak_corr_high_signal,2,6.667
+weak_corr_low_signal,1,3.333

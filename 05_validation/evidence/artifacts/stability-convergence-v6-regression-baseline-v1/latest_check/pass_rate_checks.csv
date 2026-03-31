@@ -1,0 +1,16 @@
+block_id,field,baseline_pass_rate,observed_pass_rate,delta_pp,degraded
+primary,structural_seed_pass,1.0,1.0,0.0,false
+primary,bulk_valid,1.0,1.0,0.0,false
+primary,full_slope_negative,1.0,1.0,0.0,false
+primary,bulk_slope_negative,0.95,0.95,0.0,false
+primary,all_pass_convergence_v6_seed,0.95,0.95,0.0,false
+attack,structural_seed_pass,1.0,1.0,0.0,false
+attack,bulk_valid,1.0,1.0,0.0,false
+attack,full_slope_negative,1.0,1.0,0.0,false
+attack,bulk_slope_negative,0.85,0.85,0.0,false
+attack,all_pass_convergence_v6_seed,0.85,0.85,0.0,false
+holdout,structural_seed_pass,1.0,1.0,0.0,false
+holdout,bulk_valid,1.0,1.0,0.0,false
+holdout,full_slope_negative,0.95,0.95,0.0,false
+holdout,bulk_slope_negative,0.8,0.8,0.0,false
+holdout,all_pass_convergence_v6_seed,0.8,0.8,0.0,false

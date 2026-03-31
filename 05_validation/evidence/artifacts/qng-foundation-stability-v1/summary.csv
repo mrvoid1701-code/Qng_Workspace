@@ -1,0 +1,5 @@
+dataset_id,profiles_total,profiles_pass,profiles_fail,pass_rate,profile_sigma_abs_median_median,profile_sigma_abs_p90_median,profile_global_abs_p90_median,profile_sigma_abs_max_max,profile_global_abs_max_max,profile_chi_abs_max_max,profile_phi_abs_max_max,all_pass
+STABILITY-ATTACK,162,162,0,1.000000,0.000000,0.003684,0.000690,0.017388,0.017388,0.000000,0.000000,pass
+STABILITY-HOLDOUT,108,108,0,1.000000,0.000000,0.002993,0.000522,0.017451,0.017451,0.000000,0.000000,pass
+STABILITY-PRIMARY,162,162,0,1.000000,0.000000,0.003683,0.000694,0.017621,0.017621,0.000000,0.000000,pass
+ALL,432,432,0,1.000000,0.000000,0.003502,0.000685,0.017621,0.017621,0.000000,0.000000,pass

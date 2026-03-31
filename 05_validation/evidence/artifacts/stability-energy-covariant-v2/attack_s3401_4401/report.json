@@ -1,0 +1,20 @@
+{
+  "eval_id": "stability-energy-covariant-attack-v2",
+  "generated_utc": "2026-03-03T07:39:39.448695+00:00",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-v1-prereg-v2/attack_s3401_4401/summary.csv",
+  "strict_datasets": [
+    "STABILITY-ATTACK"
+  ],
+  "energy_threshold": 0.9,
+  "totals": {
+    "n": 108,
+    "energy_v1_pass": 90,
+    "energy_v2_pass": 108,
+    "energy_improved": 18,
+    "energy_degraded": 0,
+    "all_v1_pass": 90,
+    "all_v2_pass": 108,
+    "all_improved": 18,
+    "all_degraded": 0
+  }
+}

@@ -1,0 +1,2 @@
+candidate,n_splits,n_pass,n_hold,pass_fraction,complete_seed_coverage,decision
+winner_v1_m8c,5,2,3,0.400000,true,HOLD

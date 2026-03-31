@@ -1,0 +1,76 @@
+{
+  "test_id": "d4-stage2-dual-kernel-v1",
+  "timestamp_utc": "2026-03-06T00:00:09Z",
+  "dataset_id": "DS-006",
+  "dataset_csv": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\data\\rotation\\rotation_ds006_rotmod.csv",
+  "split_seed": 3401,
+  "train_frac": 0.7,
+  "n_galaxies_total": 175,
+  "n_galaxies_train": 122,
+  "n_galaxies_holdout": 53,
+  "n_points_train": 2321,
+  "n_points_holdout": 1070,
+  "fixed_theory_constants": {
+    "s1_lambda": 0.28,
+    "s2_const": 0.355,
+    "r0_kpc": 1.0
+  },
+  "search_space": {
+    "tau_grid": [
+      0.5,
+      1.0,
+      2.0,
+      3.0,
+      5.0,
+      8.0,
+      12.0,
+      20.0,
+      30.0,
+      50.0
+    ],
+    "alpha_grid": [
+      0.3,
+      0.5,
+      0.7,
+      1.0,
+      1.3
+    ]
+  },
+  "best_dual_params": {
+    "tau_kpc": 0.5,
+    "alpha": 0.3,
+    "k1": 0.16345889166689903,
+    "k2": 0.0
+  },
+  "mond_fit": {
+    "g_dag_internal_km2_s2_kpc": 1339.0642340212169,
+    "g_dag_m_s2": 4.3395801083100005e-11
+  },
+  "metrics": {
+    "train": {
+      "chi2_null": 735914.7599419509,
+      "chi2_mond": 270342.84955057094,
+      "chi2_dual": 660346.585147896,
+      "chi2_per_n_null": 317.06797067727314,
+      "chi2_per_n_mond": 116.4768847697419,
+      "chi2_per_n_dual": 284.5095153588522,
+      "improve_vs_null_pct": 10.268604314991016,
+      "delta_chi2_dual_minus_mond": 390003.735597325,
+      "delta_aic_dual_minus_mond": 390009.735597325,
+      "delta_bic_dual_minus_mond": 390026.98485754384
+    },
+    "holdout": {
+      "chi2_null": 289730.747232563,
+      "chi2_mond": 49958.531838301555,
+      "chi2_dual": 258554.69601522488,
+      "chi2_per_n_null": 270.77639928276915,
+      "chi2_per_n_mond": 46.69021667130986,
+      "chi2_per_n_dual": 241.63990281796717,
+      "improve_vs_null_pct": 10.760353022633632,
+      "delta_chi2_dual_minus_mond": 208596.16417692334,
+      "delta_aic_dual_minus_mond": 208602.16417692334,
+      "delta_bic_dual_minus_mond": 208617.09041870572
+    }
+  },
+  "decision_hint": "Use evaluator script with prereg criteria; no threshold/formula updates allowed."
+}

@@ -1,0 +1,2 @@
+dataset_id,fail_gate_signature,dominant_mechanism,active_regime_flag,count
+STABILITY-GRID,gate_energy_drift,gate_energy_vs_noether_mismatch,true,10

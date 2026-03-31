@@ -1,0 +1,31 @@
+{
+  "generated_utc": "2026-03-06T01:33:23.868478+00:00",
+  "per_seed_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/d4-stage2-dual-kernel-v3-candidates/per_seed_candidate_summary.csv",
+  "criteria": {
+    "min_holdout_improve_vs_null_pct": 10.0,
+    "max_holdout_mond_worse_pct": 0.0,
+    "max_generalization_gap_pp": 20.0,
+    "max_holdout_delta_aic_dual_minus_mond": 0.0,
+    "max_holdout_delta_bic_dual_minus_mond": 0.0,
+    "candidate_pass_rule": "all split seeds must PASS"
+  },
+  "candidate_decisions": [
+    {
+      "candidate": "cross_bridge",
+      "n_splits": "5",
+      "n_pass": "0",
+      "n_hold": "5",
+      "pass_fraction": "0.000000",
+      "decision": "HOLD"
+    },
+    {
+      "candidate": "outer_tail",
+      "n_splits": "5",
+      "n_pass": "0",
+      "n_hold": "5",
+      "pass_fraction": "0.000000",
+      "decision": "HOLD"
+    }
+  ],
+  "global_decision": "HOLD"
+}

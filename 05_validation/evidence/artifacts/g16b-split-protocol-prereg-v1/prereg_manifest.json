@@ -1,0 +1,37 @@
+{
+  "generated_utc": "2026-03-01T23:37:42.602007Z",
+  "mode": "prereg",
+  "strict_prereg": true,
+  "datasets": [
+    "DS-002",
+    "DS-003",
+    "DS-006"
+  ],
+  "seed_start": 3401,
+  "seed_end": 3600,
+  "phi_scale": 0.08,
+  "signal_index_name": "p90_abs_t11",
+  "signal_threshold": 0.024,
+  "high_signal_quantile": 0.8,
+  "low_gate": {
+    "abs_pearson_min": 0.2,
+    "abs_spearman_min": 0.2,
+    "r2_min": 0.05
+  },
+  "high_gate": {
+    "abs_pearson_min": 0.2,
+    "abs_cosine_min": 0.2,
+    "r2_origin_min": 0.05
+  },
+  "v2_comparator": {
+    "low_signal_ratio_threshold": 10.0,
+    "abs_corr_min": 0.2,
+    "r2_min": 0.05
+  },
+  "source_runs_dir": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/g16b-v2-candidate-prereg-v1/runs",
+  "notes": [
+    "Diagnostic candidate only; official G16b remains v1.",
+    "No changes to run_qng_action_v1.py formulas or thresholds.",
+    "Split-by-regime policy is evaluated post-run from frozen artifacts."
+  ]
+}

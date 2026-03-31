@@ -1,0 +1,4 @@
+dataset_id,n_profiles,lane_3p1_core_pass,lane_strong_field_pass,lane_tensor_pass,lane_geometry_pass,lane_conservation_pass,stage3_pass
+DS-002,500,475,469,500,500,500,453
+DS-003,500,462,455,500,500,500,430
+DS-006,500,489,468,500,500,499,462

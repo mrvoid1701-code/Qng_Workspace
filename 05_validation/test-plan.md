@@ -89,4 +89,4 @@ Validation matrix generated 1:1 from claims that have derivations.
 
 ## Regeneration
 
-- `./.venv/Scripts/python.exe scripts/generate_validation_plan.py`
+- `./.venv/Scripts/python.exe tools/maintenance/generate_validation_plan.py`

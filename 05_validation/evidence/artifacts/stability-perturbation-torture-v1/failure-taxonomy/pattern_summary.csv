@@ -1,0 +1,3 @@
+dataset_id,fail_gate_signature,dominant_mechanism,active_regime_flag,count
+STABILITY-TORTURE-V1,gate_energy_drift,gate_energy_vs_noether_mismatch,true,214
+STABILITY-TORTURE-V1,gate_energy_drift,active_regime_energy_drift,true,66

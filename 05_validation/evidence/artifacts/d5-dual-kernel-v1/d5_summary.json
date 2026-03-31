@@ -1,0 +1,45 @@
+{
+  "test_id": "d5-dual-kernel-v1",
+  "timestamp_utc": "2026-03-06T18:42:48Z",
+  "model": {
+    "H1": "exp(-|r-r'|/tau_e) * S1(r') * bt(r')  [kernel energetic]",
+    "S1": "exp(-|g_bar/a0 - 1| / 0.28)",
+    "H2": "[1/(|r-r'|+1.0)^alpha] * 0.355 * bt(r')  [structural]",
+    "Outer": "H2(r) * r/(r+r_tail) / sqrt(1 + g_bar/a0)  [MOND modulated]",
+    "v_pred": "sqrt(bt + k1*H1 + k2*Outer)"
+  },
+  "a0_si": 1.2e-10,
+  "best_params": {
+    "tau_e_kpc": 40.0,
+    "alpha": 0.7,
+    "r_tail_kpc": 10.0,
+    "k1": 2.5376859045251036e-06,
+    "k2": 0.2388663967611336
+  },
+  "n_points": 3391,
+  "n_galaxies": 175,
+  "results": {
+    "M0_null": {
+      "chi2_per_n": 302.461075545418
+    },
+    "M6a_H1_only": {
+      "chi2_per_n": 271.657657923195,
+      "tau_e": 40.0
+    },
+    "M6b_Outer_only": {
+      "chi2_per_n": 210.80923537560147,
+      "alpha": 0.7,
+      "r_tail": 10.0
+    },
+    "M6_dual": {
+      "chi2_per_n": 210.81189528291557
+    },
+    "M1_MOND": {
+      "chi2_per_n": 94.43306374187176
+    }
+  },
+  "conclusion": "dual_beats_null_strong",
+  "improve_vs_null_pct": 30.30114870061693,
+  "delta_chi2_vs_mond": 394640.61775567953,
+  "delta_aic_vs_mond": 394646.61775567953
+}

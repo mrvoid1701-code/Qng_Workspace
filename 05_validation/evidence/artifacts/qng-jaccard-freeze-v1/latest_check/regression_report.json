@@ -1,0 +1,14 @@
+{
+  "guard_id": "qng-jaccard-regression-guard-v1",
+  "generated_at_utc": "2026-03-10T06:24:09.067461+00:00",
+  "baseline_dir": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\05_validation\\evidence\\artifacts\\qng-jaccard-freeze-v1",
+  "pass": true,
+  "counts": {
+    "missing_gates": 0,
+    "extra_gates": 0,
+    "missing_metrics": 0,
+    "extra_metrics": 0,
+    "gate_degraded": 0,
+    "metric_degraded": 0
+  }
+}

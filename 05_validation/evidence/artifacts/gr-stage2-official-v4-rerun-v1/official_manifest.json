@@ -1,0 +1,18 @@
+{
+  "generated_utc": "2026-03-02T10:19:40.436341Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage2-official-v3-rerun-v3-600-v1/summary.csv",
+  "policy_id": "gr-stage2-official-v4-rerun-v1",
+  "effective_tag": "gr-stage2-g11-v4-official",
+  "source_policy_id": "gr-stage2-official-v3",
+  "constants": {
+    "g11_high_signal_quantile": 0.8,
+    "g11_corr_min": 0.2,
+    "g11_r_smooth_alpha": 0.5,
+    "g11_r_smooth_iters": 1,
+    "g11_trim_fraction": 0.1
+  },
+  "notes": [
+    "G11 official v4 computes robust rank high-signal fallback.",
+    "G12 official keeps frozen status from source summary."
+  ]
+}

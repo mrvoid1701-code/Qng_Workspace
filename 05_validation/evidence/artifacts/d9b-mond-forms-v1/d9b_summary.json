@@ -1,0 +1,251 @@
+{
+  "test_id": "d9b-mond-forms-v1",
+  "timestamp_utc": "2026-03-08T13:55:04Z",
+  "dataset": "SPARC rotmod DS006",
+  "method": "5-fold CV, frozen params pe test (summary weighted by n_test_pts; unweighted also reported)",
+  "mond_forms": [
+    "RAR",
+    "Simple",
+    "Standard",
+    "Gamma"
+  ],
+  "a0_si": 1.2e-10,
+  "results": {
+    "fold_results": [
+      {
+        "fold": 1,
+        "n_train_gal": 140,
+        "n_test_gal": 35,
+        "n_test_pts": 797,
+        "m8c": {
+          "k": 0.8702108110754939,
+          "gdag_over_a0": 0.5675358539765321,
+          "test_chi2_per_n": 47.75410620121619
+        },
+        "mond_forms": {
+          "RAR": {
+            "gdag_over_a0": 0.3645219005325222,
+            "train_chi2_per_n": 106.25859696565577,
+            "test_chi2_per_n": 56.14960004519323,
+            "ratio_m8c_over_mond": 0.850479899461087,
+            "m8c_beats": true
+          },
+          "Simple": {
+            "gdag_over_a0": 0.13033843553165325,
+            "train_chi2_per_n": 165.76630571468814,
+            "test_chi2_per_n": 98.83492783647709,
+            "ratio_m8c_over_mond": 0.48317034520656105,
+            "m8c_beats": true
+          },
+          "Standard": {
+            "gdag_over_a0": 0.3367744787972979,
+            "train_chi2_per_n": 118.21899998483292,
+            "test_chi2_per_n": 65.2384641881469,
+            "ratio_m8c_over_mond": 0.7319931085976205,
+            "m8c_beats": true
+          },
+          "Gamma": {
+            "gdag_over_a0": 0.18357240115325996,
+            "train_chi2_per_n": 132.62449706511566,
+            "test_chi2_per_n": 80.85763977374796,
+            "ratio_m8c_over_mond": 0.5905948570208019,
+            "m8c_beats": true
+          }
+        }
+      },
+      {
+        "fold": 2,
+        "n_train_gal": 140,
+        "n_test_gal": 35,
+        "n_test_pts": 665,
+        "m8c": {
+          "k": 0.753029706011102,
+          "gdag_over_a0": 0.5983050847457628,
+          "test_chi2_per_n": 65.30240737761719
+        },
+        "mond_forms": {
+          "RAR": {
+            "gdag_over_a0": 0.29828097105255325,
+            "train_chi2_per_n": 96.6591493098141,
+            "test_chi2_per_n": 95.3869874362494,
+            "ratio_m8c_over_mond": 0.684604987879098,
+            "m8c_beats": true
+          },
+          "Simple": {
+            "gdag_over_a0": 0.07857366398794736,
+            "train_chi2_per_n": 147.70830535385466,
+            "test_chi2_per_n": 174.29136617740937,
+            "ratio_m8c_over_mond": 0.37467379371590065,
+            "m8c_beats": true
+          },
+          "Standard": {
+            "gdag_over_a0": 0.2640030887992157,
+            "train_chi2_per_n": 107.81293619152109,
+            "test_chi2_per_n": 108.63062047591397,
+            "ratio_m8c_over_mond": 0.6011418059799843,
+            "m8c_beats": true
+          },
+          "Gamma": {
+            "gdag_over_a0": 0.17070210762161142,
+            "train_chi2_per_n": 114.76217094562442,
+            "test_chi2_per_n": 152.48600808217955,
+            "ratio_m8c_over_mond": 0.42825179961707466,
+            "m8c_beats": true
+          }
+        }
+      },
+      {
+        "fold": 3,
+        "n_train_gal": 140,
+        "n_test_gal": 35,
+        "n_test_pts": 638,
+        "m8c": {
+          "k": 0.881123013751409,
+          "gdag_over_a0": 0.5983050847457628,
+          "test_chi2_per_n": 42.824557348713995
+        },
+        "mond_forms": {
+          "RAR": {
+            "gdag_over_a0": 0.36470496691285437,
+            "train_chi2_per_n": 106.9590475807338,
+            "test_chi2_per_n": 40.64913360226735,
+            "ratio_m8c_over_mond": 1.0535170999641013,
+            "m8c_beats": false
+          },
+          "Simple": {
+            "gdag_over_a0": 0.11117676214559145,
+            "train_chi2_per_n": 169.38293087633983,
+            "test_chi2_per_n": 63.77498814273809,
+            "ratio_m8c_over_mond": 0.671494556029805,
+            "m8c_beats": true
+          },
+          "Standard": {
+            "gdag_over_a0": 0.3307029199708933,
+            "train_chi2_per_n": 119.90849643006128,
+            "test_chi2_per_n": 44.37928388984513,
+            "ratio_m8c_over_mond": 0.9649672909326308,
+            "m8c_beats": true
+          },
+          "Gamma": {
+            "gdag_over_a0": 0.20044753056340525,
+            "train_chi2_per_n": 133.59154030017663,
+            "test_chi2_per_n": 64.65137082286861,
+            "ratio_m8c_over_mond": 0.6623921009508743,
+            "m8c_beats": true
+          }
+        }
+      },
+      {
+        "fold": 4,
+        "n_train_gal": 140,
+        "n_test_gal": 35,
+        "n_test_pts": 664,
+        "m8c": {
+          "k": 0.8694608230828499,
+          "gdag_over_a0": 0.5460234680573665,
+          "test_chi2_per_n": 69.9478203216196
+        },
+        "mond_forms": {
+          "RAR": {
+            "gdag_over_a0": 0.3383178921545882,
+            "train_chi2_per_n": 99.60860902814659,
+            "test_chi2_per_n": 73.9975654092872,
+            "ratio_m8c_over_mond": 0.945271914484374,
+            "m8c_beats": true
+          },
+          "Simple": {
+            "gdag_over_a0": 0.10962993819066988,
+            "train_chi2_per_n": 161.0185107275426,
+            "test_chi2_per_n": 102.39105582547758,
+            "ratio_m8c_over_mond": 0.6831438523384652,
+            "m8c_beats": true
+          },
+          "Standard": {
+            "gdag_over_a0": 0.30905888516946844,
+            "train_chi2_per_n": 112.2641028207956,
+            "test_chi2_per_n": 79.23318579966931,
+            "ratio_m8c_over_mond": 0.882809641132864,
+            "m8c_beats": true
+          },
+          "Gamma": {
+            "gdag_over_a0": 0.18418667605992525,
+            "train_chi2_per_n": 122.31430460533107,
+            "test_chi2_per_n": 112.62329164674706,
+            "ratio_m8c_over_mond": 0.6210777477630217,
+            "m8c_beats": true
+          }
+        }
+      },
+      {
+        "fold": 5,
+        "n_train_gal": 140,
+        "n_test_gal": 35,
+        "n_test_pts": 627,
+        "m8c": {
+          "k": 0.845879214509798,
+          "gdag_over_a0": 0.6710995219469795,
+          "test_chi2_per_n": 222.5990750584782
+        },
+        "mond_forms": {
+          "RAR": {
+            "gdag_over_a0": 0.41863010105748555,
+            "train_chi2_per_n": 59.73411246203782,
+            "test_chi2_per_n": 258.3138019922479,
+            "ratio_m8c_over_mond": 0.8617389908772993,
+            "m8c_beats": true
+          },
+          "Simple": {
+            "gdag_over_a0": 0.14818802264039527,
+            "train_chi2_per_n": 99.1876256164314,
+            "test_chi2_per_n": 383.0362189965162,
+            "ratio_m8c_over_mond": 0.5811436726313937,
+            "m8c_beats": true
+          },
+          "Standard": {
+            "gdag_over_a0": 0.38625033205549614,
+            "train_chi2_per_n": 66.9777558588558,
+            "test_chi2_per_n": 287.24694491905075,
+            "ratio_m8c_over_mond": 0.7749397478229368,
+            "m8c_beats": true
+          },
+          "Gamma": {
+            "gdag_over_a0": 0.22384635056071242,
+            "train_chi2_per_n": 92.07596502159926,
+            "test_chi2_per_n": 270.3313512906389,
+            "ratio_m8c_over_mond": 0.8234304826122711,
+            "m8c_beats": true
+          }
+        }
+      }
+    ],
+    "summary": {
+      "n_folds": 5,
+      "n_galaxies": 175,
+      "mean_m8c_test": 86.9428380690609,
+      "mond_means": {
+        "RAR": 101.80326228259437,
+        "Simple": 160.28163043575617,
+        "Standard": 113.61340947548872,
+        "Gamma": 133.10938713417497
+      },
+      "mean_m8c_test_unweighted": 89.68559326152904,
+      "mond_means_unweighted": {
+        "RAR": 104.89941769704902,
+        "Simple": 164.46571139572364,
+        "Standard": 116.94569985452522,
+        "Gamma": 136.1899323232364
+      },
+      "best_mond_form": "RAR",
+      "best_mond_chi2": 101.80326228259437,
+      "ratio_m8c_over_best_mond": 0.8540280156024606,
+      "improve_pct_vs_best_mond": 14.597198439753944,
+      "best_mond_form_unweighted": "RAR",
+      "best_mond_chi2_unweighted": 104.89941769704902,
+      "ratio_m8c_over_best_mond_unweighted": 0.8549675034473717,
+      "improve_pct_vs_best_mond_unweighted": 14.50324965526283,
+      "m8c_beats_best_mond": true,
+      "verdict": "STRONG_PASS",
+      "seed": 42
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "generated_utc": "2026-03-06T00:00:14.835723Z",
+  "summary_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/d4-stage2-dual-kernel-v1/d4_stage2_dual_kernel_summary.json",
+  "criteria": {
+    "min_holdout_improve_vs_null_pct": 10.0,
+    "max_holdout_mond_worse_pct": 20.0,
+    "max_generalization_gap_pp": 25.0
+  },
+  "observed": {
+    "holdout_chi2_per_n_dual": 241.63990281796717,
+    "holdout_chi2_per_n_null": 270.77639928276915,
+    "holdout_chi2_per_n_mond": 46.69021667130986,
+    "holdout_improve_vs_null_pct": 10.760353022633632,
+    "holdout_mond_worse_pct": 417.53861953365004,
+    "train_improve_vs_null_pct": 10.268604314991016,
+    "generalization_gap_pp": 0.4917487076426159
+  },
+  "checks": {
+    "holdout_improve_vs_null": true,
+    "holdout_not_far_worse_than_mond": false,
+    "generalization_gap_ok": true
+  },
+  "decision": "HOLD"
+}

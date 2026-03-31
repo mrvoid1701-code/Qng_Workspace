@@ -1,0 +1,6 @@
+gate_id,metric,value,threshold,status
+G10a,min_N,0.920000,>0.0,pass
+G10b,max_abs_Phi,0.080000,<0.5,pass
+G10c,min_gamma,1.008195,>0.0,pass
+G10d,mean_a_radial,0.013783,>0.0,pass
+FINAL,decision,pass,G10a&G10b&G10c&G10d,pass

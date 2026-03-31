@@ -1,0 +1,49 @@
+{
+  "eval_id": "qm-g17-attack-holdout-v3",
+  "generated_utc": "2026-03-04T09:17:46.617755Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-g17-candidate-v3/attack_holdout_ds004_008_s3401_3600/summary.csv",
+  "datasets": [
+    "DS-004",
+    "DS-008"
+  ],
+  "criteria": {
+    "require_zero_degraded": true,
+    "require_net_uplift": false,
+    "require_per_dataset_nondegrade": true
+  },
+  "g17": {
+    "totals": {
+      "n": 400,
+      "v1_pass": 356,
+      "v2_pass": 400,
+      "improved": 44,
+      "degraded": 0,
+      "uplift_pp": 11.0,
+      "failcase_uplift_pp": 100.0
+    },
+    "checks": {
+      "zero_degraded": true,
+      "net_uplift_failcases": true,
+      "per_dataset_nondegrade": true
+    },
+    "decision": true
+  },
+  "qm_lane": {
+    "totals": {
+      "n": 400,
+      "v1_pass": 322,
+      "v2_pass": 360,
+      "improved": 38,
+      "degraded": 0,
+      "uplift_pp": 9.5,
+      "failcase_uplift_pp": 48.717949
+    },
+    "checks": {
+      "zero_degraded": true,
+      "net_uplift_failcases": true,
+      "per_dataset_nondegrade": true
+    },
+    "decision": true
+  },
+  "overall_decision": "PASS"
+}

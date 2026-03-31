@@ -1,0 +1,7 @@
+check,count,status
+missing_gates,0,pass
+extra_gates,0,pass
+missing_metrics,0,pass
+extra_metrics,0,pass
+gate_degraded,0,pass
+metric_degraded,0,pass

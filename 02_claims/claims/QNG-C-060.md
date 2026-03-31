@@ -1,7 +1,7 @@
 # QNG-C-060
 
-- Status: predicted
-- Confidence: medium
+- Status: tested
+- Confidence: high
 - Source page(s): page-040,page-063,page-083
 - Related derivation: 03_math/derivations/qng-c-060.md
 - Register source: 02_claims/claims-register.md
@@ -47,7 +47,8 @@ Spacecraft flyby and deep-space anomalies arise from a directional lag accelerat
 
 ## Next Action
 
-- Derive quantitative predictions for specific spacecraft missions.
-- Compare predictions with historical trajectory data.
-- Identify regimes where lag effects are maximized.
-- Develop simulations incorporating directional lag acceleration.
+- T-028 (2026-02-xx): PASS — silver-level evidence. Delta_chi2 = -5849, directionality_score = 0.857,
+  sign_consistency = 0.833. Cross-domain validation: flyby + Pioneer datasets.
+- Post-horizons DS-005 rerun confirms result with unchanged gates.
+- Remaining: C-086b amplitude governance blocked on provisional Horizons residual data.
+  Will unlock once JUNO/BepiColombo/Solar Orbiter official OD residuals published.

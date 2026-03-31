@@ -1,0 +1,4 @@
+seed,seed_decision,check_holdout_not_worse_than_mond,check_generalization_gap_ok,holdout_mond_worse_pct,generalization_gap_pp,holdout_chi2_per_n_winner,holdout_chi2_per_n_mond,holdout_winner_over_mond,k_fit,g_dag_fit,g_dag_mond_fit
+3401,HOLD,pass,fail,-25.724236,20.974922,34.679518,46.690217,0.742758,1.119446,1400.433077,1339.064267
+3403,HOLD,pass,fail,-19.987522,33.176771,151.688762,189.581424,0.800125,1.163921,1400.433077,1599.458309
+3404,HOLD,fail,pass,12.576971,12.083704,56.160565,49.886370,1.125770,1.344867,1096.610308,1219.384927

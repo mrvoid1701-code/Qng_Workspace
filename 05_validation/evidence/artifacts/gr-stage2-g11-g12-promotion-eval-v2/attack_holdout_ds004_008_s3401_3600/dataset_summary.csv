@@ -1,0 +1,7 @@
+gate,dataset_id,n,v1_pass,v2_pass,improved,degraded,uplift_pp,failcase_uplift_pp,nondegrade_pass
+G11,DS-004,200,195,197,2,0,1.000,40.000,true
+G11,DS-008,200,195,197,2,0,1.000,40.000,true
+G12,DS-004,200,194,200,6,0,3.000,100.000,true
+G12,DS-008,200,194,200,6,0,3.000,100.000,true
+STAGE2,DS-004,200,190,197,7,0,3.500,70.000,true
+STAGE2,DS-008,200,190,197,7,0,3.500,70.000,true

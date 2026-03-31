@@ -1,0 +1,17 @@
+{
+  "script": "run_qng_covariant_metric_v1.py",
+  "dataset_id": "DS-002",
+  "seed": 3401,
+  "phi_scale": 0.08,
+  "n_nodes": 280,
+  "mean_degree": 9.3714,
+  "sigma_max": 0.855516,
+  "min_N": 0.92,
+  "max_N": 0.995903,
+  "min_gamma": 1.008195,
+  "max_gamma": 1.16,
+  "mean_a_radial": 0.01378323,
+  "run_utc": "2026-03-01T21:04:49.094132Z",
+  "elapsed_s": 0.027,
+  "decision": "pass"
+}

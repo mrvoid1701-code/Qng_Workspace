@@ -1,7 +1,7 @@
 # QNG-C-105
 
-- Status: predicted
-- Confidence: low
+- Status: tested
+- Confidence: medium
 - Source page(s): page-075
 - Related derivation: n/a
 - Register source: 02_claims/claims-register.md

@@ -1,0 +1,12 @@
+{
+  "generated_utc": "2026-03-03T12:40:14.274287+00:00",
+  "raw_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v2/raw/summary.csv",
+  "mode": "diagnostic-only",
+  "mask_strategy": "active_ratio_quantile",
+  "bulk_mask_params": [
+    0.0,
+    0.25,
+    0.5,
+    0.75
+  ]
+}

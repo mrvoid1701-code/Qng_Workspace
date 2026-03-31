@@ -1,0 +1,4 @@
+dataset_id,n_profiles,g17_v1_pass,g17_v4_pass,g17b_v1_pass,g17b_v4_pass,qm_lane_v1_pass,qm_lane_v4_pass,improved_g17,degraded_g17,improved_qm_lane,degraded_qm_lane
+DS-002,500,499,499,500,500,471,471,0,0,0,0
+DS-003,500,498,498,500,500,444,444,0,0,0,0
+DS-006,500,419,495,420,496,401,472,76,0,71,0

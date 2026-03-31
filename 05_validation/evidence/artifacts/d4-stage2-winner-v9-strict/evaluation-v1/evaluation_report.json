@@ -1,0 +1,102 @@
+{
+  "generated_utc": "2026-03-07T16:51:49.742295+00:00",
+  "evaluator_id": "evaluate_d4_stage2_dual_kernel_candidates_v5",
+  "per_seed_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/d4-stage2-winner-v9-strict/per_seed_candidate_summary.csv",
+  "manifest_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/d4-stage2-winner-v9-strict/manifest.json",
+  "criteria": {
+    "expected_test_id": "d4-stage2-winner-v9-strict",
+    "expected_dataset_id": "DS-006",
+    "expected_dataset_csv_rel": "data/rotation/rotation_ds006_rotmod.csv",
+    "expected_dataset_sha256": "1067802fb376629095ab4a0f8d8358eadd0dda488f046305659ac966d1ab556c",
+    "expected_split_seeds": [
+      3401,
+      3402,
+      3403,
+      3404,
+      3405
+    ],
+    "expected_train_frac": 0.7,
+    "expected_s1_lambda": 0.28,
+    "expected_s2_const": 0.355,
+    "expected_r0_kpc": 1.0,
+    "expected_r_tail_kpc": 4.0,
+    "expected_focus_gamma": 2.0,
+    "expected_tau_grid": [
+      0.02,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      1.0,
+      2.0,
+      3.0,
+      5.0,
+      8.0,
+      12.0,
+      20.0,
+      30.0,
+      50.0
+    ],
+    "expected_alpha_grid": [
+      0.02,
+      0.05,
+      0.1,
+      0.2,
+      0.3,
+      0.5,
+      0.7,
+      1.0,
+      1.3
+    ],
+    "expected_mix_grid": [],
+    "expected_candidates": [
+      "winner_v1_m8c"
+    ],
+    "min_holdout_improve_vs_null_pct": 10.0,
+    "max_holdout_mond_worse_pct": 0.0,
+    "max_generalization_gap_pp": 20.0,
+    "max_holdout_delta_aic_dual_minus_mond": 0.0,
+    "max_holdout_delta_bic_dual_minus_mond": 0.0,
+    "aic_bic_source": "recomputed_from_holdout_chi2_per_n_and_n_points_holdout",
+    "candidate_pass_rule": "all split seeds must PASS with full seed coverage"
+  },
+  "lock_checks": {
+    "lock_test_id": true,
+    "lock_dataset_id": true,
+    "lock_dataset_csv_rel": true,
+    "lock_dataset_sha256": true,
+    "lock_split_seeds_manifest": true,
+    "lock_split_seeds_csv": true,
+    "lock_train_frac": true,
+    "lock_s1_lambda": true,
+    "lock_s2_const": true,
+    "lock_r0_kpc": true,
+    "lock_r_tail_kpc": true,
+    "lock_focus_gamma": true,
+    "lock_grid_selection_objective": true,
+    "lock_lambda_s": true,
+    "lock_lambda_e": true,
+    "lock_tau_grid": true,
+    "lock_alpha_grid": true,
+    "lock_mix_grid": true,
+    "lock_candidates_manifest": true,
+    "lock_candidates_csv": true,
+    "lock_pairs_unique": true,
+    "lock_pairs_full_coverage": true,
+    "lock_row_metadata": true
+  },
+  "governance_lock_pass": true,
+  "candidate_decisions": [
+    {
+      "candidate": "winner_v1_m8c",
+      "n_splits": "5",
+      "n_pass": "4",
+      "n_hold": "1",
+      "pass_fraction": "0.800000",
+      "complete_seed_coverage": "true",
+      "decision": "HOLD"
+    }
+  ],
+  "global_decision": "HOLD"
+}

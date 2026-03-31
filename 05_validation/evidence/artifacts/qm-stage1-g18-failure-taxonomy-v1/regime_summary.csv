@@ -1,0 +1,11 @@
+regime_field,regime_value,count_fail,count_total,rate_within_g18_fail,rate_within_total
+density_regime,sparse,116,833,0.464,0.13925570228091236
+density_regime,mid_density,82,815,0.328,0.10061349693251534
+density_regime,dense,52,852,0.208,0.06103286384976526
+geometry_regime,normal_geometry,213,2097,0.852,0.10157367668097282
+geometry_regime,degenerate_geometry,37,403,0.148,0.09181141439205956
+peak_regime,multi_peak,250,2499,1.0,0.10004001600640255
+peak_regime,single_peak,0,1,0.0,0.0
+signal_regime,low_signal,143,825,0.572,0.17333333333333334
+signal_regime,mid_signal,61,825,0.244,0.07393939393939394
+signal_regime,high_signal,46,850,0.184,0.05411764705882353

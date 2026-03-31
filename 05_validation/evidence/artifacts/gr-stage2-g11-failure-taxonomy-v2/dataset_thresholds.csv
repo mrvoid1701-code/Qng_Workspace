@@ -1,0 +1,4 @@
+dataset_id,low_signal_quantile,sparse_quantile,degenerate_quantile,low_signal_p90_abs_r_max,sparse_mean_degree_max,degenerate_anisotropy_max
+DS-002,0.150,0.100,0.100,7.250000,9.257143,0.805438
+DS-003,0.150,0.100,0.100,6.289976,8.166667,0.778656
+DS-006,0.150,0.100,0.100,8.253376,10.368125,0.807773

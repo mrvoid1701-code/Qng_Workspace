@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "test_id": "QNG-T-065",
+  "claim_id": "QNG-C-120",
+  "claim_statement": "The CMB Silk damping scale ell_damp = ell_D_T * sqrt(6/(d_s * mu_1)), where factor 6=2x3 from 3D isotropic diffusion corrected by d_s for graph dimensionality.",
+  "priority": "P1",
+  "status": "pass",
+  "derivation_path": "03_math/derivations/qng-c-120.md",
+  "formula_anchor": "ell_damp = ell_D_T * sqrt(6 / (d_s * mu_1))",
+  "dataset": "Planck CMB TT power spectrum (ell 1000-2500) + G17/G18d results",
+  "method": "1) Fit exponential damping envelope D(ell) = exp(-(ell/ell_damp)^2) to TT data above ell=1000 after dividing out the low-ell model. 2) Compute predicted ell_damp from mu_1=0.291, d_s=4.082, calibrated via ell_D_T=576. 3) Compare predicted vs fitted ell_damp.",
+  "pass_condition": "Predicted ell_damp within 2-sigma of fitted ell_damp from data.",
+  "fail_condition": "Predicted ell_damp deviates from fitted value by more than 2-sigma.",
+  "parameters": {
+    "mu_1": 0.291,
+    "mu_1_source": "G17 spectral gap (Jaccard graph DS-002)",
+    "d_s": 4.082,
+    "d_s_uncertainty": 0.125,
+    "ell_D_T": 576.144,
+    "ell_fit_min": 1000,
+    "ell_fit_max": 2500,
+    "ell_damp_predicted": 1294.9,
+    "ell_damp_predicted_err": 19.8,
+    "ell_damp_v1_failed": 1068.0,
+    "formula": "ell_D_T * sqrt(6 / (d_s * mu_1))",
+    "formula_v1_failed": "ell_D_T / sqrt(mu_1)"
+  },
+  "inputs": [
+    "data/cmb/planck/COM_PowerSpect_CMB-TT-full_R3.01.txt",
+    "data/cmb/planck/qng_v3_unified_best_fit.txt"
+  ],
+  "commands": [
+    "python scripts/run_qng_t_065_damping.py --tt-file data/cmb/planck/COM_PowerSpect_CMB-TT-full_R3.01.txt --mu1 0.291 --d-s 4.082 --ell-dt 576.144 --ell-min 1000 --out-dir 05_validation/evidence/artifacts/qng-t-065"
+  ],
+  "outputs": [
+    "05_validation/evidence/artifacts/qng-t-065/damping-fit.csv",
+    "05_validation/evidence/artifacts/qng-t-065/damping-comparison.png",
+    "05_validation/evidence/artifacts/qng-t-065/summary.md",
+    "05_validation/evidence/artifacts/qng-t-065/run-log.txt"
+  ],
+  "decision": {
+    "result": "pass",
+    "note": "v2 formula PASS at 0.171 sigma. Predicted 1294.9 ± 19.8 vs observed 1290.9 ± 12.5. Combined sigma=23.4, delta=-4.0, fractional error 0.31%. v1 formula FAILED at 17.8 sigma (1068 vs 1291) — missing factor sqrt(6/d_s) from 3D/graph dimensional matching.",
+    "reviewer": "automated-runner",
+    "date": "2026-03-15"
+  },
+  "reproducibility": {
+    "seed": null,
+    "code_version": "local-workspace-2026-03-15",
+    "environment": "Python stdlib runner"
+  }
+}

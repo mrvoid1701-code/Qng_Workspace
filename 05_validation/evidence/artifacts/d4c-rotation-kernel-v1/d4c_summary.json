@@ -1,0 +1,32 @@
+{
+  "test_id": "d4c-rotation-kernel-v1",
+  "timestamp_utc": "2026-03-05T12:09:16Z",
+  "kernel": "exponential_spatial",
+  "kernel_formula": "H_tau(r_i) = sum_j exp(-|r_i-r_j|/tau) * bt(r_j) * dr_j",
+  "n_points": 3391,
+  "n_galaxies": 175,
+  "models": {
+    "M0_null": {
+      "chi2": 1025645.5071745124,
+      "chi2_per_n": 302.461075545418,
+      "k": 0
+    },
+    "M1_MOND": {
+      "chi2": 320222.51914868713,
+      "chi2_per_n": 94.43306374187176,
+      "k": 1,
+      "g_dag_m_s2": 4.2613545485568474e-11
+    },
+    "M5_QNG_K": {
+      "chi2": 863739.2628668856,
+      "chi2_per_n": 254.71520579973034,
+      "k": 2,
+      "tau_kpc": 73.0,
+      "k_coupling": 0.5738612234048583
+    }
+  },
+  "conclusion": "qng_kernel_beats_null",
+  "improve_vs_null_pct": 15.785789844061451,
+  "delta_chi2_vs_mond": 543516.7437181985,
+  "delta_aic_vs_mond": 543518.7437181985
+}

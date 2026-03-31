@@ -1,0 +1,13 @@
+status_key,pass_count,fail_count,total,pass_rate_pct
+g10_status,600,0,600,100.000
+g11_status,581,19,600,96.833
+g12_status,585,15,600,97.500
+g7_status,600,0,600,100.000
+g8_status,600,0,600,100.000
+g9_status,600,0,600,100.000
+lane_3p1_core_status,581,19,600,96.833
+lane_strong_field_status,585,15,600,97.500
+lane_tensor_status,600,0,600,100.000
+lane_geometry_status,600,0,600,100.000
+lane_conservation_status,600,0,600,100.000
+stage3_status,570,30,600,95.000

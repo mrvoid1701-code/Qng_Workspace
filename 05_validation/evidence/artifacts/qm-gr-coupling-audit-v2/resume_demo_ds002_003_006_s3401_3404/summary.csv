@@ -1,0 +1,13 @@
+dataset_id,seed,run_root,g20_status,g20_rc,chunk_id
+DS-002,3401,,pass,0,1
+DS-002,3402,,pass,0,1
+DS-002,3403,,pass,0,4
+DS-002,3404,,pass,0,4
+DS-003,3401,,pass,0,2
+DS-003,3402,,pass,0,2
+DS-003,3403,,pass,0,5
+DS-003,3404,,pass,0,5
+DS-006,3401,,pass,0,3
+DS-006,3402,,pass,0,3
+DS-006,3403,,pass,0,6
+DS-006,3404,,pass,0,6

@@ -1,0 +1,14 @@
+{
+  "generated_utc": "2026-03-01T23:40:56.886607Z",
+  "mode": "prereg",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/g16b-v2-candidate-prereg-v1/summary.csv",
+  "policy": {
+    "low_signal_rule": "is_low_signal == true (from prereg G16b-v2 evaluator; std(T11)/|mean(T11)| > 10)",
+    "low_signal_gate": "use g16b_v2_status",
+    "high_signal_gate": "use g16b_v1_status"
+  },
+  "notes": [
+    "No new thresholds or formulas introduced.",
+    "Hybrid policy is candidate-only; official gate remains G16b-v1."
+  ]
+}

@@ -1,0 +1,16 @@
+dataset_id,seed,g12_status,g12_signature,g12a_status,g12a_value,g12b_status,g12b_value,g12c_status,g12c_value,g12d_status,g12d_value,g12d_threshold,g12d_margin,run_root
+DS-002,3436,fail,G12d,pass,2.666455,pass,0.336730,pass,1.029697,fail,0.060800,<-0.03,-0.090800,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-002_seed3436
+DS-002,3438,fail,G12d,pass,2.557890,pass,0.338595,pass,1.176683,fail,0.089907,<-0.03,-0.119907,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-002_seed3438
+DS-002,3499,fail,G12d,pass,2.433849,pass,0.383420,pass,1.288341,fail,0.024646,<-0.03,-0.054646,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-002_seed3499
+DS-002,3568,fail,G12d,pass,2.591056,pass,0.345775,pass,1.281206,fail,-0.010277,<-0.03,-0.019723,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-002_seed3568
+DS-002,3589,fail,G12d,pass,2.499500,pass,0.343174,pass,1.164267,fail,0.017061,<-0.03,-0.047061,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-002_seed3589
+DS-003,3403,fail,G12d,pass,1.944648,pass,0.501003,pass,1.299921,fail,0.015229,<-0.03,-0.045229,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-003_seed3403
+DS-003,3416,fail,G12d,pass,2.187153,pass,0.360361,pass,1.272265,fail,-0.024971,<-0.03,-0.005029,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-003_seed3416
+DS-003,3436,fail,G12d,pass,2.257630,pass,0.396318,pass,1.112503,fail,0.055107,<-0.03,-0.085107,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-003_seed3436
+DS-003,3438,fail,G12d,pass,2.056509,pass,0.399804,pass,1.183132,fail,0.114973,<-0.03,-0.144973,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-003_seed3438
+DS-003,3501,fail,G12d,pass,2.082201,pass,0.441005,pass,1.189964,fail,0.393310,<-0.03,-0.423310,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-003_seed3501
+DS-003,3590,fail,G12d,pass,1.996167,pass,0.456115,pass,1.588702,fail,-0.006850,<-0.03,-0.023150,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-003_seed3590
+DS-006,3438,fail,G12d,pass,3.017880,pass,0.299356,pass,1.234112,fail,-0.016900,<-0.03,-0.013100,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-006_seed3438
+DS-006,3557,fail,G12d,pass,2.906341,pass,0.376370,pass,1.303352,fail,-0.025388,<-0.03,-0.004612,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-006_seed3557
+DS-006,3571,fail,G12d,pass,3.035030,pass,0.283386,pass,1.262477,fail,-0.015334,<-0.03,-0.014666,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-006_seed3571
+DS-006,3577,fail,G12d,pass,3.071902,pass,0.309042,pass,1.208857,fail,-0.007338,<-0.03,-0.022662,05_validation/evidence/artifacts/gr-stage2-prereg-v1/runs/ds-006_seed3577

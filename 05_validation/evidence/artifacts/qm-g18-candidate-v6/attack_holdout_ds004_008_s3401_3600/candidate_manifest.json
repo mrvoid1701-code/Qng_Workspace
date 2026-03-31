@@ -1,0 +1,49 @@
+{
+  "generated_utc": "2026-03-05T08:29:38.627222Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v8/attack_holdout_ds004_008_s3401_3600/summary.csv",
+  "candidate_summary_csv": "",
+  "profiles": 400,
+  "policy_id": "qm-g18-candidate-v6-local-ds-multiscale-multiwindow-peak-envelope",
+  "mix_ratio_threshold": 0.9,
+  "mix_distance_threshold": 0.25,
+  "basin_quantile": 0.15,
+  "basin_quantiles": [
+    0.15,
+    0.22
+  ],
+  "local_walks": 80,
+  "local_walks_multiplier": 3,
+  "local_steps": 12,
+  "local_t_lo": 4,
+  "local_t_hi": 10,
+  "window_spec": "3-8,4-9,4-10,5-10,6-11",
+  "windows": [
+    {
+      "t_lo": 3,
+      "t_hi": 8
+    },
+    {
+      "t_lo": 4,
+      "t_hi": 9
+    },
+    {
+      "t_lo": 4,
+      "t_hi": 10
+    },
+    {
+      "t_lo": 5,
+      "t_hi": 10
+    },
+    {
+      "t_lo": 6,
+      "t_hi": 11
+    }
+  ],
+  "min_window_r2": 0.5,
+  "ds_lo_default": 1.2,
+  "ds_hi_default": 3.5,
+  "notes": [
+    "No edits to core G18 formulas/thresholds.",
+    "Candidate is governance-layer fixed multi-scale basin + multi-window local-ds peak-envelope recovery."
+  ]
+}

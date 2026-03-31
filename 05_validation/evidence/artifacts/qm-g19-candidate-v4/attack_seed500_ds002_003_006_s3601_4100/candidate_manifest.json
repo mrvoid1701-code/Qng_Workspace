@@ -1,0 +1,30 @@
+{
+  "generated_utc": "2026-03-05T23:26:45.904583Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v13/attack_seed500_ds002_003_006_s3601_4100/summary.csv",
+  "profiles": 1500,
+  "policy_id": "qm-g19-candidate-v4-hybrid-local-window",
+  "high_signal_quantiles": [
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3,
+    0.4,
+    0.5,
+    0.6
+  ],
+  "min_support": 40,
+  "local_window_fracs": [
+    0.03,
+    0.05,
+    0.08,
+    0.1
+  ],
+  "local_window_min_support": 20,
+  "local_window_stride_frac": 0.01,
+  "enable_local_window_on_multipeak_only": true,
+  "notes": [
+    "Candidate-only G19d hybrid recovery: high-signal median + local-window best in multi-peak.",
+    "No edits to core G19 formulas/thresholds."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "generated_utc": "2026-03-03T16:29:14.044695+00:00",
+  "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v6-extended-v1/primary_s3401_3600/raw/summary.csv",
+  "prereg_doc": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/pre-registrations/qng-stability-convergence-v5.md",
+  "seed_count": 200,
+  "levels_full": [
+    24,
+    28,
+    32,
+    36,
+    40,
+    44,
+    48
+  ],
+  "levels_bulk": [
+    28,
+    32,
+    36,
+    40,
+    44
+  ],
+  "full_metric_field": "delta_energy_rel",
+  "bulk_metric_field": "delta_energy_rel",
+  "bulk_core_size_min": 6,
+  "bulk_core_ratio_min": 0.1,
+  "bulk_bootstrap_reps": 400,
+  "bulk_ci_alpha": 0.05,
+  "insufficient_bulk_support_seed_count": 0,
+  "checks": {
+    "full_seed_pass_fraction": 0.43,
+    "full_seed_pass_fraction_min": 0.85,
+    "bulk_seed_pass_fraction": 0.07,
+    "bulk_seed_pass_fraction_min": 0.85,
+    "bulk_ci_pass_fraction": 0.11,
+    "rho_full_median": -0.75,
+    "rho_full_max": -0.6,
+    "tau_bulk_median": -0.6,
+    "tau_bulk_ci_high_median": 0.2,
+    "full_seed_pass_fraction_ok": false,
+    "bulk_seed_pass_fraction_ok": false,
+    "rho_full_median_ok": true,
+    "tau_bulk_ci_high_median_ok": false
+  },
+  "decision": "FAIL"
+}

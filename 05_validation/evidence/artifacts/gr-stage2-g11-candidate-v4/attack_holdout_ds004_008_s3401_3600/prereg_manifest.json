@@ -1,0 +1,16 @@
+{
+  "generated_utc": "2026-03-02T10:06:15.185442Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage2-g11-candidate-v3-for-v4/attack_holdout_ds004_008_s3401_3600/summary.csv",
+  "constants": {
+    "high_signal_quantile": 0.8,
+    "corr_min": 0.2,
+    "r_smooth_alpha": 0.5,
+    "r_smooth_iters": 1,
+    "trim_fraction": 0.1
+  },
+  "notes": [
+    "No edits to official gate scripts.",
+    "Candidate v4 computed from frozen run artifacts.",
+    "No threshold tuning; robust rank fallback reuses corr_min=0.20."
+  ]
+}

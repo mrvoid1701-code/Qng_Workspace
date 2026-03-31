@@ -1,0 +1,6 @@
+gate_id,metric,value,threshold,status
+G7a,stability_ratio,1.000000,≤1.5,pass
+G7b,cross_leak,0.000000,<1e-12,pass
+G7c,trace_leak,0.000000,<1e-12,pass
+G7d,energy_drift,5.183381e-04,|E(T)/E(0)-1|<0.1,pass
+FINAL,decision,pass,G7a&G7b&G7c&G7d,pass

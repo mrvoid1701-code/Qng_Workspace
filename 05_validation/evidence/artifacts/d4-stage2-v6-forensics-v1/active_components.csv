@@ -1,0 +1,11 @@
+split_seed,candidate,best_k1,best_k2,best_k3,active_component_count,single_component_only
+3401,outer_lowaccel_single,2.350054,0.000000,0.000000,1,true
+3401,outer_lowaccel_focus,0.000000,2.350053,0.000000,1,true
+3402,outer_lowaccel_single,2.258840,0.000000,0.000000,1,true
+3402,outer_lowaccel_focus,0.000000,2.258839,0.000000,1,true
+3403,outer_lowaccel_single,2.849294,0.000000,0.000000,1,true
+3403,outer_lowaccel_focus,0.000000,2.849293,0.000000,1,true
+3404,outer_lowaccel_single,2.100296,0.000000,0.000000,1,true
+3404,outer_lowaccel_focus,0.000000,2.100295,0.000000,1,true
+3405,outer_lowaccel_single,2.341898,0.000000,0.000000,1,true
+3405,outer_lowaccel_focus,0.000000,2.341897,0.000000,1,true

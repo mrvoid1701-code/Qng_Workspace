@@ -1,0 +1,40 @@
+{
+  "eval_id": "stability-energy-promotion-holdout-v1",
+  "generated_utc": "2026-03-03T07:39:50.105479+00:00",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-energy-covariant-v2/holdout_n30_42_s3401/summary.csv",
+  "strict_datasets": [
+    "STABILITY-HOLDOUT"
+  ],
+  "criteria": {
+    "require_zero_degraded": true,
+    "require_non_energy_stable": true,
+    "require_energy_uplift": true
+  },
+  "totals": {
+    "n": 108,
+    "energy_v1_pass": 56,
+    "energy_v2_pass": 108,
+    "energy_improved": 52,
+    "energy_degraded": 0,
+    "all_v1_pass": 56,
+    "all_v2_pass": 108,
+    "all_improved": 52,
+    "all_degraded": 0,
+    "non_energy_degraded_total": 0,
+    "non_energy_degraded_by_gate": {
+      "gate_sigma_bounds": 0,
+      "gate_metric_positive": 0,
+      "gate_metric_cond": 0,
+      "gate_runaway": 0,
+      "gate_variational_residual": 0,
+      "gate_alpha_drift": 0,
+      "gate_no_signalling": 0
+    }
+  },
+  "checks": {
+    "zero_degraded_energy": true,
+    "non_energy_stable": true,
+    "energy_uplift": true
+  },
+  "overall_decision": "PASS"
+}

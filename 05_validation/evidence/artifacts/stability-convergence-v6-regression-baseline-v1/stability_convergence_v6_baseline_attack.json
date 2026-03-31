@@ -1,0 +1,308 @@
+{
+  "baseline_id": "stability-convergence-v6-baseline-attack-v1",
+  "generated_utc": "2026-03-03T15:36:39.405852+00:00",
+  "block": "attack",
+  "seed_checks_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/attack_seed3601_3620/v6_candidate/seed_checks.csv",
+  "report_json": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v6-audit-v1/attack_seed3601_3620/v6_candidate/report.json",
+  "effective_tag": "stability-convergence-v6-official",
+  "effective_commit": "",
+  "effective_date_utc": "",
+  "compare": {
+    "official_status_fields": [
+      "structural_seed_pass",
+      "bulk_valid",
+      "full_slope_negative",
+      "bulk_slope_negative",
+      "all_pass_convergence_v6_seed"
+    ],
+    "status_fields": [
+      "structural_seed_pass",
+      "bulk_valid",
+      "full_slope_negative",
+      "bulk_slope_negative",
+      "all_pass_convergence_v6_seed"
+    ],
+    "profile_key_fields": [
+      "seed"
+    ]
+  },
+  "profiles": [
+    {
+      "seed": "3601"
+    },
+    {
+      "seed": "3602"
+    },
+    {
+      "seed": "3603"
+    },
+    {
+      "seed": "3604"
+    },
+    {
+      "seed": "3605"
+    },
+    {
+      "seed": "3606"
+    },
+    {
+      "seed": "3607"
+    },
+    {
+      "seed": "3608"
+    },
+    {
+      "seed": "3609"
+    },
+    {
+      "seed": "3610"
+    },
+    {
+      "seed": "3611"
+    },
+    {
+      "seed": "3612"
+    },
+    {
+      "seed": "3613"
+    },
+    {
+      "seed": "3614"
+    },
+    {
+      "seed": "3615"
+    },
+    {
+      "seed": "3616"
+    },
+    {
+      "seed": "3617"
+    },
+    {
+      "seed": "3618"
+    },
+    {
+      "seed": "3619"
+    },
+    {
+      "seed": "3620"
+    }
+  ],
+  "expected_rows": [
+    {
+      "seed": "3601",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3602",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3603",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3604",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3605",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3606",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3607",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3608",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "false",
+      "all_pass_convergence_v6_seed": "false"
+    },
+    {
+      "seed": "3609",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "false",
+      "all_pass_convergence_v6_seed": "false"
+    },
+    {
+      "seed": "3610",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3611",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3612",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3613",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3614",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3615",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "false",
+      "all_pass_convergence_v6_seed": "false"
+    },
+    {
+      "seed": "3616",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3617",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3618",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3619",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    },
+    {
+      "seed": "3620",
+      "structural_seed_pass": "true",
+      "bulk_valid": "true",
+      "full_slope_negative": "true",
+      "bulk_slope_negative": "true",
+      "all_pass_convergence_v6_seed": "true"
+    }
+  ],
+  "pass_rates": {
+    "structural_seed_pass": {
+      "pass": 20,
+      "total": 20,
+      "pass_rate": 1.0
+    },
+    "bulk_valid": {
+      "pass": 20,
+      "total": 20,
+      "pass_rate": 1.0
+    },
+    "full_slope_negative": {
+      "pass": 20,
+      "total": 20,
+      "pass_rate": 1.0
+    },
+    "bulk_slope_negative": {
+      "pass": 17,
+      "total": 20,
+      "pass_rate": 0.85
+    },
+    "all_pass_convergence_v6_seed": {
+      "pass": 17,
+      "total": 20,
+      "pass_rate": 0.85
+    }
+  },
+  "metric_stats": {
+    "full_slope_theilsen": {
+      "count": 20,
+      "min": -0.000914656,
+      "median": -0.000533604,
+      "p95": -0.00025074015
+    },
+    "bulk_slope_theilsen": {
+      "count": 20,
+      "min": -0.001221615,
+      "median": -0.000512833,
+      "p95": 0.0002856512
+    }
+  },
+  "decision_expected": "PASS",
+  "report_checks_expected": {
+    "s2_all_seeds_pass_ok": true,
+    "bulk_valid_all_seeds_ok": true,
+    "s1_full_slope_ci_excludes_zero_neg_ok": true,
+    "s1_bulk_slope_ci_excludes_zero_neg_ok": true
+  },
+  "telemetry": {
+    "full_positive_seed_fraction_baseline": 0.0,
+    "bulk_positive_seed_fraction_baseline": 0.15,
+    "full_positive_seed_fraction_alarm_threshold": 0.05,
+    "bulk_positive_seed_fraction_alarm_threshold": 0.2,
+    "alarm_policy": "non_blocking"
+  }
+}

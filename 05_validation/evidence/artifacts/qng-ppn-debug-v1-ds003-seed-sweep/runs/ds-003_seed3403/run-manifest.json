@@ -1,0 +1,24 @@
+{
+  "script": "run_qng_ppn_v1.py",
+  "gate_id": "G15",
+  "decision": "fail",
+  "elapsed_s": 0.020063,
+  "run_utc": "2026-03-01T21:47:31.007884Z",
+  "args": {
+    "dataset_id": "DS-003",
+    "seed": 3403,
+    "phi_scale": 0.08,
+    "out_dir": "C:\\Users\\tigan\\Desktop\\qng workspace\\Qng_Workspace\\05_validation\\evidence\\artifacts\\qng-ppn-debug-v1-ds003-seed-sweep\\runs\\ds-003_seed3403",
+    "write_artifacts": true,
+    "plots": false,
+    "debug_mode": true,
+    "debug_topk": 10
+  },
+  "extras": {
+    "gamma_dev": 0.026875,
+    "shapiro_ratio": 1.786072,
+    "shapiro_ratio_v2": 4.219157,
+    "mean_beta_ppn": 0.5,
+    "ep_ratio": 0.075793
+  }
+}

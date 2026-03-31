@@ -1,0 +1,4 @@
+dataset_id,seed,phi_scale,is_low_signal,signal_regime,g16a_status,g16b_v1_status,g16b_v2_status,g16b_hybrid_status,g16c_status,g16d_status,g16_v1_status,g16_v2_status,g16_hybrid_status,g16b_v2_branch,t11_std_to_abs_mean,r2_full_recomputed,r2_high_signal,abs_pearson_high_signal,abs_spearman_high_signal
+DS-003,3407,0.08,true,low,pass,fail,fail,fail,pass,pass,fail,fail,fail,high_signal,88.489981,0.003736,0.002888,0.053738,0.372775
+DS-002,3401,0.08,true,low,pass,pass,pass,pass,pass,pass,pass,pass,pass,high_signal,15.294526,0.136126,0.373821,0.611409,0.622898
+DS-006,3401,0.08,true,low,pass,pass,pass,pass,pass,pass,pass,pass,pass,high_signal,21.884483,0.111767,0.355861,0.596541,0.630723

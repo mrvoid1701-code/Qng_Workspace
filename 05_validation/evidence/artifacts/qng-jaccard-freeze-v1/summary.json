@@ -1,0 +1,8 @@
+{
+  "freeze_id": "qng-jaccard-freeze-v1",
+  "generated_at_utc": "2026-03-10T06:23:20.589900+00:00",
+  "gate_count": 12,
+  "metric_count": 47,
+  "all_pass": true,
+  "failing_gates": []
+}

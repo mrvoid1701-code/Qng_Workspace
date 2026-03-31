@@ -1,0 +1,16 @@
+{
+  "generated_utc": "2026-03-02T19:44:04.517309Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-attack-seed500-v1/combined_ds002_003_006_s3601_4100/summary.csv",
+  "profiles": 1500,
+  "policy_id": "qm-g17-candidate-v2-hybrid",
+  "mix_ratio_threshold": 0.9,
+  "mix_distance_threshold": 0.25,
+  "basin_quantile": 0.15,
+  "local_gap_threshold": 0.01,
+  "local_gap_max_modes": 12,
+  "local_gap_iters": 300,
+  "notes": [
+    "Hybrid uses G17a local gap only under multi-peak mixing signature.",
+    "No threshold/formula edits in core gate scripts."
+  ]
+}

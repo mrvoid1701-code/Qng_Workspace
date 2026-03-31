@@ -1,0 +1,12 @@
+gate_id,metric,value,threshold,status
+G16a,closure_rel,1.191151e-14,<0.01,pass
+G16b,hybrid_policy,v2(low-signal),if std(T11)/|mean(T11)|>10 use v2 else v1,pass
+G16b-v1,r2_G11_T11,0.136126,>0.05,pass
+G16b-v2,std_to_abs_mean_T11,15.294555,>10.0 => high_signal branch,pass
+G16b-v2,r2_selected_branch,0.373821,>0.05,pass
+G16b-v2,abs_pearson_selected_branch,0.611409,>0.2,pass
+G16b-v2,abs_spearman_selected_branch,0.622898,>0.2,pass
+G16b-v2,branch,high_signal,high_signal|full_signal,pass
+G16c,m_sq_abs,0.014020,>0.005,pass
+G16d,hessian_frac_neg,1.000000,>0.9,pass
+FINAL,decision,pass,G16a&G16b&G16c&G16d,pass

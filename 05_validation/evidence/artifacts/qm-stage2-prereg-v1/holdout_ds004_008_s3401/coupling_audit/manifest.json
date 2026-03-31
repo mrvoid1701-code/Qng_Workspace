@@ -1,0 +1,31 @@
+{
+  "generated_utc": "2026-03-07T20:09:31.789970Z",
+  "policy_id": "qm-gr-coupling-audit-v2",
+  "ds_list": [
+    "DS-004",
+    "DS-008"
+  ],
+  "seed_min": 3401,
+  "seed_max": 3401,
+  "chunk_size": 25,
+  "resume": true,
+  "write_artifacts": false,
+  "plots": false,
+  "profiles_total_expected": 2,
+  "profiles_completed": 2,
+  "profiles_missing": 0,
+  "g20_pass": 2,
+  "g20_rc_fail_profiles": 0,
+  "gr_guard_pre_all_pass": true,
+  "gr_guard_post_all_pass": true,
+  "chunk_decisions_all_pass": true,
+  "gr_baseline_json": "/home/user/Qng_Workspace/05_validation/evidence/artifacts/gr-stage3-regression-baseline-v1/gr_stage3_baseline_official.json",
+  "gr_summary_csv": "/home/user/Qng_Workspace/05_validation/evidence/artifacts/gr-stage3-official-v3-rerun-v1/summary.csv",
+  "artifacts": {
+    "summary_csv": "/home/user/Qng_Workspace/05_validation/evidence/artifacts/qm-stage2-prereg-v1/holdout_ds004_008_s3401/coupling_audit/summary.csv",
+    "dataset_summary_csv": "/home/user/Qng_Workspace/05_validation/evidence/artifacts/qm-stage2-prereg-v1/holdout_ds004_008_s3401/coupling_audit/dataset_summary.csv",
+    "chunk_checks_csv": "/home/user/Qng_Workspace/05_validation/evidence/artifacts/qm-stage2-prereg-v1/holdout_ds004_008_s3401/coupling_audit/chunk_checks.csv",
+    "report_md": "/home/user/Qng_Workspace/05_validation/evidence/artifacts/qm-stage2-prereg-v1/holdout_ds004_008_s3401/coupling_audit/report.md",
+    "run_log_txt": "/home/user/Qng_Workspace/05_validation/evidence/artifacts/qm-stage2-prereg-v1/holdout_ds004_008_s3401/coupling_audit/run-log.txt"
+  }
+}

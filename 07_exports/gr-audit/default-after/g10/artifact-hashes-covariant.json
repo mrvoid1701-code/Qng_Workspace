@@ -1,0 +1,8 @@
+{
+  "covariant_metric.csv": "c0d1259d1b8a962b0a50c1edcba53a4220eb0400ed05fea5f643ae01b1e920bb",
+  "metric_checks_covariant.csv": "6dfd5047792e9eaba193cac4db059ce52eb53b5f8070eb06d5a19efa0f7b846c",
+  "config_covariant.json": "89016a39daa71d12a0183bf334dc615591346d8005b5ad9eecca2eb1f8550999",
+  "run-manifest.json": "b180a8f4ff2f5a9edf8554790aad998d704462a4e477eae7724e9ec4c29672f2",
+  "run-log-covariant.txt": "f7d9aa8fb68e31ef1b49f099321b0b13ca049f15aded8d5ecdd287e97bd5c2ae",
+  "covariant_metric-plot.png": "2ed4e4bb20850a01ddac1878078c6099f249fda16a51b2aa9f5b5ae4a3dfbb39"
+}

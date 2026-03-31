@@ -1,0 +1,12 @@
+{
+  "generated_utc": "2026-03-03T01:44:01.732127Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-g17-candidate-v2/attack_seed500_ds002_003_006_s3601_4100/summary.csv",
+  "policy_id": "qm-stage1-official-v2-attack-seed500",
+  "effective_tag": "qm-stage1-g17-v2-official",
+  "source_policy_id": "qm-g17-candidate-v2-hybrid",
+  "notes": [
+    "QM Stage-1 official v2 uses G17 candidate-v2 decision mapping.",
+    "G18/G19/G20 statuses are inherited unchanged from source summary.",
+    "No gate formulas or thresholds are modified."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "eval_id": "qm-stage2-attack_ds002_003_006_s3601_4100-v1",
+  "generated_utc": "2026-03-04T07:25:47.803618Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage2-prereg-v1/attack_ds002_003_006_s3601_4100/qm_lane/summary.csv",
+  "datasets": [
+    "DS-002",
+    "DS-003",
+    "DS-006"
+  ],
+  "profiles": 1500,
+  "totals": {
+    "g17_pass": 1092,
+    "g18_pass": 1339,
+    "g19_pass": 1493,
+    "g20_pass": 1500,
+    "qm_lane_pass": 1017,
+    "rc_fail_profiles": 483,
+    "all_pass_rate": 0.678
+  },
+  "criteria": {
+    "require_zero_rc": true,
+    "min_all_pass_rate": 0.0
+  },
+  "checks": {
+    "zero_rc_failures": false,
+    "min_all_pass_rate": true
+  },
+  "decision": "HOLD"
+}

@@ -1,7 +1,7 @@
 # QNG-C-082
 
-- Status: predicted
-- Confidence: medium
+- Status: tested
+- Confidence: high
 - Source page(s): page-060,page-064
 - Related derivation: 03_math/derivations/qng-c-082.md
 - Register source: 02_claims/claims-register.md
@@ -47,7 +47,8 @@ The excess velocity observed in galactic rotation curves can be explained by the
 
 ## Next Action
 
-- Derive quantitative rotation-curve predictions for realistic galaxy models.
-- Compare predictions with observational datasets.
-- Constrain kernel parameters using galactic data.
-- Develop simulations illustrating memory-induced rotation behavior.
+- T-039 (2026-02-xx): PASS — gold-level evidence. Delta_chi2 = -8.867e+05 (rotation curves + lensing).
+- Robustness: strict3/4/5 sweeps all pass, SPT-anchor (n=10) confirms. Baseline-upgrade check:
+  memory model beats equal-flexibility baseline by delta_chi2 = -4.439e+05.
+- Leave-10%-out = 1.0. Parameter stability: CV_tau = 0.157, CV_k = 0.091.
+- Rotation curve excess explained by historical Sigma lag without dark matter particles confirmed.

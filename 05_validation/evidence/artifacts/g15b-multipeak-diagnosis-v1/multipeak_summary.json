@@ -1,0 +1,152 @@
+{
+  "config": {
+    "summary_csv": "07_exports\\tmp_ppn_v1v2_large_sweep\\summary_v1_vs_v2_200seeds_per_dataset.csv",
+    "datasets": [
+      "DS-002",
+      "DS-003",
+      "DS-006"
+    ],
+    "phi_scale": 0.08,
+    "ratio_threshold": 0.98,
+    "distance_threshold": 0.1,
+    "multi_peak_definition": "multi_peak = (peak_2_over_peak_1 >= ratio_threshold) AND (peak_1_2_distance_norm >= distance_threshold)"
+  },
+  "datasets": {
+    "DS-002": {
+      "n_runs": 200,
+      "n_multi_peak": 28,
+      "n_non_multi_peak": 172,
+      "v1_fail_rate_multi_peak": 0.0357142857142857,
+      "v1_fail_rate_non_multi_peak": 0.0,
+      "v2_fail_rate_multi_peak": 0.0,
+      "v2_fail_rate_non_multi_peak": 0.0,
+      "v1_fail_rate_lift_multi_minus_non": 0.0357142857142857,
+      "peak_ratio_stats": {
+        "min": 0.951532,
+        "max": 0.999992,
+        "mean": 0.98887289,
+        "median": 0.9914925
+      },
+      "distance_norm_stats": {
+        "min": 0.003379,
+        "max": 0.226602,
+        "mean": 0.07034157,
+        "median": 0.06471550000000001
+      },
+      "g15b_v1_ratio_stats": {
+        "min": 1.964888,
+        "max": 3.271132,
+        "mean": 2.628029205,
+        "median": 2.6368945
+      },
+      "g15b_v2_ratio_stats": {
+        "min": 5.47276,
+        "max": 10.376322,
+        "mean": 7.46015333,
+        "median": 7.3161375
+      }
+    },
+    "DS-003": {
+      "n_runs": 200,
+      "n_multi_peak": 53,
+      "n_non_multi_peak": 147,
+      "v1_fail_rate_multi_peak": 0.5471698113207547,
+      "v1_fail_rate_non_multi_peak": 0.3197278911564626,
+      "v2_fail_rate_multi_peak": 0.0,
+      "v2_fail_rate_non_multi_peak": 0.0,
+      "v1_fail_rate_lift_multi_minus_non": 0.2274419201642921,
+      "peak_ratio_stats": {
+        "min": 0.954768,
+        "max": 0.999959,
+        "mean": 0.990386145,
+        "median": 0.992659
+      },
+      "distance_norm_stats": {
+        "min": 0.002831,
+        "max": 0.234334,
+        "mean": 0.08227281,
+        "median": 0.076262
+      },
+      "g15b_v1_ratio_stats": {
+        "min": 1.667009,
+        "max": 2.413051,
+        "mean": 2.0417596000000002,
+        "median": 2.055804
+      },
+      "g15b_v2_ratio_stats": {
+        "min": 3.513308,
+        "max": 6.40537,
+        "mean": 4.69508344,
+        "median": 4.611998
+      }
+    },
+    "DS-006": {
+      "n_runs": 200,
+      "n_multi_peak": 25,
+      "n_non_multi_peak": 175,
+      "v1_fail_rate_multi_peak": 0.0,
+      "v1_fail_rate_non_multi_peak": 0.0,
+      "v2_fail_rate_multi_peak": 0.0,
+      "v2_fail_rate_non_multi_peak": 0.0,
+      "v1_fail_rate_lift_multi_minus_non": 0.0,
+      "peak_ratio_stats": {
+        "min": 0.958407,
+        "max": 0.999981,
+        "mean": 0.989125805,
+        "median": 0.991547
+      },
+      "distance_norm_stats": {
+        "min": 0.000789,
+        "max": 0.178217,
+        "mean": 0.05733835,
+        "median": 0.052670999999999996
+      },
+      "g15b_v1_ratio_stats": {
+        "min": 3.003304,
+        "max": 5.301294,
+        "mean": 3.972648,
+        "median": 3.954068
+      },
+      "g15b_v2_ratio_stats": {
+        "min": 10.733137,
+        "max": 25.011227,
+        "mean": 15.431439635,
+        "median": 15.086929000000001
+      }
+    }
+  },
+  "overall": {
+    "n_runs": 600,
+    "n_multi_peak": 106,
+    "n_non_multi_peak": 494,
+    "v1_fail_rate_multi_peak": 0.28301886792452835,
+    "v1_fail_rate_non_multi_peak": 0.09514170040485825,
+    "v2_fail_rate_multi_peak": 0.0,
+    "v2_fail_rate_non_multi_peak": 0.0,
+    "v1_fail_rate_lift_multi_minus_non": 0.1878771675196701,
+    "peak_ratio_stats": {
+      "min": 0.951532,
+      "max": 0.999992,
+      "mean": 0.9894616133333334,
+      "median": 0.991812
+    },
+    "distance_norm_stats": {
+      "min": 0.000789,
+      "max": 0.234334,
+      "mean": 0.06998424333333333,
+      "median": 0.0643945
+    },
+    "g15b_v1_ratio_stats": {
+      "min": 1.667009,
+      "max": 5.301294,
+      "mean": 2.8808122683333335,
+      "median": 2.6368945
+    },
+    "g15b_v2_ratio_stats": {
+      "min": 3.513308,
+      "max": 25.011227,
+      "mean": 9.195558801666667,
+      "median": 7.3161375
+    }
+  }
+}

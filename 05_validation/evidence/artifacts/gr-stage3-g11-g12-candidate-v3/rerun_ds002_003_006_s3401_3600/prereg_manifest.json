@@ -1,0 +1,24 @@
+{
+  "generated_utc": "2026-03-02T13:54:21.330685Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage3-prereg-rerun-v3-600-v1/summary.csv",
+  "policy": "stage3-g11-g12-candidate-v3",
+  "constants": {
+    "g11_high_signal_quantile": 0.8,
+    "g11_support_quantile": 0.75,
+    "g11_corr_min": 0.2,
+    "g11_trim_fraction": 0.1,
+    "g11_smooth_alpha": 0.5,
+    "g11_smooth_iters": 1,
+    "g11_multi_peak_ratio_thr": 0.98,
+    "g11_multi_peak_dist_thr": 0.1,
+    "g12_slope_threshold": -0.03,
+    "g12_min_bin_count": 4,
+    "g12_winsor_q": 0.1,
+    "g12_drop_edge_bins": true
+  },
+  "notes": [
+    "Baseline comparison is official-v2 Stage-3 summary.",
+    "No gate thresholds/formulas modified.",
+    "v3 remains candidate-only until explicit governance switch."
+  ]
+}

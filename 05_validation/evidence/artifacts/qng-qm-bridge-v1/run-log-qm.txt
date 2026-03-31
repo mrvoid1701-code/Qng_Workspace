@@ -1,0 +1,48 @@
+======================================================================
+QNG Quantum Mechanics Bridge (v1) — canonical quantisation on graph
+Run started: 2026-03-08T13:50:05.974803Z
+======================================================================
+
+Graph: n=280  mean_degree=9.37
+m_eff² = 0.014  →  m_eff = 0.118322
+
+[1] Spectral decomposition: 20 modes × 500 iterations
+  Done in 4.23s
+  μ_0 (zero mode) = 3.022700e-06  (expect ≈ 0)
+  μ_1 (gap)       = 0.011086  (spectral gap)
+  μ_max (mode 19) = 0.269447
+  All μ_k ≥ 0: True
+
+[2] Quantum frequencies ω_k = √(μ_k + m_eff²)  (K_eff = 19 modes)
+  ω_min = 0.158385  (= √(m_eff²) = 0.118322 for μ≈0 mode)
+  ω_max = 0.532398
+  mean ω = 0.352800
+
+[3] Zero-point energy E_0 = ½ Σ_k ω_k  (truncated to K_eff=19)
+  E_0 = 3.351596
+  E_0 / K_eff = 0.176400
+
+[4] Heisenberg uncertainty relation Δσ_k · Δπ_k per mode:
+  Δσ_k = 1/√(2ω_k):    range [0.969096, 1.776755]
+  Δπ_k = √(ω_k/2):     range [0.281412,    0.515945]
+  Δσ_k · Δπ_k:         range [0.500000,   0.500000]
+  mean(Δσ_k · Δπ_k) = 0.500000   (Heisenberg: should = 0.5)
+
+[5] Vacuum propagator G(i,j) — sample of 800 pairs
+  Computed 800 G(i,j) values in 0.002s
+  G(i,j): min=-0.023417  max=0.165348  mean=-0.001091
+  r_{ij}: min=0.074497  max=5.230416  mean=2.358031
+  OLS G ~ a + b·r:  a=0.031136  b=-0.013667  R²=0.381234
+
+[6] Local propagator G(i,i) = vacuum fluctuation amplitude²
+  G(i,i): min=0.054204  max=0.187301  mean=0.109326
+  Δσ_vac = √G(i,i): mean=0.327851
+
+QNG QM Bridge completed.
+decision=pass  G17=True(a=True,b=True,c=True,d=True)
+G17a spectral gap:    μ_1=0.011086  threshold=>0.01
+G17b propagator slope:b=-0.013667  threshold=<-0.01
+G17c E_0/K_eff:       0.176400  threshold∈(0.05,5.0)
+G17d Heisenberg dev:  |mean(ΔσΔπ)−0.5|=0.000000  threshold=<0.01
+
+Artifacts written to: /home/user/Qng_Workspace/05_validation/evidence/artifacts/qng-qm-bridge-v1

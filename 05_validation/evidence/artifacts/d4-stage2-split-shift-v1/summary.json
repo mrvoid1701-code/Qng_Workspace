@@ -1,0 +1,10 @@
+{
+  "analysis_id": "d4-stage2-split-shift-v1",
+  "generated_utc": "2026-03-10T07:09:28.088256+00:00",
+  "dataset_id": "DS-006",
+  "n_seeds": 5,
+  "top_shift_seed": "3402",
+  "top_shift_score": "0.778017",
+  "seed3403_shift_rank": "2",
+  "corr_shift_score_vs_v10_gap": "-0.146404"
+}

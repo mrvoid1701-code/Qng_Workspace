@@ -1,0 +1,2 @@
+chunk_id,chunk_label,profiles_in_chunk,g20_pass,g20_rc_fail_profiles,gr_guard_pre_rc,gr_guard_pre_decision,gr_guard_post_rc,gr_guard_post_decision,chunk_decision
+1,chunk_0001,3,3,0,0,PASS,0,PASS,PASS

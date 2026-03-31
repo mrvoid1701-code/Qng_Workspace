@@ -1,0 +1,21 @@
+{
+  "run_utc": "2026-03-20T10:53:01.004169Z",
+  "params": {
+    "N": 280,
+    "SEED_BASE": 3401
+  },
+  "correlations_all": {
+    "pearson_clustering_ds": -0.9394067796834703,
+    "pearson_jaccard_homophily_ds": -0.9783698510970444,
+    "pearson_transitivity_ds": -0.9299862833525583
+  },
+  "jaccard_canonical_50seeds": {
+    "ds_mean": 4.112039598832389,
+    "ds_std": 0.1409571673189966,
+    "c_mean": 0.1684967603941344,
+    "c_std": 0.0065201582053495515,
+    "jm_mean": 0.20069502042214707,
+    "jm_std": 0.00411966882863244
+  },
+  "total_time_s": 15.4
+}

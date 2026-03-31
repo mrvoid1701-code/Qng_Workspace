@@ -1,4 +1,4 @@
 dataset_id,artifact_dir,n_anchors_ref,h_norm_median,h_norm_p90,min_eig_global,cond_p90,drift_median,drift_p90,cos_raw_median,cos_raw_p10,cos_shuffled_median,raw_minus_shuffled_median_gap,pass_B1_weak_field,pass_B2_metric_sanity,pass_B3_newton_direction,pass_B4_continuum_stability,pass_B5_control_separation,pass_dataset
-DS-002,qng-metric-hardening-v3,72,0.129657,0.242585,0.309721,2.044453,0.056367,0.178355,0.992374,0.960620,-0.133569,1.125943,True,True,True,True,True,True
+DS-006,qng-metric-hardening-v3,72,0.147479,0.246114,0.300471,2.067749,0.059885,0.139852,0.995345,0.959465,-0.430658,1.426003,True,True,True,True,True,True
 DS-003,qng-metric-hardening-v3-ds003,72,0.139926,0.255004,0.302973,2.128081,0.048771,0.149748,0.994201,0.951282,-0.111837,1.106037,True,True,True,True,True,True
 DS-006,qng-metric-hardening-v3-ds006,72,0.147479,0.246114,0.300471,2.067749,0.059885,0.139852,0.995345,0.959465,-0.430658,1.426003,True,True,True,True,True,True

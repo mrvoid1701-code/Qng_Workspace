@@ -1,0 +1,6 @@
+gate_id,metric,value,threshold,status
+G14a,E_flat_drift,0.070394,≥0.01,pass
+G14b,E_cov_drift,0.001018,<0.02,pass
+G14c,drift_ratio,69.118688,>3.0,pass
+G14d,time_reversal,2.393918e-14,<0.0001,pass
+FINAL,decision,pass,G14a&G14b&G14c&G14d,pass

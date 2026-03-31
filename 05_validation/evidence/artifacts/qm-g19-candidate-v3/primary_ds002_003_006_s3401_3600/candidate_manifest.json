@@ -1,0 +1,21 @@
+{
+  "generated_utc": "2026-03-05T23:06:07.026123Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-stage1-official-v12/primary_ds002_003_006_s3401_3600/summary.csv",
+  "profiles": 600,
+  "policy_id": "qm-g19-candidate-v3-high-signal-median",
+  "high_signal_quantiles": [
+    0.1,
+    0.15,
+    0.2,
+    0.25,
+    0.3,
+    0.4,
+    0.5,
+    0.6
+  ],
+  "min_support": 40,
+  "notes": [
+    "Candidate-only G19d high-signal median recovery.",
+    "No edits to core G19 formulas/thresholds."
+  ]
+}

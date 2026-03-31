@@ -1,0 +1,55 @@
+{
+  "eval_id": "qm-g18b-attack-seed500-v8",
+  "generated_utc": "2026-03-05T23:11:53.923410Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/qm-g18b-candidate-v8/attack_seed500_ds002_003_006_s3601_4100/summary.csv",
+  "datasets": [
+    "DS-002",
+    "DS-003",
+    "DS-006"
+  ],
+  "criteria": {
+    "require_zero_degraded": true,
+    "require_net_uplift": true,
+    "require_per_dataset_nondegrade": true,
+    "require_uplift_datasets": true,
+    "uplift_datasets": [
+      "DS-003"
+    ]
+  },
+  "g18": {
+    "totals": {
+      "n": 1500,
+      "v1_pass": 1499,
+      "v2_pass": 1500,
+      "improved": 1,
+      "degraded": 0,
+      "uplift_pp": 0.066667,
+      "failcase_uplift_pp": 100.0
+    },
+    "checks": {
+      "zero_degraded": true,
+      "net_uplift_failcases": true,
+      "per_dataset_nondegrade": true,
+      "uplift_datasets": true
+    },
+    "decision": true
+  },
+  "qm_lane": {
+    "totals": {
+      "n": 1500,
+      "v1_pass": 1496,
+      "v2_pass": 1497,
+      "improved": 1,
+      "degraded": 0,
+      "uplift_pp": 0.066667,
+      "failcase_uplift_pp": 25.0
+    },
+    "checks": {
+      "zero_degraded": true,
+      "net_uplift_failcases": true,
+      "per_dataset_nondegrade": true
+    },
+    "decision": true
+  },
+  "overall_decision": "PASS"
+}

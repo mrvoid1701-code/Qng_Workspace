@@ -1,0 +1,5 @@
+claim_id,label,formula,central_pred,sigma_from_ds,pred_lo_1s,pred_hi_1s,pred_lo_2s,pred_hi_2s,observed,obs_err,n_sigma_total,in_1sigma_band,in_2sigma_band
+QNG-C-119,ell_D_P/ell_D_T ratio,d_s / (d_s - 2),1.96061,0.05767,1.90294,2.01829,1.84527,2.07596,1.96997,0.01500,0.157,True,True
+QNG-C-121,Spectral index n_s,1 - (p_D_T - 1) * 2 / d_s,0.94170,0.00179,0.93991,0.94348,0.93812,0.94527,0.96490,0.00420,0.835,False,False
+QNG-C-124,Sachs-Wolfe suppression f_SW,4 / d_s,0.97991,0.03001,0.94990,1.00992,0.91990,1.03993,0.82300,0.25300,0.616,True,True
+QNG-C-120,Silk damping scale ell_damp,ell_D_T * sqrt(6 / (d_s * mu_1)),1294.41782,19.81899,1274.59883,1314.23681,1254.77984,1334.05580,1290.90000,12.50000,0.150,True,True

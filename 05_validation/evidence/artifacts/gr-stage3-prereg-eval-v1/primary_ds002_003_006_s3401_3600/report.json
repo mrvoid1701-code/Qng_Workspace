@@ -1,0 +1,37 @@
+{
+  "eval_id": "gr-stage3-prereg-eval-v1",
+  "generated_utc": "2026-03-02T11:03:10.631551Z",
+  "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage3-prereg-v1/summary.csv",
+  "profiles_total": 600,
+  "stage3_pass": 570,
+  "stage3_fail": 30,
+  "datasets": [
+    "DS-002",
+    "DS-003",
+    "DS-006"
+  ],
+  "fails_by_dataset": {
+    "DS-002": 9,
+    "DS-003": 15,
+    "DS-006": 6
+  },
+  "top_fail_patterns": [
+    {
+      "pattern": "G11",
+      "count": 15
+    },
+    {
+      "pattern": "G12",
+      "count": 11
+    },
+    {
+      "pattern": "G11+G12",
+      "count": 4
+    }
+  ],
+  "recommendation": "HOLD",
+  "notes": [
+    "Evaluation is reporting-only and does not modify gate formulas or thresholds.",
+    "Stage-3 remains a candidate lane until explicit promotion criteria are preregistered and closed."
+  ]
+}

@@ -1,0 +1,13 @@
+field_id,variant,description,anchors_used,median_cos_sim,p10_cos_sim,median_cos_sim_shuffled,d3_pass,d4_pass
+BASELINE_QNG,uncoupled,Sigma QNG original (referință),72,0.9968,0.9740,-0.2431,True,True
+BASELINE_QNG,coupled,Sigma QNG original (referință),72,0.9970,0.9743,-0.2289,True,True
+C1_RAND_GAUSS,uncoupled,Random Gaussian mixture (centre random),72,0.9973,0.9694,-0.0580,True,True
+C1_RAND_GAUSS,coupled,Random Gaussian mixture (centre random),72,0.9972,0.9684,0.0686,True,True
+C2_LINEAR,uncoupled,Linear gradient (câmp liniar simplu),72,0.9960,0.9652,0.2109,True,True
+C2_LINEAR,coupled,Linear gradient (câmp liniar simplu),72,0.9960,0.9622,0.2696,True,True
+C3_SINUS,uncoupled,Sinusoidal periodic,72,0.9983,0.9825,-0.0114,True,True
+C3_SINUS,coupled,Sinusoidal periodic,72,0.9969,0.9826,0.0963,True,True
+C4_QUADRATIC,uncoupled,Quadratic bowl (paraboloid),72,0.9952,0.9764,-0.3200,True,True
+C4_QUADRATIC,coupled,Quadratic bowl (paraboloid),72,0.9953,0.9784,-0.3808,True,True
+C5_PURE_NOISE,uncoupled,Pure Gaussian noise (fără structură),72,0.9943,0.9755,0.0950,True,True
+C5_PURE_NOISE,coupled,Pure Gaussian noise (fără structură),72,0.9948,0.9668,-0.0406,True,True

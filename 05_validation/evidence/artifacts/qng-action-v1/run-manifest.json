@@ -1,0 +1,26 @@
+{
+  "script": "run_qng_action_v1.py",
+  "gate_id": "G16",
+  "decision": "pass",
+  "elapsed_s": 0.052816,
+  "run_utc": "2026-03-07T23:35:07.153428Z",
+  "args": {
+    "dataset_id": "DS-006",
+    "seed": 3401,
+    "phi_scale": 0.08,
+    "out_dir": "/home/user/Qng_Workspace/05_validation/evidence/artifacts/qng-action-v1",
+    "write_artifacts": true,
+    "plots": true
+  },
+  "extras": {
+    "closure_rel": 0.0,
+    "r2_G11_T11": 0.111766,
+    "g16b_status": "pass",
+    "g16b_v1_status": "pass",
+    "g16b_v2_status": "pass",
+    "g16b_selected_branch": "v2_low_signal",
+    "t11_std_to_abs_mean": 21.88368935,
+    "m_sq_abs": 0.02328442,
+    "frac_hessian_neg": 1.0
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "test_id": "d4-rotation-real-v1",
+  "timestamp_utc": "2026-03-05T11:37:39Z",
+  "n_points": 3391,
+  "n_galaxies": 175,
+  "models": {
+    "M0_null": {
+      "chi2": 1025645.5071745124,
+      "chi2_per_n": 302.461075545418,
+      "k": 0
+    },
+    "M1_MOND": {
+      "chi2": 320222.51914868696,
+      "chi2_per_n": 94.4330637418717,
+      "k": 1,
+      "g_dag_km2_s2_kpc": 1314.9261217124736,
+      "g_dag_m_s2": 4.2613543821903406e-11
+    },
+    "M3_QNG_gradient": {
+      "chi2": 1025354.0123352435,
+      "chi2_per_n": 302.3751142244894,
+      "k": 1,
+      "tau_kpc2": 0.04698123397033125
+    }
+  },
+  "mond_wins_vs_qng": true,
+  "delta_chi2_qng_minus_mond": 705131.4931865565,
+  "verdict": "MOND bate QNG gradient"
+}

@@ -1,0 +1,33 @@
+{
+  "generated_utc": "2026-03-03T17:43:14.146864+00:00",
+  "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v6-extended-v1/holdout_shifted_s3801_4000/raw/summary.csv",
+  "prereg_doc": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/pre-registrations/qng-stability-convergence-v6.md",
+  "seed_count": 200,
+  "levels_full": [
+    30,
+    36,
+    42,
+    48
+  ],
+  "levels_bulk": [
+    36,
+    42
+  ],
+  "bootstrap_reps": 2000,
+  "ci_alpha": 0.05,
+  "checks": {
+    "s2_seed_pass_fraction": 1.0,
+    "bulk_valid_seed_fraction": 1.0,
+    "full_slope_median": -0.0005187430555555545,
+    "full_slope_ci_low": -0.0005733611111111024,
+    "full_slope_ci_high": -0.00047347916666666236,
+    "bulk_slope_median": -0.000659624999999997,
+    "bulk_slope_ci_low": -0.0008302499999999954,
+    "bulk_slope_ci_high": -0.0005080416666666716,
+    "s2_all_seeds_pass_ok": true,
+    "bulk_valid_all_seeds_ok": true,
+    "s1_full_slope_ci_excludes_zero_neg_ok": true,
+    "s1_bulk_slope_ci_excludes_zero_neg_ok": true
+  },
+  "decision": "PASS"
+}

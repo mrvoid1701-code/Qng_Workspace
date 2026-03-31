@@ -1,0 +1,4 @@
+lane_id,n_seeds,pass_count,hold_count,pass_rate,avg_generalization_gap_pp,max_generalization_gap_pp,avg_holdout_mond_worse_pct,max_holdout_mond_worse_pct,avg_holdout_improve_vs_null_pct
+v10,5,4,1,0.800000,16.483022,41.930063,-11.771067,-7.542115,73.031105
+v11,5,2,3,0.400000,15.484516,29.986314,-11.176626,12.504760,73.829885
+v12,5,2,3,0.400000,16.054388,33.176771,-12.139996,12.576971,73.990806

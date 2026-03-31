@@ -1,0 +1,3 @@
+run_id,profile_total,structural_profile_pass_fraction,energetic_profile_pass_fraction,seed_total,structural_seed_pass_fraction,energetic_seed_pass_fraction,full_seed_pass_fraction,bulk_seed_pass_fraction,s1_seed_pass_rate_median,s2_seed_pass_rate_median,s2_seed_pass_rate_std
+stability-convergence-v4,5400,1.000000,0.839259,20,1.000000,0.000000,0.900000,0.150000,0.835185,1.000000,0.000000
+stability-convergence-v5,7560,1.000000,0.842857,20,1.000000,0.000000,0.450000,0.000000,0.838624,1.000000,0.000000

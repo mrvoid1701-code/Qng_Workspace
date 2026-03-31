@@ -1,0 +1,16 @@
+lane_id,split_seed,seed_decision,generalization_gap_pp,holdout_mond_worse_pct,holdout_improve_vs_null_pct,failed_checks
+v10,3401,PASS,16.277934,-12.717870,84.949864,
+v10,3402,PASS,8.156530,-12.195122,79.638389,
+v10,3403,HOLD,41.930063,-10.584701,41.461974,check_generalization_gap_ok
+v10,3404,PASS,13.119110,-7.542115,83.171461,
+v10,3405,PASS,2.931473,-15.815528,75.933837,
+v11,3401,HOLD,20.359415,-25.513787,87.156276,check_generalization_gap_ok
+v11,3402,PASS,8.219630,-4.531373,77.861196,
+v11,3403,HOLD,29.986314,-20.886773,48.206491,check_generalization_gap_ok
+v11,3404,HOLD,12.065121,12.504760,79.522668,"check_holdout_not_worse_than_mond,check_holdout_aic_not_worse_than_mond,check_holdout_bic_not_worse_than_mond"
+v11,3405,PASS,6.792102,-17.455957,76.402794,
+v12,3401,HOLD,20.974922,-25.724236,87.192563,check_generalization_gap_ok
+v12,3402,PASS,7.939716,-8.688388,78.825191,
+v12,3403,HOLD,33.176771,-19.987522,47.617773,check_generalization_gap_ok
+v12,3404,HOLD,12.083704,12.576971,79.509525,"check_holdout_not_worse_than_mond,check_holdout_aic_not_worse_than_mond,check_holdout_bic_not_worse_than_mond"
+v12,3405,PASS,6.096826,-18.876807,76.808978,

@@ -1,0 +1,16 @@
+{
+  "generated_utc": "2026-03-02T01:18:37.970502Z",
+  "source_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/gr-stage2-prereg-v1/summary.csv",
+  "constants": {
+    "g11_spearman_min": 0.2,
+    "g11_high_signal_quantile": 0.8,
+    "g12_slope_threshold": -0.03,
+    "bootstrap_iters": 300,
+    "multi_peak_ratio_threshold": 0.98,
+    "multi_peak_distance_threshold": 0.1
+  },
+  "notes": [
+    "No edits to official gate scripts.",
+    "Candidate rules are computed in post-processing only."
+  ]
+}

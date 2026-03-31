@@ -1,0 +1,731 @@
+========================================================================
+QNG PHI_SCALE sweep v1
+Run started: 2026-03-02T00:13:01.843666Z
+Datasets=['DS-002', 'DS-003', 'DS-006']  Seeds=[3401, 3402, 3403, 3404, 3405, 3406, 3407, 3408, 3409, 3410, 3411, 3412, 3413, 3414, 3415, 3416, 3417, 3418, 3419, 3420]  Phi_scales=[0.08]
+========================================================================
+
+[1/60] ds-002_seed3401_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.25s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.42s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.12s
+
+[2/60] ds-002_seed3402_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.36s
+  G14: rc=0 status=pass elapsed=0.42s
+  G15: rc=0 status=pass elapsed=0.12s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[3/60] ds-002_seed3403_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.42s
+  G15: rc=0 status=pass elapsed=0.12s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[4/60] ds-002_seed3404_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.42s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[5/60] ds-002_seed3405_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.42s
+  G15: rc=0 status=pass elapsed=0.12s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[6/60] ds-002_seed3406_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.42s
+  G15: rc=0 status=pass elapsed=0.12s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[7/60] ds-002_seed3407_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.39s
+  G14: rc=0 status=pass elapsed=0.42s
+  G15: rc=0 status=pass elapsed=0.12s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[8/60] ds-002_seed3408_phi0p08
+  G10: rc=0 status=pass elapsed=0.16s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.41s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[9/60] ds-002_seed3409_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.44s
+  G15: rc=0 status=pass elapsed=0.12s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[10/60] ds-002_seed3410_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.25s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.42s
+  G15: rc=1 status=fail elapsed=0.12s
+    tail:
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a Î³_PPN:        |mean(Î³)âˆ’1|=0.022980  threshold=<0.06
+      G15b-v1 Shapiro (legacy radial-shell): inner/outer=1.964888  threshold=>2.0
+      G15b-v2 Shapiro (candidate potential-quantile): top10%U/bot10%U=6.584912  threshold=>2.0
+      G15c Î²_PPN:        mean Î²=0.500000  thresholdâˆˆ(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.088270  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-002_seed3410_phi0p08\g15
+  G16: rc=0 status=pass elapsed=0.14s
+
+[11/60] ds-002_seed3411_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.25s
+  G13: rc=0 status=pass elapsed=0.39s
+  G14: rc=0 status=pass elapsed=0.41s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=1 status=fail elapsed=0.14s
+    tail:
+      G16b official (hybrid): v1(high-signal) -> fail
+        low_signal_flag=false  std(T11)/|mean(T11)|=4.869099  threshold>10.0
+        v1 legacy: RÂ²(G11,8Ï€G T11)=0.036065  threshold>0.05  status=fail
+        v2 candidate[full_signal]: |pearson|=0.189909 |spearman|=0.160010 RÂ²=0.036065  thresholds>|corr|>0.2, RÂ²>0.05  status=fail
+      G16c |mÂ²_fit|:  0.012038  threshold=>0.005
+      G16d Hessian:   frac(H_ii<0)=1.000000  threshold=>0.9
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-002_seed3411_phi0p08\g16
+
+[12/60] ds-002_seed3412_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.42s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[13/60] ds-002_seed3413_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.44s
+  G15: rc=0 status=pass elapsed=0.16s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[14/60] ds-002_seed3414_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.39s
+  G14: rc=0 status=pass elapsed=0.41s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[15/60] ds-002_seed3415_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.39s
+  G14: rc=0 status=pass elapsed=0.42s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[16/60] ds-002_seed3416_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.41s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[17/60] ds-002_seed3417_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.39s
+  G14: rc=0 status=pass elapsed=0.44s
+  G15: rc=0 status=pass elapsed=0.16s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[18/60] ds-002_seed3418_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.39s
+  G14: rc=0 status=pass elapsed=0.52s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[19/60] ds-002_seed3419_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.42s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[20/60] ds-002_seed3420_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.38s
+  G14: rc=0 status=pass elapsed=0.42s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[21/60] ds-003_seed3401_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.20s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.38s
+  G15: rc=1 status=fail elapsed=0.12s
+    tail:
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a Î³_PPN:        |mean(Î³)âˆ’1|=0.025954  threshold=<0.06
+      G15b-v1 Shapiro (legacy radial-shell): inner/outer=1.944373  threshold=>2.0
+      G15b-v2 Shapiro (candidate potential-quantile): top10%U/bot10%U=4.320491  threshold=>2.0
+      G15c Î²_PPN:        mean Î²=0.500000  thresholdâˆˆ(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.072804  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3401_phi0p08\g15
+  G16: rc=0 status=pass elapsed=0.12s
+
+[22/60] ds-003_seed3402_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.20s
+  G13: rc=0 status=pass elapsed=0.36s
+  G14: rc=0 status=pass elapsed=0.38s
+  G15: rc=1 status=fail elapsed=0.12s
+    tail:
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a Î³_PPN:        |mean(Î³)âˆ’1|=0.025740  threshold=<0.06
+      G15b-v1 Shapiro (legacy radial-shell): inner/outer=1.890996  threshold=>2.0
+      G15b-v2 Shapiro (candidate potential-quantile): top10%U/bot10%U=4.605672  threshold=>2.0
+      G15c Î²_PPN:        mean Î²=0.500000  thresholdâˆˆ(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.075190  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3402_phi0p08\g15
+  G16: rc=0 status=pass elapsed=0.14s
+
+[23/60] ds-003_seed3403_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=1 status=fail elapsed=0.22s
+    tail:
+      QNG GR solutions completed.
+      decision=fail  G12=False(a=True,b=True,c=True,d=False)
+      G12a (de Sitter Î›):    |Î›_dS|=1.944648  threshold=>0.1
+      G12b (homogeneity):    std/|mean|=0.501003  threshold=<0.6
+      G12c (Schwarzschild):  ratio=1.299921  threshold=>1.0
+      G12d (power-law):      slope=0.015229  threshold=<-0.03
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3403_phi0p08\g12
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.36s
+  G15: rc=1 status=fail elapsed=0.12s
+    tail:
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a Î³_PPN:        |mean(Î³)âˆ’1|=0.026875  threshold=<0.06
+      G15b-v1 Shapiro (legacy radial-shell): inner/outer=1.786072  threshold=>2.0
+      G15b-v2 Shapiro (candidate potential-quantile): top10%U/bot10%U=4.219157  threshold=>2.0
+      G15c Î²_PPN:        mean Î²=0.500000  thresholdâˆˆ(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.075793  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3403_phi0p08\g15
+  G16: rc=0 status=pass elapsed=0.14s
+
+[24/60] ds-003_seed3404_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.38s
+  G15: rc=1 status=fail elapsed=0.14s
+    tail:
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a Î³_PPN:        |mean(Î³)âˆ’1|=0.025545  threshold=<0.06
+      G15b-v1 Shapiro (legacy radial-shell): inner/outer=1.880516  threshold=>2.0
+      G15b-v2 Shapiro (candidate potential-quantile): top10%U/bot10%U=4.114306  threshold=>2.0
+      G15c Î²_PPN:        mean Î²=0.500000  thresholdâˆˆ(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.079208  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3404_phi0p08\g15
+  G16: rc=0 status=pass elapsed=0.12s
+
+[25/60] ds-003_seed3405_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.33s
+  G14: rc=0 status=pass elapsed=0.36s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.12s
+
+[26/60] ds-003_seed3406_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.38s
+  G15: rc=1 status=fail elapsed=0.12s
+    tail:
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a Î³_PPN:        |mean(Î³)âˆ’1|=0.025311  threshold=<0.06
+      G15b-v1 Shapiro (legacy radial-shell): inner/outer=1.942011  threshold=>2.0
+      G15b-v2 Shapiro (candidate potential-quantile): top10%U/bot10%U=4.764245  threshold=>2.0
+      G15c Î²_PPN:        mean Î²=0.500000  thresholdâˆˆ(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.078460  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3406_phi0p08\g15
+  G16: rc=0 status=pass elapsed=0.14s
+
+[27/60] ds-003_seed3407_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.36s
+  G14: rc=0 status=pass elapsed=0.36s
+  G15: rc=0 status=pass elapsed=0.12s
+  G16: rc=1 status=fail elapsed=0.14s
+    tail:
+      G16b official (hybrid): v2(low-signal) -> fail
+        low_signal_flag=true  std(T11)/|mean(T11)|=88.491267  threshold>10.0
+        v1 legacy: RÂ²(G11,8Ï€G T11)=0.003736  threshold>0.05  status=fail
+        v2 candidate[high_signal]: |pearson|=0.053738 |spearman|=0.372775 RÂ²=0.002888  thresholds>|corr|>0.2, RÂ²>0.05  status=fail
+      G16c |mÂ²_fit|:  0.006880  threshold=>0.005
+      G16d Hessian:   frac(H_ii<0)=1.000000  threshold=>0.9
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3407_phi0p08\g16
+
+[28/60] ds-003_seed3408_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.20s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.38s
+  G15: rc=1 status=fail elapsed=0.14s
+    tail:
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a Î³_PPN:        |mean(Î³)âˆ’1|=0.026167  threshold=<0.06
+      G15b-v1 Shapiro (legacy radial-shell): inner/outer=1.909521  threshold=>2.0
+      G15b-v2 Shapiro (candidate potential-quantile): top10%U/bot10%U=4.356953  threshold=>2.0
+      G15c Î²_PPN:        mean Î²=0.500000  thresholdâˆˆ(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.074662  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3408_phi0p08\g15
+  G16: rc=0 status=pass elapsed=0.14s
+
+[29/60] ds-003_seed3409_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.36s
+  G15: rc=1 status=fail elapsed=0.14s
+    tail:
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a Î³_PPN:        |mean(Î³)âˆ’1|=0.025655  threshold=<0.06
+      G15b-v1 Shapiro (legacy radial-shell): inner/outer=1.817631  threshold=>2.0
+      G15b-v2 Shapiro (candidate potential-quantile): top10%U/bot10%U=4.477706  threshold=>2.0
+      G15c Î²_PPN:        mean Î²=0.500000  thresholdâˆˆ(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.078569  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3409_phi0p08\g15
+  G16: rc=0 status=pass elapsed=0.14s
+
+[30/60] ds-003_seed3410_phi0p08
+  G10: rc=0 status=pass elapsed=0.16s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.38s
+  G15: rc=0 status=pass elapsed=0.12s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[31/60] ds-003_seed3411_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.27s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.36s
+  G15: rc=1 status=fail elapsed=0.12s
+    tail:
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a Î³_PPN:        |mean(Î³)âˆ’1|=0.025796  threshold=<0.06
+      G15b-v1 Shapiro (legacy radial-shell): inner/outer=1.850730  threshold=>2.0
+      G15b-v2 Shapiro (candidate potential-quantile): top10%U/bot10%U=4.182227  threshold=>2.0
+      G15c Î²_PPN:        mean Î²=0.500000  thresholdâˆˆ(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.075115  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3411_phi0p08\g15
+  G16: rc=0 status=pass elapsed=0.14s
+
+[32/60] ds-003_seed3412_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.38s
+  G15: rc=1 status=fail elapsed=0.12s
+    tail:
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a Î³_PPN:        |mean(Î³)âˆ’1|=0.026245  threshold=<0.06
+      G15b-v1 Shapiro (legacy radial-shell): inner/outer=1.915379  threshold=>2.0
+      G15b-v2 Shapiro (candidate potential-quantile): top10%U/bot10%U=4.012924  threshold=>2.0
+      G15c Î²_PPN:        mean Î²=0.500000  thresholdâˆˆ(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.074364  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3412_phi0p08\g15
+  G16: rc=0 status=pass elapsed=0.14s
+
+[33/60] ds-003_seed3413_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=1 status=fail elapsed=0.22s
+    tail:
+      QNG Einstein equations completed.
+      decision=fail  G11=False(a=False,b=True,c=True,d=True)
+      G11a (Hamiltonian fit): RÂ²=0.017106  threshold=>0.02
+      G11b (non-trivial G_eff): |B|=0.933482  threshold=>0.217447
+      G11c (Bianchi identity): ratio=0.357785  threshold=<1.5
+      G11d (trace identity): max|TrG|=8.881784e-16  threshold=<1e-10
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3413_phi0p08\g11
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.36s
+  G14: rc=0 status=pass elapsed=0.39s
+  G15: rc=0 status=pass elapsed=0.12s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[34/60] ds-003_seed3414_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.20s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.36s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=1 status=fail elapsed=0.12s
+    tail:
+      G16b official (hybrid): v1(high-signal) -> fail
+        low_signal_flag=false  std(T11)/|mean(T11)|=3.454841  threshold>10.0
+        v1 legacy: RÂ²(G11,8Ï€G T11)=0.044386  threshold>0.05  status=fail
+        v2 candidate[full_signal]: |pearson|=0.210679 |spearman|=0.146015 RÂ²=0.044386  thresholds>|corr|>0.2, RÂ²>0.05  status=fail
+      G16c |mÂ²_fit|:  0.007795  threshold=>0.005
+      G16d Hessian:   frac(H_ii<0)=1.000000  threshold=>0.9
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3414_phi0p08\g16
+
+[35/60] ds-003_seed3415_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.20s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.38s
+  G15: rc=0 status=pass elapsed=0.12s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[36/60] ds-003_seed3416_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=1 status=fail elapsed=0.23s
+    tail:
+      QNG Einstein equations completed.
+      decision=fail  G11=False(a=False,b=True,c=True,d=True)
+      G11a (Hamiltonian fit): RÂ²=0.019819  threshold=>0.02
+      G11b (non-trivial G_eff): |B|=0.964767  threshold=>0.218715
+      G11c (Bianchi identity): ratio=0.387841  threshold=<1.5
+      G11d (trace identity): max|TrG|=4.440892e-16  threshold=<1e-10
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3416_phi0p08\g11
+  G12: rc=1 status=fail elapsed=0.22s
+    tail:
+      QNG GR solutions completed.
+      decision=fail  G12=False(a=True,b=True,c=True,d=False)
+      G12a (de Sitter Î›):    |Î›_dS|=2.187153  threshold=>0.1
+      G12b (homogeneity):    std/|mean|=0.360361  threshold=<0.6
+      G12c (Schwarzschild):  ratio=1.272265  threshold=>1.0
+      G12d (power-law):      slope=-0.024971  threshold=<-0.03
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3416_phi0p08\g12
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.38s
+  G15: rc=0 status=pass elapsed=0.12s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[37/60] ds-003_seed3417_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.20s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.39s
+  G15: rc=1 status=fail elapsed=0.12s
+    tail:
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a Î³_PPN:        |mean(Î³)âˆ’1|=0.025423  threshold=<0.06
+      G15b-v1 Shapiro (legacy radial-shell): inner/outer=1.889250  threshold=>2.0
+      G15b-v2 Shapiro (candidate potential-quantile): top10%U/bot10%U=4.524153  threshold=>2.0
+      G15c Î²_PPN:        mean Î²=0.500000  thresholdâˆˆ(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.077701  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3417_phi0p08\g15
+  G16: rc=0 status=pass elapsed=0.14s
+
+[38/60] ds-003_seed3418_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.36s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=1 status=fail elapsed=0.14s
+    tail:
+      G16b official (hybrid): v2(low-signal) -> fail
+        low_signal_flag=true  std(T11)/|mean(T11)|=13.256348  threshold>10.0
+        v1 legacy: RÂ²(G11,8Ï€G T11)=0.002159  threshold>0.05  status=fail
+        v2 candidate[high_signal]: |pearson|=0.118038 |spearman|=0.394377 RÂ²=0.013933  thresholds>|corr|>0.2, RÂ²>0.05  status=fail
+      G16c |mÂ²_fit|:  0.008131  threshold=>0.005
+      G16d Hessian:   frac(H_ii<0)=1.000000  threshold=>0.9
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3418_phi0p08\g16
+
+[39/60] ds-003_seed3419_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.22s
+  G12: rc=0 status=pass elapsed=0.20s
+  G13: rc=0 status=pass elapsed=0.34s
+  G14: rc=0 status=pass elapsed=0.36s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.12s
+
+[40/60] ds-003_seed3420_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.33s
+  G14: rc=0 status=pass elapsed=0.38s
+  G15: rc=1 status=fail elapsed=0.12s
+    tail:
+      decision=fail  G15=False(a=True,b=False,c=True,d=True)
+      G15a Î³_PPN:        |mean(Î³)âˆ’1|=0.025992  threshold=<0.06
+      G15b-v1 Shapiro (legacy radial-shell): inner/outer=1.956048  threshold=>2.0
+      G15b-v2 Shapiro (candidate potential-quantile): top10%U/bot10%U=4.100774  threshold=>2.0
+      G15c Î²_PPN:        mean Î²=0.500000  thresholdâˆˆ(0.3,0.7)
+      G15d EP principle: std_res/mean_U=0.077562  threshold=<0.15
+      
+      Artifacts written to: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\runs\ds-003_seed3420_phi0p08\g15
+  G16: rc=0 status=pass elapsed=0.14s
+
+[41/60] ds-006_seed3401_phi0p08
+  G10: rc=0 status=pass elapsed=0.12s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.41s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.16s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[42/60] ds-006_seed3402_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.25s
+  G12: rc=0 status=pass elapsed=0.25s
+  G13: rc=0 status=pass elapsed=0.42s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.16s
+  G16: rc=0 status=pass elapsed=0.17s
+
+[43/60] ds-006_seed3403_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.42s
+  G14: rc=0 status=pass elapsed=0.48s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[44/60] ds-006_seed3404_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.25s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.44s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[45/60] ds-006_seed3405_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.41s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[46/60] ds-006_seed3406_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.42s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[47/60] ds-006_seed3407_phi0p08
+  G10: rc=0 status=pass elapsed=0.16s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.42s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[48/60] ds-006_seed3408_phi0p08
+  G10: rc=0 status=pass elapsed=0.16s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.42s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.16s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[49/60] ds-006_seed3409_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.25s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.42s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[50/60] ds-006_seed3410_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.25s
+  G13: rc=0 status=pass elapsed=0.44s
+  G14: rc=0 status=pass elapsed=0.45s
+  G15: rc=0 status=pass elapsed=0.16s
+  G16: rc=0 status=pass elapsed=0.14s
+
+[51/60] ds-006_seed3411_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.25s
+  G13: rc=0 status=pass elapsed=0.42s
+  G14: rc=0 status=pass elapsed=0.45s
+  G15: rc=0 status=pass elapsed=0.16s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[52/60] ds-006_seed3412_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.42s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[53/60] ds-006_seed3413_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.42s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[54/60] ds-006_seed3414_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.25s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.42s
+  G14: rc=0 status=pass elapsed=0.62s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[55/60] ds-006_seed3415_phi0p08
+  G10: rc=0 status=pass elapsed=0.16s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.42s
+  G14: rc=0 status=pass elapsed=0.50s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.19s
+
+[56/60] ds-006_seed3416_phi0p08
+  G10: rc=0 status=pass elapsed=0.16s
+  G11: rc=0 status=pass elapsed=0.27s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.45s
+  G14: rc=0 status=pass elapsed=0.45s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[57/60] ds-006_seed3417_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.25s
+  G12: rc=0 status=pass elapsed=0.22s
+  G13: rc=0 status=pass elapsed=0.42s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[58/60] ds-006_seed3418_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.27s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.42s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[59/60] ds-006_seed3419_phi0p08
+  G10: rc=0 status=pass elapsed=0.14s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.41s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.16s
+
+[60/60] ds-006_seed3420_phi0p08
+  G10: rc=0 status=pass elapsed=0.16s
+  G11: rc=0 status=pass elapsed=0.23s
+  G12: rc=0 status=pass elapsed=0.23s
+  G13: rc=0 status=pass elapsed=0.42s
+  G14: rc=0 status=pass elapsed=0.47s
+  G15: rc=0 status=pass elapsed=0.14s
+  G16: rc=0 status=pass elapsed=0.14s
+
+========================================================================
+Rows: 60  all_pass_official=53/60  all_pass_diagnostic=42/60
+summary.csv: C:\Users\tigan\Desktop\qng workspace\Qng_Workspace\05_validation\evidence\artifacts\gr-regression-baseline-v1\source_runs_grid20\summary.csv
+Elapsed: 102.11s
+========================================================================

@@ -1,0 +1,83 @@
+{
+  "eval_id": "g16b-hybrid-primary-v1",
+  "generated_utc": "2026-03-01T23:47:53.016222Z",
+  "input_summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/g16b-split-hybrid-prereg-v1/summary.csv",
+  "datasets": [
+    "DS-002",
+    "DS-003",
+    "DS-006"
+  ],
+  "criteria": {
+    "min_global_uplift_pp": 2.0,
+    "require_zero_degraded": true,
+    "require_per_dataset_nondegrade": true,
+    "require_high_signal_nondegrade": true,
+    "require_low_signal_improvement": true
+  },
+  "overall": {
+    "n": 600,
+    "v1_pass": 473,
+    "v1_fail": 127,
+    "hybrid_pass": 516,
+    "hybrid_fail": 84,
+    "improved": 43,
+    "degraded": 0,
+    "uplift_pp": 7.166667
+  },
+  "low_signal": {
+    "n": 210,
+    "v1_fail": 60,
+    "hybrid_fail": 17
+  },
+  "high_signal": {
+    "n": 390,
+    "v1_fail": 67,
+    "hybrid_fail": 67
+  },
+  "per_dataset": [
+    {
+      "dataset_id": "DS-002",
+      "n": 200,
+      "v1_pass": 158,
+      "v1_fail": 42,
+      "hybrid_pass": 172,
+      "hybrid_fail": 28,
+      "improved": 14,
+      "degraded": 0,
+      "uplift_pp": "7.000",
+      "nondegrade_pass": "true"
+    },
+    {
+      "dataset_id": "DS-003",
+      "n": 200,
+      "v1_pass": 159,
+      "v1_fail": 41,
+      "hybrid_pass": 162,
+      "hybrid_fail": 38,
+      "improved": 3,
+      "degraded": 0,
+      "uplift_pp": "1.500",
+      "nondegrade_pass": "true"
+    },
+    {
+      "dataset_id": "DS-006",
+      "n": 200,
+      "v1_pass": 156,
+      "v1_fail": 44,
+      "hybrid_pass": 182,
+      "hybrid_fail": 18,
+      "improved": 26,
+      "degraded": 0,
+      "uplift_pp": "13.000",
+      "nondegrade_pass": "true"
+    }
+  ],
+  "checks": {
+    "zero_degraded": true,
+    "per_dataset_nondegrade": true,
+    "high_signal_nondegrade": true,
+    "low_signal_improvement": true,
+    "global_uplift_min": true
+  },
+  "decision": "PASS"
+}

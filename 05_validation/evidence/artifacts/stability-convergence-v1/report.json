@@ -1,0 +1,26 @@
+{
+  "generated_utc": "2026-03-03T08:02:40.831526+00:00",
+  "summary_csv": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/evidence/artifacts/stability-convergence-v1/raw/summary.csv",
+  "prereg_doc": "C:/Users/tigan/Desktop/qng workspace/Qng_Workspace/05_validation/pre-registrations/qng-stability-convergence-v1.md",
+  "levels": [
+    24,
+    30,
+    36,
+    42,
+    48
+  ],
+  "metric_field": "delta_energy_rel",
+  "support_field": "energy_noether_rel",
+  "checks": {
+    "step_pass_fraction": 0.75,
+    "step_pass_fraction_min": 0.75,
+    "overall_improvement": 0.017213,
+    "overall_improvement_min": 0.005,
+    "support_ratio_finest_over_coarsest": 1.055047,
+    "support_ratio_max": 1.25,
+    "step_fraction_pass": true,
+    "overall_improvement_pass": true,
+    "support_sanity_pass": true
+  },
+  "decision": "PASS"
+}

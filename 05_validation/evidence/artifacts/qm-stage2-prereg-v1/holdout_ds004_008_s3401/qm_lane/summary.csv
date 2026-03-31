@@ -1,0 +1,3 @@
+dataset_id,seed,run_root,mode,g17_status,g18_status,g19_status,g20_status,g17_rc,g18_rc,g19_rc,g20_rc,rc_fail_count,all_pass_qm_lane,runner_rc
+DS-004,3401,05_validation/evidence/artifacts/qm-stage2-prereg-v1/holdout_ds004_008_s3401/qm_lane/runs/ds-004_seed3401,prereg,pass,pass,pass,pass,0,0,0,0,0,pass,0
+DS-008,3401,05_validation/evidence/artifacts/qm-stage2-prereg-v1/holdout_ds004_008_s3401/qm_lane/runs/ds-008_seed3401,prereg,pass,pass,pass,pass,0,0,0,0,0,pass,0

@@ -1,0 +1,6 @@
+gate_id,metric,value,threshold,status
+G5a,stability_ratio,1.000000,<=1.5,pass
+G5b,sigma_ratio_final,1.413286,>1.2,pass
+G5c,sigma_dynamism_ratio,1.404144,>1.2,pass
+G5d,freq_ratio,1.029901,|omega_meas/omega_pred-1|<0.25 & crossings>=2,pass
+FINAL,decision,pass,G5a&G5b&G5c&G5d,pass

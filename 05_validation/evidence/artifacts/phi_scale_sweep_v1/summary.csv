@@ -1,0 +1,16 @@
+dataset_id,seed,phi_scale,g10_status,g11_status,g12_status,g13_status,g14_status,g15_status,g16_status,all_pass,g15a_gamma_dev,g15d_ep_ratio,g15b_shapiro_ratio,g13b_e_cov_drift,g14b_e_cov_drift,g13c_speed_reduction,run_root
+DS-002,3401,0.04,pass,pass,pass,pass,pass,pass,pass,pass,0.011144,0.045558,2.385873,8.634375e-04,2.303446e-04,0.083104,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-002_seed3401_phi0p04
+DS-002,3401,0.06,pass,pass,pass,pass,pass,pass,pass,pass,0.016827,0.066428,2.402253,0.002064,9.274196e-05,0.121282,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-002_seed3401_phi0p06
+DS-002,3401,0.08,pass,pass,pass,pass,pass,pass,pass,pass,0.022587,0.086167,2.419454,0.002911,8.405627e-04,0.157442,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-002_seed3401_phi0p08
+DS-002,3401,0.10,pass,pass,pass,pass,pass,pass,pass,pass,0.028426,0.104868,2.437506,0.003297,0.001104,0.191731,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-002_seed3401_phi0p10
+DS-002,3401,0.12,pass,pass,pass,pass,pass,pass,pass,pass,0.034344,0.122614,2.456441,0.003314,7.953096e-04,0.224284,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-002_seed3401_phi0p12
+DS-003,3401,0.04,pass,pass,pass,pass,pass,fail,pass,fail,0.012791,0.038579,1.921528,0.001602,2.398256e-04,0.094858,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-003_seed3401_phi0p04
+DS-003,3401,0.06,pass,pass,pass,pass,pass,fail,pass,fail,0.019325,0.056188,1.932662,0.003376,0.001018,0.138137,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-003_seed3401_phi0p06
+DS-003,3401,0.08,pass,pass,pass,pass,pass,fail,pass,fail,0.025954,0.072804,1.944373,0.004385,0.001927,0.178945,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-003_seed3401_phi0p08
+DS-003,3401,0.10,pass,pass,pass,pass,pass,fail,pass,fail,0.032680,0.088513,1.956680,0.004486,0.001810,0.217472,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-003_seed3401_phi0p10
+DS-003,3401,0.12,pass,pass,pass,pass,pass,fail,pass,fail,0.039506,0.103386,1.969606,0.003873,8.561168e-04,0.253890,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-003_seed3401_phi0p12
+DS-006,3401,0.04,pass,pass,pass,pass,pass,pass,pass,pass,0.008744,0.053607,3.376955,7.518060e-04,5.145897e-04,0.065730,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-006_seed3401_phi0p04
+DS-006,3401,0.06,pass,pass,pass,pass,pass,pass,pass,pass,0.013194,0.078338,3.401573,5.847506e-06,6.101013e-04,0.096224,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-006_seed3401_phi0p06
+DS-006,3401,0.08,pass,pass,pass,pass,pass,pass,pass,pass,0.017696,0.101833,3.427312,7.356327e-04,7.335762e-04,0.125288,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-006_seed3401_phi0p08
+DS-006,3401,0.10,pass,pass,pass,pass,pass,pass,pass,pass,0.022253,0.124189,3.454210,0.001318,1.494170e-04,0.153018,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-006_seed3401_phi0p10
+DS-006,3401,0.12,pass,pass,pass,pass,pass,pass,pass,pass,0.026865,0.145491,3.482312,0.001746,3.708877e-04,0.179506,05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/ds-006_seed3401_phi0p12

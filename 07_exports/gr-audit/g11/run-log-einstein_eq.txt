@@ -1,0 +1,30 @@
+======================================================================
+QNG complete Einstein equations G_{μν} = 8πG T_{μν} (v1)
+Run started: 2026-03-01T21:02:01.450584Z
+======================================================================
+
+Graph: n=280  mean_degree=9.37
+
+Computing Forman-Ricci curvature and Einstein tensor…
+  Done in 0.004s
+  R: mean=-5.191997  std=1.794190
+  max|Tr G| = 8.881784e-16
+
+Fitting Hamiltonian constraint R(i) = 2Λ + 16πG_eff·σ(i)/σ_max …
+  OLS: A=-4.199893  B=-1.804106  R²=0.056991
+  Λ_eff = A/2 = -2.099946
+  G_eff = B/(16π) = -0.035892
+
+Checking discrete Bianchi identity…
+  Gradient computation in 0.002s
+  mean|B| = 1.493433  |mean_R| = 5.191997
+  Bianchi ratio = mean|B|/|mean_R| = 0.287641
+
+QNG Einstein equations completed.
+decision=pass  G11=True(a=True,b=True,c=True,d=True)
+G11a (Hamiltonian fit): R²=0.056991  threshold=>0.02
+G11b (non-trivial G_eff): |B|=1.804106  threshold=>0.259600
+G11c (Bianchi identity): ratio=0.287641  threshold=<1.5
+G11d (trace identity): max|TrG|=8.881784e-16  threshold=<1e-10
+
+Artifacts written to: 07_exports\gr-audit\g11

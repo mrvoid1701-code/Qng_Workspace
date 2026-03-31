@@ -1,9 +1,49 @@
-.venv/
+# Python
 __pycache__/
 *.pyc
-07_exports/
+*.pyo
+*.pyd
+.venv/
+venv/
+qng_env/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local extracted text
 01_notes/page_text/
 01_notes/source_text.md
 
-# Ignore large planck_lensing parts\ndata/lensing/planck_lensing_4096_r3_part/
+# Large split source chunks (kept outside git)
 data/lensing/planck_lensing_4096_r3_part/
+
+# Generated runtime junk under evidence/artifacts / exports
+05_validation/evidence/artifacts/**/__pycache__/
+05_validation/evidence/artifacts/**/runs/
+05_validation/evidence/artifacts/**/*.tmp
+05_validation/evidence/artifacts/**/*.bak
+05_validation/evidence/artifacts/**/run-log.txt
+05_validation/evidence/artifacts/**/run-log-*.txt
+05_validation/evidence/artifacts/**/artifact-hashes.json
+05_validation/evidence/artifacts/**/config.json
+05_validation/evidence/artifacts/**/config_*.json
+05_validation/evidence/artifacts/phi_scale_sweep_v1/runs/
+05_validation/evidence/artifacts/gr-regression-baseline-v1/latest_check/
+05_validation/evidence/artifacts/gr-regression-baseline-v1/source_runs/
+05_validation/evidence/artifacts/g16-failure-taxonomy-v1/runs/
+07_exports/**/__pycache__/
+07_exports/**/*.tmp
+07_exports/**/*.bak
+
+# Keep reproducibility-facing records versioned (do not ignore)
+!05_validation/evidence/artifacts/**/run-manifest*.json
+!05_validation/evidence/artifacts/**/artifact-hashes-*.json
+!05_validation/evidence/artifacts/**/*.md
+
+# Local smoke/scratch exports
+07_exports/smoke/
+07_exports/tmp/
+07_exports/tmp*/
